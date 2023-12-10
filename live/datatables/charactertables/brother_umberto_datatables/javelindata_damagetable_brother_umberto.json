@@ -55,7 +55,11 @@
   "SurfaceImpactEffect": "Bullet",
   "AttackType": "Heavy",
   "DamageType": "Arcane",
-  "StatusEffect": "AI_Root_4sec,AI_Weaken,AI_Rend",
+  "StatusEffect": [
+   "AI_Root_4sec",
+   "AI_Weaken",
+   "AI_Rend"
+  ],
   "EffectOnlyOnDamage": true,
   "UseAttackerPosForReaction": false,
   "DamageGuildAndGroup": false,
@@ -343,7 +347,9 @@
   "SurfaceImpactEffect": "Bullet",
   "AttackType": "Magic",
   "DamageType": "Arcane",
-  "StatusEffect": "AI_BrotherUmberto_HealthDebuff",
+  "StatusEffect": [
+   "AI_BrotherUmberto_HealthDebuff"
+  ],
   "EffectOnlyOnDamage": true,
   "UseAttackerPosForReaction": false,
   "DamageGuildAndGroup": false,

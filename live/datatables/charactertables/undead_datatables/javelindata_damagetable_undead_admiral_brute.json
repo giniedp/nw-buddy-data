@@ -57,7 +57,9 @@
   "AttackType": "Heavy",
   "DamageType": "Strike",
   "IgnoreSheatheStatus": true,
-  "StatusEffect": "BruteStun",
+  "StatusEffect": [
+   "BruteStun"
+  ],
   "EffectOnlyOnDamage": true,
   "DeflectDamageID": "Deflect_Default",
   "CanCrit": false,
@@ -479,7 +481,9 @@
   "AttackType": "Magic",
   "DamageType": "Fire",
   "IgnoreSheatheStatus": true,
-  "StatusEffect": "PirateBrute_Blast",
+  "StatusEffect": [
+   "PirateBrute_Blast"
+  ],
   "EffectOnlyOnDamage": true,
   "DeflectDamageID": "Deflect_Default",
   "CanCrit": false,
@@ -1273,7 +1277,10 @@
   "AttackType": "Heavy",
   "DamageType": "Siege",
   "IgnoreSheatheStatus": true,
-  "StatusEffect": "AI_AdmiralBrute_Phase2_HitGeneric,AI_AdmiralBrute_Phase2_HitCount",
+  "StatusEffect": [
+   "AI_AdmiralBrute_Phase2_HitGeneric",
+   "AI_AdmiralBrute_Phase2_HitCount"
+  ],
   "EffectOnlyOnDamage": false,
   "CanCrit": false,
   "DmgCoef": 0.10000000149011612,

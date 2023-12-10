@@ -9,7 +9,11 @@
   "SurfaceImpactEffect": "Bullet",
   "AttackType": "Heavy",
   "DamageType": "Corruption",
-  "StatusEffect": "AI_Root_4sec,AI_Weaken,AI_Rend",
+  "StatusEffect": [
+   "AI_Root_4sec",
+   "AI_Weaken",
+   "AI_Rend"
+  ],
   "EffectOnlyOnDamage": true,
   "UseAttackerPosForReaction": false,
   "DeflectDamageID": "Deflect_Default",
@@ -491,7 +495,9 @@
   "SurfaceImpactEffect": "Bullet",
   "AttackType": "Heavy",
   "DamageType": "Strike",
-  "StatusEffect": "AI_Yonas_TimeBomb",
+  "StatusEffect": [
+   "AI_Yonas_TimeBomb"
+  ],
   "EffectOnlyOnDamage": false,
   "UseAttackerPosForReaction": false,
   "DeflectDamageID": "Deflect_Default",
