@@ -1768,7 +1768,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 15,
+  "CooldownId": "PotionFocus",
   "IsMountConsumable": false
  },
  {
@@ -1791,7 +1792,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 15,
+  "CooldownId": "PotionFocus",
   "IsMountConsumable": false
  },
  {
@@ -1814,7 +1816,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 15,
+  "CooldownId": "PotionFocus",
   "IsMountConsumable": false
  },
  {
@@ -1837,7 +1840,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 15,
+  "CooldownId": "PotionFocus",
   "IsMountConsumable": false
  },
  {
@@ -3953,6 +3957,78 @@
   "ConsumableID": "PotionBoostVoidAbsT5",
   "AddStatusEffects": [
    "PotionBoostVoidAbsT5"
+  ],
+  "StatusEffectMod": 1,
+  "DurationOverrides": 30,
+  "MinDurationModifier": 0,
+  "MaxDurationModifier": 0,
+  "DurationScaleFactor": 1,
+  "MinPotencyModifier": 0,
+  "MaxPotencyModifier": 0,
+  "PotencyScaleFactor": 0,
+  "RemoveStatusEffectCategories": [
+   "DefBoost"
+  ],
+  "UseCount": 0,
+  "DisableUseInCombat": false,
+  "Damage": 0,
+  "MannequinTag": "Potion",
+  "CooldownDuration": 100,
+  "CooldownId": "AbsorbBoost",
+  "IsMountConsumable": false
+ },
+ {
+  "ConsumableID": "PotionBoostIceAbsT3",
+  "AddStatusEffects": [
+   "PotionBoostIceAbsT3"
+  ],
+  "StatusEffectMod": 1,
+  "DurationOverrides": 30,
+  "MinDurationModifier": 0,
+  "MaxDurationModifier": 0,
+  "DurationScaleFactor": 1,
+  "MinPotencyModifier": 0,
+  "MaxPotencyModifier": 0,
+  "PotencyScaleFactor": 0,
+  "RemoveStatusEffectCategories": [
+   "DefBoost"
+  ],
+  "UseCount": 0,
+  "DisableUseInCombat": false,
+  "Damage": 0,
+  "MannequinTag": "Potion",
+  "CooldownDuration": 100,
+  "CooldownId": "AbsorbBoost",
+  "IsMountConsumable": false
+ },
+ {
+  "ConsumableID": "PotionBoostIceAbsT4",
+  "AddStatusEffects": [
+   "PotionBoostIceAbsT4"
+  ],
+  "StatusEffectMod": 1,
+  "DurationOverrides": 30,
+  "MinDurationModifier": 0,
+  "MaxDurationModifier": 0,
+  "DurationScaleFactor": 1,
+  "MinPotencyModifier": 0,
+  "MaxPotencyModifier": 0,
+  "PotencyScaleFactor": 0,
+  "RemoveStatusEffectCategories": [
+   "DefBoost"
+  ],
+  "UseCount": 0,
+  "DisableUseInCombat": false,
+  "Damage": 0,
+  "MannequinTag": "Potion",
+  "CooldownDuration": 100,
+  "CooldownId": "AbsorbBoost",
+  "IsMountConsumable": false
+ },
+ {
+  "ConsumableID": "PotionBoostIceAbsT5",
+  "AddStatusEffects": [
+   "PotionBoostIceAbsT5"
   ],
   "StatusEffectMod": 1,
   "DurationOverrides": 30,
@@ -6808,7 +6884,7 @@
  {
   "ConsumableID": "Artisan_FoodCONT5",
   "AddStatusEffects": [
-   "FoodCONT5",
+   "FoodCONT5_Artisan",
    "FoodRecoveryT5"
   ],
   "StatusEffectMod": 1,
@@ -9484,7 +9560,7 @@
   "ConsumableID": "FoodMinerT52",
   "AddStatusEffects": [
    "FoodMinerT52",
-   "FoodRecoveryT5"
+   "FoodRecoveryT52"
   ],
   "StatusEffectMod": 1,
   "DurationOverrides": 0,
@@ -9509,7 +9585,7 @@
   "ConsumableID": "FoodHarvesterT52",
   "AddStatusEffects": [
    "FoodHarvesterT52",
-   "FoodRecoveryT5"
+   "FoodRecoveryT52"
   ],
   "StatusEffectMod": 1,
   "DurationOverrides": 0,
@@ -9534,7 +9610,7 @@
   "ConsumableID": "FoodHunterT52",
   "AddStatusEffects": [
    "FoodHunterT52",
-   "FoodRecoveryT5"
+   "FoodRecoveryT52"
   ],
   "StatusEffectMod": 1,
   "DurationOverrides": 0,
@@ -9559,7 +9635,7 @@
   "ConsumableID": "FoodLumberjackT52",
   "AddStatusEffects": [
    "FoodLumberjackT52",
-   "FoodRecoveryT5"
+   "FoodRecoveryT52"
   ],
   "StatusEffectMod": 1,
   "DurationOverrides": 0,
@@ -9584,7 +9660,7 @@
   "ConsumableID": "FoodSTRT52",
   "AddStatusEffects": [
    "FoodSTRT52",
-   "FoodRecoveryT5"
+   "FoodRecoveryT52"
   ],
   "StatusEffectMod": 0,
   "DurationOverrides": 0,
@@ -9609,7 +9685,7 @@
   "ConsumableID": "FoodDEXT52",
   "AddStatusEffects": [
    "FoodDEXT52",
-   "FoodRecoveryT5"
+   "FoodRecoveryT52"
   ],
   "StatusEffectMod": 0,
   "DurationOverrides": 0,
@@ -9634,7 +9710,7 @@
   "ConsumableID": "FoodINTT52",
   "AddStatusEffects": [
    "FoodINTT52",
-   "FoodRecoveryT5"
+   "FoodRecoveryT52"
   ],
   "StatusEffectMod": 0,
   "DurationOverrides": 0,
@@ -9659,7 +9735,7 @@
   "ConsumableID": "FoodFOCT52",
   "AddStatusEffects": [
    "FoodFOCT52",
-   "FoodRecoveryT5"
+   "FoodRecoveryT52"
   ],
   "StatusEffectMod": 0,
   "DurationOverrides": 0,
@@ -9684,7 +9760,7 @@
   "ConsumableID": "FoodCONT52",
   "AddStatusEffects": [
    "FoodCONT52",
-   "FoodRecoveryT5"
+   "FoodRecoveryT52"
   ],
   "StatusEffectMod": 0,
   "DurationOverrides": 0,
@@ -9709,7 +9785,7 @@
   "ConsumableID": "FoodMAGT5",
   "AddStatusEffects": [
    "FoodMAGT5",
-   "FoodRecoveryT5"
+   "FoodRecoveryT52"
   ],
   "StatusEffectMod": 0,
   "DurationOverrides": 0,
@@ -9734,7 +9810,7 @@
   "ConsumableID": "FoodAMPT5",
   "AddStatusEffects": [
    "FoodAMPT5",
-   "FoodRecoveryT5"
+   "FoodRecoveryT52"
   ],
   "StatusEffectMod": 0,
   "DurationOverrides": 0,
@@ -11446,7 +11522,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 15,
+  "CooldownId": "PotionFocus",
   "IsMountConsumable": false
  },
  {
@@ -11901,7 +11978,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -11922,7 +12000,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -11943,7 +12022,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -11964,7 +12044,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -11985,7 +12066,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -12006,7 +12088,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -12027,7 +12110,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -12048,7 +12132,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -12069,7 +12154,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -12090,7 +12176,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -12111,7 +12198,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -12132,7 +12220,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -12153,7 +12242,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -12174,7 +12264,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -12195,7 +12286,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {
@@ -12216,7 +12308,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 3,
+  "CooldownId": "PotionSpores",
   "IsMountConsumable": false
  },
  {

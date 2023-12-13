@@ -545,7 +545,7 @@
    "Predator",
    "Named"
   ],
-  "Level": 70,
+  "Level": 67,
   "Family": "Wildlife",
   "CreatureType": "Named_Solo+",
   "DifficultyTierOverride": 0,
@@ -641,7 +641,7 @@
   "DMGCorruption": 1,
   "AFAPoison": 0,
   "AFADisease": 0,
-  "CharacterScale": 1.600000023841858,
+  "CharacterScale": 1.399999976158142,
   "ChainSpellImmune": false,
   "MutatorPotencyMod": 0,
   "HealthPercentForLootContributionOverride": 0
@@ -2706,7 +2706,8 @@
    "Hostile",
    "Beast",
    "Predator",
-   "FL_Mammoth"
+   "FL_Mammoth",
+   "Named"
   ],
   "Level": 65,
   "Family": "Wildlife",
@@ -4868,7 +4869,7 @@
    "Predator",
    "Named"
   ],
-  "Level": 70,
+  "Level": 67,
   "Family": "Wildlife",
   "CreatureType": "Named_Solo+",
   "DifficultyTierOverride": 0,
@@ -4964,7 +4965,7 @@
   "DMGCorruption": 1,
   "AFAPoison": 0,
   "AFADisease": 0,
-  "CharacterScale": 2,
+  "CharacterScale": 1.5,
   "ChainSpellImmune": false,
   "MutatorPotencyMod": 0,
   "HealthPercentForLootContributionOverride": 0
@@ -5256,7 +5257,7 @@
    "Beast",
    "Common",
    "Named",
-   "Nyhart00"
+   "Campbells00"
   ],
   "ABSStrike": 0,
   "ABSSlash": 0,
@@ -5632,10 +5633,9 @@
    "FL_DH_Gorilla_Ice_Named",
    "Hostile",
    "Beast",
-   "Predator",
-   "Named"
+   "Predator"
   ],
-  "Level": 70,
+  "Level": 67,
   "Family": "Wildlife",
   "CreatureType": "Named_Solo+",
   "DifficultyTierOverride": 0,
@@ -5731,7 +5731,7 @@
   "DMGCorruption": 1,
   "AFAPoison": 0,
   "AFADisease": 0,
-  "CharacterScale": 2,
+  "CharacterScale": 1.399999976158142,
   "ChainSpellImmune": false,
   "MutatorPotencyMod": 0,
   "HealthPercentForLootContributionOverride": 0
@@ -6207,8 +6207,8 @@
   "BlockDamageMitigation": 0,
   "BlockStaminaCost": 0,
   "StaminaMin": 0,
-  "StaminaBaseMax": 1000,
-  "StaminaInitial": 1000,
+  "StaminaBaseMax": 0,
+  "StaminaInitial": 0,
   "StaminaBaseTickRate": 0,
   "StaminaRegenCappedBy": 0,
   "StaminaTickDelay": 0,
@@ -6319,8 +6319,8 @@
   "BlockDamageMitigation": 0,
   "BlockStaminaCost": 0,
   "StaminaMin": 0,
-  "StaminaBaseMax": 1000,
-  "StaminaInitial": 1000,
+  "StaminaBaseMax": 0,
+  "StaminaInitial": 0,
   "StaminaBaseTickRate": 0,
   "StaminaRegenCappedBy": 0,
   "StaminaTickDelay": 0,
@@ -10522,7 +10522,7 @@
    "Primal_Lion",
    "Named"
   ],
-  "Level": 70,
+  "Level": 67,
   "Family": "Wildlife",
   "CreatureType": "Named_Solo+",
   "DifficultyTierOverride": 0,
@@ -10619,7 +10619,7 @@
   "DMGCorruption": 1,
   "AFAPoison": 0,
   "AFADisease": 0,
-  "CharacterScale": 1.600000023841858,
+  "CharacterScale": 0,
   "ChainSpellImmune": false,
   "MutatorPotencyMod": 0,
   "HealthPercentForLootContributionOverride": 0
@@ -12397,7 +12397,7 @@
   ],
   "Level": 70,
   "Family": "AngryEarth",
-  "CreatureType": "Named_Solo+",
+  "CreatureType": "Solo+",
   "DifficultyTierOverride": 0,
   "NoExpNoCoin": false,
   "CanDropLoot": true,
@@ -12494,7 +12494,7 @@
   "DMGCorruption": 1,
   "AFAPoison": 0,
   "AFADisease": 0,
-  "CharacterScale": 2.8499999046325684,
+  "CharacterScale": 1.2000000476837158,
   "ChainSpellImmune": false,
   "MutatorPotencyMod": 0,
   "HealthPercentForLootContributionOverride": 0
@@ -21050,7 +21050,6 @@
   "VitalsCategories": [
    "FL_AnubianGuardian_Archer_09FL01",
    "Hostile",
-   "Beast",
    "Predator",
    "Ancient"
   ],
@@ -21159,7 +21158,6 @@
   "VitalsCategories": [
    "FL_AnubianGuardian_Archer_09FL01a",
    "Hostile",
-   "Beast",
    "Predator",
    "Ancient"
   ],
@@ -21268,7 +21266,6 @@
   "VitalsCategories": [
    "FL_AnubianGuardian_Archer_09FL03",
    "Hostile",
-   "Beast",
    "Predator",
    "Ancient"
   ],
@@ -21377,7 +21374,6 @@
   "VitalsCategories": [
    "FL_AnubianGuardian_Archer_09FL06",
    "Hostile",
-   "Beast",
    "Predator",
    "Ancient"
   ],
@@ -27539,12 +27535,13 @@
   "MaxDefenseMitigationPercent": 0.8999999761581421,
   "WarKillEventId": "War_Kill_Minor",
   "WarAssistEventId": "War_Assist_Minor",
-  "LootDropChance": 0.10000000149011612,
+  "LootDropChance": 0.20000000298023224,
   "IgnoreLootDropModifier": "0",
   "LootTableId": "CreatureLootMaster",
   "LootTags": [
    "Beast",
-   "Elite"
+   "Elite",
+   "IceMammoth"
   ],
   "ABSStrike": 0,
   "ABSSlash": 0,
@@ -28023,8 +28020,7 @@
    "Hostile",
    "Beast",
    "Predator",
-   "FL_Mammoth",
-   "Named"
+   "FL_Mammoth"
   ],
   "Level": 70,
   "Family": "Wildlife",
@@ -28136,10 +28132,9 @@
    "Hostile",
    "Beast",
    "Predator",
-   "FL_Mammoth",
-   "Named"
+   "FL_Mammoth"
   ],
-  "Level": 70,
+  "Level": 67,
   "Family": "Wildlife",
   "CreatureType": "Named_Solo+",
   "DifficultyTierOverride": 0,
@@ -28235,7 +28230,7 @@
   "DMGCorruption": 1,
   "AFAPoison": 0,
   "AFADisease": 0,
-  "CharacterScale": 1.399999976158142,
+  "CharacterScale": 1.2000000476837158,
   "ChainSpellImmune": false,
   "MutatorPotencyMod": 0,
   "HealthPercentForLootContributionOverride": 0
@@ -28580,7 +28575,7 @@
    "FL_Mammoth",
    "Named"
   ],
-  "Level": 70,
+  "Level": 67,
   "Family": "Wildlife",
   "CreatureType": "Named_Solo+",
   "DifficultyTierOverride": 0,
@@ -28676,7 +28671,7 @@
   "DMGCorruption": 1,
   "AFAPoison": 0,
   "AFADisease": 0,
-  "CharacterScale": 1.399999976158142,
+  "CharacterScale": 1.2000000476837158,
   "ChainSpellImmune": false,
   "MutatorPotencyMod": 0,
   "HealthPercentForLootContributionOverride": 0
@@ -30679,8 +30674,7 @@
    "Chameleon",
    "Hostile",
    "Beast",
-   "Predator",
-   "Named"
+   "Predator"
   ],
   "Level": 65,
   "Family": "Wildlife",
@@ -31365,7 +31359,7 @@
   ],
   "Level": 65,
   "Family": "AngryEarth",
-  "CreatureType": "Named_Solo+",
+  "CreatureType": "Solo+",
   "DifficultyTierOverride": 3,
   "NoExpNoCoin": false,
   "CanDropLoot": true,
@@ -31462,7 +31456,7 @@
   "DMGCorruption": 1,
   "AFAPoison": 1,
   "AFADisease": 0,
-  "CharacterScale": 1.600000023841858,
+  "CharacterScale": 1.2000000476837158,
   "ChainSpellImmune": false,
   "MutatorPotencyMod": 0,
   "HealthPercentForLootContributionOverride": 0
@@ -34129,7 +34123,8 @@
    "Beast",
    "Predator",
    "Primal_Lion",
-   "Barbary_Lion"
+   "Barbary_Lion",
+   "Ancient"
   ],
   "Level": 70,
   "Family": "Wildlife",
@@ -34190,6 +34185,7 @@
   "IgnoreLootDropModifier": "FALSE",
   "LootTableId": "CreatureLootMaster",
   "LootTags": [
+   "Ancient",
    "Beast",
    "Elite",
    "BarbaryLion"
@@ -44674,6 +44670,7 @@
    "Predator",
    "Primal_Lion",
    "Barbary_Lion",
+   "Ancient",
    "Named"
   ],
   "Level": 67,
@@ -44735,6 +44732,7 @@
   "IgnoreLootDropModifier": "FALSE",
   "LootTableId": "CreatureLootMaster",
   "LootTags": [
+   "Ancient",
    "Beast",
    "Common",
    "Named",
