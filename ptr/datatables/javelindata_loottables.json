@@ -3962,7 +3962,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "25-35",
+  "Item1": "15-21",
   "Item2": "1",
   "Item3": "1",
   "Item4": "1",
@@ -4009,7 +4009,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "37-44",
+  "Item1": "22-31",
   "Item2": "1",
   "Item3": "1",
   "Item4": "1",
@@ -4056,7 +4056,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "45-58",
+  "Item1": "32-45",
   "Item2": "1-2",
   "Item3": "1",
   "Item4": "1",
@@ -20548,7 +20548,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "[LTID]NamedCreatureLootEliteGear",
+  "Item1": "[LTID]NamedCreatureLootEliteGear_Filter",
   "Item2": "[LBID]FortifiedTrophies",
   "Item3": "[LBID]NamedWeaponsCreatures"
  },
@@ -20573,6 +20573,37 @@
   "Item3": "90000"
  },
  {
+  "LootTableID": "NamedCreatureLootEliteGear_Filter",
+  "AND/OR": "AND",
+  "RollBonusSetting": "ClampMax",
+  "UseLevelGS": "TRUE",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 0,
+  "Item1": "[LTID]NamedCreatureLootEliteGear",
+  "Item2": "[LBID]CraftingClothing"
+ },
+ {
+  "LootTableID": "NamedCreatureLootEliteGear_Filter_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1",
+  "Item2": "1"
+ },
+ {
+  "LootTableID": "NamedCreatureLootEliteGear_Filter_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 100000,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0",
+  "Item2": "95000"
+ },
+ {
   "LootTableID": "NamedCreatureLootEliteGear",
   "AND/OR": "OR",
   "RollBonusSetting": "ClampMax",
@@ -20583,8 +20614,7 @@
   "LootBiasingEnabled": "TRUE",
   "LootBiasingChanceOverride": 0,
   "Item1": "[LBID]EliteArmor",
-  "Item2": "[LBID]EliteWeapons",
-  "Item3": "[LBID]CraftingClothing"
+  "Item2": "[LBID]EliteWeapons"
  },
  {
   "LootTableID": "NamedCreatureLootEliteGear_Qty",
@@ -20593,8 +20623,7 @@
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
   "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
+  "Item2": "1"
  },
  {
   "LootTableID": "NamedCreatureLootEliteGear_Probs",
@@ -20603,8 +20632,7 @@
   "MaxRoll": 100000,
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
-  "Item2": "0",
-  "Item3": "95000"
+  "Item2": "0"
  },
  {
   "LootTableID": "CreatureLootNamedLootResourceOdds1",
@@ -20781,27 +20809,21 @@
  },
  {
   "LootTableID": "CreatureLootDungeon",
-  "AND/OR": "AND",
+  "AND/OR": "OR",
   "RollBonusSetting": "AddToRoll",
+  "Conditions": [
+   "Dungeon"
+  ],
+  "UseLevelGS": "TRUE",
   "HWMMult": 0,
   "GSBonus": 0,
   "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
   "LootBiasingChanceOverride": 0,
-  "Item1": "[LTID]CreatureLootDungeonAmrine",
-  "Item2": "[LTID]CreatureLootDungeonShatteredObelisk",
-  "Item3": "[LTID]CreatureLootDungeonReekwater00",
-  "Item4": "[LTID]CreatureLootDungeonEdengrove00",
-  "Item5": "[LTID]CreatureLootDungeonEbonscale00",
-  "Item6": "[LTID]CreatureLootDungeonRestlessShores01",
-  "Item7": "[LTID]CreatureLootDungeonEbonscale00_Mut",
-  "Item8": "[LTID]CreatureLootDungeonShatterMtn00",
-  "Item9": "[LTID]CreatureLootDungeonCutlassKeys00",
-  "Item10": "[LTID]CreatureLootDungeonBrimstoneSands00",
-  "Item11": "[LTID]CreatureLootDungeonShatteredObelisk_Mut",
-  "Item12": "[LTID]CreatureLootDungeonRestlessShores01_Mut",
-  "Item13": "[LTID]CreatureLootDungeonGreatCleave01",
-  "Item14": "[LTID]CreatureLootDungeonFirstLight01",
-  "Item15": "[LTID]CreatureLootDungeonGreatCleave00"
+  "Item1": "[LBID]DungeonResources",
+  "Item2": "[LBID]LootDungeonArmor",
+  "Item3": "[LBID]LootDungeonWeapons",
+  "Item4": "[LBID]DungeonNamedItems"
  },
  {
   "LootTableID": "CreatureLootDungeon_Qty",
@@ -20812,642 +20834,10 @@
   "Item1": "1",
   "Item2": "1",
   "Item3": "1",
-  "Item4": "1",
-  "Item5": "1",
-  "Item6": "1",
-  "Item7": "1",
-  "Item8": "1",
-  "Item9": "1",
-  "Item10": "1",
-  "Item11": "1",
-  "Item12": "1",
-  "Item13": "1",
-  "Item14": "1",
-  "Item15": "1"
+  "Item4": "1"
  },
  {
   "LootTableID": "CreatureLootDungeon_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0",
-  "Item2": "0",
-  "Item3": "0",
-  "Item4": "0",
-  "Item5": "0",
-  "Item6": "0",
-  "Item7": "0",
-  "Item8": "0",
-  "Item9": "0",
-  "Item10": "0",
-  "Item11": "0",
-  "Item12": "0",
-  "Item13": "0",
-  "Item14": "0",
-  "Item15": "0"
- },
- {
-  "LootTableID": "CreatureLootDungeonAmrine",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "Amrine"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "GearScoreRange2": "330-350",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "GearScoreRange3": "330-350",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonAmrine_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonAmrine_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonShatteredObelisk",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "ShatteredObelisk"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "GearScoreRange2": "380-395",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "GearScoreRange3": "380-395",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonShatteredObelisk_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonShatteredObelisk_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonShatteredObelisk_Mut",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "ShatteredObelisk_Mut"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonShatteredObelisk_Mut_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonShatteredObelisk_Mut_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonReekwater00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "Reekwater00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonReekwater00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonReekwater00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonEdengrove00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "Edengrove00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonEdengrove00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonEdengrove00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonEbonscale00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "Ebonscale00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "GearScoreRange2": "480-495",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "GearScoreRange3": "480-495",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonEbonscale00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonEbonscale00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonEbonscale00_Mut",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "Ebonscale00_Mut"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "GearScoreRange2": "480-495",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "GearScoreRange3": "480-495",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonEbonscale00_Mut_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonEbonscale00_Mut_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonRestlessShores01",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "RestlessShores01"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "GearScoreRange2": "435-455",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "GearScoreRange3": "435-455",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonRestlessShores01_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonRestlessShores01_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonRestlessShores01_Mut",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "Restless01_Mut"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonRestlessShores01_Mut_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonRestlessShores01_Mut_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonShatterMtn00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "ShatterMtn00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonShatterMtn00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonShatterMtn00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonCutlassKeys00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "CutlassKeys00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonCutlassKeys00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonCutlassKeys00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonBrimstoneSands00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "BrimstoneSands00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonBrimstoneSands00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBrimstoneSands00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonGreatCleave01",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "GreatCleave01"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonGreatCleave01_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonGreatCleave01_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonFirstLight01",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "EXPFirstLight01"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonFirstLight01_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonFirstLight01_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "84000",
-  "Item2": "94000",
-  "Item3": "94000",
-  "Item4": "97000"
- },
- {
-  "LootTableID": "CreatureLootDungeonGreatCleave00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "GreatCleave00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 0,
-  "Item1": "[LBID]DungeonResources",
-  "Item2": "[LBID]LootDungeonArmor",
-  "Item3": "[LBID]LootDungeonWeapons",
-  "Item4": "[LBID]DungeonNamedItems"
- },
- {
-  "LootTableID": "CreatureLootDungeonGreatCleave00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1",
-  "Item4": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonGreatCleave00_Probs",
   "HWMMult": 0,
   "GSBonus": 0,
   "MaxRoll": 100000,
@@ -21462,7 +20852,7 @@
   "AND/OR": "AND",
   "RollBonusSetting": "AddToRoll",
   "Conditions": [
-   "GlobalMod"
+   "Dungeon"
   ],
   "UseLevelGS": "TRUE",
   "HWMMult": 1000,
@@ -21470,22 +20860,13 @@
   "MaxRoll": 0,
   "LootBiasingEnabled": "TRUE",
   "LootBiasingChanceOverride": 0,
-  "Item1": "[LTID]CreatureLootDungeonBossAmrine",
-  "Item2": "[LTID]CreatureLootDungeonBossShatteredObelisk",
-  "Item3": "[LTID]CreatureLootDungeonBossReekwater00",
-  "Item4": "[LTID]CreatureLootDungeonBossEdengrove00",
-  "Item5": "[LTID]CreatureLootDungeonBossEbonscale00",
-  "Item6": "[LTID]CreatureLootDungeonBossRestlessShores01",
-  "Item7": "[LTID]GypsumBlue",
-  "Item8": "[LBID]DungeonBossGear",
-  "Item9": "[LBID]BossShards",
-  "Item10": "[LTID]CreatureLootDungeonBossShatterMtn00",
-  "Item11": "[LTID]CreatureLootDungeonBossCutlassKeys00",
-  "Item12": "[LBID]DungeonMateriaBoss",
-  "Item13": "[LBID]HeartGemRunes",
-  "Item14": "[LTID]CreatureLootDungeonBossBrimstoneSands00",
-  "Item15": "[LTID]CreatureLootDungeonBossGreatCleave01",
-  "Item16": "[LTID]CreatureLootDungeonBossFirstLight01"
+  "Item1": "[LTID]GypsumBlue",
+  "Item2": "[LBID]DungeonBossGear",
+  "Item3": "[LBID]BossShards",
+  "Item4": "[LBID]DungeonMateriaBoss",
+  "Item5": "[LBID]HeartGemRunes",
+  "Item6": "[LTID]CreatureLootDungeonBossEquipment",
+  "Item7": "[LBID]DungeonSpecialResources"
  },
  {
   "LootTableID": "CreatureLootDungeonBoss_Qty",
@@ -21493,22 +20874,13 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "2",
-  "Item2": "2",
-  "Item3": "2",
-  "Item4": "2",
-  "Item5": "2",
+  "Item1": "1",
+  "Item2": "1",
+  "Item3": "1",
+  "Item4": "1",
+  "Item5": "1",
   "Item6": "2",
-  "Item7": "1",
-  "Item8": "1",
-  "Item9": "1",
-  "Item10": "2",
-  "Item11": "2",
-  "Item12": "1",
-  "Item13": "1",
-  "Item14": "2",
-  "Item15": "2",
-  "Item16": "2"
+  "Item7": "1"
  },
  {
   "LootTableID": "CreatureLootDungeonBoss_Probs",
@@ -21517,29 +20889,17 @@
   "MaxRoll": 100000,
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
-  "Item2": "0",
+  "Item2": "50000",
   "Item3": "0",
   "Item4": "0",
-  "Item5": "0",
+  "Item5": "10000",
   "Item6": "0",
-  "Item7": "0",
-  "Item8": "50000",
-  "Item9": "0",
-  "Item10": "0",
-  "Item11": "0",
-  "Item12": "0",
-  "Item13": "10000",
-  "Item14": "0",
-  "Item15": "0",
-  "Item16": "0"
+  "Item7": "80000"
  },
  {
-  "LootTableID": "CreatureLootDungeonBossAmrine",
+  "LootTableID": "CreatureLootDungeonBossEquipment",
   "AND/OR": "OR",
   "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "Amrine"
-  ],
   "UseLevelGS": "TRUE",
   "HWMMult": 1000,
   "GSBonus": 0,
@@ -21547,437 +20907,25 @@
   "LootBiasingEnabled": "TRUE",
   "LootBiasingChanceOverride": 1,
   "Item1": "[LBID]LootDungeonArmor",
-  "GearScoreRange1": "320-340",
-  "Item2": "[LBID]LootDungeonWeapons",
-  "GearScoreRange2": "330-350",
-  "Item3": "[LBID]DungeonSpecialResources"
+  "Item2": "[LBID]LootDungeonWeapons"
  },
  {
-  "LootTableID": "CreatureLootDungeonBossAmrine_Qty",
+  "LootTableID": "CreatureLootDungeonBossEquipment_Qty",
   "HWMMult": 0,
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
   "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
+  "Item2": "1"
  },
  {
-  "LootTableID": "CreatureLootDungeonBossAmrine_Probs",
+  "LootTableID": "CreatureLootDungeonBossEquipment_Probs",
   "HWMMult": 0,
   "GSBonus": 0,
-  "MaxRoll": 100000,
+  "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
-  "Item2": "0",
-  "Item3": "80000"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossShatteredObelisk",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "ShatteredObelisk"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 1000,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 1,
-  "Item1": "[LBID]LootDungeonArmor",
-  "GearScoreRange1": "375-395",
-  "Item2": "[LBID]LootDungeonWeapons",
-  "GearScoreRange2": "380-395",
-  "Item3": "[LBID]DungeonSpecialResources"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossShatteredObelisk_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossShatteredObelisk_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0",
-  "Item2": "0",
-  "Item3": "80000"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossReekwater00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "Reekwater00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 1000,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 1,
-  "Item1": "[LBID]LootDungeonArmor",
-  "Item2": "[LBID]LootDungeonWeapons",
-  "Item3": "[LBID]DungeonSpecialResources"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossReekwater00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossReekwater00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0",
-  "Item2": "0",
-  "Item3": "80000"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossEdengrove00",
-  "AND/OR": "AND",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "Edengrove00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 1000,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 1,
-  "Item1": "[LTID]CreatureLootDungeonBossEdengrove00Speical"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossEdengrove00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossEdengrove00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossEdengrove00Speical",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "Edengrove00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 1000,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 1,
-  "Item1": "[LBID]LootDungeonArmor",
-  "Item2": "[LBID]LootDungeonWeapons",
-  "Item3": "[LBID]DungeonSpecialResources"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossEdengrove00Speical_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossEdengrove00Speical_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0",
-  "Item2": "0",
-  "Item3": "80000"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossEbonscale00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "Ebonscale00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 1000,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 1,
-  "Item1": "[LBID]LootDungeonArmor",
-  "GearScoreRange1": "480-495",
-  "Item2": "[LBID]LootDungeonWeapons",
-  "GearScoreRange2": "480-495",
-  "Item3": "[LBID]DungeonSpecialResources"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossEbonscale00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossEbonscale00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0",
-  "Item2": "0",
-  "Item3": "80000"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossRestlessShores01",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "RestlessShores01"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 1000,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 1,
-  "Item1": "[LBID]LootDungeonArmor",
-  "GearScoreRange1": "425-445",
-  "Item2": "[LBID]LootDungeonWeapons",
-  "GearScoreRange2": "435-455",
-  "Item3": "[LBID]DungeonSpecialResources"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossRestlessShores01_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossRestlessShores01_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0",
-  "Item2": "0",
-  "Item3": "80000"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossShatterMtn00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "ShatterMtn00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 1000,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 1,
-  "Item1": "[LBID]LootDungeonArmor",
-  "Item2": "[LBID]LootDungeonWeapons",
-  "Item3": "[LBID]DungeonSpecialResources"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossShatterMtn00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossShatterMtn00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0",
-  "Item2": "0",
-  "Item3": "80000"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossCutlassKeys00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "CutlassKeys00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 1000,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 1,
-  "Item1": "[LBID]LootDungeonArmor",
-  "Item2": "[LBID]LootDungeonWeapons",
-  "Item3": "[LBID]DungeonSpecialResources"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossCutlassKeys00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossCutlassKeys00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0",
-  "Item2": "0",
-  "Item3": "80000"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossBrimstoneSands00",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "BrimstoneSands00"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 1000,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 1,
-  "Item1": "[LBID]LootDungeonArmor",
-  "Item2": "[LBID]LootDungeonWeapons",
-  "Item3": "[LBID]DungeonSpecialResources"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossBrimstoneSands00_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossBrimstoneSands00_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0",
-  "Item2": "0",
-  "Item3": "80000"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossGreatCleave01",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "GreatCleave01"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 1000,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 1,
-  "Item1": "[LBID]LootDungeonArmor",
-  "Item2": "[LBID]LootDungeonWeapons",
-  "Item3": "[LBID]DungeonSpecialResources"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossGreatCleave01_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossGreatCleave01_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0",
-  "Item2": "0",
-  "Item3": "80000"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossFirstLight01",
-  "AND/OR": "OR",
-  "RollBonusSetting": "AddToRoll",
-  "Conditions": [
-   "EXPFirstLight01"
-  ],
-  "UseLevelGS": "TRUE",
-  "HWMMult": 1000,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingEnabled": "TRUE",
-  "LootBiasingChanceOverride": 1,
-  "Item1": "[LBID]LootDungeonArmor",
-  "Item2": "[LBID]LootDungeonWeapons",
-  "Item3": "[LBID]DungeonSpecialResources"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossFirstLight01_Qty",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 0,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
- },
- {
-  "LootTableID": "CreatureLootDungeonBossFirstLight01_Probs",
-  "HWMMult": 0,
-  "GSBonus": 0,
-  "MaxRoll": 100000,
-  "LootBiasingChanceOverride": 0,
-  "Item1": "0",
-  "Item2": "0",
-  "Item3": "80000"
+  "Item2": "0"
  },
  {
   "LootTableID": "CreatureLootDungeonBossResources",
@@ -34971,7 +33919,7 @@
  },
  {
   "LootTableID": "Invasion1Roll",
-  "AND/OR": "AND",
+  "AND/OR": "OR",
   "RollBonusSetting": "AddToRoll",
   "Conditions": [
    "Level"
@@ -34982,8 +33930,7 @@
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
   "Item1": "[LTID]Invasion1",
-  "Item2": "[LTID]Invasion1",
-  "GearScoreRange2": "660-700"
+  "Item2": "[LTID]Invasion1_MaxLvl"
  },
  {
   "LootTableID": "Invasion1Roll_Qty",
@@ -35005,7 +33952,7 @@
  },
  {
   "LootTableID": "Invasion2Roll",
-  "AND/OR": "AND",
+  "AND/OR": "OR",
   "RollBonusSetting": "AddToRoll",
   "Conditions": [
    "Level"
@@ -35016,8 +33963,7 @@
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
   "Item1": "[LTID]Invasion2",
-  "Item2": "[LTID]Invasion2",
-  "GearScoreRange2": "660-700"
+  "Item2": "[LTID]Invasion2_MaxLvl"
  },
  {
   "LootTableID": "Invasion2Roll_Qty",
@@ -35039,7 +33985,7 @@
  },
  {
   "LootTableID": "Invasion3Roll",
-  "AND/OR": "AND",
+  "AND/OR": "OR",
   "RollBonusSetting": "AddToRoll",
   "Conditions": [
    "Level"
@@ -35050,8 +33996,7 @@
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
   "Item1": "[LTID]Invasion3",
-  "Item2": "[LTID]Invasion3",
-  "GearScoreRange2": "660-700"
+  "Item2": "[LTID]Invasion3_MaxLvl"
  },
  {
   "LootTableID": "Invasion3Roll_Qty",
@@ -35073,7 +34018,7 @@
  },
  {
   "LootTableID": "Invasion4Roll",
-  "AND/OR": "AND",
+  "AND/OR": "OR",
   "RollBonusSetting": "AddToRoll",
   "Conditions": [
    "Level"
@@ -35084,8 +34029,7 @@
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
   "Item1": "[LTID]Invasion4",
-  "Item2": "[LTID]Invasion4",
-  "GearScoreRange2": "660-700"
+  "Item2": "[LTID]Invasion4_MaxLvl"
  },
  {
   "LootTableID": "Invasion4Roll_Qty",
@@ -35244,6 +34188,170 @@
  },
  {
   "LootTableID": "Invasion4_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 100000,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0",
+  "Item2": "0",
+  "Item3": "0",
+  "Item4": "0"
+ },
+ {
+  "LootTableID": "Invasion1_MaxLvl",
+  "AND/OR": "AND",
+  "RollBonusSetting": "AddToRoll",
+  "UseLevelGS": "TRUE",
+  "HWMMult": 1000,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "[LBID]InvasionArmor",
+  "GearScoreRange1": "660-700",
+  "Item2": "[LBID]InvasionWeapons",
+  "GearScoreRange2": "660-700",
+  "Item3": "[LBID]InvasionJewelry",
+  "GearScoreRange3": "660-700",
+  "Item4": "[LBID]InvasionNamedGear",
+  "GearScoreRange4": "660-700"
+ },
+ {
+  "LootTableID": "Invasion1_MaxLvl_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "2",
+  "Item2": "1",
+  "Item3": "1",
+  "Item4": "1"
+ },
+ {
+  "LootTableID": "Invasion1_MaxLvl_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 100000,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0",
+  "Item2": "0",
+  "Item3": "0",
+  "Item4": "75000"
+ },
+ {
+  "LootTableID": "Invasion2_MaxLvl",
+  "AND/OR": "AND",
+  "RollBonusSetting": "AddToRoll",
+  "UseLevelGS": "TRUE",
+  "HWMMult": 1000,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "[LBID]InvasionArmor",
+  "GearScoreRange1": "660-700",
+  "Item2": "[LBID]InvasionWeapons",
+  "GearScoreRange2": "660-700",
+  "Item3": "[LBID]InvasionJewelry",
+  "GearScoreRange3": "660-700",
+  "Item4": "[LBID]InvasionNamedGear",
+  "GearScoreRange4": "660-700"
+ },
+ {
+  "LootTableID": "Invasion2_MaxLvl_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "2",
+  "Item2": "1",
+  "Item3": "1",
+  "Item4": "1"
+ },
+ {
+  "LootTableID": "Invasion2_MaxLvl_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 100000,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0",
+  "Item2": "0",
+  "Item3": "0",
+  "Item4": "50000"
+ },
+ {
+  "LootTableID": "Invasion3_MaxLvl",
+  "AND/OR": "AND",
+  "RollBonusSetting": "AddToRoll",
+  "UseLevelGS": "TRUE",
+  "HWMMult": 1000,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "[LBID]InvasionArmor",
+  "GearScoreRange1": "660-700",
+  "Item2": "[LBID]InvasionWeapons",
+  "GearScoreRange2": "660-700",
+  "Item3": "[LBID]InvasionJewelry",
+  "GearScoreRange3": "660-700",
+  "Item4": "[LBID]InvasionNamedGear",
+  "GearScoreRange4": "660-700"
+ },
+ {
+  "LootTableID": "Invasion3_MaxLvl_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "2",
+  "Item2": "1",
+  "Item3": "1",
+  "Item4": "1"
+ },
+ {
+  "LootTableID": "Invasion3_MaxLvl_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 100000,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0",
+  "Item2": "0",
+  "Item3": "0",
+  "Item4": "25000"
+ },
+ {
+  "LootTableID": "Invasion4_MaxLvl",
+  "AND/OR": "AND",
+  "RollBonusSetting": "AddToRoll",
+  "UseLevelGS": "TRUE",
+  "HWMMult": 1000,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "[LBID]InvasionArmor",
+  "GearScoreRange1": "660-700",
+  "Item2": "[LBID]InvasionWeapons",
+  "GearScoreRange2": "660-700",
+  "Item3": "[LBID]InvasionJewelry",
+  "GearScoreRange3": "660-700",
+  "Item4": "[LBID]InvasionNamedGear",
+  "GearScoreRange4": "660-700"
+ },
+ {
+  "LootTableID": "Invasion4_MaxLvl_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "2",
+  "Item2": "1",
+  "Item3": "1",
+  "Item4": "1"
+ },
+ {
+  "LootTableID": "Invasion4_MaxLvl_Probs",
   "HWMMult": 0,
   "GSBonus": 0,
   "MaxRoll": 100000,
@@ -43055,7 +42163,7 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "1",
   "Item2": "1",
-  "Item3": "100",
+  "Item3": "15",
   "Item4": "1",
   "Item5": "1"
  },
@@ -43107,7 +42215,10 @@
   "Item2": "[LTID]WorldEvent_Crassus_BossLootLevelFilter",
   "Item3": "GypsumBlack",
   "Item4": "DarkMatter",
-  "Item5": "[LTID]WorldEvent_Crassus_PerkCheck"
+  "Item5": "[LTID]WorldEvent_Crassus_PerkCheck",
+  "Item6": "2hPickCrassusT51",
+  "Item7": "House_HousingItem_Season4_Statue_Cyclops_Statue_A",
+  "Item8": "House_HousingItem_Season4_Statue_Cyclops_Statue_B"
  },
  {
   "LootTableID": "WorldEvent_Crassus_BonusOverride_Qty",
@@ -43119,7 +42230,10 @@
   "Item2": "1",
   "Item3": "1",
   "Item4": "100",
-  "Item5": "1"
+  "Item5": "1",
+  "Item6": "1",
+  "Item7": "1",
+  "Item8": "1"
  },
  {
   "LootTableID": "WorldEvent_Crassus_BonusOverride_Probs",
@@ -43131,7 +42245,10 @@
   "Item2": "0",
   "Item3": "0",
   "Item4": "0",
-  "Item5": "0"
+  "Item5": "0",
+  "Item6": "0",
+  "Item7": "0",
+  "Item8": "0"
  },
  {
   "LootTableID": "WorldEvent_Crassus_BossLootLevelFilter",
@@ -46791,5 +45908,277 @@
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
   "Item1": "64"
+ },
+ {
+  "LootTableID": "PUG_Expedition_DailyReward_BelowMaxLevel_LT",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "AzureVialT1"
+ },
+ {
+  "LootTableID": "PUG_Expedition_DailyReward_BelowMaxLevel_LT_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "3"
+ },
+ {
+  "LootTableID": "PUG_Expedition_DailyReward_BelowMaxLevel_LT_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "PUG_Expedition_Random_BelowMaxLvl_Cache",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "Conditions": [
+   "[LIM]PUGFinder_Expedition_DailyRandomRewards_Limit"
+  ],
+  "TriggerLimitOnVisit": "TRUE",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "PUG_Expedition_DailyReward_BelowMaxLvl_LootCache"
+ },
+ {
+  "LootTableID": "PUG_Expedition_Random_BelowMaxLvl_Cache_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "PUG_Expedition_Random_BelowMaxLvl_Cache_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "PUG_Expedition_Random_AtMaxLvl_Cache",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "Conditions": [
+   "[LIM]PUGFinder_Expedition_DailyRandomRewards_Limit"
+  ],
+  "TriggerLimitOnVisit": "TRUE",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "PUG_Expedition_DailyReward_AtMaxLvl_LootCache"
+ },
+ {
+  "LootTableID": "PUG_Expedition_Random_AtMaxLvl_Cache_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "PUG_Expedition_Random_AtMaxLvl_Cache_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "PUG_Expedition_PostDailyRuns_Cache",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "TriggerLimitOnVisit": "TRUE",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "PUG_Expedition_PostDailyRuns_LootCache"
+ },
+ {
+  "LootTableID": "PUG_Expedition_PostDailyRuns_Cache_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "PUG_Expedition_PostDailyRuns_Cache_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "PUG_Expedition_RoleInDemand_BelowMaxLvl_Cache",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "Conditions": [
+   "[LIM]PUGFinder_Expedition_DailyRoleRewards_Limit"
+  ],
+  "TriggerLimitOnVisit": "TRUE",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "PUG_Expedition_RoleInDemand_BelowMaxLvl_LootCache"
+ },
+ {
+  "LootTableID": "PUG_Expedition_RoleInDemand_BelowMaxLvl_Cache_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "PUG_Expedition_RoleInDemand_BelowMaxLvl_Cache_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "PUG_Expedition_RoleInDemand_AtMaxLvl_Cache",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "Conditions": [
+   "[LIM]PUGFinder_Expedition_DailyRoleRewards_Limit"
+  ],
+  "TriggerLimitOnVisit": "TRUE",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "PUG_Expedition_RoleInDemand_AtMaxLvl_LootCache"
+ },
+ {
+  "LootTableID": "PUG_Expedition_RoleInDemand_AtMaxLvl_Cache_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "PUG_Expedition_RoleInDemand_AtMaxLvl_Cache_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "PUG_MutatedExpedition_Random_Cache",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "Conditions": [
+   "[LIM]PUGFinder_MutatedExpedition_DailyRandomRewards_Limit"
+  ],
+  "TriggerLimitOnVisit": "TRUE",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "PUG_MutatedExpedition_DailyReward_LootCache"
+ },
+ {
+  "LootTableID": "PUG_MutatedExpedition_Random_Cache_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "PUG_MutatedExpedition_Random_Cache_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "PUG_MutatedExpedition_RoleInDemand_Cache",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "Conditions": [
+   "[LIM]PUGFinder_MutatedExpedition_DailyRoleRewards_Limit"
+  ],
+  "TriggerLimitOnVisit": "TRUE",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "PUG_MutatedExpedition_RoleInDemand_LootCache"
+ },
+ {
+  "LootTableID": "PUG_MutatedExpedition_RoleInDemand_Cache_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "PUG_MutatedExpedition_RoleInDemand_Cache_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "PUG_MutatedExpedition_Carry_Cache",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "Conditions": [
+   "[LIM]PUGFinder_MutatedExpedition_DailyCarryRewards_Limit"
+  ],
+  "TriggerLimitOnVisit": "TRUE",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "PUG_MutatedExpedition_Carry_LootCache"
+ },
+ {
+  "LootTableID": "PUG_MutatedExpedition_Carry_Cache_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "PUG_MutatedExpedition_Carry_Cache_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0"
  }
 ]

@@ -1768,7 +1768,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 15,
+  "CooldownId": "PotionFocus",
   "IsMountConsumable": false
  },
  {
@@ -1791,7 +1792,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 15,
+  "CooldownId": "PotionFocus",
   "IsMountConsumable": false
  },
  {
@@ -1814,7 +1816,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 15,
+  "CooldownId": "PotionFocus",
   "IsMountConsumable": false
  },
  {
@@ -1837,7 +1840,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 15,
+  "CooldownId": "PotionFocus",
   "IsMountConsumable": false
  },
  {
@@ -11518,7 +11522,8 @@
   "DisableUseInCombat": false,
   "Damage": 0,
   "MannequinTag": "Potion",
-  "CooldownDuration": 0,
+  "CooldownDuration": 15,
+  "CooldownId": "PotionFocus",
   "IsMountConsumable": false
  },
  {
@@ -12503,6 +12508,31 @@
   "UseCount": 0,
   "DisableUseInCombat": false,
   "Damage": 100,
+  "MannequinTag": "Eat",
+  "CooldownDuration": 0,
+  "IsMountConsumable": false
+ },
+ {
+  "ConsumableID": "LNY_Spicy_Hotpot",
+  "AddStatusEffects": [
+   "LNY_Spicy_Hotpot",
+   "FoodRecoveryT5"
+  ],
+  "StatusEffectMod": 0,
+  "DurationOverrides": 0,
+  "MinDurationModifier": 0,
+  "MaxDurationModifier": 0,
+  "DurationScaleFactor": 0,
+  "MinPotencyModifier": 0,
+  "MaxPotencyModifier": 0,
+  "PotencyScaleFactor": 0,
+  "RemoveStatusEffectCategories": [
+   "Attributes",
+   "Recovery"
+  ],
+  "UseCount": 0,
+  "DisableUseInCombat": false,
+  "Damage": 0,
   "MannequinTag": "Eat",
   "CooldownDuration": 0,
   "IsMountConsumable": false

@@ -422,7 +422,11 @@
   "DurationModMax": 0,
   "PotencyDiminishingMod": 0,
   "PotencyModMin": 0,
-  "PotencyModMax": 0
+  "PotencyModMax": 0,
+  "ValueLimits": {
+   "MoveSpeedMod": 1,
+   "SprintSpeedMod": 1
+  }
  },
  {
   "StatusEffectCategoryID": "UnclampedFactionResourceMod",
@@ -653,6 +657,19 @@
   "ValueLimits": {
    "MoveSpeedMod": -0.5,
    "SprintSpeedMod": -0.5
+  }
+ },
+ {
+  "StatusEffectCategoryID": "TraversalHaste",
+  "DurationDiminishingMod": 0,
+  "DurationModMin": 0,
+  "DurationModMax": 0,
+  "PotencyDiminishingMod": 0,
+  "PotencyModMin": 0,
+  "PotencyModMax": 0,
+  "ValueLimits": {
+   "MoveSpeedMod": 0.5,
+   "SprintSpeedMod": 0.5
   }
  }
 ]
