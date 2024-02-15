@@ -330,7 +330,7 @@
   "Item2": "FoodDEXT5b",
   "Item3": "FoodINTT5b",
   "Item4": "FoodCONT5b",
-  "Item5": "FoodCONFOCT5"
+  "Item5": "FoodCONT5"
  },
  {
   "LootTableID": "Food_Box_S1_Inferno_Loot_Qty",
@@ -3917,7 +3917,7 @@
   "Item2": "FoodDEXT5b",
   "Item3": "FoodINTT5b",
   "Item4": "FoodCONT5b",
-  "Item5": "FoodCONFOCT5"
+  "Item5": "FoodCONT5"
  },
  {
   "LootTableID": "Food_Box_S2_Sandstorm_Loot_Qty",
@@ -6170,10 +6170,10 @@
   "ConditionOverridesRoll": 0,
   "HWMMult": 0,
   "MaxRoll": 0,
-  "Item1": "2000",
-  "Item2": "2000",
-  "Item3": "2000",
-  "Item4": "2000"
+  "Item1": "500",
+  "Item2": "500",
+  "Item3": "500",
+  "Item4": "500"
  },
  {
   "LootTableID": "ExpeditionBasic_Box_S4_Loot_Probs",
@@ -6423,7 +6423,7 @@
   "ConditionOverridesRoll": 0,
   "HWMMult": 0,
   "MaxRoll": 0,
-  "Item1": "1000"
+  "Item1": "500"
  },
  {
   "LootTableID": "Bundle_DarkMatter_Probs",
@@ -6681,8 +6681,8 @@
   "ConditionOverridesRoll": 0,
   "HWMMult": 0,
   "MaxRoll": 0,
-  "Item1": "FoodCONINTT5",
-  "Item2": "FoodCONFOCT5"
+  "Item1": "FoodINTT5",
+  "Item2": "FoodFOCT5"
  },
  {
   "LootTableID": "LNY_Banquet_Food3_Qty",
@@ -6707,16 +6707,14 @@
   "ConditionOverridesRoll": 0,
   "HWMMult": 0,
   "MaxRoll": 0,
-  "Item1": "FoodHealthRecoveryT5",
-  "Item2": "FoodManaT5"
+  "Item1": "FoodHealthRecoveryT5"
  },
  {
   "LootTableID": "LNY_Banquet_Food4_Qty",
   "ConditionOverridesRoll": 0,
   "HWMMult": 0,
   "MaxRoll": 0,
-  "Item1": "3",
-  "Item2": "1"
+  "Item1": "3"
  },
  {
   "LootTableID": "LNY_Banquet_Food4_Probs",
@@ -6724,8 +6722,7 @@
   "HWMMult": 0,
   "IgnoreHWMGS": "0",
   "MaxRoll": 1,
-  "Item1": "0",
-  "Item2": "0"
+  "Item1": "0"
  },
  {
   "LootTableID": "LNY_Giftsack_Gatherable",
@@ -6790,5 +6787,288 @@
   "Item5": "0",
   "Item6": "0",
   "Item7": "0"
+ },
+ {
+  "LootTableID": "Trial_S5_MasterLoot",
+  "AND/OR": "AND",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "[LTID]Trial_S5_NormalLoot",
+  "Item2": "Trial_S5_BonusBox"
+ },
+ {
+  "LootTableID": "Trial_S5_MasterLoot_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "1",
+  "Item2": "1"
+ },
+ {
+  "LootTableID": "Trial_S5_MasterLoot_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 100000,
+  "Item1": "0",
+  "Item2": "0"
+ },
+ {
+  "LootTableID": "Trial_S5_NormalLoot",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "[LTID]Trial_S5_GearRoll",
+  "Item2": "GypsumBlue"
+ },
+ {
+  "LootTableID": "Trial_S5_NormalLoot_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "2",
+  "Item2": "1"
+ },
+ {
+  "LootTableID": "Trial_S5_NormalLoot_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 100000,
+  "Item1": "0",
+  "Item2": "0"
+ },
+ {
+  "LootTableID": "Trial_S5_GearRoll",
+  "AND/OR": "OR",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "[LBID]Trial_S5_Weapons",
+  "Item2": "[LBID]Trial_S5_Armor"
+ },
+ {
+  "LootTableID": "Trial_S5_GearRoll_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "1",
+  "Item2": "1"
+ },
+ {
+  "LootTableID": "Trial_S5_GearRoll_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 100000,
+  "Item1": "0",
+  "Item2": "50000"
+ },
+ {
+  "LootTableID": "Trial_S5_BonusLoot",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "[LTID]Trial_S5_GearRoll",
+  "Item2": "[LTID]Trial_S5_BonusLoot_ExtraRoll",
+  "Item3": "DarkMatter",
+  "Item4": "[LBID]Trial_S5_Named",
+  "Item5": "[LBID]ArtifactMaster"
+ },
+ {
+  "LootTableID": "Trial_S5_BonusLoot_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "4",
+  "Item2": "1",
+  "Item3": "150",
+  "Item4": "1",
+  "Item5": "1"
+ },
+ {
+  "LootTableID": "Trial_S5_BonusLoot_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 100000,
+  "Item1": "0",
+  "Item2": "0",
+  "Item3": "0",
+  "Item4": "0",
+  "Item5": "0"
+ },
+ {
+  "LootTableID": "Trial_S5_BonusLoot_ExtraRoll",
+  "AND/OR": "OR",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "FactionTokenSmall_Box_S4",
+  "Item2": "DarkMatter"
+ },
+ {
+  "LootTableID": "Trial_S5_BonusLoot_ExtraRoll_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "1",
+  "Item2": "1"
+ },
+ {
+  "LootTableID": "Trial_S5_BonusLoot_ExtraRoll_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 100000,
+  "Item1": "30000",
+  "Item2": "90000"
+ },
+ {
+  "LootTableID": "Dyes1_Box_S5_Loot",
+  "AND/OR": "AND",
+  "RollBonusSetting": "AddToRoll",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "DyeB102"
+ },
+ {
+  "LootTableID": "Dyes1_Box_S5_Loot_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "5"
+ },
+ {
+  "LootTableID": "Dyes1_Box_S5_Loot_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "Dyes2_Box_S5_Loot",
+  "AND/OR": "AND",
+  "RollBonusSetting": "AddToRoll",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "DyeB107"
+ },
+ {
+  "LootTableID": "Dyes2_Box_S5_Loot_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "5"
+ },
+ {
+  "LootTableID": "Dyes2_Box_S5_Loot_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "Dyes3_Box_S5_Loot",
+  "AND/OR": "AND",
+  "RollBonusSetting": "AddToRoll",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "DyeB146"
+ },
+ {
+  "LootTableID": "Dyes3_Box_S5_Loot_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "5"
+ },
+ {
+  "LootTableID": "Dyes3_Box_S5_Loot_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "Dyes4_Box_S5_Loot",
+  "AND/OR": "AND",
+  "RollBonusSetting": "AddToRoll",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "DyeB161"
+ },
+ {
+  "LootTableID": "Dyes4_Box_S5_Loot_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "5"
+ },
+ {
+  "LootTableID": "Dyes4_Box_S5_Loot_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "Dyes5_Box_S5_Loot",
+  "AND/OR": "AND",
+  "RollBonusSetting": "AddToRoll",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "DyeB126"
+ },
+ {
+  "LootTableID": "Dyes5_Box_S5_Loot_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "5"
+ },
+ {
+  "LootTableID": "Dyes5_Box_S5_Loot_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "Welcome_Box_S5_Loot",
+  "AND/OR": "AND",
+  "RollBonusSetting": "AddToRoll",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "GypsumOrb",
+  "Item2": "Food_Box_S5_Premium",
+  "Item3": "Ward_Box_S5",
+  "Item4": "MountConsum_GruelT0"
+ },
+ {
+  "LootTableID": "Welcome_Box_S5_Loot_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "1",
+  "Item2": "1",
+  "Item3": "1",
+  "Item4": "10"
+ },
+ {
+  "LootTableID": "Welcome_Box_S5_Loot_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "0",
+  "Item2": "0",
+  "Item3": "0",
+  "Item4": "0"
  }
 ]

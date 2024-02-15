@@ -2727,6 +2727,7 @@
    "Root",
    "Stun"
   ],
+  "DontHaveStatusEffect": "ATB_Dex_Bonus_300_1_CooldownTimer",
   "MyHealthPercent": 0,
   "MyStaminaPercent": 0,
   "MyManaPercent": 0,
@@ -2746,7 +2747,10 @@
   "Mana": 0,
   "ManaRate": 0,
   "MaxMana": 0,
-  "DoNotUnequipSelfAppliedSE": false,
+  "SelfApplyStatusEffect": [
+   "ATB_Dex_Bonus_300_1_CooldownTimer"
+  ],
+  "DoNotUnequipSelfAppliedSE": true,
   "RemoveStatusEffects": "AbilitySpecific",
   "StatusEffectCategoriesList": [
    "Root",
@@ -2787,7 +2791,7 @@
   "OnGatheringComplete": false,
   "OnHitTakenWhileInvulnerable": false,
   "OnWeaponSwap": false,
-  "RequireReaction": false,
+  "RequireReaction": true,
   "DamageIsMelee": false,
   "HasGritActive": false,
   "IgnoreDisabledAttackTypes": "Heartgem",
@@ -2810,9 +2814,6 @@
   "Mana": 0,
   "ManaRate": 0,
   "MaxMana": 0,
-  "SelfApplyStatusEffect": [
-   "ATB_Dex_Bonus_300_2_Effect"
-  ],
   "DoNotUnequipSelfAppliedSE": false,
   "TargetStatusEffectDurationMult": 0,
   "CooldownTimer": 0,
@@ -4902,7 +4903,7 @@
   "OnHitTakenWhileInvulnerable": false,
   "OnWeaponSwap": false,
   "RequireReaction": false,
-  "DamageIsMelee": true,
+  "DamageIsMelee": false,
   "HasGritActive": false,
   "AttackType": [
    "Ability"
