@@ -3379,7 +3379,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "15-21",
+  "Item1": "19-21",
   "Item2": "1",
   "Item3": "1",
   "Item4": "1",
@@ -3426,7 +3426,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "22-31",
+  "Item1": "28-31",
   "Item2": "1",
   "Item3": "1",
   "Item4": "1",
@@ -3473,7 +3473,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "32-45",
+  "Item1": "39-45",
   "Item2": "1-2",
   "Item3": "1",
   "Item4": "1",
@@ -3519,7 +3519,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "1-11",
+  "Item1": "6-11",
   "Item2": "1",
   "Item3": "1",
   "Item4": "99",
@@ -3962,7 +3962,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "15-21",
+  "Item1": "15-18",
   "Item2": "1",
   "Item3": "1",
   "Item4": "1",
@@ -4009,7 +4009,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "22-31",
+  "Item1": "22-25",
   "Item2": "1",
   "Item3": "1",
   "Item4": "1",
@@ -4056,7 +4056,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "32-45",
+  "Item1": "32-36",
   "Item2": "1-2",
   "Item3": "1",
   "Item4": "1",
@@ -18962,9 +18962,10 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "[LTID]ChestLootEliteFurnitureRoll",
-  "Item2": "[LBID]CraftingClothing",
-  "Item3": "[LTID]MountRewardChance"
+  "Item1": "[LTID]ChestLootElitePOIGearRoll",
+  "Item2": "[LTID]ChestLootEliteFurnitureRoll",
+  "Item3": "[LBID]CraftingClothing",
+  "Item4": "[LTID]MountRewardChance"
  },
  {
   "LootTableID": "ChestLootEliteItemBonusRoll_Qty",
@@ -18974,7 +18975,8 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "1",
   "Item2": "1",
-  "Item3": "1"
+  "Item3": "1",
+  "Item4": "1"
  },
  {
   "LootTableID": "ChestLootEliteItemBonusRoll_Probs",
@@ -18982,9 +18984,10 @@
   "GSBonus": 0,
   "MaxRoll": 100000,
   "LootBiasingChanceOverride": 0,
-  "Item1": "85000",
-  "Item2": "95000",
-  "Item3": "0"
+  "Item1": "65000",
+  "Item2": "85000",
+  "Item3": "95000",
+  "Item4": "0"
  },
  {
   "LootTableID": "ChestLootEliteGearGuarantee",
@@ -19080,7 +19083,7 @@
   "LootTableID": "ChestLootElitePOIGearRoll_Probs",
   "HWMMult": 0,
   "GSBonus": 0,
-  "MaxRoll": 0,
+  "MaxRoll": 100000,
   "LootBiasingChanceOverride": 0,
   "Item1": "20000",
   "Item2": "60000"
@@ -19896,6 +19899,75 @@
   "Item2": "0"
  },
  {
+  "LootTableID": "CreatureLootRaid",
+  "AND/OR": "AND",
+  "RollBonusSetting": "ClampMax",
+  "Conditions": [
+   "Raid"
+  ],
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "[LBID]ProcRaid",
+  "Item2": "[LTID]Raid_BonusNamed",
+  "Item3": "[LBID]RaidHousing",
+  "Item4": "[LBID]RaidNamed"
+ },
+ {
+  "LootTableID": "CreatureLootRaid_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "3-5",
+  "Item2": "1-2",
+  "Item3": "1-2",
+  "Item4": "1"
+ },
+ {
+  "LootTableID": "CreatureLootRaid_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 100000,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0",
+  "Item2": "0",
+  "Item3": "0",
+  "Item4": "0"
+ },
+ {
+  "LootTableID": "Raid_BonusNamed",
+  "AND/OR": "AND",
+  "RollBonusSetting": "IgnoreBonus",
+  "Conditions": [
+   "RaidBoss_BonusNamed"
+  ],
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingEnabled": "TRUE",
+  "LootBiasingChanceOverride": 1,
+  "Item1": "[LBID]RaidNamed"
+ },
+ {
+  "LootTableID": "Raid_BonusNamed_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "Raid_BonusNamed_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 100000,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "85000"
+ },
+ {
   "LootTableID": "CreatureLootMaster",
   "AND/OR": "AND",
   "RollBonusSetting": "ClampMax",
@@ -20169,7 +20241,7 @@
   "GSBonus": 0,
   "MaxRoll": 100000,
   "LootBiasingChanceOverride": 0,
-  "Item1": "80000"
+  "Item1": "0"
  },
  {
   "LootTableID": "GypsumYellowTable",
@@ -21126,7 +21198,7 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
   "Item2": "25000",
-  "Item3": "95000"
+  "Item3": "98000"
  },
  {
   "LootTableID": "ContainerCookingBucketsSmall",
@@ -21190,7 +21262,7 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
   "Item2": "25000",
-  "Item3": "80000"
+  "Item3": "95000"
  },
  {
   "LootTableID": "ContainerCookingBucketsLarge",
@@ -21403,10 +21475,10 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
   "Item2": "32500",
-  "Item3": "82500",
-  "Item4": "92500",
+  "Item3": "79500",
+  "Item4": "87500",
   "Item5": "97500",
-  "Item6": "92500"
+  "Item6": "87499"
  },
  {
   "LootTableID": "ContainerLootSmallAmmoRoll",
@@ -21579,8 +21651,8 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
   "Item2": "45000",
-  "Item3": "80000",
-  "Item4": "92500",
+  "Item3": "79500",
+  "Item4": "87500",
   "Item5": "97500"
  },
  {
@@ -29142,8 +29214,7 @@
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
   "Item1": "[LTID]DarknessMajorRollT5",
-  "Item2": "[LBID]EventDropDarkness",
-  "Item3": "[LBID]ArtifactMasterDarkness"
+  "Item2": "[LBID]EventDropDarkness"
  },
  {
   "LootTableID": "DarknessMajorT5_Qty",
@@ -29152,8 +29223,7 @@
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
   "Item1": "2",
-  "Item2": "1",
-  "Item3": "1"
+  "Item2": "1"
  },
  {
   "LootTableID": "DarknessMajorT5_Probs",
@@ -29162,8 +29232,7 @@
   "MaxRoll": 100000,
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
-  "Item2": "0",
-  "Item3": "90000"
+  "Item2": "0"
  },
  {
   "LootTableID": "DarknessMajorRollT3",
@@ -32083,7 +32152,7 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
   "Item2": "0",
-  "Item3": "97000"
+  "Item3": "0"
  },
  {
   "LootTableID": "GypsumPurpleDarknessRoll",
@@ -33431,7 +33500,8 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "[LBID]LostContainers",
   "Item2": "[LTID]PvE_OrangeGypsum",
-  "Item3": "[LTID]PvE_Umbrals"
+  "Item3": "[LTID]PvE_Umbrals",
+  "Item4": "[LBID]ArtfiactMasterTrials"
  },
  {
   "LootTableID": "AwardLostEvent_Qty",
@@ -33441,7 +33511,8 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "1",
   "Item2": "1",
-  "Item3": "1"
+  "Item3": "1",
+  "Item4": "1"
  },
  {
   "LootTableID": "AwardLostEvent_Probs",
@@ -33451,7 +33522,8 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
   "Item2": "0",
-  "Item3": "0"
+  "Item3": "0",
+  "Item4": "0"
  },
  {
   "LootTableID": "AwardAngryEarthEvent",
@@ -33463,7 +33535,8 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "[LBID]AngryEarthContainers",
   "Item2": "[LTID]PvE_OrangeGypsum",
-  "Item3": "[LTID]PvE_Umbrals"
+  "Item3": "[LTID]PvE_Umbrals",
+  "Item4": "[LBID]ArtfiactMasterTrials"
  },
  {
   "LootTableID": "AwardAngryEarthEvent_Qty",
@@ -33473,7 +33546,8 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "1",
   "Item2": "1",
-  "Item3": "1"
+  "Item3": "1",
+  "Item4": "1"
  },
  {
   "LootTableID": "AwardAngryEarthEvent_Probs",
@@ -33483,7 +33557,8 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
   "Item2": "0",
-  "Item3": "0"
+  "Item3": "0",
+  "Item4": "0"
  },
  {
   "LootTableID": "AwardSwampBeastEvent",
@@ -33495,7 +33570,8 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "[LBID]SwampBeastContainers",
   "Item2": "[LTID]PvE_OrangeGypsum",
-  "Item3": "[LTID]PvE_Umbrals"
+  "Item3": "[LTID]PvE_Umbrals",
+  "Item4": "[LBID]ArtfiactMasterTrials"
  },
  {
   "LootTableID": "AwardSwampBeastEvent_Qty",
@@ -33505,7 +33581,8 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "1",
   "Item2": "1",
-  "Item3": "1"
+  "Item3": "1",
+  "Item4": "1"
  },
  {
   "LootTableID": "AwardSwampBeastEvent_Probs",
@@ -33515,7 +33592,8 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "0",
   "Item2": "0",
-  "Item3": "0"
+  "Item3": "0",
+  "Item4": "0"
  },
  {
   "LootTableID": "Arena_PVP_Limit_ReachedEvent",
@@ -34680,10 +34758,10 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "HoningStoneT2",
   "Item2": "RepairKitT3",
-  "Item3": "FoodSTRCONT2",
-  "Item4": "FoodDEXCONT2",
-  "Item5": "FoodINTCONT2",
-  "Item6": "FoodFOCCONT2"
+  "Item3": "FoodSTRT2",
+  "Item4": "FoodDEXT2",
+  "Item5": "FoodINTT2",
+  "Item6": "FoodFOCT2"
  },
  {
   "LootTableID": "FactionEnlistmentBoxMarauder_Qty",
@@ -34721,10 +34799,10 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "HoningStoneT2",
   "Item2": "RepairKitT3",
-  "Item3": "FoodSTRCONT2",
-  "Item4": "FoodDEXCONT2",
-  "Item5": "FoodINTCONT2",
-  "Item6": "FoodFOCCONT2"
+  "Item3": "FoodSTRT2",
+  "Item4": "FoodDEXT2",
+  "Item5": "FoodINTT2",
+  "Item6": "FoodFOCT2"
  },
  {
   "LootTableID": "FactionEnlistmentBoxCovenant_Qty",
@@ -34762,10 +34840,10 @@
   "LootBiasingChanceOverride": 0,
   "Item1": "HoningStoneT2",
   "Item2": "RepairKitT3",
-  "Item3": "FoodSTRCONT2",
-  "Item4": "FoodDEXCONT2",
-  "Item5": "FoodINTCONT2",
-  "Item6": "FoodFOCCONT2"
+  "Item3": "FoodSTRT2",
+  "Item4": "FoodDEXT2",
+  "Item5": "FoodINTT2",
+  "Item6": "FoodFOCT2"
  },
  {
   "LootTableID": "FactionEnlistmentBoxSyndicate_Qty",
@@ -35106,7 +35184,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "3",
+  "Item1": "5",
   "Item2": "20"
  },
  {
@@ -35136,9 +35214,9 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "3",
-  "Item2": "2",
-  "Item3": "2"
+  "Item1": "5",
+  "Item2": "5",
+  "Item3": "10"
  },
  {
   "LootTableID": "QuestReward_MB_Potion_Pouch_Probs",
@@ -35168,9 +35246,9 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "5",
-  "Item2": "3",
-  "Item3": "3"
+  "Item1": "8",
+  "Item2": "8",
+  "Item3": "12"
  },
  {
   "LootTableID": "QuestReward_MB_Potion_Pouch2_Probs",
@@ -35333,8 +35411,8 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "FoodDEXFOCT2",
-  "Item2": "FoodSTRFOCT3",
+  "Item1": "FoodDEXT2",
+  "Item2": "FoodSTRT3",
   "Item3": "FoodDefenseT3"
  },
  {
@@ -35365,9 +35443,9 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "FoodDEXFOCT2",
-  "Item2": "FoodSTRFOCT2",
-  "Item3": "FoodCONDEXT2"
+  "Item1": "FoodDEXT2",
+  "Item2": "FoodSTRT3",
+  "Item3": "FoodCONT2"
  },
  {
   "LootTableID": "QuestReward_MB_Honeybox_Qty",
@@ -36399,8 +36477,8 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "foodarmorert4",
-  "Item2": "recipe_foodarmorert4"
+  "Item1": "foodarmorert5",
+  "Item2": "recipe_foodarmorert5"
  },
  {
   "LootTableID": "QuestReward_ZQ2EG_Container03_Qty",
@@ -39013,6 +39091,58 @@
   "Item1": "0"
  },
  {
+  "LootTableID": "LightningFields_Core_Throwable_Item",
+  "AND/OR": "OR",
+  "RollBonusSetting": "AddToRoll",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "LightningFields_Core_Throwable_Item"
+ },
+ {
+  "LootTableID": "LightningFields_Core_Throwable_Item_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "LightningFields_Core_Throwable_Item_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 100000,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0"
+ },
+ {
+  "LootTableID": "MSQ_Empress_Cannon_Throwable",
+  "AND/OR": "OR",
+  "RollBonusSetting": "AddToRoll",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "MSQ_Empress_Cannon"
+ },
+ {
+  "LootTableID": "MSQ_Empress_Cannon_Throwable_Qty",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 0,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "MSQ_Empress_Cannon_Throwable_Probs",
+  "HWMMult": 0,
+  "GSBonus": 0,
+  "MaxRoll": 100000,
+  "LootBiasingChanceOverride": 0,
+  "Item1": "0"
+ },
+ {
   "LootTableID": "ForemanReward",
   "AND/OR": "AND",
   "RollBonusSetting": "AddToRoll",
@@ -39078,7 +39208,7 @@
   "GSBonus": 0,
   "MaxRoll": 0,
   "LootBiasingChanceOverride": 0,
-  "Item1": "FoodSTRCONT3",
+  "Item1": "FoodSTRT3",
   "Item2": "MushroomT1"
  },
  {
@@ -42229,7 +42359,7 @@
   "Item1": "1",
   "Item2": "1",
   "Item3": "1",
-  "Item4": "100",
+  "Item4": "15",
   "Item5": "1",
   "Item6": "1",
   "Item7": "1",
