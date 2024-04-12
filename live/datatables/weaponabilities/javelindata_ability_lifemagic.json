@@ -1217,11 +1217,15 @@
   "DamageTableRow": [
    "LifeStaff_OrbofProtection_Aoe"
   ],
-  "DontHaveStatusEffect": "Status_Ability_Lifestaff_OrbofProtection_HealoverTime",
+  "DontHaveStatusEffect": [
+   "Status_Ability_Lifestaff_OrbofProtection_HealoverTime"
+  ],
   "TargetHealthPercent": 0,
   "InAction": "Ability_Lifestaff_OrbofProtection_Cast",
   "InActionTime": 0.10000000149011612,
-  "InSequence": "Ability_Life_Saff_OrbofProtection",
+  "InSequence": [
+   "Ability_Life_Saff_OrbofProtection"
+  ],
   "InSequenceTime": 0.10000000149011612,
   "HealScalingValueMultiplier": 0,
   "Mana": 0,
@@ -1788,7 +1792,11 @@
   "InActionTime": 0,
   "AfterAction": "Dodge",
   "InSequenceTime": 0,
-  "AfterSequence": "Dodge_Roll,Dodge_Roll_Fast,Dodge_Roll_Slow",
+  "AfterSequence": [
+   "Dodge_Roll",
+   "Dodge_Roll_Fast",
+   "Dodge_Roll_Slow"
+  ],
   "HealScalingValueMultiplier": 0,
   "Mana": 0,
   "PerStatusEffectOnTarget": false,

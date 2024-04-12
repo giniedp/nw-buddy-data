@@ -2313,7 +2313,9 @@
   "NumAroundMe": 0,
   "InAction": "Ability_Flail_Charge",
   "InActionTime": 0.10000000149011612,
-  "InSequence": "Ability_Flail_Charge",
+  "InSequence": [
+   "Ability_Flail_Charge"
+  ],
   "InSequenceTime": 0.10000000149011612,
   "BaseDamage": 0,
   "BaseDamageReduction": 0,
@@ -2710,7 +2712,9 @@
   "NumAroundMe": 0,
   "InAction": "Ability_Flail_DefensiveStrike",
   "InActionTime": 0.10000000149011612,
-  "InSequence": "Ability_Flail_DefensiveStrike",
+  "InSequence": [
+   "Ability_Flail_DefensiveStrike"
+  ],
   "InSequenceTime": 0.10000000149011612,
   "BaseDamage": 0,
   "BaseDamageReduction": 0,
@@ -3092,7 +3096,10 @@
   "DamageTableRow": [
    "1H_Flail_Ability_DefensiveStrike"
   ],
-  "DontHaveStatusEffect": "Status_Flail_DefensiveStrike_Upgrade_Absorption,Status_Flail_DefensiveStrike_Upgrade_Empower",
+  "DontHaveStatusEffect": [
+   "Status_Flail_DefensiveStrike_Upgrade_Absorption",
+   "Status_Flail_DefensiveStrike_Upgrade_Empower"
+  ],
   "MyHealthPercent": 0,
   "MyStaminaPercent": 0,
   "TargetHealthPercent": 0,
@@ -4090,7 +4097,9 @@
   "DamageTableRow": [
    "1H_Flail_Ultimate_AllyNearbyCheck"
   ],
-  "DontHaveStatusEffect": "Status_Flail_Ultimate_AllyDamageSplit_Tracker",
+  "DontHaveStatusEffect": [
+   "Status_Flail_Ultimate_AllyDamageSplit_Tracker"
+  ],
   "MyHealthPercent": 0,
   "MyStaminaPercent": 0,
   "TargetHealthPercent": 0,

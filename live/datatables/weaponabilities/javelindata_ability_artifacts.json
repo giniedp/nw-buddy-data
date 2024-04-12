@@ -998,7 +998,11 @@
   "DistFromDefender": 0,
   "InAction": "Dodge",
   "InActionTime": 0.0010000000474974513,
-  "InSequence": "Dodge_Roll,Dodge_Roll_Fast,Dodge_Roll_Slow",
+  "InSequence": [
+   "Dodge_Roll",
+   "Dodge_Roll_Fast",
+   "Dodge_Roll_Slow"
+  ],
   "InSequenceTime": 0.0010000000474974513,
   "BaseDamage": 0,
   "SetHealthOnFatalDamageTaken": 0,
@@ -5625,7 +5629,9 @@
   "DamageIsRanged": false,
   "DamageIsMelee": false,
   "IgnoreDisabledAttackTypes": "Heartgem",
-  "DontHaveStatusEffect": "Status_Perk_Artifact_Set2_AmuletTimer",
+  "DontHaveStatusEffect": [
+   "Status_Perk_Artifact_Set2_AmuletTimer"
+  ],
   "TargetStatusEffectStackSize": 0,
   "MyHealthPercent": 1,
   "MyComparisonType": "GreaterThanOrEqual",

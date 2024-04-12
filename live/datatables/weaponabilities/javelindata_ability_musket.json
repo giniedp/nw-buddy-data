@@ -656,7 +656,12 @@
   "NumAroundMe": 0,
   "InAction": "Firearm_AimShoot_SubState",
   "InActionTime": 2,
-  "InSequence": "Firearm_ReadyWeapon_UpperBody,Firearm_Aim_UpperBody,Firearm_Shoot_Primary_UpperBody,Firearm_Reload_Finish_UpperBody",
+  "InSequence": [
+   "Firearm_ReadyWeapon_UpperBody",
+   "Firearm_Aim_UpperBody",
+   "Firearm_Shoot_Primary_UpperBody",
+   "Firearm_Reload_Finish_UpperBody"
+  ],
   "InSequenceTime": 2,
   "BaseDamage": 0.10000000149011612,
   "BlockDamage": 0,
@@ -711,7 +716,9 @@
    "MusketAttack_ChargedShot",
    "Musket_Damage_StoppingPower"
   ],
-  "DontHaveStatusEffect": "Musket_Pass_TwoHitStack_Trigger_Cooldown",
+  "DontHaveStatusEffect": [
+   "Musket_Pass_TwoHitStack_Trigger_Cooldown"
+  ],
   "CheckStatusEffectsOnTargetOwned": false,
   "TargetHealthPercent": 0,
   "DistFromDefender": 0,
@@ -766,7 +773,9 @@
   "MaxTrackedHitCounts": 0,
   "ResetConsecutiveOnSuccess": false,
   "DamageIsRanged": false,
-  "DontHaveStatusEffect": "Musket_Pass_EmpowerOnHeadshot",
+  "DontHaveStatusEffect": [
+   "Musket_Pass_EmpowerOnHeadshot"
+  ],
   "CheckStatusEffectsOnTargetOwned": false,
   "TargetHealthPercent": 0,
   "DistFromDefender": 0,
@@ -1935,7 +1944,9 @@
   "MaxTrackedHitCounts": 0,
   "ResetConsecutiveOnSuccess": false,
   "DamageIsRanged": false,
-  "DontHaveStatusEffect": "Musket_Pass_EmpowerOnDebuffHit",
+  "DontHaveStatusEffect": [
+   "Musket_Pass_EmpowerOnDebuffHit"
+  ],
   "CheckStatusEffectsOnTargetOwned": false,
   "TargetStatusEffectCategory": [
    "Debuff"
@@ -2000,7 +2011,11 @@
   "InActionTime": 0,
   "AfterAction": "Dodge",
   "InSequenceTime": 0,
-  "AfterSequence": "Dodge_Roll,Dodge_Roll_Fast,Dodge_Roll_Slow",
+  "AfterSequence": [
+   "Dodge_Roll",
+   "Dodge_Roll_Fast",
+   "Dodge_Roll_Slow"
+  ],
   "BaseDamage": 0,
   "BlockDamage": 0,
   "HeadshotDamage": 0,
@@ -2056,7 +2071,11 @@
   "InActionTime": 0,
   "AfterAction": "Dodge",
   "InSequenceTime": 0,
-  "AfterSequence": "Dodge_Roll,Dodge_Roll_Fast,Dodge_Roll_Slow",
+  "AfterSequence": [
+   "Dodge_Roll",
+   "Dodge_Roll_Fast",
+   "Dodge_Roll_Slow"
+  ],
   "BaseDamage": 0,
   "BlockDamage": 0,
   "HeadshotDamage": 0,
