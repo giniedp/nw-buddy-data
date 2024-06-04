@@ -2230,27 +2230,21 @@
   "UseLevelGS": "TRUE",
   "HWMMult": 0,
   "MaxRoll": 0,
-  "Item1": "[LTID]WorldEvent_S1_ProcArmorOrWeapon",
-  "Item2": "[LBID]GlobalNamedList",
-  "Item3": "[LBID]NamedArenaAngryEarth"
+  "Item1": "[LTID]WorldEvent_S1_ProcArmorOrWeapon"
  },
  {
   "LootTableID": "WorldEvent_S1_NormalLoot_Subtable1_Qty",
   "ConditionOverridesRoll": 0,
   "HWMMult": 0,
   "MaxRoll": 0,
-  "Item1": "1",
-  "Item2": "1",
-  "Item3": "1"
+  "Item1": "1"
  },
  {
   "LootTableID": "WorldEvent_S1_NormalLoot_Subtable1_Probs",
   "ConditionOverridesRoll": 0,
   "HWMMult": 0,
   "MaxRoll": 100000,
-  "Item1": "0",
-  "Item2": "50000",
-  "Item3": "80000"
+  "Item1": "0"
  },
  {
   "LootTableID": "WorldEvent_S1_NormalLoot_Subtable2",
@@ -2324,8 +2318,7 @@
   "Item1": "[LBID]WorldEvent_S1_Armor",
   "Item2": "[LBID]WorldEvent_S1_Weapons",
   "Item3": "[LTID]WorldEvent_S1_Furniture_PityTicker",
-  "Item4": "[LTID]WorldEvent_S1_BonusLoot_Subtable1",
-  "Item5": "[LTID]WorldEvent_S1_BonusLoot_Subtable2"
+  "Item4": "[LTID]WorldEvent_S1_BonusLoot_Subtable1"
  },
  {
   "LootTableID": "WorldEvent_S1_BonusLoot_Qty",
@@ -2335,8 +2328,7 @@
   "Item1": "1",
   "Item2": "1",
   "Item3": "1",
-  "Item4": "1",
-  "Item5": "1"
+  "Item4": "1"
  },
  {
   "LootTableID": "WorldEvent_S1_BonusLoot_Probs",
@@ -2346,8 +2338,7 @@
   "Item1": "0",
   "Item2": "0",
   "Item3": "0",
-  "Item4": "0",
-  "Item5": "0"
+  "Item4": "0"
  },
  {
   "LootTableID": "WorldEvent_S1_BonusLoot_Subtable1",
@@ -6787,6 +6778,33 @@
   "Item5": "0",
   "Item6": "0",
   "Item7": "0"
+ },
+ {
+  "LootTableID": "RR_Stanley",
+  "AND/OR": "AND",
+  "RollBonusSetting": "AddToRoll",
+  "Conditions": [
+   "RabbitFlail"
+  ],
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "RR_RabbitPetEmote_Box"
+ },
+ {
+  "LootTableID": "RR_Stanley_Qty",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "MaxRoll": 0,
+  "Item1": "1"
+ },
+ {
+  "LootTableID": "RR_Stanley_Probs",
+  "ConditionOverridesRoll": 0,
+  "HWMMult": 0,
+  "IgnoreHWMGS": "0",
+  "MaxRoll": 1,
+  "Item1": "0"
  },
  {
   "LootTableID": "Trial_S5_MasterLoot",

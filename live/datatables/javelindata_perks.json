@@ -5750,8 +5750,8 @@
    "Skill",
    "Hatchet"
   ],
-  "ScalingPerGearScore": "0.00134,625:0.004",
-  "ItemClassGSBonus": "Hatchet:750",
+  "ScalingPerGearScore": "2.666666666666667E-3",
+  "ItemClassGSBonus": "Hatchet:550",
   "DisplayName": "PerkID_Ability_Hatchet_Berserk_Name",
   "Description": "PerkID_Ability_Hatchet_Berserk_Description",
   "Tier": 0,
@@ -6235,8 +6235,8 @@
    "Skill",
    "Spear"
   ],
-  "ScalingPerGearScore": "0.015,625:0.0208",
-  "ItemClassGSBonus": "Spear:700",
+  "ScalingPerGearScore": "1.4999999999999999E-2",
+  "ItemClassGSBonus": "Spear:500",
   "DisplayName": "PerkID_Ability_Spear_Perforate_Name",
   "Description": "PerkID_Ability_Spear_Perforate_Description",
   "Tier": 0,
@@ -7479,7 +7479,7 @@
    "Skill",
    "Blunderbuss"
   ],
-  "ScalingPerGearScore": "4.5454545454545452E-3",
+  "ScalingPerGearScore": "5.2777777777777779E-3",
   "ItemClassGSBonus": "Blunderbuss:500",
   "DisplayName": "PerkID_Ability_Blunderbuss_NetShot_Name",
   "Description": "PerkID_Ability_Blunderbuss_NetShot_Description",
@@ -9159,7 +9159,7 @@
   "ExclusiveLabels": [
    "DebuffDur"
   ],
-  "ScalingPerGearScore": "4.8484848484848493E-3",
+  "ScalingPerGearScore": "5.0000000000000001E-3",
   "DisplayName": "PerkID_Armor_DurCC_Name",
   "Description": "PerkID_Armor_DurCC_Description",
   "Tier": 0,
@@ -21930,7 +21930,8 @@
   "IconPath": "nw-data/icons/misc/icon_attribute_arrow.webp",
   "Affix": "Affix_Artifact_Set1_MediumFeet",
   "EquipAbility": [
-   "GlobalPerk_Artifact_Set1_MediumFeet"
+   "GlobalPerk_Artifact_Set1_MediumFeet",
+   "GlobalPerk_Artifact_Set1_MediumFeet_2"
   ],
   "Sorting": "Artifact"
  },
@@ -23207,5 +23208,19 @@
    "GlobalPerk_Artifact_Set2_GreataxePerk"
   ],
   "Sorting": "Artifact"
+ },
+ {
+  "PerkID": "PerkID_Flail_RabbitFlail",
+  "PerkType": "Generated",
+  "ConditionEvent": "OnEquip",
+  "ItemClass": [
+   "Flail"
+  ],
+  "Channel": 1,
+  "DisplayName": "PerkID_Flail_RabbitFlail_Name",
+  "Description": "PerkID_Flail_RabbitFlail_Description",
+  "Tier": 0,
+  "IconPath": "nw-data/icons/perks/rabbitsrevengeflail.webp",
+  "Affix": "Affix_Flail_RabbitFlail"
  }
 ]
