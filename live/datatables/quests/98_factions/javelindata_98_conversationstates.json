@@ -1,0 +1,1843 @@
+[
+	{
+		"ConversationStateId": "9801_Florina_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9801_Florina_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9801_Florina_2",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9801_Florina_2",
+		"RequiredLevel": 16,
+		"LinearObjectiveId1": "FactionIntro_Covenant_01"
+	},
+	{
+		"ConversationStateId": "9801_Florina_VectorQuest",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9801_Florina_VectorQuest",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_01",
+		"LinearObjectiveId1": "FactionIntro_Covenant_Vector_01"
+	},
+	{
+		"ConversationStateId": "9801_Florina_3",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9801_Florina_3",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Covenant_Vector_01",
+		"RequiredActiveTaskId": "FactionIntro_Covenant_Vector_01_Container"
+	},
+	{
+		"ConversationStateId": "9801_Florina_4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9801_Florina_4",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9801_Florina_Recruitment",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9801_florina_02_recruitment",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_03",
+		"LinearObjectiveId1": "FactionIntro_Covenant_Recruitment"
+	},
+	{
+		"ConversationStateId": "9801_Florina_5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9801_Florina_5",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_03"
+	},
+	{
+		"ConversationStateId": "9801_Florina_Maxed",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9801_Florina_Maxed",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 60,
+		"RequiredAchievement": "FactionIntro_Covenant_03"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9802_Lethold_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9802_Lethold_2",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_2",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_Vector_01",
+		"LinearObjectiveId1": "FactionIntro_Covenant_02"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_VectorQuest",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_VectorQuest",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_02",
+		"LinearObjectiveId1": "FactionIntro_Covenant_Vector_02"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_3",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_3",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Covenant_Vector_02",
+		"RequiredActiveTaskId": "FactionIntro_Covenant_Vector_02_Container"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_4",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_03"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_5",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_03"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_Maxed",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_Maxed",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 60,
+		"RequiredAchievement": "FactionIntro_Covenant_03"
+	},
+	{
+		"ConversationStateId": "9803_Morellus_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9803_Morellus_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9803_Morellus_2",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9803_Morellus_2",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_Vector_02",
+		"LinearObjectiveId1": "FactionIntro_Covenant_03"
+	},
+	{
+		"ConversationStateId": "9803_Morellus_3",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9803_Morellus_3",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Covenant_03",
+		"RequiredActiveTaskId": "FactionIntro_Covenant_03_Task4"
+	},
+	{
+		"ConversationStateId": "9803_Morellus_4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9803_Morellus_4",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_03"
+	},
+	{
+		"ConversationStateId": "9803_Morellus_5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9803_Morellus_5",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_03"
+	},
+	{
+		"ConversationStateId": "9803_Morellus_Maxed",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9803_Morellus_Maxed",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 60,
+		"RequiredAchievement": "FactionIntro_Covenant_03"
+	},
+	{
+		"ConversationStateId": "9804_Feldan_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9804_Feldan_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9804_Feldan_2",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9804_Feldan_2",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Covenant_01",
+		"RequiredActiveTaskId": "FactionIntro_Covenant_01_Container2"
+	},
+	{
+		"ConversationStateId": "9804_Feldan_3",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9804_Feldan_3",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Covenant_01",
+		"RequiredActiveTaskId": "FactionIntro_Covenant_01_Task5"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_00_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9805_Tibbs_00_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_00_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_00_01",
+		"RequiredLevel": 16,
+		"LinearObjectiveId1": "FactionIntro_Marauders_01"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_01_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9805_Tibbs_01_TalkTo",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_01_TalkTo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_01_TalkTo",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Marauders_01",
+		"RequiredActiveTaskId": "FactionIntro_Marauders_01_TalkToTibbs"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_02_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9805_Tibbs_02_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_02_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_02_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Marauders_01",
+		"LinearObjectiveId1": "FactionIntro_Marauders_02"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_02_VectorQuest",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_02_VectorQuest",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Marauders_02",
+		"LinearObjectiveId1": "FactionIntro_Marauders_Vector"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_02_Default2",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_02_Default",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Marauders_Vector",
+		"RequiredActiveTaskId": "FactionIntro_Marauders_Vector_Container"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_02_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_02_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Marauders_03"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_02_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_02_03",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Marauders_03"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_Maxed",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_Maxed",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 60,
+		"RequiredAchievement": "FactionIntro_Marauders_03"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_00_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9806_Stroudahia_00_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_00_TalkTo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_00_TalkTo",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Marauders_01",
+		"RequiredActiveTaskId": "FactionIntro_Marauders_01_TalkToStroudahia"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_00_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_00_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Marauders_Vector",
+		"LinearObjectiveId1": "FactionIntro_Marauders_03"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_00_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_00_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Marauders_03"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_00_Recruitment",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_00_Recruitment",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Marauders_03",
+		"LinearObjectiveId1": "FactionIntro_Marauders_Recruitment"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_00_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_00_03",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Marauders_03"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_Maxed",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_Maxed",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 60,
+		"RequiredAchievement": "FactionIntro_Marauders_03"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_01_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9806_Stroudahia_01_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9807_Aventus_00_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9807_Aventus_00_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9807_Aventus_00_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9807_Aventus_00_01",
+		"RequiredLevel": 16,
+		"LinearObjectiveId1": "FactionIntro_Syndicate_01"
+	},
+	{
+		"ConversationStateId": "9807_Aventus_01_TalkTo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9807_Aventus_01_TalkTo",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9807_Aventus_01_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9807_Aventus_01_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Syndicate_01",
+		"LinearObjectiveId1": "FactionIntro_Syndicate_02"
+	},
+	{
+		"ConversationStateId": "9807_Aventus_01_VectorQuest",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9807_Aventus_01_VectorQuest",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Syndicate_02",
+		"LinearObjectiveId1": "FactionIntro_Syndicate_Vector"
+	},
+	{
+		"ConversationStateId": "9807_Aventus_01_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9807_Aventus_01_02",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Syndicate_Vector",
+		"RequiredActiveTaskId": "FactionIntro_Syndicate_02_Container"
+	},
+	{
+		"ConversationStateId": "9807_Aventus_01_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9807_Aventus_01_03",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Syndicate_03"
+	},
+	{
+		"ConversationStateId": "9807_Aventus_01_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9807_Aventus_01_04",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Syndicate_03"
+	},
+	{
+		"ConversationStateId": "9807_Aventus_Maxed",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9807_Aventus_Maxed",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 60,
+		"RequiredAchievement": "FactionIntro_Syndicate_03"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9808_Cleo_00_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_TalkTo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_TalkTo",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Syndicate_01",
+		"RequiredActiveTaskId": "FactionIntro_Syndicate_01_TalkToCleo"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Syndicate_Vector",
+		"LinearObjectiveId1": "FactionIntro_Syndicate_03"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_03",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Syndicate_03"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_Recruitment",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_Recruitment",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Syndicate_03",
+		"LinearObjectiveId1": "FactionIntro_Syndicate_Recruitment"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_04",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Syndicate_03"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_Maxed",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_Maxed",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 60,
+		"RequiredAchievement": "FactionIntro_Syndicate_03"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_01_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9808_Cleo_01_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9809_CovenantGuard_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9809_CovenantGuard_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9810_Alejandro_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9810_Alejandro_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9810_Alejandro_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9810_Alejandro_01",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9811_Gregario_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9811_Gregario_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9811_Gregario_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9811_Gregario_01",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9812_Peta_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9812_Peta_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9812_Peta_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9812_Peta_01",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9813_Damiano_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9813_Damiano_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9813_Damiano_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9813_Damiano_01",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9814_RepBeyza_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9814_RepBeyza_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9814_RepBeyza_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9814_RepBeyza_01",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Covenant_Recruitment",
+		"RequiredActiveTaskId": "FactionIntro_Covenant_Recruitment_JoinFaction",
+		"TopicId1": "Covenant_DeclineRecruitment",
+		"ConversationService1": "Faction_Selection",
+		"ConversationService2": "PvP_Guide"
+	},
+	{
+		"ConversationStateId": "9814_RepBeyza_CooldownMultiple",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9814_RepBeyza_CooldownMultiple",
+		"RequiredFactionCooldown": "InCooldownMultipleDays",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Covenant_Recruitment",
+		"RequiredActiveTaskId": "FactionIntro_Covenant_Recruitment_JoinFaction",
+		"TopicId1": "Covenant_DeclineRecruitment"
+	},
+	{
+		"ConversationStateId": "9814_RepBeyza_CooldownSingle",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9814_RepBeyza_CooldownSingle",
+		"RequiredFactionCooldown": "InCooldownSingleDay",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Covenant_Recruitment",
+		"RequiredActiveTaskId": "FactionIntro_Covenant_Recruitment_JoinFaction",
+		"TopicId1": "Covenant_DeclineRecruitment"
+	},
+	{
+		"ConversationStateId": "9814_RepBeyza_01_b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9814_RepBeyza_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_Recruitment",
+		"ConversationService1": "Faction_Selection",
+		"ConversationService2": "PvP_Guide"
+	},
+	{
+		"ConversationStateId": "9814_RepBeyza_CooldownMultiple_b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9814_RepBeyza_CooldownMultiple",
+		"RequiredFactionCooldown": "InCooldownMultipleDays",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_Recruitment"
+	},
+	{
+		"ConversationStateId": "9814_RepBeyza_CooldownSingle_b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9814_RepBeyza_CooldownSingle",
+		"RequiredFactionCooldown": "InCooldownSingleDay",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Covenant_Recruitment"
+	},
+	{
+		"ConversationStateId": "9814_RepBeyza_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9814_RepBeyza_02",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Board"
+	},
+	{
+		"ConversationStateId": "9814_RepBeyza_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9814_RepBeyza_03",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 60,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "9815_MarauderGuard_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9815_MarauderGuard_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9816_Pavel_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9816_Pavel_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9816_Pavel_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9816_Pavel_01",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9817_Mersha_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9817_Mersha_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9817_Mersha_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9817_Mersha_01",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9818_Doc_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9818_Doc_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9818_Doc_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9818_Doc_01",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9819_Hedge_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9819_Hedge_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9819_Hedge_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9819_Hedge_01",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9819_Hedge_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9819_Hedge_02",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 60
+	},
+	{
+		"ConversationStateId": "9820_RepSmiggs_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9820_RepSmiggs_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9820_RepSmiggs_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9820_RepSmiggs_01",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Marauders_Recruitment",
+		"RequiredActiveTaskId": "FactionIntro_Marauders_Recruitment_JoinFaction",
+		"TopicId1": "Marauders_DeclineRecruitment",
+		"ConversationService1": "Faction_Selection",
+		"ConversationService2": "PvP_Guide"
+	},
+	{
+		"ConversationStateId": "9820_RepSmiggs_CooldownMultiple",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9820_RepSmiggs_CooldownMultiple",
+		"RequiredFactionCooldown": "InCooldownMultipleDays",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Marauders_Recruitment",
+		"RequiredActiveTaskId": "FactionIntro_Marauders_Recruitment_JoinFaction",
+		"TopicId1": "Marauders_DeclineRecruitment"
+	},
+	{
+		"ConversationStateId": "9820_RepSmiggs_CooldownSingle",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9820_RepSmiggs_CooldownSingle",
+		"RequiredFactionCooldown": "InCooldownSingleDay",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Marauders_Recruitment",
+		"RequiredActiveTaskId": "FactionIntro_Marauders_Recruitment_JoinFaction",
+		"TopicId1": "Marauders_DeclineRecruitment"
+	},
+	{
+		"ConversationStateId": "9820_RepSmiggs_01_b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9820_RepSmiggs_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Marauders_Recruitment",
+		"ConversationService1": "Faction_Selection",
+		"ConversationService2": "PvP_Guide"
+	},
+	{
+		"ConversationStateId": "9820_RepSmiggs_CooldownMultiple_b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9820_RepSmiggs_CooldownMultiple",
+		"RequiredFactionCooldown": "InCooldownMultipleDays",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Marauders_Recruitment"
+	},
+	{
+		"ConversationStateId": "9820_RepSmiggs_CooldownSingle_b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9820_RepSmiggs_CooldownSingle",
+		"RequiredFactionCooldown": "InCooldownSingleDay",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Marauders_Recruitment"
+	},
+	{
+		"ConversationStateId": "9820_RepSmiggs_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9820_RepSmiggs_02",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Board"
+	},
+	{
+		"ConversationStateId": "9820_RepSmiggs_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9820_RepSmiggs_03",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 60,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "9821_SyndicateGuard_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9821_SyndicateGuard_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9822_Abayomi_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9822_Abayomi_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9822_Abayomi_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9822_Abayomi_01",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9823_Amelia_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9823_Amelia_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9823_Amelia_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9823_Amelia_01",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9824_Kuro_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9824_Kuro_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9824_Kuro_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9824_Kuro_01",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9825_Pop_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9825_Pop_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9825_Pop_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9825_Pop_01",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9826_RepAstrid_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@9826_RepAstrid_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "9826_RepAstrid_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9826_RepAstrid_01",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Syndicate_Recruitment",
+		"RequiredActiveTaskId": "FactionIntro_Syndicate_Recruitment_JoinFaction",
+		"TopicId1": "Syndicate_DeclineRecruitment",
+		"ConversationService1": "Faction_Selection",
+		"ConversationService2": "PvP_Guide"
+	},
+	{
+		"ConversationStateId": "9826_RepAstrid_CooldownMultiple",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9826_RepAstrid_CooldownMultiple",
+		"RequiredFactionCooldown": "InCooldownMultipleDays",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Syndicate_Recruitment",
+		"RequiredActiveTaskId": "FactionIntro_Syndicate_Recruitment_JoinFaction",
+		"TopicId1": "Syndicate_DeclineRecruitment"
+	},
+	{
+		"ConversationStateId": "9826_RepAstrid_CooldownSingle",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9826_RepAstrid_CooldownSingle",
+		"RequiredFactionCooldown": "InCooldownSingleDay",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "FactionIntro_Syndicate_Recruitment",
+		"RequiredActiveTaskId": "FactionIntro_Syndicate_Recruitment_JoinFaction",
+		"TopicId1": "Syndicate_DeclineRecruitment"
+	},
+	{
+		"ConversationStateId": "9826_RepAstrid_01_b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9826_RepAstrid_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Syndicate_Recruitment",
+		"ConversationService1": "Faction_Selection",
+		"ConversationService2": "PvP_Guide"
+	},
+	{
+		"ConversationStateId": "9826_RepAstrid_CooldownMultiple_b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9826_RepAstrid_CooldownMultiple",
+		"RequiredFactionCooldown": "InCooldownMultipleDays",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Syndicate_Recruitment"
+	},
+	{
+		"ConversationStateId": "9826_RepAstrid_CooldownSingle_b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9826_RepAstrid_CooldownSingle",
+		"RequiredFactionCooldown": "InCooldownSingleDay",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FactionIntro_Syndicate_Recruitment"
+	},
+	{
+		"ConversationStateId": "9826_RepAstrid_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9826_RepAstrid_02",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Board"
+	},
+	{
+		"ConversationStateId": "9826_RepAstrid_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9826_RepAstrid_03",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 60,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "0208_00_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@0208_00_Alchemist_DefaultDialogue_V2",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0208_01pre_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_01pre_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 24
+	},
+	{
+		"ConversationStateId": "0208_01_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_01_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0208_02_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_02_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0208_03_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_03_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0208_04pre_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_04pre_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredProgression": "Syndicate 0 3000",
+		"RequiredLevel": 0,
+		"LinearObjectiveId1": "98_S_01_theexperiment"
+	},
+	{
+		"ConversationStateId": "0208_04_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_04_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredProgression": "Syndicate 0 3000",
+		"RequiredLevel": 24,
+		"LinearObjectiveId1": "98_S_01_theexperiment"
+	},
+	{
+		"ConversationStateId": "0208_05pre_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_05pre_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "syndicate_faction_quest_01"
+	},
+	{
+		"ConversationStateId": "0208_05_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_05_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 24,
+		"RequiredAchievement": "syndicate_faction_quest_01"
+	},
+	{
+		"ConversationStateId": "0208_06pre_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_06pre_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredProgression": "Syndicate 1 11000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "syndicate_faction_quest_01",
+		"LinearObjectiveId1": "98_S_01b_fenscholar"
+	},
+	{
+		"ConversationStateId": "0208_06_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_06_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredProgression": "Syndicate 1 11000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "syndicate_faction_quest_01",
+		"LinearObjectiveId1": "98_S_01b_fenscholar"
+	},
+	{
+		"ConversationStateId": "0208_07pre_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_07pre_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "syndicate_faction_quest_01b"
+	},
+	{
+		"ConversationStateId": "0208_07_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_07_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "syndicate_faction_quest_01b"
+	},
+	{
+		"ConversationStateId": "0208_08pre_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_08pre_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredProgression": "Syndicate 2 26000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "syndicate_faction_quest_01b",
+		"LinearObjectiveId1": "98_S_02_necromanticchemistry"
+	},
+	{
+		"ConversationStateId": "0208_08_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_08_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredProgression": "Syndicate 2 26000",
+		"RequiredLevel": 43,
+		"RequiredAchievement": "syndicate_faction_quest_01b",
+		"LinearObjectiveId1": "98_S_02_necromanticchemistry"
+	},
+	{
+		"ConversationStateId": "0208_09pre_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_09pre_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "syndicate_faction_quest_02"
+	},
+	{
+		"ConversationStateId": "0208_09_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0208_09_Alchemist_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 43,
+		"RequiredAchievement": "syndicate_faction_quest_02"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_05pre_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_05pre_FactionQuest4",
+		"RequiredFaction": "Syndicate",
+		"RequiredProgression": "Syndicate 3 49000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "syndicate_faction_quest_02",
+		"LinearObjectiveId1": "98_S_03_lostnotlost"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_05_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_05_FactionQuest4",
+		"RequiredFaction": "Syndicate",
+		"RequiredProgression": "Syndicate 3 49000",
+		"RequiredLevel": 56,
+		"RequiredAchievement": "syndicate_faction_quest_02",
+		"LinearObjectiveId1": "98_S_03_lostnotlost"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_06pre_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_06pre_FactionQuest4",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "syndicate_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_06_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_06_FactionQuest4",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 56,
+		"RequiredAchievement": "syndicate_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_07pre_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_07pre_FactionQuest5",
+		"RequiredFaction": "Syndicate",
+		"RequiredProgression": "Syndicate 4 83000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "syndicate_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_07_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_07_FactionQuest5",
+		"RequiredFaction": "Syndicate",
+		"RequiredProgression": "Syndicate 4 83000",
+		"RequiredLevel": 63,
+		"RequiredAchievement": "syndicate_faction_quest_03 && Expansion_2023_Unlock",
+		"LinearObjectiveId1": "98_S_04_ciphercryptic"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_08pre_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_08pre_FactionQuest5",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "syndicate_faction_quest_04"
+	},
+	{
+		"ConversationStateId": "9808_Cleo_00_08_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9808_Cleo_00_08_FactionQuest5",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 63,
+		"RequiredAchievement": "syndicate_faction_quest_04"
+	},
+	{
+		"ConversationStateId": "1007_00_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@1007_00_Commander_DefaultDialogue_V2",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "1007_01pre_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_01pre_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 24
+	},
+	{
+		"ConversationStateId": "1007_01_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_01_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "1007_02_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_02_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "1007_03_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_03_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "1007_04pre_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_04pre_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredProgression": "Marauder 0 3000",
+		"RequiredLevel": 0,
+		"LinearObjectiveId1": "98_M_01_combatprowess"
+	},
+	{
+		"ConversationStateId": "1007_04_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_04_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredProgression": "Marauder 0 3000",
+		"RequiredLevel": 24,
+		"LinearObjectiveId1": "98_M_01_combatprowess"
+	},
+	{
+		"ConversationStateId": "1007_05pre_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_05pre_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_01"
+	},
+	{
+		"ConversationStateId": "1007_05_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_05_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 24,
+		"RequiredAchievement": "marauders_faction_quest_01"
+	},
+	{
+		"ConversationStateId": "1007_06pre_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_06pre_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredProgression": "Marauder 1 11000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_01",
+		"LinearObjectiveId1": "98_M_01b_fenravager"
+	},
+	{
+		"ConversationStateId": "1007_06_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_06_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredProgression": "Marauder 1 11000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_01",
+		"LinearObjectiveId1": "98_M_01b_fenravager"
+	},
+	{
+		"ConversationStateId": "1007_07_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_07_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_01b"
+	},
+	{
+		"ConversationStateId": "1007_08_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1007_08_Commander_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_02"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_98_Q01_TalkTo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@98_M_01_9805_Tibbs_00_TalkTo_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "98_M_01_combatprowess",
+		"RequiredActiveTaskId": "98_M_01_d_01_TalkToTibbs_V2"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_98_Q01_PostQuest",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_04_Post_FactionQuest1",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_01"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_98_Q02_TalkTo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@98_M_01b_9805_Tibbs_00_TalkTo_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_01",
+		"RequiredActiveObjectiveId": "98_M_01b_fenravager",
+		"RequiredActiveTaskId": "98_M_01b_d_05_TalkToTibbs_V2"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_98_Q02_PostQuest",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_05_Post_FactionQuest2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_01b"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_04pre_FactionQuest3",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_04pre_FactionQuest3",
+		"RequiredFaction": "Marauder",
+		"RequiredProgression": "Marauder 2 26000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_01b",
+		"LinearObjectiveId1": "98_M_02_ultimatewarrior"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_04_FactionQuest3",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_04_FactionQuest3",
+		"RequiredFaction": "Marauder",
+		"RequiredProgression": "Marauder 2 26000",
+		"RequiredLevel": 43,
+		"RequiredAchievement": "marauders_faction_quest_01b",
+		"LinearObjectiveId1": "98_M_02_ultimatewarrior"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_05_FactionQuest3",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_05_FactionQuest3",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_02"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_98_Q04_TalkTo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@98_M_03_9805_Tibbs_98_TalkTo_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 56,
+		"RequiredAchievement": "marauders_faction_quest_02",
+		"RequiredActiveObjectiveId": "98_M_03_darkvengeance",
+		"RequiredActiveTaskId": "98_M_03_d_01_TalkToTibbs_V2"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_98_Q04_PostQuest",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_98_Q04_PostQuest",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_98_Q05_TalkTo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@98_M_04_9805_Tibbs_98_TalkTo_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_03",
+		"RequiredActiveObjectiveId": "98_M_04_bullseye",
+		"RequiredActiveTaskId": "98_M_04_d_05_TalkToTibbs_V2"
+	},
+	{
+		"ConversationStateId": "9805_Tibbs_98_Q05_PostQuest",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9805_Tibbs_98_Q05_PostQuest",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_04"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_98_Q03_PostQuest",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@98_M_02_9806_Stroudahia_98_PostQuest_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_02"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_98_Q03_TalkTo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@98_M_02_9806_Stroudahia_98_Q03_TalkTo_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_01b",
+		"RequiredActiveObjectiveId": "98_M_02_ultimatewarrior",
+		"RequiredActiveTaskId": "98_M_02_d_06_TalkToStroudahia_V2"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_04pre_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_04pre_FactionQuest4",
+		"RequiredFaction": "Marauder",
+		"RequiredProgression": "Marauder 3 49000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_02",
+		"LinearObjectiveId1": "98_M_03_darkvengeance"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_04_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_04_FactionQuest4",
+		"RequiredFaction": "Marauder",
+		"RequiredProgression": "Marauder 3 49000",
+		"RequiredLevel": 56,
+		"RequiredAchievement": "marauders_faction_quest_02",
+		"LinearObjectiveId1": "98_M_03_darkvengeance"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_05pre_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_05pre_FactionQuest4",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_05_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_05_FactionQuest4",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 56,
+		"RequiredAchievement": "marauders_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_06pre_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_06pre_FactionQuest5",
+		"RequiredFaction": "Marauder",
+		"RequiredProgression": "Marauder 4 83000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_06_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_06_FactionQuest5",
+		"RequiredFaction": "Marauder",
+		"RequiredProgression": "Marauder 4 83000",
+		"RequiredLevel": 63,
+		"RequiredAchievement": "marauders_faction_quest_03 && Expansion_2023_Unlock",
+		"LinearObjectiveId1": "98_M_04_bullseye"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_07pre_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_07pre_FactionQuest5",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "marauders_faction_quest_04"
+	},
+	{
+		"ConversationStateId": "9806_Stroudahia_07_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9806_Stroudahia_07_FactionQuest5",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 63,
+		"RequiredAchievement": "marauders_faction_quest_04"
+	},
+	{
+		"ConversationStateId": "0209_00_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@0209_00_Adjudicator_DefaultDialogue_V2",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0209_01_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0209_01_Adjudicator_DefaultDialogue_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 24
+	},
+	{
+		"ConversationStateId": "0209_01pre_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0209_01pre_Adjudicator_DefaultDialogue_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0209_02_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0209_02_Adjudicator_DefaultDialogue_V2",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0209_03_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0209_03_Adjudicator_DefaultDialogue_V2",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0209_04pre_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0209_04pre_Adjudicator_DefaultDialogue_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredProgression": "Covenant 0 3000",
+		"RequiredLevel": 0,
+		"LinearObjectiveId1": "98_C_01_theapostate"
+	},
+	{
+		"ConversationStateId": "0209_04_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0209_04_Adjudicator_DefaultDialogue_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredProgression": "Covenant 0 3000",
+		"RequiredLevel": 24,
+		"LinearObjectiveId1": "98_C_01_theapostate"
+	},
+	{
+		"ConversationStateId": "0209_05b_Adjudicator_OnQuest",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0209_05b_Adjudicator_DefaultDialogue_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_02",
+		"TopicId1": "0209_05b_Adjudicator_Topic"
+	},
+	{
+		"ConversationStateId": "0209_05b_Adjudicator_TalkTo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@98_C_03_0209_Adjudicator_98_TalkTo_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_02",
+		"RequiredActiveObjectiveId": "98_C_03_thepathtodarkness",
+		"RequiredActiveTaskId": "98_C_03_d_04a_TalkToRoose_V2",
+		"TopicId1": "0209_05b_Adjudicator_Topic"
+	},
+	{
+		"ConversationStateId": "0209_06pre_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0209_06pre_Adjudicator_DefaultDialogue_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_02",
+		"RequiredActiveObjectiveId": "98_C_03_thepathtodarkness"
+	},
+	{
+		"ConversationStateId": "0209_06_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0209_06_Adjudicator_DefaultDialogue_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 24,
+		"RequiredAchievement": "covenant_faction_quest_02",
+		"RequiredActiveObjectiveId": "98_C_03_thepathtodarkness"
+	},
+	{
+		"ConversationStateId": "0209_07pre_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0209_07pre_Adjudicator_DefaultDialogue_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "0209_07_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0209_07_Adjudicator_DefaultDialogue_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 24,
+		"RequiredAchievement": "covenant_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "0309_00_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0309_00_Adjudicator_V2",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0309_01_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0309_01_Adjudicator_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 24,
+		"RequiredAchievement": "covenant_faction_quest_01"
+	},
+	{
+		"ConversationStateId": "0309_01pre_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0309_01pre_Adjudicator_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_01"
+	},
+	{
+		"ConversationStateId": "0309_02_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0309_02_Adjudicator_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredProgression": "Covenant 1 11000",
+		"RequiredLevel": 24,
+		"RequiredAchievement": "covenant_faction_quest_01",
+		"LinearObjectiveId1": "98_C_01b_fenredemption"
+	},
+	{
+		"ConversationStateId": "0309_02pre_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0309_02pre_Adjudicator_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredProgression": "Covenant 1 11000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_01",
+		"LinearObjectiveId1": "98_C_01b_fenredemption"
+	},
+	{
+		"ConversationStateId": "0309_03_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0309_03_Adjudicator_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 24,
+		"RequiredAchievement": "covenant_faction_quest_01b"
+	},
+	{
+		"ConversationStateId": "0309_03pre_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0309_03pre_Adjudicator_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_01b"
+	},
+	{
+		"ConversationStateId": "0309_04_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0309_04_Adjudicator_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredProgression": "Covenant 2 26000",
+		"RequiredLevel": 39,
+		"RequiredAchievement": "covenant_faction_quest_01b",
+		"LinearObjectiveId1": "98_C_02_soulsalvation"
+	},
+	{
+		"ConversationStateId": "0309_04pre_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0309_04pre_Adjudicator_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredProgression": "Covenant 2 26000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_01b",
+		"LinearObjectiveId1": "98_C_02_soulsalvation"
+	},
+	{
+		"ConversationStateId": "0309_05_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0309_05_Adjudicator_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 39,
+		"RequiredAchievement": "covenant_faction_quest_02"
+	},
+	{
+		"ConversationStateId": "0309_05pre_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0309_05pre_Adjudicator_V2",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_02"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_06pre_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_06pre_FactionQuest4",
+		"RequiredFaction": "Covenant",
+		"RequiredProgression": "Covenant 3 49000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_02",
+		"LinearObjectiveId1": "98_C_03_thepathtodarkness"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_06_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_06_FactionQuest4",
+		"RequiredFaction": "Covenant",
+		"RequiredProgression": "Covenant 3 49000",
+		"RequiredLevel": 56,
+		"RequiredAchievement": "covenant_faction_quest_02",
+		"LinearObjectiveId1": "98_C_03_thepathtodarkness"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_07pre_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_07pre_FactionQuest4",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_07_FactionQuest4",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_07_FactionQuest4",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 56,
+		"RequiredAchievement": "covenant_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_08pre_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_08pre_FactionQuest5",
+		"RequiredFaction": "Covenant",
+		"RequiredProgression": "Covenant 4 83000",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_03"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_08_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_08_FactionQuest5",
+		"RequiredFaction": "Covenant",
+		"RequiredProgression": "Covenant 4 83000",
+		"RequiredLevel": 63,
+		"RequiredAchievement": "covenant_faction_quest_03 && Expansion_2023_Unlock",
+		"LinearObjectiveId1": "98_C_04_justforinjust"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_09pre_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_09pre_FactionQuest5",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "covenant_faction_quest_04"
+	},
+	{
+		"ConversationStateId": "9802_Lethold_09_FactionQuest5",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@9802_Lethold_09_FactionQuest5",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 63,
+		"RequiredAchievement": "covenant_faction_quest_04"
+	}
+]

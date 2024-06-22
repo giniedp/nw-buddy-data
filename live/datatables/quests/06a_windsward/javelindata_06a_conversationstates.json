@@ -1,0 +1,1817 @@
+[
+	{
+		"ConversationStateId": "06_00_GraceOMalley",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_GraceOMalley",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_GraceOMalley",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_GraceOMalley",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_02",
+		"LinearObjectiveId1": "06A_MSQ_03_VisitMarket"
+	},
+	{
+		"ConversationStateId": "06_02_GraceOMalley",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_GraceOMalley",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_03",
+		"LinearObjectiveId1": "06A_MSQ_04_SeeSpeaker"
+	},
+	{
+		"ConversationStateId": "06_03_GraceOMalley",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_GraceOMalley",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_04"
+	},
+	{
+		"ConversationStateId": "06_04_GraceOMalley",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_04_GraceOMalley",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_10",
+		"RequiredActiveObjectiveId": "06A_MSQ_11_LootPirateCrates",
+		"RequiredActiveTaskId": "06A_MSQ_11_LootPirateCrates_talk_Grace",
+		"TopicId1": "06_GraceOMalley_Pirates"
+	},
+	{
+		"ConversationStateId": "06_05_GraceOMalley",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_05_GraceOMalley",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_11",
+		"LinearObjectiveId1": "06A_MSQ_12_DefeatPirateCaptain"
+	},
+	{
+		"ConversationStateId": "06_06_GraceOMalley",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_06a_GraceOMalley",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_12"
+	},
+	{
+		"ConversationStateId": "06_07_GraceOMalley",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_06_GraceOMalley",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_13",
+		"LinearObjectiveId1": "06A_MSQ_14_SolveMapPuzzle"
+	},
+	{
+		"ConversationStateId": "06_08_GraceOMalley",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_08_GraceOMalley",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_14",
+		"TopicId1": "06_GraceOMalley_Revolution"
+	},
+	{
+		"ConversationStateId": "06_09_GraceOMalley",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_08_GraceOMalley",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_16",
+		"LinearObjectiveId1": "06A_MSQ_17_RecoverStolenJewel"
+	},
+	{
+		"ConversationStateId": "06_00_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_NessaHarrower",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_05",
+		"RequiredActiveObjectiveId": "06A_MSQ_06_RescueFarmers",
+		"RequiredActiveTaskId": "06A_MSQ_06_RescueFarmers_rescue_Nessa",
+		"TopicId1": "06_NessaHarrower_Trapped"
+	},
+	{
+		"ConversationStateId": "06_02_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "SwapActive_06_Nessa_B",
+		"RequiredActiveObjectiveId": "06A_MSQ_06_RescueFarmers",
+		"RequiredActiveTaskId": "06A_MSQ_06_RescueFarmers_talk_Nessa",
+		"TopicId1": "06_NessaHarrower_Druids"
+	},
+	{
+		"ConversationStateId": "06_03_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_06",
+		"TopicId1": "06_NessaHarrower_Druids"
+	},
+	{
+		"ConversationStateId": "06_04_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_04_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_07",
+		"TopicId1": "06_NessaHarrower_Druids"
+	},
+	{
+		"ConversationStateId": "06_05_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_05_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_09"
+	},
+	{
+		"ConversationStateId": "06_06_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_06_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_11"
+	},
+	{
+		"ConversationStateId": "06_07_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_07_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_12",
+		"LinearObjectiveId1": "06A_MSQ_13_ReturnMiradorJewel"
+	},
+	{
+		"ConversationStateId": "06_07a_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_07_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_12",
+		"RequiredActiveObjectiveId": "06A_MSQ_13_ReturnMiradorJewel",
+		"RequiredActiveTaskId": "06A_MSQ_13_ReturnMiradorJewel_talk_Nessa",
+		"TopicId1": "06_NessaHarrower_Success"
+	},
+	{
+		"ConversationStateId": "06_08_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_08_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_13",
+		"RequiredActiveObjectiveId": "06A_MSQ_14_SolveMapPuzzle",
+		"RequiredActiveTaskId": "06A_MSQ_14_SolveMapPuzzle_talk1_Nessa",
+		"TopicId1": "06_NessaHarrower_OtherJewel"
+	},
+	{
+		"ConversationStateId": "06_09_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_09_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_13",
+		"RequiredActiveObjectiveId": "06A_MSQ_14_SolveMapPuzzle",
+		"RequiredActiveTaskId": "06A_MSQ_14_SolveMapPuzzle_talk_Nessa",
+		"TopicId1": "06_NessaHarrower_Jewel"
+	},
+	{
+		"ConversationStateId": "06_10_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_10_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_14",
+		"LinearObjectiveId1": "06A_MSQ_15_RecoverSpeakerJewel"
+	},
+	{
+		"ConversationStateId": "06_11_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_11_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_15",
+		"LinearObjectiveId1": "06A_MSQ_16_ReturnEldergateJewel"
+	},
+	{
+		"ConversationStateId": "06_12_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_12_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_16",
+		"RequiredActiveObjectiveId": "06A_MSQ_17_RecoverStolenJewel",
+		"RequiredActiveTaskId": "06A_MSQ_17_RecoverStolenJewel_talk_Nessa",
+		"TopicId1": "06_NessaHarrower_Korrapati"
+	},
+	{
+		"ConversationStateId": "06_13_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_13_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_17",
+		"LinearObjectiveId1": "06A_MSQ_18_ReturnSiriusJewel"
+	},
+	{
+		"ConversationStateId": "06_14_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_14_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_18",
+		"LinearObjectiveId1": "06A_MSQ_19_TalkToNewSpeaker"
+	},
+	{
+		"ConversationStateId": "06_15_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_15_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_19"
+	},
+	{
+		"ConversationStateId": "06_16_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_16_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_20",
+		"LinearObjectiveId1": "06A_MSQ_21_DefeatBoss"
+	},
+	{
+		"ConversationStateId": "06_17_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_17_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_21",
+		"TopicId1": "06_NessaHarrower_Medea"
+	},
+	{
+		"ConversationStateId": "06_18_NessaHarrower",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_18_NessaHarrower",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "MSQ_00_init && 06A_MSQ_21"
+	},
+	{
+		"ConversationStateId": "06_00_FrancisTurner",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_FrancisTurner",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_FrancisTurner",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_FrancisTurner",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_04",
+		"LinearObjectiveId1": "06A_MSQ_05_FixWindmills"
+	},
+	{
+		"ConversationStateId": "06_02_FrancisTurner",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_FrancisTurner",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_05",
+		"TopicId1": "06_FrancisTurner_Lost"
+	},
+	{
+		"ConversationStateId": "06_03_FrancisTurner",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_FrancisTurner",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_09",
+		"RequiredActiveObjectiveId": "06A_MSQ_10_TalkToSpeaker",
+		"RequiredActiveTaskId": "06A_MSQ_10_TalkToSpeaker_talk_Francis",
+		"TopicId1": "06_FrancisTurner_Tribute"
+	},
+	{
+		"ConversationStateId": "06_04_FrancisTurner",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_04_FrancisTurner",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_10",
+		"LinearObjectiveId1": "06A_MSQ_11_LootPirateCrates"
+	},
+	{
+		"ConversationStateId": "06_05_FrancisTurner",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_05_FrancisTurner",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_14",
+		"RequiredActiveObjectiveId": "06A_MSQ_15_RecoverSpeakerJewel",
+		"RequiredActiveTaskId": "06A_MSQ_15_RecoverSpeakerJewel_talk_Francis",
+		"TopicId1": "06_FrancisTurner_Jewel"
+	},
+	{
+		"ConversationStateId": "06_06_FrancisTurner",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_06_FrancisTurner",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_15"
+	},
+	{
+		"ConversationStateId": "06_00_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_SaatvikAgrawal",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_SaatvikAgrawal",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_01",
+		"LinearObjectiveId1": "06A_MSQ_02_VisitInn"
+	},
+	{
+		"ConversationStateId": "06_02_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_SaatvikAgrawal",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_02"
+	},
+	{
+		"ConversationStateId": "06_03_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_SaatvikAgrawal",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_04",
+		"RequiredActiveObjectiveId": "06A_MSQ_05_FixWindmills",
+		"RequiredActiveTaskId": "06A_MSQ_05_FixWindmills_talk_Saatvik",
+		"TopicId1": "06_SaatvikAgrawal_Windmills"
+	},
+	{
+		"ConversationStateId": "06_04_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_04_SaatvikAgrawal",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_05",
+		"LinearObjectiveId1": "06A_MSQ_06_RescueFarmers"
+	},
+	{
+		"ConversationStateId": "06_05_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_05_SaatvikAgrawal",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_06",
+		"LinearObjectiveId1": "06A_MSQ_07_MeetIronRose"
+	},
+	{
+		"ConversationStateId": "06_05a_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_05_SaatvikAgrawal",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_06 && (12A_MSQ_10 || S_campingunlock)",
+		"LinearObjectiveId1": "06A_MSQ_07_MeetIronRose_alt"
+	},
+	{
+		"ConversationStateId": "06_06_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_06_SaatvikAgrawal",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_07"
+	},
+	{
+		"ConversationStateId": "06_07_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_07_SaatvikAgrawal",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_13",
+		"RequiredActiveObjectiveId": "06A_MSQ_14_SolveMapPuzzle",
+		"RequiredActiveTaskId": "06A_MSQ_14_SolveMapPuzzle_talk_Saatvik",
+		"TopicId1": "06_SaatvikAgrawal_Pirates"
+	},
+	{
+		"ConversationStateId": "06_08_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_08_SaatvikAgrawal",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_14"
+	},
+	{
+		"ConversationStateId": "06_09_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_09_SaatvikAgrawal",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_15",
+		"RequiredActiveObjectiveId": "06A_MSQ_16_ReturnEldergateJewel",
+		"RequiredActiveTaskId": "06A_MSQ_16_ReturnEldergateJewel_talk_Saatvik",
+		"TopicId1": "06_SaatvikAgrawal_NewSpeaker"
+	},
+	{
+		"ConversationStateId": "06_10_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_10_SaatvikAgrawal",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_19",
+		"LinearObjectiveId1": "06A_MSQ_20_LostTribute"
+	},
+	{
+		"ConversationStateId": "06_11_SaatvikAgrawal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_11_SaatvikAgrawal",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_00_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_LeovixSilva",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_00a_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_06",
+		"TopicId1": "06_LeovixSilva_Fallen"
+	},
+	{
+		"ConversationStateId": "06_01_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_07",
+		"LinearObjectiveId1": "06A_MSQ_08_RescueGideon"
+	},
+	{
+		"ConversationStateId": "06_02_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_08",
+		"LinearObjectiveId1": "06A_MSQ_09_DefeatCommander"
+	},
+	{
+		"ConversationStateId": "06_03_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_09",
+		"LinearObjectiveId1": "06A_MSQ_10_TalkToSpeaker"
+	},
+	{
+		"ConversationStateId": "06_04_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_04_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_10",
+		"LinearObjectiveId1": "06A_MSQ_11_LootPirateCrates"
+	},
+	{
+		"ConversationStateId": "06_05_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_05_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_11"
+	},
+	{
+		"ConversationStateId": "06_06_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_06_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_12"
+	},
+	{
+		"ConversationStateId": "06_07_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_07_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_13"
+	},
+	{
+		"ConversationStateId": "06_08_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_08_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_14",
+		"RequiredActiveObjectiveId": "06A_MSQ_15_RecoverSpeakerJewel",
+		"RequiredActiveTaskId": "06A_MSQ_15_RecoverSpeakerJewel_talk_Leovix",
+		"TopicId1": "06_LeovixSilva_Betrayal"
+	},
+	{
+		"ConversationStateId": "06_09_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_09_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_18"
+	},
+	{
+		"ConversationStateId": "06_10_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_10_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_19",
+		"RequiredActiveObjectiveId": "06A_MSQ_20_LostTribute",
+		"RequiredActiveTaskId": "06A_MSQ_20_LostTribute_talk_Leovix",
+		"TopicId1": "06_LeovixSilva_Caravan"
+	},
+	{
+		"ConversationStateId": "06_11_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_11_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_21"
+	},
+	{
+		"ConversationStateId": "06_12_LeovixSilva",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_12_LeovixSilva",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "MSQ_00_init && 06A_MSQ_21"
+	},
+	{
+		"ConversationStateId": "06_00_MarcelDupont",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_MarcelDupont",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_MarcelDupont",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_MarcelDupont",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "S_introtosettlement",
+		"LinearObjectiveId1": "06A_MSQ_01_Quartermaster"
+	},
+	{
+		"ConversationStateId": "06_01a_MarcelDupont",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_MarcelDupont",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "12A_MSQ_01_SpeakLochnir",
+		"RequiredActiveTaskId": "12A_MSQ_01_SpeakLochnir_Container"
+	},
+	{
+		"ConversationStateId": "06_01b_MarcelDupont",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_MarcelDupont",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "12A_MSQ_01"
+	},
+	{
+		"ConversationStateId": "06_01c_MarcelDupont",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_MarcelDupont",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "S_introtosettlement&&MSQ_00_init",
+		"LinearObjectiveId1": "06A_MSQ_01_Quartermaster"
+	},
+	{
+		"ConversationStateId": "06_02_MarcelDupont",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_MarcelDupont",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_01"
+	},
+	{
+		"ConversationStateId": "06_03_MarcelDupont",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_MarcelDupont",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_09",
+		"RequiredActiveObjectiveId": "06A_MSQ_10_TalkToSpeaker",
+		"RequiredActiveTaskId": "06A_MSQ_10_TalkToSpeaker_talk_Marcel",
+		"TopicId1": "06_MarcelDupont_Tribute"
+	},
+	{
+		"ConversationStateId": "06_04_MarcelDupont",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_04_MarcelDupont",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_10",
+		"LinearObjectiveId1": "06A_MSQ_11_LootPirateCrates"
+	},
+	{
+		"ConversationStateId": "06_05_MarcelDupont",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_05_MarcelDupont",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_14",
+		"RequiredActiveObjectiveId": "06A_MSQ_15_RecoverSpeakerJewel",
+		"RequiredActiveTaskId": "06A_MSQ_15_RecoverSpeakerJewel_talk_Marcel",
+		"TopicId1": "06_MarcelDupont_Jewel"
+	},
+	{
+		"ConversationStateId": "06_06_MarcelDupont",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_06_MarcelDupont",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_15"
+	},
+	{
+		"ConversationStateId": "06_00_AhuraFarid",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_AhuraFarid",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_AhuraFarid",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_AhuraFarid",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "06A_Z_02_SpreadJoy",
+		"RequiredActiveTaskId": "06A_Z_02_GiveSprig_talk_Ahura",
+		"TopicId1": "06_AhuraFarid_SpreadJoy"
+	},
+	{
+		"ConversationStateId": "06_02_AhuraFarid",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_AhuraFarid",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_10"
+	},
+	{
+		"ConversationStateId": "06_00_MoiraChapman",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_MoiraChapman",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_MoiraChapman",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_MoiraChapman",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_02_MoiraChapman",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_MoiraChapman",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_00_TalesaSerrano",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_TalesaSerrano",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_TalesaSerrano",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_TalesaSerrano",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_03",
+		"LinearObjectiveId1": "06A_TS_01_GatherAndRefine"
+	},
+	{
+		"ConversationStateId": "06_02_TalesaSerrano",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_TalesaSerrano",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_TS_01"
+	},
+	{
+		"ConversationStateId": "06_00_KathrijnJanssen",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_KathrijnJanssen",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_KathrijnJanssen",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_KathrijnJanssen",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_10",
+		"LinearObjectiveId1": "06A_F_01_CollectJam"
+	},
+	{
+		"ConversationStateId": "06_02_KathrijnJanssen",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_KathrijnJanssen",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_F_01",
+		"LinearObjectiveId1": "06A_F_02_RecoverSpices"
+	},
+	{
+		"ConversationStateId": "06_03_KathrijnJanssen",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_KathrijnJanssen",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_F_02"
+	},
+	{
+		"ConversationStateId": "06_00_TsuiFen",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_TsuiFen",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_TsuiFen",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_TsuiFen",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_15",
+		"LinearObjectiveId1": "06A_T_01_DefeatPumas"
+	},
+	{
+		"ConversationStateId": "06_02_TsuiFen",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_TsuiFen",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_T_01",
+		"LinearObjectiveId1": "06A_T_02_DefeatBear"
+	},
+	{
+		"ConversationStateId": "06_03_TsuiFen",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_TsuiFen",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_T_02"
+	},
+	{
+		"ConversationStateId": "06_00_ZhangHaoyu",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_ZhangHaoyu",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_ZhangHaoyu",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_ZhangHaoyu",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_TS_01",
+		"LinearObjectiveId1": "06A_TS_02_ForgeSword"
+	},
+	{
+		"ConversationStateId": "06_02_ZhangHaoyu",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_ZhangHaoyu",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_TS_02"
+	},
+	{
+		"ConversationStateId": "06_00_LionelDeLaRue",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_LionelDeLaRue",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_LionelDeLaRue",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_LionelDeLaRue",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_13",
+		"LinearObjectiveId1": "06A_W_01_GetPatterns"
+	},
+	{
+		"ConversationStateId": "06_02_LionelDeLaRue",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_LionelDeLaRue",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_W_01"
+	},
+	{
+		"ConversationStateId": "06_00_UtkarshSingh",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_UtkarshSingh",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_UtkarshSingh",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_UtkarshSingh",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "06A_Z_02_SpreadJoy",
+		"RequiredActiveTaskId": "06A_Z_02_GiveSprig_talk_Utkarsh",
+		"TopicId1": "06_UtkarshSingh_SpreadJoy"
+	},
+	{
+		"ConversationStateId": "06_02_UtkarshSingh",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_UtkarshSingh",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_00_VerildisJannsen",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_VerildisJannsen",
+		"RequiredLevel": 0,
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "06_01_VerildisJannsen",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_VerildisJannsen",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_01",
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "06_02_VerildisJannsen",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_VerildisJannsen",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_02",
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "06_00_LiZihan",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_LiZihan",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_00_FudeHinode",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_FudeHinode",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_FudeHinode",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_FudeHinode",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_B_01"
+	},
+	{
+		"ConversationStateId": "06_00_FancyBrushSet",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_FancyBrushSet",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_FancyBrushSet",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_FancyBrushSet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_14",
+		"LinearObjectiveId1": "06A_B_01_ReturnBrushes"
+	},
+	{
+		"ConversationStateId": "06_00_YelenaPajitnova",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_YelenaPajitnova",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_YelenaPajitnova",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_YelenaPajitnova",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_11",
+		"LinearObjectiveId1": "06A_P_01_RecoverTools"
+	},
+	{
+		"ConversationStateId": "06_03_YelenaPajitnova",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_YelenaPajitnova",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_P_01",
+		"LinearObjectiveId1": "06A_P_02_DefeatKisare"
+	},
+	{
+		"ConversationStateId": "06_04_YelenaPajitnova",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_04_YelenaPajitnova",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_P_02",
+		"LinearObjectiveId1": "06A_P_03_RecoverEyepiece"
+	},
+	{
+		"ConversationStateId": "06_05_YelenaPajitnova",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_05_YelenaPajitnova",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_P_03"
+	},
+	{
+		"ConversationStateId": "06_00_RoyaHakimi",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_RoyaHakimi",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_RoyaHakimi",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_RoyaHakimi",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_05",
+		"LinearObjectiveId1": "06A_IR_01_FindCreed"
+	},
+	{
+		"ConversationStateId": "06_02_RoyaHakimi",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_RoyaHakimi",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_IR_01",
+		"LinearObjectiveId1": "06A_IR_02_GetSword"
+	},
+	{
+		"ConversationStateId": "06_03_RoyaHakimi",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_RoyaHakimi_PostSword",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_IR_02"
+	},
+	{
+		"ConversationStateId": "06_04_RoyaHakimi",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_RoyaHakimi",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_IR_02 && 06A_MSQ_19",
+		"LinearObjectiveId1": "06A_IR_03_DeliverLetter"
+	},
+	{
+		"ConversationStateId": "06_05_RoyaHakimi",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_04_RoyaHakimi",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_IR_03"
+	},
+	{
+		"ConversationStateId": "06_00_GideonStormsbane",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_GideonStormsbane",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_GideonStormsbane",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_GideonStormsbane",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_07",
+		"RequiredActiveObjectiveId": "06A_MSQ_08_RescueGideon",
+		"RequiredActiveTaskId": "06A_MSQ_08_RescueGideon_talk_Gideon",
+		"TopicId1": "06_GideonStormsbane_Rescue"
+	},
+	{
+		"ConversationStateId": "06_02_GideonStormsbane",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_GideonStormsbane",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_08"
+	},
+	{
+		"ConversationStateId": "06_03_GideonStormsbane",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_04_GideonStormsbane",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_IR_03"
+	},
+	{
+		"ConversationStateId": "06_00_ElricChapman",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_ElricChapman",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_ElricChapman",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_ElricChapman",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_03",
+		"LinearObjectiveId1": "06A_S_01_FindArcheologists"
+	},
+	{
+		"ConversationStateId": "06_02_ElricChapman",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01PostQuest_ElricChapman",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_S_01"
+	},
+	{
+		"ConversationStateId": "06_03_ElricChapman",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_ElricChapman",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_00_PriyaThakur",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_PriyaThakur",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_PriyaThakur",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_PriyaThakur",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "06A_Z_02_SpreadJoy",
+		"RequiredActiveTaskId": "06A_Z_02_GiveSprig_talk_Priya",
+		"TopicId1": "06_PriyaThakur_SpreadJoy"
+	},
+	{
+		"ConversationStateId": "06_02_PriyaThakur",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_PriyaThakur",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_00_MichaelLewis",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_MichaelLewis",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01a_MichaelLewis",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_MichaelLewis",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_05",
+		"RequiredActiveObjectiveId": "06A_MSQ_06_RescueFarmers",
+		"RequiredActiveTaskId": "06A_MSQ_06_RescueFarmers_rescue_Michael",
+		"TopicId1": "06_MichaelLewis_Trapped"
+	},
+	{
+		"ConversationStateId": "06_01_MichaelLewis",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_MichaelLewis",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "SwapActive_06_MichaelLewis_B",
+		"RequiredActiveObjectiveId": "06A_MSQ_06_RescueFarmers",
+		"RequiredActiveTaskId": "06A_MSQ_06_RescueFarmers_talk_Michael",
+		"TopicId1": "06_MichaelLewis_Farm"
+	},
+	{
+		"ConversationStateId": "06_02_MichaelLewis",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_MichaelLewis",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_06"
+	},
+	{
+		"ConversationStateId": "06_03_MichaelLewis",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_MichaelLewis",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_15",
+		"LinearObjectiveId1": "06A_G_01_DefeatPirates"
+	},
+	{
+		"ConversationStateId": "06_04_MichaelLewis",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_04_MichaelLewis",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_G_01"
+	},
+	{
+		"ConversationStateId": "06_00_LijsbetDeVries",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_LijsbetDeVries",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_LijsbetDeVries",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_LijsbetDeVries",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_04"
+	},
+	{
+		"ConversationStateId": "06_01a_LijsbetDeVries",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_LijsbetDeVries",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_05",
+		"RequiredActiveObjectiveId": "06A_MSQ_06_RescueFarmers",
+		"RequiredActiveTaskId": "06A_MSQ_06_RescueFarmers_rescue_Lijsbet",
+		"TopicId1": "06_LijsbetDeVries_Trapped"
+	},
+	{
+		"ConversationStateId": "06_02_LijsbetDeVries",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_LijsbetDeVries",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "SwapActive_06_LijsbetDeVries_B",
+		"TopicId1": "06_LijsbetDeVries_Farm"
+	},
+	{
+		"ConversationStateId": "06_00_TowerJournal",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_TowerJournal",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_00_MargotEmerson",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_MargotEmerson",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_MargotEmerson",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_MargotEmerson",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_04",
+		"LinearObjectiveId1": "06A_Z_02_SpreadJoy"
+	},
+	{
+		"ConversationStateId": "06_02_MargotEmerson",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_MargotEmerson",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_Z_02",
+		"LinearObjectiveId1": "06A_Z_01_GetBisonNotes"
+	},
+	{
+		"ConversationStateId": "06_03_MargotEmerson",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_MargotEmerson",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_Z_01"
+	},
+	{
+		"ConversationStateId": "06_00_Medea",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_00_Medea",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_01_Medea",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_01_Medea",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_15",
+		"TopicId1": "06_Medea_Eldergate"
+	},
+	{
+		"ConversationStateId": "06_02_Medea",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_02_Medea",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_16"
+	},
+	{
+		"ConversationStateId": "06_03_Medea",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_03_Medea",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_19",
+		"TopicId1": "06_Medea_Tribute"
+	},
+	{
+		"ConversationStateId": "06_04_Medea",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_04_Medea",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_20"
+	},
+	{
+		"ConversationStateId": "06_05_Medea",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_05_Medea",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_21",
+		"LinearObjectiveId1": "06A_MSQ_22_TalkToSoulwarden"
+	},
+	{
+		"ConversationStateId": "06_05a_Medea",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_05_Medea",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06A_MSQ_21 && 12_Quest_06",
+		"LinearObjectiveId1": "06A_MSQ_22_TalkToSoulwarden_alt"
+	},
+	{
+		"ConversationStateId": "0607_00_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0607_00_Commander",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0607_01_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0607_02_Commander",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0607_02_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0607_01_Commander",
+		"RequiredLevel": 0,
+		"TopicId1": "0602_Marauder_talk"
+	},
+	{
+		"ConversationStateId": "0607_03_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0607_03_Commander",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Selection"
+	},
+	{
+		"ConversationStateId": "0607_04_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0607_04_Commander",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0607_05_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0607_05_Commander",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0607_06_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0607_06_Commander",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0607_07_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0607_07a_Commander",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Board"
+	},
+	{
+		"ConversationStateId": "0607_08_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0607_07_Commander",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 60,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "0608_00_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0608_00_Alchemist",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0608_01_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0608_02_Alchemist",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "S_introtoallfactions_accepted"
+	},
+	{
+		"ConversationStateId": "0608_02_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0608_01_Alchemist",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "0602_0202_introtoallfactions",
+		"RequiredActiveTaskId": "0602_0202_d_02_02_TaskGameEvent_Syndicate",
+		"TopicId1": "0602_Syndicate_talk"
+	},
+	{
+		"ConversationStateId": "0608_03_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0608_03_Alchemist",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "S_timetochoose_accepted",
+		"ConversationService1": "Faction_Selection"
+	},
+	{
+		"ConversationStateId": "0608_04_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0608_04_Alchemist",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0608_05_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0608_05_Alchemist",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0608_06_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0608_06_Alchemist",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0608_07_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0608_07a_Alchemist",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Board"
+	},
+	{
+		"ConversationStateId": "0608_08_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0608_07_Alchemist",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 60,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "0609_00_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0609_00_Adjudicator",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0609_01_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0609_02_Adjudicator",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "S_introtoallfactions_accepted"
+	},
+	{
+		"ConversationStateId": "0609_02_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0609_01_Adjudicator",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "0602_0202_introtoallfactions",
+		"RequiredActiveTaskId": "0602_0202_d_02_03_TaskGameEvent_Covenant",
+		"TopicId1": "0602_Covenant_talk"
+	},
+	{
+		"ConversationStateId": "0609_03_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0609_03_Adjudicator",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "S_timetochoose_accepted",
+		"ConversationService1": "Faction_Selection"
+	},
+	{
+		"ConversationStateId": "0609_04_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0609_04_Adjudicator",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0609_05_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0609_05_Adjudicator",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0609_06_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0609_06_Adjudicator",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0609_07_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0609_07a_Adjudicator",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Board"
+	},
+	{
+		"ConversationStateId": "0609_08_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0609_07_Adjudicator",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 60,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "0623_00_Fisher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@0623_00_Fisher_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "0623_Fisher_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "0623_01_Fisher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0623_01_Fisher_DefaultDialog",
+		"RequiredLevel": 3,
+		"LinearObjectiveId1": "0623_0101_FQ01",
+		"TopicId1": "0623_Fisher_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "0623_02_Fisher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0623_02_Fisher_DefaultDialog",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FishingQuest_01",
+		"LinearObjectiveId1": "0623_0102_FQ02",
+		"TopicId1": "0623_Fisher_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "0623_03_Fisher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0623_03_Fisher_DefaultDialog",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FishingQuest_02",
+		"TopicId1": "0623_Fisher_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "0699_00_Barkimedes",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@0699_00_Barkimedes_DefaultDialog",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0699_01_Barkimedes",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0699_01_Barkimedes_DefaultDialog",
+		"RequiredLevel": 23,
+		"RequiredAchievement": "99_MSQ_20 || 04A_Side02_05",
+		"LinearObjectiveId1": "0699_0103_BarkimedesPup"
+	},
+	{
+		"ConversationStateId": "0699_02_Barkimedes",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0699_02_Barkimedes_DefaultDialog",
+		"RequiredLevel": 23,
+		"RequiredAchievement": "06_Quest_26",
+		"LinearObjectiveId1": "0699_0101_Barkimedes"
+	},
+	{
+		"ConversationStateId": "0699_03_Barkimedes",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0699_03_Barkimedes_DefaultDialog",
+		"RequiredLevel": 33,
+		"LinearObjectiveId1": "0699_0103_BarkimedesPup",
+		"LinearObjectiveId2": "0699_0101_Barkimedes",
+		"LinearObjectiveId3": "0699_0102_Barkimedes2"
+	},
+	{
+		"ConversationStateId": "0923_00_Fisher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@0923_00_Fisher_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "0923_Fisher_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "0923_01_Fisher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0923_01_Fisher_DefaultDialog",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FishingQuest_03",
+		"LinearObjectiveId1": "0923_0101_FQ04",
+		"TopicId1": "0923_Fisher_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "0923_02_Fisher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@0923_02_Fisher_DefaultDialog",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "FishingQuest_04",
+		"TopicId1": "0923_Fisher_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "06_GunterRost_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@06_GunterRost_greet_00",
+		"RequiredLevel": 0,
+		"TopicId1": "06_Gunter_FirstLight"
+	},
+	{
+		"ConversationStateId": "06_GunterRost_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@06_GunterRost_greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "06_Gunter_FirstLight_Heard"
+	},
+	{
+		"ConversationStateId": "02_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@02_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "02_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "04_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@04_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "04_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "05_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@05_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "05_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "06_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@06_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "06_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "07_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@07_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "07_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "08_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@08_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "08_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "11_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@11_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "11_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "12_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@12_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "12_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "13_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@13_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "13_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "15_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@15_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "15_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "16_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@16_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "16_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "10_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@10_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "10_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "03_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "03_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "14_00_Outfitter",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@14_00_Outfitter_DefaultDialog",
+		"RequiredLevel": 0,
+		"TopicId1": "14_00_Outfitter_Transmog",
+		"ConversationService1": "Transmog"
+	},
+	{
+		"ConversationStateId": "06_FLCrier1_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@06_FLCrier1_greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "06_FLCrier2_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@06_FLCrier2_greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "10_FLCrier1_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@10_FLCrier1_greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "10_FLCrier2_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@10_FLCrier2_greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "12_FLCrier1_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@12_FLCrier1_greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "12_FLCrier2_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@12_FLCrier2_greet_00",
+		"RequiredLevel": 0
+	}
+]
