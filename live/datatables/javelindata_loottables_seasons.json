@@ -2315,10 +2315,12 @@
 		"UseLevelGS": "TRUE",
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "[LBID]WorldEvent_S1_Armor",
-		"Item2": "[LBID]WorldEvent_S1_Weapons",
+		"Item1": "[LBID]WorldEvent_S1_Armor_Upleveled",
+		"Item2": "[LBID]WorldEvent_S1_Weapons_Upleveled",
 		"Item3": "[LTID]WorldEvent_S1_Furniture_PityTicker",
-		"Item4": "[LTID]WorldEvent_S1_BonusLoot_Subtable1"
+		"Item4": "[LTID]WorldEvent_S1_BonusLoot_Subtable1",
+		"Item5": "[LBID]WorldEvent_S1_WeaponPerkItems",
+		"Item6": "Darkmatter"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_BonusLoot_Qty",
@@ -2328,7 +2330,9 @@
 		"Item1": "1",
 		"Item2": "1",
 		"Item3": "1",
-		"Item4": "1"
+		"Item4": "1",
+		"Item5": "1",
+		"Item6": "20"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_BonusLoot_Probs",
@@ -2338,7 +2342,9 @@
 		"Item1": "0",
 		"Item2": "0",
 		"Item3": "0",
-		"Item4": "0"
+		"Item4": "0",
+		"Item5": "0",
+		"Item6": "0"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_BonusLoot_Subtable1",
@@ -2348,9 +2354,8 @@
 		"UseLevelGS": "TRUE",
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "[LBID]WorldEvent_S1_WeaponPerkItems",
-		"Item2": "[LBID]WorldEvent_S1_NamedGear",
-		"Item3": "[LBID]ChestShards"
+		"Item1": "[LBID]WorldEvent_S1_NamedGear_Upleveled",
+		"Item2": "[LBID]ChestShards"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_BonusLoot_Subtable1_Qty",
@@ -2358,17 +2363,15 @@
 		"HWMMult": 0,
 		"MaxRoll": 0,
 		"Item1": "1",
-		"Item2": "1",
-		"Item3": "1"
+		"Item2": "1"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_BonusLoot_Subtable1_Probs",
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 100000,
-		"Item1": "37000",
-		"Item2": "70000",
-		"Item3": "95000"
+		"Item1": "70000",
+		"Item2": "95000"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_BonusLoot_Subtable2",
