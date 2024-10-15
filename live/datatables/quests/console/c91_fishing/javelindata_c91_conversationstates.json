@@ -1,0 +1,174 @@
+[
+	{
+		"ConversationStateId": "fish_perronelle_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@fish_perronelle_00_DefaultDialogue"
+	},
+	{
+		"ConversationStateId": "fish_perronelle_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_perronelle_00_DefaultDialogue",
+		"RequiredAchievement": "S_introtosettlement",
+		"LinearObjectiveId1": "C91_FQ_01_UnpathedWaters"
+	},
+	{
+		"ConversationStateId": "fish_perronelle_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_perronelle_01_DefaultDialogue",
+		"RequiredAchievement": "C91_FishQ_01",
+		"LinearObjectiveId1": "C91_FQ_02_UndreamedShores"
+	},
+	{
+		"ConversationStateId": "fish_Perronelle_Vector_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_perronelle_01_DefaultDialogue",
+		"RequiredAchievement": "C91_FishQ_04_Swap",
+		"LinearObjectiveId1": "C91_FQ_02_UndreamedShores"
+	},
+	{
+		"ConversationStateId": "fish_Perronelle_Vector_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_perronelle_02_DefaultDialogue_Vector",
+		"RequiredAchievement": "C91_FishQ_02",
+		"LinearObjectiveId1": "C91_FQ_02_Vector"
+	},
+	{
+		"ConversationStateId": "fish_perronelle_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_perronelle_02_DefaultDialogue",
+		"RequiredAchievement": "C91_FishQ_02",
+		"LinearObjectiveId1": "C91_FQ_07_DepthsClose"
+	},
+	{
+		"ConversationStateId": "fish_perronelle_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C91_FQ_08_FisherKing_Perronelle_post",
+		"RequiredAchievement": "C91_FishQ_08"
+	},
+	{
+		"ConversationStateId": "fish_khadijah_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@fish_khadijah_00_DefaultDialogue"
+	},
+	{
+		"ConversationStateId": "fish_khadijah_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_khadijah_00_DefaultDialogue",
+		"RequiredAchievement": "C91_FQ_02_Vector",
+		"LinearObjectiveId1": "C91_FQ_03_DeboshedFish"
+	},
+	{
+		"ConversationStateId": "fish_khadijah_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_khadijah_01_DefaultDialogue",
+		"RequiredAchievement": "C91_FQ_05_Vector",
+		"LinearObjectiveId1": "C91_FQ_06_RotsHead",
+		"TopicId1": "C91_Khadijah_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "fish_khadijah_Vector_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_khadijah_02_DefaultDialogue_Vector",
+		"RequiredAchievement": "C91_FishQ_03",
+		"LinearObjectiveId1": "C91_FQ_03_Vector"
+	},
+	{
+		"ConversationStateId": "Fish_khadijah_Vector_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_khadijah_03_DefaultDialogue_Vector",
+		"RequiredAchievement": "C91_FishQ_06",
+		"LinearObjectiveId1": "C91_FQ_06_Vector"
+	},
+	{
+		"ConversationStateId": "fish_khadijah_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C91_FQ_08_FisherKing_Khadijah_post",
+		"RequiredAchievement": "C91_FishQ_08",
+		"TopicId1": "C91_Khadijah_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "fish_ishikawa_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@fish_ishikawa_00_DefaultDialogue",
+		"TopicId1": "C91_Ishii_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "fish_ishikawa_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_ishikawa_01_DefaultDialogue",
+		"RequiredAchievement": "C91_FQ_03_Vector",
+		"LinearObjectiveId1": "C91_FQ_04_MelancholyBait",
+		"TopicId1": "C91_Ishii_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "fish_ishikawa_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_ishikawa_02_DefaultDialogue",
+		"RequiredAchievement": "C91_FishQ_04",
+		"LinearObjectiveId1": "C91_FQ_05_GildedTombs",
+		"TopicId1": "C91_Ishii_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "fish_urashima_Vector_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_ishikawa_00_DefaultDialogue_Vector",
+		"RequiredAchievement": "C91_FishQ_05",
+		"LinearObjectiveId1": "C91_FQ_05_Vector"
+	},
+	{
+		"ConversationStateId": "fish_ishikawa_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C91_FQ_08_FisherKing_Urashima_post",
+		"RequiredAchievement": "C91_FishQ_08",
+		"TopicId1": "C91_Ishii_ExplainHotspots"
+	},
+	{
+		"ConversationStateId": "fish_pelles_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@fish_pelles_00_DefaultDialogue"
+	},
+	{
+		"ConversationStateId": "fish_pelles_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_pelles_00_DefaultDialogue",
+		"RequiredAchievement": "C91_FishQ_07",
+		"LinearObjectiveId1": "C91_FQ_08_FisherKing"
+	},
+	{
+		"ConversationStateId": "fish_pelles_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@fish_pelles_01_DefaultDialogue",
+		"RequiredAchievement": "C91_FQ_08_FisherKing_IGC_Watched",
+		"RequiredActiveObjectiveId": "C91_FQ_08_FisherKing",
+		"RequiredActiveTaskId": "C91_FQ_08_07_TaskTalkToPelles",
+		"TopicId1": "C91_FQ_08_FisherKing_T1"
+	},
+	{
+		"ConversationStateId": "fish_pelles_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C91_FQ_08_FisherKing_Pelles_post",
+		"RequiredAchievement": "C91_FishQ_07_Swap"
+	}
+]

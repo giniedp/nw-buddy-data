@@ -1,0 +1,896 @@
+[
+	{
+		"ConversationStateId": "C10A_Patricia_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Patricia_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Patricia_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Patricia_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_M1_CutlassKeys"
+	},
+	{
+		"ConversationStateId": "C10A_Patricia_M1_TalkTo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Patricia_TalkTo",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "C10A_M1_CutlassKeys",
+		"RequiredActiveTaskId": "C10A_M1_Container_3",
+		"TopicId1": "C10A_Patricia_M1"
+	},
+	{
+		"ConversationStateId": "C10A_Patricia_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Patricia_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "C10A_M1",
+		"TopicId1": "C10A_Patricia_PvP"
+	},
+	{
+		"ConversationStateId": "C10A_Grimm_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Grimm_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Grimm_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Grimm_01",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_M1_MetPatricia",
+		"LinearObjectiveId1": "C10A_M2_CursedDoubloons"
+	},
+	{
+		"ConversationStateId": "C10A_Grimm_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Grimm_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "C10A_M2"
+	},
+	{
+		"ConversationStateId": "C10A_Oxen_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Oxen_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Oxen_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Oxen_01",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_M1_MetPatricia",
+		"LinearObjectiveId1": "C10A_M3_MedusaRaidVector"
+	},
+	{
+		"ConversationStateId": "C10A_Oxen_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Oxen_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "C10A_M3"
+	},
+	{
+		"ConversationStateId": "C10A_Oxen_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Oxen_03",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "C10A_M4"
+	},
+	{
+		"ConversationStateId": "C10A_Trahern_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@1039_Druid_00_DefaultDialog",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Trahern_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1039_Druid_01_DefaultDialog",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_M3",
+		"LinearObjectiveId1": "C10A_M4_MedusaRaid"
+	},
+	{
+		"ConversationStateId": "C10A_Trahern_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@1039_Druid_02_DefaultDialog",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Wally_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Wally_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Wally_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Wally_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_M5_AdmiralBlackpowder"
+	},
+	{
+		"ConversationStateId": "C10A_Wally_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Wally_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "C10A_M5"
+	},
+	{
+		"ConversationStateId": "C10A_Rowan_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Rowan_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Rowan_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Rowan_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_M6_MysteriesOfDeep"
+	},
+	{
+		"ConversationStateId": "C10A_Rowan_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Rowan_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "C10A_M6"
+	},
+	{
+		"ConversationStateId": "C10A_Quiggley_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Quiggley_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Quiggley_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Quiggley_01",
+		"RequiredLevel": 60,
+		"LinearObjectiveId1": "C10A_M7_CleansingTreasure"
+	},
+	{
+		"ConversationStateId": "C10A_Quiggley_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Quiggley_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "C10A_M7",
+		"LinearObjectiveId1": "C10A_M7R_CleansingTreasure"
+	},
+	{
+		"ConversationStateId": "C10A_Plute_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Plute_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Plute_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Plute_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_S1_SeadogBrew"
+	},
+	{
+		"ConversationStateId": "C10A_Plute_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Plute_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S1",
+		"LinearObjectiveId1": "C10A_S1R_SeadogBrew"
+	},
+	{
+		"ConversationStateId": "C10A_Shillie_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Shillie_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Shillie_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Shillie_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_S2_AncientWonders"
+	},
+	{
+		"ConversationStateId": "C10A_Shillie_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Shillie_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S2",
+		"LinearObjectiveId1": "C10A_S3_AeternumTriangle"
+	},
+	{
+		"ConversationStateId": "C10A_Shillie_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Shillie_03",
+		"RequiredLevel": 65
+	},
+	{
+		"ConversationStateId": "C10A_Shillie_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Shillie_04",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S3",
+		"LinearObjectiveId1": "C10A_S3R_AeternumTriangle"
+	},
+	{
+		"ConversationStateId": "C10A_Antonia_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Antonia_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Antonia_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Antonia_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_S4_ExplosiveProspecting"
+	},
+	{
+		"ConversationStateId": "C10A_Antonia_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Antonia_02",
+		"RequiredLevel": 65
+	},
+	{
+		"ConversationStateId": "C10A_Antonia_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Antonia_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S4",
+		"LinearObjectiveId1": "C10A_S4R_ExplosiveProspecting"
+	},
+	{
+		"ConversationStateId": "C10A_Fei_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Fei_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Fei_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Fei_01",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S4",
+		"LinearObjectiveId1": "C10A_S5_LightningBottle"
+	},
+	{
+		"ConversationStateId": "C10A_Fei_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Fei_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S5",
+		"LinearObjectiveId1": "C10A_S6_LightningBottleTest"
+	},
+	{
+		"ConversationStateId": "C10A_Fei_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Fei_03",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S6"
+	},
+	{
+		"ConversationStateId": "C10A_Fei_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Fei_04",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S6",
+		"LinearObjectiveId1": "C10A_S6R_LightningBottleTest"
+	},
+	{
+		"ConversationStateId": "C10A_Decima_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Decima_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Decima_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Decima_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_Q6_Citadel"
+	},
+	{
+		"ConversationStateId": "C10A_Decima_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Decima_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_Q6",
+		"LinearObjectiveId1": "C10A_Q6R_Citadel"
+	},
+	{
+		"ConversationStateId": "C10A_Arnold_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Arnold_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Arnold_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Arnold_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_Q1_Build"
+	},
+	{
+		"ConversationStateId": "C10A_Arnold_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Arnold_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_Q1",
+		"LinearObjectiveId1": "C10A_Q1R_Build"
+	},
+	{
+		"ConversationStateId": "C10A_Tosch_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Tosch_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Tosch_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Tosch_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_S7_AnimalInstincts"
+	},
+	{
+		"ConversationStateId": "C10A_Tosch_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Tosch_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S7",
+		"LinearObjectiveId1": "C10A_S8_SnaggleTooth"
+	},
+	{
+		"ConversationStateId": "C10A_Tosch_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Tosch_03",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S8",
+		"LinearObjectiveId1": "C10A_S9_Catnipping"
+	},
+	{
+		"ConversationStateId": "C10A_Tosch_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Tosch_04",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S9",
+		"LinearObjectiveId1": "C10A_S10_TamingTheLionhearted"
+	},
+	{
+		"ConversationStateId": "C10A_Tosch_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Tosch_05",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S10",
+		"LinearObjectiveId1": "C10A_S11_PerfectCompanion"
+	},
+	{
+		"ConversationStateId": "C10A_Tosch_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Tosch_06",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S11",
+		"LinearObjectiveId1": "C10A_S11R_PerfectCompanion"
+	},
+	{
+		"ConversationStateId": "C10A_Nekumanesh_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Nekumanesh_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Nekumanesh_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Nekumanesh_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_S12_DisturbingSilence"
+	},
+	{
+		"ConversationStateId": "C10A_Nekumanesh_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Nekumanesh_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S12",
+		"LinearObjectiveId1": "C10A_S13_TrackingByTeeth"
+	},
+	{
+		"ConversationStateId": "C10A_Nekumanesh_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Nekumanesh_03",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S13",
+		"LinearObjectiveId1": "C10A_S14_HeartOfTheMarsh"
+	},
+	{
+		"ConversationStateId": "C10A_Nekumanesh_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Nekumanesh_04",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S14"
+	},
+	{
+		"ConversationStateId": "C10A_Claire_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Claire_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Claire_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Claire_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_S15_TreasureIsland"
+	},
+	{
+		"ConversationStateId": "C10A_Claire_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Claire_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S15"
+	},
+	{
+		"ConversationStateId": "C10A_Claire_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Claire_03",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S15",
+		"LinearObjectiveId1": "C10A_S15R_TreasureIsland"
+	},
+	{
+		"ConversationStateId": "C10A_Rosina_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Rosina_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Rosina_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Rosina_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_Q5_Souls"
+	},
+	{
+		"ConversationStateId": "C10A_Rosina_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Rosina_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_Q5",
+		"LinearObjectiveId1": "C10A_Q5R_Souls"
+	},
+	{
+		"ConversationStateId": "C10A_Innkeep_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Innkeep_Default",
+		"RequiredLevel": 0,
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "C10A_Billiam_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Billiam_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Billiam_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Billiam_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_Q3_Revelation"
+	},
+	{
+		"ConversationStateId": "C10A_Billiam_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Billiam_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_Q3",
+		"LinearObjectiveId1": "C10A_Q3R_Revelation"
+	},
+	{
+		"ConversationStateId": "C10A_Adjudicator_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Adjudicator_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Adjudicator_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Adjudicator_00",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "C10A_Adjudicator_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Adjudicator_01",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Adjudicator_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Adjudicator_02",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Adjudicator_Dummy",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Adjudicator_Default",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Selection"
+	},
+	{
+		"ConversationStateId": "C10A_Alchemist_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Alchemist_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Alchemist_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Alchemist_00",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "C10A_Alchemist_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Alchemist_01",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Alchemist_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Alchemist_02",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Alchemist_Dummy",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Alchemist_Default",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Selection"
+	},
+	{
+		"ConversationStateId": "C10A_Commander_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Commander_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Commander_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Commander_00",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "C10A_Commander_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Commander_01",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Commander_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Commander_02",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Commander_Dummy",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Commander_Default",
+		"RequiredLevel": 0,
+		"ConversationService1": "Faction_Selection"
+	},
+	{
+		"ConversationStateId": "C10A_Bronn_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Bronn_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Bronn_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Bronn_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_Q2_FreePirates"
+	},
+	{
+		"ConversationStateId": "C10A_Bronn_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Bronn_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_Q2",
+		"LinearObjectiveId1": "C10A_Q2R_FreePirates"
+	},
+	{
+		"ConversationStateId": "C10A_Kasper_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Kasper_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Kasper_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Kasper_01",
+		"RequiredLevel": 65,
+		"LinearObjectiveId1": "C10A_Q4_SpectralArtifacts"
+	},
+	{
+		"ConversationStateId": "C10A_Kasper_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Kasper_02",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_Q4",
+		"LinearObjectiveId1": "C10A_Q4R_SpectralArtifacts"
+	},
+	{
+		"ConversationStateId": "C10A_Table_LightningBottle_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Table_LightningBottle_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Table_LightningBottle_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Table_LightningBottle_01",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S5",
+		"LinearObjectiveId1": "C10A_S5R_LightningBottle"
+	},
+	{
+		"ConversationStateId": "C10A_Table_LightningBottle_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Table_LightningBottle_02",
+		"RequiredLevel": 65
+	},
+	{
+		"ConversationStateId": "C10A_Table_Snaggletooth_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Table_Snaggletooth_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Table_Snaggletooth_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Table_Snaggletooth_01",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S8",
+		"LinearObjectiveId1": "C10A_S8R_SnaggleTooth"
+	},
+	{
+		"ConversationStateId": "C10A_Table_Catnipping_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Table_Catnipping_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Table_Catnipping_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Table_Catnipping_01",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S9",
+		"LinearObjectiveId1": "C10A_S9R_Catnipping"
+	},
+	{
+		"ConversationStateId": "C10A_Table_Lionhearted_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Table_Lionhearted_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Table_Lionhearted_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Table_Lionhearted_01",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S10",
+		"LinearObjectiveId1": "C10A_S10R_TamingTheLionhearted"
+	},
+	{
+		"ConversationStateId": "C10A_Table_PerfectCompanion_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Table_PerfectCompanion_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Table_PerfectCompanion_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Table_PerfectCompanion_01",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S11",
+		"LinearObjectiveId1": "C10A_S11_PerfectCompanion"
+	},
+	{
+		"ConversationStateId": "C10A_Table_AnimalInstincts_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_Table_AnimalInstincts_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "C10A_Table_AnimalInstincts_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@C10A_Table_AnimalInstincts_01",
+		"RequiredLevel": 65,
+		"RequiredAchievement": "C10A_S7",
+		"LinearObjectiveId1": "C10A_S7R_AnimalInstincts"
+	},
+	{
+		"ConversationStateId": "Raid_CutlassKeys00_Perseus_Chapter01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Raid_CutlassKeys00_Perseus_Chapter01",
+		"RequiredLevel": 0,
+		"TopicId1": "C10A_Perseus_1_a"
+	},
+	{
+		"ConversationStateId": "Raid_CutlassKeys00_Perseus_Chapter02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Raid_CutlassKeys00_Perseus_Chapter02",
+		"RequiredLevel": 0,
+		"TopicId1": "C10A_Perseus_2_a"
+	},
+	{
+		"ConversationStateId": "Raid_CutlassKeys00_Perseus_Chapter03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Raid_CutlassKeys00_Perseus_Chapter03",
+		"RequiredLevel": 0,
+		"TopicId1": "C10A_Perseus_3_a"
+	},
+	{
+		"ConversationStateId": "C10A_DoubloonGuard_Default",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@C10A_DoubloonGuard_Default",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "Dungeon_CutlassKeys00_Scalleywag_00",
+		"ConversationType": "Conversation",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Dungeon_CutlassKeys00_Scalleywag_DefaultDialogue_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "Dungeon_CutlassKeys00_Scalleywag_01",
+		"ConversationType": "Conversation",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Dungeon_CutlassKeys00_Scalleywag_DefaultDialogue_01",
+		"RequiredLevel": 0,
+		"TopicId1": "Dungeon_CutlassKeys00_Scalleywag_01",
+		"TopicId2": "Dungeon_CutlassKeys00_Scalleywag_02",
+		"TopicId3": "Dungeon_CutlassKeys00_Scalleywag_03"
+	},
+	{
+		"ConversationStateId": "Dungeon_CutlassKeys00_Mariner_00",
+		"ConversationType": "Conversation",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Dungeon_CutlassKeys00_Mariner_DefaultDialogue_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "Dungeon_CutlassKeys00_Mariner_01",
+		"ConversationType": "Conversation",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Dungeon_CutlassKeys00_Mariner_DefaultDialogue_01",
+		"RequiredLevel": 0,
+		"TopicId1": "Dungeon_CutlassKeys00_Mariner_01"
+	}
+]

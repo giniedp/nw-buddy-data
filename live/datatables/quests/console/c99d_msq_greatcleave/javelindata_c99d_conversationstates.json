@@ -1,0 +1,568 @@
+[
+	{
+		"ConversationStateId": "99D_Yonas_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99D_Yonas_00"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_01",
+		"RequiredAchievement": "99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_02_a",
+		"RequiredAchievement": "99D_MSQ_01",
+		"LinearObjectiveId1": "99D_MSQ_02_ClimbRuins"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_03_a",
+		"RequiredAchievement": "99D_MSQ_02",
+		"RequiredActiveObjectiveId": "99D_MSQ_03_ThorpeBackstory",
+		"RequiredActiveTaskId": "99D_MSQ_03_ThorpeBackstory_talkToYonas",
+		"TopicId1": "99D_MSQ_03_Yonas_ThorpeNews"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_04",
+		"RequiredAchievement": "99D_MSQ_02 && 99D_Unlock_ThorpeCinematic"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_05_a",
+		"RequiredAchievement": "99D_MSQ_03",
+		"LinearObjectiveId1": "99D_MSQ_04_DestroyMines",
+		"TopicId1": "99D_MSQ_03_Yonas_Tempest"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_06",
+		"RequiredAchievement": "99D_MSQ_03",
+		"RequiredActiveObjectiveId": "99D_MSQ_04_DestroyMines",
+		"RequiredActiveTaskId": "99D_MSQ_04_DestroyMines_GoToPOI"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_07",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_07_a",
+		"RequiredAchievement": "99D_MSQ_04",
+		"LinearObjectiveId1": "99D_MSQ_05_CrossBridge"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_08",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_08",
+		"RequiredAchievement": "99D_MSQ_05"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_09",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_09_a",
+		"RequiredAchievement": "99D_MSQ_06",
+		"LinearObjectiveId1": "99D_MSQ_07_PortalFight"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_10",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_10",
+		"RequiredAchievement": "99D_MSQ_06",
+		"RequiredActiveObjectiveId": "99D_MSQ_07_PortalFight",
+		"RequiredActiveTaskId": "99D_MSQ_07_PortalFight_talkToWardenD"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_11",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_11_a",
+		"RequiredAchievement": "99D_MSQ_07",
+		"LinearObjectiveId1": "99D_MSQ_08_ThorpeFight"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_12",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_12",
+		"RequiredAchievement": "99D_MSQ_08",
+		"RequiredActiveObjectiveId": "99D_MSQ_09_Outpost,99D_MSQ_09_Outpost_destroyer,99D_MSQ_09_Outpost_musketeer,99D_MSQ_09_Outpost_mystic,99D_MSQ_09_Outpost_occultist,99D_MSQ_09_Outpost_ranger,99D_MSQ_09_Outpost_soldier,99D_MSQ_09_Outpost_swordsman",
+		"RequiredActiveTaskId": "99D_MSQ_09_Outpost_TalktoYonas",
+		"TopicId1": "99D_MSQ_09_Yonas_Medicine"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_13",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_13",
+		"RequiredAchievement": "99D_MSQ_08",
+		"RequiredActiveObjectiveId": "99D_MSQ_09_Outpost,99D_MSQ_09_Outpost_destroyer,99D_MSQ_09_Outpost_musketeer,99D_MSQ_09_Outpost_mystic,99D_MSQ_09_Outpost_occultist,99D_MSQ_09_Outpost_ranger,99D_MSQ_09_Outpost_soldier,99D_MSQ_09_Outpost_swordsman",
+		"RequiredActiveTaskId": "99D_MSQ_09_Outpost_TalktoYash"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_14",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_14_a",
+		"RequiredAchievement": "99D_MSQ_09",
+		"RequiredActiveObjectiveId": "99D_MSQ_10_CaerDun",
+		"RequiredActiveTaskId": "99D_MSQ_10_CaerDun_TalktoYonas",
+		"TopicId1": "99D_MSQ_10_Yonas_CaerDun"
+	},
+	{
+		"ConversationStateId": "99D_Yonas_15",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yonas_15",
+		"RequiredAchievement": "99D_MSQ_10"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99D_Galahad_00"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_01_a",
+		"RequiredAchievement": "99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)",
+		"LinearObjectiveId1": "99D_MSQ_01_RescueWarden"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_02_a",
+		"RequiredAchievement": "99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)",
+		"RequiredActiveObjectiveId": "99D_MSQ_01_RescueWarden",
+		"RequiredActiveTaskId": "99D_MSQ_01_RescueWarden_talkToGalahad",
+		"TopicId1": "99D_MSQ_01_Galahad_Resupply"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_03",
+		"RequiredAchievement": "99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)",
+		"RequiredActiveObjectiveId": "99D_MSQ_01_RescueWarden",
+		"RequiredActiveTaskId": "99D_MSQ_01_RescueWarden_Location2_container"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_04",
+		"RequiredAchievement": "99D_MSQ_01"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_05_a",
+		"RequiredAchievement": "99D_MSQ_02",
+		"LinearObjectiveId1": "99D_MSQ_03_ThorpeBackstory"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_06",
+		"RequiredAchievement": "99D_MSQ_02",
+		"RequiredActiveObjectiveId": "99D_MSQ_03_ThorpeBackstory",
+		"RequiredActiveTaskId": "99D_MSQ_03_ThorpeBackstory_talkToYonas"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_07",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_07",
+		"RequiredAchievement": "99D_MSQ_03"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_08",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_08_a",
+		"RequiredAchievement": "99D_MSQ_04",
+		"RequiredActiveObjectiveId": "99D_MSQ_05_CrossBridge",
+		"RequiredActiveTaskId": "99D_MSQ_05_CrossBridge_talkToGalahad",
+		"TopicId1": "99D_MSQ_05_Galahad_westoutpost"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_09",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_09",
+		"RequiredAchievement": "99D_MSQ_04 && SwapActive_MSQ_Galahad_GC_E"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_10",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_10",
+		"RequiredAchievement": "99D_MSQ_04 && SwapActive_MSQ_Galahad_GC_E && Lore_unlock_03_GreatCleave_Title_11_06"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_11",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_11_a",
+		"RequiredAchievement": "99D_MSQ_05",
+		"LinearObjectiveId1": "99D_MSQ_06_DestroyPortals"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_12",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_12_a",
+		"RequiredAchievement": "99D_MSQ_09",
+		"RequiredActiveObjectiveId": "99D_MSQ_10_CaerDun",
+		"RequiredActiveTaskId": "99D_MSQ_10_CaerDun_TalktoGalahad",
+		"TopicId1": "99D_MSQ_10_Galahad_DefendCaerDun"
+	},
+	{
+		"ConversationStateId": "99D_Galahad_13",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Galahad_13",
+		"RequiredAchievement": "99D_MSQ_09",
+		"RequiredActiveObjectiveId": "99D_MSQ_10_CaerDun",
+		"RequiredActiveTaskId": "99D_MSQ_10_CaerDun_ChopForPlanks1"
+	},
+	{
+		"ConversationStateId": "99D_Yash_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99D_Yash_00"
+	},
+	{
+		"ConversationStateId": "99D_Yash_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_01_a",
+		"RequiredAchievement": "99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)",
+		"RequiredActiveObjectiveId": "99D_MSQ_01_RescueWarden",
+		"RequiredActiveTaskId": "99D_MSQ_01_RescueWarden_talkToYash",
+		"TopicId1": "99D_MSQ_01_Yash_RescueWarden"
+	},
+	{
+		"ConversationStateId": "99D_Yash_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_06",
+		"RequiredAchievement": "(99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)) && SwapActive_MSQ_Yash_GC_B"
+	},
+	{
+		"ConversationStateId": "99D_Yash_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_03_a",
+		"RequiredAchievement": "99D_MSQ_04",
+		"RequiredActiveObjectiveId": "99D_MSQ_05_CrossBridge",
+		"RequiredActiveTaskId": "99D_MSQ_05_CrossBridge_talkToYash",
+		"TopicId1": "99D_MSQ_05_Yash_ExchangeInfo"
+	},
+	{
+		"ConversationStateId": "99D_Yash_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_04",
+		"RequiredAchievement": "99D_MSQ_04",
+		"RequiredActiveObjectiveId": "99D_MSQ_05_CrossBridge",
+		"RequiredActiveTaskId": "99D_MSQ_05_CrossBridge_GoToPOI2"
+	},
+	{
+		"ConversationStateId": "99D_Yash_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_05_a",
+		"RequiredAchievement": "99D_MSQ_06",
+		"RequiredActiveObjectiveId": "99D_MSQ_07_PortalFight",
+		"RequiredActiveTaskId": "99D_MSQ_07_PortalFight_talkToYashPortal",
+		"TopicId1": "99D_MSQ_07_Yash_Portal"
+	},
+	{
+		"ConversationStateId": "99D_Yash_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_06",
+		"RequiredAchievement": "99D_MSQ_06 && 99D_Unlock_CorruptedPortal"
+	},
+	{
+		"ConversationStateId": "99D_Yash_07",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_07",
+		"RequiredAchievement": "99D_MSQ_06 && 99D_Unlock_CorruptedShrine"
+	},
+	{
+		"ConversationStateId": "99D_Yash_08",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_08",
+		"RequiredAchievement": "99D_MSQ_07"
+	},
+	{
+		"ConversationStateId": "99D_Yash_09",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_09",
+		"RequiredAchievement": "99D_MSQ_07 && SwapActive_MSQ_Yash_GC_G"
+	},
+	{
+		"ConversationStateId": "99D_Yash_10",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_10_a",
+		"RequiredAchievement": "99D_MSQ_08",
+		"LinearObjectiveId1": "99D_MSQ_09_Outpost",
+		"LinearObjectiveId2": "99D_MSQ_09_Outpost_destroyer",
+		"LinearObjectiveId3": "99D_MSQ_09_Outpost_musketeer",
+		"LinearObjectiveId4": "99D_MSQ_09_Outpost_mystic",
+		"LinearObjectiveId5": "99D_MSQ_09_Outpost_occultist",
+		"LinearObjectiveId6": "99D_MSQ_09_Outpost_ranger",
+		"LinearObjectiveId7": "99D_MSQ_09_Outpost_soldier",
+		"LinearObjectiveId8": "99D_MSQ_09_Outpost_swordsman"
+	},
+	{
+		"ConversationStateId": "99D_Yash_11",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_11",
+		"RequiredAchievement": "99D_MSQ_08",
+		"RequiredActiveObjectiveId": "99D_MSQ_09_Outpost,99D_MSQ_09_Outpost_destroyer,99D_MSQ_09_Outpost_musketeer,99D_MSQ_09_Outpost_mystic,99D_MSQ_09_Outpost_occultist,99D_MSQ_09_Outpost_ranger,99D_MSQ_09_Outpost_soldier,99D_MSQ_09_Outpost_swordsman",
+		"RequiredActiveTaskId": "99D_MSQ_09_Outpost_TalktoYash",
+		"TopicId1": "99D_MSQ_09_Yash_Medicine"
+	},
+	{
+		"ConversationStateId": "99D_Yash_12",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Yash_12",
+		"RequiredAchievement": "99D_MSQ_09"
+	},
+	{
+		"ConversationStateId": "99D_Grace_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99D_Grace_00"
+	},
+	{
+		"ConversationStateId": "99D_Grace_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Grace_01_a",
+		"RequiredAchievement": "99D_MSQ_08",
+		"RequiredActiveObjectiveId": "99D_MSQ_09_Outpost,99D_MSQ_09_Outpost_destroyer,99D_MSQ_09_Outpost_musketeer,99D_MSQ_09_Outpost_mystic,99D_MSQ_09_Outpost_occultist,99D_MSQ_09_Outpost_ranger,99D_MSQ_09_Outpost_soldier,99D_MSQ_09_Outpost_swordsman",
+		"RequiredActiveTaskId": "99D_MSQ_09_Outpost_TalktoGrace",
+		"TopicId1": "99D_MSQ_09_Grace_Supplies"
+	},
+	{
+		"ConversationStateId": "99D_Grace_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Grace_02",
+		"RequiredAchievement": "99D_MSQ_08",
+		"RequiredActiveObjectiveId": "99D_MSQ_09_Outpost,99D_MSQ_09_Outpost_destroyer,99D_MSQ_09_Outpost_musketeer,99D_MSQ_09_Outpost_mystic,99D_MSQ_09_Outpost_occultist,99D_MSQ_09_Outpost_ranger,99D_MSQ_09_Outpost_soldier,99D_MSQ_09_Outpost_swordsman",
+		"RequiredActiveTaskId": "99D_MSQ_09_Outpost_SearchMedicine"
+	},
+	{
+		"ConversationStateId": "99D_Grace_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_Grace_03_a",
+		"RequiredAchievement": "99D_MSQ_09",
+		"LinearObjectiveId1": "99D_MSQ_10_CaerDun"
+	},
+	{
+		"ConversationStateId": "99D_JuditheOwens_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99D_JuditheOwens_00"
+	},
+	{
+		"ConversationStateId": "99D_JuditheOwens_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_JuditheOwens_01",
+		"RequiredAchievement": "99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)",
+		"RequiredActiveObjectiveId": "99D_MSQ_01_RescueWarden",
+		"RequiredActiveTaskId": "99D_MSQ_01_RescueWarden_talkToWardenA",
+		"TopicId1": "99D_MSQ_01_Judithe_RescueWarden"
+	},
+	{
+		"ConversationStateId": "99D_JuditheOwens_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_JuditheOwens_02",
+		"RequiredAchievement": "(99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)) && SwapActive_MSQ_SoulWardenA_B"
+	},
+	{
+		"ConversationStateId": "99D_JuditheOwens_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_JuditheOwens_03",
+		"RequiredAchievement": "99D_MSQ_05"
+	},
+	{
+		"ConversationStateId": "99D_JuditheOwens_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_JuditheOwens_04",
+		"RequiredAchievement": "99D_MSQ_07"
+	},
+	{
+		"ConversationStateId": "99D_PedroCarrillo_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99D_PedroCarrillo_00"
+	},
+	{
+		"ConversationStateId": "99D_PedroCarrillo_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_PedroCarrillo_01",
+		"RequiredAchievement": "99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)",
+		"RequiredActiveObjectiveId": "99D_MSQ_01_RescueWarden",
+		"RequiredActiveTaskId": "99D_MSQ_01_RescueWarden_talkToWardenB",
+		"TopicId1": "99D_MSQ_01_Pedro_RescueWarden"
+	},
+	{
+		"ConversationStateId": "99D_PedroCarrillo_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_PedroCarrillo_02",
+		"RequiredAchievement": "(99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)) && SwapActive_MSQ_SoulWardenB_B"
+	},
+	{
+		"ConversationStateId": "99D_PedroCarrillo_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_PedroCarrillo_03",
+		"RequiredAchievement": "99D_MSQ_05"
+	},
+	{
+		"ConversationStateId": "99D_PedroCarrillo_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_PedroCarrillo_04",
+		"RequiredAchievement": "99D_MSQ_08"
+	},
+	{
+		"ConversationStateId": "99D_PedroCarrillo_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_PedroCarrillo_00",
+		"RequiredAchievement": "(99D_MSQ_08 || 99_MSQ_35) && 03_Quest_30"
+	},
+	{
+		"ConversationStateId": "99D_OfusaMatsui_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99D_OfusaMatsui_00"
+	},
+	{
+		"ConversationStateId": "99D_OfusaMatsui_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_OfusaMatsui_01",
+		"RequiredAchievement": "99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)"
+	},
+	{
+		"ConversationStateId": "99D_OfusaMatsui_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_OfusaMatsui_02",
+		"RequiredAchievement": "99D_MSQ_06",
+		"RequiredActiveObjectiveId": "99D_MSQ_07_PortalFight",
+		"RequiredActiveTaskId": "99D_MSQ_07_PortalFight_talkToWardenC",
+		"TopicId1": "99D_MSQ_07_Ofusa_RescuePortal"
+	},
+	{
+		"ConversationStateId": "99D_OfusaMatsui_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_OfusaMatsui_03",
+		"RequiredAchievement": "99D_MSQ_06 && SwapActive_MSQ_SoulWardenC_C"
+	},
+	{
+		"ConversationStateId": "99D_OfusaMatsui_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_OfusaMatsui_04",
+		"RequiredAchievement": "99D_MSQ_07"
+	},
+	{
+		"ConversationStateId": "99D_OfusaMatsui_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_OfusaMatsui_05",
+		"RequiredAchievement": "99D_MSQ_08"
+	},
+	{
+		"ConversationStateId": "99D_JacquetDavy_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99D_JacquetDavy_00"
+	},
+	{
+		"ConversationStateId": "99D_JacquetDavy_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_JacquetDavy_01",
+		"RequiredAchievement": "99C_MSQ_12||(99_MSQ_35&&!99_MSQ_57)"
+	},
+	{
+		"ConversationStateId": "99D_JacquetDavy_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_JacquetDavy_02",
+		"RequiredAchievement": "99D_MSQ_06",
+		"RequiredActiveObjectiveId": "99D_MSQ_07_PortalFight",
+		"RequiredActiveTaskId": "99D_MSQ_07_PortalFight_talkToWardenD",
+		"TopicId1": "99D_MSQ_07_Jacquet_RescuePortal"
+	},
+	{
+		"ConversationStateId": "99D_JacquetDavy_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_JacquetDavy_03",
+		"RequiredAchievement": "99D_MSQ_06 && SwapActive_MSQ_SoulWardenD_A"
+	},
+	{
+		"ConversationStateId": "99D_JacquetDavy_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_JacquetDavy_04",
+		"RequiredAchievement": "99D_MSQ_08"
+	},
+	{
+		"ConversationStateId": "99D_PhanDacKien_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99D_PhanDacKien_00"
+	},
+	{
+		"ConversationStateId": "99D_JamesSexton_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99D_JamesSexton_00"
+	}
+]

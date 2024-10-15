@@ -1,0 +1,58 @@
+[
+	{
+		"ObjectiveID": "Vector_Faction_PushQuest",
+		"Type": "Journey",
+		"DifficultyLevel": 17,
+		"Task": "Vector_Faction_PushQuest_container",
+		"AchievementId": "Faction_Push",
+		"RequiredAchievementId": "99A_MSQ_01 && !Faction_Push_Start",
+		"RequiredLevel": 17,
+		"PushObjectiveOnReqMet": true,
+		"PushObjectiveOnReqRetrigger": false,
+		"CanBeAbandoned": true,
+		"Title": "@Vector_Faction_PushQuest_Title",
+		"Description": "@Vector_Faction_PushQuest_Desc"
+	},
+	{
+		"ObjectiveID": "Vector_Crafting_MB_PushQuest",
+		"Type": "Journey",
+		"DifficultyLevel": 10,
+		"Task": "Vector_Crafting_MB_PushQuest_container",
+		"AchievementId": "Crafting_MB_Push",
+		"RequiredAchievementId": "12A_Side_03 && !(MB_Start || 12A_Side_15)",
+		"RequiredLevel": 10,
+		"PushObjectiveOnReqMet": true,
+		"PushObjectiveOnReqRetrigger": false,
+		"CanBeAbandoned": true,
+		"Title": "@Vector_Crafting_MB_PushQuest_Title",
+		"Description": "@Vector_Crafting_MB_PushQuest_Desc"
+	},
+	{
+		"ObjectiveID": "Vector_Crafting_WW_PushQuest",
+		"Type": "Journey",
+		"DifficultyLevel": 10,
+		"Task": "Vector_Crafting_WW_PushQuest_container",
+		"AchievementId": "Crafting_WW_Push",
+		"RequiredAchievementId": "06A_MSQ_03 && !(WW_Start || 06A_TS_01)",
+		"RequiredLevel": 10,
+		"PushObjectiveOnReqMet": true,
+		"PushObjectiveOnReqRetrigger": false,
+		"CanBeAbandoned": true,
+		"Title": "@Vector_Crafting_WW_PushQuest_Title",
+		"Description": "@Vector_Crafting_WW_PushQuest_Desc"
+	},
+	{
+		"ObjectiveID": "Vector_Mounts_PushQuest",
+		"Type": "MountUnlock",
+		"DifficultyLevel": 20,
+		"Task": "Vector_Mounts_PushQuest_container",
+		"AchievementId": "Vector_Mounts_Push",
+		"RequiredAchievementId": "Expansion_2023_Unlock && !(Vector_Mounts_PushQuest || MountType_Unlock_Horse)",
+		"RequiredLevel": 20,
+		"PushObjectiveOnReqMet": true,
+		"PushObjectiveOnReqRetrigger": false,
+		"CanBeAbandoned": true,
+		"Title": "@Vector_Mounts_PushQuest_Title",
+		"Description": "@Vector_Mounts_PushQuest_Desc"
+	}
+]

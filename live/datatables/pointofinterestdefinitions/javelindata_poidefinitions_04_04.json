@@ -115,7 +115,7 @@
 		"TerritoryID": 40405,
 		"NameLocalizationKey": "@ui_poi_military_camp_40405",
 		"IsPOI": true,
-		"MapIcon": "lyshineui/images/map/icon/pois/military_camp_elite.webp",
+		"MapIcon": "lyshineui/images/map/icon/pois/abandoned_campsite_elite.webp",
 		"DiscoveryRadius": 375,
 		"IsDiscoverable": true,
 		"IsChartable": true,
@@ -209,21 +209,19 @@
 		"TerritoryID": 40408,
 		"NameLocalizationKey": "@ui_poi_damnedfortress_40408",
 		"IsPOI": true,
-		"MapIcon": "lyshineui/images/map/icon/pois/abandonedcity_elite.webp",
+		"MapIcon": "lyshineui/images/map/icon/pois/abandonedcity.webp",
 		"DiscoveryRadius": 600,
 		"IsDiscoverable": true,
 		"IsChartable": true,
 		"DefaultAchievement": 0,
 		"LootTags": [
 			"UpperSvikin",
-			"Corrupted",
-			"EPOI"
+			"Corrupted"
 		],
 		"DiscoveredAchievement": "damnedfortress_40408_discovered",
 		"ChartedAchievement": "damnedfortress_40408_charted",
 		"POITag": [
-			"damnedfortress",
-			"elite"
+			"damnedfortress"
 		],
 		"AudioGroup": "POI_State",
 		"AudioState": "damned",
@@ -236,7 +234,7 @@
 		"LevelRange": "33-55",
 		"Containers": 30,
 		"TooltipBackground": "lyshineui/images/map/tooltipimages/poi/maptooltip_elite_caminus.webp",
-		"GroupSize": 3,
+		"GroupSize": 0,
 		"IsCollapsible": false,
 		"RecommendedLevel": 0
 	},
@@ -498,7 +496,7 @@
 		"TerritoryID": 40418,
 		"NameLocalizationKey": "@ui_poi_village_40418",
 		"IsPOI": true,
-		"MapIcon": "lyshineui/images/map/icon/pois/farmingvillage.webp",
+		"MapIcon": "lyshineui/images/map/icon/pois/abandoned_village.webp",
 		"DiscoveryRadius": 200,
 		"IsDiscoverable": true,
 		"IsChartable": true,
@@ -754,7 +752,7 @@
 		"TerritoryID": 40428,
 		"NameLocalizationKey": "@ui_poi_dungeon_shattermtn_40428",
 		"IsPOI": true,
-		"MapIcon": "lyshineui/images/map/icon/pois/expedition_isabella.webp",
+		"MapIcon": "lyshineui/images/map/icon/pois/expedition.webp",
 		"DiscoveryRadius": 150,
 		"IsDiscoverable": true,
 		"IsChartable": true,
@@ -830,7 +828,7 @@
 		"TerritoryID": 40431,
 		"NameLocalizationKey": "@ui_poi_CrowsNest_40431",
 		"IsPOI": true,
-		"MapIcon": "lyshineui/images/map/icon/pois/hires/silver_crows.webp",
+		"MapIcon": "lyshineui/images/map/icon/pois/silver_crows.webp",
 		"DiscoveryRadius": 150,
 		"IsDiscoverable": false,
 		"IsChartable": true,
@@ -925,10 +923,10 @@
 	},
 	{
 		"TerritoryID": 40435,
-		"NameLocalizationKey": "@ui_poi_daichi_dojo",
+		"NameLocalizationKey": "@ui_poi_daichi_dojo_DailySoloTrials",
 		"IsPOI": true,
-		"MapIcon": "lyshineui/images/territory/standingrewards/housepoint_icon.webp",
-		"DiscoveryRadius": 250,
+		"MapIcon": "lyshineui/images/map/icon/pois/trial_soul.webp",
+		"DiscoveryRadius": 60,
 		"IsDiscoverable": false,
 		"IsChartable": true,
 		"DefaultAchievement": 0,
@@ -941,6 +939,8 @@
 		"CanPlaceCamp": false,
 		"DevName": "Daichi Dojo",
 		"Containers": 0,
+		"TooltipBackground": "lyshineui/images/map/tooltipimages/solotrial/maptooltip_trialseason04q02.webp",
+		"GameMode": "TrialSeason04Q02",
 		"GroupSize": 0,
 		"IsCollapsible": false,
 		"RecommendedLevel": 0
@@ -949,7 +949,7 @@
 		"TerritoryID": 40436,
 		"NameLocalizationKey": "@ui_poi_daichi_valley",
 		"IsPOI": true,
-		"MapIcon": "lyshineui/images/map/icon/pois/angryearth_camp.webp",
+		"MapIcon": "lyshineui/images/map/icon/pois/abandoned_campsite.webp",
 		"DiscoveryRadius": 350,
 		"IsDiscoverable": true,
 		"IsChartable": true,
@@ -1038,7 +1038,7 @@
 		"TerritoryID": 40439,
 		"NameLocalizationKey": "@ui_poi_strangers_campsite_40439",
 		"IsPOI": true,
-		"MapIcon": "lyshineui/images/map/icon/pois/strangerscampsite.webp",
+		"MapIcon": "lyshineui/images/map/icon/pois/abandoned_campsite.webp",
 		"DiscoveryRadius": 250,
 		"IsDiscoverable": true,
 		"IsChartable": true,
@@ -1138,5 +1138,33 @@
 		"IsCollapsible": false,
 		"RecommendedLevel": 0,
 		"UnchartedIcon": "lyshineui/images/map/icon/pois/spirit_shrine.webp"
+	},
+	{
+		"TerritoryID": 40443,
+		"NameLocalizationKey": "@ui_poi_trial_isabella_40443",
+		"IsPOI": true,
+		"MapIcon": "lyshineui/images/map/icon/pois/trial_soul.webp",
+		"DiscoveryRadius": 60,
+		"IsDiscoverable": false,
+		"IsChartable": true,
+		"DefaultAchievement": 0,
+		"ChartedAchievement": "trial_isabella_40443_charted",
+		"POITag": [
+			"trial_isabella_40443"
+		],
+		"AudioGroup": "POI_State",
+		"AudioState": "damned",
+		"AudioBank": "Damned",
+		"CanPlaceCamp": false,
+		"DevName": "QuestIsabella",
+		"VitalsCategory": [
+			"Corrupted"
+		],
+		"Containers": 0,
+		"TooltipBackground": "lyshineui/images/map/tooltipimages/solotrial/maptooltip_questisabella.webp",
+		"GameMode": "QuestIsabella",
+		"GroupSize": 0,
+		"IsCollapsible": false,
+		"RecommendedLevel": 0
 	}
 ]

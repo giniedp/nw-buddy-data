@@ -659,7 +659,7 @@
 		"LootTableID": "SalvageArmorTier5_GearscoreSortLarge_Probs",
 		"MaxRoll": 0,
 		"Item1": "500",
-		"Item2": "600"
+		"Item2": "675"
 	},
 	{
 		"LootTableID": "MasterSalvageArmorMedium",
@@ -1381,7 +1381,7 @@
 		"LootTableID": "SalvageArmorTier5_GearscoreSortMedium_Probs",
 		"MaxRoll": 0,
 		"Item1": "500",
-		"Item2": "600"
+		"Item2": "675"
 	},
 	{
 		"LootTableID": "SalvageArmorTier5_500_599Medium",
@@ -1400,7 +1400,7 @@
 	{
 		"LootTableID": "SalvageArmorTier5_500_599Medium_Probs",
 		"MaxRoll": 0,
-		"Item1": "0",
+		"Item1": "35000",
 		"Item2": "84000"
 	},
 	{
@@ -1419,8 +1419,8 @@
 	},
 	{
 		"LootTableID": "SalvageArmorTier5_600Medium_Probs",
-		"MaxRoll": 0,
-		"Item1": "0",
+		"MaxRoll": 100000,
+		"Item1": "35000",
 		"Item2": "84000"
 	},
 	{
@@ -2143,7 +2143,7 @@
 		"LootTableID": "SalvageArmorTier5_GearscoreSortSmall_Probs",
 		"MaxRoll": 0,
 		"Item1": "500",
-		"Item2": "600"
+		"Item2": "675"
 	},
 	{
 		"LootTableID": "SalvageArmorTier5_500_599Small",
@@ -2181,8 +2181,8 @@
 	},
 	{
 		"LootTableID": "SalvageArmorTier5_600Small_Probs",
-		"MaxRoll": 0,
-		"Item1": "0",
+		"MaxRoll": 100000,
+		"Item1": "35000",
 		"Item2": "92000"
 	},
 	{
@@ -2820,7 +2820,7 @@
 	{
 		"LootTableID": "SalvageJewelryTier5Rareity4_Probs",
 		"MaxRoll": 100000,
-		"Item1": "0",
+		"Item1": "35000",
 		"Item2": "0"
 	},
 	{
@@ -2832,8 +2832,8 @@
 		],
 		"ConditionOverridesRoll": "TRUE",
 		"MaxRoll": 0,
-		"Item1": "PerfectSalvageJewelryT5",
-		"Item2": "PerfectSalvageJewelryT51"
+		"Item1": "[LTID]SalvageJewelryTier5_500_599Small",
+		"Item2": "[LTID]SalvageJewelryTier5_600Small"
 	},
 	{
 		"LootTableID": "SalvageJewelryTier5_GearscoreSort_Qty",
@@ -2845,7 +2845,47 @@
 		"LootTableID": "SalvageJewelryTier5_GearscoreSort_Probs",
 		"MaxRoll": 0,
 		"Item1": "500",
-		"Item2": "600"
+		"Item2": "675"
+	},
+	{
+		"LootTableID": "SalvageJewelryTier5_500_599Small",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"MaxRoll": 0,
+		"Item1": "PerfectSalvageJewelryT5",
+		"Item2": "PerfectSalvageJewelryT5"
+	},
+	{
+		"LootTableID": "SalvageJewelryTier5_500_599Small_Qty",
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "SalvageJewelryTier5_500_599Small_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "92000"
+	},
+	{
+		"LootTableID": "SalvageJewelryTier5_600Small",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"MaxRoll": 0,
+		"Item1": "PerfectSalvageJewelryT51",
+		"Item2": "PerfectSalvageJewelryT51"
+	},
+	{
+		"LootTableID": "SalvageJewelryTier5_600Small_Qty",
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "SalvageJewelryTier5_600Small_Probs",
+		"MaxRoll": 100000,
+		"Item1": "35000",
+		"Item2": "92000"
 	},
 	{
 		"LootTableID": "MasterSalvageWeaponLarge",
@@ -3482,7 +3522,7 @@
 	{
 		"LootTableID": "SalvageWeaponTier5Rareity4Large_Probs",
 		"MaxRoll": 100000,
-		"Item1": "0",
+		"Item1": "35000",
 		"Item2": "0"
 	},
 	{
@@ -3507,7 +3547,7 @@
 		"LootTableID": "SalvageWeaponTier5_GearscoreSortLarge_Probs",
 		"MaxRoll": 0,
 		"Item1": "500",
-		"Item2": "600"
+		"Item2": "675"
 	},
 	{
 		"LootTableID": "MasterSalvageWeaponSmall",
@@ -4229,7 +4269,7 @@
 		"LootTableID": "SalvageWeaponTier5_GearscoreSortSmall_Probs",
 		"MaxRoll": 0,
 		"Item1": "500",
-		"Item2": "600"
+		"Item2": "675"
 	},
 	{
 		"LootTableID": "SalvageWeaponTier5_500_599Small",
@@ -4248,7 +4288,7 @@
 	{
 		"LootTableID": "SalvageWeaponTier5_500_599Small_Probs",
 		"MaxRoll": 100000,
-		"Item1": "0",
+		"Item1": "35000",
 		"Item2": "60000"
 	},
 	{
@@ -4268,7 +4308,7 @@
 	{
 		"LootTableID": "SalvageWeaponTier5_600Small_Probs",
 		"MaxRoll": 100000,
-		"Item1": "0",
+		"Item1": "35000",
 		"Item2": "60000"
 	},
 	{
@@ -4906,7 +4946,7 @@
 	{
 		"LootTableID": "SalvageEngineerTier5Rareity4Large_Probs",
 		"MaxRoll": 100000,
-		"Item1": "0",
+		"Item1": "35000",
 		"Item2": "0"
 	},
 	{
@@ -4931,7 +4971,7 @@
 		"LootTableID": "SalvageEngineerTier5_GearscoreSortLarge_Probs",
 		"MaxRoll": 0,
 		"Item1": "500",
-		"Item2": "600"
+		"Item2": "675"
 	},
 	{
 		"LootTableID": "MasterSalvageEngineerSmall",
@@ -5230,7 +5270,7 @@
 	{
 		"LootTableID": "SalvageEngineerTier1Rareity4Small_Probs",
 		"MaxRoll": 100000,
-		"Item1": "0",
+		"Item1": "35000",
 		"Item2": "60000",
 		"Item3": "0"
 	},
@@ -5333,7 +5373,7 @@
 	{
 		"LootTableID": "SalvageEngineerTier2Rareity4Small_Probs",
 		"MaxRoll": 100000,
-		"Item1": "0",
+		"Item1": "35000",
 		"Item2": "60000",
 		"Item3": "0"
 	},
@@ -5436,7 +5476,7 @@
 	{
 		"LootTableID": "SalvageEngineerTier3Rareity4Small_Probs",
 		"MaxRoll": 100000,
-		"Item1": "0",
+		"Item1": "35000",
 		"Item2": "60000",
 		"Item3": "0"
 	},
@@ -5539,7 +5579,7 @@
 	{
 		"LootTableID": "SalvageEngineerTier4Rareity4Small_Probs",
 		"MaxRoll": 100000,
-		"Item1": "0",
+		"Item1": "35000",
 		"Item2": "60000",
 		"Item3": "0"
 	},
@@ -5653,7 +5693,7 @@
 		"LootTableID": "SalvageEngineerTier5_GearscoreSortSmall_Probs",
 		"MaxRoll": 0,
 		"Item1": "500",
-		"Item2": "600"
+		"Item2": "675"
 	},
 	{
 		"LootTableID": "SalvageEngineerTier5_500_599Small",
@@ -5686,14 +5726,14 @@
 	{
 		"LootTableID": "SalvageEngineerTier5_600Small_Qty",
 		"MaxRoll": 0,
-		"Item1": "2",
+		"Item1": "1",
 		"Item2": "1"
 	},
 	{
 		"LootTableID": "SalvageEngineerTier5_600Small_Probs",
-		"MaxRoll": 0,
-		"Item1": "0",
-		"Item2": "60000"
+		"MaxRoll": 100000,
+		"Item1": "35000",
+		"Item2": "92000"
 	},
 	{
 		"LootTableID": "MasterSalvageArcane",
@@ -6355,7 +6395,7 @@
 		"LootTableID": "SalvageArcaneTier5_GearscoreSort_Probs",
 		"MaxRoll": 0,
 		"Item1": "500",
-		"Item2": "600"
+		"Item2": "675"
 	},
 	{
 		"LootTableID": "SalvageArcaneTier5_500_599",
@@ -8361,6 +8401,26 @@
 		"LootTableID": "SalvageMetalPreciousT5GearscoreSortSmall_Probs",
 		"MaxRoll": 0,
 		"Item1": "0"
+	},
+	{
+		"LootTableID": "MasterSalvageMetalPreciousJewelry",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"MaxRoll": 0,
+		"Item1": "[LTID]SalvageMetalPreciousTierSortLarge",
+		"Item2": "[LTID]MasterSalvageJewelry"
+	},
+	{
+		"LootTableID": "MasterSalvageMetalPreciousJewelry_Qty",
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "MasterSalvageMetalPreciousJewelry_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0"
 	},
 	{
 		"LootTableID": "MasterSalvageAmber",
@@ -11383,7 +11443,7 @@
 		"Item1": "100000"
 	},
 	{
-		"LootTableID": "SalvageMetalExpansionSmall",
+		"LootTableID": "SalvageMetalWeaponExpansionSmall",
 		"AND/OR": "OR",
 		"RollBonusSetting": "AddToRoll",
 		"Conditions": [
@@ -11392,22 +11452,25 @@
 		"ConditionOverridesRoll": "TRUE",
 		"MaxRoll": 0,
 		"Item1": "IngotT52",
-		"Item2": "IngotT53"
+		"Item2": "IngotT53",
+		"Item3": "[LTID]SalvageWeaponTier5Small"
 	},
 	{
-		"LootTableID": "SalvageMetalExpansionSmall_Qty",
+		"LootTableID": "SalvageMetalWeaponExpansionSmall_Qty",
 		"MaxRoll": 0,
 		"Item1": "1-2",
-		"Item2": "1-2"
+		"Item2": "1-2",
+		"Item3": "1"
 	},
 	{
-		"LootTableID": "SalvageMetalExpansionSmall_Probs",
+		"LootTableID": "SalvageMetalWeaponExpansionSmall_Probs",
 		"MaxRoll": 0,
 		"Item1": "0",
-		"Item2": "675"
+		"Item2": "675",
+		"Item3": "675"
 	},
 	{
-		"LootTableID": "SalvageMetalExpansionLarge",
+		"LootTableID": "SalvageMetalArcaneExpansionLarge",
 		"AND/OR": "OR",
 		"RollBonusSetting": "AddToRoll",
 		"Conditions": [
@@ -11416,19 +11479,130 @@
 		"ConditionOverridesRoll": "TRUE",
 		"MaxRoll": 0,
 		"Item1": "IngotT52",
-		"Item2": "IngotT53"
+		"Item2": "IngotT53",
+		"Item3": "[LTID]SalvageArcaneTier5"
 	},
 	{
-		"LootTableID": "SalvageMetalExpansionLarge_Qty",
+		"LootTableID": "SalvageMetalArcaneExpansionLarge_Qty",
 		"MaxRoll": 0,
 		"Item1": "1-4",
-		"Item2": "1-3"
+		"Item2": "1-3",
+		"Item3": "1"
 	},
 	{
-		"LootTableID": "SalvageMetalExpansionLarge_Probs",
+		"LootTableID": "SalvageMetalArcaneExpansionLarge_Probs",
 		"MaxRoll": 0,
 		"Item1": "0",
-		"Item2": "675"
+		"Item2": "675",
+		"Item3": "675"
+	},
+	{
+		"LootTableID": "SalvageMetalEngineerExpansionLarge",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"SalvageItemGearScore"
+		],
+		"ConditionOverridesRoll": "TRUE",
+		"MaxRoll": 0,
+		"Item1": "IngotT52",
+		"Item2": "IngotT53",
+		"Item3": "[LTID]SalvageEngineerTier5Large"
+	},
+	{
+		"LootTableID": "SalvageMetalEngineerExpansionLarge_Qty",
+		"MaxRoll": 0,
+		"Item1": "1-4",
+		"Item2": "1-3",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "SalvageMetalEngineerExpansionLarge_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "675",
+		"Item3": "675"
+	},
+	{
+		"LootTableID": "SalvageLeatherArcanaExpansionSmall",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"SalvageItemGearScore"
+		],
+		"ConditionOverridesRoll": "TRUE",
+		"MaxRoll": 0,
+		"Item1": "LeatherT52",
+		"Item2": "LeatherT53",
+		"Item3": "[LTID]SalvageArcaneTier5"
+	},
+	{
+		"LootTableID": "SalvageLeatherArcanaExpansionSmall_Qty",
+		"MaxRoll": 0,
+		"Item1": "1-2",
+		"Item2": "1-2",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "SalvageLeatherArcanaExpansionSmall_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "675",
+		"Item3": "675"
+	},
+	{
+		"LootTableID": "SalvageMetalWeaponExpansionLarge",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"SalvageItemGearScore"
+		],
+		"ConditionOverridesRoll": "TRUE",
+		"MaxRoll": 0,
+		"Item1": "IngotT52",
+		"Item2": "IngotT53",
+		"Item3": "[LTID]SalvageWeaponTier5Large"
+	},
+	{
+		"LootTableID": "SalvageMetalWeaponExpansionLarge_Qty",
+		"MaxRoll": 0,
+		"Item1": "1-4",
+		"Item2": "1-3",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "SalvageMetalWeaponExpansionLarge_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "675",
+		"Item3": "675"
+	},
+	{
+		"LootTableID": "SalvageTimberArcanaExpansionLarge",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"SalvageItemGearScore"
+		],
+		"ConditionOverridesRoll": "TRUE",
+		"MaxRoll": 0,
+		"Item1": "TimberT52",
+		"Item2": "TimberT53",
+		"Item3": "[LTID]SalvageArcaneTier5"
+	},
+	{
+		"LootTableID": "SalvageTimberArcanaExpansionLarge_Qty",
+		"MaxRoll": 0,
+		"Item1": "1-4",
+		"Item2": "1-3",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "SalvageTimberArcanaExpansionLarge_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "675",
+		"Item3": "675"
 	},
 	{
 		"LootTableID": "SalvageTimberExpansionSmall",
@@ -11440,19 +11614,22 @@
 		"ConditionOverridesRoll": "TRUE",
 		"MaxRoll": 0,
 		"Item1": "TimberT52",
-		"Item2": "TimberT53"
+		"Item2": "TimberT53",
+		"Item3": "[LTID]SalvageEngineerTier5Small"
 	},
 	{
 		"LootTableID": "SalvageTimberExpansionSmall_Qty",
 		"MaxRoll": 0,
 		"Item1": "1-2",
-		"Item2": "1-2"
+		"Item2": "1-2",
+		"Item3": "1"
 	},
 	{
 		"LootTableID": "SalvageTimberExpansionSmall_Probs",
 		"MaxRoll": 0,
 		"Item1": "0",
-		"Item2": "675"
+		"Item2": "675",
+		"Item3": "675"
 	},
 	{
 		"LootTableID": "SalvageTimberExpansionLarge",
@@ -11464,19 +11641,22 @@
 		"ConditionOverridesRoll": "TRUE",
 		"MaxRoll": 0,
 		"Item1": "TimberT52",
-		"Item2": "TimberT53"
+		"Item2": "TimberT53",
+		"Item3": "[LTID]SalvageEngineerTier5Large"
 	},
 	{
 		"LootTableID": "SalvageTimberExpansionLarge_Qty",
 		"MaxRoll": 0,
 		"Item1": "1-4",
-		"Item2": "1-3"
+		"Item2": "1-3",
+		"Item3": "1"
 	},
 	{
 		"LootTableID": "SalvageTimberExpansionLarge_Probs",
 		"MaxRoll": 0,
 		"Item1": "0",
-		"Item2": "675"
+		"Item2": "675",
+		"Item3": "675"
 	},
 	{
 		"LootTableID": "SalvageClothExpansionSmall",
@@ -11488,19 +11668,49 @@
 		"ConditionOverridesRoll": "TRUE",
 		"MaxRoll": 0,
 		"Item1": "ClothT52",
-		"Item2": "ClothT53"
+		"Item2": "ClothT53",
+		"Item3": "[LTID]SalvageArmorTier5Small"
 	},
 	{
 		"LootTableID": "SalvageClothExpansionSmall_Qty",
 		"MaxRoll": 0,
 		"Item1": "1-2",
-		"Item2": "1-2"
+		"Item2": "1-2",
+		"Item3": "1"
 	},
 	{
 		"LootTableID": "SalvageClothExpansionSmall_Probs",
 		"MaxRoll": 0,
 		"Item1": "0",
-		"Item2": "675"
+		"Item2": "675",
+		"Item3": "675"
+	},
+	{
+		"LootTableID": "SalvageClothExpansionMedium",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"SalvageItemGearScore"
+		],
+		"ConditionOverridesRoll": "TRUE",
+		"MaxRoll": 0,
+		"Item1": "ClothT52",
+		"Item2": "ClothT53",
+		"Item3": "[LTID]SalvageArmorTier5Medium"
+	},
+	{
+		"LootTableID": "SalvageClothExpansionMedium_Qty",
+		"MaxRoll": 0,
+		"Item1": "1-4",
+		"Item2": "1-3",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "SalvageClothExpansionMedium_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "675",
+		"Item3": "675"
 	},
 	{
 		"LootTableID": "SalvageClothExpansionLarge",
@@ -11512,19 +11722,22 @@
 		"ConditionOverridesRoll": "TRUE",
 		"MaxRoll": 0,
 		"Item1": "ClothT52",
-		"Item2": "ClothT53"
+		"Item2": "ClothT53",
+		"Item3": "[LTID]SalvageArmorTier5Large"
 	},
 	{
 		"LootTableID": "SalvageClothExpansionLarge_Qty",
 		"MaxRoll": 0,
 		"Item1": "1-4",
-		"Item2": "1-3"
+		"Item2": "1-3",
+		"Item3": "1"
 	},
 	{
 		"LootTableID": "SalvageClothExpansionLarge_Probs",
 		"MaxRoll": 0,
 		"Item1": "0",
-		"Item2": "675"
+		"Item2": "675",
+		"Item3": "675"
 	},
 	{
 		"LootTableID": "SalvageLeatherExpansionSmall",
@@ -11536,19 +11749,49 @@
 		"ConditionOverridesRoll": "TRUE",
 		"MaxRoll": 0,
 		"Item1": "LeatherT52",
-		"Item2": "LeatherT53"
+		"Item2": "LeatherT53",
+		"Item3": "[LTID]SalvageArmorTier5Small"
 	},
 	{
 		"LootTableID": "SalvageLeatherExpansionSmall_Qty",
 		"MaxRoll": 0,
 		"Item1": "1-2",
-		"Item2": "1-2"
+		"Item2": "1-2",
+		"Item3": "1"
 	},
 	{
 		"LootTableID": "SalvageLeatherExpansionSmall_Probs",
 		"MaxRoll": 0,
 		"Item1": "0",
-		"Item2": "675"
+		"Item2": "675",
+		"Item3": "675"
+	},
+	{
+		"LootTableID": "SalvageLeatherExpansionMedium",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"SalvageItemGearScore"
+		],
+		"ConditionOverridesRoll": "TRUE",
+		"MaxRoll": 0,
+		"Item1": "LeatherT52",
+		"Item2": "LeatherT53",
+		"Item3": "[LTID]SalvageArmorTier5Medium"
+	},
+	{
+		"LootTableID": "SalvageLeatherExpansionMedium_Qty",
+		"MaxRoll": 0,
+		"Item1": "1-4",
+		"Item2": "1-3",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "SalvageLeatherExpansionMedium_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "675",
+		"Item3": "675"
 	},
 	{
 		"LootTableID": "SalvageLeatherExpansionLarge",
@@ -11560,19 +11803,130 @@
 		"ConditionOverridesRoll": "TRUE",
 		"MaxRoll": 0,
 		"Item1": "LeatherT52",
-		"Item2": "LeatherT53"
+		"Item2": "LeatherT53",
+		"Item3": "[LTID]SalvageArmorTier5Large"
 	},
 	{
 		"LootTableID": "SalvageLeatherExpansionLarge_Qty",
 		"MaxRoll": 0,
 		"Item1": "1-4",
-		"Item2": "1-3"
+		"Item2": "1-3",
+		"Item3": "1"
 	},
 	{
 		"LootTableID": "SalvageLeatherExpansionLarge_Probs",
 		"MaxRoll": 0,
 		"Item1": "0",
-		"Item2": "675"
+		"Item2": "675",
+		"Item3": "675"
+	},
+	{
+		"LootTableID": "SalvageMetalExpansionSmall",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"SalvageItemGearScore"
+		],
+		"ConditionOverridesRoll": "TRUE",
+		"MaxRoll": 0,
+		"Item1": "IngotT52",
+		"Item2": "IngotT53",
+		"Item3": "[LTID]SalvageArmorTier5Small"
+	},
+	{
+		"LootTableID": "SalvageMetalExpansionSmall_Qty",
+		"MaxRoll": 0,
+		"Item1": "1-2",
+		"Item2": "1-2",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "SalvageMetalExpansionSmall_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "675",
+		"Item3": "675"
+	},
+	{
+		"LootTableID": "SalvageMetalExpansionMedium",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"SalvageItemGearScore"
+		],
+		"ConditionOverridesRoll": "TRUE",
+		"MaxRoll": 0,
+		"Item1": "IngotT52",
+		"Item2": "IngotT53",
+		"Item3": "[LTID]SalvageArmorTier5Medium"
+	},
+	{
+		"LootTableID": "SalvageMetalExpansionMedium_Qty",
+		"MaxRoll": 0,
+		"Item1": "1-4",
+		"Item2": "1-3",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "SalvageMetalExpansionMedium_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "675",
+		"Item3": "675"
+	},
+	{
+		"LootTableID": "SalvageMetalExpansionLarge",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"SalvageItemGearScore"
+		],
+		"ConditionOverridesRoll": "TRUE",
+		"MaxRoll": 0,
+		"Item1": "IngotT52",
+		"Item2": "IngotT53",
+		"Item3": "[LTID]SalvageArmorTier5Large"
+	},
+	{
+		"LootTableID": "SalvageMetalExpansionLarge_Qty",
+		"MaxRoll": 0,
+		"Item1": "1-4",
+		"Item2": "1-3",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "SalvageMetalExpansionLarge_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "675",
+		"Item3": "675"
+	},
+	{
+		"LootTableID": "SalvageMetalJewelryExpansionSmall",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"SalvageItemGearScore"
+		],
+		"ConditionOverridesRoll": "TRUE",
+		"MaxRoll": 0,
+		"Item1": "IngotT52",
+		"Item2": "IngotT53",
+		"Item3": "[LTID]SalvageJewelryTier5"
+	},
+	{
+		"LootTableID": "SalvageMetalJewelryExpansionSmall_Qty",
+		"MaxRoll": 0,
+		"Item1": "1-2",
+		"Item2": "1-2",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "SalvageMetalJewelryExpansionSmall_Probs",
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "675",
+		"Item3": "675"
 	},
 	{
 		"LootTableID": "AmrineDungeonSalvageLarge",
@@ -13206,5 +13560,125 @@
 		"LootTableID": "PerfectSalvage_Timer_Probs",
 		"MaxRoll": 0,
 		"Item1": "0"
+	},
+	{
+		"LootTableID": "Hercyne_Jewelry",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"MaxRoll": 0,
+		"Item1": "PerkItem_Jewelry_HercyneRaid_1",
+		"Item2": "PerkItem_Jewelry_HercyneRaid_1"
+	},
+	{
+		"LootTableID": "Hercyne_Jewelry_Qty",
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "2"
+	},
+	{
+		"LootTableID": "Hercyne_Jewelry_Probs",
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "90000"
+	},
+	{
+		"LootTableID": "Hercyne_Armor",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"MaxRoll": 0,
+		"Item1": "PerkItem_Armor_HercyneRaid_1",
+		"Item2": "PerkItem_Armor_HercyneRaid_1"
+	},
+	{
+		"LootTableID": "Hercyne_Armor_Qty",
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "2"
+	},
+	{
+		"LootTableID": "Hercyne_Armor_Probs",
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "90000"
+	},
+	{
+		"LootTableID": "Hercyne_Weapon",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"MaxRoll": 0,
+		"Item1": "PerkItem_Weapon_HercyneRaid_1",
+		"Item2": "PerkItem_Weapon_HercyneRaid_1"
+	},
+	{
+		"LootTableID": "Hercyne_Weapon_Qty",
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "2"
+	},
+	{
+		"LootTableID": "Hercyne_Weapon_Probs",
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "90000"
+	},
+	{
+		"LootTableID": "Hercyne_NamedJewelry",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"MaxRoll": 0,
+		"Item1": "PerkItem_Jewelry_HercyneRaid_1",
+		"Item2": "PerkItem_Jewelry_HercyneRaid_1"
+	},
+	{
+		"LootTableID": "Hercyne_NamedJewelry_Qty",
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "2-3"
+	},
+	{
+		"LootTableID": "Hercyne_NamedJewelry_Probs",
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "50000"
+	},
+	{
+		"LootTableID": "Hercyne_NamedArmor",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"MaxRoll": 0,
+		"Item1": "PerkItem_Armor_HercyneRaid_1",
+		"Item2": "PerkItem_Armor_HercyneRaid_1"
+	},
+	{
+		"LootTableID": "Hercyne_NamedArmor_Qty",
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "2-3"
+	},
+	{
+		"LootTableID": "Hercyne_NamedArmor_Probs",
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "50000"
+	},
+	{
+		"LootTableID": "Hercyne_NamedWeapon",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"MaxRoll": 0,
+		"Item1": "PerkItem_Weapon_HercyneRaid_1",
+		"Item2": "PerkItem_Weapon_HercyneRaid_1"
+	},
+	{
+		"LootTableID": "Hercyne_NamedWeapon_Qty",
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "2-3"
+	},
+	{
+		"LootTableID": "Hercyne_NamedWeapon_Probs",
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "50000"
 	}
 ]

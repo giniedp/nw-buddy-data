@@ -1,0 +1,562 @@
+[
+	{
+		"ConversationStateId": "99B_Yonas_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99B_Yonas_00"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p1_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p1_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_01_searchwalsham",
+		"RequiredActiveTaskId": "99B_MSQ_01_d_02_01_TalkTo_99B_Yonas_p1_01",
+		"Comment": "TalkTo,outsideWalsham-MSQ1",
+		"TopicId1": "Topic_99B_Yonas_p1_01"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p2_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p2_01_a",
+		"RequiredAchievement": "99B_MSQ_01",
+		"LinearObjectiveId1": "99B_MSQ_02_meetgalahad"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p3_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p3_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_02_meetgalahad",
+		"RequiredActiveTaskId": "99B_MSQ_02_d_03_04_TalkTo_99B_Yonas_p3_01",
+		"Comment": "TalkTo,nearBallard's-MSQ2",
+		"TopicId1": "Topic_99B_Yonas_p3_01"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p3_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p3_02",
+		"Comment": "default,afterTalkTo"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p3_02a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_MSQ_03_lostvillages_complete_available_response_multi",
+		"RequiredActiveObjectiveId": "99B_MSQ_03_lostvillages",
+		"RequiredActiveTaskId": "99B_MSQ_03_d_04_TalkTo_99B_Galahad_p3_01",
+		"Comment": "TalkTo,beforecomplete-MSQ3",
+		"TopicId1": "Topic_99B_Galahad_p3_01"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p4_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_MSQ_03_lostvillages_complete_available_response_multi7",
+		"RequiredAchievement": "99B_MSQ_03",
+		"LinearObjectiveId1": "99B_MSQ_04_corruptedresources"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p5_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p6_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_05_findingfort",
+		"RequiredActiveTaskId": "99B_MSQ_05_d_02_05_TalkTo_99B_Yonas_p5_01",
+		"Comment": "TalkTo,FortShrine-MSQ5",
+		"TopicId1": "Topic_99B_Yonas_p5_01"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p5_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p6_02"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p6_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p6_02",
+		"Comment": "default,inCalvary"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p7_01a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p7_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_10_cleansefort_alt",
+		"RequiredActiveTaskId": "99B_MSQ_10_d_02_02_01_TalkTo_99B_Yonas_p7_01",
+		"Comment": "TalkTo,beforeundercroft-MSQ10_alt",
+		"TopicId1": "Topic_99B_Yonas_p7_01"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p7_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p7_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_10_cleansefort",
+		"RequiredActiveTaskId": "99B_MSQ_10_d_02_02_01_TalkTo_99B_Yonas_p7_01",
+		"Comment": "TalkTo,beforeundercroft-MSQ10",
+		"TopicId1": "Topic_99B_Yonas_p7_01"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p7_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p7_02",
+		"Comment": "default,Fort,afterTalkTo"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p8_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p8_01_a",
+		"RequiredAchievement": "99B_MSQ_10",
+		"LinearObjectiveId1": "99B_MSQ_11_weaversvector"
+	},
+	{
+		"ConversationStateId": "99B_Yonas_p8_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Yonas_p8_02",
+		"Comment": "default,afterWFvector-FINAL"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99B_Galahad_00"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p1_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p1_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_02_meetgalahad",
+		"RequiredActiveTaskId": "99B_MSQ_02_d_01_03_01_TalkTo_99B_Galahad_p1_01",
+		"Comment": "TalkTo,beforecinematic-MSQ2",
+		"TopicId1": "Topic_99B_Galahad_p1_01"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p1_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p1_02_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_02_meetgalahad",
+		"RequiredActiveTaskId": "99B_MSQ_02_d_01_03_04_TalkTo_99B_Galahad_p1_02",
+		"Comment": "TalkTo,aftercinematic-MSQ2",
+		"TopicId1": "Topic_99B_Galahad_p1_02"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p2_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p2_01_a",
+		"RequiredAchievement": "99B_MSQ_02 && !10_Quest_15",
+		"LinearObjectiveId1": "99B_MSQ_03_lostvillages"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p2_01a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p2_01_a",
+		"RequiredAchievement": "99B_MSQ_02 && 10_Quest_15",
+		"LinearObjectiveId1": "99B_MSQ_03_lostvillages_alt"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p3_01a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p3_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_03_lostvillages_alt",
+		"RequiredActiveTaskId": "99B_MSQ_03_lostvillages_container",
+		"Comment": "TalkTo,beforecomplete-MSQ3_alt"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p3_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p3_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_03_lostvillages",
+		"RequiredActiveTaskId": "99B_MSQ_03_lostvillages_container",
+		"Comment": "TalkTo,beforecomplete-MSQ3"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p3_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p3_02"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p4_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p4_01_a",
+		"RequiredAchievement": "99B_MSQ_04",
+		"LinearObjectiveId1": "99B_MSQ_05_findingfort"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p4_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p4_02_A",
+		"RequiredAchievement": "99B_MSQ_05",
+		"LinearObjectiveId1": "99B_MSQ_06_lostcathedral"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p4_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p4_03_a",
+		"RequiredAchievement": "99B_MSQ_06",
+		"LinearObjectiveId1": "99B_MSQ_07_cursedcemetery"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p5_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p5_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_07_cursedcemetery",
+		"RequiredActiveTaskId": "99B_MSQ_07_d_03_03_TalkTo_99B_Galahad_p5_01",
+		"Comment": "TalkTo,eastshrine-MSQ7",
+		"TopicId1": "Topic_99B_Galahad_p5_01"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p5_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p5_02"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p6_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p6_01_a",
+		"RequiredAchievement": "99B_MSQ_08",
+		"LinearObjectiveId1": "99B_MSQ_09_killumberto",
+		"LinearObjectiveId2": "99B_MSQ_09_killumberto_destroyer",
+		"LinearObjectiveId3": "99B_MSQ_09_killumberto_musketeer",
+		"LinearObjectiveId4": "99B_MSQ_09_killumberto_mystic",
+		"LinearObjectiveId5": "99B_MSQ_09_killumberto_occultist",
+		"LinearObjectiveId6": "99B_MSQ_09_killumberto_ranger",
+		"LinearObjectiveId7": "99B_MSQ_09_killumberto_soldier",
+		"LinearObjectiveId8": "99B_MSQ_09_killumberto_swordsman"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p6_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p6_02_a",
+		"RequiredAchievement": "99B_MSQ_09 && !99_MSQ_26",
+		"LinearObjectiveId1": "99B_MSQ_10_cleansefort"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p6_02a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p6_02_a",
+		"RequiredAchievement": "99B_MSQ_09 && 99_MSQ_26",
+		"LinearObjectiveId1": "99B_MSQ_10_cleansefort_alt"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p7_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p7_01",
+		"Comment": "default,Fort,afterUndercroft"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p7_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p7_02_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_11_weaversvector",
+		"RequiredActiveTaskId": "99B_MSQ_11_d_01_01_TalkTo_Galahad_p7_02",
+		"Comment": "TalkTo,Fort-MSQ11",
+		"TopicId1": "Topic_99B_Galahad_p7_02"
+	},
+	{
+		"ConversationStateId": "99B_Galahad_p8_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Galahad_p8_01",
+		"Comment": "Lead-inforWFMSQ,BWFINAL"
+	},
+	{
+		"ConversationStateId": "99B_Pennyfather_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99B_Pennyfather_00"
+	},
+	{
+		"ConversationStateId": "99B_Pennyfather_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Pennyfather_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_06_lostcathedral",
+		"RequiredActiveTaskId": "99B_MSQ_06_d_01_TalkTo_Pennyfather_01",
+		"Comment": "TalkTo,beforeCathedral-MSQ6",
+		"TopicId1": "Topic_99B_Pennyfather_01"
+	},
+	{
+		"ConversationStateId": "99B_Pennyfather_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Pennyfather_02",
+		"RequiredAchievement": "99B_MSQ_06_PennyfatherTalkTo_1"
+	},
+	{
+		"ConversationStateId": "99B_Pennyfather_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Pennyfather_03_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_06_lostcathedral",
+		"RequiredActiveTaskId": "99B_MSQ_06_d_04_02_TalkTo_Pennyfather_03",
+		"Comment": "TalkTo,afterCathedral-MSQ6",
+		"TopicId1": "Topic_99B_Pennyfather_03"
+	},
+	{
+		"ConversationStateId": "99B_Pennyfather_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Pennyfather_04",
+		"RequiredAchievement": "99B_MSQ_06_PennyfatherTalkTo_2"
+	},
+	{
+		"ConversationStateId": "99B_Pennyfather_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Pennyfather_05_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_11_weaversvector",
+		"RequiredActiveTaskId": "99B_MSQ_11_d_02_02_TalkTo_Pennyfather_05",
+		"Comment": "TalkTo,beforecinematic-MSQ11",
+		"TopicId1": "Topic_99B_Pennyfather_05"
+	},
+	{
+		"ConversationStateId": "99B_Pennyfather_05a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Pennyfather_05a",
+		"RequiredAchievement": "99B_MSQ_11_PennyfatherTalkTo_3",
+		"Comment": "default,afterTalkTo,beforecinematic"
+	},
+	{
+		"ConversationStateId": "99B_Pennyfather_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Pennyfather_06_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_11_weaversvector",
+		"RequiredActiveTaskId": "99B_MSQ_11_d_03_03_TalkTo_Pennyfather_06",
+		"Comment": "TalkTo,aftercinematic-MSQ11",
+		"TopicId1": "Topic_99B_Pennyfather_06"
+	},
+	{
+		"ConversationStateId": "99B_Pennyfather_07",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Pennyfather_07",
+		"RequiredAchievement": "99B_MSQ_11_PennyfatherTalkTo_4",
+		"Comment": "default,afterTalkTo&cinematic-FINAL"
+	},
+	{
+		"ConversationStateId": "99B_Grace_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99B_Grace_p1_01a"
+	},
+	{
+		"ConversationStateId": "99B_Grace_p1_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Grace_p1_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_05_findingfort",
+		"RequiredActiveTaskId": "99B_MSQ_05_d_03_03_TalkTo_99B_Grace_p1_01",
+		"Comment": "TalkTo,Fort,beforeLoot-MSQ5",
+		"TopicId1": "Topic_99B_Grace_p1_01"
+	},
+	{
+		"ConversationStateId": "99B_Grace_p1_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Grace_p1_02_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_05_findingfort",
+		"RequiredActiveTaskId": "99B_MSQ_05_d_03_04_02_TalkTo_99B_Grace_p1_02",
+		"Comment": "TalkTo,Fort,afterloot-MSQ5",
+		"TopicId1": "Topic_99B_Grace_p1_02"
+	},
+	{
+		"ConversationStateId": "99B_Grace_p1_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Grace_p1_01a"
+	},
+	{
+		"ConversationStateId": "99B_Grace_p2_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Grace_p2_01_a",
+		"RequiredAchievement": "99B_MSQ_10",
+		"Comment": "default,afterundercroft-FINAL"
+	},
+	{
+		"ConversationStateId": "99B_Sun_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99B_Sun_00"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p1_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p1_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_07_cursedcemetery",
+		"RequiredActiveTaskId": "99B_MSQ_07_d_01_02_TalkTo_99B_Sun_p1_01",
+		"Comment": "TalkTo,Calvary,beforeCemetery-MSQ7",
+		"TopicId1": "Topic_99B_Sun_p1_01"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p1_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p1_02"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p2_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p2_01",
+		"RequiredAchievement": "99B_MSQ_07",
+		"LinearObjectiveId1": "99B_MSQ_08_azothtree"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p2_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p2_02_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_08_azothtree",
+		"RequiredActiveTaskId": "99B_MSQ_08_d_03_01_TalkTo_99B_Sun_p2_02",
+		"Comment": "TalkTo,afterAzothTree-MSQ8",
+		"TopicId1": "Topic_99B_Sun_p2_02"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p2_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p3_02",
+		"RequiredAchievement": "99B_MSQ_09"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p3_01a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p3_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_10_cleansefort_alt",
+		"RequiredActiveTaskId": "99B_MSQ_10_d_02_02_02_TalkTo_99B_Sun_p3_01",
+		"Comment": "TalkTo,beforeUndercroft-MSQ10_alt",
+		"TopicId1": "Topic_99B_Sun_p3_01"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p3_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p3_01_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_10_cleansefort",
+		"RequiredActiveTaskId": "99B_MSQ_10_d_02_02_02_TalkTo_99B_Sun_p3_01",
+		"Comment": "TalkTo,beforeUndercroft-MSQ10",
+		"TopicId1": "Topic_99B_Sun_p3_01"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p3_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p3_02",
+		"Comment": "default,afterTalkToA"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p4_01a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p3_03_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_10_cleansefort_alt",
+		"RequiredActiveTaskId": "99B_MSQ_10_d_05_05_TalkTo_99B_Sun_p4_01",
+		"Comment": "TalkTo,afterUndercroft-MSQ10_alt",
+		"TopicId1": "Topic_99B_Sun_p4_01"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p4_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p3_03_a",
+		"RequiredActiveObjectiveId": "99B_MSQ_10_cleansefort",
+		"RequiredActiveTaskId": "99B_MSQ_10_d_05_05_TalkTo_99B_Sun_p4_01",
+		"Comment": "TalkTo,afterUndercroft-MSQ10",
+		"TopicId1": "Topic_99B_Sun_p4_01"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p4_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p3_04",
+		"Comment": "default,afterTalkToB"
+	},
+	{
+		"ConversationStateId": "99B_Sun_p4_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_Sun_p3_05",
+		"Comment": "TalkTo during/after vector - FINAL"
+	},
+	{
+		"ConversationStateId": "99B_MorgenGrave_A_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99B_MSQ_06_lostcathedral_gravestone_A_NPC"
+	},
+	{
+		"ConversationStateId": "99B_MorgenGrave_A_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_MSQ_06_lostcathedral_gravestone_A_NPC",
+		"RequiredAchievement": "99B_MSQ_06_MorgenGraves_Toggle",
+		"Comment": "Beauty'sGravestone,Morgenstadt",
+		"TopicId1": "Topic_99B_MorgenGrave_family_incorrect",
+		"TopicId2": "Topic_99B_MorgenGrave_beauty_correct",
+		"TopicId3": "Topic_99B_MorgenGrave_hunter_incorrect"
+	},
+	{
+		"ConversationStateId": "99B_MorgenGrave_B_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99B_MSQ_06_lostcathedral_gravestone_B_NPC"
+	},
+	{
+		"ConversationStateId": "99B_MorgenGrave_B_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_MSQ_06_lostcathedral_gravestone_B_NPC",
+		"RequiredAchievement": "99B_MSQ_06_MorgenGraves_Toggle",
+		"Comment": "FamilyMan'sGravestone,Morgenstadt",
+		"TopicId1": "Topic_99B_MorgenGrave_family_correct",
+		"TopicId2": "Topic_99B_MorgenGrave_beauty_incorrect",
+		"TopicId3": "Topic_99B_MorgenGrave_hunter_incorrect"
+	},
+	{
+		"ConversationStateId": "99B_MorgenGrave_C_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99B_MSQ_06_lostcathedral_gravestone_C_NPC"
+	},
+	{
+		"ConversationStateId": "99B_MorgenGrave_C_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99B_MSQ_06_lostcathedral_gravestone_C_NPC",
+		"RequiredAchievement": "99B_MSQ_06_MorgenGraves_Toggle",
+		"Comment": "Hunter'sGravestone,Morgenstadt",
+		"TopicId1": "Topic_99B_MorgenGrave_family_incorrect",
+		"TopicId2": "Topic_99B_MorgenGrave_beauty_incorrect",
+		"TopicId3": "Topic_99B_MorgenGrave_hunter_correct"
+	}
+]

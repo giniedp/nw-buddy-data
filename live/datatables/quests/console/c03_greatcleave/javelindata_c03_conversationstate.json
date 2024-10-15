@@ -1,0 +1,790 @@
+[
+	{
+		"ConversationStateId": "0307_00_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0307_00_Commander_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0307_01_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0307_01_Commander",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 39,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "0307_01pre_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0307_01pre_Commander",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0308_00_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0308_00_Alchemist",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0308_01_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0308_01_Alchemist",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 39,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "0308_01pre_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0308_01pre_Alchemist",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0312_00_Watcher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0312_00_Watcher_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0313_00_Watcher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0313_00_Watcher_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0314_00_Watcher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0314_00_Watcher_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0315_00_Watcher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0315_00_Watcher_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0316_00_Warden",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0316_00_Warden_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0317_00_Warden",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0317_00_Warden_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0319_00_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0319_00_Ranger_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0320_00_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0320_00_Ranger_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0321_00_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0321_00_Ranger_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0322_00_Innkeep",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0322_00_Innkeep_a",
+		"RequiredLevel": 0,
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "0322_01_Innkeep",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0322_01_Innkeep_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_14",
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "0322_02_Innkeep",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0322_02_Innkeep_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99C_MSQ_12",
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "0323_00_Innkeep",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0323_00_Innkeep_a",
+		"RequiredLevel": 0,
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "0323_01a_Innkeep",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0323_01a_Innkeep_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "02_Quest_40",
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "0323_01_Innkeep",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0323_01_Innkeep_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_14",
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "0323_02_Innkeep",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0323_02_Innkeep_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99C_MSQ_12",
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "0326_00_Prospector",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0326_00_Prospector",
+		"RequiredLevel": 0,
+		"TopicId1": "0326_Prospector_talk",
+		"ConversationService1": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "0330_00_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0330_00_Ranger_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0330_01_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0330_01_Ranger_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_06 || 99_MSQ_56",
+		"LinearObjectiveId1": "0330_0101_asgoodasmyword"
+	},
+	{
+		"ConversationStateId": "0330_02_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0330_02_Ranger_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_16",
+		"LinearObjectiveId1": "0330_0102_mappingtheedgeofdespair"
+	},
+	{
+		"ConversationStateId": "0330_03_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0330_03_Ranger_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_17",
+		"LinearObjectiveId1": "0330_0103_pickingupthepieces"
+	},
+	{
+		"ConversationStateId": "0330_04_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0330_04_Ranger",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_18"
+	},
+	{
+		"ConversationStateId": "0331_00_Tracker",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0331_00_Tracker_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0331_01_Tracker",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0331_01_Tracker_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_04 || 99_MSQ_56",
+		"LinearObjectiveId1": "0331_0101_thebalemawbeast"
+	},
+	{
+		"ConversationStateId": "0331_02_Tracker",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0331_02_Tracker_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_20",
+		"LinearObjectiveId1": "0331_0102_wolvesofwinter"
+	},
+	{
+		"ConversationStateId": "0331_03_Tracker",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0331_03_Tracker_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_21",
+		"LinearObjectiveId1": "0331_0103_thebeastreturns"
+	},
+	{
+		"ConversationStateId": "0331_04_Tracker",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0331_04_Tracker",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_22"
+	},
+	{
+		"ConversationStateId": "0332_00_Furrier",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0332_00_Furrier",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0332_01_Furrier",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0332_01_Furrier",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_01 || 99_MSQ_56",
+		"LinearObjectiveId1": "0332_0101_aspotofluxury"
+	},
+	{
+		"ConversationStateId": "0332_02_Furrier",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0332_02_Furrier",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_23 && (99D_MSQ_02 || 99_MSQ_56)",
+		"LinearObjectiveId1": "0332_0102_fabulousfurs"
+	},
+	{
+		"ConversationStateId": "0332_03_Furrier",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0332_03_Furrier",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_24 && (99D_MSQ_04 || 99_MSQ_56)",
+		"LinearObjectiveId1": "0332_0103_puredelight"
+	},
+	{
+		"ConversationStateId": "0332_04_Furrier",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0332_04_Furrier_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_25"
+	},
+	{
+		"ConversationStateId": "0333_00_Arcanist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0333_00_Arcanist",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0333_01_Arcanist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0333_01_Arcanist",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_01 || 99_MSQ_56",
+		"LinearObjectiveId1": "0333_0101_whiteasbone"
+	},
+	{
+		"ConversationStateId": "0333_02_Arcanist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0333_02_Arcanist_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_26 && (99D_MSQ_02 || 99_MSQ_56)",
+		"LinearObjectiveId1": "0333_0102_redasblood"
+	},
+	{
+		"ConversationStateId": "0333_03_Arcanist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0333_03_Arcanist_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_27 && (99D_MSQ_04 || 99_MSQ_56)",
+		"LinearObjectiveId1": "0333_0103_blackasebony"
+	},
+	{
+		"ConversationStateId": "0333_04_Arcanist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0333_04_Arcanist",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_28",
+		"LinearObjectiveId1": "0333_0104_anofferingforoffspring"
+	},
+	{
+		"ConversationStateId": "0333_05_Arcanist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0333_05_Arcanist_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_29"
+	},
+	{
+		"ConversationStateId": "0334_00_Baker",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0334_00_Baker_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0334_01_Baker",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0334_01_Baker",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_04 || 99_MSQ_56",
+		"LinearObjectiveId1": "0334_0101_perfectpiroshkis"
+	},
+	{
+		"ConversationStateId": "0334_02_Baker",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0334_02_Baker_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_30 && (99D_MSQ_08 || 99_MSQ_56)",
+		"LinearObjectiveId1": "0334_0102_towarmthesoulwardens"
+	},
+	{
+		"ConversationStateId": "0334_03_Baker",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0334_03_Baker",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_31"
+	},
+	{
+		"ConversationStateId": "0335_00_Beast",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0335_00_Beast",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0335_01_Beast",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0335_01_Beast",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_04 || 99_MSQ_56",
+		"RequiredActiveObjectiveId": "0331_0101_thebalemawbeast",
+		"RequiredActiveTaskId": "0331_0101_d_03_Task_TalkToBeast",
+		"TopicId1": "0335_BecomingTheBeast"
+	},
+	{
+		"ConversationStateId": "0335_02_Beast",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0335_02_Beast_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_20"
+	},
+	{
+		"ConversationStateId": "0335_03_Beast",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0335_03_Beast",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_21",
+		"RequiredActiveObjectiveId": "0331_0103_thebeastreturns",
+		"RequiredActiveTaskId": "0331_0103_d_03_Task_TalkToBeast",
+		"TopicId1": "0335_Attacked"
+	},
+	{
+		"ConversationStateId": "0335_04_Beast",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0335_04_Beast",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_22"
+	},
+	{
+		"ConversationStateId": "0336_00_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0336_00_Ranger",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0336_01_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0336_01_Ranger",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_06 || 99_MSQ_56",
+		"RequiredActiveObjectiveId": "0330_0101_asgoodasmyword",
+		"RequiredActiveTaskId": "0330_0101_d_01_01_TaskTalkTenavan",
+		"TopicId1": "0336_RangerTenevan_Found"
+	},
+	{
+		"ConversationStateId": "0336_02_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0336_02_Ranger_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_16"
+	},
+	{
+		"ConversationStateId": "0337_00_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0337_00_Ranger",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0337_01_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0337_01_Ranger_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_06 || 99_MSQ_56",
+		"RequiredActiveObjectiveId": "0330_0101_asgoodasmyword",
+		"RequiredActiveTaskId": "0330_0101_d_02_01_TaskTalkRizal",
+		"TopicId1": "0337_RangerRizal_Found"
+	},
+	{
+		"ConversationStateId": "0337_02_Ranger",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0337_02_Ranger_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_Quest_16"
+	},
+	{
+		"ConversationStateId": "03_00_Shang",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Shang_DefaultDialog_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_00_Amis",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Amis_DefaultDialog_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_00_Chioma",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Chioma_DefaultDialog_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_01_Chioma",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@03_01_Chioma_DefaultDialog_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_08 || 99_MSQ_56"
+	},
+	{
+		"ConversationStateId": "03_00_Cosmo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Cosmo_DefaultDialog_a",
+		"RequiredLevel": 0,
+		"TopicId1": "03_Cosmo_T1"
+	},
+	{
+		"ConversationStateId": "03_00_Vinkle",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Vinkle_DefaultDialog_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_00_Heyl",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Heyl_DefaultDialog_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_01_Heyl",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@03_01_Heyl_DefaultDialog_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_04 || 99_MSQ_56"
+	},
+	{
+		"ConversationStateId": "03_00_Tapas",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Tapas_DefaultDialog_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_01_Tapas",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@03_01_Tapas_DefaultDialog_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_08 || 99_MSQ_56"
+	},
+	{
+		"ConversationStateId": "03_00_Mabel",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Mabel_DefaultDialog_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_01_Mabel",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@03_01_Mabel_DefaultDialog_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_08 || 99_MSQ_56"
+	},
+	{
+		"ConversationStateId": "03_00_Kojo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Kojo_DefaultDialog_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_01_Kojo",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@03_01_Kojo_DefaultDialog_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_01 || 99_MSQ_56"
+	},
+	{
+		"ConversationStateId": "03_00_Wang",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Wang_DefaultDialog_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_00_Taehwa",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Taehwa_DefaultDialog_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_01_Taehwa",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@03_01_Taehwa_DefaultDialog_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_07 || 99_MSQ_56"
+	},
+	{
+		"ConversationStateId": "03_00_Giri",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Giri_DefaultDialog_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_Kazu_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_P1_Kazu_00_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_Kazu_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_P1_Kazu_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_04 || 99_MSQ_56",
+		"RequiredActiveObjectiveId": "03_SQ_04_WulfstanGlyphs",
+		"RequiredActiveTaskId": "03_SQ_04_WulfstanGlyphs_GoToKazu"
+	},
+	{
+		"ConversationStateId": "03_Kazu_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_P1_Kazu_02_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_SQ_04",
+		"LinearObjectiveId1": "03_SQ_05_MokoshGlyphs",
+		"TopicId2": "03_Kazu_T1"
+	},
+	{
+		"ConversationStateId": "03_Kazu_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_P1_Kazu_03_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_SQ_05"
+	},
+	{
+		"ConversationStateId": "03_Simone_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_P1_Simone_00_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_Simone_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_P1_Simone_01_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_06 || 99_MSQ_56",
+		"LinearObjectiveId1": "03_SQ_06_AscensionCurse"
+	},
+	{
+		"ConversationStateId": "03_Simone_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_P1_Simone_02_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_SQ_06"
+	},
+	{
+		"ConversationStateId": "03_00_Hotspur_A",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@03_00_Hotspur_A_DefaultDialog",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_01_Hotspur_A",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@03_00_Hotspur_A_DefaultDialog",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99C_MSQ_12 || 99_MSQ_56",
+		"LinearObjectiveId1": "03_SQ_01_PassingGood"
+	},
+	{
+		"ConversationStateId": "03_00_Hotspur_B",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@03_00_Hotspur_B_DefaultDialog",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_SQ_01",
+		"LinearObjectiveId1": "03_SQ_02_ArmedPoints"
+	},
+	{
+		"ConversationStateId": "03_00_Hotspur_C",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@03_00_Hotspur_C_DefaultDialog",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_SQ_02"
+	},
+	{
+		"ConversationStateId": "03_00_Hotspur_D",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@03_00_Hotspur_C_DefaultDialog",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_05&&03_SQ_02",
+		"LinearObjectiveId1": "03_SQ_03_BattleWounds"
+	},
+	{
+		"ConversationStateId": "03_Wolf_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_P1_Wolf_00_a",
+		"RequiredLevel": 0,
+		"TopicId1": "03_Wolf_T1"
+	},
+	{
+		"ConversationStateId": "03_KazuJournal_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_P1_KazuJournal_00_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "03_KazuJournal_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_P1_KazuJournal_01_a",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99D_MSQ_04 || 99_MSQ_56",
+		"LinearObjectiveId1": "03_SQ_04_WulfstanGlyphs"
+	},
+	{
+		"ConversationStateId": "99D_ChangZhen_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99D_ChangZhen_00_a",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "99D_ChangZhen_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99D_ChangZhen_00_b",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "03_SQ_02"
+	},
+	{
+		"ConversationStateId": "0329_Adjudicator_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0329_00_Adjudicator",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0329_Adjudicator_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0329_01_Adjudicator",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0329_Adjudicator_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@NPC_DefaultDialogue_0329_01pre_Adjudicator",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 39,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	}
+]

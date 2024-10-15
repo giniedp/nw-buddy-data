@@ -3,14 +3,14 @@
 		"AbilityID": "IceMagic_Spikes",
 		"DisplayName": "@IceSpikes",
 		"Description": "@IceSpikes_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Attack",
 		"UISpellForManaCheck": "IceMagic_Spell_Spikes_UI",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability1.webp",
 		"Sound": "Play_UI_WeaponSkills_IceGauntlett_Ability_01",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
 		"TreeId": 0,
-		"TreeRowPosition": 0,
+		"TreeRowPosition": 1,
 		"TreeColumnPosition": 2,
 		"IsActiveAbility": true,
 		"IsGlobalAbility": false,
@@ -45,20 +45,22 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
+		"ActivationCooldown": 0,
 		"CooldownId": "IceMagic_Spikes",
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "SpikesRefreshingSpikes",
 		"DisplayName": "@RefreshingSpikes",
 		"Description": "@RefreshingSpikes_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability1_mod1.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
 		"RequiredAbilityId": "IceMagic_Spikes",
 		"TreeId": 0,
-		"TreeRowPosition": 1,
+		"TreeRowPosition": 2,
 		"TreeColumnPosition": 2,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
@@ -97,21 +99,23 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
+		"ActivationCooldown": 0,
 		"CooldownId": "IceMagic_Spikes",
 		"CDRImmediatelyOptions": "AbilitySpecific",
-		"CooldownTimer": -0.10000000149011612
+		"CooldownTimer": -0.10000000149011612,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "SpikesEmpoweredSpikes",
 		"DisplayName": "@EmpoweredSpikes",
 		"Description": "@EmpoweredSpikes_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability1_mod2.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
 		"RequiredAbilityId": "IceMagic_Spikes",
 		"TreeId": 0,
-		"TreeRowPosition": 2,
+		"TreeRowPosition": 3,
 		"TreeColumnPosition": 2,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
@@ -150,19 +154,21 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "SpikesDeadlyPath",
 		"DisplayName": "@DeadlyPath",
 		"Description": "@DeadlyPath_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability1_mod3.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
 		"RequiredAbilityId": "IceMagic_Spikes",
 		"TreeId": 0,
-		"TreeRowPosition": 3,
+		"TreeRowPosition": 4,
 		"TreeColumnPosition": 2,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
@@ -203,20 +209,22 @@
 		"DamageTableRowOverride": [
 			"IceMagic_Spikes_Upgrade"
 		],
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "SpikesSpikyReach",
 		"DisplayName": "@SpikyReach",
 		"Description": "@SpikyReach_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability1_mod4.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
 		"RequiredAbilityId": "IceMagic_Spikes",
 		"TreeId": 0,
 		"TreeRowPosition": 4,
-		"TreeColumnPosition": 2,
+		"TreeColumnPosition": 1,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"OnKill": false,
@@ -250,20 +258,22 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceMagic_IceStorm",
 		"DisplayName": "@IceStorm",
 		"Description": "@IceStorm_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Defense",
 		"UISpellForManaCheck": "IceMagic_Spell_IceStorm",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability2.webp",
 		"Sound": "Play_UI_WeaponSkills_IceGauntlett_Ability_02",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
 		"TreeId": 0,
-		"TreeRowPosition": 1,
+		"TreeRowPosition": 0,
 		"TreeColumnPosition": 4,
 		"IsActiveAbility": true,
 		"IsGlobalAbility": false,
@@ -298,20 +308,22 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
+		"ActivationCooldown": 0,
 		"CooldownId": "IceMagic_IceStorm",
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": true
 	},
 	{
 		"AbilityID": "IceStormWeakeningGust",
 		"DisplayName": "@WeakeningGust",
 		"Description": "@WeakeningGust_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability2_mod1.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
 		"RequiredAbilityId": "IceMagic_IceStorm",
 		"TreeId": 0,
-		"TreeRowPosition": 2,
+		"TreeRowPosition": 1,
 		"TreeColumnPosition": 4,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
@@ -350,19 +362,21 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceStormStormSummoner",
 		"DisplayName": "@StormSummoner",
 		"Description": "@StormSummoner_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability2_mod2.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
 		"RequiredAbilityId": "IceMagic_IceStorm",
 		"TreeId": 0,
-		"TreeRowPosition": 3,
+		"TreeRowPosition": 2,
 		"TreeColumnPosition": 4,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
@@ -397,19 +411,21 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceStormPunishingStorm",
 		"DisplayName": "@PunishingStorm",
 		"Description": "@PunishingStorm_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability2_mod3.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
 		"RequiredAbilityId": "IceMagic_IceStorm",
 		"TreeId": 0,
-		"TreeRowPosition": 4,
+		"TreeRowPosition": 3,
 		"TreeColumnPosition": 4,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": true,
@@ -448,13 +464,15 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceMagic_WindChill",
 		"DisplayName": "@WindChill",
 		"Description": "@WindChill_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Attack",
 		"UISpellForManaCheck": "IceMagic_Spell_WindChill_UI",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability3.webp",
 		"Sound": "Play_UI_WeaponSkills_IceGauntlett_Ability_03",
@@ -478,6 +496,7 @@
 		"OnTargetBlockBreak": false,
 		"OnDeath": false,
 		"OnDeathsDoor": false,
+		"RequireReaction": "0",
 		"NumSuccessfulHits": 0,
 		"NumConsecutiveHits": 0,
 		"MaxConsecutiveHits": 0,
@@ -487,6 +506,7 @@
 		"DamageIsMelee": false,
 		"DamageTableRow": [
 			"IceMagic_WindChill",
+			"IceMagic_WindChill_End",
 			"IceMagic_WindChill_Shatter",
 			"IceMagic_WindChill_SW",
 			"IceMagic_WindChill_Shatter_SW"
@@ -498,18 +518,20 @@
 		"DistFromDefender": 0,
 		"MaxNumAroundMe": 0,
 		"NumAroundMe": 0,
-		"BaseDamage": 0,
+		"TargetVitalsCategory": "Hostile",
+		"BaseDamage": 0.25,
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownId": "IceMagic_WindChill",
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "WindChillEnduringChill",
 		"DisplayName": "@EnduringChill",
 		"Description": "@EnduringChill_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability5_mod3.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
@@ -550,13 +572,15 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "WindChillShatter",
 		"DisplayName": "@Shatter",
 		"Description": "@Shatter_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability3_mod1.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
@@ -600,7 +624,9 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceTempestPass1",
@@ -652,7 +678,9 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceTempestPass2",
@@ -697,8 +725,60 @@
 		"BaseDamage": 0,
 		"CritDamage": 0,
 		"CritChance": 0,
-		"Mana": 0.15000000596046448,
-		"CooldownTimer": 0
+		"Mana": 0.10000000149011612,
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
+	},
+	{
+		"AbilityID": "IceTempestPass2_Helper",
+		"EquipWhenUnsheathed": true,
+		"WeaponTag": "Ice",
+		"RequiredAbilityId": "IceTempestPass2",
+		"RequiredEquippedAbilityId": "IceTempestPass2",
+		"TreeId": 0,
+		"TreeRowPosition": 0,
+		"TreeColumnPosition": 0,
+		"IsActiveAbility": false,
+		"IsGlobalAbility": false,
+		"OnKill": false,
+		"OnExecuted": false,
+		"OnHit": true,
+		"OnBlockedHit": false,
+		"OnCrit": false,
+		"OnHeadShot": false,
+		"OnLegShot": false,
+		"OnHitTaken": false,
+		"OnBlockedHitTaken": false,
+		"OnBlockBreak": false,
+		"OnTargetBlockBreak": false,
+		"OnDeath": false,
+		"OnDeathsDoor": false,
+		"RequireReaction": "1",
+		"NumSuccessfulHits": 0,
+		"NumConsecutiveHits": 0,
+		"MaxConsecutiveHits": 0,
+		"TrackHitCount": false,
+		"MaxTrackedHitCounts": 0,
+		"ResetConsecutiveOnSuccess": false,
+		"DamageIsMelee": false,
+		"AttackType": [
+			"Heavy"
+		],
+		"MyHealthPercent": 0,
+		"MyStaminaPercent": 0,
+		"MyManaPercent": 0,
+		"TargetHealthPercent": 0,
+		"DistFromDefender": 0,
+		"MaxNumAroundMe": 0,
+		"NumAroundMe": 0,
+		"BaseDamage": 0,
+		"CritDamage": 0,
+		"CritChance": 0,
+		"Mana": 0.05000000074505806,
+		"ActivationCooldown": 0.5,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceTempestPass3",
@@ -762,7 +842,9 @@
 		"CritDamage": 0.10000000149011612,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceTempestPass4",
@@ -812,7 +894,9 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0.15000000596046448,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceTempestPass5",
@@ -861,7 +945,9 @@
 		"CritDamage": 0,
 		"CritChance": 0.15000000596046448,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceTempestPass6",
@@ -873,7 +959,7 @@
 		"WeaponTag": "Ice",
 		"TreeId": 0,
 		"TreeRowPosition": 4,
-		"TreeColumnPosition": 1,
+		"TreeColumnPosition": 4,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"OnKill": false,
@@ -923,7 +1009,9 @@
 		"OtherApplyStatusEffect": [
 			"IceMagic_Freeze"
 		],
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceTempestUltimate",
@@ -982,7 +1070,9 @@
 		"OtherApplyStatusEffect": [
 			"IceMagic_UltimateChill"
 		],
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceTempestUltimate_Helper",
@@ -990,6 +1080,7 @@
 		"EquipWhenUnsheathed": true,
 		"WeaponTag": "Ice",
 		"RequiredAbilityId": "IceTempestUltimate",
+		"RequiredEquippedAbilityId": "IceTempestUltimate",
 		"TreeId": 0,
 		"TreeRowPosition": 0,
 		"TreeColumnPosition": 0,
@@ -1031,13 +1122,15 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceMagic_IcePylon",
 		"DisplayName": "@IcePylon",
 		"Description": "@IcePylon_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Defense",
 		"UISpellForManaCheck": "IceMagic_Spell_Pylon_UI",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability4.webp",
 		"Sound": "Play_UI_WeaponSkills_IceGauntlett_Ability_04",
@@ -1079,16 +1172,18 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
+		"ActivationCooldown": 0,
 		"CooldownId": "IceMagic_IcePylon",
 		"CooldownTimer": 0,
 		"EnableHoldConditionIfTrackedSpellExistsOfType": "IcePylon",
-		"HoldConditionButtonIcon": "lyshineui/images/icons/abilities/ice_pylon_cancel.webp"
+		"HoldConditionButtonIcon": "lyshineui/images/icons/abilities/ice_pylon_cancel.webp",
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IcePylonGreaterPylon",
 		"DisplayName": "@GreaterPylon",
 		"Description": "@GreaterPylon_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability4_mod1.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
@@ -1136,13 +1231,15 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IcePylonPylonRegen",
 		"DisplayName": "@PylonRegen",
 		"Description": "@PylonRegen_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability4_mod2.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
@@ -1183,13 +1280,15 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IcePylonPylonDodge",
 		"DisplayName": "@PylonDodge",
 		"Description": "@PylonDodge_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability4_mod3.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
@@ -1230,13 +1329,15 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IcePylonPylonRefresh",
 		"DisplayName": "@PylonRefresh",
 		"Description": "@PylonRefresh_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability4_mod4.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
@@ -1277,13 +1378,15 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceMagic_IceShower",
 		"DisplayName": "@IceShower",
 		"Description": "@IceShower_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Attack",
 		"UISpellForManaCheck": "IceMagic_Spell_Shower1",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability5.webp",
 		"Sound": "Play_UI_WeaponSkills_IceGauntlett_Ability_05",
@@ -1325,14 +1428,16 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
+		"ActivationCooldown": 0,
 		"CooldownId": "IceMagic_IceShower",
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceShowerEnduringShower",
 		"DisplayName": "@EnduringShower",
 		"Description": "@EnduringShower_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability5_mod1.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
@@ -1373,13 +1478,15 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceShowerQuickShower",
 		"DisplayName": "@QuickShower",
 		"Description": "@QuickShower_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability5_mod2.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
@@ -1420,13 +1527,15 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceShowerShowerSlush",
 		"DisplayName": "@ShowerSlush",
 		"Description": "@ShowerSlush_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability3_mod2.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
@@ -1467,13 +1576,15 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceMagic_Entombed",
 		"DisplayName": "@Entombed",
 		"Description": "@Entombed_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Defense",
 		"UISpellForManaCheck": "IceMagic_Spell_Entomb",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability6.webp",
 		"Sound": "Play_UI_WeaponSkills_IceGauntlett_Ability_06",
@@ -1515,14 +1626,16 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
+		"ActivationCooldown": 0,
 		"CooldownId": "IceMagic_Entombed",
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "EntombedStrengthenedTomb",
 		"DisplayName": "@StrengthenedTomb",
 		"Description": "@StrengthenedTomb_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability6_mod1.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
@@ -1563,13 +1676,15 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "EntombedCleansingTomb",
 		"DisplayName": "@CleansingTomb",
 		"Description": "@CleansingTomb_description",
-		"UICategory": "Magic Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/icemagic_ability6_mod2.webp",
 		"EquipWhenUnsheathed": false,
 		"WeaponTag": "Ice",
@@ -1610,7 +1725,9 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceConjurorPass1",
@@ -1660,7 +1777,9 @@
 		"SelfApplyStatusEffect": [
 			"IceMagic_BlockingStamina"
 		],
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceConjurorPass2",
@@ -1709,7 +1828,9 @@
 		"SelfApplyStatusEffect": [
 			"IceMagic_QuickFrost"
 		],
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceConjurorPass3",
@@ -1755,7 +1876,9 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceConjurorPass4",
@@ -1806,7 +1929,9 @@
 		"OtherApplyStatusEffect": [
 			"IceMagic_FrozenTouch"
 		],
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceConjurorPass5",
@@ -1859,8 +1984,10 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
+		"ActivationCooldown": 0,
 		"CDRImmediatelyOptions": "ActiveWeapon",
-		"CooldownTimer": -0.20000000298023224
+		"CooldownTimer": -0.20000000298023224,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceConjurorPass6",
@@ -1906,7 +2033,9 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "IceConjurorUltimate",
@@ -1954,6 +2083,8 @@
 		"CritDamage": 0,
 		"CritChance": 0,
 		"Mana": 0,
-		"CooldownTimer": 0
+		"ActivationCooldown": 0,
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	}
 ]

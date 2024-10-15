@@ -15,7 +15,7 @@
 		"FxScriptOff": "StatFX_Wound_OFF",
 		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
-		"BaseDuration": 12,
+		"BaseDuration": 10,
 		"TickRate": 1.0099999904632568,
 		"StopOnHitCount": 0,
 		"Health": 0,
@@ -88,7 +88,7 @@
 		"AFAFrostbite": 0,
 		"AFACurse": 0,
 		"AFABlight": 0,
-		"DurationMax": 20,
+		"DurationMax": 18,
 		"InheritDuration": "FALSE",
 		"InheritTotalDuration": "TRUE",
 		"RefreshDuration": "TRUE",
@@ -156,6 +156,7 @@
 		"RemoveOnDeath": 1,
 		"RemoveOnDeathsDoor": 0,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": "TRUE",
 		"EffectDurationMods": [
 			"Stun=-1.0"
 		],
@@ -705,8 +706,7 @@
 		"DisplayName": "@Status_Empower",
 		"Description": "@Status_Empower_Description",
 		"EffectCategories": [
-			"Buff",
-			"Empower"
+			"Buff"
 		],
 		"PlaceholderIcon": "lyshineui/images/status/se_empowert1.webp",
 		"ShowInUITray": "TRUE",
@@ -850,6 +850,7 @@
 		"RemoveOnDeath": 1,
 		"RemoveOnDeathsDoor": 1,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": "1",
 		"ABSStandard": 0,
 		"ABSSiege": 0,
 		"ABSStrike": 0,
@@ -897,8 +898,7 @@
 		"StatusID": "Rapier_BonusDMGAfterAbility",
 		"Description": "@Rapier_BonusDMGAfterAbility_Description",
 		"EffectCategories": [
-			"Buff",
-			"Empower"
+			"Buff"
 		],
 		"PlaceholderIcon": "lyshineui/images/status/se_empowert5.webp",
 		"ShowInUITray": "1",
@@ -947,6 +947,7 @@
 		"RemoveOnDeath": 1,
 		"RemoveOnDeathsDoor": 1,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": "1",
 		"ABSStandard": 0,
 		"ABSSiege": 0,
 		"ABSStrike": 0,
@@ -993,7 +994,7 @@
 	{
 		"StatusID": "Rapier_BonusStamOnHit",
 		"Description": "@Rapier_BonusStamRegenOnKill_Description",
-		"ShowInUITray": "1",
+		"ShowInUITray": "0",
 		"ShowTextInDamageNumbers": false,
 		"IsClientPredicted": 0,
 		"UseLightweightReplication": true,
@@ -1237,6 +1238,7 @@
 		"RemoveOnDeath": 1,
 		"RemoveOnDeathsDoor": 1,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": "1",
 		"ABSStandard": 0,
 		"ABSSiege": 0,
 		"ABSStrike": 0,
@@ -1335,6 +1337,7 @@
 		"RemoveOnDeath": 1,
 		"RemoveOnDeathsDoor": 1,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": "1",
 		"EffectDurationMods": [
 			"Stun=-1.0"
 		],

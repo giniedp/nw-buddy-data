@@ -1828,7 +1828,7 @@
 		"MaxRoll": 0,
 		"Item1": "CinnabarT1",
 		"Item2": "ScarhideT1",
-		"Item3": "BlisterweaveT1",
+		"Item3": "ScaleclothT1",
 		"Item4": "WildwoodT1",
 		"Item5": "BlockT5"
 	},
@@ -3363,13 +3363,354 @@
 		"Item1": "89000"
 	},
 	{
-		"LootTableID": "Trial_S2_MasterLoot",
+		"LootTableID": "WorldEvent_S6_MasterLoot_Minor",
 		"AND/OR": "AND",
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
+		"Item1": "WorldEvent_S6_NormalBox_Minor",
+		"Item2": "WorldEvent_S6_BonusBox",
+		"Item3": "GypsumBlack"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_MasterLoot_Minor_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_MasterLoot_Minor_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "50000"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_MasterLoot_Moderate",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "WorldEvent_S6_NormalBox_Moderate",
+		"Item2": "WorldEvent_S6_BonusBox",
+		"Item3": "GypsumBlack"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_MasterLoot_Moderate_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_MasterLoot_Moderate_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "20000"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_MasterLoot_Major",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "WorldEvent_S6_NormalBox_Major",
+		"Item2": "WorldEvent_S6_BonusBox",
+		"Item3": "GypsumBlack"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_MasterLoot_Major_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_MasterLoot_Major_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Minor",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "[LTID]WorldEvent_S6_NormalLoot_Minor_Subtable1",
+		"Item2": "[LTID]WorldEvent_S6_NormalLoot_Subtable2",
+		"Item3": "[LBID]RecoveryItems"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Minor_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "4-6"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Minor_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Minor_Subtable1",
+		"AND/OR": "OR",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "[LTID]WorldEvent_S6_ProcArmorOrWeapon"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Minor_Subtable1_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Minor_Subtable1_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Moderate",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "[LTID]WorldEvent_S6_NormalLoot_Moderate_Subtable1",
+		"Item2": "[LTID]WorldEvent_S6_NormalLoot_Subtable2",
+		"Item3": "[LBID]RecoveryItems"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Moderate_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1-2",
+		"Item2": "1",
+		"Item3": "4-6"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Moderate_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Moderate_Subtable1",
+		"AND/OR": "OR",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "[LTID]WorldEvent_S6_ProcArmorOrWeapon"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Moderate_Subtable1_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Moderate_Subtable1_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Major",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "[LTID]WorldEvent_S6_NormalLoot_Major_Subtable1",
+		"Item2": "[LTID]WorldEvent_S6_NormalLoot_Subtable2",
+		"Item3": "[LBID]RecoveryItems"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Major_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "2",
+		"Item2": "1",
+		"Item3": "4-6"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Major_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Major_Subtable1",
+		"AND/OR": "OR",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "[LTID]WorldEvent_S6_ProcArmorOrWeapon"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Major_Subtable1_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Major_Subtable1_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_ProcArmorOrWeapon",
+		"AND/OR": "OR",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "[LBID]ProcWeapons_S6_GuaranteeEpic",
+		"Item2": "[LBID]ProcArmor_S6_GuaranteeEpic",
+		"Item3": "[LBID]ProcShields_S6_GuaranteeEpic"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_ProcArmorOrWeapon_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_ProcArmorOrWeapon_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "50000",
+		"Item3": "97000"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Subtable2",
+		"AND/OR": "OR",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "[LBID]ContainerResources",
+		"Item2": "[LBID]AttributeItems",
+		"Item3": "[LBID]ContainerResourcesRare",
+		"Item4": "[LTID]RareContainerT5"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Subtable2_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_NormalLoot_Subtable2_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "32500",
+		"Item2": "82500",
+		"Item3": "92500",
+		"Item4": "97500"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_BonusLoot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "IgnoreBonus",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 100,
+		"MaxRoll": 0,
+		"Item1": "[LBID]WorldEvent_S6_Armor",
+		"Item2": "[LBID]WorldEvent_S6_Weapons",
+		"Item3": "[LTID]WorldEvent_S2_PityTicker",
+		"Item4": "DarkMatter",
+		"Item5": "[LBID]WorldEvent_S6_NamedGear",
+		"Item6": "House_HousingItem_Season2_SandwormEgg_Variant4"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_BonusLoot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "100",
+		"Item5": "1",
+		"Item6": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_S6_BonusLoot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "70000",
+		"Item6": "75000"
+	},
+	{
+		"LootTableID": "Trial_S2_MasterLoot",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"LootBiasingEnabled": "TRUE",
+		"MaxRoll": 0,
 		"Item1": "[LTID]Trial_S2_NormalLoot",
-		"Item2": "Trial_S2_BonusBox"
+		"Item2": "[LTID]Trial_S2_BossMaster"
 	},
 	{
 		"LootTableID": "Trial_S2_MasterLoot_Qty",
@@ -3396,14 +3737,14 @@
 		"MaxRoll": 0,
 		"Item1": "[LTID]Trial_S2_NormalLoot_GearRoll",
 		"Item2": "[LBID]RecoveryItems",
-		"Item3": "SmolderingSandT1"
+		"Item3": "GypsumBlue"
 	},
 	{
 		"LootTableID": "Trial_S2_NormalLoot_Qty",
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "6",
+		"Item1": "2",
 		"Item2": "4-6",
 		"Item3": "1"
 	},
@@ -3414,16 +3755,19 @@
 		"MaxRoll": 100000,
 		"Item1": "0",
 		"Item2": "0",
-		"Item3": "90000"
+		"Item3": "0"
 	},
 	{
 		"LootTableID": "Trial_S2_NormalLoot_GearRoll",
 		"AND/OR": "OR",
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
+		"LootBiasingEnabled": "TRUE",
 		"MaxRoll": 0,
-		"Item1": "[LBID]Trial_S2_Weapons",
-		"Item2": "[LBID]Trial_S2_Armor",
+		"Item1": "[LBID]Trial_S2_Weapons_V2",
+		"GearScoreRange1": "650-700",
+		"Item2": "[LBID]Trial_S2_Armor_V2",
+		"GearScoreRange2": "650-700",
 		"Item3": "[LBID]GlobalNamedList"
 	},
 	{
@@ -3445,28 +3789,49 @@
 		"Item3": "90000"
 	},
 	{
+		"LootTableID": "Trial_S2_BossMaster",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 100,
+		"MaxRoll": 0,
+		"Item1": "Trial_S2_BonusBox"
+	},
+	{
+		"LootTableID": "Trial_S2_BossMaster_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "Trial_S2_BossMaster_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0"
+	},
+	{
 		"LootTableID": "Trial_S2_BonusLoot",
 		"AND/OR": "AND",
 		"RollBonusSetting": "IgnoreBonus",
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 100,
+		"LootBiasingEnabled": "TRUE",
 		"MaxRoll": 0,
-		"Item1": "SmolderingSandT1",
-		"Item2": "[LTID]Trial_S2_BonusLoot_GearRoll",
-		"Item3": "[LTID]Trial_S2_BonusLoot_ExtraRoll",
-		"Item4": "[LTID]Trial_S2_BonusLoot_FurnitureRoll",
-		"Item5": "[LBID]Trial_S2_GlyphStones"
+		"Item1": "[LTID]Trial_S2_BonusLoot_GearRoll",
+		"Item2": "[LTID]Trial_S2_BonusLoot_ExtraRoll",
+		"Item3": "[LBID]Trial_S2_GlyphStones",
+		"Item4": "DarkMatter"
 	},
 	{
 		"LootTableID": "Trial_S2_BonusLoot_Qty",
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "2-3",
-		"Item2": "2",
+		"Item1": "4",
+		"Item2": "1",
 		"Item3": "1",
-		"Item4": "1",
-		"Item5": "1"
+		"Item4": "150"
 	},
 	{
 		"LootTableID": "Trial_S2_BonusLoot_Probs",
@@ -3475,9 +3840,8 @@
 		"MaxRoll": 100000,
 		"Item1": "0",
 		"Item2": "0",
-		"Item3": "0",
-		"Item4": "0",
-		"Item5": "75000"
+		"Item3": "75000",
+		"Item4": "0"
 	},
 	{
 		"LootTableID": "Trial_S2_BonusLoot_GearRoll",
@@ -3485,11 +3849,12 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"IgnoreHWMGS": "TRUE",
+		"LootBiasingEnabled": "TRUE",
 		"MaxRoll": 0,
-		"Item1": "[LBID]Trial_S2_Weapons",
-		"GearScoreRange1": "590-600",
-		"Item2": "[LBID]Trial_S2_Armor",
-		"GearScoreRange2": "590-600"
+		"Item1": "[LBID]Trial_S2_Weapons_V2",
+		"GearScoreRange1": "650-700",
+		"Item2": "[LBID]Trial_S2_Armor_V2",
+		"GearScoreRange2": "650-700"
 	},
 	{
 		"LootTableID": "Trial_S2_BonusLoot_GearRoll_Qty",
@@ -3513,7 +3878,7 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "[LBID]Trial_S2_Named",
+		"Item1": "[LBID]Trial_S2_Named_V2",
 		"Item2": "WritofAdventure",
 		"Item3": "GoldenScarab"
 	},
@@ -6842,7 +7207,8 @@
 		"HWMMult": 0,
 		"MaxRoll": 0,
 		"Item1": "[LTID]Trial_S5_GearRoll",
-		"Item2": "GypsumBlue"
+		"Item2": "GypsumBlue",
+		"Item3": "[LBID]RecoveryItems"
 	},
 	{
 		"LootTableID": "Trial_S5_NormalLoot_Qty",
@@ -6850,7 +7216,8 @@
 		"HWMMult": 0,
 		"MaxRoll": 0,
 		"Item1": "2",
-		"Item2": "1"
+		"Item2": "1",
+		"Item3": "4-6"
 	},
 	{
 		"LootTableID": "Trial_S5_NormalLoot_Probs",
@@ -6858,7 +7225,8 @@
 		"HWMMult": 0,
 		"MaxRoll": 100000,
 		"Item1": "0",
-		"Item2": "0"
+		"Item2": "0",
+		"Item3": "0"
 	},
 	{
 		"LootTableID": "Trial_S5_GearRoll",
@@ -7091,5 +7459,218 @@
 		"Item2": "0",
 		"Item3": "0",
 		"Item4": "0"
+	},
+	{
+		"LootTableID": "Welcome_Box_S6_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "GypsumOrb",
+		"Item2": "Food_Box_S6_Premium",
+		"Item3": "Ward_Box_S4"
+	},
+	{
+		"LootTableID": "Welcome_Box_S6_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "Welcome_Box_S6_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "Dyes1_Box_S6_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DyeB145"
+	},
+	{
+		"LootTableID": "Dyes1_Box_S6_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes1_Box_S6_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes2_Box_S6_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DyeB133"
+	},
+	{
+		"LootTableID": "Dyes2_Box_S6_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes2_Box_S6_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes3_Box_S6_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DyeB121"
+	},
+	{
+		"LootTableID": "Dyes3_Box_S6_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes3_Box_S6_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes4_Box_S6_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DyeB123"
+	},
+	{
+		"LootTableID": "Dyes4_Box_S6_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes4_Box_S6_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes5_Box_S6_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DyeB118"
+	},
+	{
+		"LootTableID": "Dyes5_Box_S6_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes5_Box_S6_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Expedition_Box2_S6_Loot",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DungeonDiamonds_FLXPac_Barnacles",
+		"Item2": "DungeonDiamonds_FLXPac_Brimstone",
+		"Item3": "DungeonDiamonds_FLXPac_Empyrean",
+		"Item4": "DungeonDiamonds_FLXpac_Crystalclaw",
+		"Item5": "DungeonDiamonds_Glacial"
+	},
+	{
+		"LootTableID": "Expedition_Box2_S6_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1500",
+		"Item2": "1500",
+		"Item3": "1500",
+		"Item4": "1500",
+		"Item5": "1500"
+	},
+	{
+		"LootTableID": "Expedition_Box2_S6_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 1,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
+	},
+	{
+		"LootTableID": "Food_Box_S6_Premium_Loot",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "FoodSTRT52S",
+		"Item2": "FoodDEXT52S",
+		"Item3": "FoodINTT52S",
+		"Item4": "FoodCONT52S",
+		"Item5": "FoodFOCT52S"
+	},
+	{
+		"LootTableID": "Food_Box_S6_Premium_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "1",
+		"Item5": "1"
+	},
+	{
+		"LootTableID": "Food_Box_S6_Premium_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 1,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
 	}
 ]

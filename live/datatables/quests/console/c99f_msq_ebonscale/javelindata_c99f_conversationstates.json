@@ -1,0 +1,589 @@
+[
+	{
+		"ConversationStateId": "99F_Sun_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Sun_Greet_Fallthrough_00"
+	},
+	{
+		"ConversationStateId": "99F_Sun_00a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Sun_Greet_Fallthrough_00",
+		"RequiredAchievement": "99E_MSQ_10 || 99_MSQ_56"
+	},
+	{
+		"ConversationStateId": "99F_Sun_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Sun_Greet_GatherAllies_00",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_GatherAllies",
+		"RequiredActiveTaskId": "99F_MSQ_ER_GatherAllies_TalkToGraceAddition"
+	},
+	{
+		"ConversationStateId": "99F_Sun_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ01_GatherAllies_Sun_TalkToB_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_GatherAllies",
+		"RequiredActiveTaskId": "99F_MSQ_ER_GatherAllies_TalkToSun2",
+		"TopicId1": "99F_GatherAllies_Sun_TalkTo_02"
+	},
+	{
+		"ConversationStateId": "99F_Sun_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Sun_Greet_GatherAllies_01"
+	},
+	{
+		"ConversationStateId": "99F_Sun_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ02_MeetWiseman_Sun_Start_Greet",
+		"RequiredAchievement": "99F_MSQ_01",
+		"LinearObjectiveId1": "99F_MSQ_ER_MeetWiseman"
+	},
+	{
+		"ConversationStateId": "99F_Sun_05a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Sun_Greet_MeetWiseman_00",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_MeetWiseman",
+		"RequiredActiveTaskId": "99F_MSQ_ER_MeetWiseman_Temple_container"
+	},
+	{
+		"ConversationStateId": "99F_Sun_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ04_InspireAllies_Sun_Start_Greet",
+		"RequiredAchievement": "99F_MSQ_03",
+		"LinearObjectiveId1": "99F_MSQ_ER_InspireAllies"
+	},
+	{
+		"ConversationStateId": "99F_Sun_07",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ05_MeetEmpress_Sun_Start_Greet",
+		"RequiredAchievement": "99F_MSQ_04",
+		"LinearObjectiveId1": "99F_MSQ_ER_MeetEmpress"
+	},
+	{
+		"ConversationStateId": "99F_Sun_07a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Sun_Greet_MeetEmpress_00",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_MeetEmpress",
+		"RequiredActiveTaskId": "99F_MSQ_ER_MeetEmpress_Temple_container"
+	},
+	{
+		"ConversationStateId": "99F_Sun_08",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ07_CreateIncense_Sun_TalkTo_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_CreateIncense",
+		"RequiredActiveTaskId": "99F_MSQ_ER_CreateIncense_TalkToSun",
+		"TopicId1": "99F_CreateIncense_Sun_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Sun_09",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Sun_Greet_CreateIncense_00"
+	},
+	{
+		"ConversationStateId": "99F_Sun_10",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ08_FightLiang_Sun_Start_Greet",
+		"RequiredAchievement": "99F_MSQ_07",
+		"LinearObjectiveId1": "99F_MSQ_ER_FightLiang",
+		"LinearObjectiveId2": "99F_MSQ_ER_FightLiang_destroyer",
+		"LinearObjectiveId3": "99F_MSQ_ER_FightLiang_musketeer",
+		"LinearObjectiveId4": "99F_MSQ_ER_FightLiang_mystic",
+		"LinearObjectiveId5": "99F_MSQ_ER_FightLiang_occultist",
+		"LinearObjectiveId6": "99F_MSQ_ER_FightLiang_ranger",
+		"LinearObjectiveId7": "99F_MSQ_ER_FightLiang_soldier",
+		"LinearObjectiveId8": "99F_MSQ_ER_FightLiang_swordsman"
+	},
+	{
+		"ConversationStateId": "99F_Sun_10aa",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ08_FightLiang_Sun_TalkToA_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_FightLiang,99F_MSQ_ER_FightLiang_destroyer,99F_MSQ_ER_FightLiang_musketeer,99F_MSQ_ER_FightLiang_mystic,99F_MSQ_ER_FightLiang_occultist,99F_MSQ_ER_FightLiang_ranger,99F_MSQ_ER_FightLiang_soldier,99F_MSQ_ER_FightLiang_swordsman",
+		"RequiredActiveTaskId": "99F_MSQ_ER_FightLiang_TalkToSunA",
+		"TopicId1": "99F_FightLiang_Sun_TalkTo_00"
+	},
+	{
+		"ConversationStateId": "99F_Sun_10a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Sun_Greet_FightLiang_00"
+	},
+	{
+		"ConversationStateId": "99F_Sun_11",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ08_FightLiang_Sun_TalkTo_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_FightLiang,99F_MSQ_ER_FightLiang_destroyer,99F_MSQ_ER_FightLiang_musketeer,99F_MSQ_ER_FightLiang_mystic,99F_MSQ_ER_FightLiang_occultist,99F_MSQ_ER_FightLiang_ranger,99F_MSQ_ER_FightLiang_soldier,99F_MSQ_ER_FightLiang_swordsman",
+		"RequiredActiveTaskId": "99F_MSQ_ER_FightLiang_TalkToSun",
+		"TopicId1": "99F_FightLiang_Sun_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Sun_12",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Sun_Greet_FightLiang_02",
+		"RequiredAchievement": "99F_MSQ_ER_FightLiang_SunAchievement"
+	},
+	{
+		"ConversationStateId": "99F_Sun_13",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ09_ReuniteFamily_Sun_TalkToA_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_ReuniteFamily",
+		"RequiredActiveTaskId": "99F_MSQ_ER_ReuniteFamily_TalkToSun",
+		"TopicId1": "99F_ReuniteFamily_Sun_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Sun_14",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Sun_Greet_ReuniteFamily_00"
+	},
+	{
+		"ConversationStateId": "99F_Sun_15",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ09_ReuniteFamily_Sun_TalkToB_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_ReuniteFamily",
+		"RequiredActiveTaskId": "99F_MSQ_ER_ReuniteFamily_TalkToSun02",
+		"TopicId1": "99F_ReuniteFamily_Sun_TalkTo_02"
+	},
+	{
+		"ConversationStateId": "99F_Sun_16",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ12_DeliverPoem_Sun_Start_Greet",
+		"RequiredAchievement": "99F_MSQ_11",
+		"LinearObjectiveId1": "99F_MSQ_ER_DeliverPoem"
+	},
+	{
+		"ConversationStateId": "99F_Sun_17",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Sun_Greet_DeliverPoem_00"
+	},
+	{
+		"ConversationStateId": "99F_Sun_18",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ12_DeliverPoem_Sun_TalkTo_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_DeliverPoem",
+		"RequiredActiveTaskId": "99F_MSQ_ER_DeliverPoem_TalkToSun",
+		"TopicId1": "99F_DeliverPoem_Sun_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Sun_19",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Sun_Greet_DeliverPoem_01",
+		"RequiredAchievement": "99F_Sun_09_TalkTo_Achievement"
+	},
+	{
+		"ConversationStateId": "99F_Yash_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Yash_Greet_GatherAllies_00"
+	},
+	{
+		"ConversationStateId": "99F_Yash_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Yash_Greet_GatherAllies_01",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_GatherAllies",
+		"RequiredActiveTaskId": "99F_MSQ_ER_GatherAllies_GoToSun"
+	},
+	{
+		"ConversationStateId": "99F_Yash_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ01_GatherAllies_Yash_Start_Greet",
+		"RequiredAchievement": "99E_MSQ_10 || 99_MSQ_56",
+		"LinearObjectiveId1": "99F_MSQ_ER_GatherAllies"
+	},
+	{
+		"ConversationStateId": "99F_Yash_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ03_CreateRefuge_Yash_TalkToA_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_CreateRefuge",
+		"RequiredActiveTaskId": "99F_MSQ_ER_CreateRefuge_TalkToYash",
+		"TopicId1": "99F_CreateRefuge_Yash_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Yash_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Yash_Greet_CreateRefuge_00"
+	},
+	{
+		"ConversationStateId": "99F_Yash_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ03_CreateRefuge_Yash_TalkToB_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_CreateRefuge",
+		"RequiredActiveTaskId": "99F_MSQ_ER_CreateRefuge_TalkToYash2",
+		"TopicId1": "99F_CreateRefuge_Yash_TalkTo_02"
+	},
+	{
+		"ConversationStateId": "99F_Yash_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Yash_Greet_CreateRefuge_01",
+		"RequiredAchievement": "99F_Yash_MSQ04_TalkToEndingState"
+	},
+	{
+		"ConversationStateId": "99F_Yash_07",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ04_InspireAllies_Yash_TalkTo_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_InspireAllies",
+		"RequiredActiveTaskId": "99F_MSQ_ER_InspireAllies_TalkToYash",
+		"TopicId1": "99F_InspireAllies_Yash_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Yash_08",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Yash_Greet_DeliverPoem_01"
+	},
+	{
+		"ConversationStateId": "99F_Grace_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Grace_Greet_GatherAllies_00"
+	},
+	{
+		"ConversationStateId": "99F_Grace_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ01_GatherAllies_Grace_TalkToB_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_GatherAllies",
+		"RequiredActiveTaskId": "99F_MSQ_ER_GatherAllies_TalkToGrace",
+		"TopicId1": "99F_GatherAllies_Grace_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Grace_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Grace_Greet_GatherAllies_01"
+	},
+	{
+		"ConversationStateId": "99F_Grace_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ01_GatherAllies_Grace_TalkToC_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_GatherAllies",
+		"RequiredActiveTaskId": "99F_MSQ_ER_GatherAllies_TalkToGrace1",
+		"TopicId1": "99F_GatherAllies_Grace_TalkTo_02"
+	},
+	{
+		"ConversationStateId": "99F_Grace_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ03_CreateRefuge_Grace_Start_Greet",
+		"RequiredAchievement": "99F_MSQ_02",
+		"LinearObjectiveId1": "99F_MSQ_ER_CreateRefuge"
+	},
+	{
+		"ConversationStateId": "99F_Grace_04a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Grace_Greet_CreateRefuge_00"
+	},
+	{
+		"ConversationStateId": "99F_Grace_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ04_InspireAllies_Grace_TalkTo_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_InspireAllies",
+		"RequiredActiveTaskId": "99F_MSQ_ER_InspireAllies_TalkToGrace",
+		"TopicId1": "99F_InspireAllies_Grace_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Grace_05a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Grace_Greet_InspireAllies_00"
+	},
+	{
+		"ConversationStateId": "99F_Grace_05b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Grace_Greet_ReuniteFamily_00"
+	},
+	{
+		"ConversationStateId": "99F_Grace_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ09_ReuniteFamily_Grace_TalkToA_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_ReuniteFamily",
+		"RequiredActiveTaskId": "99F_MSQ_ER_ReuniteFamily_TalkToGracePoem",
+		"TopicId1": "99F_ReuniteFamily_Grace_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Grace_07",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ09_ReuniteFamily_Grace_TalkToB_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_ReuniteFamily",
+		"RequiredActiveTaskId": "99F_MSQ_ER_ReuniteFamily_TalkToGrace",
+		"TopicId1": "99F_ReuniteFamily_Grace_TalkTo_02"
+	},
+	{
+		"ConversationStateId": "99F_Grace_08",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ10_StealBoat_Grace_Start_Greet",
+		"RequiredAchievement": "99F_MSQ_09",
+		"LinearObjectiveId1": "99F_MSQ_ER_StealBoat"
+	},
+	{
+		"ConversationStateId": "99F_Grace_08a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Grace_Greet_StealBoat_01"
+	},
+	{
+		"ConversationStateId": "99F_Grace_09",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ11_FightEmpress_Grace_Start_Greet",
+		"RequiredAchievement": "99F_MSQ_10",
+		"LinearObjectiveId1": "99F_MSQ_ER_FightEmpress"
+	},
+	{
+		"ConversationStateId": "99F_Qi_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Qi_Greet_MeetWiseman_00"
+	},
+	{
+		"ConversationStateId": "99F_Qi_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ02_MeetWiseman_Qi_TalkToA_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_MeetWiseman",
+		"RequiredActiveTaskId": "99F_MSQ_ER_MeetWiseman_TalkToShen",
+		"TopicId1": "99F_MeetWiseman_Qi_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Qi_01a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Qi_Greet_MeetWiseman_03",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_MeetWiseman",
+		"RequiredActiveTaskId": "99F_MSQ_ER_MeetWiseman_Meditate"
+	},
+	{
+		"ConversationStateId": "99F_Qi_01b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ02_MeetWiseman_Qi_TalkToC_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_MeetWiseman",
+		"RequiredActiveTaskId": "99F_MSQ_ER_MeetWiseman_TalkToShen3",
+		"TopicId1": "99F_MeetWiseman_Qi_TalkTo_03"
+	},
+	{
+		"ConversationStateId": "99F_Qi_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Qi_Greet_MeetWiseman_01",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_MeetWiseman",
+		"RequiredActiveTaskId": "99F_MSQ_ER_MeetWiseman_Puzzle_container"
+	},
+	{
+		"ConversationStateId": "99F_Qi_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ02_MeetWiseman_Qi_TalkToB_Start",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_MeetWiseman",
+		"RequiredActiveTaskId": "99F_MSQ_ER_MeetWiseman_TalkToShen2",
+		"TopicId1": "99F_MeetWiseman_Qi_TalkTo_02"
+	},
+	{
+		"ConversationStateId": "99F_Qi_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Qi_Greet_MeetWiseman_02",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_MeetWiseman",
+		"RequiredActiveTaskId": "99F_MSQ_ER_MeetWiseman_GoToGrace"
+	},
+	{
+		"ConversationStateId": "99F_Empress_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Zhou_Greet_MeetEmpress_00"
+	},
+	{
+		"ConversationStateId": "99F_Empress_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ06_AscendPeak_Zhou_Start_Greet",
+		"RequiredAchievement": "99F_MSQ_05",
+		"LinearObjectiveId1": "99F_MSQ_ER_AscendPeak"
+	},
+	{
+		"ConversationStateId": "99F_Empress_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ07_CreateIncense_Zhou_Start_Greet",
+		"RequiredAchievement": "99F_MSQ_06",
+		"LinearObjectiveId1": "99F_MSQ_ER_CreateIncense"
+	},
+	{
+		"ConversationStateId": "99F_Empress_02a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Zhou_Greet_CreateIncense_00"
+	},
+	{
+		"ConversationStateId": "99F_Empress_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ07_CreateIncense_Zhou_TalkTo_Start",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_CreateIncense",
+		"RequiredActiveTaskId": "99F_MSQ_ER_CreateIncense_TalkEmpress",
+		"TopicId1": "99F_CreateIncense_Zhou_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Empress_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ09_ReuniteFamily_Zhou_TalkTo_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_ReuniteFamily",
+		"RequiredActiveTaskId": "99F_MSQ_ER_ReuniteFamily_TalkToEmpressPoem",
+		"TopicId1": "99F_ReuniteFamily_Zhou_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Liang_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Liang_Greet_ReuniteFamily_00"
+	},
+	{
+		"ConversationStateId": "99F_Liang_00a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Liang_Greet_ReuniteFamily_00a",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_FightLiang,99F_MSQ_ER_FightLiang_destroyer,99F_MSQ_ER_FightLiang_musketeer,99F_MSQ_ER_FightLiang_mystic,99F_MSQ_ER_FightLiang_occultist,99F_MSQ_ER_FightLiang_ranger,99F_MSQ_ER_FightLiang_soldier,99F_MSQ_ER_FightLiang_swordsman",
+		"RequiredActiveTaskId": "99F_MSQ_ER_FightLiang_TalkToSun"
+	},
+	{
+		"ConversationStateId": "99F_Liang_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ09_ReuniteFamily_Liang_Start_Greet",
+		"RequiredAchievement": "99F_MSQ_08",
+		"LinearObjectiveId1": "99F_MSQ_ER_ReuniteFamily"
+	},
+	{
+		"ConversationStateId": "99F_Liang_01a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ09_ReuniteFamily_Liang_TalkTo_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_ReuniteFamily",
+		"RequiredActiveTaskId": "99F_MSQ_ER_ReuniteFamily_TalkToLiang",
+		"TopicId1": "99F_ReuniteFamily_Liang_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Liang_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Liang_Greet_ReuniteFamily_00"
+	},
+	{
+		"ConversationStateId": "99F_Liang_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_Liang_Greet_ReuniteFamily_01",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_ReuniteFamily",
+		"RequiredActiveTaskId": "99F_MSQ_ER_ReuniteFamily_TalkToSun"
+	},
+	{
+		"ConversationStateId": "99F_Liang_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Liang_Greet_ReuniteFamily_02"
+	},
+	{
+		"ConversationStateId": "99F_Liang_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Liang_Greet_DeliverPoem_00"
+	},
+	{
+		"ConversationStateId": "99F_Liang_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ12_DeliverPoem_Liang_TalkTo_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_DeliverPoem",
+		"RequiredActiveTaskId": "99F_MSQ_ER_DeliverPoem_TalkToLiang",
+		"TopicId1": "99F_DeliverPoem_Liang_TalkTo_01"
+	},
+	{
+		"ConversationStateId": "99F_Liang_07",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Liang_Greet_DeliverPoem_01"
+	},
+	{
+		"ConversationStateId": "99F_Walker_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Walker_Greet_CreateRefuge_00"
+	},
+	{
+		"ConversationStateId": "99F_Wayne_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Wayne_Greet_CreateRefuge_00"
+	},
+	{
+		"ConversationStateId": "99F_Wayne_00a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ01_GatherAllies_Wayne_TalkTo_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_GatherAllies",
+		"RequiredActiveTaskId": "99F_MSQ_ER_GatherAllies_TalkToWayneSave",
+		"TopicId1": "99F_GatherAllies_Wayne_TalkTo_00"
+	},
+	{
+		"ConversationStateId": "99F_Constance_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Constance_Greet_CreateRefuge_00"
+	},
+	{
+		"ConversationStateId": "99F_Eliza_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Eliza_Greet_CreateRefuge_00"
+	},
+	{
+		"ConversationStateId": "99F_Samir_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99F_Samir_Greet_CreateRefuge_00"
+	},
+	{
+		"ConversationStateId": "99F_Samir_00a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99F_MSQ01_GatherAllies_Samir_TalkTo_Start_Greet",
+		"RequiredActiveObjectiveId": "99F_MSQ_ER_GatherAllies",
+		"RequiredActiveTaskId": "99F_MSQ_ER_GatherAllies_TalkToSamirSave",
+		"TopicId1": "99F_GatherAllies_Samir_TalkTo_00"
+	}
+]

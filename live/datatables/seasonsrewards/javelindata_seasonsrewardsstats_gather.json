@@ -34,7 +34,7 @@
 		"StatType": "Gather",
 		"Level": 0,
 		"PerUse": true,
-		"GatherableIds": "LootLargeT3ElitePOI"
+		"GatherableIds": "LootLargeT3ElitePOI,LootLargeT3ElitePOI_SulfurChestOnly,LootLargeT3ElitePOI_BeastChestOnly"
 	},
 	{
 		"TrackedStatID": "GatherPrismabloom",
@@ -66,5 +66,19 @@
 		"ItemType": "Resource",
 		"PerUse": true,
 		"Tradeskills": "Skinning,Mining,Logging,Harvesting"
+	},
+	{
+		"TrackedStatID": "GatherCKPvPChest",
+		"StatType": "Gather",
+		"Level": 0,
+		"PerUse": true,
+		"GatherableIds": "10ws_DoubloonChestPvP_Small,10ws_DoubloonChestPvP_Medium,10ws_DoubloonChestPvP_Large"
+	},
+	{
+		"TrackedStatID": "GatherCKPvPDoubloon",
+		"StatType": "Gather",
+		"TargetID": "CK_PVPResource_DoubloonToken",
+		"Level": 0,
+		"PerUse": false
 	}
 ]

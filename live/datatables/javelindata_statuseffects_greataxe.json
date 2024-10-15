@@ -6,7 +6,6 @@
 		],
 		"ShowInUITray": false,
 		"ShowTextInDamageNumbers": false,
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": 3,
 		"TickRate": 1,
@@ -41,6 +40,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 1,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": false,
 		"IsNegative": true,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -67,12 +67,13 @@
 		"SprintSpeedMod": -0.6000000238418579,
 		"UIPriority": 0,
 		"UiNameplatePriority": 0,
-		"ShowInNameplates": false
+		"ShowInNameplates": false,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "GreatAxe_Vortex_Root",
 		"DisplayName": "@Status_Root",
-		"Description": "Status_Root_Description",
+		"Description": "@Status_Root_Description",
 		"EffectCategories": [
 			"Debuff",
 			"Root"
@@ -82,7 +83,6 @@
 		"ShowTextInDamageNumbers": false,
 		"FxScriptOn": "StatFX_Root_ON",
 		"FxScriptOff": "StatFX_Root_OFF",
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": 1,
 		"TickRate": 1,
@@ -117,6 +117,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": false,
 		"IsNegative": true,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -145,7 +146,8 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 1,
 		"UiNameplatePriority": 1,
-		"ShowInNameplates": true
+		"ShowInNameplates": true,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Ultimate_Greataxe_Mauler",
@@ -159,7 +161,6 @@
 		"ShowInUITray": true,
 		"ShowTextInDamageNumbers": false,
 		"FxScriptOn": "StatFX_Empower_ON",
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": 3,
 		"TickRate": 1,
@@ -194,6 +195,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": true,
+		"AlwaysReplicate": false,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -222,7 +224,8 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 1,
 		"UiNameplatePriority": 1,
-		"ShowInNameplates": true
+		"ShowInNameplates": true,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Ultimate_Greataxe_Reaper",
@@ -237,7 +240,6 @@
 		"ShowInUITray": true,
 		"ShowTextInDamageNumbers": false,
 		"FxScriptOn": "StatFX_Haste_ON",
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": -1,
 		"TickRate": 1,
@@ -272,6 +274,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 1,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": true,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -298,7 +301,8 @@
 		"SprintSpeedMod": 0.20000000298023224,
 		"UIPriority": 2,
 		"UiNameplatePriority": 2,
-		"ShowInNameplates": false
+		"ShowInNameplates": false,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Passive_Greataxe_Reaper_DmgOnLight",
@@ -312,7 +316,6 @@
 		"ShowInUITray": true,
 		"ShowTextInDamageNumbers": false,
 		"FxScriptOn": "StatFX_Empower_ON",
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": 5,
 		"TickRate": 1,
@@ -347,6 +350,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": true,
+		"AlwaysReplicate": false,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -375,7 +379,8 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 1,
 		"UiNameplatePriority": 1,
-		"ShowInNameplates": true
+		"ShowInNameplates": true,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Passive_Greataxe_Reaper_HasteOnLight",
@@ -389,7 +394,6 @@
 		"ShowInUITray": true,
 		"ShowTextInDamageNumbers": false,
 		"FxScriptOn": "StatFX_Haste_ON",
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": 3,
 		"TickRate": 1,
@@ -424,6 +428,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 1,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": false,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -442,17 +447,18 @@
 		"DMGVitalsCategory": 0,
 		"StackDuration": 0,
 		"DurationMax": 6,
-		"InheritDuration": "1",
-		"InheritTotalDuration": false,
-		"RefreshDuration": "0",
+		"InheritDuration": "0",
+		"InheritTotalDuration": true,
+		"RefreshDuration": "1",
 		"StackMax": 1,
-		"RemoveUnappliedStacks": true,
+		"RemoveUnappliedStacks": false,
 		"PotencyMax": 1,
 		"MoveSpeedMod": 0.20000000298023224,
 		"SprintSpeedMod": 0.20000000298023224,
 		"UIPriority": 2,
 		"UiNameplatePriority": 2,
-		"ShowInNameplates": false
+		"ShowInNameplates": false,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Passive_Greataxe_Reaper_DmgWhenBlocked",
@@ -466,7 +472,6 @@
 		"ShowInUITray": true,
 		"ShowTextInDamageNumbers": false,
 		"FxScriptOn": "StatFX_Empower_ON",
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": 10,
 		"TickRate": 1,
@@ -501,6 +506,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": true,
+		"AlwaysReplicate": false,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -529,13 +535,13 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 1,
 		"UiNameplatePriority": 1,
-		"ShowInNameplates": true
+		"ShowInNameplates": true,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Passive_Greataxe_Mauler_StamVsLowHp",
 		"ShowInUITray": false,
 		"ShowTextInDamageNumbers": false,
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": true,
 		"BaseDuration": 0.10000000149011612,
 		"TickRate": 0.25,
@@ -571,6 +577,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": true,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -597,7 +604,8 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 0,
 		"UiNameplatePriority": 0,
-		"ShowInNameplates": false
+		"ShowInNameplates": false,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Passive_Greataxe_Mauler_DmgOnBlock",
@@ -611,7 +619,6 @@
 		"ShowInUITray": true,
 		"ShowTextInDamageNumbers": true,
 		"FxScriptOn": "StatFX_Empower_ON",
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": 5,
 		"TickRate": 1,
@@ -646,6 +653,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": true,
+		"AlwaysReplicate": false,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -674,7 +682,8 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 1,
 		"UiNameplatePriority": 1,
-		"ShowInNameplates": true
+		"ShowInNameplates": true,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Upgrade_Greataxe_GravityWell_ArmorInWell",
@@ -688,7 +697,6 @@
 		"ShowInUITray": true,
 		"ShowTextInDamageNumbers": false,
 		"FxScriptOn": "StatFX_Fortify_ON",
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": -1,
 		"TickRate": 0,
@@ -723,6 +731,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": false,
 		"IsNegative": false,
 		"PhysicalArmor": 0.10000000149011612,
 		"ElementalArmor": 0.10000000149011612,
@@ -749,7 +758,8 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 2,
 		"UiNameplatePriority": 2,
-		"ShowInNameplates": true
+		"ShowInNameplates": true,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Passive_Greataxe_Mauler_StamVsLowHp_Timer",
@@ -761,7 +771,6 @@
 		"PlaceholderIcon": "lyshineui/images/status/se_placeholdertimer.webp",
 		"ShowInUITray": true,
 		"ShowTextInDamageNumbers": false,
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": true,
 		"BaseDuration": 20,
 		"TickRate": 21,
@@ -796,6 +805,7 @@
 		"RemoveOnDeathsDoor": 0,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": true,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -822,7 +832,8 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 0,
 		"UiNameplatePriority": 0,
-		"ShowInNameplates": false
+		"ShowInNameplates": false,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Upgrade_Greataxe_Reap_DmgAtRng",
@@ -832,7 +843,6 @@
 		],
 		"ShowInUITray": false,
 		"ShowTextInDamageNumbers": false,
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": 1,
 		"TickRate": 1,
@@ -867,6 +877,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": true,
+		"AlwaysReplicate": false,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -894,7 +905,8 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 1,
 		"UiNameplatePriority": 1,
-		"ShowInNameplates": true
+		"ShowInNameplates": true,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Passive_Greataxe_Mauler_DmgWhenFoesNear",
@@ -908,7 +920,6 @@
 		"ShowInUITray": true,
 		"ShowTextInDamageNumbers": false,
 		"FxScriptOn": "StatFX_Empower_ON",
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": -1,
 		"TickRate": 0,
@@ -943,6 +954,7 @@
 		"RemoveOnDeathsDoor": 0,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": true,
+		"AlwaysReplicate": true,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -971,7 +983,8 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 1,
 		"UiNameplatePriority": 1,
-		"ShowInNameplates": true
+		"ShowInNameplates": true,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Passive_Greataxe_Mauler_ArmorWhenFoesNear",
@@ -985,7 +998,6 @@
 		"ShowInUITray": true,
 		"ShowTextInDamageNumbers": false,
 		"FxScriptOn": "StatFX_Fortify_ON",
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
 		"BaseDuration": -1,
 		"TickRate": 0,
@@ -1020,6 +1032,7 @@
 		"RemoveOnDeathsDoor": 0,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": true,
 		"IsNegative": false,
 		"PhysicalArmor": 0.20000000298023224,
 		"ElementalArmor": 0.20000000298023224,
@@ -1046,13 +1059,14 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 2,
 		"UiNameplatePriority": 2,
-		"ShowInNameplates": true
+		"ShowInNameplates": true,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_WhenFoesNearCleanup_Tracker",
 		"ShowInUITray": false,
 		"ShowTextInDamageNumbers": false,
-		"IsClientPredicted": 1,
+		"IsClientPredicted": "1",
 		"UseLightweightReplication": true,
 		"BaseDuration": 60,
 		"TickRate": 0,
@@ -1087,6 +1101,7 @@
 		"RemoveOnDeathsDoor": 0,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": true,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -1104,7 +1119,7 @@
 		"DMGAcid": 0,
 		"DMGVitalsCategory": 0,
 		"StackDuration": 0,
-		"DurationMax": 1,
+		"DurationMax": 60,
 		"InheritTotalDuration": false,
 		"StackMax": 1,
 		"RemoveUnappliedStacks": true,
@@ -1113,13 +1128,14 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 0,
 		"UiNameplatePriority": 0,
-		"ShowInNameplates": false
+		"ShowInNameplates": false,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_WhenFoesNearCleanup",
 		"ShowInUITray": false,
 		"ShowTextInDamageNumbers": false,
-		"IsClientPredicted": 1,
+		"IsClientPredicted": "1",
 		"UseLightweightReplication": true,
 		"BaseDuration": 0.10000000149011612,
 		"TickRate": 0,
@@ -1155,6 +1171,7 @@
 		"RemoveOnDeathsDoor": 0,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": true,
 		"IsNegative": false,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -1181,20 +1198,17 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 0,
 		"UiNameplatePriority": 0,
-		"ShowInNameplates": false
+		"ShowInNameplates": false,
+		"ApplicationCooldown": 0
 	},
 	{
 		"StatusID": "Status_Passive_GreatAxe_Gravity_Root",
-		"DisplayName": "@Status_Root",
-		"Description": "Status_Root_Description",
 		"EffectCategories": [
-			"Debuff",
-			"Root"
+			"Tracking"
 		],
-		"PlaceholderIcon": "lyshineui/images/status/se_root.webp",
 		"ShowInUITray": false,
 		"ShowTextInDamageNumbers": false,
-		"IsClientPredicted": 0,
+		"IsClientPredicted": "0",
 		"UseLightweightReplication": false,
 		"BaseDuration": 0.33000001311302185,
 		"TickRate": 1,
@@ -1230,6 +1244,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": false,
 		"IsNegative": true,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -1258,12 +1273,13 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 0,
 		"UiNameplatePriority": 0,
-		"ShowInNameplates": false
+		"ShowInNameplates": false,
+		"ApplicationCooldown": 1
 	},
 	{
 		"StatusID": "Status_Passive_GreatAxe_Gravity_Root_Hold",
 		"DisplayName": "@Status_Root",
-		"Description": "Status_Root_Description",
+		"Description": "@Status_Root_Description",
 		"EffectCategories": [
 			"Debuff",
 			"Root"
@@ -1273,9 +1289,8 @@
 		"ShowTextInDamageNumbers": false,
 		"FxScriptOn": "StatFX_Root_ON",
 		"FxScriptOff": "StatFX_Root_OFF",
-		"IsClientPredicted": 0,
 		"UseLightweightReplication": false,
-		"BaseDuration": 0.25,
+		"BaseDuration": 0.4000000059604645,
 		"TickRate": 1,
 		"StopOnHitCount": 0,
 		"Health": 0,
@@ -1308,6 +1323,7 @@
 		"RemoveOnDeathsDoor": 1,
 		"RemoveOnGameModeExit": 0,
 		"IgnoreDiminishingReturns": false,
+		"AlwaysReplicate": false,
 		"IsNegative": true,
 		"PhysicalArmor": 0,
 		"ElementalArmor": 0,
@@ -1336,6 +1352,7 @@
 		"SprintSpeedMod": 0,
 		"UIPriority": 1,
 		"UiNameplatePriority": 1,
-		"ShowInNameplates": true
+		"ShowInNameplates": true,
+		"ApplicationCooldown": 0
 	}
 ]

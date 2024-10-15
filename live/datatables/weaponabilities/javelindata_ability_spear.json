@@ -3,12 +3,12 @@
 		"AbilityID": "Ability_Spear_Javelin",
 		"DisplayName": "@Spear_Javelin",
 		"Description": "@Spear_Javelin_description",
-		"UICategory": "Ranged Damage",
+		"UICategory": "Attack",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability01.webp",
 		"Sound": "Play_UI_WeaponSkills_Spear_Ability_1",
 		"WeaponTag": "Spear",
 		"TreeId": 0,
-		"TreeRowPosition": 0,
+		"TreeRowPosition": 2,
 		"TreeColumnPosition": 2,
 		"IsActiveAbility": true,
 		"IsGlobalAbility": false,
@@ -48,18 +48,19 @@
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
 		"CooldownId": "Ability_Spear_Javelin",
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": true
 	},
 	{
 		"AbilityID": "Ability_Spear_Javelin_Reaction_Upgrade",
 		"DisplayName": "@Spear_Javelin_Reaction_Upgrade",
 		"Description": "@Spear_Javelin_Reaction_Upgrade_description",
-		"UICategory": "Ranged Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability01_mod01.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Javelin",
 		"TreeId": 0,
-		"TreeRowPosition": 1,
+		"TreeRowPosition": 3,
 		"TreeColumnPosition": 2,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
@@ -104,18 +105,19 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Javelin_CDROnHeadshot",
 		"DisplayName": "@Spear_Javelin_CDROnHeadshot",
 		"Description": "@Spear_Javelin_CDROnHeadshot_description",
-		"UICategory": "Ranged Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability01_mod02.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Javelin_Reaction_Upgrade",
 		"TreeId": 0,
-		"TreeRowPosition": 3,
+		"TreeRowPosition": 4,
 		"TreeColumnPosition": 2,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
@@ -156,19 +158,20 @@
 		"ActivationCooldown": 0,
 		"CooldownId": "Ability_Spear_Javelin",
 		"CDRImmediatelyOptions": "AbilitySpecific",
-		"CooldownTimer": -0.25
+		"CooldownTimer": -0.25,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Javelin_BonusDmg_LongRng",
 		"DisplayName": "@Spear_Javelin_BonusDmg_LongRng",
 		"Description": "@Spear_Javelin_BonusDmg_LongRng_description",
-		"UICategory": "Ranged Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability01_mod03.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Javelin_CDROnHeadshot",
 		"TreeId": 0,
 		"TreeRowPosition": 4,
-		"TreeColumnPosition": 2,
+		"TreeColumnPosition": 1,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"OnKill": false,
@@ -208,13 +211,14 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Sweep",
 		"DisplayName": "@Spear_Sweep",
 		"Description": "@Spear_Sweep_description",
-		"UICategory": "Debuff",
+		"UICategory": "Attack",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability02.webp",
 		"Sound": "Play_UI_WeaponSkills_Spear_Ability_2",
 		"WeaponTag": "Spear",
@@ -259,13 +263,14 @@
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
 		"CooldownId": "Ability_Spear_Sweep",
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Sweep_Grit",
 		"DisplayName": "@Spear_Sweep_Grit",
 		"Description": "@Spear_Sweep_Grit_description",
-		"UICategory": "Debuff",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability02_mod01.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Sweep",
@@ -309,13 +314,14 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Sweep_FollowupAttack",
 		"DisplayName": "@Spear_Sweep_FollowupAttack",
 		"Description": "@Spear_Sweep_FollowupAttack_description",
-		"UICategory": "Debuff",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability02_mod02.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Sweep_Grit",
@@ -362,18 +368,19 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Cyclone",
 		"DisplayName": "@Spear_Cyclone",
 		"Description": "@Spear_Cyclone_description",
-		"UICategory": "Debuff",
+		"UICategory": "Attack",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability03.webp",
 		"Sound": "Play_UI_WeaponSkills_Spear_Ability_3",
 		"WeaponTag": "Spear",
 		"TreeId": 0,
-		"TreeRowPosition": 2,
+		"TreeRowPosition": 0,
 		"TreeColumnPosition": 0,
 		"IsActiveAbility": true,
 		"IsGlobalAbility": false,
@@ -413,18 +420,19 @@
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
 		"CooldownId": "Ability_Spear_Cyclone",
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Cyclone_BonusStaminaOnMultiHit",
 		"DisplayName": "@Spear_Cyclone_BonusStaminaOnMultiHit",
 		"Description": "@Spear_Cyclone_BonusStaminaOnMultiHit_description",
-		"UICategory": "Debuff",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability03_mod01.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Cyclone",
 		"TreeId": 0,
-		"TreeRowPosition": 3,
+		"TreeRowPosition": 1,
 		"TreeColumnPosition": 0,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
@@ -458,7 +466,10 @@
 		"TargetHealthPercent": 0,
 		"DistFromDefender": 0,
 		"InActionTime": 0,
-		"InSequenceTime": 0,
+		"InSequence": [
+			"Ability_Spear_Cyclone"
+		],
+		"InSequenceTime": 0.10000000149011612,
 		"BaseDamage": 0,
 		"CritChance": 0,
 		"Stamina": 25,
@@ -468,18 +479,19 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Cyclone_Grit",
 		"DisplayName": "@Spear_Cyclone_Grit",
 		"Description": "@Spear_Cyclone_Grit_description",
-		"UICategory": "Debuff",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability03_mod02.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Cyclone_BonusStaminaOnMultiHit",
 		"TreeId": 0,
-		"TreeRowPosition": 4,
+		"TreeRowPosition": 3,
 		"TreeColumnPosition": 0,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
@@ -524,7 +536,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_BonusHvyDmgConsec",
@@ -576,7 +589,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_BonusCritChanceAtRng",
@@ -626,7 +640,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_CDROnHvyHit",
@@ -637,7 +652,7 @@
 		"WeaponTag": "Spear",
 		"TreeId": 0,
 		"TreeRowPosition": 1,
-		"TreeColumnPosition": 0,
+		"TreeColumnPosition": 1,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"OnKill": false,
@@ -679,7 +694,8 @@
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0.30000001192092896,
 		"CDRImmediatelyOptions": "ActiveWeapon",
-		"CooldownTimer": -0.15000000596046448
+		"CooldownTimer": -0.15000000596046448,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_ReducedDodgeStamCost",
@@ -731,7 +747,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_BonusStaminaOnCrit",
@@ -783,7 +800,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0.10000000149011612,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_BonusDmgVsKnockedDown",
@@ -819,6 +837,7 @@
 		"DamageIsRanged": false,
 		"TargetHasGritActive": false,
 		"TargetMarker": "IsKnockedDown",
+		"TargetSequenceMarker": "sqmkrIsKnockedDown",
 		"MyStaminaPercent": 0,
 		"TargetHealthPercent": 0,
 		"DistFromDefender": 0,
@@ -833,7 +852,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_FortifyOnHvyHit",
@@ -888,7 +908,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_BonusStamRegenOnLowStam",
@@ -899,7 +920,7 @@
 		"WeaponTag": "Spear",
 		"TreeId": 0,
 		"TreeRowPosition": 4,
-		"TreeColumnPosition": 1,
+		"TreeColumnPosition": 3,
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"OnKill": false,
@@ -937,7 +958,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_BonusDmgMaxStamina",
@@ -988,13 +1010,14 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Skewer",
 		"DisplayName": "@Spear_Skewer",
 		"Description": "@Spear_Skewer_description",
-		"UICategory": "Melee Damage",
+		"UICategory": "Attack",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability04.webp",
 		"Sound": "Play_UI_WeaponSkills_Spear_Ability_4",
 		"WeaponTag": "Spear",
@@ -1035,6 +1058,7 @@
 		"BaseDamage": 0,
 		"CritChance": 0,
 		"Stamina": 0,
+		"StatusEffectDamageTableIdForRowOverride": "DamageTable",
 		"StatusEffectDamageTableRowOverride": "2H_Spear_Skewer_Bleed",
 		"PerStatusEffectOnTarget": false,
 		"PerStatusEffectOnTargetMax": 0,
@@ -1043,13 +1067,14 @@
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
 		"CooldownId": "Ability_Spear_Skewer",
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Skewer_BonusDmgVsMaxHP",
 		"DisplayName": "@Spear_Skewer_BonusDmgVsMaxHP",
 		"Description": "@Spear_Skewer_BonusDmgVsMaxHP_description",
-		"UICategory": "Melee Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability04_mod01.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Skewer",
@@ -1098,13 +1123,14 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Skewer_EmpowerOnCrit",
 		"DisplayName": "@Spear_Skewer_EmpowerOnCrit",
 		"Description": "@Spear_Skewer_EmpowerOnCrit_description",
-		"UICategory": "Melee Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability04_mod02.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Skewer_BonusDmgVsMaxHP",
@@ -1155,13 +1181,14 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Skewer_BonusBleedDuration",
 		"DisplayName": "@Spear_Skewer_BonusBleedDuration",
 		"Description": "@Spear_Skewer_BonusBleedDuration_description",
-		"UICategory": "Melee Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability04_mod03.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Skewer_EmpowerOnCrit",
@@ -1209,13 +1236,14 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Perforate",
 		"DisplayName": "@Spear_Perforate",
 		"Description": "@Spear_Perforate_description",
-		"UICategory": "Melee Damage",
+		"UICategory": "Attack",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability05.webp",
 		"Sound": "Play_UI_WeaponSkills_Spear_Ability_5",
 		"WeaponTag": "Spear",
@@ -1263,13 +1291,14 @@
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
 		"CooldownId": "Ability_Spear_Perforate",
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Perforate_BonusRend",
 		"DisplayName": "@Spear_Perforate_BonusRend",
 		"Description": "@Spear_Perforate_BonusRend_description",
-		"UICategory": "Melee Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability05_mod01.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Perforate",
@@ -1319,13 +1348,14 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_Perforate_StaggerOnEnd",
 		"DisplayName": "@Spear_Perforate_StaggerOnEnd",
 		"Description": "@Spear_Perforate_StaggerOnEnd_description",
-		"UICategory": "Melee Damage",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability05_mod02.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_Perforate_BonusRend",
@@ -1375,13 +1405,14 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_VaultKick",
 		"DisplayName": "@Spear_VaultKick",
 		"Description": "@Spear_VaultKick_description",
-		"UICategory": "Debuff",
+		"UICategory": "Attack",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability06.webp",
 		"Sound": "Play_UI_WeaponSkills_Spear_Ability_6",
 		"WeaponTag": "Spear",
@@ -1426,13 +1457,14 @@
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
 		"CooldownId": "Ability_Spear_VaultKick",
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_VaultKick_EmpowerVsLowHP",
 		"DisplayName": "@Spear_VaultKick_EmpowerVsLowHP",
 		"Description": "@Spear_VaultKick_EmpowerVsLowHP_description",
-		"UICategory": "Debuff",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability06_mod01.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_VaultKick",
@@ -1483,13 +1515,14 @@
 		"StatusEffectDurationReduction": 0.6700000166893005,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_VaultKick_CDROnHit",
 		"DisplayName": "@Spear_VaultKick_CDROnHit",
 		"Description": "@Spear_VaultKick_CDROnHit_description",
-		"UICategory": "Debuff",
+		"UICategory": "Passive",
 		"Icon": "lyshineui/images/icons/abilities/spear_ability06_mod02.webp",
 		"WeaponTag": "Spear",
 		"RequiredAbilityId": "Ability_Spear_VaultKick_EmpowerVsLowHP",
@@ -1538,7 +1571,8 @@
 		"ActivationCooldown": 0.30000001192092896,
 		"CooldownId": "Ability_Spear_VaultKick",
 		"CDRImmediatelyOptions": "AllExcept",
-		"CooldownTimer": -0.30000001192092896
+		"CooldownTimer": -0.30000001192092896,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_BonusCritChanceOnLight",
@@ -1590,7 +1624,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_CDROnLight",
@@ -1644,7 +1679,8 @@
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
 		"CDRImmediatelyOptions": "ActiveWeapon",
-		"CooldownTimer": -0.10000000149011612
+		"CooldownTimer": -0.10000000149011612,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_SlowOnLightVsLowHP",
@@ -1700,7 +1736,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_BonusDmgVsLowHP",
@@ -1750,7 +1787,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_BonusDmgVsGrit",
@@ -1799,7 +1837,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_CDROnHitAfterDodge",
@@ -1857,7 +1896,8 @@
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0.30000001192092896,
 		"CDRImmediatelyOptions": "ActiveWeapon",
-		"CooldownTimer": -0.20000000298023224
+		"CooldownTimer": -0.20000000298023224,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_ExtendDebuffOnCrit",
@@ -1912,7 +1952,8 @@
 		],
 		"TargetStatusEffectDurationMult": 0.20000000298023224,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_BonusCritChanceVsBleed",
@@ -1964,7 +2005,8 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	},
 	{
 		"AbilityID": "Ability_Spear_BonusDmgVsDebuff",
@@ -2017,6 +2059,7 @@
 		"StatusEffectDurationReduction": 0,
 		"TargetStatusEffectDurationMult": 0,
 		"ActivationCooldown": 0,
-		"CooldownTimer": 0
+		"CooldownTimer": 0,
+		"SupportsSmartcast": false
 	}
 ]

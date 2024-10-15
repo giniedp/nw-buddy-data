@@ -1,0 +1,407 @@
+[
+	{
+		"ConversationStateId": "Yonas_00_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Yonas_00_00_INIT"
+	},
+	{
+		"ConversationStateId": "Yonas_00_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_00_01_Offer_LearnSoulwarden_a",
+		"RequiredAchievement": "MSQ_00_init && !99_MSQ_19",
+		"LinearObjectiveId1": "99A_MSQ_01_LearnSoulwardens"
+	},
+	{
+		"ConversationStateId": "Yonas_00_A_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Yonas_00_A_00_INIT"
+	},
+	{
+		"ConversationStateId": "Yonas_00_A_01_TaskTopic_BearCave",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_00_A_01_TaskTopic_BearCave_a",
+		"RequiredActiveObjectiveId": "99A_MSQ_01_LearnSoulwardens",
+		"RequiredActiveTaskId": "99A_MSQ_01_02A_TalkToYonas",
+		"TopicId1": "99a_Yonas_TaskTopic_BearCave"
+	},
+	{
+		"ConversationStateId": "Yonas_00_A_02_TaskTopic_Alioth",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_00_A_02_TaskTopic_Alioth_a",
+		"RequiredActiveObjectiveId": "99A_MSQ_01_LearnSoulwardens",
+		"RequiredActiveTaskId": "99A_MSQ_01_02C_TalkToYonas",
+		"TopicId1": "99a_Yonas_TaskTopic_ToAlioth"
+	},
+	{
+		"ConversationStateId": "Yonas_00_A_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_00_A_03_Comment_Alioth_a",
+		"RequiredActiveObjectiveId": "99A_MSQ_01_LearnSoulwardens",
+		"RequiredActiveTaskId": "99A_MSQ_01_03_container_Alioth"
+	},
+	{
+		"ConversationStateId": "Yonas_00_B_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Yonas_00_B_00_INIT_a"
+	},
+	{
+		"ConversationStateId": "Yonas_00_B_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_00_B_01_Offer_LearnSoulwardenB_a",
+		"RequiredAchievement": "99A_MSQ_01",
+		"LinearObjectiveId1": "99A_MSQ_01B_LearnSoulwardens"
+	},
+	{
+		"ConversationStateId": "Yonas_01_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Yonas_01_00_INIT_a"
+	},
+	{
+		"ConversationStateId": "Yonas_01_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_01_01_Offer_Arcturus_b",
+		"RequiredAchievement": "99A_MSQ_02",
+		"LinearObjectiveId1": "99A_MSQ_03_ClimbArcturus"
+	},
+	{
+		"ConversationStateId": "Yonas_01_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_01_02_Offer_ToAdiana_a",
+		"RequiredAchievement": "99A_MSQ_03",
+		"LinearObjectiveId1": "99A_MSQ_04_ToAdiana"
+	},
+	{
+		"ConversationStateId": "Yonas_01_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_01_03_Comment_Adiana",
+		"RequiredAchievement": "99A_MSQ_04"
+	},
+	{
+		"ConversationStateId": "Yonas_01_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_01_04_Offer_CanisHaft_a",
+		"RequiredAchievement": "99A_MSQ_08",
+		"LinearObjectiveId1": "99A_MSQ_09_GetHaft"
+	},
+	{
+		"ConversationStateId": "Yonas_01_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_01_05_Offer_Forgemaster_a",
+		"RequiredAchievement": "99A_MSQ_09",
+		"LinearObjectiveId1": "99A_MSQ_10_GetCrosspiece"
+	},
+	{
+		"ConversationStateId": "Yonas_01_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_01_06_Offer_ForgeStaff_a",
+		"RequiredAchievement": "99A_MSQ_10",
+		"LinearObjectiveId1": "99A_MSQ_11_ForgeStaff"
+	},
+	{
+		"ConversationStateId": "Yonas_01_07",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_01_07_Offer_ReturnSettlement_a",
+		"RequiredAchievement": "99_MSQ_19",
+		"LinearObjectiveId1": "99A_MSQ_12_ReturnStaff"
+	},
+	{
+		"ConversationStateId": "Yonas_01_08",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_01_08_Comment_ReturnSettlement",
+		"RequiredAchievement": "99_MSQ_19a"
+	},
+	{
+		"ConversationStateId": "Yonas_01_09",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_01_09_Offer_Heartgem_new",
+		"RequiredAchievement": "99_MSQ_20",
+		"LinearObjectiveId1": "99A_MSQ_14_HeartgemGroup"
+	},
+	{
+		"ConversationStateId": "Yonas_TaskTopic_AmrineSkip",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_02_00_INIT_new",
+		"TopicId1": "99a_Yonas_TaskTopic_AmrineSkip"
+	},
+	{
+		"ConversationStateId": "Yonas_02_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Yonas_02_00_INIT_new"
+	},
+	{
+		"ConversationStateId": "Yonas_02_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Yonas_02_01_Offer_Ritual_a",
+		"RequiredAchievement": "99_MSQ_21",
+		"LinearObjectiveId1": "99A_MSQ_15_Ritual"
+	},
+	{
+		"ConversationStateId": "Yonas_02_02a",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99A_Yonas_02_02_a",
+		"RequiredAchievement": "99_MSQ_22 && !99_MSQ_35",
+		"LinearObjectiveId1": "99B_MSQ_01_searchwalsham"
+	},
+	{
+		"ConversationStateId": "Grace_00_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Grace_00_00_INIT"
+	},
+	{
+		"ConversationStateId": "Grace_00_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Grace_00_01_Offer_Rumors_a",
+		"RequiredAchievement": "99A_MSQ_01B",
+		"LinearObjectiveId1": "99A_MSQ_02_Rumors"
+	},
+	{
+		"ConversationStateId": "Grace_01_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Grace_01_00_INIT_a"
+	},
+	{
+		"ConversationStateId": "Grace_01_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Grace_01_01_Comment_Rumors_a",
+		"RequiredAchievement": "99A_MSQ_02"
+	},
+	{
+		"ConversationStateId": "Grace_01_02A",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Grace_01_02A_TaskTopic_Adiana_a",
+		"RequiredActiveObjectiveId": "99A_MSQ_04_ToAdiana",
+		"RequiredActiveTaskId": "99A_MSQ_04_02a_TalkToGrace",
+		"TopicId1": "99a_Grace_TaskTopic_AskAboutAdiana"
+	},
+	{
+		"ConversationStateId": "Grace_01_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Grace_01_02_Comment_Adiana_a",
+		"RequiredAchievement": "99A_MSQ_04"
+	},
+	{
+		"ConversationStateId": "Grace_01_03A",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Grace_01_02A_TaskTopic_ReturnStaff_new",
+		"RequiredActiveObjectiveId": "99A_MSQ_12_ReturnStaff",
+		"RequiredActiveTaskId": "99A_MSQ_12_02b_TalkToGrace",
+		"TopicId1": "99a_Grace_TaskTopic_ReturnStaff"
+	},
+	{
+		"ConversationStateId": "Grace_01_03B",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Grace_01_04_Comment_UseStaff_new",
+		"RequiredActiveObjectiveId": "99A_MSQ_13_UseStaff",
+		"RequiredActiveTaskId": "99A_MSQ_13_07B_TalktoGrace",
+		"TopicId1": "99a_Grace_TaskTopic_UseStaff"
+	},
+	{
+		"ConversationStateId": "Grace_01_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Grace_01_02_Comment_ReturnStaff_a",
+		"RequiredAchievement": "99_MSQ_19"
+	},
+	{
+		"ConversationStateId": "Grace_01_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Grace_01_02_Comment_ReturnStaff_a",
+		"RequiredAchievement": "99_MSQ_20"
+	},
+	{
+		"ConversationStateId": "Adiana_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Adiana_00_INIT"
+	},
+	{
+		"ConversationStateId": "Adiana_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Adiana_01_Offer_CanaryMine_a",
+		"RequiredAchievement": "99A_MSQ_04",
+		"LinearObjectiveId1": "99A_MSQ_05_UnblockFountain"
+	},
+	{
+		"ConversationStateId": "Adiana_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Adiana_02_Offer_CorruptionTincture_a",
+		"RequiredAchievement": "99A_MSQ_05",
+		"LinearObjectiveId1": "99A_MSQ_06_CorruptionTincture"
+	},
+	{
+		"ConversationStateId": "Adiana_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Adiana_03_Offer_CorruptedPlans_a",
+		"RequiredAchievement": "99A_MSQ_06",
+		"LinearObjectiveId1": "99A_MSQ_07_CorruptedPlans"
+	},
+	{
+		"ConversationStateId": "Adiana_04",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Adiana_04_Offer_ToYonas_a",
+		"RequiredAchievement": "99A_MSQ_07",
+		"LinearObjectiveId1": "99A_MSQ_08_ToYonas"
+	},
+	{
+		"ConversationStateId": "Adiana_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99A_MSQ_08_ToYonas_incomplete",
+		"RequiredAchievement": "99A_MSQ_08"
+	},
+	{
+		"ConversationStateId": "GuardCaptain_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@GuardCaptain_02_Comment_Rumors"
+	},
+	{
+		"ConversationStateId": "GuardCaptain_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@GuardCaptain_02_Comment_Rumors",
+		"RequiredAchievement": "99A_MSQ_02"
+	},
+	{
+		"ConversationStateId": "GuardCaptain_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@GuardCaptain_03_Comment_Adiana_a",
+		"RequiredAchievement": "99A_MSQ_03"
+	},
+	{
+		"ConversationStateId": "GuardCaptain_05",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@GuardCaptain_05_Offer_UseStaff_new",
+		"RequiredAchievement": "99_MSQ_19a",
+		"LinearObjectiveId1": "99A_MSQ_13_UseStaff"
+	},
+	{
+		"ConversationStateId": "GuardCaptain_06",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@GuardCaptain_06_Comment_UseStaff_a",
+		"RequiredAchievement": "99_MSQ_20"
+	},
+	{
+		"ConversationStateId": "GuardCaptain_TaskTopic_DeliverPotions",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@04A_Side08_03_DeliverPotions_TalkTo_Franc_a",
+		"RequiredActiveObjectiveId": "04A_Side08_03_DeliverPotions",
+		"RequiredActiveTaskId": "04A_Side08_03_03A_TalkToCaptain",
+		"TopicId1": "GuardCaptain_TaskTopic_DeliverPotions"
+	},
+	{
+		"ConversationStateId": "GuardCaptain_TaskConversation_PlayForTown",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@GuardCaptain_TaskConversation_PlayForTown_a",
+		"RequiredActiveObjectiveId": "04A_Side05_02_PlayForTown",
+		"RequiredActiveTaskId": "04A_Side05_02_02_TalkToGuardCaptain"
+	},
+	{
+		"ConversationStateId": "GuardCaptain_TaskTopic_PlayForTown",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@GuardCaptain_TaskTopic_PlayForTown_a",
+		"RequiredActiveObjectiveId": "04A_Side05_02_PlayForTown",
+		"RequiredActiveTaskId": "04A_Side05_02_02_TalkToGuardCaptain_02",
+		"TopicId1": "GuardCaptain_TaskTopic_PlayForTown"
+	},
+	{
+		"ConversationStateId": "GuardCaptain_02_TaskTopic_Adiana",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@GuardCaptain_02_TaskTopic_Adiana_a",
+		"RequiredActiveObjectiveId": "99A_MSQ_04_ToAdiana",
+		"RequiredActiveTaskId": "99A_MSQ_04_02_container_TalktoNPCs",
+		"TopicId1": "99a_Captain_TaskTopic_AskAboutAdiana"
+	},
+	{
+		"ConversationStateId": "Anthurus_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@Anthurus_00_INIT_a"
+	},
+	{
+		"ConversationStateId": "Anthurus_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Anthurus_01_Comment_Rescue_new",
+		"RequiredAchievement": "99A_MSQ_05_UnblockFountain_IGC_Watched",
+		"TopicId1": "99A_MSQ_07_TalkToAnthuras"
+	},
+	{
+		"ConversationStateId": "Anthurus_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@Anthurus_01_Comment_Rescue_follow",
+		"RequiredAchievement": "99A_MSQ_07"
+	},
+	{
+		"ConversationStateId": "99A_HaplessHowe_01_00",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99A_MSQ_HaplessHowe_Greet_00"
+	},
+	{
+		"ConversationStateId": "99A_HaplessHowe_01_02",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99A_MSQ_HaplessHowe_Greet_02",
+		"RequiredAchievement": "99_MSQ_19a"
+	},
+	{
+		"ConversationStateId": "99A_HaplessHowe_01_01",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": false,
+		"DefaultDialogue": "@99A_MSQ_HaplessHowe_Greet_01",
+		"RequiredAchievement": "99_MSQ_19a",
+		"RequiredActiveObjectiveId": "99A_MSQ_13_UseStaff",
+		"RequiredActiveTaskId": "99A_MSQ_13_01C_TalkToHowe",
+		"TopicId1": "99A_MSQ_13_HaplessHowe_Talks"
+	},
+	{
+		"ConversationStateId": "99A_HaplessHowe_02_03",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": true,
+		"DefaultDialogue": "@99A_MSQ_HaplessHowe_Greet_03"
+	}
+]

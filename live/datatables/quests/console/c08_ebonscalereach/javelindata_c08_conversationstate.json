@@ -1,0 +1,650 @@
+[
+	{
+		"ConversationStateId": "0803_00_Survivalist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0803_00_Survivalist",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0824_00_Innkeep",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0824_00_Innkeep",
+		"RequiredLevel": 0,
+		"ConversationService1": "Inn"
+	},
+	{
+		"ConversationStateId": "0807_00_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0807_00_Commander",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0807_01_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0807_01_Commander",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 49,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "0807_01pre_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0807_01pre_Commander",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0807_02_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0807_02_Commander",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0807_03_Commander",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0807_03_Commander",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0808_00_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0808_00_Alchemist",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0808_01_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0808_01_Alchemist",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 49,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "0808_01pre_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0808_01pre_Alchemist",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0808_02_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0808_02_Alchemist",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0808_03_Alchemist",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0808_03_Alchemist",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0809_00_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0809_00_Adjudicator",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0809_01_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0809_01_Adjudicator",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 49,
+		"ConversationService1": "Faction_Board",
+		"ConversationService2": "Join_Outpost_Rush"
+	},
+	{
+		"ConversationStateId": "0809_01pre_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0809_01pre_Adjudicator",
+		"RequiredFaction": "Covenant",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0809_02_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0809_02_Adjudicator",
+		"RequiredFaction": "Marauder",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0809_03_Adjudicator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0809_03_Adjudicator",
+		"RequiredFaction": "Syndicate",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0810_00_Barkeep",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0810_01_Barkeep",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0899_00_Liberator",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0899_00_Liberator",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0899_01_Liberator_b",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0899_01_Liberator",
+		"RequiredLevel": 55,
+		"LinearObjectiveId1": "0899_0801_Liberation_2"
+	},
+	{
+		"ConversationStateId": "0826_00_MaWeizhe",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_MaXinyi_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0826_01_MaWeizhe",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_FreeTigers_MaXinyi_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_02",
+		"LinearObjectiveId1": "0826_0801_ToBeFree"
+	},
+	{
+		"ConversationStateId": "0826_02_MaWeizhe",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_MaXinyi_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_18"
+	},
+	{
+		"ConversationStateId": "0826_03_MaWeizhe",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "FALSE",
+		"DefaultDialogue": "@08_SQ_ER_KillTigers_MaXinyi_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_18 && 99F_MSQ_06",
+		"LinearObjectiveId1": "08a03_08a11_TigerTiger"
+	},
+	{
+		"ConversationStateId": "0826_04_MaWeizhe",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_MaXinyi_Greet_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_11"
+	},
+	{
+		"ConversationStateId": "08_00_ElderKemba",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_ElderKemba_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_01_ElderKemba",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_KembaFriends_ElderKemba_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_19",
+		"LinearObjectiveId1": "08a04_08a04_FlowerForTheDeparted"
+	},
+	{
+		"ConversationStateId": "08_02_ElderKemba",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialog_01_ElderKemba",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_04"
+	},
+	{
+		"ConversationStateId": "0830_00_Posting",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0830_00_Posting",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0830_01_Posting",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_FightIvan_WantedPoster_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99E_MSQ_10",
+		"LinearObjectiveId1": "0830_0801_Inevitable"
+	},
+	{
+		"ConversationStateId": "0830_02_Posting",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@NPC_DefaultDialogue_0830_02_Posting",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_19"
+	},
+	{
+		"ConversationStateId": "0828_00_YueLai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_YueLai_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0828_01_YueLai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_KnockDownIdol_YueLai_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_04",
+		"LinearObjectiveId1": "0828_0801_Deadeye"
+	},
+	{
+		"ConversationStateId": "0828_02_YueLai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_StealBackArtifacts_YueLai_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_23",
+		"LinearObjectiveId1": "0828_0802_Trinkets"
+	},
+	{
+		"ConversationStateId": "0828_03_YueLai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_YueLai_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_24"
+	},
+	{
+		"ConversationStateId": "0828_04_YueLai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_CollectScrolls_YueLai_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_08 && 08_Quest_24",
+		"LinearObjectiveId1": "0828_0803_Legacy"
+	},
+	{
+		"ConversationStateId": "0828_05_YueLai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_YueLai_Greet_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_25"
+	},
+	{
+		"ConversationStateId": "0828_06_YueLai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_CleanseShrine_Yue_TalkTo_Start_Greet",
+		"RequiredLevel": 0,
+		"RequiredActiveObjectiveId": "08a05_08a06_ShrineCleansing",
+		"RequiredActiveTaskId": "08a05_08a06_d_00_TalkToYue",
+		"TopicId1": "08_SQ_ER_CleanseShrine_Yue_TalkTo"
+	},
+	{
+		"ConversationStateId": "0827_00_Bardroy",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Bardroy_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0827_01_Bardroy",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_TeachIdiots_Bardroy_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_04",
+		"LinearObjectiveId1": "0827_0801_Brothers"
+	},
+	{
+		"ConversationStateId": "0827_02_Bardroy",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Bardroy_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_15"
+	},
+	{
+		"ConversationStateId": "0827_03_Bardroy",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_RetrievePuzzleBox_Bardroy_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_15 && 99F_MSQ_08",
+		"LinearObjectiveId1": "08a04_08a12_CaptainsOrders"
+	},
+	{
+		"ConversationStateId": "0827_04_Bardroy",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Bardroy_Greet_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_12"
+	},
+	{
+		"ConversationStateId": "08_00_Redridge",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Redridge_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_01_Redridge",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_CollectFungus_Redridge_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99E_MSQ_10",
+		"LinearObjectiveId1": "08a02_08a01_TheShowMustGoOn"
+	},
+	{
+		"ConversationStateId": "08_02_Redridge",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Redridge_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_01"
+	},
+	{
+		"ConversationStateId": "08_03_Redridge",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_AvengePlay_Redridge_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_09 && 08a_Quest_01",
+		"LinearObjectiveId1": "08a02_08a08a_CorruptedCritics"
+	},
+	{
+		"ConversationStateId": "08_04_Redridge",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Redridge_Greet_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_08a"
+	},
+	{
+		"ConversationStateId": "08_00_ArtificerLong",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_ArtificerLong_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_01_ArtificerLong",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_CollectDryadWood_ArtificerLong_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_07",
+		"LinearObjectiveId1": "08a05_08a09_StudyInGreen"
+	},
+	{
+		"ConversationStateId": "08_02_ArtificerLong",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ArtificerLong_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_09"
+	},
+	{
+		"ConversationStateId": "08_03_ArtificerLong",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_CleanseShrine_ArtificerLong_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_08 && 08a_Quest_09",
+		"LinearObjectiveId1": "08a05_08a06_ShrineCleansing"
+	},
+	{
+		"ConversationStateId": "08_05_ArtificerLong",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ArtificerLong_Greet_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_06"
+	},
+	{
+		"ConversationStateId": "08_06_ArtificerLong",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_DisruptMeeting_ArtificerLong_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_09 && 08a_Quest_06",
+		"LinearObjectiveId1": "08a05_08a13_SkysongsEnd"
+	},
+	{
+		"ConversationStateId": "08_07_ArtificerLong",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ArtificerLong_Greet_03",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_13"
+	},
+	{
+		"ConversationStateId": "0829_00_Enlai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Enlai_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "0829_01_Enlai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_GetPawFromClaw_Enlai_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_08",
+		"LinearObjectiveId1": "0829_0801_LuckyRed"
+	},
+	{
+		"ConversationStateId": "0829_02_Enlai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Enlai_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_16"
+	},
+	{
+		"ConversationStateId": "0829_03_Enlai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_GetStringFromCorrupted_Enlai_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_16 && 99F_MSQ_08",
+		"LinearObjectiveId1": "0829_0802_StringsOfFate"
+	},
+	{
+		"ConversationStateId": "0829_04_Enlai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Enlai_Greet_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_17"
+	},
+	{
+		"ConversationStateId": "08_00_Zeng",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Zeng_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_01_Zeng",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_CollectStatues_Zeng_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_06",
+		"LinearObjectiveId1": "08a11_08a02_StatuetteStash"
+	},
+	{
+		"ConversationStateId": "08_02_Zeng",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Zeng_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_02"
+	},
+	{
+		"ConversationStateId": "08_03_Zeng",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_ER_EndEmpress_Zeng_start_Greet",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_12 && 08a_Quest_02",
+		"LinearObjectiveId1": "08a11_08a03_EndOfHerReign"
+	},
+	{
+		"ConversationStateId": "08_04_Zeng",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Zeng_Greet_02",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_03"
+	},
+	{
+		"ConversationStateId": "08_00_Yongtai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Yongtai_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_01_Yongtai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Yongtai_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_08a"
+	},
+	{
+		"ConversationStateId": "08_00_Jiahao",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Jiahao_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_00_Zuma",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Zuma_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_01_Zuma",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Zuma_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08a_Quest_06"
+	},
+	{
+		"ConversationStateId": "08_00_Gwendolyn",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Gwendolyn_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_00_Beacher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Beacher_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_01_Beacher",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Beacher_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_17"
+	},
+	{
+		"ConversationStateId": "08_00_Muthalaly",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Muthalaly_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_01_Muthalaly",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Muthalaly_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "08_Quest_25"
+	},
+	{
+		"ConversationStateId": "08_02_Muthalaly",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Muthalaly_Greet_02",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_00_Tai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Tai_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_01_Tai",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "0",
+		"DefaultDialogue": "@08_SQ_Tai_Greet_01",
+		"RequiredLevel": 0,
+		"RequiredAchievement": "99F_MSQ_09"
+	},
+	{
+		"ConversationStateId": "08_00_Guanyu",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Guanyu_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_00_Rong",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Rong_Greet_00",
+		"RequiredLevel": 0
+	},
+	{
+		"ConversationStateId": "08_00_Na",
+		"ConversationType": "Linear_Objective",
+		"IsInitialState": "1",
+		"DefaultDialogue": "@08_SQ_Na_Greet_00",
+		"RequiredLevel": 0
+	}
+]
