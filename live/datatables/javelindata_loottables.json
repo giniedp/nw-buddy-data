@@ -38472,6 +38472,191 @@
 		"Item1": "59"
 	},
 	{
+		"LootTableID": "Halloween_Boss",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "NH_Baalphazu_Ichor",
+		"Item2": "[LTID]Halloween_Costumes",
+		"Item3": "[LTID]Halloween_BossArmor"
+	},
+	{
+		"LootTableID": "Halloween_Boss_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "Halloween_Boss_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "Halloween_Costumes",
+		"AND/OR": "OR",
+		"Conditions": [
+			"[LIM]Halloween_Costumes"
+		],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "NH_Costume_Adiana",
+		"Item2": "NH_Costume_Thorpe",
+		"Item3": "NH_Costume_Anubian_Horus",
+		"Item4": "NH_Costume_Lost_Monarch"
+	},
+	{
+		"LootTableID": "Halloween_Costumes_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "1"
+	},
+	{
+		"LootTableID": "Halloween_Costumes_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "25",
+		"Item3": "50",
+		"Item4": "75"
+	},
+	{
+		"LootTableID": "Halloween_BossArmor",
+		"AND/OR": "OR",
+		"Conditions": [
+			"[LIM]Halloween_BossArmor"
+		],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LBID]Halloween2023_Armor"
+	},
+	{
+		"LootTableID": "Halloween_BossArmor_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "Halloween_BossArmor_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Halloween_Cauldron",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "NH_CauldronCache"
+	},
+	{
+		"LootTableID": "Halloween_Cauldron_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "Halloween_Cauldron_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "Halloween_CauldronCache",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]Halloween_CauldronTokens",
+		"Item2": "[LBID]NightveilCoinBag",
+		"Item3": "[LTID]GypsumWhiteTable"
+	},
+	{
+		"LootTableID": "Halloween_CauldronCache_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "Halloween_CauldronCache_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "Halloween_CauldronTokens",
+		"AND/OR": "OR",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "NightveilHallow_Token",
+		"Item2": "NightveilHallow_Token",
+		"Item3": "NightveilHallow_Token"
+	},
+	{
+		"LootTableID": "Halloween_CauldronTokens_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "7",
+		"Item2": "10",
+		"Item3": "13"
+	},
+	{
+		"LootTableID": "Halloween_CauldronTokens_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "16",
+		"Item3": "81"
+	},
+	{
 		"LootTableID": "Halloween_QuestCache",
 		"AND/OR": "AND",
 		"HWMMult": 0,
@@ -38501,6 +38686,153 @@
 		"Item1": "1",
 		"Item2": "1",
 		"Item3": "1"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]Halloween_TreatBasket_Tokens",
+		"Item2": "[LTID]Halloween_TreatBasket_Candy",
+		"Item3": "[LTID]Halloween_TreatBasket_ArmorChance"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket_ArmorChance",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LBID]Halloween2023_Armor"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket_ArmorChance_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket_ArmorChance_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "90"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket_Tokens",
+		"AND/OR": "AND",
+		"Conditions": [
+			"[LIM]TreatBasket_Tokens"
+		],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "NightveilHallow_Token"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket_Tokens_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "2"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket_Tokens_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket_Candy",
+		"AND/OR": "OR",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]Halloween_BlackLicoriceRoll",
+		"Item2": "FoodCorruptedChocolateT5",
+		"Item3": "FoodAncientGummyBearT5",
+		"Item4": "FoodAngryEarthCandyFishT5"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket_Candy_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "1"
+	},
+	{
+		"LootTableID": "Halloween_TreatBasket_Candy_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0"
+	},
+	{
+		"LootTableID": "Halloween_BlackLicoriceRoll",
+		"AND/OR": "OR",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "FoodLostBlackLicoriceT5",
+		"Item2": "FoodLostBlackLicoriceT5Bad"
+	},
+	{
+		"LootTableID": "Halloween_BlackLicoriceRoll_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "Halloween_BlackLicoriceRoll_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "99"
 	},
 	{
 		"LootTableID": "Spring_Prismabloom_Roll",

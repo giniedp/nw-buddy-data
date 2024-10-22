@@ -7964,5 +7964,58 @@
 		"UseLargeItemDisplay": 0,
 		"TP_StayComplete": "1",
 		"IsHidden": "1"
+	},
+	{
+		"TaskID": "1140_Halloween_02_container",
+		"Type": "ConsecutiveTaskContainer",
+		"StayActive": 0,
+		"ItemDropProbability": 0,
+		"ChestDropProbability": 0,
+		"GuranteedDropAttempts": 0,
+		"Duration": 0,
+		"UseLargeItemDisplay": 0,
+		"SubTask1": "1140_Halloween_02_AchievTrigger",
+		"SubTask2": "1140_Halloween_02_KillBaalphazu",
+		"SubTask3": "1140_Halloween_02_InteractCauldronIchor"
+	},
+	{
+		"TaskID": "1140_Halloween_02_KillBaalphazu",
+		"Type": "TaskHaveItems",
+		"StayActive": 0,
+		"TargetQty": "1",
+		"ItemName": "NH_Baalphazu_Ichor",
+		"ItemDropProbability": 0,
+		"ChestDropProbability": 0,
+		"GuranteedDropAttempts": 0,
+		"Duration": 0,
+		"UseLargeItemDisplay": 0,
+		"TP_DescriptionTag": "@1140_Halloween_02_KillBaalphazu"
+	},
+	{
+		"TaskID": "1140_Halloween_02_InteractCauldronIchor",
+		"Type": "TaskGameEvent",
+		"StayActive": 0,
+		"TargetQty": "1",
+		"ItemDropProbability": 0,
+		"ChestDropProbability": 0,
+		"GuranteedDropAttempts": 0,
+		"InteractTag": "IO_Nightveil_Settlement_Cauldron",
+		"KillEnemyType": "NH_Cauldron_Reward",
+		"Duration": 0,
+		"UseLargeItemDisplay": 0,
+		"TP_DescriptionTag": "@1140_Halloween_02_InteractCauldronIchor"
+	},
+	{
+		"TaskID": "1140_Halloween_02_AchievTrigger",
+		"Type": "TaskUnlockAchievement",
+		"StayActive": 0,
+		"TargetQty": "1",
+		"ItemName": "11_HalloweenQuest1",
+		"ItemDropProbability": 0,
+		"ChestDropProbability": 0,
+		"GuranteedDropAttempts": 0,
+		"Duration": 0,
+		"UseLargeItemDisplay": 0,
+		"IsHidden": "1"
 	}
 ]
