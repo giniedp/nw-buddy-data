@@ -11664,8 +11664,8 @@
 		"Item3": "EggT1",
 		"Item4": "TurkeyThighT1",
 		"Item5": "TurkeyBreastT1",
-		"Item6": "[LTID]TurkeyTerror_Master",
-		"Item7": "[LTID]GypsumWhiteTable"
+		"Item6": "[LTID]SportsmanSpoils_Roll",
+		"Item7": "[LTID]TurkeyTerror_WithKnife"
 	},
 	{
 		"LootTableID": "Turkey_Qty",
@@ -11693,7 +11693,7 @@
 		"Item4": "96000",
 		"Item5": "101000",
 		"Item6": "0",
-		"Item7": "80000"
+		"Item7": "0"
 	},
 	{
 		"LootTableID": "LargeBird",
@@ -11737,38 +11737,6 @@
 		"Item6": "0"
 	},
 	{
-		"LootTableID": "TurkeyTerror_Master",
-		"AND/OR": "AND",
-		"RollBonusSetting": "AddToRoll",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]TurkeyTerrorRoll_Coin",
-		"Item2": "[LTID]TurkeyTerrorRoll_Knife",
-		"Item3": "[LTID]TurkeyTerror_WithKnife"
-	},
-	{
-		"LootTableID": "TurkeyTerror_Master_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1",
-		"Item3": "1"
-	},
-	{
-		"LootTableID": "TurkeyTerror_Master_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0"
-	},
-	{
 		"LootTableID": "TurkeyTerror_WithKnife",
 		"AND/OR": "AND",
 		"RollBonusSetting": "AddToRoll",
@@ -11779,8 +11747,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]TurkeyTerrorRoll_SpecialKnifeMain",
-		"Item2": "[LTID]TurkeyTerrorRoll_SpecialKnifeExtras"
+		"Item1": "[LTID]TurkeyTerrorRoll_SpecialKnifeExtras"
 	},
 	{
 		"LootTableID": "TurkeyTerror_WithKnife_Qty",
@@ -11788,8 +11755,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1"
+		"Item1": "1"
 	},
 	{
 		"LootTableID": "TurkeyTerror_WithKnife_Probs",
@@ -11797,92 +11763,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0"
-	},
-	{
-		"LootTableID": "TurkeyTerrorRoll_Coin",
-		"AND/OR": "OR",
-		"RollBonusSetting": "AddToRoll",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]TurkeyTerrorCoinBag"
-	},
-	{
-		"LootTableID": "TurkeyTerrorRoll_Coin_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1"
-	},
-	{
-		"LootTableID": "TurkeyTerrorRoll_Coin_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "66000"
-	},
-	{
-		"LootTableID": "TurkeyTerrorRoll_Knife",
-		"AND/OR": "OR",
-		"RollBonusSetting": "AddToRoll",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1hSkinningKnifeT5_TurkeyTerror"
-	},
-	{
-		"LootTableID": "TurkeyTerrorRoll_Knife_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1"
-	},
-	{
-		"LootTableID": "TurkeyTerrorRoll_Knife_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "20000"
-	},
-	{
-		"LootTableID": "TurkeyTerrorRoll_SpecialKnifeMain",
-		"AND/OR": "OR",
-		"RollBonusSetting": "AddToRoll",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "PotionTurkeyLuckT5",
-		"Item2": "CoatingBeastTurkeyT5",
-		"Item3": "PotionFamilyWardBeastTurkeyT5"
-	},
-	{
-		"LootTableID": "TurkeyTerrorRoll_SpecialKnifeMain_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1",
-		"Item3": "1"
-	},
-	{
-		"LootTableID": "TurkeyTerrorRoll_SpecialKnifeMain_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "55000",
-		"Item2": "70000",
-		"Item3": "85000"
+		"Item1": "0"
 	},
 	{
 		"LootTableID": "TurkeyTerrorRoll_SpecialKnifeExtras",
@@ -11924,8 +11805,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "MassiveTurkeyLegT5",
-		"Item2": "[LTID]TurkulonSpecials"
+		"Item1": "MassiveTurkeyLegT5"
 	},
 	{
 		"LootTableID": "TerrorTurkey_Qty",
@@ -11933,8 +11813,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1"
+		"Item1": "1"
 	},
 	{
 		"LootTableID": "TerrorTurkey_Probs",
@@ -11942,169 +11821,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0"
-	},
-	{
-		"LootTableID": "TurkulonSpecials",
-		"AND/OR": "AND",
-		"RollBonusSetting": "AddToRoll",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]TurkulonSpecials_Normal",
-		"Item2": "[LTID]TurkulonSpecials_Lucky"
-	},
-	{
-		"LootTableID": "TurkulonSpecials_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1"
-	},
-	{
-		"LootTableID": "TurkulonSpecials_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0"
-	},
-	{
-		"LootTableID": "TurkulonSpecials_Normal",
-		"AND/OR": "OR",
-		"RollBonusSetting": "IgnoreBonus",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "House_HousingItem_Pet_Holiday_Turkey_Pilgrim",
-		"Item2": "Skin_WarHammer_TurkeyTerror2023_Box",
-		"Item3": "Skin_Feet_TurkeyTerror_Box",
-		"Item4": "House_HousingItem_Buff_SPECIAL_Food_TurkeyTerror_T1",
-		"Item5": "House_HousingItem_Chair_HolidayTurkey2022_EggStool01",
-		"Item6": "TT_MeatFlail_SkinBox"
-	},
-	{
-		"LootTableID": "TurkulonSpecials_Normal_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1",
-		"Item3": "1",
-		"Item4": "1",
-		"Item5": "1",
-		"Item6": "1"
-	},
-	{
-		"LootTableID": "TurkulonSpecials_Normal_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "32000",
-		"Item2": "44000",
-		"Item3": "64000",
-		"Item4": "84000",
-		"Item5": "91000",
-		"Item6": "75000"
-	},
-	{
-		"LootTableID": "TurkulonSpecials_Lucky",
-		"AND/OR": "OR",
-		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": [
-			"TurkeyLuck"
-		],
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "House_HousingItem_Pet_Holiday_Turkey_Pilgrim",
-		"Item2": "Skin_WarHammer_TurkeyTerror2023_Box",
-		"Item3": "Skin_Feet_TurkeyTerror_Box",
-		"Item4": "House_HousingItem_Buff_SPECIAL_Food_TurkeyTerror_T1",
-		"Item5": "House_HousingItem_Chair_HolidayTurkey2022_EggStool01",
-		"Item6": "TT_MeatFlail_SkinBox"
-	},
-	{
-		"LootTableID": "TurkulonSpecials_Lucky_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1",
-		"Item3": "1",
-		"Item4": "1",
-		"Item5": "1",
-		"Item6": "1"
-	},
-	{
-		"LootTableID": "TurkulonSpecials_Lucky_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "7000",
-		"Item2": "24000",
-		"Item3": "49000",
-		"Item4": "74000",
-		"Item5": "86000",
-		"Item6": "55000"
-	},
-	{
-		"LootTableID": "TerrorTurkey_LootLimitOverride",
-		"AND/OR": "AND",
-		"RollBonusSetting": "AddToRoll",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "PoultryT1",
-		"Item2": "MassiveTurkeyLegT5",
-		"Item3": "Skin_Feet_TurkeyTerror_Box",
-		"Item4": "House_HousingItem_Buff_SPECIAL_Food_TurkeyTerror_T1",
-		"Item5": "House_HousingItem_Chair_HolidayTurkey2022_EggStool01",
-		"Item6": "House_HousingItem_Pet_Holiday_Turkey_Pilgrim",
-		"Item7": "Skin_WarHammer_TurkeyTerror2023_Box",
-		"Item8": "TT_MeatFlail_SkinBox"
-	},
-	{
-		"LootTableID": "TerrorTurkey_LootLimitOverride_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1",
-		"Item3": "1",
-		"Item4": "1",
-		"Item5": "1",
-		"Item6": "1",
-		"Item7": "1",
-		"Item8": "1"
-	},
-	{
-		"LootTableID": "TerrorTurkey_LootLimitOverride_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0",
-		"Item4": "0",
-		"Item5": "0",
-		"Item6": "0",
-		"Item7": "0",
-		"Item8": "0"
+		"Item1": "0"
 	},
 	{
 		"LootTableID": "FarmPig",
@@ -22976,6 +22693,99 @@
 		"Item7": "0"
 	},
 	{
+		"LootTableID": "HastilyWrappedPresent",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCToken",
+		"Item2": "[LTID]WCGoldLockBoxT1LevelLimit"
+	},
+	{
+		"LootTableID": "HastilyWrappedPresent_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "HastilyWrappedPresent_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "BeautifullyWrappedPresent",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCToken",
+		"Item2": "WCPToken",
+		"Item3": "[LTID]WCGoldLockBoxT1LevelLimit"
+	},
+	{
+		"LootTableID": "BeautifullyWrappedPresent_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "3",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "BeautifullyWrappedPresent_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "95000",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "ExquisitelyWrappedPresent",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCToken",
+		"Item2": "WCPToken",
+		"Item3": "[LTID]WCGoldLockBoxT1LevelLimit"
+	},
+	{
+		"LootTableID": "ExquisitelyWrappedPresent_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "5",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "ExquisitelyWrappedPresent_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "90000",
+		"Item3": "0"
+	},
+	{
 		"LootTableID": "WC_QuestPresent1",
 		"AND/OR": "AND",
 		"RollBonusSetting": "AddToRoll",
@@ -23051,7 +22861,10 @@
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "WCToken",
-		"Item2": "[LBID]WCPatterns2022"
+		"Item2": "WCConsumable_Mealiewrap",
+		"Item3": "WCConsumable_ConvergenceCake",
+		"Item4": "WCConsumable_ButtercreamPudding",
+		"Item5": "WCConsumable_GingersnapCookie"
 	},
 	{
 		"LootTableID": "WC_QuestPresent3_Qty",
@@ -23060,7 +22873,10 @@
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "15",
-		"Item2": "5"
+		"Item2": "3",
+		"Item3": "3",
+		"Item4": "3",
+		"Item5": "3"
 	},
 	{
 		"LootTableID": "WC_QuestPresent3_Probs",
@@ -23069,7 +22885,10 @@
 		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
-		"Item2": "0"
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
 	},
 	{
 		"LootTableID": "WC_QuestPresent4",
@@ -23080,8 +22899,7 @@
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "WCPToken",
-		"Item2": "[LBID]WCGS600Patterns2022",
-		"Item3": "wcconsumable_spicednog"
+		"Item2": "wcconsumable_spicednog"
 	},
 	{
 		"LootTableID": "WC_QuestPresent4_Qty",
@@ -23090,8 +22908,7 @@
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "1",
-		"Item2": "2",
-		"Item3": "5"
+		"Item2": "5"
 	},
 	{
 		"LootTableID": "WC_QuestPresent4_Probs",
@@ -23100,8 +22917,7 @@
 		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "1",
-		"Item2": "0",
-		"Item3": "0"
+		"Item2": "0"
 	},
 	{
 		"LootTableID": "WCGoldLockBoxT1LevelLimit",
@@ -38754,6 +38570,230 @@
 		"Item7": "0"
 	},
 	{
+		"LootTableID": "WinterConv_Settlement_Tree_T1",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WinterConv_Settlement_Tree_T1_Limit",
+		"Item2": "[LTID]GypsumWhiteTable",
+		"Item3": "[LTID]WinterConv_Food"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T1_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "2",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T1_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T1_Limit",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"[LIM]WinterTree_Limit"
+		],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCContainer_HastilyWrappedPresent"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T1_Limit_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "4"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T1_Limit_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T2",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WinterConv_Settlement_Tree_T2_Limit",
+		"Item2": "[LTID]GypsumWhiteTable",
+		"Item3": "[LTID]WinterConv_Food"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T2_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "2",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T2_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T2_Limit",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"[LIM]WinterTree_Limit"
+		],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCContainer_BeautifullyWrappedPresent"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T2_Limit_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "4"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T2_Limit_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T3",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WinterConv_Settlement_Tree_T3_Limit",
+		"Item2": "[LTID]GypsumWhiteTable",
+		"Item3": "[LTID]WinterConv_Food"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T3_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "2",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T3_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T3_Limit",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"[LIM]WinterTree_Limit"
+		],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCContainer_ExquisitelyWrappedPresent"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T3_Limit_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "4"
+	},
+	{
+		"LootTableID": "WinterConv_Settlement_Tree_T3_Limit_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WinterConv_Food",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCConsumable_SpicedNog",
+		"Item2": "WCConsumable_Mealiewrap",
+		"Item3": "WCConsumable_ConvergenceCake",
+		"Item4": "WCConsumable_ButtercreamPudding",
+		"Item5": "WCConsumable_GingersnapCookie"
+	},
+	{
+		"LootTableID": "WinterConv_Food_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "1",
+		"Item5": "1"
+	},
+	{
+		"LootTableID": "WinterConv_Food_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
+	},
+	{
 		"LootTableID": "GypsumWhiteTable",
 		"AND/OR": "AND",
 		"RollBonusSetting": "AddToRoll",
@@ -38782,6 +38822,260 @@
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "59"
+	},
+	{
+		"LootTableID": "WinterConv_Village_GiftBag",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WinterConv_Village_GiftBag_Limit",
+		"Item2": "[LTID]WinterConv_Food"
+	},
+	{
+		"LootTableID": "WinterConv_Village_GiftBag_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "WinterConv_Village_GiftBag_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "WinterConv_Village_GiftBag_Limit",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": [
+			"[LIM]WinterVillage_Limit"
+		],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCContainer_BeautifullyWrappedPresent"
+	},
+	{
+		"LootTableID": "WinterConv_Village_GiftBag_Limit_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "3"
+	},
+	{
+		"LootTableID": "WinterConv_Village_GiftBag_Limit_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WinterConv_LostPresent_Standard",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCStolenPresent"
+	},
+	{
+		"LootTableID": "WinterConv_LostPresent_Standard_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "WinterConv_LostPresent_Standard_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WinterConv_LostPresent_Rare",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCStolenPresent"
+	},
+	{
+		"LootTableID": "WinterConv_LostPresent_Rare_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "20"
+	},
+	{
+		"LootTableID": "WinterConv_LostPresent_Rare_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WinterConv_Gleamite_Shard",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCGleamite"
+	},
+	{
+		"LootTableID": "WinterConv_Gleamite_Shard_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "WinterConv_Gleamite_Shard_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WinterConv_Gleamite_Chunk",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WCGleamite"
+	},
+	{
+		"LootTableID": "WinterConv_Gleamite_Chunk_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "15"
+	},
+	{
+		"LootTableID": "WinterConv_Gleamite_Chunk_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WinterWarrior",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WinterWarriorDarkMatterLimit"
+	},
+	{
+		"LootTableID": "WinterWarrior_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "WinterWarrior_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WinterWarriorBase",
+		"AND/OR": "OR",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "WC_WinterWarrior_Horn",
+		"Item2": "WC_WinterWarrior_Horn",
+		"Item3": "WC_WinterWarrior_Horn",
+		"Item4": "WC_WinterWarrior_Horn"
+	},
+	{
+		"LootTableID": "WinterWarriorBase_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "2",
+		"Item3": "3",
+		"Item4": "5"
+	},
+	{
+		"LootTableID": "WinterWarriorBase_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "11",
+		"Item3": "81",
+		"Item4": "91"
+	},
+	{
+		"LootTableID": "WinterWarriorDarkMatterLimit",
+		"AND/OR": "AND",
+		"Conditions": [
+			"[LIM]WinterDarkMatter_Limit"
+		],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "Darkmatter",
+		"Item2": "WC_WinterWarrior_Horn"
+	},
+	{
+		"LootTableID": "WinterWarriorDarkMatterLimit_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "15",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "WinterWarriorDarkMatterLimit_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
 	},
 	{
 		"LootTableID": "Halloween_QuestCache",
