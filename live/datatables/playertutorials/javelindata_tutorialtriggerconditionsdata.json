@@ -60,13 +60,33 @@
 		"PlayerLevel": 12
 	},
 	{
+		"ConditionId": "PlayerLevelEquals14Condition",
+		"Operation": "Equals",
+		"PlayerLevel": 14
+	},
+	{
+		"ConditionId": "PlayerLevelEquals15Condition",
+		"Operation": "Equals",
+		"PlayerLevel": 15
+	},
+	{
 		"ConditionId": "PlayerLevelOver15Condition",
 		"Operation": "GreaterThan",
 		"PlayerLevel": 15
 	},
 	{
+		"ConditionId": "PlayerLevelEquals19Condition",
+		"Operation": "Equals",
+		"PlayerLevel": 19
+	},
+	{
 		"ConditionId": "PlayerLevelOver20Condition",
 		"Operation": "GreaterThan",
+		"PlayerLevel": 20
+	},
+	{
+		"ConditionId": "PlayerLevelEquals20Condition",
+		"Operation": "Equals",
 		"PlayerLevel": 20
 	},
 	{
@@ -1684,5 +1704,23 @@
 		"ConditionId": "WeaponMasteryTreeWarHammerUIOpenCondition",
 		"PlayerLevel": 0,
 		"UIEvent": "WarHammerMasteryTreesEvent"
+	},
+	{
+		"ConditionId": "ReceiveItemClassSeasonalEthereal",
+		"Operation": "ReceiveItemClassAny",
+		"PlayerLevel": 0,
+		"Item": "SeasonalEthereal"
+	},
+	{
+		"ConditionId": "ReceiveItemClassSeasonalConquerors",
+		"Operation": "ReceiveItemClassAny",
+		"PlayerLevel": 0,
+		"Item": "SeasonalConqueror"
+	},
+	{
+		"ConditionId": "SeasonalServerS7AchievementCondition",
+		"Operation": "HasUnlocked",
+		"PlayerLevel": 0,
+		"Achievement": "SeasonalServerS7"
 	}
 ]

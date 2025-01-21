@@ -1270,7 +1270,7 @@
 		"TriggerAreaType": "Enter",
 		"TP_TargetTag": "TriggerVol_MSQ_Whisper03",
 		"TP_DescriptionTag": "@99A_MSQ_03_01_GoToPOI",
-		"OverrideLocation": "9499.253906 4436.030273 104.952866"
+		"OverrideLocation": "9507.8721 4451.7969 105.5238"
 	},
 	{
 		"TaskID": "99A_MSQ_03_01_03_TriggerWhisper03",
@@ -1626,9 +1626,9 @@
 		"ShouldCheckPoints": false,
 		"GuranteedDropAttempts": 0,
 		"TriggerAreaType": "Enter",
-		"TP_TargetTag": "EverfallHero_IGC_Trigger",
+		"TP_TargetTag": "Everfall_History_Trigger",
 		"TP_DescriptionTag": "@99A_MSQ_04_02_GraceTrigger",
-		"OverrideLocation": "8912.0 4266.42 139.0",
+		"OverrideLocation": "8920.4170 4263.8975 139.1005",
 		"ShowDiegeticTaskPin": "1"
 	},
 	{
@@ -2620,7 +2620,8 @@
 		"IsHidden": "1",
 		"SubTask1": "99A_MSQ_09_02_CrossBarrier",
 		"SubTask2": "99A_MSQ_09_02a_LeapOfFaith",
-		"SubTask3": "99A_MSQ_09_02b_Unlock_Prone_Tutorial"
+		"SubTask3": "99A_MSQ_09_02b1_TriggerTutorial",
+		"SubTask4": "99A_MSQ_09_02b2_Unlock_Prone_Tutorial"
 	},
 	{
 		"TaskID": "99A_MSQ_09_02_CrossBarrier",
@@ -2653,7 +2654,22 @@
 		"ShowDiegeticTaskPin": "1"
 	},
 	{
-		"TaskID": "99A_MSQ_09_02b_Unlock_Prone_Tutorial",
+		"TaskID": "99A_MSQ_09_02b1_TriggerTutorial",
+		"Type": "TaskTriggerArea",
+		"TargetQty": 1,
+		"ItemDropProbability": 0,
+		"ChestDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"ShouldCheckPoints": false,
+		"GuranteedDropAttempts": 0,
+		"TriggerAreaType": "Enter",
+		"TP_TargetTag": "TriggerVol_MSQ_ProneTutorial",
+		"TP_DescriptionTag": "@99A_MSQ_09_03_DescendPuzzle",
+		"OverrideLocation": "9777.3066 4237.8203 83.5882",
+		"ShowDiegeticTaskPin": "1"
+	},
+	{
+		"TaskID": "99A_MSQ_09_02b2_Unlock_Prone_Tutorial",
 		"Type": "TaskUnlockAchievement",
 		"TargetQty": 1,
 		"ItemName": "Tutorial_Prone",

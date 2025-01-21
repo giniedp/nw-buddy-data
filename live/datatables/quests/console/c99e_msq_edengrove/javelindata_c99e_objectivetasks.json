@@ -3535,7 +3535,7 @@
 		"OverrideLocation": "11073.50 7725.41 171.53",
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
-		"ShowDiegeticTaskPin": true
+		"ShowDiegeticTaskPin": false
 	},
 	{
 		"TaskID": "99E_MSQ_05_d_01_04_02_03_LorePage_MyrddinLore_05",
@@ -3630,7 +3630,7 @@
 		"OverrideLocation": "11073.6494 7739.0088 256.006",
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
-		"ShowDiegeticTaskPin": true
+		"ShowDiegeticTaskPin": false
 	},
 	{
 		"TaskID": "99E_MSQ_05_d_02_container_prisonB_start",
@@ -3725,10 +3725,9 @@
 		"Duration": 0,
 		"TP_TargetTag": "TriggerVol_99E_MyrddinSphereC",
 		"TP_DescriptionTag": "@99E_MSQ_05_UnlockPrison_volume_myrddinSphere",
-		"OverrideLocation": "11292.9063 7537.0488 181.6552",
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
-		"ShowDiegeticTaskPin": true
+		"ShowDiegeticTaskPin": false
 	},
 	{
 		"TaskID": "99E_MSQ_05_d_02_02_02_02_Interact_MyrddinSphereC",
@@ -3745,7 +3744,7 @@
 		"OverrideLocation": "11292.9063 7537.0488 181.6552",
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
-		"ShowDiegeticTaskPin": true
+		"ShowDiegeticTaskPin": false
 	},
 	{
 		"TaskID": "99E_MSQ_05_d_02_02_02_03_LorePage_MyrddinLore_04",
@@ -4345,8 +4344,157 @@
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false,
-		"SubTask1": "99E_MSQ_06_d_01_container_prisonStart",
-		"SubTask2": "99E_MSQ_06_d_02_container_insidePrison"
+		"SubTask1": "99E_MSQ_06_RESET1_container",
+		"SubTask2": "99E_MSQ_06_RESET2_container",
+		"SubTask3": "99E_MSQ_06_d_01_container_prisonStart",
+		"SubTask4": "99E_MSQ_06_d_02_container_insidePrison",
+		"SubTask5": "99E_MSQ_06_d_02_04_container_prisonExit"
+	},
+	{
+		"TaskID": "99E_MSQ_06_RESET1_container",
+		"Type": "ConsecutiveTaskContainer",
+		"StayActive": 0,
+		"TargetQty": 0,
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 0,
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false,
+		"SubTask1": "99E_MSQ_06_reset_PrisonArgument_IGC_Preload",
+		"SubTask2": "99E_MSQ_06_reset_MyrddinArgumentIGC_Watched",
+		"SubTask3": "99E_MSQ_06_reset_MyrddinArgumentIGC_Active_Off",
+		"SubTask4": "99E_MSQ_06_reset_SwapActive_99E_Myrddin",
+		"SubTask5": "99E_MSQ_06_reset_SwapActive_99E_Morgaine_p10a_Prison_On"
+	},
+	{
+		"TaskID": "99E_MSQ_06_reset_PrisonArgument_IGC_Preload",
+		"Type": "TaskLockAchievement",
+		"StayActive": 0,
+		"TargetQty": 0,
+		"ItemName": "99E_MSQ_06_PrisonArgument_IGC_Preload",
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 0,
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false
+	},
+	{
+		"TaskID": "99E_MSQ_06_reset_MyrddinArgumentIGC_Watched",
+		"Type": "TaskLockAchievement",
+		"StayActive": 0,
+		"TargetQty": 0,
+		"ItemName": "99E_MSQ_06_MyrddinArgumentIGC_Watched",
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 0,
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false
+	},
+	{
+		"TaskID": "99E_MSQ_06_reset_MyrddinArgumentIGC_Active_Off",
+		"Type": "TaskLockAchievement",
+		"StayActive": 0,
+		"TargetQty": 0,
+		"ItemName": "99E_MSQ_06_MyrddinArgumentIGC_Active",
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 0,
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false
+	},
+	{
+		"TaskID": "99E_MSQ_06_reset_SwapActive_99E_Myrddin",
+		"Type": "TaskLockAchievement",
+		"StayActive": 0,
+		"TargetQty": 0,
+		"ItemName": "SwapActive_MSQ_Myrddin_EG_p1",
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 0,
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false
+	},
+	{
+		"TaskID": "99E_MSQ_06_reset_SwapActive_99E_Morgaine_p10a_Prison_On",
+		"Type": "TaskLockAchievement",
+		"StayActive": 0,
+		"TargetQty": 0,
+		"ItemName": "SwapActive_MSQ_Morgaine_EG_p10a",
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 0,
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false
+	},
+	{
+		"TaskID": "99E_MSQ_06_RESET2_container",
+		"Type": "ConsecutiveTaskContainer",
+		"StayActive": 0,
+		"TargetQty": 0,
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 0,
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false,
+		"SubTask1": "99E_MSQ_06_reset_SwapActive_99E_Galahad_p4a_Prison_On",
+		"SubTask2": "99E_MSQ_06_reset_SwapActive_PrisonPortal_Off",
+		"SubTask3": "99E_MSQ_06_reset_SwapActive_99E_Galahad_p4a_Walkaway"
+	},
+	{
+		"TaskID": "99E_MSQ_06_reset_SwapActive_99E_Galahad_p4a_Prison_On",
+		"Type": "TaskLockAchievement",
+		"StayActive": 0,
+		"TargetQty": 0,
+		"ItemName": "SwapActive_MSQ_Galahad_EG_p4a",
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 0,
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false
+	},
+	{
+		"TaskID": "99E_MSQ_06_reset_SwapActive_PrisonPortal_Off",
+		"Type": "TaskLockAchievement",
+		"StayActive": 0,
+		"TargetQty": 0,
+		"ItemName": "99E_MSQ_06_PrisonPortal_Viz_On",
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 0,
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false
+	},
+	{
+		"TaskID": "99E_MSQ_06_reset_SwapActive_99E_Galahad_p4a_Walkaway",
+		"Type": "TaskLockAchievement",
+		"StayActive": 0,
+		"TargetQty": 0,
+		"ItemName": "SwapActive_MSQ_Galahad_EG_p4a",
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 0,
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false
 	},
 	{
 		"TaskID": "99E_MSQ_06_d_01_container_prisonStart",
@@ -4496,10 +4644,10 @@
 		"Duration": 0,
 		"TP_TargetTag": "TriggerVol_99E_TowerTeleTarget",
 		"TP_DescriptionTag": "@99E_MSQ_06_MyrddinsPrison_enterPortal",
-		"OverrideLocation": "11290.405 7550.276 256.675",
+		"OverrideLocation": "11290.6338 7550.1562 256.6617",
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
-		"ShowDiegeticTaskPin": false
+		"ShowDiegeticTaskPin": true
 	},
 	{
 		"TaskID": "99E_MSQ_06_d_02_container_insidePrison",
@@ -4510,14 +4658,15 @@
 		"EnforceLocationRequirement": false,
 		"PauseAndClearLootOnTaskComplete": false,
 		"Duration": 0,
+		"TargetDescriptionTaskId": "99E_MSQ_06_d_01_05_03_TriggerArea_TowerTarget",
+		"OverrideLocation": "11290.6338 7550.1562 256.6617",
 		"IsHidden": 1,
-		"HideDiegeticGatherablePins": false,
-		"ShowDiegeticTaskPin": false,
+		"HideDiegeticGatherablePins": true,
+		"ShowDiegeticTaskPin": true,
 		"SubTask1": "99E_MSQ_06_d_02_01_TalkTo_Morgaine_07",
 		"SubTask2": "99E_MSQ_06_PrisonArgument_IGC_Preload",
 		"SubTask3": "99E_MSQ_06_d_02_02_container_prisonIGC",
-		"SubTask4": "99E_MSQ_06_d_02_03_container_postIGC_TalkTo",
-		"SubTask5": "99E_MSQ_06_d_02_04_container_prisonExit"
+		"SubTask4": "99E_MSQ_06_d_02_03_container_postIGC_TalkTo"
 	},
 	{
 		"TaskID": "99E_MSQ_06_d_02_01_TalkTo_Morgaine_07",
@@ -4584,7 +4733,7 @@
 		"OverrideLocation": "11278.4775 7708.3921 358.746",
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
-		"ShowDiegeticTaskPin": false
+		"ShowDiegeticTaskPin": true
 	},
 	{
 		"TaskID": "99E_MSQ_06_d_02_02_02_container_MyrddinArgumentIGC_Setup",
@@ -4891,6 +5040,7 @@
 		"ItemDropProbability": 0,
 		"EnforceLocationRequirement": false,
 		"PauseAndClearLootOnTaskComplete": false,
+		"ShouldCheckPoints": "1",
 		"Duration": 0,
 		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
@@ -5052,6 +5202,7 @@
 		"ItemDropProbability": 0,
 		"EnforceLocationRequirement": false,
 		"PauseAndClearLootOnTaskComplete": false,
+		"ShouldCheckPoints": "1",
 		"Duration": 0,
 		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
@@ -5069,7 +5220,7 @@
 		"UIScreenTag": "Topic_99E_Morgaine_p10_02",
 		"Duration": 0,
 		"TP_DescriptionTag": "@99E_Default_Task_TalkTo",
-		"OverrideLocation": "11276.7227 7110.2104 358.8857",
+		"OverrideLocation": "11276.7256 7710.2334 358.9825",
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false
@@ -5139,7 +5290,7 @@
 		"OverrideLocation": "11275.3066 7701.7148 354.8155",
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
-		"ShowDiegeticTaskPin": false
+		"ShowDiegeticTaskPin": true
 	},
 	{
 		"TaskID": "99E_MSQ_06_d_02_04_01_02_TriggerArea_PrisonDive",
@@ -6119,7 +6270,7 @@
 		"EnforceLocationRequirement": false,
 		"PauseAndClearLootOnTaskComplete": false,
 		"Duration": 0,
-		"OverrideLocation": "11779.975 6836.915 520.064",
+		"OverrideLocation": "11777.1787 6833.1919 517.8877",
 		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": true,
@@ -6136,7 +6287,6 @@
 		"EnforceLocationRequirement": false,
 		"PauseAndClearLootOnTaskComplete": false,
 		"Duration": 0,
-		"OverrideLocation": "11779.975 6836.915 520.064",
 		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": true,
@@ -6154,7 +6304,6 @@
 		"PauseAndClearLootOnTaskComplete": false,
 		"Duration": 0,
 		"TP_DescriptionTag": "@99E_MSQ_09_TheMotherwell_goto_POI_A",
-		"OverrideLocation": "11779.975 6836.915 520.064",
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": true
@@ -6169,7 +6318,7 @@
 		"PauseAndClearLootOnTaskComplete": false,
 		"KillEnemyType": "99E_Motherwell_MSQ_PlaceStaff_interact",
 		"Duration": 0,
-		"OverrideLocation": "11779.975 6836.915 520.064",
+		"OverrideLocation": "11777.1787 6833.1919 517.8877",
 		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": true
@@ -6181,10 +6330,8 @@
 		"TargetQty": 0,
 		"ItemDropProbability": 0,
 		"EnforceLocationRequirement": false,
-		"GameModeID": "QuestMotherwell",
 		"PauseAndClearLootOnTaskComplete": false,
 		"Duration": 0,
-		"OverrideLocation": "11779.975 6836.915 520.064",
 		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": true,
@@ -6236,7 +6383,6 @@
 		"EnforceLocationRequirement": false,
 		"PauseAndClearLootOnTaskComplete": false,
 		"Duration": 0,
-		"OverrideLocation": "11779.975 6836.915 520.064",
 		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": true,
@@ -6305,10 +6451,8 @@
 		"TargetQty": 0,
 		"ItemDropProbability": 0,
 		"EnforceLocationRequirement": false,
-		"GameModeID": "QuestMotherwell",
 		"PauseAndClearLootOnTaskComplete": false,
 		"Duration": 0,
-		"OverrideLocation": "11779.975 6836.915 520.064",
 		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": true,
@@ -6353,7 +6497,6 @@
 		"EnforceLocationRequirement": false,
 		"PauseAndClearLootOnTaskComplete": false,
 		"Duration": 0,
-		"OverrideLocation": "11779.975 6836.915 520.064",
 		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": true,
@@ -6408,7 +6551,7 @@
 		"Duration": 0,
 		"TP_TargetTag": "TriggerVol_99E_MotherwellExit",
 		"TP_DescriptionTag": "@99E_MSQ_09_TheMotherwell_exitMotherwell",
-		"OverrideLocation": "11336.3174 6862.5151 329.9552",
+		"OverrideLocation": "11779.975 6836.915 520.064",
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false
@@ -7054,7 +7197,7 @@
 		"SubTask1": "99E_MSQ_10_d_04_01_GoToPOI_10b",
 		"SubTask2": "99E_MSQ_10_d_04_02_99E_ORI_YonasCave_Unlock",
 		"SubTask3": "99E_MSQ_10_d_04_03_TriggerArea_YonasCaveDoor",
-		"SubTask4": "99E_MSQ_10_d_04_04_container_insideYonasCave"
+		"SubTask4": "99E_MSQ_10_d_04_04_container_YonasCaveWorldPins"
 	},
 	{
 		"TaskID": "99E_MSQ_10_d_04_01_GoToPOI_10b",
@@ -7102,7 +7245,7 @@
 		"ShowDiegeticTaskPin": true
 	},
 	{
-		"TaskID": "99E_MSQ_10_d_04_04_container_insideYonasCave",
+		"TaskID": "99E_MSQ_10_d_04_04_container_YonasCaveWorldPins",
 		"Type": "ConsecutiveTaskContainer",
 		"StayActive": 0,
 		"TargetQty": 0,
@@ -7113,9 +7256,24 @@
 		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false,
+		"SubTask1": "99E_MSQ_10_d_04_04_container_insideYonasCave",
+		"SubTask2": "99E_MSQ_10_d_04_04_03_container_yonasCaveComplete"
+	},
+	{
+		"TaskID": "99E_MSQ_10_d_04_04_container_insideYonasCave",
+		"Type": "ConsecutiveTaskContainer",
+		"StayActive": 0,
+		"TargetQty": 0,
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 0,
+		"OverrideLocation": "8773.330 6580.665 313.175",
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": true,
 		"SubTask1": "99E_MSQ_10_d_04_04_01_container_yonasCavePins",
-		"SubTask2": "99E_MSQ_10_d_04_04_02_container_YonasCaveEncounter",
-		"SubTask3": "99E_MSQ_10_d_04_04_03_container_yonasCaveComplete"
+		"SubTask2": "99E_MSQ_10_d_04_04_02_container_YonasCaveEncounter"
 	},
 	{
 		"TaskID": "99E_MSQ_10_d_04_04_01_container_yonasCavePins",
@@ -7308,7 +7466,7 @@
 		"ShowDiegeticTaskPin": false,
 		"SubTask1": "99E_MSQ_10_d_04_04_03_01_yonasCaveComplete",
 		"SubTask2": "99E_MSQ_10_d_04_04_03_02_ORI_YonasCave_Lock",
-		"SubTask3": "99E_MSQ_10_d_04_04_02_03_container_Whisper"
+		"SubTask3": "99E_MSQ_10_d_04_04_02_03_container_Finish"
 	},
 	{
 		"TaskID": "99E_MSQ_10_d_04_04_03_01_yonasCaveComplete",
@@ -7340,7 +7498,7 @@
 		"ShowDiegeticTaskPin": false
 	},
 	{
-		"TaskID": "99E_MSQ_10_d_04_04_02_03_container_Whisper",
+		"TaskID": "99E_MSQ_10_d_04_04_02_03_container_Finish",
 		"Type": "ConsecutiveTaskContainer",
 		"StayActive": 0,
 		"TargetQty": 0,
@@ -7352,8 +7510,10 @@
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false,
 		"SubTask1": "99E_MSQ_10_d_04_04_03_03_TriggerArea_YonasCaveExit",
-		"SubTask2": "99E_MSQ_10_d_04_04_03_05_container_LeavingCave",
-		"SubTask3": "99E_MSQ_10_d_04_04_03_04_IsabellaWhisper_F"
+		"SubTask2": "99E_MSQ_10_d_05_container_completeSwaps",
+		"SubTask3": "99E_MSQ_10_d_04_04_03_05_container_WhisperFTrigger",
+		"SubTask4": "99E_MSQ_10_d_04_04_03_04_IsabellaWhisper_F",
+		"SubTask5": "99E_MSQ_10_d_05_04_05_GoToPOI_CaerDun"
 	},
 	{
 		"TaskID": "99E_MSQ_10_d_04_04_03_03_TriggerArea_YonasCaveExit",
@@ -7386,7 +7546,7 @@
 		"ShowDiegeticTaskPin": false
 	},
 	{
-		"TaskID": "99E_MSQ_10_d_04_04_03_05_container_LeavingCave",
+		"TaskID": "99E_MSQ_10_d_04_04_03_05_container_WhisperFTrigger",
 		"Type": "PartialTaskContainer",
 		"StayActive": 0,
 		"TargetQty": 0,
@@ -7411,9 +7571,7 @@
 		"TriggerAreaType": "Leave",
 		"Duration": 0,
 		"TP_TargetTag": "TriggerVol_99E_YonasCaveDoor",
-		"TP_DescriptionTag": "@99E_MSQ_10_ToCaerDun_leave_YonasCave",
-		"OverrideLocation": "8771.457 6576.4814 312.7061",
-		"IsHidden": 0,
+		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false
 	},
@@ -7518,8 +7676,7 @@
 		"ShowDiegeticTaskPin": false,
 		"SubTask1": "99E_MSQ_10_d_05_04_01_SwapActive_99E_Yash_p3_On",
 		"SubTask2": "99E_MSQ_10_d_05_04_02_SwapActive_99E_Sun_p17_On",
-		"SubTask3": "99E_MSQ_10_d_05_04_04_SwapActive_99F_Grace_On",
-		"SubTask4": "99E_MSQ_10_d_05_05_TriggerArea_CaerDunInterior"
+		"SubTask3": "99E_MSQ_10_d_05_04_04_SwapActive_99F_Grace_On"
 	},
 	{
 		"TaskID": "99E_MSQ_10_d_05_04_01_SwapActive_99E_Yash_p3_On",
@@ -7578,19 +7735,16 @@
 		"ShowDiegeticTaskPin": false
 	},
 	{
-		"TaskID": "99E_MSQ_10_d_05_05_TriggerArea_CaerDunInterior",
-		"Type": "TaskTriggerArea",
+		"TaskID": "99E_MSQ_10_d_05_04_05_GoToPOI_CaerDun",
+		"Type": "TaskGoToPOITag",
 		"StayActive": 0,
 		"TargetQty": 1,
 		"ItemDropProbability": 0,
 		"EnforceLocationRequirement": true,
 		"POITag": "soulwarden_camp_50392",
 		"PauseAndClearLootOnTaskComplete": false,
-		"TriggerAreaType": "Enter",
 		"Duration": 0,
-		"TP_TargetTag": "TriggerVol_99B_CaerDunExpA",
 		"TP_DescriptionTag": "@99E_MSQ_10_ToCaerDun_return_CaerDun",
-		"OverrideLocation": "9151.8838 6551.2285 319.1301",
 		"IsHidden": 0,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false

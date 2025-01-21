@@ -7407,6 +7407,22 @@
 		"AudioPreload_gathering": "gather_interact_quest"
 	},
 	{
+		"VariantID": "1333_LowerStoneRubble_00",
+		"Visual_Basemesh": "slices\\WorldEvents\\WeaversFen\\Interact\\StoneRubble\\WorldEvent_Object_1333_StoneRubble_Depleted.dynamicslice",
+		"GatherableEntryID": "1333_LowerStoneRubble_00",
+		"IdleVFX_Offset_Z": 0,
+		"depletedVFX_Offset_Z": 0,
+		"DepletedVFX_Quest": "cFX_Loot.Loot_Quest_Small_Depleted",
+		"DepletedVFX_Quest_Offset_Z": 0,
+		"gatheringVFX_Offzet_Z": 0,
+		"interactionMarker_Offset_Z": 0,
+		"InteractTag": "IO_1333_LowerStoneRubble_00",
+		"InteractOnlyOnQuest": true,
+		"IsStateControlledBySlayerScript": false,
+		"RequireLoS": false,
+		"AudioPreload_gathering": "gather_interact_quest"
+	},
+	{
 		"VariantID": "0300_EpicWeapons_Periville",
 		"Visual_NotOnRequiredQuest": "slices\\WorldEvents\\EpicWeapons\\WorldEvent_Object_0300_EWPerivilleCoffin_00.dynamicslice",
 		"GatherableEntryID": "0300_EpicWeapons_Periville",
@@ -8115,21 +8131,6 @@
 		"AudioPreload_gathering": "gather_interact_quest"
 	},
 	{
-		"VariantID": "SwapSlice_Bag",
-		"GatherableEntryID": "SliceSwap_NonInstanced",
-		"IdleVFX_Offset_Z": 0,
-		"depletedVFX_Offset_Z": 0,
-		"DepletedVFX_Quest_Offset_Z": 0,
-		"gatheringVFX_Offzet_Z": 0,
-		"interactionMarker_Offset_Z": 0,
-		"InteractOnlyOnQuest": false,
-		"AchievementID": "0424_0102_MakeBagAppear",
-		"AchievementServerState": "Depleted",
-		"IsStateControlledBySlayerScript": false,
-		"RequireLoS": false,
-		"AudioPreload_gathering": "gather_interact_quest"
-	},
-	{
 		"VariantID": "0726_Gravestone",
 		"GatherableEntryID": "0726_Gravestone",
 		"IdleVFX_Offset_Z": 0,
@@ -8156,34 +8157,6 @@
 		"InteractOnlyOnQuest": false,
 		"AchievementID": "SwapActive_MSQ_MaraBook",
 		"AchievementServerState": "Depleted",
-		"IsStateControlledBySlayerScript": false,
-		"RequireLoS": false,
-		"AudioPreload_gathering": "gather_interact_quest"
-	},
-	{
-		"VariantID": "0424_GleamiteIO",
-		"GatherableEntryID": "0424_GleamiteIO",
-		"IdleVFX_Offset_Z": 0,
-		"depletedVFX_Offset_Z": 0,
-		"DepletedVFX_Quest_Offset_Z": 0,
-		"gatheringVFX_Offzet_Z": 0,
-		"interactionMarker_Offset_Z": 0,
-		"InteractTag": "IO_0424_GleamiteIO",
-		"InteractOnlyOnQuest": true,
-		"IsStateControlledBySlayerScript": false,
-		"RequireLoS": false,
-		"AudioPreload_gathering": "gather_interact_quest"
-	},
-	{
-		"VariantID": "0424_LostPresentIO",
-		"GatherableEntryID": "0424_LostPresentIO",
-		"IdleVFX_Offset_Z": 0,
-		"depletedVFX_Offset_Z": 0,
-		"DepletedVFX_Quest_Offset_Z": 0,
-		"gatheringVFX_Offzet_Z": 0,
-		"interactionMarker_Offset_Z": 0,
-		"InteractTag": "IO_0424_LostPresentIO",
-		"InteractOnlyOnQuest": true,
 		"IsStateControlledBySlayerScript": false,
 		"RequireLoS": false,
 		"AudioPreload_gathering": "gather_interact_quest"
@@ -12404,32 +12377,6 @@
 		"interactionMarker_Offset_Z": 0,
 		"InteractTag": "IO_16_Side_13_WormSpineA",
 		"InteractOnlyOnQuest": true,
-		"IsStateControlledBySlayerScript": false,
-		"RequireLoS": false,
-		"AudioPreload_gathering": "gather_interact_quest"
-	},
-	{
-		"VariantID": "Yeti_2022_Monolith_Fortify",
-		"GatherableEntryID": "Yeti_2022_Fortify_Monolith",
-		"IdleVFX_Offset_Z": 0,
-		"depletedVFX_Offset_Z": 0,
-		"DepletedVFX_Quest_Offset_Z": 0,
-		"gatheringVFX_Offzet_Z": 0,
-		"interactionMarker_Offset_Z": 0,
-		"InteractOnlyOnQuest": false,
-		"IsStateControlledBySlayerScript": false,
-		"RequireLoS": false,
-		"AudioPreload_gathering": "gather_interact_quest"
-	},
-	{
-		"VariantID": "Yeti_2022_Monolith_Empower",
-		"GatherableEntryID": "Yeti_2022_Empower_Monolith",
-		"IdleVFX_Offset_Z": 0,
-		"depletedVFX_Offset_Z": 0,
-		"DepletedVFX_Quest_Offset_Z": 0,
-		"gatheringVFX_Offzet_Z": 0,
-		"interactionMarker_Offset_Z": 0,
-		"InteractOnlyOnQuest": false,
 		"IsStateControlledBySlayerScript": false,
 		"RequireLoS": false,
 		"AudioPreload_gathering": "gather_interact_quest"
@@ -17169,9 +17116,7 @@
 		"InteractTag": "IO_99E_MSQ_01_AncientMuralA",
 		"InteractOnlyOnQuest": true,
 		"IsStateControlledBySlayerScript": false,
-		"RequireLoS": false,
-		"AudioPreload_gathering": "gather_interact_quest",
-		"SFX_gathering": "Play_Gather_Interact_AncientMagic"
+		"RequireLoS": false
 	},
 	{
 		"VariantID": "99E_MSQ_01_AncientMuralB",
@@ -17184,9 +17129,7 @@
 		"InteractTag": "IO_99E_MSQ_01_AncientMuralB",
 		"InteractOnlyOnQuest": true,
 		"IsStateControlledBySlayerScript": false,
-		"RequireLoS": false,
-		"AudioPreload_gathering": "gather_interact_quest",
-		"SFX_gathering": "Play_Gather_Interact_AncientMagic"
+		"RequireLoS": false
 	},
 	{
 		"VariantID": "99E_MSQ_01_AncientMuralC",
@@ -17199,9 +17142,7 @@
 		"InteractTag": "IO_99E_MSQ_01_AncientMuralC",
 		"InteractOnlyOnQuest": true,
 		"IsStateControlledBySlayerScript": false,
-		"RequireLoS": false,
-		"AudioPreload_gathering": "gather_interact_quest",
-		"SFX_gathering": "Play_Gather_Interact_AncientMagic"
+		"RequireLoS": false
 	},
 	{
 		"VariantID": "99E_MSQ_01_Cyclic_AncientTumblerA_01",
@@ -20550,10 +20491,7 @@
 		"InteractOnlyOnQuest": true,
 		"IsStateControlledBySlayerScript": false,
 		"RequireLoS": false,
-		"AudioPreload_gathering": "gather_interact_quest",
-		"SFX_depleted_idle_play": "Play_Missions_DestroyEnemy_Barrier_Loop_Ring",
-		"SFX_depleted_idle_stop": "Stop_Missions_DestroyEnemy_Barrier_Loop_Ring",
-		"AudioPreload_Depleted_idle": "Missions_DestroyEnemy"
+		"AudioPreload_gathering": "gather_interact_quest"
 	},
 	{
 		"VariantID": "99G_MSQ_SM_DestroyEnemy_Kneel01",

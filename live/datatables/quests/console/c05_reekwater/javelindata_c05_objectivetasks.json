@@ -2757,27 +2757,9 @@
 		"Duration": 0,
 		"IsHidden": 0,
 		"ShowDiegeticTaskPin": false,
-		"SubTask1": "0505_0103_d_01_container_partial",
-		"SubTask2": "0505_0103_d_02_TaskGoToPOITag_EternalPool",
-		"SubTask3": "0505_0103_d_03_kill_SwampDryadArenaBoss"
-	},
-	{
-		"TaskID": "0505_0103_d_01_container_partial",
-		"Type": "PartialTaskContainer",
-		"StayActive": 0,
-		"TargetQty": 0,
-		"ItemDropProbability": 0,
-		"ChestDropProbability": 0,
-		"UseGlobalStorage": false,
-		"EnforceLocationRequirement": false,
-		"TerritoryID": 0,
-		"PauseAndClearLootOnTaskComplete": false,
-		"AwardOnlyOnce": false,
-		"Duration": 0,
-		"IsHidden": 1,
-		"ShowDiegeticTaskPin": false,
 		"SubTask1": "0505_0103_d_01_01_TaskGoToPOITag_EternalPool",
-		"SubTask2": "0505_0103_d_01_02_Have_EternalPoolBossKey"
+		"SubTask2": "0505_0103_d_01_02_Have_EternalPoolBossKey",
+		"SubTask3": "0505_0103_d_03_kill_SwampDryadArenaBoss"
 	},
 	{
 		"TaskID": "0505_0103_d_01_01_TaskGoToPOITag_EternalPool",
@@ -2814,24 +2796,7 @@
 		"AwardOnlyOnce": true,
 		"Duration": 0,
 		"TP_DescriptionTag": "@0505_0103_thedryadpromenade_get_key_from_boss",
-		"IsHidden": 0,
-		"ShowDiegeticTaskPin": false
-	},
-	{
-		"TaskID": "0505_0103_d_02_TaskGoToPOITag_EternalPool",
-		"Type": "TaskGoToPOITag",
-		"StayActive": 1,
-		"TargetQty": 0,
-		"ItemDropProbability": 0,
-		"ChestDropProbability": 0,
-		"UseGlobalStorage": false,
-		"EnforceLocationRequirement": true,
-		"TerritoryID": 0,
-		"POITag": "AE_Elite_50119",
-		"PauseAndClearLootOnTaskComplete": false,
-		"AwardOnlyOnce": false,
-		"Duration": 0,
-		"TP_DescriptionTag": "@0505_0103_thedryadpromenade_goto_POI",
+		"OverrideLocation": "10962.8887 3864.3997 145.6568",
 		"IsHidden": 0,
 		"ShowDiegeticTaskPin": false
 	},
@@ -2851,6 +2816,7 @@
 		"KillEnemyType": "Swamp_Dryad_Beast_Named_ELITE_05WC10",
 		"Duration": 0,
 		"TP_DescriptionTag": "@0505_0103_thedryadpromenade_defeat_boss",
+		"OverrideLocation": "11055.6973 3824.9583 173.0805",
 		"IsHidden": 0,
 		"ShowDiegeticTaskPin": false
 	},

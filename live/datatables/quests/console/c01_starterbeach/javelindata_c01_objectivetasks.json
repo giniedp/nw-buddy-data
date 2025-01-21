@@ -4100,7 +4100,8 @@
 		"DiegeticPinZOverride": 0,
 		"SubTask1": "06_getoffbeach_01_01_SliceSwap_01_HoweWW_A_On",
 		"SubTask2": "06_getoffbeach_01_02_SliceSwap_01_CaveCorruption_On",
-		"SubTask3": "06_getoffbeach_01_04_SliceSwap_01_UrdaWW_p01_On"
+		"SubTask3": "06_getoffbeach_01_04_SliceSwap_01_UrdaWW_p01_On",
+		"SubTask4": "06_getoffbeach_01_05_HideCorinthGrace"
 	},
 	{
 		"TaskID": "06_getoffbeach_01_01_SliceSwap_01_HoweWW_A_On",
@@ -4144,6 +4145,24 @@
 		"StayActive": 0,
 		"TargetQty": 1,
 		"ItemName": "SwapActive_01_UrdaWW_01",
+		"ItemDropProbability": 0,
+		"ChestDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"AwardOnlyOnce": false,
+		"ShouldCheckPoints": true,
+		"Duration": 0,
+		"IsHidden": "1",
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false,
+		"DiegeticPinZOverride": 0
+	},
+	{
+		"TaskID": "06_getoffbeach_01_05_HideCorinthGrace",
+		"Type": "TaskUnlockAchievement",
+		"StayActive": 0,
+		"TargetQty": 1,
+		"ItemName": "SwapActive_06_GraceWW_A",
 		"ItemDropProbability": 0,
 		"ChestDropProbability": 0,
 		"EnforceLocationRequirement": false,
@@ -6459,7 +6478,6 @@
 		"ItemDropProbability": 0,
 		"ChestDropProbability": 0,
 		"EnforceLocationRequirement": false,
-		"POITag": "drowned_shipwreck_1_40143",
 		"PauseAndClearLootOnTaskComplete": false,
 		"AwardOnlyOnce": false,
 		"ShouldCheckPoints": false,
@@ -7041,7 +7059,7 @@
 	},
 	{
 		"TaskID": "06_survivors_03_03_01_grace_outro_container",
-		"Type": "SimpleTaskContainer",
+		"Type": "ConsecutiveTaskContainer",
 		"StayActive": 0,
 		"TargetQty": 0,
 		"ItemDropProbability": 0,
@@ -7134,11 +7152,10 @@
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false,
 		"DiegeticPinZOverride": 0,
-		"SubTask1": "06_survivors_03_03_GracecinematicTrigger",
-		"SubTask2": "06_survivors_03_03_turnOnIGC",
-		"SubTask3": "06_survivors_03_03_unlockIGC",
-		"SubTask4": "06_survivors_03_03_endCinematicTrigger",
-		"SubTask5": "06_survivors_03_03_turnOffIGC"
+		"SubTask1": "06_survivors_03_03_turnOnIGC",
+		"SubTask2": "06_survivors_03_03_unlockIGC",
+		"SubTask3": "06_survivors_03_03_endCinematicTrigger",
+		"SubTask4": "06_survivors_03_03_turnOffIGC"
 	},
 	{
 		"TaskID": "06_survivors_03_03_escape_PreloadIGC",
@@ -8059,7 +8076,7 @@
 	},
 	{
 		"TaskID": "12_survivors_03_03_01_grace_outro_container",
-		"Type": "SimpleTaskContainer",
+		"Type": "ConsecutiveTaskContainer",
 		"StayActive": 0,
 		"TargetQty": 0,
 		"ItemDropProbability": 0,
@@ -8149,11 +8166,10 @@
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false,
 		"DiegeticPinZOverride": 0,
-		"SubTask1": "12_survivors_03_01_cinematicTrigger",
-		"SubTask2": "12_survivors_03_01_turnOnIGC",
-		"SubTask3": "12_survivors_03_01_unlockIGC",
-		"SubTask4": "12_survivors_03_01_endCinematicTrigger",
-		"SubTask5": "12_survivors_03_01_turnOffIGC"
+		"SubTask1": "12_survivors_03_01_turnOnIGC",
+		"SubTask2": "12_survivors_03_01_unlockIGC",
+		"SubTask3": "12_survivors_03_01_endCinematicTrigger",
+		"SubTask4": "12_survivors_03_01_turnOffIGC"
 	},
 	{
 		"TaskID": "12_survivors_03_01_cinematicTrigger",
@@ -9316,7 +9332,8 @@
 		"SubTask1": "06_demonstorm_01_initialize_container",
 		"SubTask2": "06_demonstorm_02_TalkTo_Grace",
 		"SubTask3": "06_demonstorm_03_SliceSwap_01_GraceWW_C_Off",
-		"SubTask4": "06_demonstorm_04_TaskTriggerArea_Reese"
+		"SubTask4": "06_demonstorm_03b_UnlockCorinthGrace",
+		"SubTask5": "06_demonstorm_04_TaskTriggerArea_Reese"
 	},
 	{
 		"TaskID": "06_demonstorm_01_initialize_container",
@@ -9454,6 +9471,24 @@
 		"StayActive": 1,
 		"TargetQty": 1,
 		"ItemName": "SwapActive_01_GraceWW_C",
+		"ItemDropProbability": 0,
+		"ChestDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"AwardOnlyOnce": false,
+		"ShouldCheckPoints": false,
+		"Duration": 0,
+		"IsHidden": "1",
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false,
+		"DiegeticPinZOverride": 0
+	},
+	{
+		"TaskID": "06_demonstorm_03b_UnlockCorinthGrace",
+		"Type": "TaskLockAchievement",
+		"StayActive": 0,
+		"TargetQty": 1,
+		"ItemName": "SwapActive_06_GraceWW_A",
 		"ItemDropProbability": 0,
 		"ChestDropProbability": 0,
 		"EnforceLocationRequirement": false,
@@ -9842,8 +9877,9 @@
 		"Duration": 0,
 		"TP_TargetTag": "TriggerVol_06_CaveWhisper",
 		"TP_DescriptionTag": "@01_demonstorm_task_search",
+		"OverrideLocation": "9751.9111 2509.6472 49.6127",
 		"HideDiegeticGatherablePins": false,
-		"ShowDiegeticTaskPin": false,
+		"ShowDiegeticTaskPin": true,
 		"DiegeticPinZOverride": 0
 	},
 	{
@@ -10211,8 +10247,9 @@
 		"Duration": 0,
 		"TP_TargetTag": "TriggerVol_12_CaveWhisper",
 		"TP_DescriptionTag": "@01_demonstorm_task_search",
+		"OverrideLocation": "7290.2793 2900.3755 51.2266",
 		"HideDiegeticGatherablePins": false,
-		"ShowDiegeticTaskPin": false,
+		"ShowDiegeticTaskPin": true,
 		"DiegeticPinZOverride": 0
 	},
 	{
@@ -11571,7 +11608,7 @@
 		"TP_DescriptionTag": "@01_raisealarm_task_travelMB",
 		"OverrideLocation": "7334.5303 3129.9849 49.0539",
 		"HideDiegeticGatherablePins": false,
-		"ShowDiegeticTaskPin": false,
+		"ShowDiegeticTaskPin": true,
 		"DiegeticPinZOverride": 0
 	},
 	{

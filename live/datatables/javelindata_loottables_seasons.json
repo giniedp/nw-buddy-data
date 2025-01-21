@@ -3609,9 +3609,9 @@
 		"UseLevelGS": "TRUE",
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "[LBID]ProcWeapons_S6_GuaranteeEpic",
-		"Item2": "[LBID]ProcArmor_S6_GuaranteeEpic",
-		"Item3": "[LBID]ProcShields_S6_GuaranteeEpic"
+		"Item1": "[LBID]ProcWeapons_S7_Siege",
+		"Item2": "[LBID]ProcArmor_S7_Siege",
+		"Item3": "[LBID]ProcShields_S7_Siege"
 	},
 	{
 		"LootTableID": "WorldEvent_S6_ProcArmorOrWeapon_Qty",
@@ -3627,7 +3627,7 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 100000,
-		"Item1": "0",
+		"Item1": "1500",
 		"Item2": "50000",
 		"Item3": "97000"
 	},
@@ -3671,11 +3671,11 @@
 		"UseLevelGS": "TRUE",
 		"HWMMult": 100,
 		"MaxRoll": 0,
-		"Item1": "[LBID]WorldEvent_S6_Armor",
-		"Item2": "[LBID]WorldEvent_S6_Weapons",
+		"Item1": "[LBID]WorldEvent_S7_Armor",
+		"Item2": "[LBID]WorldEvent_S7_Weapons",
 		"Item3": "[LTID]WorldEvent_S2_PityTicker",
 		"Item4": "DarkMatter",
-		"Item5": "[LBID]WorldEvent_S6_NamedGear",
+		"Item5": "[LTID]WorldEventEquipment_S7_710",
 		"Item6": "House_HousingItem_Season2_SandwormEgg_Variant4"
 	},
 	{
@@ -3701,6 +3701,34 @@
 		"Item4": "0",
 		"Item5": "70000",
 		"Item6": "75000"
+	},
+	{
+		"LootTableID": "WorldEventEquipment_S7_710",
+		"AND/OR": "OR",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": [
+			"[LIM]WorldEventSiege710Gear_Limit"
+		],
+		"ConditionOverridesRoll": 0,
+		"TriggerLimitOnVisit": "TRUE",
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "[LBID]WorldEvent_S7_NamedGear"
+	},
+	{
+		"LootTableID": "WorldEventEquipment_S7_710_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "WorldEventEquipment_S7_710_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
 	},
 	{
 		"LootTableID": "Trial_S2_MasterLoot",
@@ -7672,5 +7700,494 @@
 		"Item3": "0",
 		"Item4": "0",
 		"Item5": "0"
+	},
+	{
+		"LootTableID": "DarkMatterSmall_Basic_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DarkMatter"
+	},
+	{
+		"LootTableID": "DarkMatterSmall_Basic_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "50"
+	},
+	{
+		"LootTableID": "DarkMatterSmall_Basic_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "DarkMatterMedium_Basic_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DarkMatter"
+	},
+	{
+		"LootTableID": "DarkMatterMedium_Basic_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "100"
+	},
+	{
+		"LootTableID": "DarkMatterMedium_Basic_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "DarkMatterLarge_Basic_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DarkMatter"
+	},
+	{
+		"LootTableID": "DarkMatterLarge_Basic_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "150"
+	},
+	{
+		"LootTableID": "DarkMatterLarge_Basic_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "DarkMatterSmall_Premium_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DarkMatter"
+	},
+	{
+		"LootTableID": "DarkMatterSmall_Premium_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "150"
+	},
+	{
+		"LootTableID": "DarkMatterSmall_Premium_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "DarkMatterMedium_Premium_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DarkMatter"
+	},
+	{
+		"LootTableID": "DarkMatterMedium_Premium_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "350"
+	},
+	{
+		"LootTableID": "DarkMatterMedium_Premium_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "DarkMatterLarge_Premium_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DarkMatter"
+	},
+	{
+		"LootTableID": "DarkMatterLarge_Premium_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "350"
+	},
+	{
+		"LootTableID": "DarkMatterLarge_Premium_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Combat_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "PotionHealthT5",
+		"Item2": "PotionRegenT4",
+		"Item3": "PotionManaT5"
+	},
+	{
+		"LootTableID": "Combat_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5",
+		"Item2": "5",
+		"Item3": "5"
+	},
+	{
+		"LootTableID": "Combat_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "Combat_Elite_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "HoningStoneT5",
+		"Item2": "OakfleshbalmT5",
+		"Item3": "GemstonedustT5"
+	},
+	{
+		"LootTableID": "Combat_Elite_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5",
+		"Item2": "5",
+		"Item3": "5"
+	},
+	{
+		"LootTableID": "Combat_Elite_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "Refining_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "SandpaperT5",
+		"Item2": "TanninT5",
+		"Item3": "SolventT5",
+		"Item4": "FluxT5",
+		"Item5": "ClothweaveT5"
+	},
+	{
+		"LootTableID": "Refining_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "50",
+		"Item2": "50",
+		"Item3": "50",
+		"Item4": "50",
+		"Item5": "50"
+	},
+	{
+		"LootTableID": "Refining_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
+	},
+	{
+		"LootTableID": "Salvage_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "PerfectSalvageArmorT5",
+		"Item2": "PerfectSalvageWeaponsT5",
+		"Item3": "PerfectSalvageJewelryT5",
+		"Item4": "PerfectSalvageEngineerT5",
+		"Item5": "PerfectSalvageArcaneT5"
+	},
+	{
+		"LootTableID": "Salvage_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "1",
+		"Item5": "1"
+	},
+	{
+		"LootTableID": "Salvage_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
+	},
+	{
+		"LootTableID": "Salvage_Box_S7_Premium_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "PerfectSalvageEngineerT51",
+		"Item2": "PerfectSalvageArcaneT51",
+		"Item3": "PerfectSalvageArmorT51",
+		"Item4": "PerfectSalvageJewelryT51",
+		"Item5": "PerfectSalvageWeaponsT51"
+	},
+	{
+		"LootTableID": "Salvage_Box_S7_Premium_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "4",
+		"Item2": "4",
+		"Item3": "4",
+		"Item4": "4",
+		"Item5": "4"
+	},
+	{
+		"LootTableID": "Salvage_Box_S7_Premium_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
+	},
+	{
+		"LootTableID": "Elemental_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "AlchemyEarthT1",
+		"Item2": "AlchemyFireT1",
+		"Item3": "AlchemyAirT1",
+		"Item4": "AlchemyWaterT1",
+		"Item5": "AlchemySpiritT1",
+		"Item6": "AlchemyLifeT1",
+		"Item7": "AlchemyDeathT1"
+	},
+	{
+		"LootTableID": "Elemental_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "30",
+		"Item2": "30",
+		"Item3": "30",
+		"Item4": "30",
+		"Item5": "30",
+		"Item6": "30",
+		"Item7": "10"
+	},
+	{
+		"LootTableID": "Elemental_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0",
+		"Item6": "0",
+		"Item7": "0"
+	},
+	{
+		"LootTableID": "Dyes1_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DyeB116"
+	},
+	{
+		"LootTableID": "Dyes1_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes1_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes2_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DyeB140"
+	},
+	{
+		"LootTableID": "Dyes2_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes2_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes3_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DyeB163"
+	},
+	{
+		"LootTableID": "Dyes3_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes3_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes4_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DyeB158"
+	},
+	{
+		"LootTableID": "Dyes4_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes4_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes5_Box_S7_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DyeB108"
+	},
+	{
+		"LootTableID": "Dyes5_Box_S7_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes5_Box_S7_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "SeasonalServer_Bonus_Box",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "Sausage_Painting_Box",
+		"Item2": "Zombie_Hand_Box",
+		"Item3": "Seasonal_Server_Bonus_Title_Box",
+		"Item4": "Sausaget1"
+	},
+	{
+		"LootTableID": "SeasonalServer_Bonus_Box_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "20"
+	},
+	{
+		"LootTableID": "SeasonalServer_Bonus_Box_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0"
 	}
 ]

@@ -182,19 +182,6 @@
 		"Description": "@objective_mission_desc_cg_proto"
 	},
 	{
-		"ObjectiveID": "D_major_corrupted_portal",
-		"Type": "Darkness",
-		"DifficultyLevel": 0,
-		"FlagPvp": false,
-		"CanBeShared": false,
-		"CanFastTravel": true,
-		"Task": "darkness_task_major_corrupted_portal_container",
-		"Repeatable": 0,
-		"CanBeAbandoned": false,
-		"Title": "@objective_darkness_corrupted_portal_title",
-		"Description": "@objective_darkness_corrupted_portal_desc"
-	},
-	{
 		"ObjectiveID": "S_getoffbeach",
 		"Type": "Journey",
 		"DifficultyLevel": 0,
@@ -674,6 +661,19 @@
 		"CanBeAbandoned": true
 	},
 	{
+		"ObjectiveID": "FM_Doubloon_location_low_req",
+		"Type": "Mission",
+		"DifficultyLevel": 0,
+		"FlagPvp": false,
+		"CanBeShared": true,
+		"CanFastTravel": true,
+		"Task": "FM_task_Doubloon_low_X_times_POITag_container",
+		"SuccessGameEventId": "FactionMission_Success_R1_Sm",
+		"FailureGameEventId": "FactionMission_Failure",
+		"Repeatable": 1,
+		"CanBeAbandoned": true
+	},
+	{
 		"ObjectiveID": "FM_huntx_location",
 		"Type": "Mission",
 		"DifficultyLevel": 0,
@@ -969,6 +969,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_HeavyHead",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_HeavyHead",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_HeavyHead"
@@ -982,6 +983,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_HeavyChest",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_HeavyChest",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_HeavyChest"
@@ -995,6 +997,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_HeavyHands",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_HeavyHands",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_HeavyHands"
@@ -1008,6 +1011,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_HeavyLegs",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_HeavyLegs",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_HeavyLegs"
@@ -1021,6 +1025,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_HeavyFeet",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_HeavyFeet",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_HeavyFeet"
@@ -1034,6 +1039,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_MediumHead",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_MediumHead",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_MediumHead"
@@ -1047,6 +1053,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_MediumChest",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_MediumChest",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_MediumChest"
@@ -1060,6 +1067,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_MediumHands",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_MediumHands",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_MediumHands"
@@ -1073,6 +1081,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_MediumLegs",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_MediumLegs",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_MediumLegs"
@@ -1086,6 +1095,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_MediumFeet",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_MediumFeet",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_MediumFeet"
@@ -1099,6 +1109,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_LightHead",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_LightHead",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_LightHead"
@@ -1112,6 +1123,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_LightChest",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_LightChest",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_LightChest"
@@ -1125,6 +1137,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_LightHands",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_LightHands",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_LightHands"
@@ -1138,6 +1151,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_LightLegs",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_LightLegs",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_LightLegs"
@@ -1151,6 +1165,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_LightFeet",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_LightFeet",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_LightFeet"
@@ -1164,6 +1179,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_1hLongsword",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_1hLongsword",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_1hLongsword"
@@ -1177,6 +1193,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_1hThrowingAxe",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_1hThrowingAxe",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_1hThrowingAxe"
@@ -1190,6 +1207,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_2hWarhammer",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_2hWarhammer",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_2hWarhammer"
@@ -1203,6 +1221,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_2hGreatAxe",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_2hGreatAxe",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_2hGreatAxe"
@@ -1216,6 +1235,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_2hBow",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_2hBow",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_2hBow"
@@ -1229,6 +1249,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_2hMusket",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_2hMusket",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_2hMusket"
@@ -1242,6 +1263,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_1hRoundShield",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_1hRoundShield",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_1hRoundShield"
@@ -1255,6 +1277,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_1hKiteShield",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_1hKiteShield",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_1hKiteShield"
@@ -1268,6 +1291,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_1hTowerShield",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_1hTowerShield",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_1hTowerShield"
@@ -1281,6 +1305,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_2hStaffFire",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_2hStaffFire",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_2hStaffFire"
@@ -1294,6 +1319,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_2hStaffLife",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_2hStaffLife",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_2hStaffLife"
@@ -1307,6 +1333,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_2hSpear",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_2hSpear",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_2hSpear"
@@ -1320,6 +1347,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_1hRapier",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_1hRapier",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_1hRapier"
@@ -1333,6 +1361,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_1hGauntletIce",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_1hGauntletIce",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_1hGauntletIce"
@@ -1346,6 +1375,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_1hGauntletVoid",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_1hGauntletVoid",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_1hGauntletVoid"
@@ -1359,6 +1389,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_2hBlunderbuss",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_2hBlunderbuss",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_2hBlunderbuss"
@@ -1372,6 +1403,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_2hGreatSword",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_2hGreatSword",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_2hGreatSword"
@@ -1385,6 +1417,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_1hFlail",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_1hFlail",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_1hFlail"
@@ -1398,6 +1431,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_Earring1",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_Earring1",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_Earring1"
@@ -1411,6 +1445,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_Ring1",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_Ring1",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_Ring1"
@@ -1424,6 +1459,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_Amulet1",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_Amulet1",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_Amulet1"
@@ -1437,6 +1473,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set1_Amulet2",
 		"AchievementId": "Achievement_Objective_Artifact_Set1_Amulet2",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set1_Amulet2"
@@ -1450,6 +1487,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_HeavyChest",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_HeavyChest",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_HeavyChest"
@@ -1463,6 +1501,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_HeavyHands",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_HeavyHands",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_HeavyHands"
@@ -1476,6 +1515,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_HeavyLegs",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_HeavyLegs",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_HeavyLegs"
@@ -1489,6 +1529,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_MediumChest",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_MediumChest",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_MediumChest"
@@ -1502,6 +1543,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_MediumHands",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_MediumHands",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_MediumHands"
@@ -1515,6 +1557,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_MediumLegs",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_MediumLegs",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_MediumLegs"
@@ -1528,6 +1571,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_LightHead",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_LightHead",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_LightHead"
@@ -1541,6 +1585,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_LightFeet",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_LightFeet",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_LightFeet"
@@ -1554,6 +1599,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_1hThrowingAxe",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_1hThrowingAxe",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_1hThrowingAxe"
@@ -1567,6 +1613,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_2hWarhammer",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_2hWarhammer",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_2hWarhammer"
@@ -1580,9 +1627,66 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_2hGreatAxe",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_2hGreatAxe",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_2hGreatAxe"
+	},
+	{
+		"ObjectiveID": "Objective_Artifact_Set2_2hBow",
+		"Type": "Artifact",
+		"DifficultyLevel": 0,
+		"FlagPvp": false,
+		"CanBeShared": false,
+		"CanFastTravel": false,
+		"Task": "Task_Container_Artifact_Set2_2hBow",
+		"AchievementId": "Achievement_Objective_Artifact_Set2_2hBow",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
+		"Repeatable": 0,
+		"CanBeAbandoned": true,
+		"Title": "@Objective_Artifact_Set2_2hBow"
+	},
+	{
+		"ObjectiveID": "Objective_Artifact_Set2_2hMusket",
+		"Type": "Artifact",
+		"DifficultyLevel": 0,
+		"FlagPvp": false,
+		"CanBeShared": false,
+		"CanFastTravel": false,
+		"Task": "Task_Container_Artifact_Set2_2hMusket",
+		"AchievementId": "Achievement_Objective_Artifact_Set2_2hMusket",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
+		"Repeatable": 0,
+		"CanBeAbandoned": true,
+		"Title": "@Objective_Artifact_Set2_2hMusket"
+	},
+	{
+		"ObjectiveID": "Objective_Artifact_Set2_2hStaffFire",
+		"Type": "Artifact",
+		"DifficultyLevel": 0,
+		"FlagPvp": false,
+		"CanBeShared": false,
+		"CanFastTravel": false,
+		"Task": "Task_Container_Artifact_Set2_2hStaffFire",
+		"AchievementId": "Achievement_Objective_Artifact_Set2_2hStaffFire",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
+		"Repeatable": 0,
+		"CanBeAbandoned": true,
+		"Title": "@Objective_Artifact_Set2_2hStaffFire"
+	},
+	{
+		"ObjectiveID": "Objective_Artifact_Set2_2hStaffLife",
+		"Type": "Artifact",
+		"DifficultyLevel": 0,
+		"FlagPvp": false,
+		"CanBeShared": false,
+		"CanFastTravel": false,
+		"Task": "Task_Container_Artifact_Set2_2hStaffLife",
+		"AchievementId": "Achievement_Objective_Artifact_Set2_2hStaffLife",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
+		"Repeatable": 0,
+		"CanBeAbandoned": true,
+		"Title": "@Objective_Artifact_Set2_2hStaffLife"
 	},
 	{
 		"ObjectiveID": "Objective_Artifact_Set2_2hSpear",
@@ -1593,9 +1697,52 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_2hSpear",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_2hSpear",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_2hSpear"
+	},
+	{
+		"ObjectiveID": "Objective_Artifact_Set2_1hRapier",
+		"Type": "Artifact",
+		"DifficultyLevel": 0,
+		"FlagPvp": false,
+		"CanBeShared": false,
+		"CanFastTravel": false,
+		"Task": "Task_Container_Artifact_Set2_1hRapier",
+		"AchievementId": "Achievement_Objective_Artifact_Set2_1hRapier",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
+		"Repeatable": 0,
+		"CanBeAbandoned": true,
+		"Title": "@Objective_Artifact_Set2_1hRapier"
+	},
+	{
+		"ObjectiveID": "Objective_Artifact_Set2_1hGauntletIce",
+		"Type": "Artifact",
+		"DifficultyLevel": 0,
+		"FlagPvp": false,
+		"CanBeShared": false,
+		"CanFastTravel": false,
+		"Task": "Task_Container_Artifact_Set2_1hGauntletIce",
+		"AchievementId": "Achievement_Objective_Artifact_Set2_1hGauntletIce",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
+		"Repeatable": 0,
+		"CanBeAbandoned": true,
+		"Title": "@Objective_Artifact_Set2_1hGauntletIce"
+	},
+	{
+		"ObjectiveID": "Objective_Artifact_Set2_1hGauntletVoid",
+		"Type": "Artifact",
+		"DifficultyLevel": 0,
+		"FlagPvp": false,
+		"CanBeShared": false,
+		"CanFastTravel": false,
+		"Task": "Task_Container_Artifact_Set2_1hGauntletVoid",
+		"AchievementId": "Achievement_Objective_Artifact_Set2_1hGauntletVoid",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
+		"Repeatable": 0,
+		"CanBeAbandoned": true,
+		"Title": "@Objective_Artifact_Set2_1hGauntletVoid"
 	},
 	{
 		"ObjectiveID": "Objective_Artifact_Set2_2hGreatSword",
@@ -1606,6 +1753,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_2hGreatSword",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_2hGreatSword",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_2hGreatSword"
@@ -1619,9 +1767,24 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_1hFlail",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_1hFlail",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_1hFlail"
+	},
+	{
+		"ObjectiveID": "Objective_Artifact_Set2_Earring1",
+		"Type": "Artifact",
+		"DifficultyLevel": 0,
+		"FlagPvp": false,
+		"CanBeShared": false,
+		"CanFastTravel": false,
+		"Task": "Task_Container_Artifact_Set2_Earring1",
+		"AchievementId": "Achievement_Objective_Artifact_Set2_Earring1",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
+		"Repeatable": 0,
+		"CanBeAbandoned": true,
+		"Title": "@Objective_Artifact_Set2_Earring1"
 	},
 	{
 		"ObjectiveID": "Objective_Artifact_Set2_Ring1",
@@ -1632,6 +1795,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_Ring1",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_Ring1",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_Ring1"
@@ -1645,6 +1809,7 @@
 		"CanFastTravel": false,
 		"Task": "Task_Container_Artifact_Set2_Amulet1",
 		"AchievementId": "Achievement_Objective_Artifact_Set2_Amulet1",
+		"SuccessGameEventId": "SeasonJourneyCompleteArtifact",
 		"Repeatable": 0,
 		"CanBeAbandoned": true,
 		"Title": "@Objective_Artifact_Set2_Amulet1"
