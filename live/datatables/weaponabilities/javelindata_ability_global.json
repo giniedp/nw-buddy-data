@@ -34,12 +34,8 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Flail_Slam_Lifesteal_Tracker"
-		],
-		"OtherApplyStatusEffect": [
-			"Status_Flail_Slam_WeakenStack"
-		],
+		"SelfApplyStatusEffect": ["Status_Flail_Slam_Lifesteal_Tracker"],
+		"OtherApplyStatusEffect": ["Status_Flail_Slam_WeakenStack"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -80,11 +76,11 @@
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
-		"DmgPctToHealth": 0.10000000149011612,
+		"DmgPctToHealth": 0.1,
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
-		"ActivationCooldown": 0.10000000149011612,
+		"ActivationCooldown": 0.1,
 		"Duration": 0
 	},
 	{
@@ -122,9 +118,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"OtherApplyStatusEffect": [
-			"Status_Flail_Trip_AllyDoTDurRed"
-		],
+		"OtherApplyStatusEffect": ["Status_Flail_Trip_AllyDoTDurRed"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -204,7 +198,7 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"BaseDamage": 0,
-		"CritDamageReduction": 0.20000000298023224,
+		"CritDamageReduction": 0.2,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
 		"DoNotUnequipSelfAppliedSE": false,
@@ -245,7 +239,7 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"BaseDamage": 0,
-		"CritDamageReduction": 0.15000000596046448,
+		"CritDamageReduction": 0.15,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
 		"DoNotUnequipSelfAppliedSE": false,
@@ -285,7 +279,7 @@
 		"DamageIsRanged": false,
 		"DamageIsMelee": true,
 		"StatusEffectStackSize": 0,
-		"BaseDamage": 0.05000000074505806,
+		"BaseDamage": 0.05,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
@@ -297,11 +291,7 @@
 	},
 	{
 		"AbilityID": "Mut_Curse1_Fir_Minor",
-		"OnEquipStatusEffect": [
-			"Mut_Curse1_VFX_1_Ability",
-			"Mut_Curse1_VFX_2_Ability",
-			"Mut_Curse1_VFX_3_Ability"
-		],
+		"OnEquipStatusEffect": ["Mut_Curse1_VFX_1_Ability", "Mut_Curse1_VFX_2_Ability", "Mut_Curse1_VFX_3_Ability"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -332,19 +322,12 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"AfterAction": "Dodge",
-		"AfterSequence": [
-			"Dodge_Roll",
-			"Dodge_Roll_Fast",
-			"Dodge_Roll_Slow"
-		],
+		"AfterSequence": ["Dodge_Roll", "Dodge_Roll_Fast", "Dodge_Roll_Slow"],
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Fir_Minor_Damage",
-			"Mut_Curse1_Minor_OrbCount"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Fir_Minor_Damage", "Mut_Curse1_Minor_OrbCount"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -383,34 +366,24 @@
 		"DamageIsMelee": false,
 		"StatusEffect": "Mut_Curse1_VFX_Kill",
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_Fir_Minor_Damage"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_Fir_Minor_Damage"],
 		"StatusEffectBeingApplied": "Mut_Curse1_VFX_Kill",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Fir_Minor_Cast_Chain"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Fir_Minor_Cast_Chain"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectsList": [
-			"Mut_Curse1_Fir_Minor_Cast"
-		],
+		"StatusEffectsList": ["Mut_Curse1_Fir_Minor_Cast"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
 	{
 		"AbilityID": "Mut_Curse1_Lig_Minor",
-		"OnEquipStatusEffect": [
-			"Mut_Curse1_VFX_1_Ability",
-			"Mut_Curse1_VFX_2_Ability",
-			"Mut_Curse1_VFX_3_Ability"
-		],
+		"OnEquipStatusEffect": ["Mut_Curse1_VFX_1_Ability", "Mut_Curse1_VFX_2_Ability", "Mut_Curse1_VFX_3_Ability"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -441,19 +414,12 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"AfterAction": "Dodge",
-		"AfterSequence": [
-			"Dodge_Roll",
-			"Dodge_Roll_Fast",
-			"Dodge_Roll_Slow"
-		],
+		"AfterSequence": ["Dodge_Roll", "Dodge_Roll_Fast", "Dodge_Roll_Slow"],
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Lig_Minor_Damage",
-			"Mut_Curse1_Minor_OrbCount"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Lig_Minor_Damage", "Mut_Curse1_Minor_OrbCount"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -492,34 +458,24 @@
 		"DamageIsMelee": false,
 		"StatusEffect": "Mut_Curse1_VFX_Kill",
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_Lig_Minor_Damage"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_Lig_Minor_Damage"],
 		"StatusEffectBeingApplied": "Mut_Curse1_VFX_Kill",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Lig_Minor_Cast_Chain"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Lig_Minor_Cast_Chain"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectsList": [
-			"Mut_Curse1_Lig_Minor_Cast"
-		],
+		"StatusEffectsList": ["Mut_Curse1_Lig_Minor_Cast"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
 	{
 		"AbilityID": "Mut_Curse1_Voi_Minor",
-		"OnEquipStatusEffect": [
-			"Mut_Curse1_VFX_1_Ability",
-			"Mut_Curse1_VFX_2_Ability",
-			"Mut_Curse1_VFX_3_Ability"
-		],
+		"OnEquipStatusEffect": ["Mut_Curse1_VFX_1_Ability", "Mut_Curse1_VFX_2_Ability", "Mut_Curse1_VFX_3_Ability"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -550,19 +506,12 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"AfterAction": "Dodge",
-		"AfterSequence": [
-			"Dodge_Roll",
-			"Dodge_Roll_Fast",
-			"Dodge_Roll_Slow"
-		],
+		"AfterSequence": ["Dodge_Roll", "Dodge_Roll_Fast", "Dodge_Roll_Slow"],
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Voi_Minor_Damage",
-			"Mut_Curse1_Minor_OrbCount"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Voi_Minor_Damage", "Mut_Curse1_Minor_OrbCount"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -601,34 +550,24 @@
 		"DamageIsMelee": false,
 		"StatusEffect": "Mut_Curse1_VFX_Kill",
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_Voi_Minor_Damage"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_Voi_Minor_Damage"],
 		"StatusEffectBeingApplied": "Mut_Curse1_VFX_Kill",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Voi_Minor_Cast_Chain"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Voi_Minor_Cast_Chain"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectsList": [
-			"Mut_Curse1_Voi_Minor_Cast"
-		],
+		"StatusEffectsList": ["Mut_Curse1_Voi_Minor_Cast"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
 	{
 		"AbilityID": "Mut_Curse1_Nat_Minor",
-		"OnEquipStatusEffect": [
-			"Mut_Curse1_VFX_1_Ability",
-			"Mut_Curse1_VFX_2_Ability",
-			"Mut_Curse1_VFX_3_Ability"
-		],
+		"OnEquipStatusEffect": ["Mut_Curse1_VFX_1_Ability", "Mut_Curse1_VFX_2_Ability", "Mut_Curse1_VFX_3_Ability"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -659,19 +598,12 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"AfterAction": "Dodge",
-		"AfterSequence": [
-			"Dodge_Roll",
-			"Dodge_Roll_Fast",
-			"Dodge_Roll_Slow"
-		],
+		"AfterSequence": ["Dodge_Roll", "Dodge_Roll_Fast", "Dodge_Roll_Slow"],
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Nat_Minor_Damage",
-			"Mut_Curse1_Minor_OrbCount"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Nat_Minor_Damage", "Mut_Curse1_Minor_OrbCount"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -710,34 +642,24 @@
 		"DamageIsMelee": false,
 		"StatusEffect": "Mut_Curse1_VFX_Kill",
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_Nat_Minor_Damage"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_Nat_Minor_Damage"],
 		"StatusEffectBeingApplied": "Mut_Curse1_VFX_Kill",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Nat_Minor_Cast_Chain"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Nat_Minor_Cast_Chain"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectsList": [
-			"Mut_Curse1_Nat_Minor_Cast"
-		],
+		"StatusEffectsList": ["Mut_Curse1_Nat_Minor_Cast"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
 	{
 		"AbilityID": "Mut_Curse1_Ice_Minor",
-		"OnEquipStatusEffect": [
-			"Mut_Curse1_VFX_1_Ability",
-			"Mut_Curse1_VFX_2_Ability",
-			"Mut_Curse1_VFX_3_Ability"
-		],
+		"OnEquipStatusEffect": ["Mut_Curse1_VFX_1_Ability", "Mut_Curse1_VFX_2_Ability", "Mut_Curse1_VFX_3_Ability"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -768,19 +690,12 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"AfterAction": "Dodge",
-		"AfterSequence": [
-			"Dodge_Roll",
-			"Dodge_Roll_Fast",
-			"Dodge_Roll_Slow"
-		],
+		"AfterSequence": ["Dodge_Roll", "Dodge_Roll_Fast", "Dodge_Roll_Slow"],
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Ice_Minor_Damage",
-			"Mut_Curse1_Minor_OrbCount"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Ice_Minor_Damage", "Mut_Curse1_Minor_OrbCount"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -819,24 +734,18 @@
 		"DamageIsMelee": false,
 		"StatusEffect": "Mut_Curse1_VFX_Kill",
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_Ice_Minor_Damage"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_Ice_Minor_Damage"],
 		"StatusEffectBeingApplied": "Mut_Curse1_VFX_Kill",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Ice_Minor_Cast_Chain"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Ice_Minor_Cast_Chain"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectsList": [
-			"Mut_Curse1_Ice_Minor_Cast"
-		],
+		"StatusEffectsList": ["Mut_Curse1_Ice_Minor_Cast"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
@@ -873,17 +782,13 @@
 		"StatusEffect": "Mut_Curse1_Minor_OrbCount",
 		"StatusEffectStackSize": 1,
 		"StatusEffectComparison": "Equal",
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_VFX_1"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_VFX_1"],
 		"StatusEffectBeingApplied": "Mut_Curse1_Minor_OrbCount",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_VFX_1"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_VFX_1"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -923,17 +828,13 @@
 		"StatusEffect": "Mut_Curse1_Minor_OrbCount",
 		"StatusEffectStackSize": 2,
 		"StatusEffectComparison": "Equal",
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_VFX_2"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_VFX_2"],
 		"StatusEffectBeingApplied": "Mut_Curse1_Minor_OrbCount",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_VFX_2"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_VFX_2"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -973,17 +874,13 @@
 		"StatusEffect": "Mut_Curse1_Minor_OrbCount",
 		"StatusEffectStackSize": 3,
 		"StatusEffectComparison": "Equal",
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_VFX_3"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_VFX_3"],
 		"StatusEffectBeingApplied": "Mut_Curse1_Minor_OrbCount",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_VFX_3"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_VFX_3"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -992,9 +889,7 @@
 	},
 	{
 		"AbilityID": "Mut_Curse1_Fir_Major",
-		"OnEquipStatusEffect": [
-			"Mut_Curse1_Fir_Major_Cleanse"
-		],
+		"OnEquipStatusEffect": ["Mut_Curse1_Fir_Major_Cleanse"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -1025,18 +920,12 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"AfterAction": "Dodge",
-		"AfterSequence": [
-			"Dodge_Roll",
-			"Dodge_Roll_Fast",
-			"Dodge_Roll_Slow"
-		],
+		"AfterSequence": ["Dodge_Roll", "Dodge_Roll_Fast", "Dodge_Roll_Slow"],
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Fir_Major_Tracker"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Fir_Major_Tracker"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -1080,9 +969,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Fir_Major_Damage_Cleanse"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Fir_Major_Damage_Cleanse"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -1121,33 +1008,24 @@
 		"DamageIsMelee": false,
 		"StatusEffect": "Mut_Curse1_VFX_Kill",
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_Fir_Major_Damage",
-			"Mut_Curse1_Fir_Major_Damage_DoT"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_Fir_Major_Damage", "Mut_Curse1_Fir_Major_Damage_DoT"],
 		"StatusEffectBeingApplied": "Mut_Curse1_VFX_Kill",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Fir_Major_Cast_AoE"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Fir_Major_Cast_AoE"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectsList": [
-			"Mut_Curse1_Fir_Major_Cast"
-		],
+		"StatusEffectsList": ["Mut_Curse1_Fir_Major_Cast"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
 	{
 		"AbilityID": "Mut_Curse1_Lig_Major",
-		"OnEquipStatusEffect": [
-			"Mut_Curse1_Lig_Major_Cleanse"
-		],
+		"OnEquipStatusEffect": ["Mut_Curse1_Lig_Major_Cleanse"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -1178,18 +1056,12 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"AfterAction": "Dodge",
-		"AfterSequence": [
-			"Dodge_Roll",
-			"Dodge_Roll_Fast",
-			"Dodge_Roll_Slow"
-		],
+		"AfterSequence": ["Dodge_Roll", "Dodge_Roll_Fast", "Dodge_Roll_Slow"],
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Lig_Major_Tracker"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Lig_Major_Tracker"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -1233,9 +1105,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Lig_Major_Damage_Cleanse"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Lig_Major_Damage_Cleanse"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -1274,33 +1144,24 @@
 		"DamageIsMelee": false,
 		"StatusEffect": "Mut_Curse1_VFX_Kill",
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_Lig_Major_Damage",
-			"Mut_Curse1_Lig_Major_Damage_DoT"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_Lig_Major_Damage", "Mut_Curse1_Lig_Major_Damage_DoT"],
 		"StatusEffectBeingApplied": "Mut_Curse1_VFX_Kill",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Lig_Major_Cast_AoE"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Lig_Major_Cast_AoE"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectsList": [
-			"Mut_Curse1_Lig_Major_Cast"
-		],
+		"StatusEffectsList": ["Mut_Curse1_Lig_Major_Cast"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
 	{
 		"AbilityID": "Mut_Curse1_Voi_Major",
-		"OnEquipStatusEffect": [
-			"Mut_Curse1_Voi_Major_Cleanse"
-		],
+		"OnEquipStatusEffect": ["Mut_Curse1_Voi_Major_Cleanse"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -1331,18 +1192,12 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"AfterAction": "Dodge",
-		"AfterSequence": [
-			"Dodge_Roll",
-			"Dodge_Roll_Fast",
-			"Dodge_Roll_Slow"
-		],
+		"AfterSequence": ["Dodge_Roll", "Dodge_Roll_Fast", "Dodge_Roll_Slow"],
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Voi_Major_Tracker"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Voi_Major_Tracker"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -1386,9 +1241,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Voi_Major_Damage_Cleanse"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Voi_Major_Damage_Cleanse"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -1427,33 +1280,24 @@
 		"DamageIsMelee": false,
 		"StatusEffect": "Mut_Curse1_VFX_Kill",
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_Voi_Major_Damage",
-			"Mut_Curse1_Voi_Major_Damage_DoT"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_Voi_Major_Damage", "Mut_Curse1_Voi_Major_Damage_DoT"],
 		"StatusEffectBeingApplied": "Mut_Curse1_VFX_Kill",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Voi_Major_Cast_AoE"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Voi_Major_Cast_AoE"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectsList": [
-			"Mut_Curse1_Voi_Major_Cast"
-		],
+		"StatusEffectsList": ["Mut_Curse1_Voi_Major_Cast"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
 	{
 		"AbilityID": "Mut_Curse1_Nat_Major",
-		"OnEquipStatusEffect": [
-			"Mut_Curse1_Nat_Major_Cleanse"
-		],
+		"OnEquipStatusEffect": ["Mut_Curse1_Nat_Major_Cleanse"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -1484,18 +1328,12 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"AfterAction": "Dodge",
-		"AfterSequence": [
-			"Dodge_Roll",
-			"Dodge_Roll_Fast",
-			"Dodge_Roll_Slow"
-		],
+		"AfterSequence": ["Dodge_Roll", "Dodge_Roll_Fast", "Dodge_Roll_Slow"],
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Nat_Major_Tracker"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Nat_Major_Tracker"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -1539,9 +1377,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Nat_Major_Damage_Cleanse"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Nat_Major_Damage_Cleanse"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -1580,33 +1416,24 @@
 		"DamageIsMelee": false,
 		"StatusEffect": "Mut_Curse1_VFX_Kill",
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_Nat_Major_Damage",
-			"Mut_Curse1_Nat_Major_Damage_DoT"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_Nat_Major_Damage", "Mut_Curse1_Nat_Major_Damage_DoT"],
 		"StatusEffectBeingApplied": "Mut_Curse1_VFX_Kill",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Nat_Major_Cast_AoE"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Nat_Major_Cast_AoE"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectsList": [
-			"Mut_Curse1_Nat_Major_Cast"
-		],
+		"StatusEffectsList": ["Mut_Curse1_Nat_Major_Cast"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
 	{
 		"AbilityID": "Mut_Curse1_Ice_Major",
-		"OnEquipStatusEffect": [
-			"Mut_Curse1_Ice_Major_Cleanse"
-		],
+		"OnEquipStatusEffect": ["Mut_Curse1_Ice_Major_Cleanse"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -1637,18 +1464,12 @@
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
 		"AfterAction": "Dodge",
-		"AfterSequence": [
-			"Dodge_Roll",
-			"Dodge_Roll_Fast",
-			"Dodge_Roll_Slow"
-		],
+		"AfterSequence": ["Dodge_Roll", "Dodge_Roll_Fast", "Dodge_Roll_Slow"],
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Ice_Major_Tracker"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Ice_Major_Tracker"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -1692,9 +1513,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Ice_Major_Damage_Cleanse"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Ice_Major_Damage_Cleanse"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -1733,25 +1552,18 @@
 		"DamageIsMelee": false,
 		"StatusEffect": "Mut_Curse1_VFX_Kill",
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Mut_Curse1_Ice_Major_Damage",
-			"Mut_Curse1_Ice_Major_Damage_DoT"
-		],
+		"DontHaveStatusEffect": ["Mut_Curse1_Ice_Major_Damage", "Mut_Curse1_Ice_Major_Damage_DoT"],
 		"StatusEffectBeingApplied": "Mut_Curse1_VFX_Kill",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse1_Ice_Major_Cast_AoE"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse1_Ice_Major_Cast_AoE"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectsList": [
-			"Mut_Curse1_Ice_Major_Cast"
-		],
+		"StatusEffectsList": ["Mut_Curse1_Ice_Major_Cast"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
@@ -1791,17 +1603,13 @@
 		"DamageIsRanged": false,
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Blunderbuss_MortarShotFired"
-		],
+		"DontHaveStatusEffect": ["Blunderbuss_MortarShotFired"],
 		"AbilityTrigger": "OnPerform",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_Fir_Major_Damage"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_Fir_Major_Damage"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": true,
 		"NumStatusEffectsToRemove": 0,
@@ -1887,17 +1695,13 @@
 		"DamageIsRanged": false,
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Blunderbuss_MortarShotFired"
-		],
+		"DontHaveStatusEffect": ["Blunderbuss_MortarShotFired"],
 		"AbilityTrigger": "OnPerform",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_Voi_Major_Damage"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_Voi_Major_Damage"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": true,
 		"NumStatusEffectsToRemove": 0,
@@ -1983,17 +1787,13 @@
 		"DamageIsRanged": false,
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Blunderbuss_MortarShotFired"
-		],
+		"DontHaveStatusEffect": ["Blunderbuss_MortarShotFired"],
 		"AbilityTrigger": "OnPerform",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_Nat_Major_Damage"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_Nat_Major_Damage"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": true,
 		"NumStatusEffectsToRemove": 0,
@@ -2079,17 +1879,13 @@
 		"DamageIsRanged": false,
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Blunderbuss_MortarShotFired"
-		],
+		"DontHaveStatusEffect": ["Blunderbuss_MortarShotFired"],
 		"AbilityTrigger": "OnPerform",
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_Ice_Major_Damage"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_Ice_Major_Damage"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": true,
 		"NumStatusEffectsToRemove": 0,
@@ -2220,9 +2016,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_1"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_1"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2267,9 +2061,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_2"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_2"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2314,9 +2106,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_3"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_3"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2361,9 +2151,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_1"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_1"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2408,9 +2196,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_2"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_2"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2455,9 +2241,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_3"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_3"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2502,9 +2286,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_1"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_1"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2549,9 +2331,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_2"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_2"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2596,9 +2376,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_3"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_3"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2643,9 +2421,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_1"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_1"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2690,9 +2466,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_2"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_2"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2737,9 +2511,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_VFX_3"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_VFX_3"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2782,9 +2554,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse2_Affliction_Tick"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse2_Affliction_Tick"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2827,9 +2597,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse4_Major_Exhaust"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse4_Major_Exhaust"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2872,9 +2640,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Mut_Curse4_Affliction"
-		],
+		"SelfApplyStatusEffect": ["Mut_Curse4_Affliction"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -2964,9 +2730,7 @@
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 3,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectCategoriesList": [
-			"Debuff"
-		],
+		"StatusEffectCategoriesList": ["Debuff"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
@@ -3010,9 +2774,7 @@
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 3,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectCategoriesList": [
-			"Debuff"
-		],
+		"StatusEffectCategoriesList": ["Debuff"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
@@ -3056,9 +2818,7 @@
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 3,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectCategoriesList": [
-			"Debilitate"
-		],
+		"StatusEffectCategoriesList": ["Debilitate"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
@@ -3102,9 +2862,7 @@
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 3,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectCategoriesList": [
-			"DoT"
-		],
+		"StatusEffectCategoriesList": ["DoT"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
@@ -3148,10 +2906,7 @@
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 3,
 		"RemoveStatusEffects": "AbilitySpecific",
-		"StatusEffectCategoriesList": [
-			"DoT",
-			"Debilitate"
-		],
+		"StatusEffectCategoriesList": ["DoT", "Debilitate"],
 		"ActivationCooldown": 0,
 		"Duration": 0
 	},
@@ -3190,9 +2945,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Empower_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Empower_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3235,9 +2988,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Empower_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Empower_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3280,9 +3031,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Empower_Mount_Small"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Empower_Mount_Small"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3325,9 +3074,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Empower_Mount_Med"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Empower_Mount_Med"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3370,9 +3117,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Empower_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Empower_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3414,9 +3159,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Fortify_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Fortify_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3459,9 +3202,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Fortify_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Fortify_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3504,9 +3245,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Fortify_Mount_Small"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Fortify_Mount_Small"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3549,9 +3288,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Fortify_Mount_Med"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Fortify_Mount_Med"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3594,9 +3331,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Fortify_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Fortify_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3638,9 +3373,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Haste_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Haste_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3683,9 +3416,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Haste_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Haste_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3728,9 +3459,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Haste_Mount_Small"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Haste_Mount_Small"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3773,9 +3502,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Haste_Mount_Med"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Haste_Mount_Med"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3818,9 +3545,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Haste_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Haste_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3862,9 +3587,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Heal_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Heal_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3907,9 +3630,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Heal_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Heal_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3952,9 +3673,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Heal_Mount_Small"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Heal_Mount_Small"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -3997,9 +3716,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Heal_Mount_Med"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Heal_Mount_Med"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4042,9 +3759,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Status_Common_Heal_Mount_Large"
-		],
+		"SelfApplyStatusEffect": ["Status_Common_Heal_Mount_Large"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4053,9 +3768,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_ArtemisBoonPotionD1_T1",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4091,10 +3804,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_ArtemisBoonSecondaryD1_T1",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_ArtemisBoonSecondaryD1_T1", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4103,9 +3813,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_ArtemisBoonPotionD1_T2",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4141,10 +3849,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_ArtemisBoonSecondaryD1_T2",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_ArtemisBoonSecondaryD1_T2", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4153,9 +3858,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_ArtemisBoonPotionD2_T2",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4191,10 +3894,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_ArtemisBoonSecondaryD2_T2",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_ArtemisBoonSecondaryD2_T2", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4203,9 +3903,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_ArtemisBoonPotionD2_T3",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4241,10 +3939,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_ArtemisBoonSecondaryD2_T3",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_ArtemisBoonSecondaryD2_T3", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4253,9 +3948,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_ArtemisBoonPotionD3_T3",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4291,10 +3984,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_ArtemisBoonSecondaryD3_T3",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_ArtemisBoonSecondaryD3_T3", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4303,9 +3993,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_ArtemisBoonPotionD3_T4",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4341,10 +4029,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_ArtemisBoonSecondaryD3_T4",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_ArtemisBoonSecondaryD3_T4", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4353,9 +4038,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_ArtemisBoonPotionD4_T4",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4391,10 +4074,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_ArtemisBoonSecondaryD4_T4",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_ArtemisBoonSecondaryD4_T4", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4403,9 +4083,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_ArtemisBoonPotionD5_T5",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4441,10 +4119,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_ArtemisBoonSecondaryD5_T5",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_ArtemisBoonSecondaryD5_T5", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4453,9 +4128,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_DemeterBoonPotionD1_T1",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4491,10 +4164,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_DemeterBoonSecondaryD1_T1",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_DemeterBoonSecondaryD1_T1", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4503,9 +4173,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_DemeterBoonPotionD1_T2",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4541,10 +4209,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_DemeterBoonSecondaryD1_T2",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_DemeterBoonSecondaryD1_T2", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4553,9 +4218,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_DemeterBoonPotionD2_T2",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4591,10 +4254,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_DemeterBoonSecondaryD2_T2",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_DemeterBoonSecondaryD2_T2", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4603,9 +4263,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_DemeterBoonPotionD2_T3",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4641,10 +4299,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_DemeterBoonSecondaryD2_T3",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_DemeterBoonSecondaryD2_T3", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4653,9 +4308,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_DemeterBoonPotionD3_T3",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4691,10 +4344,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_DemeterBoonSecondaryD3_T3",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_DemeterBoonSecondaryD3_T3", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4703,9 +4353,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_DemeterBoonPotionD3_T4",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4741,10 +4389,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_DemeterBoonSecondaryD3_T4",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_DemeterBoonSecondaryD3_T4", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4753,9 +4398,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_DemeterBoonPotionD4_T4",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4791,10 +4434,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_DemeterBoonSecondaryD4_T4",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_DemeterBoonSecondaryD4_T4", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4803,9 +4443,7 @@
 	},
 	{
 		"AbilityID": "AbilityID_DemeterBoonPotionD5_T5",
-		"OnEquipStatusEffect": [
-			"RemoveSpores"
-		],
+		"OnEquipStatusEffect": ["RemoveSpores"],
 		"IsActiveAbility": false,
 		"IsGlobalAbility": false,
 		"IsStackableAbility": false,
@@ -4841,10 +4479,7 @@
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"SE_DemeterBoonSecondaryD5_T5",
-			"RemoveSpores"
-		],
+		"SelfApplyStatusEffect": ["SE_DemeterBoonSecondaryD5_T5", "RemoveSpores"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
@@ -4882,16 +4517,12 @@
 		"DamageIsRanged": false,
 		"DamageIsMelee": false,
 		"StatusEffectStackSize": 0,
-		"DontHaveStatusEffect": [
-			"Block_Spam_Reduction"
-		],
+		"DontHaveStatusEffect": ["Block_Spam_Reduction"],
 		"BaseDamage": 0,
 		"CritDamageReduction": 0,
 		"BlockDamageReduction": 0,
 		"DmgPctToHealth": 0,
-		"SelfApplyStatusEffect": [
-			"Block_Spam_Reduction"
-		],
+		"SelfApplyStatusEffect": ["Block_Spam_Reduction"],
 		"DoNotUnequipSelfAppliedSE": false,
 		"UseMinAttackInfoForSelfAppliedSE": false,
 		"NumStatusEffectsToRemove": 0,
