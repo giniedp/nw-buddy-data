@@ -43058,14 +43058,15 @@
 	},
 	{
 		"LootTableID": "WorldEvent_Crassus_NormalLoot",
-		"AND/OR": "OR",
+		"AND/OR": "AND",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LTID]WorldEvent_Crassus_ProcArmorOrWeapon",
-		"Item2": "[LBID]WorldEvent_Crassus_GlobalNamedList",
-		"Item3": "[LBID]WorldEvent_Crassus_NamedList"
+		"Item2": "GypsumBlack",
+		"Item3": "[LTID]WorldEvent_Crassus_PerkCheck",
+		"Item4": "[LBID]ArcanaRecoveryItems_PlayerLevel"
 	},
 	{
 		"LootTableID": "WorldEvent_Crassus_NormalLoot_Qty",
@@ -43075,7 +43076,8 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "1",
 		"Item2": "1",
-		"Item3": "1"
+		"Item3": "1",
+		"Item4": "2-3"
 	},
 	{
 		"LootTableID": "WorldEvent_Crassus_NormalLoot_Probs",
@@ -43084,21 +43086,24 @@
 		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
-		"Item2": "90000",
-		"Item3": "95000"
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0"
 	},
 	{
 		"LootTableID": "WorldEvent_Crassus_ProcArmorOrWeapon",
 		"AND/OR": "OR",
-		"UseLevelGS": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingEnabled": "TRUE",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]WorldEvent_Crassus_S7_ProcWeapons",
+		"GearScoreRange1": "700",
 		"Item2": "[LBID]WorldEvent_Crassus_S7_ProcArmor",
-		"Item3": "[LBID]WorldEvent_Crassus_S7_ProcShields"
+		"GearScoreRange2": "700",
+		"Item3": "[LBID]WorldEvent_Crassus_S7_ProcShields",
+		"GearScoreRange3": "700"
 	},
 	{
 		"LootTableID": "WorldEvent_Crassus_ProcArmorOrWeapon_Qty",
@@ -43127,12 +43132,12 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]WorldEvent_Crassus_BossLootLevelFilter",
-		"Item2": "GypsumBlack",
+		"Item1": "[LBID]WorldEvent_Crassus_BossLoot_V2",
+		"GearScoreRange1": "700",
+		"Item2": "[LBID]WorldEvent_Crassus_BossLoot_V2",
 		"Item3": "DarkMatter",
-		"Item4": "[LTID]WorldEvent_Crassus_PerkCheck",
-		"Item5": "[LTID]WorldEvent_Crassus_SpecialLoot",
-		"Item6": "[LTID]WorldEventEquipment_Crassus_S7_710"
+		"Item4": "[LTID]WorldEvent_Crassus_SpecialLoot",
+		"Item5": "[LTID]WorldEventEquipment_Crassus_S7_710"
 	},
 	{
 		"LootTableID": "WorldEvent_Crassus_BonusLoot_Qty",
@@ -43144,8 +43149,7 @@
 		"Item2": "1",
 		"Item3": "15",
 		"Item4": "1",
-		"Item5": "1",
-		"Item6": "1"
+		"Item5": "1"
 	},
 	{
 		"LootTableID": "WorldEvent_Crassus_BonusLoot_Probs",
@@ -43154,11 +43158,10 @@
 		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
-		"Item2": "0",
+		"Item2": "66000",
 		"Item3": "0",
 		"Item4": "0",
-		"Item5": "0",
-		"Item6": "70000"
+		"Item5": "70000"
 	},
 	{
 		"LootTableID": "WorldEvent_Crassus_PerkCheck",
@@ -43193,13 +43196,14 @@
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LTID]WorldEventEquipment_Crassus_S7_710",
-		"Item2": "[LTID]WorldEvent_Crassus_BossLootLevelFilter",
-		"Item3": "GypsumBlack",
+		"Item2": "[LBID]WorldEvent_Crassus_BossLoot_V2",
+		"GearScoreRange2": "700",
+		"Item3": "[LBID]WorldEvent_Crassus_BossLoot_V2",
+		"GearScoreRange3": "700",
 		"Item4": "DarkMatter",
-		"Item5": "[LTID]WorldEvent_Crassus_PerkCheck",
-		"Item6": "2hPick_Crassus_S7",
-		"Item7": "House_HousingItem_Season4_Statue_Cyclops_Statue_A",
-		"Item8": "House_HousingItem_Season4_Statue_Cyclops_Statue_B"
+		"Item5": "2hPick_Crassus_S7",
+		"Item6": "House_HousingItem_Season4_Statue_Cyclops_Statue_A",
+		"Item7": "House_HousingItem_Season4_Statue_Cyclops_Statue_B"
 	},
 	{
 		"LootTableID": "WorldEvent_Crassus_BonusOverride_Qty",
@@ -43213,8 +43217,7 @@
 		"Item4": "15",
 		"Item5": "1",
 		"Item6": "1",
-		"Item7": "1",
-		"Item8": "1"
+		"Item7": "1"
 	},
 	{
 		"LootTableID": "WorldEvent_Crassus_BonusOverride_Probs",
@@ -43224,12 +43227,11 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
-		"Item3": "0",
+		"Item3": "66000",
 		"Item4": "0",
 		"Item5": "0",
 		"Item6": "0",
-		"Item7": "0",
-		"Item8": "0"
+		"Item7": "0"
 	},
 	{
 		"LootTableID": "WorldEvent_Crassus_BossLootLevelFilter",
@@ -43298,7 +43300,6 @@
 		"RollBonusSetting": "IgnoreBonus",
 		"Conditions": ["[LIM]WorldEventCrassus710Gear_Limit"],
 		"TriggerLimitOnVisit": "TRUE",
-		"UseLevelGS": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -43953,6 +43954,110 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0"
+	},
+	{
+		"LootTableID": "725Coconut_1",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "725Coconut"
+	},
+	{
+		"LootTableID": "725Coconut_1_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "725Coconut_1_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "725Coconut_2",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "725Coconut"
+	},
+	{
+		"LootTableID": "725Coconut_2_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "2"
+	},
+	{
+		"LootTableID": "725Coconut_2_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "725Coconut_3",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "725Coconut"
+	},
+	{
+		"LootTableID": "725Coconut_3_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "3"
+	},
+	{
+		"LootTableID": "725Coconut_3_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "725Coconut_4",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "725Coconut"
+	},
+	{
+		"LootTableID": "725Coconut_4_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "4"
+	},
+	{
+		"LootTableID": "725Coconut_4_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
 	},
 	{
 		"LootTableID": "BrimstoneNamed",
