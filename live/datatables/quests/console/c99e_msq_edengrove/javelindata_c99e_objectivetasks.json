@@ -389,11 +389,11 @@
 		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false,
-		"SubTask1": "99E_MSQ_01_d_03_02_01_TriggerArea_EdengroveEntryIGC",
-		"SubTask2": "99E_MSQ_01_d_03_02_02_01_EnterEdengroveIGC_Active_On",
-		"SubTask3": "99E_MSQ_01_d_03_02_03_01_EnterEdengroveIGC_Timer",
-		"SubTask4": "99E_MSQ_01_d_03_02_04_02_EnterEdengroveIGC_Active_Off",
-		"SubTask5": "99E_MSQ_01_d_03_02_02_02_SwapActive_99E_Sun_p3_Off"
+		"SubTask1": "99E_MSQ_01_d_03_02_02_02_SwapActive_99E_Sun_p3_Off",
+		"SubTask2": "99E_MSQ_01_d_03_02_01_TriggerArea_EdengroveEntryIGC",
+		"SubTask3": "99E_MSQ_01_d_03_02_02_01_EnterEdengroveIGC_Active_On",
+		"SubTask4": "99E_MSQ_01_d_03_02_03_01_EnterEdengroveIGC_Timer",
+		"SubTask5": "99E_MSQ_01_d_03_02_04_container_EnterEdengroveIGC_Finished"
 	},
 	{
 		"TaskID": "99E_MSQ_01_d_03_02_01_TriggerArea_EdengroveEntryIGC",
@@ -559,8 +559,7 @@
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false,
 		"SubTask1": "99E_MSQ_01_d_03_02_04_01_EnterEdengroveIGC_Watched",
-		"SubTask2": "99E_MSQ_01_d_03_02_04_02_EnterEdengroveIGC_Active_Off",
-		"SubTask3": "99E_MSQ_01_d_03_02_04_03_SwapActive_99E_Sun_p4_On"
+		"SubTask2": "99E_MSQ_01_d_03_02_04_02_EnterEdengroveIGC_Active_Off"
 	},
 	{
 		"TaskID": "99E_MSQ_01_d_03_02_04_01_EnterEdengroveIGC_Watched",
@@ -6669,9 +6668,8 @@
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false,
 		"SubTask1": "99E_MSQ_09_d_05_01_GoToPOI_9b",
-		"SubTask2": "99E_MSQ_09_d_05_02_IsabellaWhisper_D",
-		"SubTask3": "99E_MSQ_09_d_05_03_TriggerArea_MorgaineHub",
-		"SubTask4": "99E_MSQ_09_d_05_04_IsabellaWhisper_E"
+		"SubTask2": "99E_MSQ_09_d_05_01_Whisper_Failsafe",
+		"SubTask3": "99E_MSQ_09_d_05_02_IsabellaWhisper_D"
 	},
 	{
 		"TaskID": "99E_MSQ_09_d_05_01_GoToPOI_9b",
@@ -6685,6 +6683,20 @@
 		"Duration": 0,
 		"TP_DescriptionTag": "@99E_MSQ_09_TheMotherwell_goto_QGHub",
 		"IsHidden": 0,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false
+	},
+	{
+		"TaskID": "99E_MSQ_09_d_05_01_Whisper_Failsafe",
+		"Type": "TaskTimer",
+		"StayActive": 0,
+		"TargetQty": 1,
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"Duration": 3,
+		"TP_DescriptionTag": "@99E_MSQ_09_TheMotherwell_goto_QGHub",
+		"IsHidden": 1,
 		"HideDiegeticGatherablePins": false,
 		"ShowDiegeticTaskPin": false
 	},
@@ -6839,7 +6851,22 @@
 		"ShowDiegeticTaskPin": false,
 		"SubTask1": "99E_MSQ_10_d_01_03_02_SwapActive_99E_Yash_OLD_Off",
 		"SubTask2": "99E_MSQ_10_d_01_03_03_SwapActive_99E_Yash_p1_On",
-		"SubTask3": "99E_MSQ_10_d_04_03_SoulTrialResetFailsafe"
+		"SubTask3": "99E_MSQ_10_d_04_03_SoulTrialResetFailsafe",
+		"SubTask4": "99E_MSQ_10_d_02_02_IsabellaWhisper_E_Redux"
+	},
+	{
+		"TaskID": "99E_MSQ_10_d_02_02_IsabellaWhisper_E_Redux",
+		"Type": "TaskTriggerGameEvent",
+		"StayActive": 0,
+		"TargetQty": 1,
+		"ItemDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"KillEnemyType": "99E_MSQ_Isabella_whisper_EG_05_interact",
+		"Duration": 0,
+		"IsHidden": 1,
+		"HideDiegeticGatherablePins": false,
+		"ShowDiegeticTaskPin": false
 	},
 	{
 		"TaskID": "99E_MSQ_10_d_04_03_SoulTrialResetFailsafe",

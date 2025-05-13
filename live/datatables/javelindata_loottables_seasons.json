@@ -2172,8 +2172,8 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "WorldEvent_S1_NormalBox",
-		"Item2": "WorldEvent_S1_BonusBox",
+		"Item1": "WorldEvent_S1_NormalBox_S8",
+		"Item2": "WorldEvent_S1_BonusBox_S8",
 		"Item3": "GypsumBlack"
 	},
 	{
@@ -2201,7 +2201,7 @@
 		"UseLevelGS": "TRUE",
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "[LTID]WorldEvent_S1_NormalLoot_Subtable1",
+		"Item1": "[LTID]WorldEvent_S1_ProcArmorOrWeapon",
 		"Item2": "[LTID]WorldEvent_S1_NormalLoot_Subtable2",
 		"Item3": "[LBID]RecoveryItems"
 	},
@@ -2285,9 +2285,12 @@
 		"UseLevelGS": "TRUE",
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "[LBID]WorldEvent_Crassus_ProcWeapons",
-		"Item2": "[LBID]WorldEvent_Crassus_ProcArmor",
-		"Item3": "[LBID]WorldEvent_Crassus_ProcShields"
+		"Item1": "[LBID]WorldEvent_Crassus_S7_ProcWeapons",
+		"GearScoreRange1": "700",
+		"Item2": "[LBID]WorldEvent_Crassus_S7_ProcArmor",
+		"GearScoreRange2": "700",
+		"Item3": "[LBID]WorldEvent_Crassus_S7_ProcShields",
+		"GearScoreRange3": "700"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_ProcArmorOrWeapon_Qty",
@@ -2315,12 +2318,13 @@
 		"UseLevelGS": "TRUE",
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "[LBID]WorldEvent_S1_Armor_Upleveled",
-		"Item2": "[LBID]WorldEvent_S1_Weapons_Upleveled",
-		"Item3": "[LTID]WorldEvent_S1_Furniture_PityTicker",
-		"Item4": "[LTID]WorldEvent_S1_BonusLoot_Subtable1",
-		"Item5": "[LBID]WorldEvent_S1_WeaponPerkItems",
-		"Item6": "Darkmatter"
+		"Item1": "[LBID]WorldEvent_Fury_Armor_S8",
+		"GearScoreRange1": "715",
+		"Item2": "[LBID]WorldEvent_Fury_Weapon_S8",
+		"GearScoreRange2": "715",
+		"Item3": "[LTID]WorldEvent_Fury_725",
+		"Item4": "[LTID]WorldEvent_S1_Furniture_PityTicker",
+		"Item5": "Darkmatter"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_BonusLoot_Qty",
@@ -2331,8 +2335,7 @@
 		"Item2": "1",
 		"Item3": "1",
 		"Item4": "1",
-		"Item5": "1",
-		"Item6": "20"
+		"Item5": "25"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_BonusLoot_Probs",
@@ -2341,10 +2344,34 @@
 		"MaxRoll": 100000,
 		"Item1": "0",
 		"Item2": "0",
-		"Item3": "0",
+		"Item3": "70000",
 		"Item4": "0",
-		"Item5": "0",
-		"Item6": "0"
+		"Item5": "0"
+	},
+	{
+		"LootTableID": "WorldEvent_Fury_725",
+		"AND/OR": "OR",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WorldEventFury725Gear_Limit"],
+		"ConditionOverridesRoll": 0,
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "[LBID]WorldEvent_Fury_Named_S8"
+	},
+	{
+		"LootTableID": "WorldEvent_Fury_725_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_Fury_725_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 100000,
+		"Item1": "0"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_BonusLoot_Subtable1",
@@ -2422,7 +2449,7 @@
 		"Item8": "[LTID]WorldEvent_S1_FurnitureChance_7",
 		"Item9": "[LTID]WorldEvent_S1_FurnitureChance_8",
 		"Item10": "[LTID]WorldEvent_S1_FurnitureChance_9",
-		"Item11": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier"
+		"Item11": "[LTID]WorldEvent_Fury_Rare_Loot"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_Furniture_PityTicker_Qty",
@@ -2459,13 +2486,41 @@
 		"Item11": "25"
 	},
 	{
+		"LootTableID": "WorldEvent_Fury_Rare_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WorldEventFuryPityHit"],
+		"ConditionOverridesRoll": 0,
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier",
+		"Item2": "2hLoggingAxeFuryOfTheSprigganT5"
+	},
+	{
+		"LootTableID": "WorldEvent_Fury_Rare_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_Fury_Rare_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 1,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
 		"LootTableID": "WorldEvent_S1_FurnitureChance_Base",
 		"AND/OR": "AND",
 		"RollBonusSetting": "IgnoreBonus",
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier"
+		"Item1": "[LTID]WorldEvent_Fury_Rare_Loot"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_FurnitureChance_Base_Qty",
@@ -2488,7 +2543,7 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier"
+		"Item1": "[LTID]WorldEvent_Fury_Rare_Loot"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_FurnitureChance_1_Qty",
@@ -2511,7 +2566,7 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier"
+		"Item1": "[LTID]WorldEvent_Fury_Rare_Loot"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_FurnitureChance_2_Qty",
@@ -2534,7 +2589,7 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier"
+		"Item1": "[LTID]WorldEvent_Fury_Rare_Loot"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_FurnitureChance_3_Qty",
@@ -2557,7 +2612,7 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier"
+		"Item1": "[LTID]WorldEvent_Fury_Rare_Loot"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_FurnitureChance_4_Qty",
@@ -2580,7 +2635,7 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier"
+		"Item1": "[LTID]WorldEvent_Fury_Rare_Loot"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_FurnitureChance_5_Qty",
@@ -2603,7 +2658,7 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier"
+		"Item1": "[LTID]WorldEvent_Fury_Rare_Loot"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_FurnitureChance_6_Qty",
@@ -2626,7 +2681,7 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier"
+		"Item1": "[LTID]WorldEvent_Fury_Rare_Loot"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_FurnitureChance_7_Qty",
@@ -2649,7 +2704,7 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier"
+		"Item1": "[LTID]WorldEvent_Fury_Rare_Loot"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_FurnitureChance_8_Qty",
@@ -2672,7 +2727,7 @@
 		"ConditionOverridesRoll": 0,
 		"HWMMult": 0,
 		"MaxRoll": 0,
-		"Item1": "Schematic_House_HousingItem_Season1_SprigganFlameBrazier"
+		"Item1": "[LTID]WorldEvent_Fury_Rare_Loot"
 	},
 	{
 		"LootTableID": "WorldEvent_S1_FurnitureChance_9_Qty",
@@ -8012,7 +8067,7 @@
 		"Item4": "30",
 		"Item5": "30",
 		"Item6": "30",
-		"Item7": "10"
+		"Item7": "30"
 	},
 	{
 		"LootTableID": "Elemental_Box_S7_Loot_Probs",
@@ -8175,6 +8230,157 @@
 		"Item4": "0"
 	},
 	{
+		"LootTableID": "Food_Box_S8_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "BananaT1",
+		"Item2": "[LTID]Food_Box_S8_Best",
+		"Item3": "[LTID]Food_Box_S8_Good",
+		"Item4": "[LTID]Food_Box_S8_Okay",
+		"Item5": "[LTID]Food_Box_S8_Worst"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "12",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "1",
+		"Item5": "1"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Best",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "SeasoningBlendT1",
+		"Item2": "FlourT1",
+		"Item3": "ButterT1"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Best_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "6",
+		"Item2": "6",
+		"Item3": "6"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Best_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Good",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "SugarT1",
+		"Item2": "SaltT1",
+		"Item3": "GarlicT1"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Good_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "6",
+		"Item2": "6",
+		"Item3": "6"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Good_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Okay",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "CornT1",
+		"Item2": "OnionT1",
+		"Item3": "StringBeanT1"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Okay_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "6",
+		"Item2": "6",
+		"Item3": "6"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Okay_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Worst",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "RedMeatT1",
+		"Item2": "CarrotT1",
+		"Item3": "CabbageT1"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Worst_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "6",
+		"Item2": "6",
+		"Item3": "6"
+	},
+	{
+		"LootTableID": "Food_Box_S8_Worst_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
 		"LootTableID": "SeasonalServer_MakeGood_Box_Loot",
 		"AND/OR": "AND",
 		"RollBonusSetting": "AddToRoll",
@@ -8252,5 +8458,485 @@
 		"Item6": "0",
 		"Item7": "0",
 		"Item8": "0"
+	},
+	{
+		"LootTableID": "May2025_TwitchPrime_Box_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "AzureVialT1",
+		"Item2": "DarkMatter",
+		"Item3": "GypsumOrb",
+		"Item4": "PotionHealthT5",
+		"Item5": "FoodDexT52",
+		"Item6": "HoningStoneT5"
+	},
+	{
+		"LootTableID": "May2025_TwitchPrime_Box_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5",
+		"Item2": "25",
+		"Item3": "3",
+		"Item4": "15",
+		"Item5": "10",
+		"Item6": "5"
+	},
+	{
+		"LootTableID": "May2025_TwitchPrime_Box_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0",
+		"Item6": "0",
+		"Item7": "0"
+	},
+	{
+		"LootTableID": "Jun2025_TwitchPrime_Box_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "AzureVialT1",
+		"Item2": "DarkMatter",
+		"Item3": "GypsumOrb",
+		"Item4": "PotionHealthT5",
+		"Item5": "PotionManaT5",
+		"Item6": "FoodINTT52",
+		"Item7": "FoodFOCT52",
+		"Item8": "GemstonedustT5",
+		"Item9": "OakfleshbalmT5"
+	},
+	{
+		"LootTableID": "Jun2025_TwitchPrime_Box_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5",
+		"Item2": "25",
+		"Item3": "3",
+		"Item4": "10",
+		"Item5": "5",
+		"Item6": "5",
+		"Item7": "5",
+		"Item8": "5",
+		"Item9": "5"
+	},
+	{
+		"LootTableID": "Jun2025_TwitchPrime_Box_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0",
+		"Item6": "0",
+		"Item7": "0",
+		"Item8": "0",
+		"Item9": "0"
+	},
+	{
+		"LootTableID": "Dyes1_Box_S8_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "dyeb103"
+	},
+	{
+		"LootTableID": "Dyes1_Box_S8_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes1_Box_S8_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes2_Box_S8_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "dyeb118"
+	},
+	{
+		"LootTableID": "Dyes2_Box_S8_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes2_Box_S8_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes3_Box_S8_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "dyeb168"
+	},
+	{
+		"LootTableID": "Dyes3_Box_S8_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes3_Box_S8_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes4_Box_S8_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "dyeb134"
+	},
+	{
+		"LootTableID": "Dyes4_Box_S8_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes4_Box_S8_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Dyes5_Box_S8_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "dyeb114"
+	},
+	{
+		"LootTableID": "Dyes5_Box_S8_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "5"
+	},
+	{
+		"LootTableID": "Dyes5_Box_S8_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "Combat_Box_S8_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "PotionHealthT5",
+		"Item2": "PotionRegenT4",
+		"Item3": "PotionManaT5"
+	},
+	{
+		"LootTableID": "Combat_Box_S8_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "10",
+		"Item2": "10",
+		"Item3": "10"
+	},
+	{
+		"LootTableID": "Combat_Box_S8_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "Expedition_Box_S8_Loot",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DungeonDiamonds_FLXPac_Lazarus",
+		"Item2": "DungeonDiamonds_FLXPac_Genesis",
+		"Item3": "DungeonDiamonds_FLXPac_Isabella"
+	},
+	{
+		"LootTableID": "Expedition_Box_S8_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "2000",
+		"Item2": "2000",
+		"Item3": "2000"
+	},
+	{
+		"LootTableID": "Expedition_Box_S8_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 1,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "Expedition_Box2_S8_Loot",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DungeonDiamonds_FLXPac_Barnacles",
+		"Item2": "DungeonDiamonds_FLXPac_Brimstone",
+		"Item3": "DungeonDiamonds_FLXPac_Empyrean",
+		"Item4": "DungeonDiamonds_FLXpac_Crystalclaw",
+		"Item5": "DungeonDiamonds_Glacial"
+	},
+	{
+		"LootTableID": "Expedition_Box2_S8_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "2000",
+		"Item2": "2000",
+		"Item3": "2000",
+		"Item4": "2000",
+		"Item5": "2000"
+	},
+	{
+		"LootTableID": "Expedition_Box2_S8_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 1,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
+	},
+	{
+		"LootTableID": "Mutation_Box_S8_Loot",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "DungeonDiamonds_FLXPac_Mutator",
+		"Item2": "Darkmatter",
+		"Item3": "whetstonet1",
+		"Item4": "viscousazotht3",
+		"Item5": "crystalizedazotht1"
+	},
+	{
+		"LootTableID": "Mutation_Box_S8_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1750",
+		"Item2": "250",
+		"Item3": "1",
+		"Item4": "1",
+		"Item5": "1"
+	},
+	{
+		"LootTableID": "Mutation_Box_S8_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 1,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
+	},
+	{
+		"LootTableID": "SS8_Ch1_Reward_Box_Loot",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "House_HousingItem_Buff_SeasonalServer_Season8_T1",
+		"Item2": "Skin_Head_Season8SeasonalServer_Box",
+		"Item3": "Skin_Chest_Season8SeasonalServer_Box",
+		"Item4": "Skin_Gloves_Season8SeasonalServer_Box"
+	},
+	{
+		"LootTableID": "SS8_Ch1_Reward_Box_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "1"
+	},
+	{
+		"LootTableID": "SS8_Ch1_Reward_Box_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 1,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0"
+	},
+	{
+		"LootTableID": "SS8_Ch2_Reward_Box_Loot",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "AnyTrophyCraftingMat",
+		"Item2": "AnyArtifactCraftingMat",
+		"Item3": "Skin_Legs_Season8SeasonalServer_Box",
+		"Item4": "Skin_Feet_Season8SeasonalServer_Box",
+		"Item5": "Skin_2hBow_Season8SeasonalServer_Box"
+	},
+	{
+		"LootTableID": "SS8_Ch2_Reward_Box_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "1",
+		"Item5": "1"
+	},
+	{
+		"LootTableID": "SS8_Ch2_Reward_Box_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 1,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
+	},
+	{
+		"LootTableID": "SS8_Ch3_Reward_Box_Loot",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "AnyArtifactCraftingMat",
+		"Item2": "HercyneRaidInductor",
+		"Item3": "DarkMatter"
+	},
+	{
+		"LootTableID": "SS8_Ch3_Reward_Box_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "50"
+	},
+	{
+		"LootTableID": "SS8_Ch3_Reward_Box_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 1,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "SeasonalAzothStaffBox_Loot",
+		"AND/OR": "AND",
+		"ConditionOverridesRoll": 0,
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "Darkness_AzothStaff_T5"
+	},
+	{
+		"LootTableID": "SeasonalAzothStaffBox_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "SeasonalAzothStaffBox_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 1,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "S8_twitch_Container_Box_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "AzureVialT1",
+		"Item2": "DarkMatter",
+		"Item3": "HoningStoneT5",
+		"Item4": "GypsumOrb"
+	},
+	{
+		"LootTableID": "S8_twitch_Container_Box_Loot_Qty",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "10",
+		"Item2": "25",
+		"Item3": "5",
+		"Item4": "5"
+	},
+	{
+		"LootTableID": "S8_twitch_Container_Box_Loot_Probs",
+		"ConditionOverridesRoll": 0,
+		"HWMMult": 0,
+		"MaxRoll": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0"
 	}
 ]

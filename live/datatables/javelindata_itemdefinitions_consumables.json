@@ -1655,7 +1655,7 @@
 		"ConsumableID": "PotionHasteFTW",
 		"AddStatusEffects": ["PotionHaste"],
 		"StatusEffectMod": 1,
-		"DurationOverrides": 20,
+		"DurationOverrides": 10,
 		"MinDurationModifier": 0,
 		"MaxDurationModifier": 0,
 		"DurationScaleFactor": 1,
@@ -2007,6 +2007,25 @@
 	{
 		"ConsumableID": "CoatingBeastT5",
 		"AddStatusEffects": ["WeaponCoatingEffect_Beasts_T5"],
+		"StatusEffectMod": 1,
+		"DurationOverrides": 2400,
+		"MinDurationModifier": 0,
+		"MaxDurationModifier": 0,
+		"DurationScaleFactor": 1,
+		"MinPotencyModifier": 0,
+		"MaxPotencyModifier": 0,
+		"PotencyScaleFactor": 0,
+		"RemoveStatusEffectCategories": ["CoatingBoost"],
+		"UseCount": 0,
+		"DisableUseInCombat": false,
+		"Damage": 0,
+		"MannequinTag": "WeaponOil",
+		"CooldownDuration": 0,
+		"IsMountConsumable": false
+	},
+	{
+		"ConsumableID": "CoatingBeastTurkeyT5",
+		"AddStatusEffects": ["WeaponCoatingEffect_BeastsTurkey_T5"],
 		"StatusEffectMod": 1,
 		"DurationOverrides": 2400,
 		"MinDurationModifier": 0,
@@ -3687,6 +3706,26 @@
 	{
 		"ConsumableID": "PotionFamilyWardBeastT5",
 		"AddStatusEffects": ["PotionFamilyWardBeastT5"],
+		"StatusEffectMod": 1,
+		"DurationOverrides": 0,
+		"MinDurationModifier": 0,
+		"MaxDurationModifier": 0,
+		"DurationScaleFactor": 1,
+		"MinPotencyModifier": 0,
+		"MaxPotencyModifier": 0,
+		"PotencyScaleFactor": 0,
+		"RemoveStatusEffectCategories": ["WardBoost"],
+		"UseCount": 0,
+		"DisableUseInCombat": false,
+		"Damage": 0,
+		"MannequinTag": "Potion",
+		"CooldownDuration": 3,
+		"CooldownId": "FamilyWard",
+		"IsMountConsumable": false
+	},
+	{
+		"ConsumableID": "PotionFamilyWardBeastTurkeyT5",
+		"AddStatusEffects": ["PotionFamilyWardBeastTurkeyT5"],
 		"StatusEffectMod": 1,
 		"DurationOverrides": 0,
 		"MinDurationModifier": 0,
@@ -5696,7 +5735,7 @@
 		"ConsumableID": "Artisan_HealthRecoveryT5",
 		"AddStatusEffects": ["FoodRecoveryT5"],
 		"StatusEffectMod": 1,
-		"DurationOverrides": 40,
+		"DurationOverrides": 4000,
 		"MinDurationModifier": 0,
 		"MaxDurationModifier": 0,
 		"DurationScaleFactor": 0,
@@ -9406,6 +9445,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 40,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -9425,6 +9465,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 40,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -9490,7 +9531,7 @@
 		"MinPotencyModifier": 0,
 		"MaxPotencyModifier": 0,
 		"PotencyScaleFactor": 0,
-		"RemoveStatusEffectCategories": ["FoodUtility"],
+		"RemoveStatusEffectCategories": ["MountFoodUtility"],
 		"UseCount": 0,
 		"DisableUseInCombat": false,
 		"Damage": 0,
@@ -9510,7 +9551,7 @@
 		"MinPotencyModifier": 0,
 		"MaxPotencyModifier": 0,
 		"PotencyScaleFactor": 0,
-		"RemoveStatusEffectCategories": ["FoodUtility"],
+		"RemoveStatusEffectCategories": ["MountFoodUtility"],
 		"UseCount": 0,
 		"DisableUseInCombat": false,
 		"Damage": 0,
@@ -9530,7 +9571,7 @@
 		"MinPotencyModifier": 0,
 		"MaxPotencyModifier": 0,
 		"PotencyScaleFactor": 0,
-		"RemoveStatusEffectCategories": ["FoodUtility"],
+		"RemoveStatusEffectCategories": ["MountFoodUtility"],
 		"UseCount": 0,
 		"DisableUseInCombat": false,
 		"Damage": 0,
@@ -9550,7 +9591,7 @@
 		"MinPotencyModifier": 0,
 		"MaxPotencyModifier": 0,
 		"PotencyScaleFactor": 0,
-		"RemoveStatusEffectCategories": ["FoodUtility"],
+		"RemoveStatusEffectCategories": ["MountFoodUtility"],
 		"UseCount": 0,
 		"DisableUseInCombat": false,
 		"Damage": 0,
@@ -9958,6 +9999,25 @@
 		"IsMountConsumable": false
 	},
 	{
+		"ConsumableID": "PotionTurkeyLuckT5",
+		"AddStatusEffects": ["PotionTurkeyLuckT5"],
+		"StatusEffectMod": 1,
+		"DurationOverrides": 300,
+		"MinDurationModifier": 0,
+		"MaxDurationModifier": 0,
+		"DurationScaleFactor": 1,
+		"MinPotencyModifier": 0,
+		"MaxPotencyModifier": 0,
+		"PotencyScaleFactor": 0,
+		"UseCount": 0,
+		"DisableUseInCombat": false,
+		"Damage": 0,
+		"MannequinTag": "Potion",
+		"CooldownDuration": 300,
+		"CooldownId": "TurkeyLuck",
+		"IsMountConsumable": false
+	},
+	{
 		"ConsumableID": "FoodCorruptedChocolateT5",
 		"AddStatusEffects": ["SE_FoodCorruptedChocolateT5"],
 		"StatusEffectMod": 1,
@@ -10199,6 +10259,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10218,6 +10279,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10237,6 +10299,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10256,6 +10319,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10275,6 +10339,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10294,6 +10359,27 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
+		"IsMountConsumable": false
+	},
+	{
+		"ConsumableID": "MultiUsePotionHealthT5",
+		"AddStatusEffects": ["MultiUsePotionHealthT5"],
+		"StatusEffectMod": 1,
+		"DurationOverrides": 0,
+		"MinDurationModifier": 0,
+		"MaxDurationModifier": 0,
+		"DurationScaleFactor": 1,
+		"MinPotencyModifier": 0,
+		"MaxPotencyModifier": 0,
+		"PotencyScaleFactor": 0,
+		"UseCount": 0,
+		"DisableUseInCombat": false,
+		"Damage": 0,
+		"MannequinTag": "Potion",
+		"CooldownDuration": 10,
+		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10313,6 +10399,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10332,6 +10419,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10351,6 +10439,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10370,6 +10459,27 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
+		"IsMountConsumable": false
+	},
+	{
+		"ConsumableID": "PotionBurstRegenT5",
+		"AddStatusEffects": ["PotionBurstRegen_BurstT5", "PotionBurstRegen_RegenT5"],
+		"StatusEffectMod": 1,
+		"DurationOverrides": 0,
+		"MinDurationModifier": 0,
+		"MaxDurationModifier": 0,
+		"DurationScaleFactor": 1,
+		"MinPotencyModifier": 0,
+		"MaxPotencyModifier": 0,
+		"PotencyScaleFactor": 0,
+		"UseCount": 0,
+		"DisableUseInCombat": false,
+		"Damage": 0,
+		"MannequinTag": "Potion",
+		"CooldownDuration": 25,
+		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10389,13 +10499,14 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
 		"ConsumableID": "SerumRegenT5",
 		"AddStatusEffects": ["SerumRegen"],
 		"StatusEffectMod": 1,
-		"DurationOverrides": 20,
+		"DurationOverrides": 25,
 		"MinDurationModifier": 0,
 		"MaxDurationModifier": 0,
 		"DurationScaleFactor": 1,
@@ -10406,8 +10517,9 @@
 		"DisableUseInCombat": false,
 		"Damage": 0,
 		"MannequinTag": "Potion",
-		"CooldownDuration": 30,
+		"CooldownDuration": 40,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10427,6 +10539,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10446,6 +10559,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10465,6 +10579,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10484,6 +10599,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10503,6 +10619,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10522,6 +10639,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10541,6 +10659,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10560,6 +10679,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10579,6 +10699,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10598,6 +10719,7 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10617,6 +10739,67 @@
 		"MannequinTag": "Potion",
 		"CooldownDuration": 25,
 		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
+		"IsMountConsumable": false
+	},
+	{
+		"ConsumableID": "PotionShieldT5",
+		"AddStatusEffects": ["PotionShieldT5", "PotionShield_HitTrackingOrbs2", "PotionShield_HitTrackingOrbs3"],
+		"StatusEffectMod": 1,
+		"DurationOverrides": 15,
+		"MinDurationModifier": 0,
+		"MaxDurationModifier": 0,
+		"DurationScaleFactor": 1,
+		"MinPotencyModifier": 0,
+		"MaxPotencyModifier": 0,
+		"PotencyScaleFactor": 0,
+		"UseCount": 0,
+		"DisableUseInCombat": false,
+		"Damage": 0,
+		"MannequinTag": "Potion",
+		"CooldownDuration": 30,
+		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
+		"IsMountConsumable": false
+	},
+	{
+		"ConsumableID": "PotionGritT5",
+		"AddStatusEffects": ["PotionGritT5"],
+		"StatusEffectMod": 1,
+		"DurationOverrides": 10,
+		"MinDurationModifier": 0,
+		"MaxDurationModifier": 0,
+		"DurationScaleFactor": 1,
+		"MinPotencyModifier": 0,
+		"MaxPotencyModifier": 0,
+		"PotencyScaleFactor": 0,
+		"UseCount": 0,
+		"DisableUseInCombat": false,
+		"Damage": 0,
+		"MannequinTag": "Potion",
+		"CooldownDuration": 25,
+		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
+		"IsMountConsumable": false
+	},
+	{
+		"ConsumableID": "PotionLifestealT5",
+		"AddStatusEffects": ["PotionLifestealT5"],
+		"StatusEffectMod": 1,
+		"DurationOverrides": 15,
+		"MinDurationModifier": 0,
+		"MaxDurationModifier": 0,
+		"DurationScaleFactor": 1,
+		"MinPotencyModifier": 0,
+		"MaxPotencyModifier": 0,
+		"PotencyScaleFactor": 0,
+		"UseCount": 0,
+		"DisableUseInCombat": false,
+		"Damage": 0,
+		"MannequinTag": "Potion",
+		"CooldownDuration": 25,
+		"CooldownId": "SurvivalPotion",
+		"SharedCooldownLocString": "@ui_consumables_shared_cooldowns_survival",
 		"IsMountConsumable": false
 	},
 	{
@@ -10630,7 +10813,7 @@
 		"MinPotencyModifier": 0,
 		"MaxPotencyModifier": 0,
 		"PotencyScaleFactor": 0,
-		"RemoveStatusEffectCategories": ["FoodUtility"],
+		"RemoveStatusEffectCategories": ["MountFoodUtility"],
 		"UseCount": 0,
 		"DisableUseInCombat": false,
 		"Damage": 0,

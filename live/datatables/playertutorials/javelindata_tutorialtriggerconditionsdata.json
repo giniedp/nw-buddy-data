@@ -753,6 +753,24 @@
 		"GameEvent": "KillEvent"
 	},
 	{
+		"ConditionId": "GM_Jumppad_Long_EventCondition",
+		"Operation": "Equals",
+		"PlayerLevel": 0,
+		"StatusEffects": "GM_JumpPad_Long"
+	},
+	{
+		"ConditionId": "GM_Jumppad_Auto_EventCondition",
+		"Operation": "Equals",
+		"PlayerLevel": 0,
+		"StatusEffects": "GM_JumpPad_Auto"
+	},
+	{
+		"ConditionId": "GM_Jumppad_High_EventCondition",
+		"Operation": "Equals",
+		"PlayerLevel": 0,
+		"StatusEffects": "GM_JumpPad_High"
+	},
+	{
 		"ConditionId": "MountAchievementCondition",
 		"Operation": "HasUnlocked",
 		"PlayerLevel": 0,
@@ -1621,9 +1639,24 @@
 		"UIEvent": "StorageShed"
 	},
 	{
-		"ConditionId": "WarBoardOpenedUIScreenCondition",
+		"ConditionId": "WarEnteredCondition",
 		"PlayerLevel": 0,
-		"UIEvent": "WarBoardOpened"
+		"UIEvent": "WarEntered"
+	},
+	{
+		"ConditionId": "InvasionEnteredCondition",
+		"PlayerLevel": 0,
+		"UIEvent": "InvasionEntered"
+	},
+	{
+		"ConditionId": "OutpostRushEnteredCondition",
+		"PlayerLevel": 0,
+		"UIEvent": "OutpostRushEntered"
+	},
+	{
+		"ConditionId": "CaptureTheFlagEnteredCondition",
+		"PlayerLevel": 0,
+		"UIEvent": "CaptureTheFlagEntered"
 	},
 	{
 		"ConditionId": "GenericMasteryUIOpenCondition",
