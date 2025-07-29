@@ -54,6 +54,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 0,
@@ -95,7 +96,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "TestMode2",
@@ -152,6 +155,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 0,
@@ -193,134 +197,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
-	},
-	{
-		"GameModeId": "BattleBanners",
-		"ScriptName": "BattleBanners",
-		"RequiresTeamRaids": "TRUE",
-		"AdvanceThroughStatesOnUpdate": "0",
-		"DisplayName": "@ui_outpost_rush_signup_title",
-		"Description": "@ui_outpost_rush_signup_desc_cross_world",
-		"IconPath": "lyshineui/images/pugfinder/pugfinder_opr.webp",
-		"SimpleImagePath": "lyshineui/images/pugfinder/pugfinder_opr.webp",
-		"BackgroundImagePath": "lyshineui/images/pugfinder/gamemodesignup/outpostrush/outpostrushtabbg.webp",
-		"FeatureFlag": "test1",
-		"ItemClassesToRemoveOnExit": "OutpostRushOnly",
-		"UseTempGameModeLoadout": false,
-		"ClearBattleTokensOnExit": "True",
-		"RequiresGameModeGDEException": "True",
-		"RecommendedLevel": 40,
-		"RequiredLevel": 40,
-		"QueueReadyThreshold": 16,
-		"BackfillReadyThreshold": 19,
-		"NumTeams": 2,
-		"TeamCapacity": 10,
-		"CombineTeamGroups": false,
-		"ModeNameLocStringId": "@ui_outpost_rush_title",
-		"GearScoreOverrideValueMin": 700,
-		"GearScoreOverrideValueMax": 725,
-		"MinPlayerLevelToUseGearScoreOverride": 60,
-		"MaxPlayerLevelToUseGearScoreOverride": 65,
-		"ItemDropLevelThreshold01": 0,
-		"MinGroupSize": 0,
-		"PreserveOldGroup": true,
-		"IgnoreRequireContribution": false,
-		"IsDungeon": false,
-		"IsRaidTrial": false,
-		"IsSeasonTrial": false,
-		"IsSoloTrial": false,
-		"IsMutable": false,
-		"IsRemoteEntryAllowed": false,
-		"IsPVP": true,
-		"RestrictGathering": true,
-		"RestrictWaterGathering": true,
-		"LootTags": ["OutpostRush"],
-		"ContainerLevel": 0,
-		"GSClampLevelReqDelta": 0,
-		"VictoryDelaySec": 0,
-		"MaxAI": "OpenWorld",
-		"AISpawnRadius": "OpenWorld",
-		"AIDespawnRadius": "OpenWorld",
-		"ProjectedDurationMinutes": 15,
-		"Priority": 1,
-		"ImmediateLaunch": false,
-		"AILevelAdjustedPerceptionEnabled": false,
-		"AILeashingOptOut": false,
-		"DisableDeathsDoor": true,
-		"DisableMSQTrackersOnHud": true,
-		"AIPreventEnemyTraining": false,
-		"UseTeamNamePlate": true,
-		"ItemDropQuantityOnDeathModifier": 0.5,
-		"QuitButtonTextId": "@ui_outpost_rush_leave",
-		"CannotFastTravelTextId": "@ui_cannot_travel_outpost_rush",
-		"LeaveDescTextId": "@ui_outpost_rush_leave_desc",
-		"LeaveTimeDescTextId": "@ui_outpost_rush_leave_desc_time",
-		"LeaveTitleTextId": "@ui_outpost_rush_leave_title",
-		"WarBoardStatDefinitions": "ORWarboardStatDefinitions",
-		"WarBoardAttackerTeamIdx": 0,
-		"WarBoardDefenderTeamIdx": 1,
-		"RaidInviteDelaySec": 5,
-		"RaidInviteDurationSec": 90,
-		"BackfillDelaySec": 30,
-		"PriorityAddMin": 0,
-		"PriorityAddMax": 0,
-		"AllowPvpValueAccumulation": false,
-		"UsePendingListMatchmaking": false,
-		"AutoEquipQuickslot": true,
-		"ActivityType": "BattleBanners",
-		"OverrideDungeonTimeout": 0,
-		"TimerThresholdDefault": 0,
-		"TimerThresholdMutated": 0,
-		"SpecialQueueGroupSizes": 0,
-		"ResetChargeOnEnter": true,
-		"ShouldShowAcceptedFlow": false,
-		"ScreenHeaderTextId": "@Topic_Prompt_Join_Outpost_Rush",
-		"JoinButtonTextId": "@ui_outpost_rush_signup_joinsolo",
-		"SignupTitleTextId": "@ui_outpost_rush_title",
-		"LeaveQueueTitleTextId": "@ui_outpost_rush_leave_queue_title",
-		"LeaveQueueDescriptionTextId": "@ui_outpost_rush_leave_queue_desc",
-		"FailGroupPenaltyTextId": "@ui_outpost_rush_signup_failgrouppenalty",
-		"RespawnTypeToUseForUnstuck": "Raid",
-		"HidePoiName": true,
-		"HideCompass": false,
-		"ReplicateParticipantCharacterIds": true,
-		"GearScoreRecommendedValueMin": 0,
-		"GearScoreRecommendedValueMax": 0,
-		"MatchmakingMinLevel": 40,
-		"MatchmakingMaxLevel": 65,
-		"MatchmakingMinGS": 0,
-		"UsesRoleSelection": true,
-		"MatchmakingRequiredHealingFocus": 200,
-		"MatchmakingRequiredHealingMastery": 10,
-		"MatchmakingRequiresTauntGem": false,
-		"MatchmakingMinTanks": 0,
-		"MatchmakingMaxTanks": 4,
-		"MatchmakingMinHealers": 1,
-		"MatchmakingMaxHealers": 1,
-		"MatchmakingMinDPS": 0,
-		"MatchmakingMaxDPS": 4,
-		"UseMMBuff": false,
-		"DisableAllPerks": false,
-		"MatchmakingPriority": 0,
-		"AllowMounts": false,
-		"MountSummonErrorMsg": "@ui_mount_summon_failed_opr",
-		"AllowCamping": false,
-		"MRV2_NewR": 1500,
-		"MRV2_NewD": 350,
-		"MRV2_NewV": 0.06,
-		"MRV2_SConst": 0.5,
-		"MRV2_CConst": 0.000001,
-		"MRV2_DecDays": 14,
-		"MRV2_GBs": "1.0,1.2,1.25,1.25,1.3",
-		"MRV2_RankMultipliers_WinningTeam": "1,0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1",
-		"MRV2_RankMultipliers_LosingTeam": "0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1",
-		"DisablePSActivityCards": true,
-		"AfkModeId": "OutpostRush",
-		"ReadyUp_PercentRequired": 0.8,
-		"MapRotationStartIndex": 0,
-		"MapRotationTimeSpanInSeconds": 3600,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "CaptureTheFlag",
@@ -329,6 +208,8 @@
 		"AdvanceThroughStatesOnUpdate": "0",
 		"DisplayName": "@ctf_gamemode_name",
 		"Description": "@ctf_gamemode_description",
+		"NotificationTitle": "@ui_capture_the_flag_invite_notification_title",
+		"NotificationText": "@ui_capture_the_flag_invite_notification_text",
 		"IconPath": "lyshineui/images/pugfinder/pugfinder_ctf.webp",
 		"SimpleImagePath": "lyshineui/images/pugfinder/pugfinder_ctf.webp",
 		"BackgroundImagePath": "lyshineui/images/pugfinder/gamemodesignup/outpostrush/outpostrushtabbg.webp",
@@ -339,7 +220,7 @@
 		"RequiresGameModeGDEException": "True",
 		"RecommendedLevel": 60,
 		"RequiredLevel": 65,
-		"QueueReadyThreshold": 20,
+		"QueueReadyThreshold": 16,
 		"BackfillReadyThreshold": 19,
 		"NumTeams": 2,
 		"TeamCapacity": 10,
@@ -393,7 +274,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
-		"MinAcceptedInvites": "16",
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": true,
 		"ActivityType": "CaptureTheFlag",
@@ -451,10 +332,12 @@
 		"MRV2_RankMultipliers_LosingTeam": "0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1",
 		"DisablePSActivityCards": true,
 		"AfkModeId": "CaptureTheFlag",
-		"ReadyUp_PercentRequired": 0.8,
+		"ReadyUp_PercentRequired": 1,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 3600,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": true,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "Duel",
@@ -511,6 +394,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": true,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 0,
@@ -553,7 +437,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "OutpostRush",
@@ -562,6 +448,8 @@
 		"AdvanceThroughStatesOnUpdate": "0",
 		"DisplayName": "@ui_outpost_rush_title",
 		"Description": "@ui_outpost_rush_signup_desc_cross_world",
+		"NotificationTitle": "@ui_outpost_rush_invite_notification_title",
+		"NotificationText": "@ui_outpost_rush_invite_notification_text",
 		"IconPath": "lyshineui/images/pugfinder/pugfinder_opr.webp",
 		"SimpleImagePath": "lyshineui/images/pugfinder/pugfinder_opr.webp",
 		"BackgroundImagePath": "lyshineui/images/pugfinder/gamemodesignup/outpostrush/outpostrushtabbg.webp",
@@ -628,6 +516,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": true,
 		"ActivityType": "OutpostRush",
@@ -690,7 +579,9 @@
 		"ReadyUp_PercentRequired": 0.8,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 3600,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "OutpostRush_NoPerks",
@@ -699,6 +590,8 @@
 		"AdvanceThroughStatesOnUpdate": "0",
 		"DisplayName": "@ui_opr_no_perks_title",
 		"Description": "@ui_opr_no_perks_signup_desc_cross_world",
+		"NotificationTitle": "@ui_outpost_rush_invite_notification_title",
+		"NotificationText": "@ui_outpost_rush_invite_notification_text",
 		"IconPath": "lyshineui/images/pugfinder/pugfinder_opr_perkless.webp",
 		"SimpleImagePath": "lyshineui/images/pugfinder/pugfinder_opr_perkless.webp",
 		"BackgroundImagePath": "lyshineui/images/pugfinder/gamemodesignup/outpostrush/outpostrushtabbg.webp",
@@ -765,6 +658,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": true,
 		"ActivityType": "OutpostRush_NoPerks",
@@ -807,6 +701,7 @@
 		"MatchmakingMaxDPS": 4,
 		"UseMMBuff": false,
 		"DisableAllPerks": true,
+		"DisableAllPerkLabelOverrides": "EncumAdd,EncumReduce",
 		"MatchmakingPriority": 0,
 		"AllowMounts": true,
 		"MountSummonErrorMsg": "@ui_mount_summon_failed_opr",
@@ -825,7 +720,9 @@
 		"ReadyUp_PercentRequired": 0.8,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 3600,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "Arena3v3",
@@ -834,6 +731,8 @@
 		"AdvanceThroughStatesOnUpdate": "FALSE",
 		"DisplayName": "@ui_pvp_3v3_arena_queue_title",
 		"Description": "@ui_pvparenas_description_gearscore",
+		"NotificationTitle": "@ui_pvp_3v3_arena_invite_notification_title",
+		"NotificationText": "@ui_pvp_3v3_arena_invite_notification_text",
 		"IconPath": "lyshineui/images/pugfinder/pugfinder_arena.webp",
 		"SimpleImagePath": "lyshineui/images/pugfinder/pugfinder_arena.webp",
 		"BackgroundImagePath": "lyshineui/images/pugfinder/gamemodesignup/3v3arena/3v3arenatabbgold.webp",
@@ -901,7 +800,7 @@
 		"PriorityAddMin": 5,
 		"PriorityAddMax": 10,
 		"AllowPvpValueAccumulation": false,
-		"MinAcceptedInvites": "6",
+		"MinAcceptedInvites": 6,
 		"UsePendingListMatchmaking": true,
 		"AutoEquipQuickslot": true,
 		"ActivityType": "Arena3v3",
@@ -962,7 +861,9 @@
 		"ReadyUp_PercentRequired": 1,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 3600,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "Dungeon",
@@ -1016,7 +917,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
-		"MinAcceptedInvites": "5",
+		"MinAcceptedInvites": 5,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -1059,10 +960,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "Mutation",
@@ -1116,7 +1020,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
-		"MinAcceptedInvites": "5",
+		"MinAcceptedInvites": 5,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Mutation",
@@ -1159,10 +1063,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonAmrine",
@@ -1239,6 +1146,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -1280,10 +1188,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonShatteredObelisk",
@@ -1369,6 +1280,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -1410,10 +1322,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonRestlessShores01",
@@ -1499,6 +1414,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -1540,10 +1456,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonEbonscale00",
@@ -1629,6 +1548,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -1670,10 +1590,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonEdengrove00",
@@ -1760,6 +1683,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -1801,10 +1725,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonReekwater00",
@@ -1889,6 +1816,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -1930,10 +1858,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonCutlassKeys00",
@@ -2018,6 +1949,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -2059,10 +1991,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonGreatCleave01",
@@ -2147,6 +2082,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -2188,10 +2124,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonShatterMtn00",
@@ -2277,6 +2216,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -2318,10 +2258,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonBrimstoneSands00",
@@ -2406,6 +2349,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -2447,10 +2391,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonFirstLight01",
@@ -2535,6 +2482,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -2576,10 +2524,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonGreatCleave00",
@@ -2656,6 +2607,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -2697,10 +2649,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "DungeonDunwood02",
@@ -2767,6 +2722,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"ActivityType": "Dungeon",
@@ -2807,10 +2763,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "TrialBrimstoneSandworm",
@@ -2877,6 +2836,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 10800,
@@ -2928,10 +2888,13 @@
 		"MRV2_CConst": 0,
 		"MRV2_DecDays": 0,
 		"DisablePSActivityCards": true,
+		"AfkModeId": "Expedition",
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "RaidCutlassKeys00",
@@ -3080,6 +3043,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 14400,
@@ -3124,7 +3088,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "TrialSeason01",
@@ -3196,6 +3162,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 3600,
@@ -3249,7 +3216,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "TrialSeason04",
@@ -3321,6 +3290,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 3600,
@@ -3374,7 +3344,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestAdiana",
@@ -3450,6 +3422,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 2700,
@@ -3492,7 +3465,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestApophis",
@@ -3566,6 +3541,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1800,
@@ -3608,7 +3584,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestCaerDun",
@@ -3681,6 +3659,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1200,
@@ -3723,7 +3702,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestEmpressZhou",
@@ -3795,6 +3776,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1200,
@@ -3837,7 +3819,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestIsabella",
@@ -3909,6 +3893,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 2700,
@@ -3951,7 +3936,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestMammoth",
@@ -4027,6 +4014,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1800,
@@ -4069,7 +4057,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestMedusa",
@@ -4145,6 +4135,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1800,
@@ -4187,7 +4178,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestMotherwell",
@@ -4260,6 +4253,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1200,
@@ -4302,7 +4296,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestMedea",
@@ -4382,6 +4378,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1800,
@@ -4424,7 +4421,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestNihilo",
@@ -4497,6 +4496,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 2700,
@@ -4539,7 +4539,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestYonas",
@@ -4612,6 +4614,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1200,
@@ -4654,7 +4657,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "TrialSeason02Q13",
@@ -4728,6 +4733,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1200,
@@ -4770,7 +4776,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "TrialSeason02Q12",
@@ -4844,6 +4852,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1800,
@@ -4886,7 +4895,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "TrialSeason04Q02",
@@ -4959,6 +4970,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1800,
@@ -5001,7 +5013,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "TrialSeason04Q06",
@@ -5074,6 +5088,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1800,
@@ -5116,7 +5131,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "TrialSeason04Q05",
@@ -5189,6 +5206,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 2700,
@@ -5238,7 +5256,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestHeartforge",
@@ -5311,6 +5331,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1800,
@@ -5353,7 +5374,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestLiang",
@@ -5433,6 +5456,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1800,
@@ -5475,7 +5499,9 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	},
 	{
 		"GameModeId": "QuestGawain",
@@ -5546,6 +5572,7 @@
 		"PriorityAddMin": 0,
 		"PriorityAddMax": 0,
 		"AllowPvpValueAccumulation": false,
+		"MinAcceptedInvites": 0,
 		"UsePendingListMatchmaking": false,
 		"AutoEquipQuickslot": false,
 		"OverrideDungeonTimeout": 1800,
@@ -5588,6 +5615,8 @@
 		"ReadyUp_PercentRequired": 0,
 		"MapRotationStartIndex": 0,
 		"MapRotationTimeSpanInSeconds": 0,
-		"ForceFFA": false
+		"ForceFFA": false,
+		"UsesPowerUps": false,
+		"EnableEquipInCombat": false
 	}
 ]

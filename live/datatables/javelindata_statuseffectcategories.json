@@ -10,19 +10,6 @@
 		"ValueLimits": {}
 	},
 	{
-		"StatusEffectCategoryID": "Slow",
-		"DurationDiminishingMod": -0.2,
-		"DurationModMin": -0.8,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"MoveSpeedMod": -0.5,
-			"SprintSpeedMod": -0.5
-		}
-	},
-	{
 		"StatusEffectCategoryID": "Root",
 		"DurationDiminishingMod": -0.5,
 		"DurationModMin": -1,
@@ -41,6 +28,97 @@
 		"PotencyModMin": 0,
 		"PotencyModMax": 0,
 		"ValueLimits": {}
+	},
+	{
+		"StatusEffectCategoryID": "Slow",
+		"DurationDiminishingMod": -0.2,
+		"DurationModMin": -0.8,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"MoveSpeedMod": -0.5,
+			"SprintSpeedMod": -0.5
+		}
+	},
+	{
+		"StatusEffectCategoryID": "UnclampedSlow",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"MoveSpeedMod": -1,
+			"SprintSpeedMod": -1
+		}
+	},
+	{
+		"StatusEffectCategoryID": "NonDispellableSlow",
+		"DurationDiminishingMod": -0.2,
+		"DurationModMin": -0.8,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"MoveSpeedMod": -0.5,
+			"SprintSpeedMod": -0.5
+		}
+	},
+	{
+		"StatusEffectCategoryID": "Haste",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"MoveSpeedMod": 0.4,
+			"SprintSpeedMod": 0.4
+		}
+	},
+	{
+		"StatusEffectCategoryID": "UnclampedHaste",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"MoveSpeedMod": 1,
+			"SprintSpeedMod": 1
+		}
+	},
+	{
+		"StatusEffectCategoryID": "NonDispellableHaste",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"MoveSpeedMod": 0.4,
+			"SprintSpeedMod": 0.4
+		}
+	},
+	{
+		"StatusEffectCategoryID": "TraversalHaste",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"MoveSpeedMod": 0.4,
+			"SprintSpeedMod": 0.4
+		}
 	},
 	{
 		"StatusEffectCategoryID": "Rend",
@@ -66,7 +144,7 @@
 		}
 	},
 	{
-		"StatusEffectCategoryID": "ArmorRend",
+		"StatusEffectCategoryID": "UnclampedRend",
 		"DurationDiminishingMod": 0,
 		"DurationModMin": 0,
 		"DurationModMax": 0,
@@ -74,8 +152,64 @@
 		"PotencyModMin": 0,
 		"PotencyModMax": 0,
 		"ValueLimits": {
-			"ElementalArmor": -0.7,
-			"PhysicalArmor": -0.7
+			"ABSAcid": -1,
+			"ABSArcane": -1,
+			"ABSCorruption": -1,
+			"ABSFire": -1,
+			"ABSIce": -1,
+			"ABSLightning": -1,
+			"ABSNature": -1,
+			"ABSSiege": -1,
+			"ABSSlash": -1,
+			"ABSStandard": -1,
+			"ABSStrike": -1,
+			"ABSThrust": -1
+		}
+	},
+	{
+		"StatusEffectCategoryID": "NonDispellableRend",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"ABSAcid": -0.3,
+			"ABSArcane": -0.3,
+			"ABSCorruption": -0.3,
+			"ABSFire": -0.3,
+			"ABSIce": -0.3,
+			"ABSLightning": -0.3,
+			"ABSNature": -0.3,
+			"ABSSiege": -0.3,
+			"ABSSlash": -0.3,
+			"ABSStandard": -0.3,
+			"ABSStrike": -0.3,
+			"ABSThrust": -0.3
+		}
+	},
+	{
+		"StatusEffectCategoryID": "ABSCapped90Percent",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"ABSAcid": 0.9,
+			"ABSArcane": 0.9,
+			"ABSCorruption": 0.9,
+			"ABSFire": 0.9,
+			"ABSIce": 0.9,
+			"ABSLightning": 0.9,
+			"ABSNature": 0.9,
+			"ABSSiege": 0.9,
+			"ABSSlash": 0.9,
+			"ABSStandard": 0.9,
+			"ABSStrike": 0.9,
+			"ABSThrust": 0.9
 		}
 	},
 	{
@@ -102,6 +236,78 @@
 		}
 	},
 	{
+		"StatusEffectCategoryID": "UnclampedFortify",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"ABSAcid": 5,
+			"ABSArcane": 5,
+			"ABSCorruption": 5,
+			"ABSFire": 5,
+			"ABSIce": 5,
+			"ABSLightning": 5,
+			"ABSNature": 5,
+			"ABSSiege": 5,
+			"ABSSlash": 5,
+			"ABSStandard": 5,
+			"ABSStrike": 5,
+			"ABSThrust": 5
+		}
+	},
+	{
+		"StatusEffectCategoryID": "NonDispellableFortify",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"ABSAcid": 0.5,
+			"ABSArcane": 0.5,
+			"ABSCorruption": 0.5,
+			"ABSFire": 0.5,
+			"ABSIce": 0.5,
+			"ABSLightning": 0.5,
+			"ABSNature": 0.5,
+			"ABSSiege": 0.5,
+			"ABSSlash": 0.5,
+			"ABSStandard": 0.5,
+			"ABSStrike": 0.5,
+			"ABSThrust": 0.5
+		}
+	},
+	{
+		"StatusEffectCategoryID": "ArmorRend",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"ElementalArmor": -0.7,
+			"PhysicalArmor": -0.7
+		}
+	},
+	{
+		"StatusEffectCategoryID": "NonDispellableArmorRend",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"ElementalArmor": -0.7,
+			"PhysicalArmor": -0.7
+		}
+	},
+	{
 		"StatusEffectCategoryID": "ArmorFortify",
 		"DurationDiminishingMod": 0,
 		"DurationModMin": 0,
@@ -115,7 +321,66 @@
 		}
 	},
 	{
+		"StatusEffectCategoryID": "NonDispellableArmorFortify",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"ElementalArmor": 2,
+			"PhysicalArmor": 2
+		}
+	},
+	{
 		"StatusEffectCategoryID": "Weaken",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"DMGAcid": 0.5,
+			"DMGArcane": 0.5,
+			"DMGCorruption": 0.5,
+			"DMGFire": 0.5,
+			"DMGIce": 0.5,
+			"DMGLightning": 0.5,
+			"DMGNature": 0.5,
+			"DMGSiege": 0.5,
+			"DMGSlash": 0.5,
+			"DMGStandard": 0.5,
+			"DMGStrike": 0.5,
+			"DMGThrust": 0.5
+		}
+	},
+	{
+		"StatusEffectCategoryID": "UnclampedWeaken",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"DMGAcid": 0,
+			"DMGArcane": 0,
+			"DMGCorruption": 0,
+			"DMGFire": 0,
+			"DMGIce": 0,
+			"DMGLightning": 0,
+			"DMGNature": 0,
+			"DMGSiege": 0,
+			"DMGSlash": 0,
+			"DMGStandard": 0,
+			"DMGStrike": 0,
+			"DMGThrust": 0
+		}
+	},
+	{
+		"StatusEffectCategoryID": "NonDispellableWeaken",
 		"DurationDiminishingMod": 0,
 		"DurationModMin": 0,
 		"DurationModMax": 0,
@@ -161,7 +426,7 @@
 		}
 	},
 	{
-		"StatusEffectCategoryID": "Disease",
+		"StatusEffectCategoryID": "UnclampedEmpower",
 		"DurationDiminishingMod": 0,
 		"DurationModMin": 0,
 		"DurationModMax": 0,
@@ -169,14 +434,22 @@
 		"PotencyModMin": 0,
 		"PotencyModMax": 0,
 		"ValueLimits": {
-			"ConsumableHealMod": -0.5,
-			"DmgPctToHealthHealMod": -0.5,
-			"HealMod": -0.5,
-			"NonConsumableHealMod": -0.5
+			"DMGAcid": 5,
+			"DMGArcane": 5,
+			"DMGCorruption": 5,
+			"DMGFire": 5,
+			"DMGIce": 5,
+			"DMGLightning": 5,
+			"DMGNature": 5,
+			"DMGSiege": 5,
+			"DMGSlash": 5,
+			"DMGStandard": 5,
+			"DMGStrike": 5,
+			"DMGThrust": 5
 		}
 	},
 	{
-		"StatusEffectCategoryID": "Haste",
+		"StatusEffectCategoryID": "NonDispellableEmpower",
 		"DurationDiminishingMod": 0,
 		"DurationModMin": 0,
 		"DurationModMax": 0,
@@ -184,49 +457,19 @@
 		"PotencyModMin": 0,
 		"PotencyModMax": 0,
 		"ValueLimits": {
-			"MoveSpeedMod": 0.5,
-			"SprintSpeedMod": 0.5
+			"DMGAcid": 1.5,
+			"DMGArcane": 1.5,
+			"DMGCorruption": 1.5,
+			"DMGFire": 1.5,
+			"DMGIce": 1.5,
+			"DMGLightning": 1.5,
+			"DMGNature": 1.5,
+			"DMGSiege": 1.5,
+			"DMGSlash": 1.5,
+			"DMGStandard": 1.5,
+			"DMGStrike": 1.5,
+			"DMGThrust": 1.5
 		}
-	},
-	{
-		"StatusEffectCategoryID": "AI_Neutral",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {}
-	},
-	{
-		"StatusEffectCategoryID": "NonDispellableDebuff",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {}
-	},
-	{
-		"StatusEffectCategoryID": "NonDispellableBuff",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {}
-	},
-	{
-		"StatusEffectCategoryID": "BossDebuff",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {}
 	},
 	{
 		"StatusEffectCategoryID": "MutatorEmpower",
@@ -252,7 +495,7 @@
 		}
 	},
 	{
-		"StatusEffectCategoryID": "MutatorHearty",
+		"StatusEffectCategoryID": "Disease",
 		"DurationDiminishingMod": 0,
 		"DurationModMin": 0,
 		"DurationModMax": 0,
@@ -260,152 +503,10 @@
 		"PotencyModMin": 0,
 		"PotencyModMax": 0,
 		"ValueLimits": {
-			"MaxHealth": 5
-		}
-	},
-	{
-		"StatusEffectCategoryID": "MutatorDisease",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"ConsumableHealMod": -1,
-			"DmgPctToHealthHealMod": -1,
-			"HealMod": -1,
-			"NonConsumableHealMod": -1
-		}
-	},
-	{
-		"StatusEffectCategoryID": "MutatorCurse",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {}
-	},
-	{
-		"StatusEffectCategoryID": "Anointed",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"ConsumableHealMod": 1,
-			"DmgPctToHealthHealMod": 1,
-			"HealMod": 1,
-			"NonConsumableHealMod": 1
-		}
-	},
-	{
-		"StatusEffectCategoryID": "UnclampedSlow",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"MoveSpeedMod": -1,
-			"SprintSpeedMod": -1
-		}
-	},
-	{
-		"StatusEffectCategoryID": "UnclampedRend",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"ABSAcid": -1,
-			"ABSArcane": -1,
-			"ABSCorruption": -1,
-			"ABSFire": -1,
-			"ABSIce": -1,
-			"ABSLightning": -1,
-			"ABSNature": -1,
-			"ABSSiege": -1,
-			"ABSSlash": -1,
-			"ABSStandard": -1,
-			"ABSStrike": -1,
-			"ABSThrust": -1
-		}
-	},
-	{
-		"StatusEffectCategoryID": "UnclampedFortify",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"ABSAcid": 5,
-			"ABSArcane": 5,
-			"ABSCorruption": 5,
-			"ABSFire": 5,
-			"ABSIce": 5,
-			"ABSLightning": 5,
-			"ABSNature": 5,
-			"ABSSiege": 5,
-			"ABSSlash": 5,
-			"ABSStandard": 5,
-			"ABSStrike": 5,
-			"ABSThrust": 5
-		}
-	},
-	{
-		"StatusEffectCategoryID": "UnclampedWeaken",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"DMGAcid": 0,
-			"DMGArcane": 0,
-			"DMGCorruption": 0,
-			"DMGFire": 0,
-			"DMGIce": 0,
-			"DMGLightning": 0,
-			"DMGNature": 0,
-			"DMGSiege": 0,
-			"DMGSlash": 0,
-			"DMGStandard": 0,
-			"DMGStrike": 0,
-			"DMGThrust": 0
-		}
-	},
-	{
-		"StatusEffectCategoryID": "UnclampedEmpower",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"DMGAcid": 5,
-			"DMGArcane": 5,
-			"DMGCorruption": 5,
-			"DMGFire": 5,
-			"DMGIce": 5,
-			"DMGLightning": 5,
-			"DMGNature": 5,
-			"DMGSiege": 5,
-			"DMGSlash": 5,
-			"DMGStandard": 5,
-			"DMGStrike": 5,
-			"DMGThrust": 5
+			"ConsumableHealMod": -0.5,
+			"DmgPctToHealthHealMod": -0.5,
+			"HealMod": -0.5,
+			"NonConsumableHealMod": -0.5
 		}
 	},
 	{
@@ -424,7 +525,7 @@
 		}
 	},
 	{
-		"StatusEffectCategoryID": "UnclampedHaste",
+		"StatusEffectCategoryID": "NonDispellableDisease",
 		"DurationDiminishingMod": 0,
 		"DurationModMin": 0,
 		"DurationModMax": 0,
@@ -432,9 +533,202 @@
 		"PotencyModMin": 0,
 		"PotencyModMax": 0,
 		"ValueLimits": {
-			"MoveSpeedMod": 1,
-			"SprintSpeedMod": 1
+			"ConsumableHealMod": -0.5,
+			"DmgPctToHealthHealMod": -0.5,
+			"HealMod": -0.5,
+			"NonConsumableHealMod": -0.5
 		}
+	},
+	{
+		"StatusEffectCategoryID": "MutatorDisease",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"ConsumableHealMod": -1,
+			"DmgPctToHealthHealMod": -1,
+			"HealMod": -1,
+			"NonConsumableHealMod": -1
+		}
+	},
+	{
+		"StatusEffectCategoryID": "Anointed",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"ConsumableHealMod": 1,
+			"DmgPctToHealthHealMod": 1,
+			"HealMod": 1,
+			"NonConsumableHealMod": 1
+		}
+	},
+	{
+		"StatusEffectCategoryID": "NonDispellableAnointed",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"ConsumableHealMod": 1,
+			"DmgPctToHealthHealMod": 1,
+			"HealMod": 1,
+			"NonConsumableHealMod": 1
+		}
+	},
+	{
+		"StatusEffectCategoryID": "Energized",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"StaminaRate": 0.5
+		}
+	},
+	{
+		"StatusEffectCategoryID": "UnclampedEnergized",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"StaminaRate": 2
+		}
+	},
+	{
+		"StatusEffectCategoryID": "Exhaust",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"StaminaRate": -0.5
+		}
+	},
+	{
+		"StatusEffectCategoryID": "UnclampedExhaust",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"StaminaRate": -1
+		}
+	},
+	{
+		"StatusEffectCategoryID": "Hearty",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"MaxHealth": 5
+		}
+	},
+	{
+		"StatusEffectCategoryID": "MutatorHearty",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"MaxHealth": 5
+		}
+	},
+	{
+		"StatusEffectCategoryID": "CCDurReduction",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"EffectDurationMods": -0.9
+		}
+	},
+	{
+		"StatusEffectCategoryID": "NonDispellableDebuff",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {}
+	},
+	{
+		"StatusEffectCategoryID": "NonDispellableBuff",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {}
+	},
+	{
+		"StatusEffectCategoryID": "Shrivelled",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {
+			"HealScalingValueMultiplier": -0.5
+		}
+	},
+	{
+		"StatusEffectCategoryID": "AI_Neutral",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {}
+	},
+	{
+		"StatusEffectCategoryID": "BossDebuff",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {}
+	},
+	{
+		"StatusEffectCategoryID": "MutatorCurse",
+		"DurationDiminishingMod": 0,
+		"DurationModMin": 0,
+		"DurationModMax": 0,
+		"PotencyDiminishingMod": 0,
+		"PotencyModMin": 0,
+		"PotencyModMax": 0,
+		"ValueLimits": {}
 	},
 	{
 		"StatusEffectCategoryID": "UnclampedFactionResourceMod",
@@ -489,124 +783,6 @@
 		}
 	},
 	{
-		"StatusEffectCategoryID": "Hearty",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"MaxHealth": 5
-		}
-	},
-	{
-		"StatusEffectCategoryID": "NonDispellableWeaken",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"DMGAcid": 0.5,
-			"DMGArcane": 0.5,
-			"DMGCorruption": 0.5,
-			"DMGFire": 0.5,
-			"DMGIce": 0.5,
-			"DMGLightning": 0.5,
-			"DMGNature": 0.5,
-			"DMGSiege": 0.5,
-			"DMGSlash": 0.5,
-			"DMGStandard": 0.5,
-			"DMGStrike": 0.5,
-			"DMGThrust": 0.5
-		}
-	},
-	{
-		"StatusEffectCategoryID": "NonDispellableEmpower",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"DMGAcid": 1.5,
-			"DMGArcane": 1.5,
-			"DMGCorruption": 1.5,
-			"DMGFire": 1.5,
-			"DMGIce": 1.5,
-			"DMGLightning": 1.5,
-			"DMGNature": 1.5,
-			"DMGSiege": 1.5,
-			"DMGSlash": 1.5,
-			"DMGStandard": 1.5,
-			"DMGStrike": 1.5,
-			"DMGThrust": 1.5
-		}
-	},
-	{
-		"StatusEffectCategoryID": "CCDurReduction",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"EffectDurationMods": -0.9
-		}
-	},
-	{
-		"StatusEffectCategoryID": "Energized",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"StaminaRate": 0.5
-		}
-	},
-	{
-		"StatusEffectCategoryID": "Exhaust",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"StaminaRate": -0.5
-		}
-	},
-	{
-		"StatusEffectCategoryID": "UnclampedEnergized",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"StaminaRate": 2
-		}
-	},
-	{
-		"StatusEffectCategoryID": "UnclampedExhaust",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"StaminaRate": -1
-		}
-	},
-	{
 		"StatusEffectCategoryID": "SporeOffense",
 		"DurationDiminishingMod": 0,
 		"DurationModMin": 0,
@@ -637,18 +813,6 @@
 		"ValueLimits": {}
 	},
 	{
-		"StatusEffectCategoryID": "Shrivelled",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"HealScalingValueMultiplier": -0.5
-		}
-	},
-	{
 		"StatusEffectCategoryID": "MammothEmpowered",
 		"DurationDiminishingMod": 0,
 		"DurationModMin": 0,
@@ -659,32 +823,6 @@
 		"ValueLimits": {}
 	},
 	{
-		"StatusEffectCategoryID": "NonDispellableSlow",
-		"DurationDiminishingMod": -0.2,
-		"DurationModMin": -0.8,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"MoveSpeedMod": -0.5,
-			"SprintSpeedMod": -0.5
-		}
-	},
-	{
-		"StatusEffectCategoryID": "TraversalHaste",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"MoveSpeedMod": 0.5,
-			"SprintSpeedMod": 0.5
-		}
-	},
-	{
 		"StatusEffectCategoryID": "Taunt",
 		"DurationDiminishingMod": 0,
 		"DurationModMin": 0,
@@ -693,143 +831,5 @@
 		"PotencyModMin": 0,
 		"PotencyModMax": 0,
 		"ValueLimits": {}
-	},
-	{
-		"StatusEffectCategoryID": "ABSCapped90Percent",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"ABSAcid": 0.9,
-			"ABSArcane": 0.9,
-			"ABSCorruption": 0.9,
-			"ABSFire": 0.9,
-			"ABSIce": 0.9,
-			"ABSLightning": 0.9,
-			"ABSNature": 0.9,
-			"ABSSiege": 0.9,
-			"ABSSlash": 0.9,
-			"ABSStandard": 0.9,
-			"ABSStrike": 0.9,
-			"ABSThrust": 0.9
-		}
-	},
-	{
-		"StatusEffectCategoryID": "NonDispellableRend",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"ABSAcid": -0.3,
-			"ABSArcane": -0.3,
-			"ABSCorruption": -0.3,
-			"ABSFire": -0.3,
-			"ABSIce": -0.3,
-			"ABSLightning": -0.3,
-			"ABSNature": -0.3,
-			"ABSSiege": -0.3,
-			"ABSSlash": -0.3,
-			"ABSStandard": -0.3,
-			"ABSStrike": -0.3,
-			"ABSThrust": -0.3
-		}
-	},
-	{
-		"StatusEffectCategoryID": "NonDispellableArmorRend",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"ElementalArmor": -0.7,
-			"PhysicalArmor": -0.7
-		}
-	},
-	{
-		"StatusEffectCategoryID": "NonDispellableFortify",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"ABSAcid": 0.5,
-			"ABSArcane": 0.5,
-			"ABSCorruption": 0.5,
-			"ABSFire": 0.5,
-			"ABSIce": 0.5,
-			"ABSLightning": 0.5,
-			"ABSNature": 0.5,
-			"ABSSiege": 0.5,
-			"ABSSlash": 0.5,
-			"ABSStandard": 0.5,
-			"ABSStrike": 0.5,
-			"ABSThrust": 0.5
-		}
-	},
-	{
-		"StatusEffectCategoryID": "NonDispellableArmorFortify",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"ElementalArmor": 2,
-			"PhysicalArmor": 2
-		}
-	},
-	{
-		"StatusEffectCategoryID": "NonDispellableDisease",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"ConsumableHealMod": -0.5,
-			"DmgPctToHealthHealMod": -0.5,
-			"HealMod": -0.5,
-			"NonConsumableHealMod": -0.5
-		}
-	},
-	{
-		"StatusEffectCategoryID": "NonDispellableHaste",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"MoveSpeedMod": 0.5,
-			"SprintSpeedMod": 0.5
-		}
-	},
-	{
-		"StatusEffectCategoryID": "NonDispellableAnointed",
-		"DurationDiminishingMod": 0,
-		"DurationModMin": 0,
-		"DurationModMax": 0,
-		"PotencyDiminishingMod": 0,
-		"PotencyModMin": 0,
-		"PotencyModMax": 0,
-		"ValueLimits": {
-			"ConsumableHealMod": 1,
-			"DmgPctToHealthHealMod": 1,
-			"HealMod": 1,
-			"NonConsumableHealMod": 1
-		}
 	}
 ]

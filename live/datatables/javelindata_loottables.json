@@ -21196,7 +21196,7 @@
 		"Item1": "0",
 		"Item2": "0",
 		"Item3": "0",
-		"Item4": "90000",
+		"Item4": "60000",
 		"Item5": "0"
 	},
 	{
@@ -21209,8 +21209,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]CreatureLootCommon_S8Filter",
-		"Item2": "[LTID]CreatureLootElite_S8Filter",
+		"Item1": "[LTID]CreatureLootCommon",
+		"Item2": "[LTID]CreatureLootElite",
 		"Item3": "[LTID]CreatureLootNamed",
 		"Item4": "[LTID]ArenaKeysAndParts",
 		"Item5": "[LTID]CreatureLootDungeon",
@@ -21276,43 +21276,6 @@
 		"Item17": "0"
 	},
 	{
-		"LootTableID": "CreatureLootElite_S8Filter",
-		"AND/OR": "AND",
-		"RollBonusSetting": "ClampMax",
-		"Conditions": ["Elite"],
-		"UseLevelGS": "TRUE",
-		"HWMMult": 1.5,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]CreatureLootElite",
-		"Item2": "[LBID]CreaturesMcGuffins",
-		"Item3": "[LBID]CreaturesMcGuffins",
-		"Item4": "[LBID]CreaturesMcGuffins"
-	},
-	{
-		"LootTableID": "CreatureLootElite_S8Filter_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1-2",
-		"Item3": "1",
-		"Item4": "2"
-	},
-	{
-		"LootTableID": "CreatureLootElite_S8Filter_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "35000",
-		"Item4": "80000"
-	},
-	{
 		"LootTableID": "CreatureLootElite",
 		"AND/OR": "OR",
 		"RollBonusSetting": "ClampMax",
@@ -21376,9 +21339,7 @@
 		"Item9": "[LBID]ZoneNamedItems",
 		"Item10": "[LBID]GlobalNamedListLow",
 		"Item11": "[LTID]PvPResourceEliteCreatureNamed",
-		"Item12": "[LBID]CreaturesMcGuffins",
-		"Item13": "[LBID]CreaturesMcGuffins",
-		"Item14": "[LBID]CreaturesMcGuffins"
+		"Item12": "[LBID]CreaturesMcGuffins"
 	},
 	{
 		"LootTableID": "CreatureLootNamed_Qty",
@@ -21397,9 +21358,7 @@
 		"Item9": "1",
 		"Item10": "1",
 		"Item11": "1",
-		"Item12": "2",
-		"Item13": "1-3",
-		"Item14": "1"
+		"Item12": "1"
 	},
 	{
 		"LootTableID": "CreatureLootNamed_Probs",
@@ -21418,42 +21377,7 @@
 		"Item9": "75000",
 		"Item10": "60000",
 		"Item11": "0",
-		"Item12": "0",
-		"Item13": "50000",
-		"Item14": "95000"
-	},
-	{
-		"LootTableID": "CreatureLootCommon_S8Filter",
-		"AND/OR": "AND",
-		"RollBonusSetting": "ClampMax",
-		"Conditions": ["Common"],
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]CreatureLootCommon",
-		"Item2": "[LBID]CreaturesMcGuffins",
-		"Item3": "[LBID]CreaturesMcGuffins"
-	},
-	{
-		"LootTableID": "CreatureLootCommon_S8Filter_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1-2",
-		"Item3": "1-3"
-	},
-	{
-		"LootTableID": "CreatureLootCommon_S8Filter_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "60000"
+		"Item12": "75000"
 	},
 	{
 		"LootTableID": "CreatureLootCommon",
@@ -21469,7 +21393,8 @@
 		"Item3": "[LBID]AttributeItems",
 		"Item4": "[LBID]SpecialCreatureResourcesT1",
 		"Item5": "[LTID]AzothRoll",
-		"Item6": "[LBID]CreatureTrophyArtifacts"
+		"Item6": "[LBID]CreatureTrophyArtifacts",
+		"Item7": "[LBID]CreaturesMcGuffins"
 	},
 	{
 		"LootTableID": "CreatureLootCommon_Qty",
@@ -21482,7 +21407,8 @@
 		"Item3": "1",
 		"Item4": "1",
 		"Item5": "1",
-		"Item6": "1"
+		"Item6": "1",
+		"Item7": "1"
 	},
 	{
 		"LootTableID": "CreatureLootCommon_Probs",
@@ -21495,7 +21421,8 @@
 		"Item3": "90000",
 		"Item4": "95000",
 		"Item5": "97500",
-		"Item6": "99500"
+		"Item6": "99500",
+		"Item7": "90000"
 	},
 	{
 		"LootTableID": "CreatureLootBossTrophyArtifacts",
@@ -22257,8 +22184,7 @@
 		"Item5": "[LBID]HeartGemRunes",
 		"Item6": "[LTID]CreatureLootDungeonBossEquipment",
 		"Item7": "[LBID]DungeonSpecialResources",
-		"Item8": "[LBID]ExpeditionMcGuffins",
-		"Item9": "[LBID]ExpeditionMcGuffins"
+		"Item8": "[LBID]ExpeditionMcGuffins"
 	},
 	{
 		"LootTableID": "CreatureLootDungeonBoss_Qty",
@@ -22273,8 +22199,7 @@
 		"Item5": "1",
 		"Item6": "1",
 		"Item7": "1",
-		"Item8": "10",
-		"Item9": "1-10"
+		"Item8": "1"
 	},
 	{
 		"LootTableID": "CreatureLootDungeonBoss_Probs",
@@ -22289,8 +22214,7 @@
 		"Item5": "10000",
 		"Item6": "0",
 		"Item7": "80000",
-		"Item8": "0",
-		"Item9": "50000"
+		"Item8": "50000"
 	},
 	{
 		"LootTableID": "CreatureLootDungeonBossEquipment",
@@ -22364,8 +22288,7 @@
 		"Item1": "[LTID]ContainerAlchemyBucketsSmall",
 		"Item2": "[LTID]VarangianChestFlameCoreNormalTop",
 		"Item3": "[LTID]PvPResourceEliteChestSmall",
-		"Item4": "[LBID]EChestsMcGuffins",
-		"Item5": "[LBID]EChestsMcGuffins"
+		"Item4": "[LBID]EChestsMcGuffins"
 	},
 	{
 		"LootTableID": "ContainerLootAlchemySmall_Qty",
@@ -22376,8 +22299,7 @@
 		"Item1": "1-2",
 		"Item2": "1",
 		"Item3": "1",
-		"Item4": "1",
-		"Item5": "1"
+		"Item4": "1"
 	},
 	{
 		"LootTableID": "ContainerLootAlchemySmall_Probs",
@@ -22388,8 +22310,7 @@
 		"Item1": "0",
 		"Item2": "0",
 		"Item3": "0",
-		"Item4": "0",
-		"Item5": "65000"
+		"Item4": "65000"
 	},
 	{
 		"LootTableID": "ContainerAlchemyBucketsSmall",
@@ -22437,9 +22358,7 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LTID]ContainerAlchemyBucketsLarge",
 		"Item2": "[LTID]VarangianChestFlameCoreNormalTop",
-		"Item3": "[LTID]PvPResourceEliteChest",
-		"Item4": "[LBID]EChestsMcGuffins",
-		"Item5": "[LBID]EChestsMcGuffins"
+		"Item3": "[LTID]PvPResourceEliteChest"
 	},
 	{
 		"LootTableID": "ContainerLootAlchemyLarge_Qty",
@@ -22449,9 +22368,7 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "2",
 		"Item2": "1",
-		"Item3": "1",
-		"Item4": "1-2",
-		"Item5": "1-3"
+		"Item3": "1"
 	},
 	{
 		"LootTableID": "ContainerLootAlchemyLarge_Probs",
@@ -22461,9 +22378,7 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
-		"Item3": "0",
-		"Item4": "0",
-		"Item5": "50000"
+		"Item3": "0"
 	},
 	{
 		"LootTableID": "ContainerAlchemyBucketsLarge",
@@ -22515,8 +22430,7 @@
 		"Item1": "[LTID]ContainerCookingBucketsSmall",
 		"Item2": "[LBID]CookingRecipes",
 		"Item3": "[LTID]PvPResourceEliteChestSmall",
-		"Item4": "[LBID]EChestsMcGuffins",
-		"Item5": "[LBID]EChestsMcGuffins"
+		"Item4": "[LBID]EChestsMcGuffins"
 	},
 	{
 		"LootTableID": "ContainerLootCookingSmall_Qty",
@@ -22527,8 +22441,7 @@
 		"Item1": "1-2",
 		"Item2": "1",
 		"Item3": "1",
-		"Item4": "1",
-		"Item5": "1"
+		"Item4": "1"
 	},
 	{
 		"LootTableID": "ContainerLootCookingSmall_Probs",
@@ -22539,8 +22452,7 @@
 		"Item1": "0",
 		"Item2": "98000",
 		"Item3": "0",
-		"Item4": "0",
-		"Item5": "65000"
+		"Item4": "65000"
 	},
 	{
 		"LootTableID": "ContainerCookingBucketsSmall",
@@ -22582,9 +22494,7 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LTID]ContainerCookingBucketsLarge",
 		"Item2": "[LBID]CookingRecipes",
-		"Item3": "[LTID]PvPResourceEliteChest",
-		"Item4": "[LBID]EChestsMcGuffins",
-		"Item5": "[LBID]EChestsMcGuffins"
+		"Item3": "[LTID]PvPResourceEliteChest"
 	},
 	{
 		"LootTableID": "ContainerLootCookingLarge_Qty",
@@ -22594,9 +22504,7 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "3-4",
 		"Item2": "1",
-		"Item3": "1",
-		"Item4": "1-2",
-		"Item5": "1-3"
+		"Item3": "1"
 	},
 	{
 		"LootTableID": "ContainerLootCookingLarge_Probs",
@@ -22606,9 +22514,7 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "95000",
-		"Item3": "0",
-		"Item4": "0",
-		"Item5": "50000"
+		"Item3": "0"
 	},
 	{
 		"LootTableID": "ContainerCookingBucketsLarge",
@@ -22654,8 +22560,7 @@
 		"Item5": "[LTID]VarangianChestFlameCoreNormalTop",
 		"Item6": "[LBID]FemPattern",
 		"Item7": "[LTID]PvPResourceEliteChestSmall",
-		"Item8": "[LBID]EChestsMcGuffins",
-		"Item9": "[LBID]EChestsMcGuffins"
+		"Item8": "[LBID]EChestsMcGuffins"
 	},
 	{
 		"LootTableID": "ContainerLootSmallLeveled_Qty",
@@ -22670,8 +22575,7 @@
 		"Item5": "1",
 		"Item6": "1",
 		"Item7": "1",
-		"Item8": "1",
-		"Item9": "1"
+		"Item8": "1"
 	},
 	{
 		"LootTableID": "ContainerLootSmallLeveled_Probs",
@@ -22686,8 +22590,7 @@
 		"Item5": "0",
 		"Item6": "98500",
 		"Item7": "0",
-		"Item8": "0",
-		"Item9": "65000"
+		"Item8": "65000"
 	},
 	{
 		"LootTableID": "ContainerLootSmallLeveled_2",
@@ -22992,7 +22895,7 @@
 		"Item3": "87500",
 		"Item4": "97500",
 		"Item5": "0",
-		"Item6": "45000"
+		"Item6": "65000"
 	},
 	{
 		"LootTableID": "ContainerLootLarge",
@@ -23015,8 +22918,7 @@
 		"Item9": "[LTID]VarangianChestFlameCoreNormalTop",
 		"Item10": "[LBID]FemPattern",
 		"Item11": "[LTID]PvPResourceEliteChest",
-		"Item12": "[LBID]EChestsMcGuffins",
-		"Item13": "[LBID]EChestsMcGuffins"
+		"Item12": "[LBID]EChestsMcGuffins"
 	},
 	{
 		"LootTableID": "ContainerLootLarge_Qty",
@@ -23035,8 +22937,7 @@
 		"Item9": "1",
 		"Item10": "1",
 		"Item11": "1",
-		"Item12": "1-2",
-		"Item13": "1-3"
+		"Item12": "1"
 	},
 	{
 		"LootTableID": "ContainerLootLarge_Probs",
@@ -23055,8 +22956,7 @@
 		"Item9": "0",
 		"Item10": "99900",
 		"Item11": "0",
-		"Item12": "0",
-		"Item13": "50000"
+		"Item12": "50000"
 	},
 	{
 		"LootTableID": "GlobalNamedListRoll",
@@ -29925,7 +29825,9 @@
 		"Item2": "[LBID]CaptureTheFlagNonNamedWeaponRoll",
 		"GearScoreRange2": "630-650",
 		"Item3": "[LBID]CaptureTheFlagJewelry",
-		"GearScoreRange3": "630-650"
+		"GearScoreRange3": "630-650",
+		"Item4": "[LBID]CaptureTheFlagArtifactMaster",
+		"GearScoreRange4": "700"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL61_Qty",
@@ -29935,7 +29837,8 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "2",
 		"Item2": "1",
-		"Item3": "1"
+		"Item3": "1",
+		"Item4": "1"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL61_Probs",
@@ -29945,7 +29848,8 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
-		"Item3": "85000"
+		"Item3": "85000",
+		"Item4": "0"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL62",
@@ -29962,7 +29866,9 @@
 		"Item2": "[LBID]CaptureTheFlagNonNamedWeaponRoll",
 		"GearScoreRange2": "635-650",
 		"Item3": "[LBID]CaptureTheFlagJewelry",
-		"GearScoreRange3": "635-650"
+		"GearScoreRange3": "635-650",
+		"Item4": "[LBID]CaptureTheFlagArtifactMaster",
+		"GearScoreRange4": "700"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL62_Qty",
@@ -29972,7 +29878,8 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "2",
 		"Item2": "1",
-		"Item3": "1"
+		"Item3": "1",
+		"Item4": "1"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL62_Probs",
@@ -29982,7 +29889,8 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
-		"Item3": "85000"
+		"Item3": "85000",
+		"Item4": "0"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL63",
@@ -29999,7 +29907,9 @@
 		"Item2": "[LBID]CaptureTheFlagNonNamedWeaponRoll",
 		"GearScoreRange2": "640-650",
 		"Item3": "[LBID]CaptureTheFlagJewelry",
-		"GearScoreRange3": "640-650"
+		"GearScoreRange3": "640-650",
+		"Item4": "[LBID]CaptureTheFlagArtifactMaster",
+		"GearScoreRange4": "700"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL63_Qty",
@@ -30009,7 +29919,8 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "2",
 		"Item2": "1",
-		"Item3": "1"
+		"Item3": "1",
+		"Item4": "1"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL63_Probs",
@@ -30019,7 +29930,8 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
-		"Item3": "85000"
+		"Item3": "85000",
+		"Item4": "0"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL64",
@@ -30036,7 +29948,9 @@
 		"Item2": "[LBID]CaptureTheFlagNonNamedWeaponRoll",
 		"GearScoreRange2": "645-650",
 		"Item3": "[LBID]CaptureTheFlagJewelry",
-		"GearScoreRange3": "645-650"
+		"GearScoreRange3": "645-650",
+		"Item4": "[LBID]CaptureTheFlagArtifactMaster",
+		"GearScoreRange4": "700"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL64_Qty",
@@ -30046,7 +29960,8 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "2",
 		"Item2": "1",
-		"Item3": "1"
+		"Item3": "1",
+		"Item4": "1"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL64_Probs",
@@ -30056,7 +29971,8 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
-		"Item3": "85000"
+		"Item3": "85000",
+		"Item4": "0"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL65",
@@ -30073,7 +29989,9 @@
 		"Item2": "[LBID]CaptureTheFlagNonNamedWeaponRoll",
 		"GearScoreRange2": "680-700",
 		"Item3": "[LBID]CaptureTheFlagJewelry",
-		"GearScoreRange3": "680-700"
+		"GearScoreRange3": "680-700",
+		"Item4": "[LBID]CaptureTheFlagArtifactMaster",
+		"GearScoreRange4": "700"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL65_Qty",
@@ -30083,7 +30001,8 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "2",
 		"Item2": "1",
-		"Item3": "1"
+		"Item3": "1",
+		"Item4": "1"
 	},
 	{
 		"LootTableID": "CaptureTheFlagRewardChestL65_Probs",
@@ -30093,7 +30012,8 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
-		"Item3": "85000"
+		"Item3": "85000",
+		"Item4": "0"
 	},
 	{
 		"LootTableID": "CaptureTheFlagGearRoll",
@@ -34130,9 +34050,7 @@
 		"Item2": "[LTID]DarknessFragments",
 		"Item3": "[LTID]DarknessEliteRoll",
 		"Item4": "[LBID]DarknessPerkItems",
-		"Item5": "[LBID]DarknessMcGuffins",
-		"Item6": "[LBID]DarknessMcGuffins",
-		"Item7": "[LBID]DarknessMcGuffins"
+		"Item5": "[LBID]DarknessMcGuffins"
 	},
 	{
 		"LootTableID": "DarknessMinor1_Qty",
@@ -34144,9 +34062,7 @@
 		"Item2": "1",
 		"Item3": "1",
 		"Item4": "1",
-		"Item5": "3",
-		"Item6": "1-2",
-		"Item7": "1"
+		"Item5": "1"
 	},
 	{
 		"LootTableID": "DarknessMinor1_Probs",
@@ -34158,9 +34074,7 @@
 		"Item2": "75000",
 		"Item3": "90000",
 		"Item4": "99000",
-		"Item5": "0",
-		"Item6": "65000",
-		"Item7": "80000"
+		"Item5": "65000"
 	},
 	{
 		"LootTableID": "DarknessMinor2",
@@ -34174,9 +34088,7 @@
 		"Item2": "[LTID]DarknessFragments",
 		"Item3": "[LTID]DarknessEliteRoll",
 		"Item4": "[LBID]DarknessPerkItems",
-		"Item5": "[LBID]DarknessMcGuffins",
-		"Item6": "[LBID]DarknessMcGuffins",
-		"Item7": "[LBID]DarknessMcGuffins"
+		"Item5": "[LBID]DarknessMcGuffins"
 	},
 	{
 		"LootTableID": "DarknessMinor2_Qty",
@@ -34188,9 +34100,7 @@
 		"Item2": "1-2",
 		"Item3": "1",
 		"Item4": "1",
-		"Item5": "3",
-		"Item6": "1-2",
-		"Item7": "1"
+		"Item5": "1"
 	},
 	{
 		"LootTableID": "DarknessMinor2_Probs",
@@ -34202,9 +34112,7 @@
 		"Item2": "50000",
 		"Item3": "75000",
 		"Item4": "99000",
-		"Item5": "0",
-		"Item6": "65000",
-		"Item7": "80000"
+		"Item5": "65000"
 	},
 	{
 		"LootTableID": "DarknessMinor1Roll",
@@ -34372,8 +34280,7 @@
 		"Item5": "[LTID]DarknessMajorEliteRolls",
 		"Item6": "[LBID]DarknessPerkItems",
 		"Item7": "[LTID]DarknessMajor_NamedLimit",
-		"Item8": "[LBID]DarknessMcGuffins",
-		"Item9": "[LBID]DarknessMcGuffins"
+		"Item8": "[LBID]DarknessMcGuffins"
 	},
 	{
 		"LootTableID": "DarknessMajor2Roll_Qty",
@@ -34388,8 +34295,7 @@
 		"Item5": "1",
 		"Item6": "1",
 		"Item7": "1",
-		"Item8": "6-12",
-		"Item9": "6-20"
+		"Item8": "1"
 	},
 	{
 		"LootTableID": "DarknessMajor2Roll_Probs",
@@ -34404,8 +34310,7 @@
 		"Item5": "0",
 		"Item6": "90000",
 		"Item7": "0",
-		"Item8": "0",
-		"Item9": "50000"
+		"Item8": "65000"
 	},
 	{
 		"LootTableID": "DarknessMajor2Roll65",
@@ -34422,8 +34327,7 @@
 		"Item5": "[LTID]DarknessMajorEliteRolls",
 		"Item6": "[LBID]DarknessPerkItems",
 		"Item7": "[LTID]DarknessMajor_NamedLimit",
-		"Item8": "[LBID]DarknessMcGuffins",
-		"Item9": "[LBID]DarknessMcGuffins"
+		"Item8": "[LBID]DarknessMcGuffins"
 	},
 	{
 		"LootTableID": "DarknessMajor2Roll65_Qty",
@@ -34438,8 +34342,7 @@
 		"Item5": "1",
 		"Item6": "1",
 		"Item7": "1",
-		"Item8": "6-12",
-		"Item9": "6-20"
+		"Item8": "1"
 	},
 	{
 		"LootTableID": "DarknessMajor2Roll65_Probs",
@@ -34454,8 +34357,7 @@
 		"Item5": "0",
 		"Item6": "90000",
 		"Item7": "0",
-		"Item8": "0",
-		"Item9": "50000"
+		"Item8": "65000"
 	},
 	{
 		"LootTableID": "DarknessMajor2NamedRoll",
@@ -34544,8 +34446,8 @@
 		"Item2": "1",
 		"Item3": "1",
 		"Item4": "1",
-		"Item5": "6-12",
-		"Item6": "6-20"
+		"Item5": "1",
+		"Item6": "1"
 	},
 	{
 		"LootTableID": "DarknessMajor1_Probs",
@@ -34557,8 +34459,8 @@
 		"Item2": "0",
 		"Item3": "91000",
 		"Item4": "95000",
-		"Item5": "0",
-		"Item6": "50000"
+		"Item5": "45000",
+		"Item6": "40000"
 	},
 	{
 		"LootTableID": "DarknessMajor2",
@@ -34587,8 +34489,8 @@
 		"Item2": "1",
 		"Item3": "1",
 		"Item4": "1",
-		"Item5": "6-12",
-		"Item6": "6-20"
+		"Item5": "1",
+		"Item6": "1"
 	},
 	{
 		"LootTableID": "DarknessMajor2_Probs",
@@ -34600,8 +34502,8 @@
 		"Item2": "0",
 		"Item3": "91000",
 		"Item4": "95000",
-		"Item5": "0",
-		"Item6": "50000"
+		"Item5": "45000",
+		"Item6": "40000"
 	},
 	{
 		"LootTableID": "DarknessMajorEliteRolls",
@@ -37076,6 +36978,970 @@
 		"Item1": "0"
 	},
 	{
+		"LootTableID": "SummerMedley_Stage_T1",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]SummerMedley_Stage_T1_Levelcheck",
+		"Item2": "[LTID]GypsumWhiteTable"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T1_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "2"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T1_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T2",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]SummerMedley_Stage_T2_Levelcheck",
+		"Item2": "[LTID]GypsumWhiteTable"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T2_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "2"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T2_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T3",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]SummerMedley_Stage_T3_Levelcheck",
+		"Item2": "[LTID]GypsumWhiteTable"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T3_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "2"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T3_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T1_Levelcheck",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": ["Level"],
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_Container_HastilyPackedBasket",
+		"Item2": "SummerMedley_Container_HastilyPackedBasket_Lvl15"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T1_Levelcheck_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T1_Levelcheck_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "14"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T2_Levelcheck",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": ["Level"],
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_Container_BeautifullyPackedBasket",
+		"Item2": "SummerMedley_Container_BeautifullyPackedBasket_Lvl15"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T2_Levelcheck_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T2_Levelcheck_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "14"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T3_Levelcheck",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": ["Level"],
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_Container_ExquisitelyPackedBasket",
+		"Item2": "SummerMedley_Container_ExquisitelyPackedBasket_Lvl15"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T3_Levelcheck_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "SummerMedley_Stage_T3_Levelcheck_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "14"
+	},
+	{
+		"LootTableID": "HastilyPackedBasket",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_Token"
+	},
+	{
+		"LootTableID": "HastilyPackedBasket_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "HastilyPackedBasket_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "BeautifullyPackedBasket",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_Token",
+		"Item2": "SummerMedley_PremiumToken",
+		"Item3": "[LBID]SummerMedleyPatterns"
+	},
+	{
+		"LootTableID": "BeautifullyPackedBasket_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "3",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "BeautifullyPackedBasket_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "95000",
+		"Item3": "97500"
+	},
+	{
+		"LootTableID": "ExquisitelyPackedBasket",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_Token",
+		"Item2": "SummerMedley_PremiumToken",
+		"Item3": "[LBID]SummerMedleyPatterns"
+	},
+	{
+		"LootTableID": "ExquisitelyPackedBasket_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "5",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "ExquisitelyPackedBasket_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "90000",
+		"Item3": "96500"
+	},
+	{
+		"LootTableID": "SummerMedley_Maudlindust_Particle",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_Maudlindust"
+	},
+	{
+		"LootTableID": "SummerMedley_Maudlindust_Particle_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "SummerMedley_Maudlindust_Particle_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "MaudlinMusicBad",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_Maudlindust",
+		"Item2": "BaitMaudlinBugT1"
+	},
+	{
+		"LootTableID": "MaudlinMusicBad_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "2",
+		"Item2": "3"
+	},
+	{
+		"LootTableID": "MaudlinMusicBad_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "MaudlinMusicOkay",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_Maudlindust",
+		"Item2": "BaitMaudlinBugT1"
+	},
+	{
+		"LootTableID": "MaudlinMusicOkay_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "3",
+		"Item2": "5"
+	},
+	{
+		"LootTableID": "MaudlinMusicOkay_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "MaudlinMusicGreat",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_Maudlindust",
+		"Item2": "BaitMaudlinBugT1"
+	},
+	{
+		"LootTableID": "MaudlinMusicGreat_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "4",
+		"Item2": "7"
+	},
+	{
+		"LootTableID": "MaudlinMusicGreat_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "MaudlinMusicAmazing",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_Maudlindust",
+		"Item2": "BaitMaudlinBugT1"
+	},
+	{
+		"LootTableID": "MaudlinMusicAmazing_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "5",
+		"Item2": "10"
+	},
+	{
+		"LootTableID": "MaudlinMusicAmazing_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "ShredlyMusicBad",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]ShredlyPremiumToken",
+		"Item2": "SummerMedley_Token"
+	},
+	{
+		"LootTableID": "ShredlyMusicBad_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "ShredlyMusicBad_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "ShredlyMusicOkay",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]ShredlyPremiumToken",
+		"Item2": "SummerMedley_Token",
+		"Item3": "[LBID]SummerMedleyPatterns"
+	},
+	{
+		"LootTableID": "ShredlyMusicOkay_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "2",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "ShredlyMusicOkay_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "97500"
+	},
+	{
+		"LootTableID": "ShredlyMusicGreat",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]ShredlyPremiumToken",
+		"Item2": "SummerMedley_Token",
+		"Item3": "[LBID]SummerMedleyPatterns"
+	},
+	{
+		"LootTableID": "ShredlyMusicGreat_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "4",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "ShredlyMusicGreat_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "95000"
+	},
+	{
+		"LootTableID": "ShredlyMusicAmazing",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]ShredlyPremiumToken",
+		"Item2": "SummerMedley_Token",
+		"Item3": "[LBID]SummerMedleyPatterns"
+	},
+	{
+		"LootTableID": "ShredlyMusicAmazing_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "5",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "ShredlyMusicAmazing_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "92500"
+	},
+	{
+		"LootTableID": "ShredlyPremiumToken",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_PremiumToken"
+	},
+	{
+		"LootTableID": "ShredlyPremiumToken_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "ShredlyPremiumToken_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "13_Summer_01_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "2hInstrumentGuitarT2",
+		"Item2": "Waltz_Guitar_Part1_Page1",
+		"Item3": "Waltz_Guitar_Part2_Page1"
+	},
+	{
+		"LootTableID": "13_Summer_01_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "13_Summer_01_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "13_Summer_02_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "2hFishingPoleT1",
+		"Item2": "SummerMedley_ScaledustDelight"
+	},
+	{
+		"LootTableID": "13_Summer_02_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "13_Summer_02_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "13_Summer_03_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_PristineSoakedWood",
+		"Item2": "SummerMedley_AssortedCoral",
+		"Item3": "SummerMedley_CautiouslyWrappedStuffing",
+		"Item4": "SummerMedley_LightEtherVial"
+	},
+	{
+		"LootTableID": "13_Summer_03_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "5",
+		"Item2": "3",
+		"Item3": "2",
+		"Item4": "1"
+	},
+	{
+		"LootTableID": "13_Summer_03_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0"
+	},
+	{
+		"LootTableID": "13_Summer_04_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "2hInstrumentMandolinT2",
+		"Item2": "[LTID]13_Summer_04_Songs_Loot",
+		"Item3": "SummerMedley_Token"
+	},
+	{
+		"LootTableID": "13_Summer_04_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "13_Summer_04_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "13_Summer_04_Songs_Loot",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "Honey_Mandolin_Part1_Page1",
+		"Item2": "Potters_Mandolin_Part1_Page1",
+		"Item3": "MrHarrison_Mandolin_Part1_Page1"
+	},
+	{
+		"LootTableID": "13_Summer_04_Songs_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "13_Summer_04_Songs_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "33333",
+		"Item3": "66667"
+	},
+	{
+		"LootTableID": "13_Summer_05_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "2hInstrumentUprightBassT2",
+		"Item2": "[LTID]13_Summer_05_Songs_Loot",
+		"Item3": "SummerMedley_Token"
+	},
+	{
+		"LootTableID": "13_Summer_05_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "13_Summer_05_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "13_Summer_05_Songs_Loot",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "Honey_URBass_Part1_Page1",
+		"Item2": "Potters_URBass_Part1_Page1",
+		"Item3": "MrHarrison_URBass_Part1_Page1"
+	},
+	{
+		"LootTableID": "13_Summer_05_Songs_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "13_Summer_05_Songs_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "33333",
+		"Item3": "66667"
+	},
+	{
+		"LootTableID": "13_Summer_06_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "2hInstrumentDrumT2",
+		"Item2": "[LTID]13_Summer_06_Songs_Loot",
+		"Item3": "SummerMedley_Token"
+	},
+	{
+		"LootTableID": "13_Summer_06_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "13_Summer_06_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "13_Summer_06_Songs_Loot",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "Honey_Drums_Part1_Page1",
+		"Item2": "Potters_Drums_Part1_Page1",
+		"Item3": "MrHarrison_Drums_Part1_Page1"
+	},
+	{
+		"LootTableID": "13_Summer_06_Songs_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "13_Summer_06_Songs_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "33333",
+		"Item3": "66667"
+	},
+	{
+		"LootTableID": "13_Summer_07_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_GrilledFishPlate",
+		"Item2": "SummerMedley_Kebabs",
+		"Item3": "SummerMedley_FirecrackerSturgeon"
+	},
+	{
+		"LootTableID": "13_Summer_07_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "13_Summer_07_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "13_Summer_08_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "2hInstrumentFluteT2",
+		"Item2": "Flourish_AzothFlute_Part1_Page1",
+		"Item3": "SummerMedley_Token"
+	},
+	{
+		"LootTableID": "13_Summer_08_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "13_Summer_08_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0"
+	},
+	{
+		"LootTableID": "13_Summer_09_Loot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "SummerMedley_PremiumToken",
+		"Item2": "[LTID]13_Summer_09_Songs_Loot"
+	},
+	{
+		"LootTableID": "13_Summer_09_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "13_Summer_09_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "13_Summer_09_Songs_Loot",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "Honey_Guitar_Part1_Page1",
+		"Item2": "Potters_Guitar_Part1_Page1",
+		"Item3": "MrHarrison_Guitar_Part1_Page1"
+	},
+	{
+		"LootTableID": "13_Summer_09_Songs_Loot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1"
+	},
+	{
+		"LootTableID": "13_Summer_09_Songs_Loot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "33333",
+		"Item3": "66667"
+	},
+	{
 		"LootTableID": "QuestReward_MB_HealthPotion_Pouch",
 		"AND/OR": "AND",
 		"RollBonusSetting": "AddToRoll",
@@ -39440,35 +40306,6 @@
 	},
 	{
 		"LootTableID": "BeachChestMB1",
-		"AND/OR": "AND",
-		"RollBonusSetting": "ClampMax",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]BeachChestMB1_BeachItems",
-		"Item2": "[LBID]EChestsMcGuffins"
-	},
-	{
-		"LootTableID": "BeachChestMB1_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "4"
-	},
-	{
-		"LootTableID": "BeachChestMB1_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0"
-	},
-	{
-		"LootTableID": "BeachChestMB1_BeachItems",
 		"AND/OR": "OR",
 		"RollBonusSetting": "ClampMax",
 		"HWMMult": 0,
@@ -39482,7 +40319,7 @@
 		"Item5": "Beach_Chest1_Armor5"
 	},
 	{
-		"LootTableID": "BeachChestMB1_BeachItems_Qty",
+		"LootTableID": "BeachChestMB1_Qty",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -39494,7 +40331,7 @@
 		"Item5": "1"
 	},
 	{
-		"LootTableID": "BeachChestMB1_BeachItems_Probs",
+		"LootTableID": "BeachChestMB1_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 100000,
@@ -39507,35 +40344,6 @@
 	},
 	{
 		"LootTableID": "BeachChestMB2",
-		"AND/OR": "AND",
-		"RollBonusSetting": "ClampMax",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]BeachChestMB2_BeachItems",
-		"Item2": "[LBID]EChestsMcGuffins"
-	},
-	{
-		"LootTableID": "BeachChestMB2_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "4"
-	},
-	{
-		"LootTableID": "BeachChestMB2_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0"
-	},
-	{
-		"LootTableID": "BeachChestMB2_BeachItems",
 		"AND/OR": "OR",
 		"RollBonusSetting": "ClampMax",
 		"HWMMult": 0,
@@ -39549,7 +40357,7 @@
 		"Item5": "Beach_Chest2_Hat5"
 	},
 	{
-		"LootTableID": "BeachChestMB2_BeachItems_Qty",
+		"LootTableID": "BeachChestMB2_Qty",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -39561,7 +40369,7 @@
 		"Item5": "1"
 	},
 	{
-		"LootTableID": "BeachChestMB2_BeachItems_Probs",
+		"LootTableID": "BeachChestMB2_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 100000,
@@ -39574,35 +40382,6 @@
 	},
 	{
 		"LootTableID": "BeachChestMB3",
-		"AND/OR": "AND",
-		"RollBonusSetting": "ClampMax",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]BeachChestMB3_BeachItems",
-		"Item2": "[LBID]EChestsMcGuffins"
-	},
-	{
-		"LootTableID": "BeachChestMB3_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "4"
-	},
-	{
-		"LootTableID": "BeachChestMB3_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 100000,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0"
-	},
-	{
-		"LootTableID": "BeachChestMB3_BeachItems",
 		"AND/OR": "OR",
 		"RollBonusSetting": "ClampMax",
 		"HWMMult": 0,
@@ -39615,7 +40394,7 @@
 		"Item4": "Beach_Chest3_Rapier"
 	},
 	{
-		"LootTableID": "BeachChestMB3_BeachItems_Qty",
+		"LootTableID": "BeachChestMB3_Qty",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -39626,7 +40405,7 @@
 		"Item4": "1"
 	},
 	{
-		"LootTableID": "BeachChestMB3_BeachItems_Probs",
+		"LootTableID": "BeachChestMB3_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 100000,
@@ -40664,7 +41443,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]Mut_Boss"
+		"Item1": "[LBID]Mut_Boss",
+		"Item2": "[LBID]MutatorBossPerkItems"
 	},
 	{
 		"LootTableID": "MutatorLoot_Boss_Qty",
@@ -40672,7 +41452,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "1"
+		"Item1": "1",
+		"Item2": "4-6"
 	},
 	{
 		"LootTableID": "MutatorLoot_Boss_Probs",
@@ -40680,7 +41461,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 1,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "0"
+		"Item1": "0",
+		"Item2": "0"
 	},
 	{
 		"LootTableID": "MutatorLoot_Named",
@@ -40692,7 +41474,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]Mut_Named"
+		"Item1": "[LBID]Mut_Named",
+		"Item2": "[LBID]MutatorPerkItems"
 	},
 	{
 		"LootTableID": "MutatorLoot_Named_Qty",
@@ -40700,7 +41483,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "1"
+		"Item1": "1",
+		"Item2": "1-2"
 	},
 	{
 		"LootTableID": "MutatorLoot_Named_Probs",
@@ -40708,7 +41492,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 1,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "0"
+		"Item1": "0",
+		"Item2": "0"
 	},
 	{
 		"LootTableID": "ArmorCase_HorticulturistMakeGood_T3",
@@ -41908,6 +42693,32 @@
 		"Item1": "0"
 	},
 	{
+		"LootTableID": "Torch_Throwable_Item",
+		"AND/OR": "OR",
+		"RollBonusSetting": "AddToRoll",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "Torch_Throwable_Item"
+	},
+	{
+		"LootTableID": "Torch_Throwable_Item_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "Torch_Throwable_Item_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
 		"LootTableID": "ForemanReward",
 		"AND/OR": "AND",
 		"RollBonusSetting": "AddToRoll",
@@ -42679,7 +43490,9 @@
 		"Item3": "2hInstrumentGuitarT3",
 		"Item4": "2hInstrumentUprightBassT3",
 		"Item5": "2hInstrumentMandolinT3",
-		"Item6": "2hFishingPoleT3"
+		"Item6": "2hFishingPoleT3",
+		"Item7": "BaitMaudlinbugT1",
+		"Item8": "SummerMedley_Token"
 	},
 	{
 		"LootTableID": "EUTwitchConCache_Qty",
@@ -42692,7 +43505,9 @@
 		"Item3": "1",
 		"Item4": "1",
 		"Item5": "1",
-		"Item6": "1"
+		"Item6": "1",
+		"Item7": "3",
+		"Item8": "5"
 	},
 	{
 		"LootTableID": "EUTwitchConCache_Probs",
@@ -42705,7 +43520,9 @@
 		"Item3": "0",
 		"Item4": "0",
 		"Item5": "0",
-		"Item6": "0"
+		"Item6": "0",
+		"Item7": "0",
+		"Item8": "0"
 	},
 	{
 		"LootTableID": "SE_Music_Loot",
@@ -43560,7 +44377,7 @@
 		"LootTableID": "Loot_MutDiff1T1_FLXpac_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
-		"MaxRoll": 1,
+		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
@@ -43592,7 +44409,7 @@
 		"LootTableID": "Loot_MutDiff1T2_FLXpac_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
-		"MaxRoll": 1,
+		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
@@ -43624,7 +44441,7 @@
 		"LootTableID": "Loot_MutDiff1T3_FLXpac_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
-		"MaxRoll": 1,
+		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
@@ -43656,7 +44473,7 @@
 		"LootTableID": "Loot_MutDiff2T1_FLXpac_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
-		"MaxRoll": 1,
+		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
@@ -43688,7 +44505,7 @@
 		"LootTableID": "Loot_MutDiff2T2_FLXpac_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
-		"MaxRoll": 1,
+		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
@@ -43720,7 +44537,7 @@
 		"LootTableID": "Loot_MutDiff2T3_FLXpac_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
-		"MaxRoll": 1,
+		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
 		"Item2": "0",
@@ -43749,7 +44566,7 @@
 		"Item1": "250",
 		"Item2": "24",
 		"Item3": "1-3",
-		"Item4": "3",
+		"Item4": "1",
 		"Item5": "1"
 	},
 	{
@@ -43761,7 +44578,7 @@
 		"Item1": "0",
 		"Item2": "0",
 		"Item3": "0",
-		"Item4": "0",
+		"Item4": "75000",
 		"Item5": "0"
 	},
 	{
@@ -43775,9 +44592,8 @@
 		"Item2": "DarkMatter",
 		"Item3": "HercyneRaidMaterial_MutatorCombo",
 		"Item4": "[LBID]ExpeditionMcGuffins",
-		"Item5": "[LBID]ExpeditionMcGuffins",
-		"Item6": "[LBID]ArtifactMasterMutations",
-		"GearScoreRange6": "700"
+		"Item5": "[LBID]ArtifactMasterMutations",
+		"GearScoreRange5": "700"
 	},
 	{
 		"LootTableID": "Loot_MutDiff3T2_FLXpac_Qty",
@@ -43788,9 +44604,8 @@
 		"Item1": "500",
 		"Item2": "32",
 		"Item3": "4-7",
-		"Item4": "6",
-		"Item5": "1-5",
-		"Item6": "1"
+		"Item4": "1",
+		"Item5": "1"
 	},
 	{
 		"LootTableID": "Loot_MutDiff3T2_FLXpac_Probs",
@@ -43801,9 +44616,8 @@
 		"Item1": "0",
 		"Item2": "0",
 		"Item3": "0",
-		"Item4": "0",
-		"Item5": "75000",
-		"Item6": "0"
+		"Item4": "50000",
+		"Item5": "0"
 	},
 	{
 		"LootTableID": "Loot_MutDiff3T3_FLXpac",
@@ -43816,9 +44630,8 @@
 		"Item2": "DarkMatter",
 		"Item3": "HercyneRaidMaterial_MutatorCombo",
 		"Item4": "[LBID]ExpeditionMcGuffins",
-		"Item5": "[LBID]ExpeditionMcGuffins",
-		"Item6": "[LBID]ArtifactMasterMutations",
-		"GearScoreRange6": "700"
+		"Item5": "[LBID]ArtifactMasterMutations",
+		"GearScoreRange5": "700"
 	},
 	{
 		"LootTableID": "Loot_MutDiff3T3_FLXpac_Qty",
@@ -43829,9 +44642,8 @@
 		"Item1": "750",
 		"Item2": "40",
 		"Item3": "8-12",
-		"Item4": "10",
-		"Item5": "1-10",
-		"Item6": "1"
+		"Item4": "1",
+		"Item5": "1"
 	},
 	{
 		"LootTableID": "Loot_MutDiff3T3_FLXpac_Probs",
@@ -43843,8 +44655,241 @@
 		"Item2": "0",
 		"Item3": "0",
 		"Item4": "0",
-		"Item5": "50000",
-		"Item6": "0"
+		"Item5": "0"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff1T1_FLXpac",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "MutatorRewardContainerDiff1T1_FLXpac"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff1T1_FLXpac_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff1T1_FLXpac_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff1T2_FLXpac",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "MutatorRewardContainerDiff1T2_FLXpac"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff1T2_FLXpac_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff1T2_FLXpac_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff1T3_FLXpac",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "MutatorRewardContainerDiff1T3_FLXpac"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff1T3_FLXpac_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff1T3_FLXpac_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff2T1_FLXpac",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "MutatorRewardContainerDiff2T1_FLXpac"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff2T1_FLXpac_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff2T1_FLXpac_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff2T2_FLXpac",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "MutatorRewardContainerDiff2T2_FLXpac"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff2T2_FLXpac_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff2T2_FLXpac_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff2T3_FLXpac",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "MutatorRewardContainerDiff2T3_FLXpac"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff2T3_FLXpac_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff2T3_FLXpac_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff3T1_FLXpac",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "MutatorRewardContainerDiff3T1_FLXpac",
+		"Item2": "[LBID]ExpeditionMcGuffins"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff3T1_FLXpac_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff3T1_FLXpac_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "75000"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff3T2_FLXpac",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "MutatorRewardContainerDiff3T2_FLXpac",
+		"Item2": "[LBID]ExpeditionMcGuffins"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff3T2_FLXpac_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff3T2_FLXpac_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "50000"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff3T3_FLXpac",
+		"AND/OR": "AND",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "MutatorRewardContainerDiff3T3_FLXpac",
+		"Item2": "[LBID]ExpeditionMcGuffins"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff3T3_FLXpac_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "EventGrant_MutDiff3T3_FLXpac_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 1,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
 	},
 	{
 		"LootTableID": "Loot_ToolMotes",
@@ -44152,7 +45197,7 @@
 		"Item7": "0",
 		"Item8": "0",
 		"Item9": "98000",
-		"Item10": "70000"
+		"Item10": "75000"
 	},
 	{
 		"LootTableID": "BrimstoneEliteSarcophagi",
@@ -44203,8 +45248,8 @@
 		"Item13": "1",
 		"Item14": "1",
 		"Item15": "1",
-		"Item16": "1-2",
-		"Item17": "1-3"
+		"Item16": "1",
+		"Item17": "1"
 	},
 	{
 		"LootTableID": "BrimstoneEliteSarcophagi_Probs",
@@ -44227,8 +45272,8 @@
 		"Item13": "0",
 		"Item14": "90000",
 		"Item15": "0",
-		"Item16": "0",
-		"Item17": "80000"
+		"Item16": "50000",
+		"Item17": "95000"
 	},
 	{
 		"LootTableID": "ChestLootEliteSarcophagiItemRoll",
@@ -44585,8 +45630,8 @@
 		"Item11": "1",
 		"Item12": "1",
 		"Item13": "1",
-		"Item14": "1-2",
-		"Item15": "1-3"
+		"Item14": "1",
+		"Item15": "1"
 	},
 	{
 		"LootTableID": "BrimstoneGlyphLockChests_Probs",
@@ -44607,8 +45652,8 @@
 		"Item11": "98000",
 		"Item12": "0",
 		"Item13": "0",
-		"Item14": "0",
-		"Item15": "80000"
+		"Item14": "50000",
+		"Item15": "95000"
 	},
 	{
 		"LootTableID": "BrimstoneGlyphCommon_SerpentsPass",
@@ -48431,8 +49476,8 @@
 		"Item11": "1",
 		"Item12": "1",
 		"Item13": "1",
-		"Item14": "1-2",
-		"Item15": "1-3"
+		"Item14": "1",
+		"Item15": "1"
 	},
 	{
 		"LootTableID": "FirstLightRevampBeastlandsChest_Probs",
@@ -48453,8 +49498,8 @@
 		"Item11": "97000",
 		"Item12": "0",
 		"Item13": "85000",
-		"Item14": "0",
-		"Item15": "80000"
+		"Item14": "50000",
+		"Item15": "95000"
 	},
 	{
 		"LootTableID": "ChestLootEliteBeastlandsItemRoll",
@@ -48843,7 +49888,8 @@
 		"Item2": "[LTID]InfluenceDarkMatter",
 		"Item3": "[LBID]InfluenceWeapon",
 		"Item4": "[LBID]ArtifactMasterInfluence",
-		"GearScoreRange4": "700"
+		"GearScoreRange4": "700",
+		"Item5": "[LBID]InfluencePerkItems"
 	},
 	{
 		"LootTableID": "InfluenceRaceItemGrant_Qty",
@@ -48854,7 +49900,8 @@
 		"Item1": "1",
 		"Item2": "1",
 		"Item3": "1",
-		"Item4": "1"
+		"Item4": "1",
+		"Item5": "3-6"
 	},
 	{
 		"LootTableID": "InfluenceRaceItemGrant_Probs",
@@ -48865,10 +49912,42 @@
 		"Item1": "0",
 		"Item2": "0",
 		"Item3": "60000",
-		"Item4": "0"
+		"Item4": "0",
+		"Item5": "0"
 	},
 	{
 		"LootTableID": "InfluenceRace_LoserResult",
+		"AND/OR": "AND",
+		"RollBonusSetting": "IgnoreBonus",
+		"UseLevelGS": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingEnabled": "TRUE",
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]InfluenceRace_LoserResultItemGrant",
+		"Item2": "[LBID]InfluencePerkItems"
+	},
+	{
+		"LootTableID": "InfluenceRace_LoserResult_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1-2"
+	},
+	{
+		"LootTableID": "InfluenceRace_LoserResult_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0"
+	},
+	{
+		"LootTableID": "InfluenceRace_LoserResultItemGrant",
 		"AND/OR": "OR",
 		"RollBonusSetting": "IgnoreBonus",
 		"Conditions": ["Level"],
@@ -48884,7 +49963,7 @@
 		"GearScoreRange2": "680-700"
 	},
 	{
-		"LootTableID": "InfluenceRace_LoserResult_Qty",
+		"LootTableID": "InfluenceRace_LoserResultItemGrant_Qty",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -48893,7 +49972,7 @@
 		"Item2": "1"
 	},
 	{
-		"LootTableID": "InfluenceRace_LoserResult_Probs",
+		"LootTableID": "InfluenceRace_LoserResultItemGrant_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 100000,
@@ -49207,7 +50286,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "10-15"
+		"Item1": "20-30"
 	},
 	{
 		"LootTableID": "DoubloonChestPvPSmall_Probs",
@@ -49235,7 +50314,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "10-20"
+		"Item1": "30-40"
 	},
 	{
 		"LootTableID": "DoubloonChestPvPMedium_Probs",
@@ -49264,7 +50343,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "20-30",
+		"Item1": "40-60",
 		"Item2": "1"
 	},
 	{
@@ -50024,7 +51103,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonCrateNonApex",
-		"GearScoreRange1": "685-710"
+		"GearScoreRange1": "720-725"
 	},
 	{
 		"LootTableID": "DoubloonCrateHelm_Table_690Cap_Qty",
@@ -50053,7 +51132,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonCrateNonApex",
-		"GearScoreRange1": "685-710"
+		"GearScoreRange1": "720-725"
 	},
 	{
 		"LootTableID": "DoubloonCrateChest_Table_690Cap_Qty",
@@ -50082,7 +51161,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonCrateNonApex",
-		"GearScoreRange1": "685-710"
+		"GearScoreRange1": "720-725"
 	},
 	{
 		"LootTableID": "DoubloonCrateGloves_Table_690Cap_Qty",
@@ -50111,7 +51190,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonCrateNonApex",
-		"GearScoreRange1": "685-710"
+		"GearScoreRange1": "720-725"
 	},
 	{
 		"LootTableID": "DoubloonCrateLegs_Table_690Cap_Qty",
@@ -50140,7 +51219,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonCrateNonApex",
-		"GearScoreRange1": "685-710"
+		"GearScoreRange1": "720-725"
 	},
 	{
 		"LootTableID": "DoubloonCrateFeet_Table_690Cap_Qty",
@@ -50169,7 +51248,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonCrateNonApex",
-		"GearScoreRange1": "685-710"
+		"GearScoreRange1": "720-725"
 	},
 	{
 		"LootTableID": "DoubloonCrateTrinkets_Table_690Cap_Qty",
@@ -50198,7 +51277,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonCrateNonApex",
-		"GearScoreRange1": "685-710"
+		"GearScoreRange1": "720-725"
 	},
 	{
 		"LootTableID": "DoubloonCrateRanged_Table_690Cap_Qty",
@@ -50227,7 +51306,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonCrateNonApex",
-		"GearScoreRange1": "685-710"
+		"GearScoreRange1": "720-725"
 	},
 	{
 		"LootTableID": "DoubloonCrate1hMelee_Table_690Cap_Qty",
@@ -50256,7 +51335,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonCrateNonApex",
-		"GearScoreRange1": "685-710"
+		"GearScoreRange1": "720-725"
 	},
 	{
 		"LootTableID": "DoubloonCrate2hMelee_Table_690Cap_Qty",
@@ -50285,7 +51364,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonCrateNonApex",
-		"GearScoreRange1": "685-710"
+		"GearScoreRange1": "720-725"
 	},
 	{
 		"LootTableID": "DoubloonCrateMagic_Table_690Cap_Qty",
@@ -50314,7 +51393,7 @@
 		"LootBiasingEnabled": "0",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonCrateNonApex",
-		"GearScoreRange1": "685-710"
+		"GearScoreRange1": "720-725"
 	},
 	{
 		"LootTableID": "DoubloonCrateShields_Table_690Cap_Qty",
@@ -50344,9 +51423,9 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonGrabBagResources",
 		"Item2": "[LBID]DoubloonGrabBagGear_Rare",
-		"GearScoreRange2": "660-690",
+		"GearScoreRange2": "690-700",
 		"Item3": "[LBID]DoubloonGrabBagGear_Epic",
-		"GearScoreRange3": "685-705",
+		"GearScoreRange3": "700-720",
 		"Item4": "[LBID]DoubloonGrabBagGear_Legendary",
 		"GearScoreRange4": "725"
 	},
@@ -50384,9 +51463,9 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]DoubloonGrabBagResources",
 		"Item2": "[LBID]DoubloonGrabBagGear_Rare",
-		"GearScoreRange2": "625-690",
+		"GearScoreRange2": "690-700",
 		"Item3": "[LBID]DoubloonGrabBagGear_Epic",
-		"GearScoreRange3": "685-705"
+		"GearScoreRange3": "700-720"
 	},
 	{
 		"LootTableID": "DoubloonGrabBagRare_Table_Qty",
@@ -52917,9 +53996,9 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "10-12",
-		"Item2": "13-15",
-		"Item3": "15-17"
+		"Item1": "20-25",
+		"Item2": "25-30",
+		"Item3": "30-35"
 	},
 	{
 		"LootTableID": "DoubloonPouch_Table_Probs",
@@ -54957,7 +56036,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingEnabled": "1",
-		"LootBiasingChanceOverride": 0,
+		"LootBiasingChanceOverride": 1,
 		"Item1": "[LTID]S8Filter_Weapons",
 		"Item2": "[LTID]S8Filter_Armor",
 		"Item3": "[LTID]S8Filter_Jewelry",
@@ -55017,11 +56096,9 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingEnabled": "1",
-		"LootBiasingChanceOverride": 0,
+		"LootBiasingChanceOverride": 1,
 		"Item1": "[LTID]S8Grant_Weapons",
-		"Item2": "[LTID]S8Grant_WeaponsT51",
-		"Item3": "[LTID]S8Grant_WeaponsNoBias",
-		"Item4": "[LTID]S8Grant_WeaponsT51NoBias"
+		"Item2": "[LTID]S8Grant_WeaponsT51"
 	},
 	{
 		"LootTableID": "S8Filter_Weapons_Qty",
@@ -55029,10 +56106,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "6",
-		"Item2": "6",
-		"Item3": "2",
-		"Item4": "2"
+		"Item1": "5",
+		"Item2": "5"
 	},
 	{
 		"LootTableID": "S8Filter_Weapons_Probs",
@@ -55041,9 +56116,7 @@
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0",
-		"Item4": "0"
+		"Item2": "0"
 	},
 	{
 		"LootTableID": "S8Grant_Weapons",
@@ -55055,8 +56128,7 @@
 		"MaxRoll": 0,
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 1,
-		"Item1": "[LBID]S8_Equipment",
-		"PerkBucketOverrides1": "PerkBucket_S8Attributes,PerkBucket_S8Perks,PerkBucket_S8Gem,PerkBucket_S8Perks,PerkBucket_S8Perks"
+		"Item1": "[LBID]S8_Equipment"
 	},
 	{
 		"LootTableID": "S8Grant_Weapons_Qty",
@@ -55085,8 +56157,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 1,
 		"Item1": "[LBID]S8_Equipment",
-		"GearScoreRange1": "725",
-		"PerkBucketOverrides1": "PerkBucket_S8Attributes,PerkBucket_S8Perks,PerkBucket_S8Gem,PerkBucket_S8Perks,PerkBucket_S8Perks"
+		"GearScoreRange1": "725"
 	},
 	{
 		"LootTableID": "S8Grant_WeaponsT51_Qty",
@@ -55105,65 +56176,6 @@
 		"Item1": "0"
 	},
 	{
-		"LootTableID": "S8Grant_WeaponsNoBias",
-		"AND/OR": "AND",
-		"Conditions": ["Weapons_S8Filter"],
-		"UseLevelGS": "TRUE",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingEnabled": "1",
-		"LootBiasingChanceOverride": 1e-07,
-		"Item1": "[LBID]S8_Equipment",
-		"PerkBucketOverrides1": "PerkBucket_S8Attributes,PerkBucket_S8Perks,PerkBucket_S8Gem,PerkBucket_S8Perks,PerkBucket_S8Perks"
-	},
-	{
-		"LootTableID": "S8Grant_WeaponsNoBias_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1"
-	},
-	{
-		"LootTableID": "S8Grant_WeaponsNoBias_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0"
-	},
-	{
-		"LootTableID": "S8Grant_WeaponsT51NoBias",
-		"AND/OR": "AND",
-		"Conditions": ["WeaponsT51_S8Filter"],
-		"UseLevelGS": "TRUE",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingEnabled": "1",
-		"LootBiasingChanceOverride": 1e-07,
-		"Item1": "[LBID]S8_Equipment",
-		"GearScoreRange1": "725",
-		"PerkBucketOverrides1": "PerkBucket_S8Attributes,PerkBucket_S8Perks,PerkBucket_S8Gem,PerkBucket_S8Perks,PerkBucket_S8Perks"
-	},
-	{
-		"LootTableID": "S8Grant_WeaponsT51NoBias_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1"
-	},
-	{
-		"LootTableID": "S8Grant_WeaponsT51NoBias_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0"
-	},
-	{
 		"LootTableID": "S8Filter_Armor",
 		"AND/OR": "AND",
 		"UseLevelGS": "TRUE",
@@ -55171,11 +56183,9 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingEnabled": "1",
-		"LootBiasingChanceOverride": 0,
+		"LootBiasingChanceOverride": 1,
 		"Item1": "[LTID]S8Grant_Armor",
-		"Item2": "[LTID]S8Grant_ArmorT51",
-		"Item3": "[LTID]S8Grant_ArmorNoBias",
-		"Item4": "[LTID]S8Grant_ArmorT51NoBias"
+		"Item2": "[LTID]S8Grant_ArmorT51"
 	},
 	{
 		"LootTableID": "S8Filter_Armor_Qty",
@@ -55184,9 +56194,7 @@
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "8",
-		"Item2": "8",
-		"Item3": "2",
-		"Item4": "2"
+		"Item2": "8"
 	},
 	{
 		"LootTableID": "S8Filter_Armor_Probs",
@@ -55195,9 +56203,7 @@
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0",
-		"Item4": "0"
+		"Item2": "0"
 	},
 	{
 		"LootTableID": "S8Grant_Armor",
@@ -55209,8 +56215,7 @@
 		"MaxRoll": 0,
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 1,
-		"Item1": "[LBID]S8_Equipment",
-		"PerkBucketOverrides1": "PerkBucket_S8Attributes,PerkBucket_S8Perks,PerkBucket_S8Gem,PerkBucket_S8Perks,PerkBucket_S8Perks"
+		"Item1": "[LBID]S8_Equipment"
 	},
 	{
 		"LootTableID": "S8Grant_Armor_Qty",
@@ -55239,8 +56244,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 1,
 		"Item1": "[LBID]S8_Equipment",
-		"GearScoreRange1": "725",
-		"PerkBucketOverrides1": "PerkBucket_S8Attributes,PerkBucket_S8Perks,PerkBucket_S8Gem,PerkBucket_S8Perks,PerkBucket_S8Perks"
+		"GearScoreRange1": "725"
 	},
 	{
 		"LootTableID": "S8Grant_ArmorT51_Qty",
@@ -55252,65 +56256,6 @@
 	},
 	{
 		"LootTableID": "S8Grant_ArmorT51_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0"
-	},
-	{
-		"LootTableID": "S8Grant_ArmorNoBias",
-		"AND/OR": "AND",
-		"Conditions": ["Armor_S8Filter"],
-		"UseLevelGS": "TRUE",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingEnabled": "1",
-		"LootBiasingChanceOverride": 1e-07,
-		"Item1": "[LBID]S8_Equipment",
-		"PerkBucketOverrides1": "PerkBucket_S8Attributes,PerkBucket_S8Perks,PerkBucket_S8Gem,PerkBucket_S8Perks,PerkBucket_S8Perks"
-	},
-	{
-		"LootTableID": "S8Grant_ArmorNoBias_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1"
-	},
-	{
-		"LootTableID": "S8Grant_ArmorNoBias_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0"
-	},
-	{
-		"LootTableID": "S8Grant_ArmorT51NoBias",
-		"AND/OR": "AND",
-		"Conditions": ["ArmorT51_S8Filter"],
-		"UseLevelGS": "TRUE",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingEnabled": "1",
-		"LootBiasingChanceOverride": 1e-07,
-		"Item1": "[LBID]S8_Equipment",
-		"GearScoreRange1": "725",
-		"PerkBucketOverrides1": "PerkBucket_S8Attributes,PerkBucket_S8Perks,PerkBucket_S8Gem,PerkBucket_S8Perks,PerkBucket_S8Perks"
-	},
-	{
-		"LootTableID": "S8Grant_ArmorT51NoBias_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1"
-	},
-	{
-		"LootTableID": "S8Grant_ArmorT51NoBias_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -55335,8 +56280,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "4",
-		"Item2": "4"
+		"Item1": "5",
+		"Item2": "5"
 	},
 	{
 		"LootTableID": "S8Filter_Jewelry_Probs",
@@ -55357,8 +56302,7 @@
 		"MaxRoll": 0,
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]S8_Equipment",
-		"PerkBucketOverrides1": "PerkBucket_S8Attributes,PerkBucket_S8Perks,PerkBucket_S8Gem,PerkBucket_S8Perks,PerkBucket_S8Perks"
+		"Item1": "[LBID]S8_Equipment"
 	},
 	{
 		"LootTableID": "S8Grant_Jewelry_Qty",
@@ -55387,8 +56331,7 @@
 		"LootBiasingEnabled": "1",
 		"LootBiasingChanceOverride": 0,
 		"Item1": "[LBID]S8_Equipment",
-		"GearScoreRange1": "725",
-		"PerkBucketOverrides1": "PerkBucket_S8Attributes,PerkBucket_S8Perks,PerkBucket_S8Gem,PerkBucket_S8Perks,PerkBucket_S8Perks"
+		"GearScoreRange1": "725"
 	},
 	{
 		"LootTableID": "S8Grant_JewelryT51_Qty",
@@ -55423,8 +56366,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1"
+		"Item1": "2",
+		"Item2": "2"
 	},
 	{
 		"LootTableID": "S8Filter_Tools_Probs",
@@ -55444,9 +56387,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]S8Tools",
-		"Item2": "[LTID]S8Bags",
-		"Item3": "[LTID]S8Instruments"
+		"Item1": "[LBID]S8_Equipment"
 	},
 	{
 		"LootTableID": "S8Grant_Tools_Qty",
@@ -55454,9 +56395,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "2",
-		"Item2": "1",
-		"Item3": "1"
+		"Item1": "1"
 	},
 	{
 		"LootTableID": "S8Grant_Tools_Probs",
@@ -55464,9 +56403,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0"
+		"Item1": "0"
 	},
 	{
 		"LootTableID": "S8Grant_ToolsT51",
@@ -55477,12 +56414,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]S8Tools",
-		"GearScoreRange1": "725",
-		"Item2": "[LTID]S8Bags",
-		"GearScoreRange2": "725",
-		"Item3": "[LTID]S8Instruments",
-		"GearScoreRange3": "725"
+		"Item1": "[LBID]S8_Equipment",
+		"GearScoreRange1": "725"
 	},
 	{
 		"LootTableID": "S8Grant_ToolsT51_Qty",
@@ -55490,94 +56423,10 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "2",
-		"Item2": "1",
-		"Item3": "1"
+		"Item1": "1"
 	},
 	{
 		"LootTableID": "S8Grant_ToolsT51_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0"
-	},
-	{
-		"LootTableID": "S8Tools",
-		"AND/OR": "AND",
-		"UseLevelGS": "TRUE",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]S8_Equipment",
-		"PerkBucketOverrides1": "PerkBucket_S8Perks,PerkBucket_S8Perks,PerkBucket_S8Perks,PerkBucket_S8Perks,PerkBucket_S8Perks"
-	},
-	{
-		"LootTableID": "S8Tools_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1"
-	},
-	{
-		"LootTableID": "S8Tools_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0"
-	},
-	{
-		"LootTableID": "S8Bags",
-		"AND/OR": "AND",
-		"UseLevelGS": "TRUE",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]S8_Equipment",
-		"PerkBucketOverrides1": "PerkBucket_S8Perks,PerkBucket_S8Perks,PerkBucket_S8Perks,PerkBucket_S8Perks,PerkBucket_S8Perks"
-	},
-	{
-		"LootTableID": "S8Bags_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1"
-	},
-	{
-		"LootTableID": "S8Bags_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0"
-	},
-	{
-		"LootTableID": "S8Instruments",
-		"AND/OR": "AND",
-		"UseLevelGS": "TRUE",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]S8_Equipment"
-	},
-	{
-		"LootTableID": "S8Instruments_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1"
-	},
-	{
-		"LootTableID": "S8Instruments_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -55602,9 +56451,9 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "15-20",
-		"Item2": "40-50",
-		"Item3": "15-20"
+		"Item1": "15",
+		"Item2": "30",
+		"Item3": "15"
 	},
 	{
 		"LootTableID": "S8Grant_CombatConsumables_Probs",
@@ -55659,7 +56508,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "3"
+		"Item1": "2"
 	},
 	{
 		"LootTableID": "S8Grant_Artifacts_Probs",
@@ -55677,7 +56526,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]S8_MountAttachments"
+		"Item1": "[LBID]S8_Mounts",
+		"Item2": "[LBID]S8_MountAttachments"
 	},
 	{
 		"LootTableID": "S8Grant_Mounts_Qty",
@@ -55685,7 +56535,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "4"
+		"Item1": "1",
+		"Item2": "4"
 	},
 	{
 		"LootTableID": "S8Grant_Mounts_Probs",
@@ -55693,7 +56544,8 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "0"
+		"Item1": "0",
+		"Item2": "0"
 	},
 	{
 		"LootTableID": "S8Grant_Trophies",
@@ -55739,7 +56591,7 @@
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "3",
-		"Item2": "6"
+		"Item2": "5"
 	},
 	{
 		"LootTableID": "S8Grant_CutGems_Probs",
@@ -55810,7 +56662,7 @@
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "12"
+		"Item1": "10"
 	},
 	{
 		"LootTableID": "S8Grant_PerkItems_Probs",
@@ -55823,17 +56675,23 @@
 	{
 		"LootTableID": "S8Grant_GatheringMcGuffins",
 		"AND/OR": "OR",
-		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["Level"],
-		"ConditionOverridesRoll": "TRUE",
+		"RollBonusSetting": "AddToRoll",
+		"Conditions": ["S8_Gain"],
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]S8Grant_T2Gathering",
-		"Item2": "[LTID]S8Grant_T3Gathering",
-		"Item3": "[LTID]S8Grant_T4Gathering",
-		"Item4": "[LTID]S8Grant_T5Gathering"
+		"Item1": "[LTID]S8Grant_RandomGathering",
+		"Item2": "PurpleGuffinT2_S8",
+		"Item3": "PurpleGuffinT2_S8",
+		"Item4": "PurpleGuffinT3_S8",
+		"Item5": "PurpleGuffinT3_S8",
+		"Item6": "PurpleGuffinT4_S8",
+		"Item7": "PurpleGuffinT4_S8",
+		"Item8": "PurpleGuffinT5_S8",
+		"Item9": "PurpleGuffinT5_S8",
+		"Item10": "PurpleGuffinT5_S8",
+		"Item11": "PurpleGuffinT5_S8"
 	},
 	{
 		"LootTableID": "S8Grant_GatheringMcGuffins_Qty",
@@ -55843,8 +56701,15 @@
 		"LootBiasingChanceOverride": 0,
 		"Item1": "1",
 		"Item2": "1",
-		"Item3": "1",
-		"Item4": "1"
+		"Item3": "2",
+		"Item4": "1",
+		"Item5": "2",
+		"Item6": "1",
+		"Item7": "2",
+		"Item8": "1",
+		"Item9": "2",
+		"Item10": "3",
+		"Item11": "4"
 	},
 	{
 		"LootTableID": "S8Grant_GatheringMcGuffins_Probs",
@@ -55853,333 +56718,42 @@
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
-		"Item2": "19",
-		"Item3": "38",
-		"Item4": "59"
+		"Item2": "300",
+		"Item3": "454",
+		"Item4": "490",
+		"Item5": "600",
+		"Item6": "636",
+		"Item7": "745",
+		"Item8": "781",
+		"Item9": "890",
+		"Item10": "1000",
+		"Item11": "1100"
 	},
 	{
-		"LootTableID": "S8Grant_T2Gathering",
-		"AND/OR": "OR",
-		"RollBonusSetting": "AddToRoll",
-		"Conditions": ["S8_Gain"],
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]GatheringMcGuffins",
-		"Item2": "[LBID]GatheringMcGuffins",
-		"Item3": "[LBID]GatheringMcGuffins",
-		"Item4": "[LBID]GatheringMcGuffins"
-	},
-	{
-		"LootTableID": "S8Grant_T2Gathering_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1-2",
-		"Item3": "2",
-		"Item4": "2-3"
-	},
-	{
-		"LootTableID": "S8Grant_T2Gathering_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "344",
-		"Item3": "418",
-		"Item4": "918"
-	},
-	{
-		"LootTableID": "S8Grant_T3Gathering",
-		"AND/OR": "OR",
-		"RollBonusSetting": "AddToRoll",
-		"Conditions": ["S8_Gain"],
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]GatheringMcGuffins",
-		"Item2": "[LBID]GatheringMcGuffins",
-		"Item3": "[LBID]GatheringMcGuffins",
-		"Item4": "[LBID]GatheringMcGuffins"
-	},
-	{
-		"LootTableID": "S8Grant_T3Gathering_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1-2",
-		"Item3": "2",
-		"Item4": "2-3"
-	},
-	{
-		"LootTableID": "S8Grant_T3Gathering_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "989",
-		"Item3": "1062",
-		"Item4": "1242"
-	},
-	{
-		"LootTableID": "S8Grant_T4Gathering",
-		"AND/OR": "OR",
-		"RollBonusSetting": "AddToRoll",
-		"Conditions": ["S8_Gain"],
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]GatheringMcGuffins",
-		"Item2": "[LBID]GatheringMcGuffins",
-		"Item3": "[LBID]GatheringMcGuffins",
-		"Item4": "[LBID]GatheringMcGuffins"
-	},
-	{
-		"LootTableID": "S8Grant_T4Gathering_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1-2",
-		"Item3": "2",
-		"Item4": "2-3"
-	},
-	{
-		"LootTableID": "S8Grant_T4Gathering_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "1562",
-		"Item3": "1708",
-		"Item4": "1806"
-	},
-	{
-		"LootTableID": "S8Grant_T5Gathering",
-		"AND/OR": "OR",
-		"RollBonusSetting": "AddToRoll",
-		"Conditions": ["S8_Gain"],
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "[LBID]GatheringMcGuffins",
-		"Item2": "[LBID]GatheringMcGuffins",
-		"Item3": "[LBID]GatheringMcGuffins",
-		"Item4": "[LBID]GatheringMcGuffins"
-	},
-	{
-		"LootTableID": "S8Grant_T5Gathering_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1-2",
-		"Item3": "2",
-		"Item4": "2-3"
-	},
-	{
-		"LootTableID": "S8Grant_T5Gathering_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "2208",
-		"Item3": "2354",
-		"Item4": "3190"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling1",
+		"LootTableID": "S8Grant_RandomGathering",
 		"AND/OR": "AND",
-		"RollBonusSetting": "IgnoreBonus",
 		"Conditions": ["S8_Gain"],
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "Gatherable_Research_Unusual_Ore_T3",
-		"Item2": "Gatherable_Research_Unusual_Fiber_T3",
-		"Item3": "Gatherable_Research_Unusual_Wood_T3",
-		"Item4": "MountItem_MountReward_Box_1",
-		"Item5": "MountItem_MountReward_Box_9"
+		"Item1": "PurpleGuffinT2_S8"
 	},
 	{
-		"LootTableID": "S8Grant_TskillLeveling1_Qty",
+		"LootTableID": "S8Grant_RandomGathering_Qty",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "4",
-		"Item2": "4",
-		"Item3": "4",
-		"Item4": "1",
-		"Item5": "1"
+		"Item1": "1"
 	},
 	{
-		"LootTableID": "S8Grant_TskillLeveling1_Probs",
+		"LootTableID": "S8Grant_RandomGathering_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
-		"MaxRoll": 0,
+		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0",
-		"Item4": "0",
-		"Item5": "0"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling2",
-		"AND/OR": "AND",
-		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["S8_Gain"],
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "Gatherable_Research_Bizzare_Ore_T5",
-		"Item2": "Gatherable_Research_Bizzare_Fiber_T5",
-		"Item3": "Gatherable_Research_Bizzare_Wood_T5"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling2_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "4",
-		"Item2": "4",
-		"Item3": "4"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling2_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling3",
-		"AND/OR": "AND",
-		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["S8_Gain"],
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "Gatherable_Research_Bizzare_Ore_T5",
-		"Item2": "Gatherable_Research_Bizzare_Fiber_T5",
-		"Item3": "Gatherable_Research_Bizzare_Wood_T5"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling3_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "10",
-		"Item2": "10",
-		"Item3": "10"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling3_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling4",
-		"AND/OR": "AND",
-		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["S8_Gain"],
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "Gatherable_Research_Bizzare_Ore_T5",
-		"Item2": "Gatherable_Research_Bizzare_Fiber_T5",
-		"Item3": "Gatherable_Research_Bizzare_Wood_T5",
-		"Item4": "WeaponsT5_S8",
-		"Item5": "ArmorT5_S8",
-		"Item6": "JewelryT5_S8"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling4_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "16",
-		"Item2": "16",
-		"Item3": "16",
-		"Item4": "1",
-		"Item5": "1",
-		"Item6": "1"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling4_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0",
-		"Item4": "0",
-		"Item5": "0",
-		"Item6": "0"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling5",
-		"AND/OR": "AND",
-		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["S8_Gain"],
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "Gatherable_Research_Bizzare_Ore_T5",
-		"Item2": "Gatherable_Research_Bizzare_Fiber_T5",
-		"Item3": "Gatherable_Research_Bizzare_Wood_T5"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling5_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "20",
-		"Item2": "20",
-		"Item3": "20"
-	},
-	{
-		"LootTableID": "S8Grant_TskillLeveling5_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0"
+		"Item1": "95000"
 	},
 	{
 		"LootTableID": "WorldEvent_OWB_NormalLoot",
@@ -56276,6 +56850,44 @@
 		"Item3": "50000"
 	},
 	{
+		"LootTableID": "WorldEvent_OWB_BonusLoot",
+		"AND/OR": "AND",
+		"RollBonusSetting": "IgnoreBonus",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WorldEvent_OWB_BonusLootAdmiral",
+		"Item2": "[LTID]WorldEvent_OWB_BonusLootScarab",
+		"Item3": "[LTID]WorldEvent_OWB_BonusLootNaga",
+		"Item4": "[LTID]WorldEvent_OWB_BonusLootMammoth",
+		"Item5": "[LTID]WorldEvent_OWB_BonusLootEmpress"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusLoot_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "1",
+		"Item4": "1",
+		"Item5": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusLoot_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "0",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "0"
+	},
+	{
 		"LootTableID": "WorldEvent_OWB_Master710Filter",
 		"AND/OR": "AND",
 		"RollBonusSetting": "IgnoreBonus",
@@ -56314,22 +56926,23 @@
 		"Item5": "0"
 	},
 	{
-		"LootTableID": "WorldEvent_OWB_BonusLoot",
+		"LootTableID": "WorldEvent_OWB_BonusLootAdmiral",
 		"AND/OR": "AND",
 		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["OWB_Admiral"],
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]WorldEvent_OWB_Master710Filter",
-		"Item2": "[LTID]WorldEvent_OWB_Master725Filter",
+		"Item1": "[LTID]WorldEvent_OWB_Admiral710",
+		"Item2": "[LTID]WorldEvent_OWB_Admiral725",
 		"Item3": "DarkMatter",
 		"Item4": "GypsumBlack",
-		"Item5": "[LTID]World_Event_OWB_Skin_Reward",
-		"Item6": "[LTID]WorldEvent_OWB_BonusPityLoot"
+		"Item5": "[LTID]World_Event_OWB_Skin_Reward_Admiral",
+		"Item6": "[LTID]WorldEvent_OWB_BonusPityLoot_Admiral"
 	},
 	{
-		"LootTableID": "WorldEvent_OWB_BonusLoot_Qty",
+		"LootTableID": "WorldEvent_OWB_BonusLootAdmiral_Qty",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -56342,7 +56955,7 @@
 		"Item6": "1"
 	},
 	{
-		"LootTableID": "WorldEvent_OWB_BonusLoot_Probs",
+		"LootTableID": "WorldEvent_OWB_BonusLootAdmiral_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 100000,
@@ -56355,101 +56968,329 @@
 		"Item6": "0"
 	},
 	{
-		"LootTableID": "WorldEvent_OWB_Master725Filter",
+		"LootTableID": "WorldEvent_OWB_BonusLootScarab",
 		"AND/OR": "AND",
 		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["[LIM]WorldEventOWB725Gear_Limit"],
-		"TriggerLimitOnVisit": "TRUE",
+		"Conditions": ["OWB_Scarab"],
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]WorldEvent_OWB_Admiral725",
+		"Item1": "[LTID]WorldEvent_OWB_Scarab710",
 		"Item2": "[LTID]WorldEvent_OWB_Scarab725",
-		"Item3": "[LTID]WorldEvent_OWB_Naga725",
-		"Item4": "[LTID]WorldEvent_OWB_Mammoth725",
-		"Item5": "[LTID]WorldEvent_OWB_Empress725"
+		"Item3": "DarkMatter",
+		"Item4": "GypsumBlack",
+		"Item5": "[LTID]World_Event_OWB_Skin_Reward_Scarab",
+		"Item6": "[LTID]WorldEvent_OWB_BonusPityLoot_Scarab"
 	},
 	{
-		"LootTableID": "WorldEvent_OWB_Master725Filter_Qty",
+		"LootTableID": "WorldEvent_OWB_BonusLootScarab_Qty",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "1",
 		"Item2": "1",
-		"Item3": "1",
+		"Item3": "25",
 		"Item4": "1",
-		"Item5": "1"
+		"Item5": "1",
+		"Item6": "1"
 	},
 	{
-		"LootTableID": "WorldEvent_OWB_Master725Filter_Probs",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "0",
-		"Item2": "0",
-		"Item3": "0",
-		"Item4": "0",
-		"Item5": "0"
-	},
-	{
-		"LootTableID": "World_Event_OWB_Skin_Reward",
-		"AND/OR": "OR",
-		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["[LIM]WorldEventOWBSkin_Limit"],
-		"TriggerLimitOnVisit": "TRUE",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "Skin_Chest_OWB_Box",
-		"Item2": "Skin_Head_OWB_Box",
-		"Item3": "Skin_Legs_OWB_Box",
-		"Item4": "Skin_Feet_OWB_Box",
-		"Item5": "Skin_Gloves_OWB_Box"
-	},
-	{
-		"LootTableID": "World_Event_OWB_Skin_Reward_Qty",
-		"HWMMult": 0,
-		"GSBonus": 0,
-		"MaxRoll": 0,
-		"LootBiasingChanceOverride": 0,
-		"Item1": "1",
-		"Item2": "1",
-		"Item3": "1",
-		"Item4": "1",
-		"Item5": "1"
-	},
-	{
-		"LootTableID": "World_Event_OWB_Skin_Reward_Probs",
+		"LootTableID": "WorldEvent_OWB_BonusLootScarab_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 100000,
 		"LootBiasingChanceOverride": 0,
 		"Item1": "0",
-		"Item2": "20000",
-		"Item3": "40000",
-		"Item4": "60000",
-		"Item5": "80000"
+		"Item2": "75000",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "90000",
+		"Item6": "0"
 	},
 	{
-		"LootTableID": "WorldEvent_OWB_BonusPityLoot",
+		"LootTableID": "WorldEvent_OWB_BonusLootNaga",
 		"AND/OR": "AND",
 		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["[LIM]WeeklyOWBPityLimit"],
+		"Conditions": ["OWB_Naga"],
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WorldEvent_OWB_Naga710",
+		"Item2": "[LTID]WorldEvent_OWB_Naga725",
+		"Item3": "DarkMatter",
+		"Item4": "GypsumBlack",
+		"Item5": "[LTID]World_Event_OWB_Skin_Reward_Naga",
+		"Item6": "[LTID]WorldEvent_OWB_BonusPityLoot_Naga"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusLootNaga_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "25",
+		"Item4": "1",
+		"Item5": "1",
+		"Item6": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusLootNaga_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "75000",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "90000",
+		"Item6": "0"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusLootMammoth",
+		"AND/OR": "AND",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["OWB_Mammoth"],
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WorldEvent_OWB_Mammoth710",
+		"Item2": "[LTID]WorldEvent_OWB_Mammoth725",
+		"Item3": "DarkMatter",
+		"Item4": "GypsumBlack",
+		"Item5": "[LTID]World_Event_OWB_Skin_Reward_Mammoth",
+		"Item6": "[LTID]WorldEvent_OWB_BonusPityLoot_Mammoth"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusLootMammoth_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "25",
+		"Item4": "1",
+		"Item5": "1",
+		"Item6": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusLootMammoth_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "75000",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "90000",
+		"Item6": "0"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusLootEmpress",
+		"AND/OR": "AND",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["OWB_Empress"],
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WorldEvent_OWB_Empress710",
+		"Item2": "[LTID]WorldEvent_OWB_Empress725",
+		"Item3": "DarkMatter",
+		"Item4": "GypsumBlack",
+		"Item5": "[LTID]World_Event_OWB_Skin_Reward_Empress",
+		"Item6": "[LTID]WorldEvent_OWB_BonusPityLoot_Empress"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusLootEmpress_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1",
+		"Item3": "25",
+		"Item4": "1",
+		"Item5": "1",
+		"Item6": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusLootEmpress_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0",
+		"Item2": "75000",
+		"Item3": "0",
+		"Item4": "0",
+		"Item5": "90000",
+		"Item6": "0"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Admiral",
+		"AND/OR": "OR",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WorldEventOWBSkin_Limit_Admiral"],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LBID]World_Event_OWB_Skin_Bucket"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Admiral_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Admiral_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Scarab",
+		"AND/OR": "OR",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WorldEventOWBSkin_Limit_Scarab"],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LBID]World_Event_OWB_Skin_Bucket"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Scarab_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Scarab_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Naga",
+		"AND/OR": "OR",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WorldEventOWBSkin_Limit_Naga"],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LBID]World_Event_OWB_Skin_Bucket"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Naga_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Naga_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Mammoth",
+		"AND/OR": "OR",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WorldEventOWBSkin_Limit_Mammoth"],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LBID]World_Event_OWB_Skin_Bucket"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Mammoth_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Mammoth_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Empress",
+		"AND/OR": "OR",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WorldEventOWBSkin_Limit_Empress"],
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LBID]World_Event_OWB_Skin_Bucket"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Empress_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1"
+	},
+	{
+		"LootTableID": "World_Event_OWB_Skin_Reward_Empress_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 100000,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "0"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Admiral",
+		"AND/OR": "AND",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WeeklyOWBPityLimit_Admiral"],
 		"ConditionOverridesRoll": "1",
 		"TriggerLimitOnVisit": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
 		"LootBiasingChanceOverride": 0,
-		"Item1": "[LTID]WorldEvent_OWB_Master725Filter",
-		"Item2": "[LTID]World_Event_OWB_Skin_Reward"
+		"Item1": "[LTID]WorldEvent_OWB_Admiral725",
+		"Item2": "[LTID]World_Event_OWB_Skin_Reward_Admiral"
 	},
 	{
-		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Qty",
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Admiral_Qty",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -56458,7 +57299,135 @@
 		"Item2": "1"
 	},
 	{
-		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Probs",
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Admiral_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 12,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "12",
+		"Item2": "12"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Scarab",
+		"AND/OR": "AND",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WeeklyOWBPityLimit_Scarab"],
+		"ConditionOverridesRoll": "1",
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WorldEvent_OWB_Scarab725",
+		"Item2": "[LTID]World_Event_OWB_Skin_Reward_Scarab"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Scarab_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Scarab_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 12,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "12",
+		"Item2": "12"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Naga",
+		"AND/OR": "AND",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WeeklyOWBPityLimit_Naga"],
+		"ConditionOverridesRoll": "1",
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WorldEvent_OWB_Naga725",
+		"Item2": "[LTID]World_Event_OWB_Skin_Reward_Naga"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Naga_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Naga_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 12,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "12",
+		"Item2": "12"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Mammoth",
+		"AND/OR": "AND",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WeeklyOWBPityLimit_Mammoth"],
+		"ConditionOverridesRoll": "1",
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WorldEvent_OWB_Mammoth725",
+		"Item2": "[LTID]World_Event_OWB_Skin_Reward_Mammoth"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Mammoth_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Mammoth_Probs",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 12,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "12",
+		"Item2": "12"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Empress",
+		"AND/OR": "AND",
+		"RollBonusSetting": "IgnoreBonus",
+		"Conditions": ["[LIM]WeeklyOWBPityLimit_Empress"],
+		"ConditionOverridesRoll": "1",
+		"TriggerLimitOnVisit": "TRUE",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "[LTID]WorldEvent_OWB_Empress725",
+		"Item2": "[LTID]World_Event_OWB_Skin_Reward_Empress"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Empress_Qty",
+		"HWMMult": 0,
+		"GSBonus": 0,
+		"MaxRoll": 0,
+		"LootBiasingChanceOverride": 0,
+		"Item1": "1",
+		"Item2": "1"
+	},
+	{
+		"LootTableID": "WorldEvent_OWB_BonusPityLoot_Empress_Probs",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 12,
@@ -56616,7 +57585,6 @@
 		"AND/OR": "OR",
 		"RollBonusSetting": "IgnoreBonus",
 		"Conditions": ["OWB_Admiral"],
-		"TriggerLimitOnVisit": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -56644,7 +57612,7 @@
 		"LootTableID": "WorldEvent_OWB_Admiral725",
 		"AND/OR": "OR",
 		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["OWB_Admiral"],
+		"Conditions": ["[LIM]WorldEventOWB725Gear_Limit_Admiral"],
 		"TriggerLimitOnVisit": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
@@ -56674,7 +57642,6 @@
 		"AND/OR": "OR",
 		"RollBonusSetting": "IgnoreBonus",
 		"Conditions": ["OWB_Scarab"],
-		"TriggerLimitOnVisit": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -56702,7 +57669,7 @@
 		"LootTableID": "WorldEvent_OWB_Scarab725",
 		"AND/OR": "OR",
 		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["OWB_Scarab"],
+		"Conditions": ["[LIM]WorldEventOWB725Gear_Limit_Scarab"],
 		"TriggerLimitOnVisit": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
@@ -56732,7 +57699,6 @@
 		"AND/OR": "OR",
 		"RollBonusSetting": "IgnoreBonus",
 		"Conditions": ["OWB_Naga"],
-		"TriggerLimitOnVisit": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -56760,7 +57726,7 @@
 		"LootTableID": "WorldEvent_OWB_Naga725",
 		"AND/OR": "OR",
 		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["OWB_Naga"],
+		"Conditions": ["[LIM]WorldEventOWB725Gear_Limit_Naga"],
 		"TriggerLimitOnVisit": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
@@ -56790,7 +57756,6 @@
 		"AND/OR": "OR",
 		"RollBonusSetting": "IgnoreBonus",
 		"Conditions": ["OWB_Mammoth"],
-		"TriggerLimitOnVisit": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -56818,7 +57783,7 @@
 		"LootTableID": "WorldEvent_OWB_Mammoth725",
 		"AND/OR": "OR",
 		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["OWB_Mammoth"],
+		"Conditions": ["[LIM]WorldEventOWB725Gear_Limit_Mammoth"],
 		"TriggerLimitOnVisit": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
@@ -56848,7 +57813,6 @@
 		"AND/OR": "OR",
 		"RollBonusSetting": "IgnoreBonus",
 		"Conditions": ["OWB_Empress"],
-		"TriggerLimitOnVisit": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
 		"MaxRoll": 0,
@@ -56876,7 +57840,7 @@
 		"LootTableID": "WorldEvent_OWB_Empress725",
 		"AND/OR": "OR",
 		"RollBonusSetting": "IgnoreBonus",
-		"Conditions": ["OWB_Empress"],
+		"Conditions": ["[LIM]WorldEventOWB725Gear_Limit_Empress"],
 		"TriggerLimitOnVisit": "TRUE",
 		"HWMMult": 0,
 		"GSBonus": 0,
