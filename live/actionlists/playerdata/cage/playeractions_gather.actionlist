@@ -1,0 +1,212 @@
+<ActionList>
+	<Actions>
+		<Action Name="Gather" FragmentName="Gather">
+			<ActivationCondition>
+				<And>
+					<CanInteract/>
+					<IsRequestingInteraction>
+						<Interactions>
+							<Interaction InteractionId="GatherResource"/>
+							<Interaction InteractionId="GatherWaterResource"/>
+						</Interactions>
+					</IsRequestingInteraction>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName=""/>
+					</Not>
+					<IfCanResizeCharacterController ResizeType="Crouch"/>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Sheathe_Upperbody"/>
+					</Not>
+					<Not>
+						<IfInGameMode GameModeName="Duel"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Mount"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IsRequestingInteraction>
+							<Interactions>
+								<Interaction InteractionId="GatherResource"/>
+								<Interaction InteractionId="GatherWaterResource"/>
+							</Interactions>
+						</IsRequestingInteraction>
+					</Not>
+					<IfItemInSlotBroken SlotToCheckAlias="TOOL_SLOT"/>
+					<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="0" FailOnNoReactionDamage="false"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand-Weapon">
+					<IfCondition>
+						<And>
+							<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+							<Not>
+								<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ExecuteInteraction/>
+				<Gather/>
+				<SetGatherFragment/>
+				<SetMannequinTagFromSource ResetWhenReinstalled="false">
+					<Default TagSource="InteractingGatherable" SourceSlot="" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Main-Hand if gather without tool because code isn't automatically sheathing it">
+					<IfCondition>
+						<And>
+							<Or>
+								<IfMannequinTag TagName="Handpicking"/>
+								<IfMannequinTag TagName="Handcrafting"/>
+								<IfMannequinTag TagName="Welling"/>
+							</Or>
+							<Not>
+								<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetToggleInput>
+								<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetToggleInput>
+								<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<InteractionAlignment>
+					<Default AlignFacingBlendTime="0.2" AlignPositionSpeed="5.0" AlignPositionBlendTime="0.5"/>
+				</InteractionAlignment>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Gather Moment of Impact">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="GatherMomentOfImpact"/>
+					</IfCondition>
+					<ThenActivity>
+						<GatherMomentOfImpact>
+							<Default/>
+						</GatherMomentOfImpact>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Gather_Tool"/>
+				</AIAudioTriggerActivity>
+				<DisableCameraLock>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableCameraLock>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Set Crouched for appropriate animations">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="SetCrouch"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Crouch" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="Gathering" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="CraftingItem" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="ChargeTimer" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnExit>
+							<EffectId EffectId="GatherDelay"/>
+						</EffectsToApplyOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="GatherDelay">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="GatherDelay"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfHasStatusEffect StatusEffect="GatherDelay"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="ChargeTimer" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="Continue_Gather">
+			<Not>
+				<IfInput InputName="Stop_Gathering"/>
+			</Not>
+			<IsItemValidForGathering SlotToCheck="TOOL_SLOT"/>
+		</And>
+		<Or Name="Any_Weapon_Unsheathed">
+			<And Comment="Valid item unsheathed in current mainhand">
+				<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+				<Not>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Not>
+			</And>
+			<And Comment="Valid item unsheathed in current offhand">
+				<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+				<Not>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+				</Not>
+			</And>
+		</Or>
+	</Conditions>
+</ActionList>
+

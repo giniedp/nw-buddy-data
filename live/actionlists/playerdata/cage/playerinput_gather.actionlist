@@ -1,0 +1,10 @@
+<ActionList>
+	<Conditions>
+		<IfIsGathering Name="Start_Gathering"/>
+		<Not Name="Stop_Gathering">
+			<IfIsGathering/>
+		</Not>
+		<IfPlayerIsLoggedOff Name="Player_LoggedOff"/>
+	</Conditions>
+</ActionList>
+

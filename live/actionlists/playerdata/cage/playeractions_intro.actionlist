@@ -1,0 +1,22 @@
+<ActionList>
+	<Actions>
+		<Action Name="IslandStart" FragmentName="BeachWakeup">
+			<ActivationCondition/>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+		</Action>
+		<Action Name="Cutscene" FragmentName="Idle">
+			<ActivationCondition>
+				<And>
+					<HasTimelineFragment/>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<SetTimelineFragment/>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

@@ -1,0 +1,75 @@
+<ActionList>
+	<Actions>
+		<Action Name="Block" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableBlock"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reaction"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="BlockBroken"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="ResetAI" OnlyCheckOwnedStatusEffects="false"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="DisableBlock"/>
+					<Not>
+						<IfMannequinTag TagName="Block"/>
+					</Not>
+					<IfMannequinTag TagName="BlockBroken"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ActivateBlock>
+					<Default OnEnter="ActivateMainHandWeapon" OnExit="Deactivate"/>
+				</ActivateBlock>
+				<TriggerEntity>
+					<Default TriggerName="Shield_On"/>
+				</TriggerEntity>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Sandworm_ElenetalJuggernaut_Invulnerability"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Sandworm_ElenetalJuggernaut_Invulnerability"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="BlockBroken" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="BlockBroken"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="BlockBroken" OnEnter="Unset" OnExit="NoEffect" DelayTimer="6.0"/>
+				</SetMannequinTag>
+				<DisableStaminaRegen ResetWhenReinstalled="true" IgnoreDataChangesAfterInstall="false">
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableStaminaRegen>
+				<ResetStamina ResetWhenReinstalled="false">
+					<Default OnEnter="NoEffect" OnExit="Reset"/>
+				</ResetStamina>
+				<TriggerEntity>
+					<Default TriggerName="Shield_Off"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

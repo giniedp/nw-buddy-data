@@ -1,0 +1,28 @@
+<ActionList>
+	<Actions>
+		<Action Name="EnableRegen">
+			<ActivationCondition>
+				<IfMannequinTag TagName="OutOfCombatRegen"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfMannequinTag TagName="OutOfCombatRegen"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_PreyRegen"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_PreyRegen"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

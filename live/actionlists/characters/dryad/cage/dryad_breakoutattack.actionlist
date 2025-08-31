@@ -1,0 +1,41 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction_BreakoutAttack_Ranged" FragmentName="Reaction_BreakoutAttack_Ranged" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Reaction_BreakoutAttack_Ranged_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<DisableStaminaRegen ResetWhenReinstalled="true" IgnoreDataChangesAfterInstall="false">
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableStaminaRegen>
+				<ResetStamina ResetWhenReinstalled="true">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+					<Conditional Name="BlockingTag" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</ResetStamina>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<AITargetRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="ApplyRotation" TurnRate="360.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="ApplyRotation_Fast" TurnRate="1200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+				</AITargetRelativeFacing>
+				<ResetReactionCount ResetWhenReinstalled="false">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetReactionCount>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="ApplyRotation" MarkerName="ApplyRotation"/>
+		<IfMannequinMarker Name="ApplyRotation_Fast" MarkerName="ApplyRotation_Fast"/>
+		<IfMannequinTag Name="BlockingTag" TagName="Block"/>
+	</Conditions>
+</ActionList>
+

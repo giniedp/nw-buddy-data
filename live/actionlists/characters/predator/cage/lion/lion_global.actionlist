@@ -1,0 +1,37 @@
+<ActionList>
+	<Actions>
+		<Action Name="Isabella_Tiger_Boss_Death" FragmentName="" Predictive="true">
+			<ActivationCondition>
+				<And>
+					<IfDeathsDoor ServerOnly="true"/>
+					<IfHasStatusEffect StatusEffect="AI_Oro_Joven_Death" OnlyCheckOwnedStatusEffects="false"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<Death>
+					<Default TriggerOption="OnUpdate" DelayTime="3.0" SkipDeathsDoor="true" ClearContributors="false"/>
+				</Death>
+			</Activities>
+		</Action>
+		<Action Name="Pounce" FragmentName="Pounce">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Pounce_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<ApplyMoveSpeedMultiplier>
+					<Default MultiplierType="MoveSpeedMod"/>
+				</ApplyMoveSpeedMultiplier>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.1"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="true" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

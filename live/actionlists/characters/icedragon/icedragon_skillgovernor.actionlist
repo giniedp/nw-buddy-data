@@ -1,0 +1,48 @@
+<ActionList>
+	<Actions>
+		<Action Name="Combat_Idle" FragmentName="Combat_Idle">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Combat_Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+		<Action Name="Governor_AI_Wipe" FragmentName="Governor_AI_Wipe">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Governor_AI_Wipe_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+		<Action Name="Governor_Destroy_Self" FragmentName="Combat_Idle" Predictive="false">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Governor_Destroy_Self_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.25"/>
+				</BehaviorTreeTask>
+				<TriggerRemoteEntity>
+					<Default TriggerName="Trigger_OnDeathEvent"/>
+				</TriggerRemoteEntity>
+				<DestroySelf>
+					<Default DestroySelfTimeDelay="0.0"/>
+				</DestroySelf>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

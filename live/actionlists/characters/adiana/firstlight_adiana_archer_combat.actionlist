@@ -1,0 +1,710 @@
+<ActionList>
+	<Actions>
+		<Action Name="Attack_Execution" FragmentName="Attack_Execution" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Execution_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="FireBow" FragmentName="Fire_Bow" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Shoot_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.6"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="ShadowShot" FragmentName="ShadowShot" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="ShadowShot_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.6"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Archer_Charged_Ranged_Attack" FragmentName="Archer_Charged_Ranged_Attack" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Archer_Charged_Ranged_Attack_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Archer_Charged_Ranged_Attack_02" FragmentName="Archer_Charged_Ranged_Attack_02" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Archer_Charged_Ranged_Attack_02_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Archer_Fast_Ranged_Attack" FragmentName="Archer_Fast_Ranged_Attack" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Archer_Fast_Ranged_Attack_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.5"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Archer_Shadow_Rain" FragmentName="Archer_Shadow_Rain" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Archer_Shadow_Rain_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_VineSwat_L" FragmentName="Attack_VineSwat_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_VineSwat_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_VineSwat_R" FragmentName="Attack_VineSwat_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_VineSwat_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_VineSwat_F" FragmentName="Attack_VineSwat_F" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_VineSwat_F_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.0" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Double_Swing" FragmentName="Attack_Double_Swing" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Double_Swing_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Charge_Intro" FragmentName="Attack_Charge_Intro" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Charge_Intro_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.3"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.5"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.65"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Charge_Loop" FragmentName="Attack_Charge_Loop" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Charge_Loop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.3"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.5"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.65"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Charge_Outro" FragmentName="Attack_Charge_Outro" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Charge_Outro_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.55"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.7"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Spell_NaturalOutburst_Melee" FragmentName="Spell_NaturalOutburst_Melee" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Spell_NaturalOutburst_Melee_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Spell_NaturalOutburst_Ranged" FragmentName="Spell_NaturalOutburst_Ranged" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Spell_NaturalOutburst_Ranged_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Intro_Phase2" FragmentName="Intro_Phase2" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Intro_Phase2_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Spell_EffortlessRain" FragmentName="Spell_EffortlessRain" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Spell_EffortlessRain_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack" FragmentName="Attack_Primary_Close" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="RightHandAttack_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Dodge_B" FragmentName="Dodge_B" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Dodge_B_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Dodge_L" FragmentName="Dodge_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Dodge_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Dodge_R" FragmentName="Dodge_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Dodge_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Archer_Disengage_Shot" FragmentName="Archer_Disengage_Shot" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Archer_Disengage_Shot_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Close_1H_Combo_2" FragmentName="Attack_Close_1H_Combo_2" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Close_1H_Combo_2_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="MeleeAttackClose" FragmentName="Attack_Primary_Close" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CloseMeleeAttack_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="MeleeAttackMedium" FragmentName="Attack_Primary_Medium" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="MediumMeleeAttack_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="MeleeAttackFar" FragmentName="Attack_Primary_Far" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="FarMeleeAttack_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Elite_FlipOverhead" FragmentName="Attack_Elite_FlipOverhead" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Elite_FlipOverhead_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Spawn_ShadowArchers" FragmentName="Spawn_ShadowArchers" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Spawn_ShadowArchers_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="0.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Spawn_Phase2_ShadowArchers" FragmentName="Spawn_Phase2_ShadowArchers" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Spawn_Phase2_ShadowArchers_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="0.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="APPLYROTATION" MarkerName="ApplyRotation"/>
+		<IfMannequinMarker Name="FaceTarget" MarkerName="FaceTarget"/>
+		<IfMannequinMarker Name="Translation3x" MarkerName="Translation3x"/>
+		<IfMannequinTag Name="ChainAttack" TagName="ChainAttack"/>
+		<IfMannequinTag Name="StopChainAttack" TagName="StopChainAttack"/>
+		<IfHTNCAGEAction Name="DoubleSlash_R_Combo" ActionName="Attack_DoubleSlash_R_Combo_CAGE_Task"/>
+		<IfHTNCAGEAction Name="DoubleSlash_L_Combo" ActionName="Attack_DoubleSlash_L_Combo_CAGE_Task"/>
+		<IfHTNCAGEAction Name="SpinSlash_Combo" ActionName="Attack_SpinSlash_CAGE_Task"/>
+		<IfMannequinMarker Name="StopFacingTarget" MarkerName="StopFacingTarget"/>
+	</Conditions>
+</ActionList>
+

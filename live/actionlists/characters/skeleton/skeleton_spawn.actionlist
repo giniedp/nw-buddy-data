@@ -1,0 +1,83 @@
+<ActionList>
+	<Actions>
+		<Action Name="Spawn" FragmentName="Spawn">
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<ResetReactionCount ResetWhenReinstalled="false" omment="Reset Reaction Count to cancel SetReactionFragment increment above">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetReactionCount>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="false" Comment="">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfHasStatusEffect StatusEffect="AI_Elite_Unbreakable_Grit_Buff"/>
+							</Not>
+							<IfMannequinMarker MarkerName="EnableRevive"/>
+							<BlackboardCondition LeftOperand="%Difficulty_Tier%0" Operator="GreaterThanOrEqual" RightOperand="2"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="CanRevive" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Valid_Mainhand" TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Valid_Offhand" TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Valid_Mainhand" SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Valid_Offhand" SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+			</Activities>
+		</Action>
+		<Action Name="Despawn" FragmentName="Idle">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Despawn_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="CanRevive" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="TerminateAI"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AIMinHealth"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfItemInSlot Name="Valid_Mainhand" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+		<IfItemInSlot Name="Valid_Offhand" SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+		<IfMannequinMarker Name="DisableRevive" MarkerName="DisableRevive"/>
+	</Conditions>
+</ActionList>
+

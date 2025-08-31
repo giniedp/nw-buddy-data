@@ -1,0 +1,1023 @@
+<ActionList>
+	<Actions>
+		<Action Name="Vault" FragmentName="Vault_Low" Traversal="true">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="jump_hold"/>
+						<IfInput InputName="jump"/>
+						<IfMannequinTag TagName="AutoRun"/>
+						<IfMannequinMarker MarkerName="IsJumping"/>
+						<IfAutoTraverse/>
+					</Or>
+					<Not>
+						<IfIsGathering/>
+					</Not>
+					<IfCanNav/>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<Not>
+						<IfEncumbered/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+					<IfTraversal MaxXYRange="2.00" CheckHeight="true" MinHeight="0.20" MaxHeight="1.50" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="false" TraversalType="vault"/>
+					<Not>
+						<IfExternalCondition ConditionName="Prevent_Vault"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<ClearMotion/>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<DisableCameraHits>
+					<Default DisableOffsetHits="true" DisablePulllBackHits="false"/>
+				</DisableCameraHits>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="true" InheritVelocity="false"/>
+					<Conditional Name="Enable_Gravity" MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<TraversalFixUp>
+					<Default TraversalType="vault" BaseAnimationLength="0.5" BaseAnimationLengthZ="0.65" FixupXY="true" ScaleZ="true" ClearLastVelocityOnExit="false" AlignmentToObject="true" FixupPositionTime="0.1"/>
+					<Conditional Name="Vault_HigherThan_1.05" TraversalType="vault" BaseAnimationLength="0.485" BaseAnimationLengthZ="0.9" FixupXY="true" ScaleZ="true" ClearLastVelocityOnExit="false" AlignmentToObject="true" FixupPositionTime="0.1"/>
+					<Conditional Name="Vault_ThinnerThan_0.50 AND Higher_Than_1.05" TraversalType="vault" BaseAnimationLength="0.5" BaseAnimationLengthZ="1.1" FixupXY="true" ScaleZ="true" ClearLastVelocityOnExit="false" AlignmentToObject="true" FixupPositionTime="0.1"/>
+					<Conditional Name="MovingBackwards" TraversalType="vault" BaseAnimationLength="0.485" BaseAnimationLengthZ="0.9" FixupXY="true" ScaleZ="true" ClearLastVelocityOnExit="false" AlignmentToObject="true" FixupPositionTime="0.1"/>
+				</TraversalFixUp>
+				<TraversalFixUp>
+					<Default TraversalType="vault" BaseAnimationLength="1.25" BaseAnimationLengthZ="0.65" FixupXY="true" FixupZ="true" AlignmentToObject="false" ClearLastVelocityOnExit="false" AnimationMarkerName="HorizontalFixup"/>
+					<Conditional Name="Vault_HigherThan_1.05" TraversalType="vault" BaseAnimationLength="0.8" BaseAnimationLengthZ="0.9" FixupXY="true" FixupZ="true" AlignmentToObject="false" ClearLastVelocityOnExit="false" AnimationMarkerName="HorizontalFixup"/>
+					<Conditional Name="Vault_ThinnerThan_0.50 AND Higher_Than_1.05" TraversalType="vault" BaseAnimationLength="0.45" BaseAnimationLengthZ="1.1" FixupXY="true" FixupZ="true" AlignmentToObject="false" ClearLastVelocityOnExit="false" AnimationMarkerName="HorizontalFixup"/>
+					<Conditional Name="MovingBackwards" TraversalType="vault" BaseAnimationLength="0.8" BaseAnimationLengthZ="0.9" FixupXY="true" FixupZ="true" AlignmentToObject="false" ClearLastVelocityOnExit="false" AnimationMarkerName="HorizontalFixup"/>
+				</TraversalFixUp>
+				<ChangeActionFragment ResetWhenReinstalled="false" Comment="Change to Vault fragment if its a tall object">
+					<Default UseDefaultFragment="true"/>
+					<Conditional Name="Vault_HigherThan_1.05" UseDefaultFragment="false" FragmentName="Vault"/>
+					<Conditional Name="Vault_ThinnerThan_0.50 AND Higher_Than_1.05" UseDefaultFragment="false" FragmentName="Vault_Low_Thin"/>
+					<Conditional Name="MovingBackwards" UseDefaultFragment="false" FragmentName="Vault"/>
+				</ChangeActionFragment>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<DisableInteractions>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractions>
+			</Activities>
+		</Action>
+		<Action Name="Mantle" FragmentName="Mantle_Low" Traversal="true">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="jump_hold"/>
+						<IfInput InputName="jump"/>
+						<IfMannequinTag TagName="AutoRun"/>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fall"/>
+						<IfMannequinMarker MarkerName="IsJumping"/>
+						<IfAutoTraverse/>
+					</Or>
+					<Not>
+						<IfIsGathering/>
+					</Not>
+					<IfCanNav/>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<Not>
+						<IfEncumbered/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying FragmentName="Fishing_Ready_Idle" UseHostActionFragment="false"/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+					<IfTraversal MaxXYRange="1.50" CheckHeight="true" MinHeight="1.0" MaxHeight="3.00" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="false" TraversalType="mantle"/>
+					<Not>
+						<IfExternalCondition ConditionName="Prevent_Mantle"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities>
+				<ClearMotion/>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<DisableCameraHits>
+					<Default DisableOffsetHits="true" DisablePulllBackHits="false"/>
+				</DisableCameraHits>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="true" InheritVelocity="false"/>
+					<Conditional Name="Enable_Gravity" MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<TraversalFixUp>
+					<Default TraversalType="mantle" BaseAnimationLength="0.486" BaseAnimationLengthZ="1.028" FixupZ="true" FixupXY="true" AlignmentToObject="true" AnimationMarkerName="" FixupPositionTime="0.1"/>
+					<Conditional Name="Mantle_HigherThan_2.2" TraversalType="mantle" BaseAnimationLength="0.435" BaseAnimationLengthZ="2.443" FixupZ="true" FixupXY="true" AlignmentToObject="true" AnimationMarkerName="" FixupPositionTime="0.0834"/>
+				</TraversalFixUp>
+				<ChangeActionFragment ResetWhenReinstalled="false" Comment="Change to Mantle_High if tall object and not in-air">
+					<Default UseDefaultFragment="true"/>
+					<Conditional Name="Mantle_HigherThan_2.2" UseDefaultFragment="false" FragmentName="Mantle_High"/>
+				</ChangeActionFragment>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<DisableInteractions>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractions>
+			</Activities>
+		</Action>
+		<Action Name="StepUp" FragmentName="StepUp_Low" Traversal="true">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="jump_hold"/>
+						<IfInput InputName="jump"/>
+						<IfMannequinTag TagName="AutoRun"/>
+						<IfMannequinMarker MarkerName="IsJumping"/>
+						<IfAutoTraverse/>
+					</Or>
+					<Not>
+						<IfIsGathering/>
+					</Not>
+					<IfCanNav/>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<Not>
+						<IfEncumbered/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Blunderbuss_ClawShot_Mantle_Disable"/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+					<IfTraversal MaxXYRange="0.75" CheckHeight="true" MinHeight="0.15" MaxHeight="1.25" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="false" TraversalType="stepup"/>
+					<Not>
+						<Or>
+							<IfTraversal MaxXYRange="0.75" CheckHeight="false" MinHeight="0.50" MaxHeight="1.50" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="false" TraversalType="vault"/>
+							<IfTraversal MaxXYRange="1.50" CheckHeight="true" MinHeight="1.25" MaxHeight="5.00" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="false" TraversalType="mantle"/>
+						</Or>
+					</Not>
+					<Not>
+						<Or>
+							<IsMounted/>
+							<IfMannequinTag TagName="Mount"/>
+							<IfShouldBeMounted/>
+						</Or>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<And>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+						<Not>
+							<Or>
+								<IfInput InputName="ForwardNav"/>
+								<IfInput InputName="moveleft"/>
+								<IfInput InputName="moveright"/>
+								<IfInput InputName="moveback"/>
+							</Or>
+						</Not>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ClearMotion/>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<DisableCameraHits>
+					<Default DisableOffsetHits="true" DisablePulllBackHits="false"/>
+				</DisableCameraHits>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="true" InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+				</AnimationDrivenMotion>
+				<TraversalFixUp>
+					<Default TraversalType="stepup" BaseAnimationLength="0.75" BaseAnimationLengthZ="0.5" FixupZ="true" FixupXY="false" AlignmentToObject="true" AnimationMarkerName="" FixupPositionTime="0.1"/>
+					<Conditional Name="StepUp_HigherThan_0.75" TraversalType="stepup" BaseAnimationLength="0.75" BaseAnimationLengthZ="1.0" FixupZ="true" FixupXY="false" AlignmentToObject="true" AnimationMarkerName="" FixupPositionTime="0.1"/>
+				</TraversalFixUp>
+				<ChangeActionFragment ResetWhenReinstalled="false" Comment="Change to Vault fragment if its a tall object">
+					<Default UseDefaultFragment="true"/>
+					<Conditional Name="StepUp_HigherThan_0.75" UseDefaultFragment="false" FragmentName="StepUp"/>
+				</ChangeActionFragment>
+				<IfThenElse ResetWhenReinstalled="true">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="StepUp_AllowTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default TurnRate="600.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="StepUp_Automatic" FragmentName="StepUp_Low" Traversal="true">
+			<ActivationCondition>
+				<And>
+					<IfCanNav/>
+					<Not>
+						<IfIsGathering/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<Not>
+						<IfEncumbered/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Blunderbuss_ClawShot_Mantle_Disable"/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+					<IfTraversal MaxXYRange="0.75" CheckHeight="true" MinHeight="0.15" MaxHeight="0.65" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="false" TraversalType="stepup"/>
+					<Not>
+						<Or>
+							<IfTraversal MaxXYRange="0.75" CheckHeight="false" MinHeight="0.50" MaxHeight="1.50" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="false" TraversalType="vault"/>
+							<IfTraversal MaxXYRange="1.50" CheckHeight="true" MinHeight="1.25" MaxHeight="5.00" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="false" TraversalType="mantle"/>
+						</Or>
+					</Not>
+					<Not>
+						<Or>
+							<IsMounted/>
+							<IfMannequinTag TagName="Mount"/>
+							<IfShouldBeMounted/>
+						</Or>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<And>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+						<Not>
+							<Or>
+								<IfInput InputName="ForwardNav"/>
+								<IfInput InputName="moveleft"/>
+								<IfInput InputName="moveright"/>
+								<IfInput InputName="moveback"/>
+							</Or>
+						</Not>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ClearMotion/>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<DisableCameraHits>
+					<Default DisableOffsetHits="true" DisablePulllBackHits="false"/>
+				</DisableCameraHits>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="true" InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+				</AnimationDrivenMotion>
+				<TraversalFixUp>
+					<Default TraversalType="stepup" BaseAnimationLength="0.75" BaseAnimationLengthZ="0.5" FixupZ="true" FixupXY="false" AlignmentToObject="true" AnimationMarkerName="" FixupPositionTime="0.1"/>
+					<Conditional Name="StepUp_HigherThan_0.75" TraversalType="stepup" BaseAnimationLength="0.75" BaseAnimationLengthZ="1.0" FixupZ="true" FixupXY="false" AlignmentToObject="true" AnimationMarkerName="" FixupPositionTime="0.1"/>
+				</TraversalFixUp>
+				<ChangeActionFragment ResetWhenReinstalled="false" Comment="Change to Vault fragment if its a tall object">
+					<Default UseDefaultFragment="true"/>
+					<Conditional Name="StepUp_HigherThan_0.75" UseDefaultFragment="false" FragmentName="StepUp"/>
+				</ChangeActionFragment>
+				<IfThenElse ResetWhenReinstalled="true">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="StepUp_AllowTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default TurnRate="600.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Jump" FragmentName="Jump" Traversal="true">
+			<ActivationCondition>
+				<And>
+					<And>
+						<IfInput InputName="jump"/>
+					</And>
+					<IfCanNav/>
+					<IfCanDodge/>
+					<Not>
+						<IfExternalCondition ConditionName="NotMoving"/>
+					</Not>
+					<Or Comment="Jump After Land Check">
+						<IfMannequinMarker MarkerName="Land_To_Jump"/>
+						<Not>
+							<IfHasStatusEffect StatusEffect="JumpDelayTimer"/>
+						</Not>
+					</Or>
+					<Or Comment="Input Direction Check">
+						<IfExternalCondition ConditionName="MovingForward"/>
+						<IfExternalCondition ConditionName="MovingBackwards"/>
+						<IfExternalCondition ConditionName="MovingLeft"/>
+						<IfExternalCondition ConditionName="MovingRight"/>
+						<IfExternalCondition ConditionName="MovingForwardAnalog"/>
+						<IfExternalCondition ConditionName="MovingBackwardsAnalog"/>
+						<IfExternalCondition ConditionName="MovingLeftAnalog"/>
+						<IfExternalCondition ConditionName="MovingRightAnalog"/>
+						<Not>
+							<Or>
+								<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+								<IfPlayerSetting PlayerSettingName="AttackFacing" PlayerSettingNameForGamepad="AttackFacing_Alternate"/>
+								<IfMannequinMarker MarkerName="ForceCameraFacing"/>
+								<IfExternalCondition ConditionName="CombatNav"/>
+							</Or>
+						</Not>
+					</Or>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Jump_Diagonal"/>
+					</Not>
+					<Not>
+						<ActionConditionEquipLoadCategory Value="Overburdened"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="DEBUG_Strafe_Dodge"/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+					<Or>
+						<IfMannequinMarker MarkerName="Sliding"/>
+						<And>
+							<Not>
+								<Or>
+									<IfTraversal TraversalType="stepup"/>
+									<IfTraversal TraversalType="vault"/>
+									<IfTraversal TraversalType="mantle"/>
+								</Or>
+							</Not>
+						</And>
+					</Or>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<Not>
+						<IfEncumbered/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Not>
+						<IfIsPlacingBuilding/>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+					</Not>
+					<Not>
+						<HeightToGround ActivationHeight="0.2"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="JumpPrevention"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reaction"/>
+					</Not>
+					<Not>
+						<Or>
+							<IsMounted/>
+							<IfMannequinTag TagName="Mount"/>
+							<IfShouldBeMounted/>
+						</Or>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<True/>
+					</Not>
+					<IfMannequinTag TagName="Reaction"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfMannequinTag TagName="Prone"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SuppressVerticalCameraMovement/>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1" DisableGravity="true" Decel="0.0,0.0,0.0" InheritVelocity="false" InheritVelocityMaxSpeed="6"/>
+					<Conditional Name="Enable_Gravity" Decel="0.0,0.0,0.0" DisableGravity="false"/>
+					<Conditional Name="Jump_Slowed" MotionMultiplier="0.85" DisableGravity="true" Decel="0.0,0.0,0.0" InheritVelocity="false" InheritVelocityMaxSpeed="6"/>
+				</AnimationDrivenMotion>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<IfThenElse Comment="Targeting StickyLock Check">
+					<IfCondition>
+						<Not>
+							<IfCameraStickyLockActive/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ForceCameraLock>
+							<Default OnEnter="Disable" OnExit="NoEffect"/>
+						</ForceCameraLock>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Nav Direction only at start of jump">
+					<IfCondition>
+						<Or>
+							<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+							<IfExternalCondition ConditionName="CombatNav"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse Comment="Set Nav Direction only at start of jump">
+							<IfCondition>
+								<Not>
+									<IfMannequinTag TagName="ContextualNav"/>
+								</Not>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SetMannequinTag Comment="Set Nav Direction" ResetWhenReinstalled="true">
+										<Default TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect"/>
+										<Conditional Name="MovingForward" TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect"/>
+										<Conditional Name="MovingBackwards" TagName="BackNav" OnEnter="Set" OnExit="NoEffect"/>
+										<Conditional Name="MovingLeft" TagName="LeftNav" OnEnter="Set" OnExit="NoEffect"/>
+										<Conditional Name="MovingRight" TagName="RightNav" OnEnter="Set" OnExit="NoEffect"/>
+										<Conditional Name="MovingForwardAnalog" TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect"/>
+										<Conditional Name="MovingBackwardsAnalog" TagName="BackNav" OnEnter="Set" OnExit="NoEffect"/>
+										<Conditional Name="MovingLeftAnalog" TagName="LeftNav" OnEnter="Set" OnExit="NoEffect"/>
+										<Conditional Name="MovingRightAnalog" TagName="RightNav" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="ContextualNav" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ThenActivity>
+					<ElseActivity>
+						<Group>
+							<InputRelativeFacing>
+								<Default/>
+								<Conditional Name="ApplyAlignRotation" TurnRate="10800.00" RepeatInitialInput="true" ForwardInput="ForwardNav" BackwardInput="moveBack" LeftInput="moveLeft" RightInput="moveRight" AnalogInputOverride="LeftAnalog"/>
+							</InputRelativeFacing>
+							<IfThenElse Comment="Set Nav Direction only at start of jump">
+								<IfCondition>
+									<Not>
+										<IfMannequinTag TagName="ContextualNav"/>
+									</Not>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<SetMannequinTag Comment="Set Nav Direction" ResetWhenReinstalled="true">
+											<Default TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="ContextualNav" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable Stamina Regen Logic">
+					<IfCondition>
+						<Not>
+							<IfMannequinMarker MarkerName="CanTransition"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<DisableStaminaRegen ResetWhenReinstalled="false" IgnoreDataChangesAfterInstall="false">
+							<Default OnEnter="Disable" OnExit="Enable"/>
+						</DisableStaminaRegen>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Dodge"/>
+				</AIAudioTriggerActivity>
+				<ResizeCharacterController ResetWhenReinstalled="true">
+					<Default ResizeType="Default"/>
+				</ResizeCharacterController>
+			</Activities>
+		</Action>
+		<Action Name="Jump_Diagonal" FragmentName="Jump_Diagonal" Traversal="true">
+			<ActivationCondition>
+				<And>
+					<And>
+						<IfInput InputName="jump"/>
+					</And>
+					<IfCanNav/>
+					<IfCanDodge/>
+					<Or>
+						<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+						<IfPlayerSetting PlayerSettingName="AttackFacing" PlayerSettingNameForGamepad="AttackFacing_Alternate"/>
+						<IfMannequinMarker MarkerName="ForceCameraFacing"/>
+						<IfExternalCondition ConditionName="CombatNav"/>
+					</Or>
+					<Not>
+						<IfExternalCondition ConditionName="NotMoving"/>
+					</Not>
+					<Or Comment="Jump After Land Check">
+						<IfMannequinMarker MarkerName="Land_To_Jump"/>
+						<Not>
+							<IfHasStatusEffect StatusEffect="JumpDelayTimer"/>
+						</Not>
+					</Or>
+					<Or Comment="Input Direction Check">
+						<IfExternalCondition ConditionName="MovingForwardLeft"/>
+						<IfExternalCondition ConditionName="MovingForwardRight"/>
+						<IfExternalCondition ConditionName="MovingBackwardsLeft"/>
+						<IfExternalCondition ConditionName="MovingBackwardsRight"/>
+						<IfExternalCondition ConditionName="MovingForwardLeftAnalog"/>
+						<IfExternalCondition ConditionName="MovingForwardRightAnalog"/>
+						<IfExternalCondition ConditionName="MovingBackwardsLeftAnalog"/>
+						<IfExternalCondition ConditionName="MovingBackwardsRightAnalog"/>
+					</Or>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Jump"/>
+					</Not>
+					<Not>
+						<ActionConditionEquipLoadCategory Value="Overburdened"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="DEBUG_Strafe_Dodge"/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+					<Or>
+						<IfMannequinMarker MarkerName="Sliding"/>
+						<And>
+							<Not>
+								<Or>
+									<IfTraversal TraversalType="stepup"/>
+									<IfTraversal TraversalType="vault"/>
+									<IfTraversal TraversalType="mantle"/>
+								</Or>
+							</Not>
+						</And>
+					</Or>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<Not>
+						<IfEncumbered/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Not>
+						<IfIsPlacingBuilding/>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+					</Not>
+					<Not>
+						<HeightToGround ActivationHeight="0.2"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="JumpPrevention"/>
+					</Not>
+					<Not>
+						<Or>
+							<IsMounted/>
+							<IfMannequinTag TagName="Mount"/>
+							<IfShouldBeMounted/>
+						</Or>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfMannequinTag TagName="Prone"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1" DisableGravity="true" Decel="0.0,0.0,0.0" InheritVelocity="false" InheritVelocityMaxSpeed="6"/>
+					<Conditional Name="Enable_Gravity" Decel="0.0,0.0,0.0" DisableGravity="false"/>
+					<Conditional Name="Jump_Slowed" MotionMultiplier="0.85" DisableGravity="true" Decel="0.0,0.0,0.0" InheritVelocity="false" InheritVelocityMaxSpeed="6"/>
+				</AnimationDrivenMotion>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<IfThenElse Comment="Targeting StickyLock Check">
+					<IfCondition>
+						<Not>
+							<IfCameraStickyLockActive/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ForceCameraLock>
+							<Default OnEnter="Disable" OnExit="NoEffect"/>
+						</ForceCameraLock>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Nav Direction only at start of jump">
+					<IfCondition>
+						<Not>
+							<IfMannequinTag TagName="ContextualNav"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag Comment="Set Nav Direction" ResetWhenReinstalled="true">
+								<Default TagName="ForwardNav" OnEnter="Set" OnExit="Unset"/>
+								<Conditional Name="MovingForwardLeft" TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="MovingForwardRight" TagName="RightNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="MovingBackwardsLeft" TagName="LeftNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="MovingBackwardsRight" TagName="BackNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="MovingForwardLeftAnalog" TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="MovingForwardRightAnalog" TagName="RightNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="MovingBackwardsLeftAnalog" TagName="LeftNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="MovingBackwardsRightAnalog" TagName="BackNav" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="ContextualNav" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable Stamina Regen Logic">
+					<IfCondition>
+						<Not>
+							<IfMannequinMarker MarkerName="CanTransition"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<DisableStaminaRegen ResetWhenReinstalled="false" IgnoreDataChangesAfterInstall="false">
+							<Default OnEnter="Disable" OnExit="Enable"/>
+						</DisableStaminaRegen>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Dodge"/>
+				</AIAudioTriggerActivity>
+				<ResizeCharacterController ResetWhenReinstalled="true">
+					<Default ResizeType="Default"/>
+				</ResizeCharacterController>
+			</Activities>
+		</Action>
+		<Action Name="Standing_Jump" FragmentName="Jump_Standing" Traversal="true">
+			<ActivationCondition>
+				<And>
+					<And>
+						<IfInput InputName="jump"/>
+					</And>
+					<IfCanNav/>
+					<IfCanDodge/>
+					<IfExternalCondition ConditionName="NotMoving"/>
+					<Not>
+						<ActionConditionEquipLoadCategory Value="Overburdened"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Jump_Standing"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="DEBUG_Strafe_Dodge"/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+					<Or>
+						<IfMannequinMarker MarkerName="Sliding"/>
+						<And>
+							<Not>
+								<Or>
+									<IfTraversal TraversalType="stepup"/>
+									<IfTraversal TraversalType="vault"/>
+									<IfTraversal TraversalType="mantle"/>
+								</Or>
+							</Not>
+						</And>
+					</Or>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<Not>
+						<IfEncumbered/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Jump"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Jump_Diagonal"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fall"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="JumpStanding"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffectCategory="Root"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Not>
+						<IfIsPlacingBuilding/>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+					</Not>
+					<Not>
+						<HeightToGround ActivationHeight="0.2"/>
+					</Not>
+					<Not>
+						<Or>
+							<IsMounted/>
+							<IfMannequinTag TagName="Mount"/>
+							<IfShouldBeMounted/>
+						</Or>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SuppressVerticalCameraMovement/>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1" DisableGravity="true" InheritVelocity="false" InheritVelocityMaxSpeed="6"/>
+				</AnimationDrivenMotion>
+				<ToggleLimbIK>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</ToggleLimbIK>
+				<IfThenElse Comment="Enable IK on Land">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<ToggleLimbIK>
+							<Default OnEnter="Enable" OnExit="Enable"/>
+						</ToggleLimbIK>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse>
+					<IfCondition>
+						<Or>
+							<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+							<IfExternalCondition ConditionName="CombatNav"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<CameraRelativeMotion>
+								<Default ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="2.5,2.5,2.5" Accel="30,30,30" Decel="30,30,30" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.4,1.4,0" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.8" MovementAccuracyBonus="-20.0" UseAdditionalVelocity="true"/>
+							</CameraRelativeMotion>
+							<CameraRelativeFacing>
+								<Default TurnRate="0.0" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+								<Conditional Name="AlignToCamera" TurnRate="0.4" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+							</CameraRelativeFacing>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<Group>
+							<CharacterRelativeMovement>
+								<Default Forced="false" AlignVelocity="true" Speed="2.5,2.5,0" Accel="30,30,0" Decel="30,30,0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="false"/>
+							</CharacterRelativeMovement>
+							<InputRelativeFacing>
+								<Default TurnRate="0.0" UseExponentialTurnRate="true" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright"/>
+								<Conditional Name="AlignToCamera" TurnRate="0.4" UseExponentialTurnRate="true" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+							</InputRelativeFacing>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<IfThenElse Comment="Goto Stand if Moving">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="NotMoving"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+							<IfCondition>
+								<Or>
+									<IfMannequinTag TagName="Crouch"/>
+									<IfMannequinTag TagName="Prone"/>
+								</Or>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable Stamina Regen Logic">
+					<IfCondition>
+						<Not>
+							<IfMannequinMarker MarkerName="CanTransition"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<DisableStaminaRegen ResetWhenReinstalled="false" IgnoreDataChangesAfterInstall="false">
+							<Default OnEnter="Disable" OnExit="Enable"/>
+						</DisableStaminaRegen>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Targeting StickyLock Check">
+					<IfCondition>
+						<Not>
+							<IfCameraStickyLockActive/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ForceCameraLock>
+							<Default OnEnter="Disable" OnExit="NoEffect"/>
+						</ForceCameraLock>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Dodge"/>
+				</AIAudioTriggerActivity>
+				<ResizeCharacterController ResetWhenReinstalled="true">
+					<Default ResizeType="Default"/>
+				</ResizeCharacterController>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="Jump_Prone">
+			<IfMannequinTag TagName="Prone"/>
+			<Not>
+				<IfMannequinTag TagName="Crouch_Desired"/>
+			</Not>
+		</And>
+		<Or Name="Jump_Crouch">
+			<IfMannequinTag TagName="Crouch"/>
+			<IfMannequinTag TagName="Crouch_Desired"/>
+		</Or>
+		<And Name="Jump_Slowed">
+			<IfHasStatusEffect StatusEffectCategory="Slow"/>
+		</And>
+		<IfTraversal Name="Mantle_HigherThan_2.2" MaxXYRange="1.50" CheckHeight="true" MinHeight="2.20" MaxHeight="5.00" CheckLength="false" MinLength="0.75" MaxLength="1.5" UseCachedTraversalIfValid="true" TraversalType="mantle"/>
+		<IfTraversal Name="Vault_HigherThan_1.05" MaxXYRange="1.5" CheckHeight="true" MinHeight="1.05" MaxHeight="1.5" CheckLength="true" MinLength="0.50" MaxLength="3.00" UseCachedTraversalIfValid="true" TraversalType="vault"/>
+		<IfTraversal Name="Vault_ThinnerThan_0.50 AND Higher_Than_1.05" MaxXYRange="1.5" CheckHeight="true" MinHeight="1.05" MaxHeight="1.30" CheckLength="true" MinLength="0.1" MaxLength="0.50" UseCachedTraversalIfValid="true" TraversalType="vault"/>
+		<IfTraversal Name="StepUp_HigherThan_0.75" MaxXYRange="0.75" CheckHeight="true" MinHeight="0.75" MaxHeight="1.25" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="true" TraversalType="stepup"/>
+		<IfMannequinMarker Name="Enable_Gravity" MarkerName="Enable_Gravity"/>
+		<HeightToGround Name="Ground_Too_Far" ActivationHeight="0.65"/>
+		<And Name="Close_To_Ground">
+			<Not>
+				<HeightToGround ActivationHeight="0.65"/>
+			</Not>
+			<Not Comment="NotHoldingForward">
+				<Or>
+					<IfInput InputName="ForwardNav"/>
+					<IfInput InputName="moveleft"/>
+					<IfInput InputName="moveright"/>
+					<IfInput InputName="moveback"/>
+				</Or>
+			</Not>
+		</And>
+		<IfAnalogInput Name="MovingBackwards" AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.0" TargetAngleTolerance="20.00"/>
+		<IfAnalogInput Name="MovingForward" AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.0" TargetAngleTolerance="20.00"/>
+		<IfAnalogInput Name="MovingLeft" AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="270.0" TargetAngleTolerance="20.00"/>
+		<IfAnalogInput Name="MovingRight" AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="90.0" TargetAngleTolerance="20.00"/>
+		<IfAnalogInput Name="MovingForwardLeft" AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="315.0" TargetAngleTolerance="20.00"/>
+		<IfAnalogInput Name="MovingForwardRight" AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="45.0" TargetAngleTolerance="20.00"/>
+		<IfAnalogInput Name="MovingBackwardsLeft" AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="225.0" TargetAngleTolerance="20.00"/>
+		<IfAnalogInput Name="MovingBackwardsRight" AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="135.0" TargetAngleTolerance="20.00"/>
+		<IfAnalogInput Name="MovingBackwardsAnalog" AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.0" TargetAngleTolerance="22.50"/>
+		<IfAnalogInput Name="MovingForwardAnalog" AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.0" TargetAngleTolerance="22.50"/>
+		<IfAnalogInput Name="MovingLeftAnalog" AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="270.0" TargetAngleTolerance="22.50"/>
+		<IfAnalogInput Name="MovingRightAnalog" AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="90.0" TargetAngleTolerance="22.50"/>
+		<IfAnalogInput Name="MovingForwardLeftAnalog" AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="315.0" TargetAngleTolerance="22.50"/>
+		<IfAnalogInput Name="MovingForwardRightAnalog" AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="45.0" TargetAngleTolerance="22.50"/>
+		<IfAnalogInput Name="MovingBackwardsLeftAnalog" AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="225.0" TargetAngleTolerance="22.50"/>
+		<IfAnalogInput Name="MovingBackwardsRightAnalog" AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="135.0" TargetAngleTolerance="22.50"/>
+		<And Name="NotMoving">
+			<Not>
+				<Or>
+					<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.20"/>
+					<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.0"/>
+				</Or>
+			</Not>
+		</And>
+		<And Name="Prevent_Vault">
+			<Or>
+				<IfHasStatusEffect StatusEffect="Blunderbuss_ClawShot_Mantle_Disable"/>
+				<Or>
+					<IsMounted/>
+					<IfMannequinTag TagName="Mount"/>
+					<IfShouldBeMounted/>
+				</Or>
+			</Or>
+		</And>
+		<And Name="Prevent_Mantle">
+			<Or>
+				<IfActionStatus ActionName="Rune_BeastMode_Active" Status="Installed"/>
+				<IfHasStatusEffect StatusEffect="Blunderbuss_ClawShot_Mantle_Disable"/>
+				<Or>
+					<IsMounted/>
+					<IfMannequinTag TagName="Mount"/>
+					<IfShouldBeMounted/>
+				</Or>
+			</Or>
+		</And>
+	</Conditions>
+</ActionList>
+

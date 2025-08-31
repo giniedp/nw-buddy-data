@@ -1,0 +1,1383 @@
+<ActionList>
+	<Actions>
+		<Action Name="Camera">
+			<ActivationCondition>
+				<True/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfInput InputName="Dummy"/>
+			</DeactivationCondition>
+			<Activities>
+				<ActivateCamera>
+					<Default CameraName="NormalCamera" SmoothTime="0.00"/>
+					<Conditional Name="DeathCam" CameraName="DeathCamera" SmoothTime="0.10"/>
+					<Conditional Name="UI_ArmorDyeing" CameraName="UI_ArmorDyeing" SmoothTime="0.50"/>
+					<Conditional Name="UI_ArmorDyeingInventory" CameraName="UI_ArmorDyeingInventory" SmoothTime="0.50"/>
+					<Conditional Name="UI_StorePreview" CameraName="UI_StorePreview" SmoothTime="0.50"/>
+					<Conditional Name="UI_Inventory_BeastMode" CameraName="UI_Inventory_BeastMode" SmoothTime="0.50"/>
+					<Conditional Name="UI_Inventory" CameraName="UI_Inventory" SmoothTime="0.50"/>
+					<Conditional Name="Aim+Turret" CameraName="AimCameraTurret" SmoothTime="0.00"/>
+					<Conditional Name="Vault_Cam" CameraName="VaultCamera" SmoothTime="0.00"/>
+					<Conditional Name="Center" CameraName="CenterCamera" SmoothTime="0.30"/>
+					<Conditional Name="BuildCam_Small" CameraName="BuildCam_Small" SmoothTime="0.00"/>
+					<Conditional Name="BuildCam_Med" CameraName="BuildCam_Med" SmoothTime="0.00"/>
+					<Conditional Name="BuildCam_Large" CameraName="BuildCam_Large" SmoothTime="0.00"/>
+					<Conditional Name="MountCam" CameraName="MountCamera" SmoothTime="0.20"/>
+					<Conditional Name="MountCam_Lion" CameraName="MountCamera_Lion" SmoothTime="0.20"/>
+					<Conditional Name="MountCam_Wolf" CameraName="MountCamera_Wolf" SmoothTime="0.20"/>
+					<Conditional Name="MountDashCam" CameraName="MountDashCamera" SmoothTime="0.20"/>
+					<Conditional Name="UI_Inventory_Mounted" CameraName="UI_Inventory_Mounted" SmoothTime="0.50"/>
+					<Conditional Name="UI_SelectionScreen" CameraName="UI_SelectionScreen" SmoothTime="0.50"/>
+					<Conditional Name="UI_SelectionScreen_Mounted" CameraName="UI_SelectionScreen_Mounted" SmoothTime="0.50"/>
+					<Conditional Name="Aim+Blunderbuss+Crouch" CameraName="AimCameraCrouch" SmoothTime="0.20"/>
+					<Conditional Name="Aim+Blunderbuss+Prone" CameraName="AimCameraProne" SmoothTime="0.20"/>
+					<Conditional Name="Aim+Blunderbuss" CameraName="LeviathonInCamera" SmoothTime="0.00"/>
+					<Conditional Name="Blunderbuss+Crouch" CameraName="LeviathonCameraCrouch" SmoothTime="0.30"/>
+					<Conditional Name="Blunderbuss+Prone" CameraName="LeviathonCameraProne" SmoothTime="0.30"/>
+					<Conditional Name="Blunderbuss_Cam" CameraName="LeviathonCamera" SmoothTime="0.30"/>
+					<Conditional Name="Aim+Throwable+Item" CameraName="AimCameraThrowItem" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Throwable+Bomb" CameraName="AimCameraThrowBomb" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Throwable" CameraName="AimCameraThrow" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Stand" CameraName="AimCamera" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Crouch" CameraName="AimCameraCrouch" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Prone" CameraName="AimCameraProne" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Stand+Trans" CameraName="AimCamera" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Crouch+Trans" CameraName="AimCameraCrouch" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Prone+Trans" CameraName="AimCameraProne" SmoothTime="0.00"/>
+					<Conditional Name="Locked_Cam+Stand" CameraName="LockedCamera" SmoothTime="0.20"/>
+					<Conditional Name="Locked_Cam+Crouch" CameraName="LockedCameraCrouch" SmoothTime="0.20"/>
+					<Conditional Name="Locked_Cam+Prone" CameraName="LockedCameraProne" SmoothTime="0.20"/>
+					<Conditional Name="InsideCam" CameraName="InteriorCamera" SmoothTime="0.10"/>
+					<Conditional Name="Dynamic+Idle+Stand" CameraName="MidCamera" SmoothTime="0.30"/>
+					<Conditional Name="Dynamic+Idle+Crouch" CameraName="MidCameraCrouch" SmoothTime="0.30"/>
+					<Conditional Name="Dynamic+Idle+Prone" CameraName="MidCameraProne" SmoothTime="0.30"/>
+					<Conditional Name="Dynamic+Nav+Stand" CameraName="MidCamera" SmoothTime="0.30"/>
+					<Conditional Name="Dynamic+Nav+Crouch" CameraName="MidCameraCrouch" SmoothTime="0.30"/>
+					<Conditional Name="Dynamic+Nav+Prone" CameraName="MidCameraProne" SmoothTime="0.30"/>
+					<Conditional Name="Dynamic+Sprint+Stand" CameraName="DynamicCamera" SmoothTime="0.30"/>
+					<Conditional Name="Dynamic+Sprint+Crouch" CameraName="MidCameraCrouch" SmoothTime="0.30"/>
+					<Conditional Name="Dynamic+Sprint+Prone" CameraName="MidCameraProne" SmoothTime="0.30"/>
+					<Conditional Name="Dynamic+Stand" CameraName="MidCamera" SmoothTime="0.30"/>
+					<Conditional Name="Dynamic+Crouch" CameraName="MidCameraCrouch" SmoothTime="0.30"/>
+					<Conditional Name="InteriorCam" CameraName="CloseCamera" SmoothTime="0.30"/>
+					<Conditional Name="Dynamic+Prone" CameraName="MidCameraProne" SmoothTime="0.30"/>
+					<Conditional Name="BirdsEyeViewCamera" CameraName="BirdsEyeViewCamera" SmoothTime="5.00"/>
+					<Conditional Name="Aim+Stand+RainofArrows" CameraName="AimCameraRainofArrows" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Stand+JumpBack" CameraName="AimCameraJumpBack" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Stand+Ability" CameraName="AimMidCamAbility" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Siege+Stand" CameraName="AimFireSiegeCamAbility" SmoothTime="0.30"/>
+					<Conditional Name="Aim+Stand+Snipe" CameraName="AimCameraSnipe" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Crouch+Snipe" CameraName="AimCameraCrouchSnipe" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Prone+Snipe" CameraName="AimCameraProneSnipe" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Stand+Sniper" CameraName="AimCameraSniper" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Crouch+Sniper" CameraName="AimCameraCrouchSniper" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Prone+Sniper" CameraName="AimCameraProneSniper" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Stand+Trans+Snipe" CameraName="AimCameraSnipe" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Crouch+Trans+Snipe" CameraName="AimCameraCrouchSnipe" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Prone+Trans+Snipe" CameraName="AimCameraProneSnipe" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Stand+Trans+Sniper" CameraName="AimCameraSniper" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Crouch+Trans+Sniper" CameraName="AimCameraCrouchSniper" SmoothTime="0.00"/>
+					<Conditional Name="Aim+Prone+Trans+Sniper" CameraName="AimCameraProneSniper" SmoothTime="0.00"/>
+					<Conditional Name="Aim+ShootersStance" CameraName="AimCameraShootersStance" SmoothTime="0.00"/>
+					<Conditional Name="Aim+ShootersStance+Snipe" CameraName="AimCameraShootersStanceSnipe" SmoothTime="0.00"/>
+					<Conditional Name="Aim+ShootersStance+Sniper" CameraName="AimCameraShootersStanceSniper" SmoothTime="0.00"/>
+					<Conditional Name="UI_Conversation" CameraName="UI_Conversation" SmoothTime="0.40"/>
+					<Conditional Name="UI_FactionMission" CameraName="UI_FactionMission" SmoothTime="0.30"/>
+					<Conditional Name="UI_ArenaEnterMenu" CameraName="UI_ArenaEnterMenu" SmoothTime="0.50"/>
+					<Conditional Name="UI_StartClaim" CameraName="StartClaim" SmoothTime="0.50"/>
+					<Conditional Name="UI_Container" CameraName="UI_Container" SmoothTime="0.50"/>
+					<Conditional Name="UI_Contracts" CameraName="UI_Contracts" SmoothTime="0.50"/>
+					<Conditional Name="UI_CraftingStep1" CameraName="UI_CraftingStep1" SmoothTime="0.50"/>
+					<Conditional Name="UI_CraftingStep2" CameraName="UI_CraftingStep2" SmoothTime="0.40"/>
+					<Conditional Name="UI_CraftingStep3" CameraName="UI_CraftingStep3" SmoothTime="0.20"/>
+					<Conditional Name="UI_HousingPurchase" CameraName="UI_HousingPurchase" SmoothTime="0.50"/>
+					<Conditional Name="HousingDecorationCam" CameraName="HousingDecorationCam" SmoothTime="0.50"/>
+					<Conditional Name="UI_HousingEnter" CameraName="UI_HousingEnter" SmoothTime="0.50"/>
+					<Conditional Name="UI_HousingTaxScreen" CameraName="UI_HousingTaxScreen" SmoothTime="0.50"/>
+					<Conditional Name="UI_InnInteractMenu" CameraName="UI_InnInteractMenu" SmoothTime="0.50"/>
+					<Conditional Name="UI_ItemSkinning" CameraName="UI_ItemSkinning" SmoothTime="0.50"/>
+					<Conditional Name="UI_LoreReader" CameraName="UI_LoreReader" SmoothTime="0.40"/>
+					<Conditional Name="UI_NavBar" CameraName="UI_NavBar" SmoothTime="0.25"/>
+					<Conditional Name="UI_FortShop" CameraName="UI_FortShop" SmoothTime="0.30"/>
+					<Conditional Name="UI_FactionShop" CameraName="UI_FactionShop" SmoothTime="0.30"/>
+					<Conditional Name="UI_Raid" CameraName="UI_Raid" SmoothTime="0.50"/>
+					<Conditional Name="UI_SignUp" CameraName="UI_SignUp" SmoothTime="0.50"/>
+					<Conditional Name="UI_TerritoryInfoScreen" CameraName="UI_TerritoryInfoScreen" SmoothTime="0.50"/>
+					<Conditional Name="UI_TerritoryPlanningStep1" CameraName="UI_TerritoryPlanningStep1" SmoothTime="0.50"/>
+					<Conditional Name="UI_TerritoryPlanningStep2" CameraName="UI_TerritoryPlanningStep2" SmoothTime="0.50"/>
+					<Conditional Name="UI_TownProjects" CameraName="UI_TownProjects" SmoothTime="0.50"/>
+					<Conditional Name="UI_FishCaught" CameraName="UI_FishCaught" SmoothTime="0.50"/>
+					<Conditional Name="UI_Storage" CameraName="UI_Storage" SmoothTime="0.50"/>
+					<Conditional Name="UI_MusicalActions" CameraName="UI_MusicalActions" SmoothTime="0.50"/>
+				</ActivateCamera>
+				<IfThenElse>
+					<IfCondition>
+						<And>
+							<Or>
+								<IfMannequinTag TagName="Aim"/>
+								<IfMannequinTag TagName="ChargedAim"/>
+								<IfMannequinTag TagName="HeavyAim"/>
+								<IfMannequinTag TagName="SmokeAim"/>
+								<IfMannequinTag TagName="PenetratingAim"/>
+								<And>
+									<Not>
+										<IfCameraLockActive/>
+									</Not>
+									<IfMannequinTag TagName="AttackAction"/>
+									<Not>
+										<IfMannequinMarker MarkerName="CanTransition"/>
+									</Not>
+								</And>
+								<IfIsPlacingBuilding/>
+							</Or>
+							<Not>
+								<IfMannequinTag TagName="Heal"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<DisableCameraLock>
+							<Default OnEnter="Disable" OnExit="Enable"/>
+						</DisableCameraLock>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Dynamic Camera Tag">
+					<IfCondition>
+						<Or>
+							<And>
+								<Not>
+									<IfMannequinTag TagName="Zoom1Camera"/>
+								</Not>
+								<Not>
+									<IfMannequinTag TagName="Zoom2Camera"/>
+								</Not>
+							</And>
+							<And>
+								<IfInput InputName="aim_draw_release_virtual"/>
+								<Not>
+									<And>
+										<Or>
+											<IfMannequinTag TagName="Rifle"/>
+											<IfMannequinTag TagName="Blunderbuss"/>
+										</Or>
+										<IfMannequinTag TagName="HeavyAim"/>
+									</And>
+								</Not>
+							</And>
+							<IfInput InputName="toggleInventoryWindow"/>
+							<IfInput InputName="toggleChatComponent"/>
+							<IfInput InputName="toggleGuildComponent"/>
+							<IfInput InputName="toggleJournalComponent"/>
+							<IfInput InputName="toggleMenuComponent"/>
+							<IfInput InputName="toggleMapComponent"/>
+							<IfInput InputName="toggleSkillsComponent"/>
+							<IfMannequinTag TagName="Bow"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag>
+								<Default TagName="Dynamic" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="false" IgnoreDataChanges="false">
+								<Default AudioTriggerName="Set_SniperFocus_00" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Zoom2Camera Camera Tag From Zoom1Camera or Dynamic">
+					<IfCondition>
+						<And>
+							<Or>
+								<IfMannequinTag TagName="Blunderbuss"/>
+							</Or>
+							<IfMannequinTag TagName="AimDownSights"/>
+							<IfInput InputName="cam_zoom_in"/>
+							<Not>
+								<IfMannequinMarker MarkerName="NoCameraZoom"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag>
+								<Default TagName="Zoom2Camera" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="false" IgnoreDataChanges="false">
+								<Default AudioTriggerName="Set_SniperFocus_100" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Zoom1Camera Camera Tag From Dynamic">
+					<IfCondition>
+						<And>
+							<Or>
+								<IfMannequinTag TagName="Blunderbuss"/>
+							</Or>
+							<IfMannequinTag TagName="AimDownSights"/>
+							<IfMannequinTag TagName="Dynamic"/>
+							<IfInput InputName="cam_zoom_in"/>
+							<Not>
+								<IfMannequinMarker MarkerName="NoCameraZoom"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag>
+								<Default TagName="Zoom1Camera" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="false" IgnoreDataChanges="false">
+								<Default AudioTriggerName="Set_SniperFocus_50" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Dynamic Camera Tag From Zoom1Camera or Zoom2Camera">
+					<IfCondition>
+						<And>
+							<Or>
+								<IfMannequinTag TagName="Blunderbuss"/>
+							</Or>
+							<IfMannequinTag TagName="AimDownSights"/>
+							<IfInput InputName="cam_zoom_out"/>
+							<Not>
+								<IfMannequinMarker MarkerName="NoCameraZoom"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag>
+								<Default TagName="Dynamic" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="false" IgnoreDataChanges="false">
+								<Default AudioTriggerName="Set_SniperFocus_00" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Zoom1Camera Camera Tag From Zoom2Camera">
+					<IfCondition>
+						<And>
+							<Or>
+								<IfMannequinTag TagName="Blunderbuss"/>
+							</Or>
+							<IfMannequinTag TagName="AimDownSights"/>
+							<IfMannequinTag TagName="Zoom2Camera"/>
+							<IfInput InputName="cam_zoom_out"/>
+							<Not>
+								<IfMannequinMarker MarkerName="NoCameraZoom"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag>
+								<Default TagName="Zoom1Camera" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="false" IgnoreDataChanges="false">
+								<Default AudioTriggerName="Set_SniperFocus_50" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="Vault_Cam">
+			<Or>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Vault_Low"/>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Vault"/>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Vault_High_Thin"/>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Vault_Low_Thin"/>
+			</Or>
+			<IfMannequinTag TagName="Dynamic"/>
+		</And>
+		<And Name="Center">
+			<IfMannequinTag TagName="Centered"/>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IfCameraLockActive/>
+			</Not>
+			<Not>
+				<IfIsPlacingBuilding/>
+			</Not>
+		</And>
+		<And Name="BirdsEyeViewCamera">
+			<IfMannequinTag TagName="BirdsEyeViewCamera"/>
+			<Not>
+				<IfMannequinTag TagName="Aim"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="ChargedAim"/>
+			</Not>
+			<Not>
+				<IfCameraLockActive/>
+			</Not>
+		</And>
+		<And Name="Aim+Stand">
+			<Not>
+				<IfMannequinTag TagName="Throwable"/>
+			</Not>
+			<IfMannequinTag TagName="Stand_Desired"/>
+			<Not>
+				<IfMannequinTag TagName="FromStand"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromCrouch"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromProne"/>
+			</Not>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<Not>
+				<IfMannequinTag TagName="Zoom1Camera"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Zoom2Camera"/>
+			</Not>
+			<IfCanResizeCharacterController ResizeType="Default"/>
+			<Or>
+				<Not>
+					<Or>
+						<IfMannequinTag TagName="Rifle"/>
+						<IfMannequinTag TagName="Blunderbuss"/>
+					</Or>
+				</Not>
+				<Not>
+					<IfMannequinTag TagName="HeavyAim"/>
+				</Not>
+			</Or>
+		</And>
+		<And Name="Aim+Crouch">
+			<Not>
+				<IfMannequinTag TagName="Throwable"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Prone"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Crouch_Desired"/>
+				<And>
+					<IfMannequinTag TagName="Stand_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Crouch"/>
+				</And>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="FromStand"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromCrouch"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromProne"/>
+			</Not>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<Not>
+				<IfMannequinTag TagName="Zoom1Camera"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Zoom2Camera"/>
+			</Not>
+			<Or>
+				<Not>
+					<Or>
+						<IfMannequinTag TagName="Rifle"/>
+						<IfMannequinTag TagName="Blunderbuss"/>
+					</Or>
+				</Not>
+				<Not>
+					<IfMannequinTag TagName="HeavyAim"/>
+				</Not>
+			</Or>
+		</And>
+		<And Name="Aim+Prone">
+			<Or>
+				<IfMannequinTag TagName="Prone_Desired"/>
+				<And>
+					<IfMannequinTag TagName="Stand_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Crawl"/>
+				</And>
+				<And>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Crawl"/>
+				</And>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="FromStand"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromCrouch"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromProne"/>
+			</Not>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<Not>
+				<IfMannequinTag TagName="Zoom1Camera"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Zoom2Camera"/>
+			</Not>
+			<Or>
+				<Not>
+					<Or>
+						<IfMannequinTag TagName="Rifle"/>
+						<IfMannequinTag TagName="Blunderbuss"/>
+					</Or>
+				</Not>
+				<Not>
+					<IfMannequinTag TagName="HeavyAim"/>
+				</Not>
+			</Or>
+		</And>
+		<And Name="Aim+Stand+Trans">
+			<IfMannequinTag TagName="Stand_Desired"/>
+			<Or>
+				<IfMannequinTag TagName="FromStand"/>
+				<IfMannequinTag TagName="FromCrouch"/>
+				<IfMannequinTag TagName="FromProne"/>
+			</Or>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<Not>
+				<IfMannequinTag TagName="Zoom1Camera"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Zoom2Camera"/>
+			</Not>
+		</And>
+		<And Name="Aim+Crouch+Trans">
+			<IfMannequinTag TagName="Crouch_Desired"/>
+			<Or>
+				<IfMannequinTag TagName="FromStand"/>
+				<IfMannequinTag TagName="FromCrouch"/>
+				<IfMannequinTag TagName="FromProne"/>
+			</Or>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<Not>
+				<IfMannequinTag TagName="Zoom1Camera"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Zoom2Camera"/>
+			</Not>
+		</And>
+		<And Name="Aim+Prone+Trans">
+			<IfMannequinTag TagName="Prone_Desired"/>
+			<Or>
+				<IfMannequinTag TagName="FromStand"/>
+				<IfMannequinTag TagName="FromCrouch"/>
+				<IfMannequinTag TagName="FromProne"/>
+			</Or>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<Not>
+				<IfMannequinTag TagName="Zoom1Camera"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Zoom2Camera"/>
+			</Not>
+		</And>
+		<And Name="InteriorCam">
+			<IfMannequinTag TagName="Stand"/>
+			<IsOverrideCamActive CameraName="CloseCamera"/>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+		</And>
+		<And Name="UI_Conversation">
+			<IsOverrideCamActive CameraName="UI_Conversation"/>
+		</And>
+		<And Name="UI_FactionMission">
+			<IsOverrideCamActive CameraName="UI_FactionMission"/>
+		</And>
+		<And Name="UI_ArenaEnterMenu">
+			<IsOverrideCamActive CameraName="UI_ArenaEnterMenu"/>
+		</And>
+		<And Name="UI_StartClaim">
+			<IsOverrideCamActive CameraName="StartClaim"/>
+		</And>
+		<And Name="UI_Container">
+			<IsOverrideCamActive CameraName="UI_Container"/>
+		</And>
+		<And Name="UI_Contracts">
+			<IsOverrideCamActive CameraName="UI_Contracts"/>
+		</And>
+		<And Name="UI_NPCCamera">
+			<IsOverrideCamActive CameraName="UI_Conversation"/>
+		</And>
+		<And Name="UI_CraftingStep1">
+			<IsOverrideCamActive CameraName="UI_CraftingStep1"/>
+		</And>
+		<And Name="UI_CraftingStep2">
+			<IsOverrideCamActive CameraName="UI_CraftingStep2"/>
+		</And>
+		<And Name="UI_CraftingStep3">
+			<IsOverrideCamActive CameraName="UI_CraftingStep3"/>
+		</And>
+		<And Name="UI_ArmorDyeing">
+			<IsOverrideCamActive CameraName="UI_ArmorDyeing"/>
+		</And>
+		<And Name="UI_ArmorDyeingInventory">
+			<IsOverrideCamActive CameraName="UI_ArmorDyeingInventory"/>
+		</And>
+		<And Name="UI_StorePreview">
+			<IsOverrideCamActive CameraName="UI_StorePreview"/>
+		</And>
+		<And Name="UI_HousingPurchase">
+			<IsOverrideCamActive CameraName="UI_HousingPurchase"/>
+		</And>
+		<And Name="HousingDecorationCam">
+			<IsOverrideCamActive CameraName="HousingDecorationCam"/>
+		</And>
+		<And Name="UI_HousingEnter">
+			<IsOverrideCamActive CameraName="UI_HousingEnter"/>
+		</And>
+		<And Name="UI_HousingTaxScreen">
+			<IsOverrideCamActive CameraName="UI_HousingTaxScreen"/>
+		</And>
+		<And Name="UI_InnInteractMenu">
+			<IsOverrideCamActive CameraName="UI_InnInteractMenu"/>
+		</And>
+		<And Name="UI_ItemSkinning">
+			<IsOverrideCamActive CameraName="UI_ItemSkinning"/>
+		</And>
+		<And Name="UI_LoreReader">
+			<IsOverrideCamActive CameraName="UI_LoreReader"/>
+		</And>
+		<And Name="UI_NavBar">
+			<IsOverrideCamActive CameraName="UI_NavBar"/>
+		</And>
+		<And Name="UI_FortShop">
+			<IsOverrideCamActive CameraName="UI_FortShop"/>
+		</And>
+		<And Name="UI_FactionShop">
+			<IsOverrideCamActive CameraName="UI_FactionShop"/>
+		</And>
+		<And Name="UI_Raid">
+			<IsOverrideCamActive CameraName="UI_Raid"/>
+		</And>
+		<And Name="UI_SignUp">
+			<IsOverrideCamActive CameraName="UI_SignUp"/>
+		</And>
+		<And Name="UI_TerritoryInfoScreen">
+			<IsOverrideCamActive CameraName="UI_TerritoryInfoScreen"/>
+		</And>
+		<And Name="UI_TerritoryPlanningStep1">
+			<IsOverrideCamActive CameraName="UI_TerritoryPlanningStep1"/>
+		</And>
+		<And Name="UI_TerritoryPlanningStep2">
+			<IsOverrideCamActive CameraName="UI_TerritoryPlanningStep2"/>
+		</And>
+		<And Name="UI_TownProjects">
+			<IsOverrideCamActive CameraName="UI_TownProjects"/>
+		</And>
+		<And Name="UI_FishCaught">
+			<IsOverrideCamActive CameraName="UI_FishCaught"/>
+		</And>
+		<And Name="UI_Inventory">
+			<IsOverrideCamActive CameraName="UI_Inventory"/>
+		</And>
+		<And Name="UI_MusicalActions">
+			<IsOverrideCamActive CameraName="UI_MusicalActions"/>
+		</And>
+		<And Name="UI_Storage">
+			<IsOverrideCamActive CameraName="UI_Storage"/>
+		</And>
+		<And Name="Dynamic+Idle+Stand">
+			<Or>
+				<IfFragmentPlaying FragmentName="Idle" UseHostActionFragment="false"/>
+				<IfFragmentPlaying FragmentName="Turn_InPlace" UseHostActionFragment="false"/>
+			</Or>
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IsOverrideCamActive CameraName="Any"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimDownSightsJumpBack"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimAbilityAccuracy"/>
+			</Not>
+			<IfMannequinTag TagName="Dynamic"/>
+			<Not>
+				<IfFragmentPlaying FragmentName="Vault" UseHostActionFragment="false"/>
+			</Not>
+		</And>
+		<And Name="Dynamic+Idle+Crouch">
+			<Or>
+				<IfFragmentPlaying FragmentName="Idle" UseHostActionFragment="false"/>
+				<IfFragmentPlaying FragmentName="Turn_InPlace" UseHostActionFragment="false"/>
+			</Or>
+			<IfMannequinTag TagName="Crouch"/>
+			<And>
+				<Not>
+					<IfMannequinTag TagName="AimDownSights"/>
+				</Not>
+				<Or>
+					<IfMannequinTag TagName="Dynamic"/>
+					<IfMannequinTag TagName="Interior"/>
+				</Or>
+				<Not>
+					<IsOverrideCamActive CameraName="UI_CraftingStep1"/>
+				</Not>
+				<Not>
+					<IsOverrideCamActive CameraName="UI_ArmorDyeing"/>
+				</Not>
+				<Not>
+					<IsOverrideCamActive CameraName="UI_ArmorDyeingInventory"/>
+				</Not>
+				<Not>
+					<IsOverrideCamActive CameraName="UI_StorePreview"/>
+				</Not>
+				<Not>
+					<IsOverrideCamActive CameraName="UI_ItemSkinning"/>
+				</Not>
+			</And>
+		</And>
+		<And Name="Dynamic+Idle+Prone">
+			<Or>
+				<IfFragmentPlaying FragmentName="Idle" UseHostActionFragment="false"/>
+				<IfFragmentPlaying FragmentName="Turn_InPlace" UseHostActionFragment="false"/>
+			</Or>
+			<IfMannequinTag TagName="Prone"/>
+			<And>
+				<Not>
+					<IfMannequinTag TagName="AimDownSights"/>
+				</Not>
+				<Or>
+					<IfMannequinTag TagName="Dynamic"/>
+					<IfMannequinTag TagName="Interior"/>
+				</Or>
+				<Not>
+					<IsOverrideCamActive CameraName="UI_CraftingStep1"/>
+				</Not>
+				<Not>
+					<IsOverrideCamActive CameraName="UI_ArmorDyeing"/>
+				</Not>
+				<Not>
+					<IsOverrideCamActive CameraName="UI_ArmorDyeingInventory"/>
+				</Not>
+				<Not>
+					<IsOverrideCamActive CameraName="UI_StorePreview"/>
+				</Not>
+				<Not>
+					<IsOverrideCamActive CameraName="UI_ItemSkinning"/>
+				</Not>
+			</And>
+		</And>
+		<And Name="Dynamic+Nav+Stand">
+			<IfFragmentPlaying FragmentName="Strafe" UseHostActionFragment="false"/>
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IsOverrideCamActive CameraName="Any"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="Magic_IsReadying_SiegeAim"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimDownSightsJumpBack"/>
+			</Not>
+			<IfMannequinTag TagName="Dynamic"/>
+			<Not>
+				<IfFragmentPlaying FragmentName="Vault" UseHostActionFragment="false"/>
+			</Not>
+		</And>
+		<And Name="Dynamic+Nav+Crouch">
+			<IfFragmentPlaying FragmentName="Strafe" UseHostActionFragment="false"/>
+			<IfMannequinTag TagName="Crouch"/>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Dynamic"/>
+				<IfMannequinTag TagName="Interior"/>
+			</Or>
+		</And>
+		<And Name="Dynamic+Nav+Prone">
+			<IfFragmentPlaying FragmentName="Strafe" UseHostActionFragment="false"/>
+			<IfMannequinTag TagName="Prone"/>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Dynamic"/>
+				<IfMannequinTag TagName="Interior"/>
+			</Or>
+		</And>
+		<And Name="Dynamic+Sprint+Stand">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<IfMannequinTag TagName="Dynamic"/>
+			<Or>
+				<IfFragmentPlaying FragmentName="Sprint" UseHostActionFragment="false"/>
+				<IfFragmentPlaying FragmentName="Sprint_180_Turn" UseHostActionFragment="false"/>
+				<IfFragmentPlaying FragmentName="Sprint_Jump" UseHostActionFragment="false"/>
+				<IfFragmentPlaying FragmentName="Sprint_PostureTransition" UseHostActionFragment="false"/>
+				<IfFragmentPlaying FragmentName="Sprint_Start" UseHostActionFragment="false"/>
+			</Or>
+		</And>
+		<And Name="Dynamic+Sprint+Crouch">
+			<IfFragmentPlaying FragmentName="Sprint" UseHostActionFragment="false"/>
+			<IfMannequinTag TagName="Crouch"/>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Dynamic"/>
+				<IfMannequinTag TagName="Interior"/>
+			</Or>
+		</And>
+		<And Name="Dynamic+Sprint+Prone">
+			<IfFragmentPlaying FragmentName="Sprint" UseHostActionFragment="false"/>
+			<IfMannequinTag TagName="Prone"/>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Dynamic"/>
+				<IfMannequinTag TagName="Interior"/>
+			</Or>
+		</And>
+		<And Name="Dynamic+Stand">
+			<Not>
+				<IfFragmentPlaying FragmentName="Idle" UseHostActionFragment="false"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="Magic_IsReadying_SiegeAim"/>
+			</Not>
+			<Not>
+				<IsOverrideCamActive CameraName="Any"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying FragmentName="Turn_InPlace" UseHostActionFragment="false"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying FragmentName="Strafe" UseHostActionFragment="false"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying FragmentName="Sprint" UseHostActionFragment="false"/>
+			</Not>
+			<Or>
+				<And>
+					<IfMannequinTag TagName="Stand"/>
+					<Not>
+						<IfMannequinTag TagName="AimDownSights"/>
+					</Not>
+					<IfMannequinTag TagName="Dynamic"/>
+				</And>
+				<And>
+					<IfMannequinTag TagName="Dodging"/>
+					<IfMannequinTag TagName="Stand_Desired"/>
+					<Not>
+						<IfMannequinTag TagName="AimDownSights"/>
+					</Not>
+					<IfMannequinTag TagName="Dynamic"/>
+				</And>
+				<And>
+					<Or>
+						<IfInput InputName="Start_Gathering"/>
+						<IfInput InputName="Apply_Resources_To_Structure"/>
+					</Or>
+					<IfMannequinTag TagName="Stand_Desired"/>
+					<Not>
+						<IfMannequinTag TagName="AimDownSights"/>
+					</Not>
+					<IfMannequinTag TagName="Dynamic"/>
+				</And>
+			</Or>
+			<Not>
+				<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimDownSightsJumpBack"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimAbilityAccuracy"/>
+			</Not>
+			<Not>
+				<IfCameraLockActive/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying FragmentName="Vault" UseHostActionFragment="false"/>
+			</Not>
+		</And>
+		<And Name="Dynamic+Crouch">
+			<Not>
+				<IsOverrideCamActive CameraName="UI_CraftingStep1"/>
+			</Not>
+			<Not>
+				<IsOverrideCamActive CameraName="UI_ArmorDyeing"/>
+			</Not>
+			<Not>
+				<IsOverrideCamActive CameraName="UI_ArmorDyeingInventory"/>
+			</Not>
+			<Not>
+				<IsOverrideCamActive CameraName="UI_StorePreview"/>
+			</Not>
+			<Not>
+				<IsOverrideCamActive CameraName="UI_ItemSkinning"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying FragmentName="Idle" UseHostActionFragment="false"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying FragmentName="Turn_InPlace" UseHostActionFragment="false"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying FragmentName="Strafe" UseHostActionFragment="false"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying FragmentName="Sprint" UseHostActionFragment="false"/>
+			</Not>
+			<IfMannequinTag TagName="Crouch"/>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IfCameraLockActive/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Dynamic"/>
+				<IfMannequinTag TagName="Interior"/>
+			</Or>
+			<Not>
+				<And>
+					<Or>
+						<IfInput InputName="Start_Gathering"/>
+						<IfInput InputName="Apply_Resources_To_Structure"/>
+					</Or>
+					<IfMannequinTag TagName="Stand_Desired"/>
+				</And>
+			</Not>
+		</And>
+		<And Name="Dynamic+Prone">
+			<Not>
+				<IfFragmentPlaying FragmentName="Idle" UseHostActionFragment="false"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying FragmentName="Turn_InPlace" UseHostActionFragment="false"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying FragmentName="Strafe" UseHostActionFragment="false"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying FragmentName="Sprint" UseHostActionFragment="false"/>
+			</Not>
+			<IfMannequinTag TagName="Prone"/>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IfCameraLockActive/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Dynamic"/>
+				<IfMannequinTag TagName="Interior"/>
+			</Or>
+		</And>
+		<And Name="Locked_Cam+Stand">
+			<Or>
+				<IfCameraLockActive/>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Life_Staff_TouchOfLife"/>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Life_Staff_LightsEmbrace"/>
+			</Or>
+			<IfMannequinTag TagName="Stand_Desired"/>
+			<Or>
+				<IfMannequinTag TagName="Dodging"/>
+				<Not>
+					<IfMannequinTag TagName="Crouch"/>
+				</Not>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Prone"/>
+			</Not>
+		</And>
+		<And Name="Locked_Cam+Crouch">
+			<IfCameraLockActive/>
+			<Or>
+				<IfMannequinTag TagName="Crouch"/>
+				<IfMannequinTag TagName="Crouch_Desired"/>
+				<IfMannequinTag TagName="Dodging"/>
+			</Or>
+		</And>
+		<And Name="Locked_Cam+Prone">
+			<IfCameraLockActive/>
+			<Or>
+				<IfMannequinTag TagName="Prone_Desired"/>
+				<IfMannequinTag TagName="Prone"/>
+			</Or>
+		</And>
+		<And Name="Artist_Close_Cam">
+			<IfMannequinTag TagName="CloseCamera"/>
+			<Not>
+				<IfMannequinTag TagName="Dynamic"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Centered"/>
+			</Not>
+		</And>
+		<And Name="Artist_Mid_Cam">
+			<IfMannequinTag TagName="MidCamera"/>
+			<Not>
+				<IfMannequinTag TagName="Dynamic"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Centered"/>
+			</Not>
+		</And>
+		<And Name="Artist_Normal_Cam">
+			<IfMannequinTag TagName="NormalCamera"/>
+			<Not>
+				<IfMannequinTag TagName="Dynamic"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Centered"/>
+			</Not>
+		</And>
+		<And Name="Artist_Birds_Eye_Cam">
+			<IfMannequinTag TagName="BirdsEyeViewCamera"/>
+			<Not>
+				<IfMannequinTag TagName="Dynamic"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Centered"/>
+			</Not>
+		</And>
+		<And Name="BuildCam_Small">
+			<IfIsPlacingBuilding/>
+			<IfStructureSize StructureSizeToCheck="Small"/>
+		</And>
+		<And Name="BuildCam_Med">
+			<IfIsPlacingBuilding/>
+			<IfStructureSize StructureSizeToCheck="Medium"/>
+		</And>
+		<And Name="BuildCam_Large">
+			<IfIsPlacingBuilding/>
+			<IfStructureSize StructureSizeToCheck="Large"/>
+		</And>
+		<And Name="Aim+Throwable">
+			<IfMannequinTag TagName="Throwable"/>
+			<IfMannequinTag TagName="AimDownSights"/>
+		</And>
+		<And Name="Aim+Throwable+Bomb">
+			<IfMannequinTag TagName="Throwable"/>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<Or>
+				<And>
+					<IfMannequinTag TagName="MagicGauntlet"/>
+					<IfMannequinTag TagName="Fire"/>
+				</And>
+				<IfMannequinTag TagName="Rifle"/>
+			</Or>
+		</And>
+		<And Name="Aim+Throwable+Item">
+			<IfMannequinMarker MarkerName="UseThrowableItemCamera"/>
+		</And>
+		<And Name="Aim+Turret">
+			<IfMannequinTag TagName="DisableAim"/>
+			<IfMannequinTag TagName="TurretCamera"/>
+		</And>
+		<And Name="Aim+Stand+JumpBack">
+			<IfMannequinMarker MarkerName="AimDownSightsJumpBack"/>
+		</And>
+		<And Name="Aim+Stand+RainofArrows">
+			<IfMannequinTag TagName="HeavyAim"/>
+			<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+		</And>
+		<And Name="Aim+Stand+Ability">
+			<IfMannequinMarker MarkerName="AimAbilityAccuracy"/>
+		</And>
+		<And Name="Aim+Siege+Stand">
+			<Or>
+				<And>
+					<IfMannequinTag TagName="SmokeAim"/>
+					<IfMannequinMarker MarkerName="Magic_IsReadying_SiegeAim"/>
+				</And>
+				<And>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Fire_Staff_Siege_Loop_Shoot"/>
+					<IfMannequinMarker MarkerName="Magic_IsReadying_SiegeAim"/>
+				</And>
+				<And>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Fire_Staff_Siege_Loop_Recharge"/>
+					<IfMannequinMarker MarkerName="Magic_IsReadying_SiegeAim"/>
+				</And>
+				<And>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Fire_Staff_Siege_Loop_Shoot_DMG_Upgrade"/>
+					<IfMannequinMarker MarkerName="Magic_IsReadying_SiegeAim"/>
+				</And>
+				<And>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Fire_Staff_Siege_Loop_Shoot_Knockdown_Upgrade"/>
+					<IfMannequinMarker MarkerName="Magic_IsReadying_SiegeAim"/>
+				</And>
+				<And>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Fire_Staff_Siege_Loop_Shoot_SE_Upgrade"/>
+					<IfMannequinMarker MarkerName="Magic_IsReadying_SiegeAim"/>
+				</And>
+			</Or>
+		</And>
+		<And Name="Aim+Stand+Snipe">
+			<Not>
+				<IfMannequinTag TagName="Throwable"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="HeavyAim"/>
+			</Not>
+			<IfMannequinTag TagName="Stand_Desired"/>
+			<Not>
+				<IfMannequinTag TagName="FromStand"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromCrouch"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromProne"/>
+			</Not>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom1Camera"/>
+			<IfCanResizeCharacterController ResizeType="Default"/>
+		</And>
+		<And Name="Aim+Crouch+Snipe">
+			<Not>
+				<IfMannequinTag TagName="Throwable"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Prone"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="HeavyAim"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Crouch_Desired"/>
+				<And>
+					<IfMannequinTag TagName="Stand_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Crouch"/>
+				</And>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="FromStand"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromCrouch"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromProne"/>
+			</Not>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom1Camera"/>
+		</And>
+		<And Name="Aim+Prone+Snipe">
+			<Or>
+				<IfMannequinTag TagName="Prone_Desired"/>
+				<And>
+					<IfMannequinTag TagName="Stand_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Crawl"/>
+				</And>
+				<And>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Crawl"/>
+				</And>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="FromStand"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromCrouch"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromProne"/>
+			</Not>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom1Camera"/>
+			<Not>
+				<IfMannequinTag TagName="HeavyAim"/>
+			</Not>
+		</And>
+		<And Name="Aim+Stand+Sniper">
+			<Not>
+				<IfMannequinTag TagName="Throwable"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="HeavyAim"/>
+			</Not>
+			<IfMannequinTag TagName="Stand_Desired"/>
+			<Not>
+				<IfMannequinTag TagName="FromStand"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromCrouch"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromProne"/>
+			</Not>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom2Camera"/>
+			<IfCanResizeCharacterController ResizeType="Default"/>
+		</And>
+		<And Name="Aim+Crouch+Sniper">
+			<Not>
+				<IfMannequinTag TagName="Throwable"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Prone"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="HeavyAim"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Crouch_Desired"/>
+				<And>
+					<IfMannequinTag TagName="Stand_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Crouch"/>
+				</And>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="FromStand"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromCrouch"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromProne"/>
+			</Not>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom2Camera"/>
+		</And>
+		<And Name="Aim+Prone+Sniper">
+			<Or>
+				<IfMannequinTag TagName="Prone_Desired"/>
+				<And>
+					<IfMannequinTag TagName="Stand_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Crawl"/>
+				</And>
+				<And>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Crawl"/>
+				</And>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="FromStand"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromCrouch"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="FromProne"/>
+			</Not>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom2Camera"/>
+			<Not>
+				<IfMannequinTag TagName="HeavyAim"/>
+			</Not>
+		</And>
+		<And Name="Aim+Stand+Trans+Snipe">
+			<IfMannequinTag TagName="Stand_Desired"/>
+			<Or>
+				<IfMannequinTag TagName="FromStand"/>
+				<IfMannequinTag TagName="FromCrouch"/>
+				<IfMannequinTag TagName="FromProne"/>
+			</Or>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom1Camera"/>
+		</And>
+		<And Name="Aim+Crouch+Trans+Snipe">
+			<IfMannequinTag TagName="Crouch_Desired"/>
+			<Or>
+				<IfMannequinTag TagName="FromStand"/>
+				<IfMannequinTag TagName="FromCrouch"/>
+				<IfMannequinTag TagName="FromProne"/>
+			</Or>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom1Camera"/>
+		</And>
+		<And Name="Aim+Prone+Trans+Snipe">
+			<IfMannequinTag TagName="Prone_Desired"/>
+			<Or>
+				<IfMannequinTag TagName="FromStand"/>
+				<IfMannequinTag TagName="FromCrouch"/>
+				<IfMannequinTag TagName="FromProne"/>
+			</Or>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom1Camera"/>
+		</And>
+		<And Name="Aim+Stand+Trans+Sniper">
+			<IfMannequinTag TagName="Stand_Desired"/>
+			<Or>
+				<IfMannequinTag TagName="FromStand"/>
+				<IfMannequinTag TagName="FromCrouch"/>
+				<IfMannequinTag TagName="FromProne"/>
+			</Or>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom2Camera"/>
+		</And>
+		<And Name="Aim+Crouch+Trans+Sniper">
+			<IfMannequinTag TagName="Crouch_Desired"/>
+			<Or>
+				<IfMannequinTag TagName="FromStand"/>
+				<IfMannequinTag TagName="FromCrouch"/>
+				<IfMannequinTag TagName="FromProne"/>
+			</Or>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom2Camera"/>
+		</And>
+		<And Name="Aim+Prone+Trans+Sniper">
+			<IfMannequinTag TagName="Prone_Desired"/>
+			<Or>
+				<IfMannequinTag TagName="FromStand"/>
+				<IfMannequinTag TagName="FromCrouch"/>
+				<IfMannequinTag TagName="FromProne"/>
+			</Or>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom2Camera"/>
+		</And>
+		<And Name="Aim+ShootersStance">
+			<IfMannequinTag TagName="Rifle"/>
+			<IfMannequinTag TagName="HeavyAim"/>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<Not>
+				<IfMannequinTag TagName="Zoom1Camera"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Zoom2Camera"/>
+			</Not>
+		</And>
+		<And Name="Aim+ShootersStance+Snipe">
+			<IfMannequinTag TagName="Rifle"/>
+			<IfMannequinTag TagName="HeavyAim"/>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom1Camera"/>
+		</And>
+		<And Name="Aim+ShootersStance+Sniper">
+			<IfMannequinTag TagName="Rifle"/>
+			<IfMannequinTag TagName="HeavyAim"/>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Zoom2Camera"/>
+		</And>
+		<And Name="Blunderbuss_Cam">
+			<IfMannequinTag TagName="Blunderbuss"/>
+			<Not>
+				<IfMannequinTag TagName="Crouch"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Prone"/>
+			</Not>
+		</And>
+		<And Name="Blunderbuss+Crouch">
+			<IfMannequinTag TagName="Blunderbuss"/>
+			<IfMannequinTag TagName="Crouch"/>
+		</And>
+		<And Name="Blunderbuss+Prone">
+			<IfMannequinTag TagName="Blunderbuss"/>
+			<IfMannequinTag TagName="Prone"/>
+		</And>
+		<And Name="Aim+Blunderbuss">
+			<IfMannequinTag TagName="Blunderbuss"/>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<Not>
+				<IfMannequinTag TagName="Crouch"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Prone"/>
+			</Not>
+		</And>
+		<And Name="Aim+Blunderbuss+Crouch">
+			<IfMannequinTag TagName="Blunderbuss"/>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Crouch"/>
+		</And>
+		<And Name="Aim+Blunderbuss+Prone">
+			<IfMannequinTag TagName="Blunderbuss"/>
+			<IfMannequinTag TagName="AimDownSights"/>
+			<IfMannequinTag TagName="Prone"/>
+		</And>
+		<And Name="DeathCam">
+			<IfMannequinTag TagName="DeathsDoor"/>
+		</And>
+		<And Name="InsideCam">
+			<IfIsInHousingPlot/>
+			<Not>
+				<IsOverrideCamActive CameraName="Any"/>
+			</Not>
+		</And>
+		<And Name="MountCam">
+			<IsMounted/>
+			<Not>
+				<IfMountType MountTypeId="Sabretooth"/>
+			</Not>
+			<Not>
+				<IfMountType MountTypeId="DireWolf"/>
+			</Not>
+			<Not>
+				<IfActionStatus ActionName="MountDash" Status="Installed"/>
+			</Not>
+			<Not>
+				<IsOverrideCamActive CameraName="UI_Inventory_Mounted"/>
+			</Not>
+			<Not>
+				<IfMountChangeOpen/>
+			</Not>
+		</And>
+		<And Name="MountCam_Lion">
+			<IsMounted/>
+			<IfMountType MountTypeId="Sabretooth"/>
+			<Not>
+				<IfActionStatus ActionName="MountDash" Status="Installed"/>
+			</Not>
+			<Not>
+				<IsOverrideCamActive CameraName="UI_Inventory_Mounted"/>
+			</Not>
+			<Not>
+				<IfMountChangeOpen/>
+			</Not>
+		</And>
+		<And Name="MountCam_Wolf">
+			<IsMounted/>
+			<IfMountType MountTypeId="DireWolf"/>
+			<Not>
+				<IfActionStatus ActionName="MountDash" Status="Installed"/>
+			</Not>
+			<Not>
+				<IsOverrideCamActive CameraName="UI_Inventory_Mounted"/>
+			</Not>
+			<Not>
+				<IfMountChangeOpen/>
+			</Not>
+		</And>
+		<And Name="MountDashCam">
+			<IfActionStatus ActionName="MountDash" Status="Installed"/>
+		</And>
+		<And Name="UI_Inventory_Mounted">
+			<IsOverrideCamActive CameraName="UI_Inventory_Mounted"/>
+		</And>
+		<And Name="UI_SelectionScreen">
+			<IsOverrideCamActive CameraName="UI_SelectionScreen"/>
+		</And>
+		<And Name="UI_SelectionScreen_Mounted">
+			<IsOverrideCamActive CameraName="UI_SelectionScreen_Mounted"/>
+		</And>
+		<And Name="UI_Inventory_BeastMode">
+			<IsOverrideCamActive CameraName="UI_Inventory_BeastMode"/>
+		</And>
+	</Conditions>
+</ActionList>
+

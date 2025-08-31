@@ -1,0 +1,18 @@
+<ActionList>
+	<Conditions>
+		<And Name="Start_Primary_Interaction">
+			<IfHasValidInteraction/>
+			<IfInput InputName="ui_interact"/>
+		</And>
+		<And Name="Start_Secondary_Interaction">
+			<IfHasValidInteraction/>
+			<IfInput InputName="ui_interact_sec"/>
+		</And>
+		<IfIsInCommittedInteraction Name="Start_Committed_Interaction"/>
+		<Not Name="Stop_Committed_Interaction">
+			<IfIsInCommittedInteraction/>
+		</Not>
+		<IfShouldBuild Name="Apply_Resources_To_Structure"/>
+	</Conditions>
+</ActionList>
+

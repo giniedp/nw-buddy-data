@@ -1,0 +1,1064 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction" FragmentName="r_R2_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged FailOnNoReactionDamage="false" IgnoreDeflectDamage="true"/>
+					<Or>
+						<IfDamaged FailOnNoReactionDamage="false" RequireDamageWasBlocked="true" RequireDamageDepletedStamina="true"/>
+						<And>
+							<Not>
+								<IfDamaged RequireDamageWasBlocked="true"/>
+							</Not>
+							<IfDamagedByPowerLevel Comparison="GreaterThan" Value="0"/>
+							<IfDamagedByPowerLevel Comparison="LessThan" Value="4"/>
+						</And>
+						<And>
+							<IfDamagedByPowerLevel Comparison="Equal" Value="0"/>
+							<IfExternalCondition ConditionName="GRIT_Broken"/>
+						</And>
+					</Or>
+					<Or>
+						<Not>
+							<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+						</Not>
+						<And>
+							<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+							<IfHasStatusEffect StatusEffectCategory="Stun"/>
+						</And>
+					</Or>
+					<Not>
+						<And>
+							<IfDamagedByPowerLevel Comparison="Equal" Value="10"/>
+							<IfCanBreakReaction StunToBreakout="1"/>
+						</And>
+					</Not>
+					<Or>
+						<Not Comment="Check if interruptible">
+							<IfExternalCondition ConditionName="Uninterruptible"/>
+						</Not>
+						<And>
+							<IfExternalCondition ConditionName="Uninterruptible"/>
+							<IfDamaged RequireDamageWasBlocked="true" RequireDamageDepletedStamina="true"/>
+						</And>
+					</Or>
+					<Not>
+						<IfHasStatusEffect StatusEffectCategory="Frozen"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+					<IfHasStatusEffect StatusEffect="Rapier_Riposte_Timer"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="InstantSwap_Cooldown"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Trigger Sprint Timer if hit by melee attack - LIGHT EQUIP LOAD">
+					<IfCondition>
+						<And>
+							<IfDamaged/>
+							<Not>
+								<IfDamaged RequireRanged="true"/>
+							</Not>
+							<Not>
+								<IfDamaged RequireDamageWasBlocked="true"/>
+							</Not>
+							<ActionConditionEquipLoadCategory Value="Fast"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects ResetWhenReinstalled="true">
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Combat_Timer_Light"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Trigger Sprint Timer if hit by melee attack - MEDIUM EQUIP LOAD">
+					<IfCondition>
+						<And>
+							<IfDamaged/>
+							<Not>
+								<IfDamaged RequireRanged="true"/>
+							</Not>
+							<Not>
+								<IfDamaged RequireDamageWasBlocked="true"/>
+							</Not>
+							<ActionConditionEquipLoadCategory Value="Normal"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects ResetWhenReinstalled="true">
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Combat_Timer_Medium"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Trigger Sprint Timer if hit by melee attack - HEAVY EQUIP LOAD">
+					<IfCondition>
+						<And>
+							<IfDamaged/>
+							<Not>
+								<IfDamaged RequireRanged="true"/>
+							</Not>
+							<Not>
+								<IfDamaged RequireDamageWasBlocked="true"/>
+							</Not>
+							<ActionConditionEquipLoadCategory Value="Slow"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects ResetWhenReinstalled="true">
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Combat_Timer_Heavy"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<CancelLookingThroughLoadout/>
+				<ForceCameraLock>
+					<Default OnEnter="Disable" OnExit="NoEffect" OnlyDisableIfTargetingFriendlies="true"/>
+				</ForceCameraLock>
+				<CharacterRelativeMovement>
+					<Default Speed="0,0,0" Accel="0,0,0" Decel="50,50,50"/>
+				</CharacterRelativeMovement>
+				<IfThenElse RunDuringInstall="true">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Prone and Standblocked"/>
+					</IfCondition>
+					<ThenActivity/>
+					<ElseActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<ReactionMotion>
+								<Default/>
+							</ReactionMotion>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+				<IfThenElse Comment="Hit FX Logic">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="Blocked"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+							<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+						</SetAudioSwitchState>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag>
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse>
+					<IfCondition>
+						<IfExternalCondition ConditionName="BlockingReaction"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<DisableStaminaRegen ResetWhenReinstalled="true" IgnoreDataChangesAfterInstall="false">
+								<Default OnEnter="Disable" OnExit="Enable"/>
+							</DisableStaminaRegen>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse>
+					<IfCondition>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_B0_Break"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetBlockBroken ResetWhenReinstalled="false">
+								<Default OnEnter="Enable" OnExit="Disable"/>
+							</SetBlockBroken>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetReactionFragment Comment="This needs to be after any tag changes">
+					<Default ReactionTablePath="SharedAssets/springboardentitites/PlayerData/PlayerReactionTableHarness.sbs"/>
+				</SetReactionFragment>
+				<ClearDamaged Comment="This needs to be after SetReactionFragment"/>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Knockdown" FragmentName="r_R4_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="4"/>
+					<IfDamaged IgnoreDeflectDamage="true"/>
+					<Not>
+						<IfExternalCondition ConditionName="Blocked"/>
+					</Not>
+					<Not Comment="Check if interruptible">
+						<IfExternalCondition ConditionName="Uninterruptible"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffectCategory="Frozen"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Trigger Sprint Timer if hit by melee attack - Light EQUIP LOAD">
+					<IfCondition>
+						<And>
+							<IfDamaged/>
+							<Not>
+								<IfDamaged RequireRanged="true"/>
+							</Not>
+							<ActionConditionEquipLoadCategory Value="Fast"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects ResetWhenReinstalled="true">
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Combat_Timer_Light"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Trigger Sprint Timer if hit by melee attack - NORMAL EQUIP LOAD">
+					<IfCondition>
+						<And>
+							<IfDamaged/>
+							<Not>
+								<IfDamaged RequireRanged="true"/>
+							</Not>
+							<ActionConditionEquipLoadCategory Value="Normal"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects ResetWhenReinstalled="true">
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Combat_Timer_Normal"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<CancelLookingThroughLoadout/>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Force Standing Logic">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="ForceStand"/>
+							<Not>
+								<IfExternalCondition ConditionName="Prone and Standblocked"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="NoEffect" OnExit="Set"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="NoEffect" OnExit="Set"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="ForceStand" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Won't be prone if force stand check above passes, so we don't need the Prone and Standblocked check">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Prone"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ReactionMotion>
+							<Default Scale="0.0"/>
+						</ReactionMotion>
+					</ThenActivity>
+					<ElseActivity>
+						<ReactionMotion>
+							<Default Scale="1.0"/>
+						</ReactionMotion>
+					</ElseActivity>
+				</IfThenElse>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+				<SetMannequinTag>
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetReactionFragment Comment="This needs to be after any tag changes">
+					<Default ReactionTablePath="SharedAssets/springboardentitites/PlayerData/PlayerReactionTableHarness.sbs"/>
+				</SetReactionFragment>
+				<ClearDamaged Comment="This needs to be after SetReactionFragment"/>
+				<ClearMotion>
+					<Default OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMotion>
+			</Activities>
+		</Action>
+		<Action Name="Deflection" FragmentName="Deflect" ServerStarted="true">
+			<ActivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<CancelLookingThroughLoadout/>
+				<ClearDamaged/>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Force Standing Logic">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="ForceStand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+			</Activities>
+		</Action>
+		<Action Name="UpperBodyReaction" FragmentName="r_R0_F" ServerStarted="true">
+			<ActivationCondition>
+				<Or>
+					<And>
+						<IfDamaged RequireDamageWasBlocked="true" RequireDamageDepletedStamina="false"/>
+						<Not>
+							<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="true"/>
+						</Not>
+					</And>
+					<And>
+						<Or>
+							<And>
+								<IfDamagedByPowerLevel Comparison="Equal" Value="0"/>
+								<Not>
+									<IfDamaged RequireDamageWasBlocked="true" RequireDamageDepletedStamina="true"/>
+								</Not>
+							</And>
+							<And>
+								<IfDamagedByPowerLevel Comparison="GreaterThan" Value="0"/>
+								<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+							</And>
+						</Or>
+					</And>
+					<And>
+						<IfDamagedByPowerLevel Comparison="Equal" Value="10"/>
+						<Or>
+							<IfMannequinTag TagName="Reaction"/>
+							<IfMannequinTag TagName="Reaction_UB"/>
+						</Or>
+					</And>
+					<And>
+						<IfDamagedByPowerLevel Comparison="Equal" Value="0"/>
+						<Not>
+							<IfDamaged RequireDamageWasBlocked="true" RequireDamageDepletedStamina="true"/>
+						</Not>
+						<IfMannequinTag TagName="Reaction"/>
+					</And>
+					<And>
+						<IfDamaged/>
+						<IfHasStatusEffect StatusEffect="Rapier_Riposte_Timer"/>
+					</And>
+				</Or>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+					<IfHasStatusEffect StatusEffect="Rapier_Riposte_Timer"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Trigger Sprint Timer if hit by melee attack - LIGHT EQUIP LOAD">
+					<IfCondition>
+						<And>
+							<IfDamaged/>
+							<Not>
+								<IfDamaged RequireRanged="true"/>
+							</Not>
+							<Not>
+								<IfDamaged RequireDamageWasBlocked="true"/>
+							</Not>
+							<ActionConditionEquipLoadCategory Value="Fast"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects ResetWhenReinstalled="true">
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Combat_Timer_Light"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Trigger Sprint Timer if hit by melee attack - MEDIUM EQUIP LOAD">
+					<IfCondition>
+						<And>
+							<IfDamaged/>
+							<Not>
+								<IfDamaged RequireRanged="true"/>
+							</Not>
+							<Not>
+								<IfDamaged RequireDamageWasBlocked="true"/>
+							</Not>
+							<ActionConditionEquipLoadCategory Value="Normal"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects ResetWhenReinstalled="true">
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Combat_Timer_Medium"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Trigger Sprint Timer if hit by melee attack - HEAVY EQUIP LOAD">
+					<IfCondition>
+						<And>
+							<IfDamaged/>
+							<Not>
+								<IfDamaged RequireRanged="true"/>
+							</Not>
+							<Not>
+								<IfDamaged RequireDamageWasBlocked="true"/>
+							</Not>
+							<ActionConditionEquipLoadCategory Value="Slow"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects ResetWhenReinstalled="true">
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Combat_Timer_Heavy"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag>
+					<Default TagName="Reaction_UB" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<CancelLookingThroughLoadout/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse Comment="Hit FX Logic">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="Blocked"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+							<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+						</SetAudioSwitchState>
+					</ThenActivity>
+				</IfThenElse>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+				<SetReactionFragment Comment="This needs to be after any tag changes">
+					<Default ReactionTablePath="SharedAssets/springboardentitites/PlayerData/PlayerReactionTableHarness.sbs"/>
+				</SetReactionFragment>
+				<IfThenElse Comment="Apply Reaction translation except during certain conditions">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="Uninterruptible"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ReactionMotion>
+							<Default Scale="1.0"/>
+						</ReactionMotion>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearDamaged Comment="This needs to be after SetReactionFragment"/>
+			</Activities>
+		</Action>
+		<Action Name="Stun" FragmentName="r_Stun" ServerStarted="true">
+			<ActivationCondition/>
+			<DeactivationCondition>
+				<Not>
+					<IsStunned/>
+				</Not>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="Stun_Loop" FragmentName="r_Stun_Loop">
+			<ActivationCondition>
+				<Or>
+					<Not Comment="Only Activate through TransitionInstant">
+						<True/>
+					</Not>
+					<And>
+						<IsStunned/>
+						<Not>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_Stun_Loop"/>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffect="Hatchet_Berserk_CCPurge"/>
+						</Not>
+						<And>
+							<Or>
+								<And>
+									<IfMannequinMarker MarkerName="CanStun"/>
+									<Not>
+										<HeightToGround ActivationHeight="0.60"/>
+									</Not>
+								</And>
+								<Not>
+									<IfMannequinTag TagName="Reaction"/>
+								</Not>
+							</Or>
+							<Not>
+								<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" RequireCriticalHit="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName="" RequireRanged="false"/>
+							</Not>
+						</And>
+						<Or>
+							<Not Comment="Check if interruptible">
+								<IfExternalCondition ConditionName="Uninterruptible"/>
+							</Not>
+							<And>
+								<IfExternalCondition ConditionName="Uninterruptible"/>
+								<IfHasStatusEffect StatusEffect="Hatchet_Berserk_Uninterruptible" OnlyCheckOwnedStatusEffects="false"/>
+							</And>
+							<And>
+								<IfExternalCondition ConditionName="Uninterruptible"/>
+								<IfHasStatusEffect StatusEffect="Rapier_Riposte_Uninterruptible" OnlyCheckOwnedStatusEffects="false"/>
+							</And>
+							<And>
+								<IfExternalCondition ConditionName="Uninterruptible"/>
+								<IfHasStatusEffect StatusEffect="Status_Rune_BeastMode_Greater_Buff" OnlyCheckOwnedStatusEffects="false"/>
+							</And>
+						</Or>
+					</And>
+				</Or>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+					<And>
+						<IfActiveAbilityMoveName AbilityName="Ability_Hatchet_Berserk"/>
+						<IfAbilityActive AbilityName="Upgrade_Hatchet_Berserk_Purge"/>
+					</And>
+					<IfHasStatusEffect StatusEffect="Hatchet_Berserk_CCPurge"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearMotion>
+					<Default OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMotion>
+			</Activities>
+		</Action>
+		<Action Name="Stun_End" FragmentName="r_Stun_End">
+			<ActivationCondition>
+				<Not Comment="Only Activate through TransitionInstant">
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.333"/>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="Frozen" FragmentName="r_Frozen_Loop">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffectCategory="Frozen" OnlyCheckOwnedStatusEffects="false"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_Frozen_Loop"/>
+					</Not>
+					<And>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanStun"/>
+								<Not>
+									<HeightToGround ActivationHeight="0.60"/>
+								</Not>
+							</And>
+							<Not>
+								<IfMannequinTag TagName="Reaction"/>
+							</Not>
+						</Or>
+						<Not>
+							<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" RequireCriticalHit="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName="" RequireRanged="false"/>
+						</Not>
+					</And>
+					<Or>
+						<Not Comment="Check if interruptible">
+							<IfExternalCondition ConditionName="Uninterruptible"/>
+						</Not>
+						<And>
+							<IfExternalCondition ConditionName="Uninterruptible"/>
+							<IfHasStatusEffect StatusEffect="Hatchet_Berserk_Uninterruptible" OnlyCheckOwnedStatusEffects="false"/>
+						</And>
+						<And>
+							<IfExternalCondition ConditionName="Uninterruptible"/>
+							<IfHasStatusEffect StatusEffect="Rapier_Riposte_Uninterruptible" OnlyCheckOwnedStatusEffects="false"/>
+						</And>
+						<And>
+							<IfExternalCondition ConditionName="Uninterruptible"/>
+							<IfHasStatusEffect StatusEffect="Status_Rune_BeastMode_Greater_Buff" OnlyCheckOwnedStatusEffects="false"/>
+						</And>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+					<And>
+						<IfActiveAbilityMoveName AbilityName="Ability_Hatchet_Berserk"/>
+						<IfAbilityActive AbilityName="Upgrade_Hatchet_Berserk_Purge"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearMotion>
+					<Default OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMotion>
+				<DisableCollision>
+					<Default disableActorToActorCollision="true" disableTerrainCollision="true" disablePlayerToPlayerCollision="true"/>
+				</DisableCollision>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="0" RotationMultiplier="0.00" Decel="100.0,100.0,100.0" DisableGravity="true" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Pushable">
+			<ActivationCondition>
+				<And>
+					<IfDamaged FailOnNoReactionDamage="false"/>
+					<Not>
+						<IfDamaged FailOnNoReactionDamage="true"/>
+					</Not>
+					<Not>
+						<IfDead/>
+					</Not>
+					<Not>
+						<IfDeathsDoor/>
+					</Not>
+					<Not Comment="Check if interruptible">
+						<Or>
+							<IfExternalCondition ConditionName="Uninterruptible"/>
+							<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+						</Or>
+					</Not>
+					<Not>
+						<IfIsInCommittedInteraction/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfDead/>
+					<IfDeathsDoor/>
+					<IfActionStatus ActionName="Pushable" Status="Installed" ActiveTime="0.4f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					<Not>
+						<IfActionStatus ActionName="Pushable" Status="Installed"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<CancelLookingThroughLoadout/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+				<ReactionMotion>
+					<Default Scale="1.0" UsePushNoDecay="true"/>
+				</ReactionMotion>
+				<ClearDamaged Comment="This needs to be after SetReactionFragment"/>
+			</Activities>
+		</Action>
+		<Action Name="R4_Isabella_Consume" FragmentName="r_R4_Isabella_Consume">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_Isabella_Solo_Player_Consume" OnlyCheckOwnedStatusEffects="false"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_R4_Isabella_Consume"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearMotion>
+					<Default OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMotion>
+				<CancelLookingThroughLoadout/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Force Standing Logic">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="ForceStand"/>
+							<Not>
+								<IfExternalCondition ConditionName="Prone and Standblocked"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="NoEffect" OnExit="Set"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="NoEffect" OnExit="Set"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="ForceStand" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<Or Name="R0_Reaction">
+			<IfDamagedByPowerLevel/>
+			<IfDamaged RequireDamageWasBlocked="true"/>
+		</Or>
+		<Or Name="R4_Reaction">
+			<IfDamagedByPowerLevel Value="4"/>
+			<IfDamaged RequireDamageWasBlocked="true"/>
+		</Or>
+		<IfMannequinTag Name="BlockingReaction" TagName="Blocking"/>
+		<And Name="Prone and Standblocked">
+			<Not>
+				<IfCanResizeCharacterController ResizeType="Default"/>
+			</Not>
+			<IfMannequinTag TagName="Prone"/>
+		</And>
+		<And Name="Not_Stunned">
+			<Not>
+				<IsStunned/>
+			</Not>
+		</And>
+		<Or Name="Uninterruptible">
+			<IfHasStatusEffect StatusEffectCategory="Uninterruptible"/>
+		</Or>
+		<And Name="Not_Frozen">
+			<Not>
+				<IfHasStatusEffect StatusEffectCategory="Frozen" OnlyCheckOwnedStatusEffects="false"/>
+			</Not>
+		</And>
+		<And Name="Not_Sleep">
+			<Not>
+				<IfHasStatusEffect StatusEffectCategory="Sleep" OnlyCheckOwnedStatusEffects="false"/>
+			</Not>
+		</And>
+		<And Name="Not_Petrified">
+			<Not>
+				<IfHasStatusEffect StatusEffectCategory="Petrified" OnlyCheckOwnedStatusEffects="false"/>
+			</Not>
+		</And>
+		<And Name="R4_Isabella_Consume_Exit">
+			<Not>
+				<IfHasStatusEffect StatusEffect="AI_Isabella_Solo_Player_Consume"/>
+			</Not>
+		</And>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,28 @@
+<ActionList>
+	<Conditions>
+		<IfShouldCraft Name="Start_Crafting"/>
+		<Not Name="Stop_Crafting">
+			<IfShouldCraft/>
+		</Not>
+		<And name="Placing_Building">
+			<IfIsPlacingBuilding/>
+			<Or>
+				<IfMannequinTag TagName="Prone"/>
+				<IfMannequinTag TagName="Idle"/>
+				<IfMannequinTag TagName="Walk"/>
+				<IfMannequinTag TagName="Run"/>
+				<IfMannequinTag TagName="Sprint"/>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Idle"/>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Strafe"/>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Nav_Stop"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="AttackAction"/>
+			</Not>
+		</And>
+		<IfIsLoadoutOpen Name="Player_LoadoutOpen"/>
+		<IfIsInteractingWithStorage Name="Player_InteractingStorage"/>
+		<IfStructureIsInValidLocation Name="Placing_Valid_Location"/>
+	</Conditions>
+</ActionList>
+

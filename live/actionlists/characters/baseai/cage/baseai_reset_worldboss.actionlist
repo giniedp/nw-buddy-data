@@ -1,0 +1,170 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reset_Move_NoHeal_DespawnMinions" FragmentName="Move_Combat">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Reset_Move_NoHeal_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<ClearStimuli>
+					<Default TriggerOption="OnExit" DelayTime="0.0"/>
+				</ClearStimuli>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="ResetAINoHeal"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="ResetAINoHeal"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Despawn minions on death or leash">
+					<IfCondition>
+						<IfMannequinTag TagName="HasSummonedMinion"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<AIAssignOrder>
+								<Default Order="Despawn"/>
+							</AIAssignOrder>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="HasSummonedMinion" OnEnter="Unset" OnExit="Unset" DelayTimer="0.2"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<DisableCollision>
+					<Default disableActorToActorCollision="true" disableTerrainCollision="false"/>
+				</DisableCollision>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Reset" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ClearStimuli>
+					<Default TriggerOption="OnExit" DelayTime="0.0"/>
+				</ClearStimuli>
+			</Activities>
+		</Action>
+		<Action Name="Reset_Idle_NoHeal_DespawnMinions" FragmentName="Combat_Idle">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Reset_Idle_NoHeal_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Despawn minions on death or leash">
+					<IfCondition>
+						<IfMannequinTag TagName="HasSummonedMinion"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<AIAssignOrder>
+								<Default Order="Despawn"/>
+							</AIAssignOrder>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="HasSummonedMinion" OnEnter="Unset" OnExit="Unset" DelayTimer="0.2"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<ClearStimuli>
+					<Default TriggerOption="OnEnter" DelayTime="0.0"/>
+				</ClearStimuli>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="ResetAINoHeal"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="ResetAINoHeal"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Reset_Move_NoHeal" FragmentName="Move_Combat">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Reset_Move_NoHeal_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<ClearStimuli>
+					<Default TriggerOption="OnExit" DelayTime="0.0"/>
+				</ClearStimuli>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="ResetAINoHeal"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="ResetAINoHeal"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<DisableCollision>
+					<Default disableActorToActorCollision="true" disableTerrainCollision="false"/>
+				</DisableCollision>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Reset" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ClearStimuli>
+					<Default TriggerOption="OnExit" DelayTime="0.0"/>
+				</ClearStimuli>
+			</Activities>
+		</Action>
+		<Action Name="Reset_Idle_NoHeal" FragmentName="Combat_Idle">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Reset_Idle_NoHeal_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<ClearStimuli>
+					<Default TriggerOption="OnEnter" DelayTime="0.0"/>
+				</ClearStimuli>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="ResetAINoHeal"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="ResetAINoHeal"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

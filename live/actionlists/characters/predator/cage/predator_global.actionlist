@@ -1,0 +1,17 @@
+<ActionList>
+	<Actions>
+		<Action Name="LookPose" FragmentName="LookPose">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

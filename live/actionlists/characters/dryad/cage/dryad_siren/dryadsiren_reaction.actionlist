@@ -1,0 +1,150 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction" FragmentName="r_R3_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName="" RequireRanged="false"/>
+					<Or>
+						<And>
+							<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.8"/>
+							<IfMannequinTag TagName="Phase1"/>
+						</And>
+						<And>
+							<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.4"/>
+							<IfMannequinTag TagName="Phase2"/>
+						</And>
+					</Or>
+					<Not>
+						<IfMannequinTag TagName="Reset"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Phase3"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Phase4"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction" Status="Pending" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction" Status="Installed" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="DeactivateSpinFX"/>
+				</TriggerEntity>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase2"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase2_Ability"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase2_A"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase2_A_Tick"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase2_B"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase2_B_Tick"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase2_C"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase2_C_Tick"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase2_D"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase2_D_Tick"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase3"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase3_Ability"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase3_A"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase3_A_Tick"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase3_B"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase3_B_Tick"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase3_C"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase3_C_Tick"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase3_D"/>
+							<EffectId EffectId="AI_DryadSiren_Spin_Phase3_D_Tick"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.3"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyDead" TagName="Phase4" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyPhase2" TagName="Phase3" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyPhase1" TagName="Phase2" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Conditional Name="CurrentlyPhase3" TagName="Phase2" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyPhase2" TagName="Phase1" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Additive" FragmentName="r_R0_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" RequireCriticalHit="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName="" RequireRanged="false"/>
+					<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="5"/>
+					<And>
+						<Not>
+							<IfDead ServerOnly="true"/>
+						</Not>
+					</And>
+					<Or>
+						<IfMannequinTag TagName="Reset"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_AdditiveReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ClearDamaged/>
+			</Activities>
+		</Action>
+		<Action Name="Death" FragmentName="r_Death_F" ServerStarted="true" Predictive="true">
+			<ActivationCondition>
+				<IfDead ServerOnly="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BASEAI/CAGE/ReactionTables/BaseAI_DeathTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.0"/>
+				</SetReactionFragment>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+		<IfMannequinTag Name="CurrentlyPhase1" TagName="Phase1"/>
+		<IfMannequinTag Name="CurrentlyPhase2" TagName="Phase2"/>
+		<IfMannequinTag Name="CurrentlyPhase3" TagName="Phase3"/>
+		<IfHealthPercentage Name="CurrentlyDead" Comparison="LessThanOrEqual" Percentage="0.0"/>
+	</Conditions>
+</ActionList>
+

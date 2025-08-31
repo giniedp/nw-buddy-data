@@ -1,0 +1,69 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reset_Move" FragmentName="Move_Combat">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Reset_Move_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<AIAssignOrder>
+					<Default Order="KillMinion"/>
+				</AIAssignOrder>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<ClearStimuli>
+					<Default TriggerOption="OnExit" DelayTime="0.0"/>
+				</ClearStimuli>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="ResetAI"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="ResetAI"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<DisableCollision>
+					<Default disableActorToActorCollision="true" disableTerrainCollision="false"/>
+				</DisableCollision>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Reset_Idle" FragmentName="Combat_Idle">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Reset_Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<AIAssignOrder>
+					<Default Order="KillMinion"/>
+				</AIAssignOrder>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<ClearStimuli>
+					<Default TriggerOption="OnExit" DelayTime="0.0"/>
+				</ClearStimuli>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="ResetAI"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="ResetAI"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

@@ -1,0 +1,49 @@
+<ActionList>
+	<Actions>
+		<Action Name="Attack_Charge_Start" FragmentName="Attack_Charge_Start">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_Charge_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.25"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Charge_Loop" FragmentName="Attack_Charge_Loop" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_Charge_Loop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.25"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Charge_End" FragmentName="Attack_Charge_End" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_Charge_End_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.25"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

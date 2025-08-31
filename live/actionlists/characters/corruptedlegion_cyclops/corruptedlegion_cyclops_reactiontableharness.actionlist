@@ -1,0 +1,14 @@
+<ActionList>
+	<Reactions>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_Stagger" Resistance="n/a"/>
+	</Reactions>
+	<Conditions>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="90.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<IfDamagedByAngle Max="-45.000000" Min="-135.000000" Name="damaged_left" Tolerance="0.010000"/>
+		<IfDamagedByAngle Max="135.000000" Min="45.000000" Name="damaged_right" Tolerance="0.010000"/>
+	</Conditions>
+</ActionList>
+

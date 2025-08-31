@@ -1,0 +1,89 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction_Additive" FragmentName="r_R0_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="false" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/Sandworm/SandwormAdditiveReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Death" FragmentName="r_Death_F" ServerStarted="true">
+			<ActivationCondition>
+				<IfDead ServerOnly="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/Sandworm/SandwormDeathTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Death" SetOnStop="false"/>
+				</SetAudioSwitchState>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Aura_Off"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Aura_Off"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="R2_StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_StunBreakout">
+			<IsStunned/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="StunBreakout">
+			<True/>
+		</And>
+		<And Name="R2_ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2" QueryData="true"/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_ReactionBreakout">
+			<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2"/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+	</Conditions>
+</ActionList>
+

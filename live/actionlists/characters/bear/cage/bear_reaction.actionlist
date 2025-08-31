@@ -1,0 +1,35 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction_Additive" FragmentName="r_R0_F" ServerStarted="true">
+			<ActivationCondition>
+				<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/Bear/CAGE/BearReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+				<ReactionMotion>
+					<Default Scale="1.0" PushBackScale="0"/>
+					<Conditional Name="Stunned" Scale="0.5" PushBackScale="0"/>
+					<Conditional Name="Invasion" Scale="0" PushBackScale="0"/>
+				</ReactionMotion>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+		<IfMannequinTag Name="Stunned" TagName="Stunned"/>
+		<IfMannequinTag Name="Invasion" TagName="Invasion"/>
+	</Conditions>
+</ActionList>
+

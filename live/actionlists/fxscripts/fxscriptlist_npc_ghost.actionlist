@@ -1,0 +1,44 @@
+<ActionList>
+	<Scripts>
+		<FxScript Name="Disappear">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeMaterialOverride MaterialKey="Ghost_off"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Ghost_Spoof" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" LipSyncMethod="None" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Appear">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeMaterialOverride MaterialKey="Ghost_on"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Ghost_Spoof" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" LipSyncMethod="None" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Death">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeMaterialOverride MaterialKey="Ghost_death"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Ghost_Hurts" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" LipSyncMethod="None" SoundObstructionType="Ignore"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Stop_Ghost_Flight" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" LipSyncMethod="None" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Hit">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeMaterialOverride MaterialKey="Ghost_hit"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Ghost_Hurts" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" LipSyncMethod="None" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Chargeup">
+			<FxScriptNodeMaterialOverride MaterialKey="Ghost_chargeup"/>
+		</FxScript>
+		<FxScript Name="Chargedown">
+			<FxScriptNodeMaterialOverride MaterialKey="Ghost_chargedown"/>
+		</FxScript>
+		<FxScript Name="Siphon_Damage_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="false" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Imp_GraveDigger_Lifesteal" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="false" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Siphon_Damage_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+	</Scripts>
+</ActionList>
+

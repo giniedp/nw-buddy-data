@@ -1,0 +1,34 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction" FragmentName="r_R2_F">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName=""/>
+					<Not>
+						<IfMannequinTag TagName="Reset"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/Prey/CAGE/Prey_Critter_ReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.3"/>
+				</SetReactionFragment>
+				<ClearDamaged/>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+				</ReactionMotion>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

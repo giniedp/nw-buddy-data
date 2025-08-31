@@ -1,0 +1,381 @@
+<ActionList>
+	<Actions>
+		<Action Name="SprintPoseTransition_StandToCrouch" FragmentName="Sprint_PostureTransition">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Stand"/>
+					<IfMannequinTag TagName="Crouch_Desired"/>
+					<IfMannequinTag TagName="Sprint"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="FromStand" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Crouch" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<IfThenElse Comment="Set character facing based on nav mode">
+					<IfCondition>
+						<IfExternalCondition ConditionName="CombatNav"/>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default TurnRate="1.0" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+					<ElseActivity>
+						<InputRelativeFacing>
+							<Default TurnRate="75.0" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+						</InputRelativeFacing>
+					</ElseActivity>
+				</IfThenElse>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,2.75,0.0" Accel="0.0,8.0,0.0" Decel="0.0,10.0,0.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+					<Conditional Name="SlowToStop" ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="0.0,20.0,0.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Sprint" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="SprintPoseTransition_CrouchToStand" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Crouch"/>
+					<IfMannequinTag TagName="Stand_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<IfMannequinTag TagName="Sprint"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<IfThenElse Comment="Set character facing based on nav mode">
+					<IfCondition>
+						<IfExternalCondition ConditionName="CombatNav"/>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default TurnRate="1000.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+					<ElseActivity>
+						<InputRelativeFacing>
+							<Default TurnRate="1000.0" UseExponentialTurnRate="false" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+						</InputRelativeFacing>
+					</ElseActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="SprintPoseTransition_StandToProne" FragmentName="Sprint_PostureTransition">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Prone_Desired"/>
+					<IfMannequinTag TagName="Stand"/>
+					<IfMannequinTag TagName="Sprint"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="FromStand" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Prone" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<InputRelativeFacing>
+					<Default TurnRate="0.03" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="None"/>
+					<Conditional Name="RotateFast" TurnRate="0.3" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="None"/>
+				</InputRelativeFacing>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,0.1,0.0" Accel="0.0,0.0,0.0" Decel="0.0,8.0,0.0" InheritVelocity="false" InheritVelocityMaxSpeed="5.5" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+					<Conditional Name="SlowToStop" ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="0.0,30.0,0.0" InheritVelocity="false" InheritVelocityMaxSpeed="5.5" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Sprint" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Auto sheathing non-rifle weapons">
+					<IfCondition>
+						<Not>
+							<IfMannequinTag TagName="OneTimeScriptDone"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="OneTimeScriptDone" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Current Mainhand is unsheathed and not a rifle">
+								<IfCondition>
+									<Or>
+										<And>
+											<Not>
+												<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+											</Not>
+											<Not>
+												<Or>
+													<IfMannequinTag TagName="Rifle"/>
+												</Or>
+											</Not>
+										</And>
+										<Not>
+											<Or>
+												<IfMannequinTag TagName="Rifle"/>
+												<IfMannequinTag TagName="Unarmed"/>
+											</Or>
+										</Not>
+									</Or>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<SheatheWeapon ResetWhenReinstalled="false">
+											<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+										</SheatheWeapon>
+										<SetToggleInput>
+											<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+										</SetToggleInput>
+										<SetToggleInput>
+											<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+										</SetToggleInput>
+										<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+											<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+										</SetMannequinTagFromSource>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Current Off Hand Unsheathed or Invalid Tag state">
+								<IfCondition>
+									<Or>
+										<Not>
+											<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+										</Not>
+										<Not>
+											<IfMannequinTag TagName="Unarmed_OH"/>
+										</Not>
+									</Or>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<SheatheWeapon ResetWhenReinstalled="false">
+											<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+										</SheatheWeapon>
+										<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+											<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+										</SetMannequinTagFromSource>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="OneTimeScriptDone" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="SprintPoseTransition_ProneToStand" FragmentName="Sprint_PostureTransition">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Stand_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<IfMannequinTag TagName="Sprint"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="FromProne" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<InputRelativeFacing>
+					<Default TurnRate="250.0" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="" BackwardInput="" LeftInput="" RightInput="" AnalogInputOverride="None"/>
+				</InputRelativeFacing>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,0.1,0.0" Accel="0.0,0.0,0.0" Decel="0.0,10.0,0.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Sprint" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="SprintPoseTransition_CrouchToProne" FragmentName="Sprint_PostureTransition">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Prone_Desired"/>
+					<IfMannequinTag TagName="Crouch"/>
+					<IfMannequinTag TagName="Sprint"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="FromCrouch" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Prone" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<InputRelativeFacing>
+					<Default TurnRate="125.0" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="None"/>
+				</InputRelativeFacing>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,0.1,0.0" Accel="0.0,0.0,0.0" Decel="0.0,8.0,0.0" InheritVelocity="false" InheritVelocityMaxSpeed="5.5" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+					<Conditional Name="SlowToStop" ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="0.0,30.0,0.0" InheritVelocity="false" InheritVelocityMaxSpeed="5.5" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Sprint" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Auto sheathing non-rifle weapons">
+					<IfCondition>
+						<Not>
+							<IfMannequinTag TagName="OneTimeScriptDone"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="OneTimeScriptDone" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Current Mainhand is unsheathed and not a rifle">
+								<IfCondition>
+									<Or>
+										<And>
+											<Not>
+												<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+											</Not>
+											<Not>
+												<Or>
+													<IfMannequinTag TagName="Rifle"/>
+												</Or>
+											</Not>
+										</And>
+										<Not>
+											<Or>
+												<IfMannequinTag TagName="Rifle"/>
+												<IfMannequinTag TagName="Unarmed"/>
+											</Or>
+										</Not>
+									</Or>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<SheatheWeapon ResetWhenReinstalled="false">
+											<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+										</SheatheWeapon>
+										<SetToggleInput>
+											<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+										</SetToggleInput>
+										<SetToggleInput>
+											<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+										</SetToggleInput>
+										<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+											<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+										</SetMannequinTagFromSource>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Current Off Hand Unsheathed or Invalid Tag state">
+								<IfCondition>
+									<Or>
+										<Not>
+											<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+										</Not>
+										<Not>
+											<IfMannequinTag TagName="Unarmed_OH"/>
+										</Not>
+									</Or>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<SheatheWeapon ResetWhenReinstalled="false">
+											<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+										</SheatheWeapon>
+										<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+											<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+										</SetMannequinTagFromSource>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="OneTimeScriptDone" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="SprintPoseTransition_ProneToCrouch" FragmentName="Sprint_PostureTransition">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch_Desired"/>
+					<IfCanResizeCharacterController ResizeType="Crouch"/>
+					<IfMannequinTag TagName="Sprint"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="FromProne" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Crouch" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<InputRelativeFacing>
+					<Default TurnRate="250.0" UseExponentialTurnRate="false" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="None"/>
+				</InputRelativeFacing>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,0.1,0.0" Accel="0.0,0.0,0.0" Decel="0.0,8.0,0.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Sprint" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="SlowToStop" MarkerName="CanTransition"/>
+		<IfMannequinMarker Name="RotateFast" MarkerName="RotateFast"/>
+	</Conditions>
+</ActionList>
+

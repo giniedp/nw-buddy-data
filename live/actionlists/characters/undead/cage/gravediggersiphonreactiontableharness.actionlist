@@ -1,0 +1,27 @@
+<ActionList>
+	<Reactions>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="0" Reaction="r_R2_F_Siphon" AlignToDirection="true" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="1" Reaction="r_R2_F_Siphon" AlignToDirection="true" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R3_F_BreakSiphon" AlignToDirection="true" AlignOffsetAngle="180" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R3_F_Siphon" AlignToDirection="true" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+	</Reactions>
+	<Conditions>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="120.000000" Min="-120.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back">
+			<IfDamagedByAngle Max="240.000000" Min="120.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-120.00000" Min="-240.000000" Tolerance="0.010000"/>
+		</Or>
+		<IfDamaged Name="blocked" FailOnNoReactionDamage="true" IgnoreDeflectDamage="false" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="true" RequireDeflectDamage="false" RequireHitVolumeName=""/>
+	</Conditions>
+</ActionList>
+

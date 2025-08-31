@@ -1,0 +1,42 @@
+<ActionList>
+	<Actions>
+		<Action Name="AimPose" FragmentName="Aim">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableAimBlend"/>
+					</Not>
+					<Or>
+						<IfMannequinTag TagName="Aim"/>
+						<IfMannequinTag TagName="ChargedAim"/>
+						<IfMannequinTag TagName="HipAim"/>
+						<IfMannequinTag TagName="AimDownSights"/>
+						<IfMannequinTag TagName="HeavyAim"/>
+						<IfMannequinTag TagName="SmokeAim"/>
+						<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="DisableAimBlend"/>
+					<Not>
+						<Or>
+							<IfMannequinTag TagName="Aim"/>
+							<IfMannequinTag TagName="ChargedAim"/>
+							<IfMannequinTag TagName="HipAim"/>
+							<IfMannequinTag TagName="AimDownSights"/>
+							<IfMannequinTag TagName="HeavyAim"/>
+							<IfMannequinTag TagName="SmokeAim"/>
+							<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+						</Or>
+					</Not>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

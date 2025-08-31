@@ -1,0 +1,33 @@
+<ActionList>
+	<Scripts>
+		<FxScript Name="Brute_Rage_Damage_Buff">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="bind_right_hand_thumb_a" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_AncientAnubianBrute.DivineRageHands" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="bind_left_hand_thumb_a" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_AncientAnubianBrute.DivineRageHands" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Brute_Anguish_Damage_Buff">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="head_attach" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_AncientAnubianBrute.Boss_DivineAnguish" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,1" RotOffset="0,0,0" Scale="1.5" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Horus_Rage_Damage_Buff">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="Hand_right" AttachToEntity="true" AttachToJoint="true" CharacterSlot="1" EffectName="cfx_npc_AncientAnubianHorus.Boss_DivineRageHands" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0.250000" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="Hand_left" AttachToEntity="true" AttachToJoint="true" CharacterSlot="1" EffectName="cfx_npc_AncientAnubianHorus.Boss_DivineRageHands" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0.250000" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="right_hand_attach" AttachToEntity="true" AttachToJoint="true" CharacterSlot="1" EffectName="cFX_npc_AncientAnubianHorus.Boss_DivineRage" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0.75" RotOffset="0,0,0.250000" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Horus_Anguish_Damage_Buff">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="head" AttachToEntity="true" AttachToJoint="true" CharacterSlot="1" EffectName="cFX_npc_AncientAnubianHorus.Boss_DivineAnguish" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="-90,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="AI_HorusStaff">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="right_hand_attach" AttachToEntity="true" AttachToJoint="true" CharacterSlot="1" EffectName="cFX_npc_AncientAnubianHorus.Boss_DivineAnguish" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0.75" RotOffset="0,0,0.250000" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+	</Scripts>
+</ActionList>
+

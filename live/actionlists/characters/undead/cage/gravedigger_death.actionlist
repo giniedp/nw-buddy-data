@@ -1,0 +1,46 @@
+<ActionList>
+	<Actions>
+		<Action Name="Death_FB" FragmentName="r_Death_F" ServerStarted="true">
+			<ActivationCondition>
+				<IfDead ServerOnly="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/Undead/CAGE/GraveDigger_DeathTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<AIAssignOrder>
+					<Default Order="Despawn"/>
+				</AIAssignOrder>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Siphon" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Undead_GraveDigger_Siphon"/>
+							<EffectId EffectId="AI_Gravedigger_SiphonSpell"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<True Name="AlwaysTrue"/>
+	</Conditions>
+</ActionList>
+

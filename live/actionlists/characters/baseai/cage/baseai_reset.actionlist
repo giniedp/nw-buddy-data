@@ -1,0 +1,119 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reset_Move" FragmentName="Move_Combat">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Reset_Move_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<ClearStimuli>
+					<Default TriggerOption="OnExit" DelayTime="0.0"/>
+				</ClearStimuli>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Determine if heal on leash">
+					<IfCondition>
+						<Not>
+							<IfHasStatusEffect StatusEffect="ResetAINoHeal" OnlyCheckOwnedStatusEffects="false"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="ResetAI"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="ResetAI"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Despawn minions on death or leash">
+					<IfCondition>
+						<IfMannequinTag TagName="HasSummonedMinion"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<AIAssignOrder>
+								<Default Order="Despawn"/>
+							</AIAssignOrder>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="HasSummonedMinion" OnEnter="Unset" OnExit="Unset" DelayTimer="0.2"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<DisableCollision>
+					<Default disableActorToActorCollision="true" disableTerrainCollision="false"/>
+				</DisableCollision>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Reset" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ClearStimuli>
+					<Default TriggerOption="OnExit" DelayTime="0.0"/>
+				</ClearStimuli>
+				<ResetStamina ResetWhenReinstalled="false" IgnoreDataChanges="false">
+					<Default OnEnter="Reset" OnExit="Reset"/>
+				</ResetStamina>
+			</Activities>
+		</Action>
+		<Action Name="Reset_Idle" FragmentName="Combat_Idle">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Reset_Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Despawn minions on death or leash">
+					<IfCondition>
+						<IfMannequinTag TagName="HasSummonedMinion"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<AIAssignOrder>
+								<Default Order="Despawn"/>
+							</AIAssignOrder>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="HasSummonedMinion" OnEnter="Unset" OnExit="Unset" DelayTimer="0.2"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<ClearStimuli>
+					<Default TriggerOption="OnEnter" DelayTime="0.0"/>
+				</ClearStimuli>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="ResetAI"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="ResetAI"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ResetStamina ResetWhenReinstalled="false" IgnoreDataChanges="false">
+					<Default OnEnter="Reset" OnExit="Reset"/>
+				</ResetStamina>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

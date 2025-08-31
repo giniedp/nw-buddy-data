@@ -1,0 +1,264 @@
+<ActionList>
+	<Reactions>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_B0_Break" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="blocked"/>
+				<IfExternalCondition ConditionName="last_hit_depleted_stamina"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="6" Reaction="r_B0_Break" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="blocked"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_B0" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="blocked"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="0" Reaction="r_R2_F" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_front"/>
+				<IfExternalCondition ConditionName="GRIT_Broken"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="0" Reaction="r_R2_B" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_back"/>
+				<IfExternalCondition ConditionName="GRIT_Broken"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="0" Reaction="r_R2_L" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_left"/>
+				<IfExternalCondition ConditionName="GRIT_Broken"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="0" Reaction="r_R2_R" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_right"/>
+				<IfExternalCondition ConditionName="GRIT_Broken"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_F" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_front"/>
+				<Group>
+					<IfExternalCondition ConditionName="Stagger_Resisted"/>
+				</Group>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_B" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_back"/>
+				<Group>
+					<IfExternalCondition ConditionName="Stagger_Resisted"/>
+				</Group>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_L" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_left"/>
+				<Group>
+					<IfExternalCondition ConditionName="Stagger_Resisted"/>
+				</Group>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_R" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_right"/>
+				<Group>
+					<IfExternalCondition ConditionName="Stagger_Resisted"/>
+				</Group>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_F" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_front"/>
+				<IfExternalCondition ConditionName="damage_blocked"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_B" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_back"/>
+				<IfExternalCondition ConditionName="damage_blocked"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_L" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_left"/>
+				<IfExternalCondition ConditionName="damage_blocked"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_R" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_right"/>
+				<IfExternalCondition ConditionName="damage_blocked"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="1" Reaction="r_R1_F" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="1" Reaction="r_R1_B" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="1" Reaction="r_R1_L" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_left"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="1" Reaction="r_R1_R" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_right"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="2" Reaction="r_R2_F" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="2" Reaction="r_R2_B" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="2" Reaction="r_R2_L" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_left"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="2" Reaction="r_R2_R" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_right"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="3" Reaction="r_R3_F" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="3" Reaction="r_R3_B" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="3" Reaction="r_R3_L" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_left"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="3" Reaction="r_R3_R" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_right"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="0" Reaction="r_R0_F" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_front"/>
+				<IfExternalCondition ConditionName="allow_additive"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="0" Reaction="r_R0_B" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_back"/>
+				<IfExternalCondition ConditionName="allow_additive"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="0" Reaction="r_R0_L" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_left"/>
+				<IfExternalCondition ConditionName="allow_additive"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="0" Reaction="r_R0_R" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_right"/>
+				<IfExternalCondition ConditionName="allow_additive"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="4" Reaction="r_R4_F" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="4" Reaction="r_R4_B" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="4" Reaction="r_R4_L" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_left"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="4" Reaction="r_R4_R" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_right"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="5" Reaction="r_R4_F_Overhead" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a"/>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="7" Reaction="r_R4_F_Crumple" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a"/>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="8" Reaction="r_R4_F_Stumble" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a"/>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="6" Reaction="r_R3_F" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="6" Reaction="r_R3_B" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="6" Reaction="r_R3_L" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_left"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="6" Reaction="r_R3_R" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_right"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="9" Reaction="r_R2_F_Disarm" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="9" Reaction="r_R2_B_Disarm" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="9" Reaction="r_R2_L_Disarm" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_left"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="9" Reaction="r_R2_R_Disarm" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_right"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="10" Reaction="r_R1_F" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="10" Reaction="r_R1_B" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="10" Reaction="r_R1_L" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_left"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="10" Reaction="r_R1_R" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_right"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="11" Reaction="r_R4_Upyr_Consumed" AlignToDirection="false" AlignOffsetAngle="0" Resistance="n/a"/>
+	</Reactions>
+	<Conditions>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="45.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-45.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back">
+			<IfDamagedByAngle Max="180.000000" Min="135.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-135.000000" Min="-180.000000" Tolerance="0.010000"/>
+		</Or>
+		<IfDamagedByAngle Max="-45.000000" Min="-135.000000" Name="damaged_left" Tolerance="0.010000"/>
+		<IfDamagedByAngle Max="135.000000" Min="45.000000" Name="damaged_right" Tolerance="0.010000"/>
+		<Or Name="damage_blocked">
+			<IfDamaged FailifDamageSettoNoReaction="true" IgnoreDeflectDamage="false" RequireCriticalHit="false" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="true" RequireDeflectDamage="false" RequireHitVolumeName="" RequireRangedAttack="false"/>
+		</Or>
+		<Or Name="Inventory_Open">
+			<IfIsLoadoutOpen/>
+			<IfIsInteractingWithStorage/>
+		</Or>
+		<And Name="GRIT_Broken">
+			<IfGritValue RequireGritActive="true" ComparisonValue="0.00" ComparisonValueIsPercentage="false" ComparisonType="LessThanOrEqual"/>
+		</And>
+		<And Name="blocked">
+			<IfDamaged FailifDamageSettoNoReaction="true" IgnoreDeflectDamage="false" RequireCriticalHit="false" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="true" RequireDeflectDamage="false" RequireHitVolumeName="" RequireRangedAttack="false"/>
+		</And>
+		<IfDamaged FailifDamageSettoNoReaction="true" IgnoreDeflectDamage="false" Name="last_hit_depleted_stamina" RequireCriticalHit="false" RequireDamageDepletedStamina="true" RequireDamageWasBlocked="false" RequireDeflectDamage="false" RequireHitVolumeName="" RequireRangedAttack="false"/>
+		<Not Name="No_Damage">
+			<IfDamaged FailifDamageSettoNoReaction="false" IgnoreDeflectDamage="false" RequireCriticalHit="false" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="false" RequireDeflectDamage="false" RequireHitVolumeName="" RequireRangedAttack="false"/>
+		</Not>
+		<And Name="Stagger_Resisted">
+			<Or>
+				<IfGritValue RequireGritActive="true" ComparisonValue="0.00" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+				<IfHasStatusEffect StatusEffectCategory="Uninterruptible"/>
+				<IfHasStatusEffect StatusEffectCategory="Frozen"/>
+			</Or>
+			<Not>
+				<IsStunned/>
+			</Not>
+		</And>
+		<And Name="allow_additive">
+			<Not>
+				<IfMannequinTag TagName="AttackAction"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="HipAim"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Reaction"/>
+			</Not>
+		</And>
+		<IfCanBreakReaction Name="Minor_Reaction" NumberofReactions="1"/>
+		<IfDamaged FailifDamageSettoNoReaction="true" IgnoreDeflectDamage="false" Name="Critical_Hit" RequireCriticalHit="true" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="false" RequireDeflectDamage="false" RequireHitVolumeName="" RequireRangedAttack="false"/>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,44 @@
+<ActionList>
+	<Actions>
+		<Action Name="LookPose" FragmentName="LookPose">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<True/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="StunImmunity" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinMarker MarkerName="AllowReactions"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reaction"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<ModifyStatusEffects ResetWhenReinstalled="true">
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Stun_Immunity"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Stun_Immunity"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

@@ -1,0 +1,34 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction_Additive" FragmentName="r_R0_F">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName=""/>
+					<Or>
+						<IfMannequinTag TagName="Reset"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/BaseAI_AdditiveReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+					<Conditional Name="PromotedElite" Scale="1.0" PushBackScale="0.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfHasStatusEffect Name="PromotedElite" StatusEffect="AI_Elite_Unbreakable_Grit_Buff"/>
+	</Conditions>
+</ActionList>
+

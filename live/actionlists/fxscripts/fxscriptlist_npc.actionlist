@@ -1,0 +1,272 @@
+<ActionList>
+	<Scripts>
+		<FxScript Name="DryadSoldier_Empowered_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="Neck" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_Dryad.Idle_Empower" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="POTION_Heal">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeMaterialOverride MaterialKey="POTION_Heal"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_Potions.HP_Restore.Base_01" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Player_GreenHealthPotion" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="POTION_Heal_Loop">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeMaterialOverride MaterialKey="POTION_Heal"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_Potions.HP_Restore.Base_01" KeepEmitterActive="False" KillOnExit="false" LoopEffect="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Siphon_Damage_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_Gravedigger.Siphon_Dmg" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="false" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Imp_GraveDigger_Lifesteal" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="false" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Siphon_Damage_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="StatFX_Burn_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Burn.Loop_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Burn.Decal_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Burn.Decal_02" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Burn_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="StatFX_Disease_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Disease.Loop_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Affliction_Disease_On" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" SoundObstructionType="Ignore"/>
+				<FxScriptNodeSetAudioSwitchState SetOnStop="false" StateName="Diseased" SwitchName="Vitals"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Disease_OFF">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Affliction_Disease_Off" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" SoundObstructionType="Ignore"/>
+				<FxScriptNodeSetAudioSwitchState SetOnStop="false" StateName="" SwitchName="Vitals"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Frostbite_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Frostbite.Loop_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0.2,0.0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Frostbite_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="StatFX_Nature_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Nature.Idle" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0.2,0.0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Void_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Void.Idle" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0.2,0.0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Haste_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Head" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Haste.Base_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,.1,.1" RotOffset="180,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Haste.Base_01" KeepEmitterActive="false" KillOnExit="true" PosOffset=".075,.12,0" RotOffset="180,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Haste.Base_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="-.075,-.1,0" RotOffset="180,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Poison_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Poison.Loop_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,.1,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="LeftUpperArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Poison.Arm_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="RightUpperArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Poison.Arm_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Affliction_Poison_On" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" SoundObstructionType="Ignore"/>
+				<FxScriptNodeSetAudioSwitchState SetOnStop="false" StateName="Poisoned" SwitchName="Vitals"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Poison_OFF">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Affliction_Poison_Off" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" SoundObstructionType="Ignore"/>
+				<FxScriptNodeSetAudioSwitchState SetOnStop="false" StateName="" SwitchName="Vitals"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Rend_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Rend.Loop_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="90,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Root_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Xform" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Root.Loop_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Root_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="StatFX_Silence_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Silence.Base_01" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Slow_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Slow.Loop_01" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,.25,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Stun_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Head" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Stun.Loop_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,90" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Shock_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="false" CharacterSlot="0" EffectName="cFX_StatusEffects.Shock.Lightning" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,180" Scale="0.5" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="true"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_StatusFX_Shock_Lightning" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Weaken_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Head" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Weaken.Base_Head" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="RightForeArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Weaken.Base_Arm_02" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="LeftForeArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Weaken.Base_Arm_02" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="RightUpperArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Weaken.Base_Arm_01" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="LeftUpperArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Weaken.Base_Arm_01" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Wound_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Head" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Wound.Start_01" KeepEmitterActive="false" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Head" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Wound.Head_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Wound.Base_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Affliction_Bleed_On" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" SoundObstructionType="Ignore"/>
+				<FxScriptNodeSetAudioSwitchState SetOnStop="false" StateName="Bleed" SwitchName="Vitals"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Wound_OFF">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Affliction_Bleed_Off" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" SoundObstructionType="Ignore"/>
+				<FxScriptNodeSetAudioSwitchState SetOnStop="false" StateName="" SwitchName="Vitals"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Fortify_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Fortify.Base_01" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,.15,0" RotOffset="0,0,0" Scale="1.1" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Empower_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Head" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Empower.Base_Head" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="RightForeArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Empower.Base_Arm_02" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="LeftForeArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Empower.Base_Arm_02" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="RightMidArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Empower.Base_Arm_01" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="LeftMidArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Empower.Base_Arm_01" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Perk_Chain_Lightning">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_Lightning_Range.Chain_Body" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Perk_Chain_Fire">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_Fire_Range.Chain_Body" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Perk_Chain_Arcane">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_Arcane_Range.Chain_Body" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Perk_Chain_Void">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_Void_Range.Chain_Body" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Perk_Chain_Ice">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_Ice_Range.Chain_Body" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Perk_Chain_Nature">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_Nature_Range.Chain_Body" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Hercyne_Thorn_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="bind_right_shoulder" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cfx_npc_hercyneboar.Thorn_Hide.Thorn_Start" KeepEmitterActive="True" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="bind_left_shoulder" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cfx_npc_hercyneboar.Thorn_Hide.Thorn_Start_Left" KeepEmitterActive="True" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="bind_spine_b" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cfx_npc_hercyneboar.Thorn_Hide.Thorn_Loop" KeepEmitterActive="True" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="bind_neck_a" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cfx_npc_hercyneboar.Thorn_Hide.Thorn_Loop" KeepEmitterActive="True" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Hercyne_Thorn_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="Ice_Armor_Buff_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="spine" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="Ice_Armor_Buff.Ice_Armor_Buff_Enemy" KeepEmitterActive="True" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Ice_Armor_Buff_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="EssenseRupture_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_VoidGaunt_Decay.Rupture_Target_Hld" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_VoidGaunt_Decay.Rupture_Target_Add" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Gauntlet_Void_EssenceRupture_Attach_Loop" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="DrainingTether_Defender_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Head" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Weaken.Base_Head" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="RightForeArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Weaken.Base_Arm_02" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="LeftForeArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Weaken.Base_Arm_02" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="RightUpperArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Weaken.Base_Arm_01" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="LeftUpperArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Weaken.Base_Arm_01" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_VoidGaunt_Decay.Drain_Defender_Hld" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Paranoid_Tell">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="Dungeon_Mutators.Paranoid_Tell" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Vampiric_Target">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeMaterialOverride MaterialKey="Affliction_Wound"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="Dungeon_Mutators.Vampiric_Target" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Vampiric_Source">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeMaterialOverride MaterialKey="POTION_Heal"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="Dungeon_Mutators.Vampiric_Source" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Creeping_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Head" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Empower.Base_Head" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="RightForeArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Empower.Base_Arm_02" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="LeftForeArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Empower.Base_Arm_02" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="RightMidArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Empower.Base_Arm_01" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="LeftMidArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Empower.Base_Arm_01" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Mut_Berserk_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="Dungeon_Mutators.Berserk.status.Berserk" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Net_Chr_Impact">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_Blunderbuss_Containment.Net_Impact_Char" KeepEmitterActive="false" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_Blunderbuss_Containment.Net_Impact_Char_Swirl_Sm" KeepEmitterActive="false" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_Blunderbuss_Containment.Net_Impact_Char_Hld_Sm" KeepEmitterActive="false" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Slow.Loop_01" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0.25,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+	</Scripts>
+</ActionList>
+

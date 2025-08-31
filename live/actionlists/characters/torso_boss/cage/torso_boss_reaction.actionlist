@@ -1,0 +1,56 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction_Stunned" FragmentName="r_Stunned" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_Torso_Boss_SelfStun"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="r_Stunned"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/Torso_Boss/CAGE/Torso_BossReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.3"/>
+				</HTNPlanDoneActivity>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Weakened"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="AI_Torso_Boss_Weakened"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="AI_Torso_Boss_Weakened"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+	</Conditions>
+</ActionList>
+

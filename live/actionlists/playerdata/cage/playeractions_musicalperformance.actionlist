@@ -1,0 +1,479 @@
+<ActionList>
+	<Actions>
+		<Action Name="MusicalPerformance" FragmentName="Idle">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="musicalactions_activate"/>
+						<Not>
+							<IfMusicalPerformanceState StateToCheck="Unknown"/>
+						</Not>
+					</Or>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="VeryShallow" FailMessage="@ui_musical_performance_inwater_message" FailMsgMaxDuration="3" AllowDuplicateFailMsg="false"/>
+					</Not>
+					<Not>
+						<IfInWar CheckPvpWar="true" CheckInvasion="true"/>
+					</Not>
+					<Not>
+						<IsInDungeon/>
+					</Not>
+					<Not>
+						<IfInGameMode GameModeName="Any"/>
+					</Not>
+					<Not>
+						<IfDead/>
+					</Not>
+					<Not>
+						<IfDeathsDoor/>
+					</Not>
+					<Not>
+						<IfOnSlope MinimumSlope="40.00"/>
+					</Not>
+					<Not>
+						<IsInStore/>
+					</Not>
+					<IfVelocity VelocitySource="OutputVelocity" CheckXVelocity="true" XVelocity="0" XComparisonType="Equal" CheckYVelocity="true" YVelocity="0" YComparisonType="Equal" CheckZVelocty="true" ZVelocity="0" ZComparisonType="Equal"/>
+					<IfCombatStatus InCombat="false" FailMessage="@ui_musical_performance_combat_message" FailMsgMaxDuration="3" AllowDuplicateFailMsg="false"/>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<IfStackConfigVar StackVar="javelin.musical-performances.enabled"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMusicalPerformanceState StateToCheck="Unknown"/>
+					<IfDamaged/>
+					<IfInWar CheckPvpWar="true" CheckInvasion="true"/>
+					<IsInDungeon/>
+					<IfInGameMode GameModeName="Any"/>
+					<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="VeryShallow"/>
+					<IfDead/>
+					<IfDeathsDoor/>
+					<IfOnSlope MinimumSlope="40.00"/>
+					<Not>
+						<IfVelocity VelocitySource="OutputVelocity" CheckXVelocity="true" XVelocity="0" XComparisonType="Equal" CheckYVelocity="true" YVelocity="0" YComparisonType="Equal" CheckZVelocty="true" ZVelocity="0" ZComparisonType="Equal"/>
+					</Not>
+					<And>
+						<IfInput InputName="mount_toggle"/>
+						<IfMusicalPerformanceState StateToCheck="PreShow"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Instant Sheathe-All + AutoUnsheathe Logic v2.2">
+					<IfCondition>
+						<Or>
+							<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+							<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Logic">
+								<IfCondition>
+									<And Comment="Weapon slots empty or already sheathed">
+										<Or>
+											<Not>
+												<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+											</Not>
+											<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+										</Or>
+										<Or>
+											<Not>
+												<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+											</Not>
+											<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+										</Or>
+										<Not>
+											<And>
+												<Not>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+												</Not>
+												<Not>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+												</Not>
+											</And>
+										</Not>
+										<Not>
+											<IfMannequinTag TagName="AutoUnsheathe"/>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="KeepWeaponSheathed" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</ThenActivity>
+								<ElseActivity>
+									<Group Comment="Sheathe All Weapons">
+										<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Main Hand Weapon">
+											<IfCondition>
+												<And>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+													<Not>
+														<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+													</Not>
+												</And>
+											</IfCondition>
+											<ThenActivity>
+												<Group>
+													<SheatheWeapon ResetWhenReinstalled="false">
+														<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+													</SheatheWeapon>
+													<SetToggleInput>
+														<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+													</SetToggleInput>
+													<SetToggleInput>
+														<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+													</SetToggleInput>
+													<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+														<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+													</SetMannequinTagFromSource>
+													<ClearMannequinTagGroup ResetWhenReinstalled="false">
+														<Default TagGroupName="Reloading" OnEnter="Clear" OnExit="NoEffect"/>
+													</ClearMannequinTagGroup>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+												</Group>
+											</ThenActivity>
+											<ElseActivity Comment="Clear Weapon Tag">
+												<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+													<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+												</SetMannequinTagFromSource>
+											</ElseActivity>
+										</IfThenElse>
+										<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand-Weapon">
+											<IfCondition>
+												<And>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+													<Not>
+														<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+													</Not>
+												</And>
+											</IfCondition>
+											<ThenActivity>
+												<Group>
+													<SheatheWeapon ResetWhenReinstalled="false">
+														<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+													</SheatheWeapon>
+													<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+														<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+													</SetMannequinTagFromSource>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+												</Group>
+											</ThenActivity>
+										</IfThenElse>
+									</Group>
+								</ElseActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="KeepWeaponSheathed" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<IfThenElse comment="Reveal instrument on mannequin marker" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EquipInstrument"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<HandleMusicalPerformance ResetWhenReinstalled="false">
+								<Default Command="EquipInstrument"/>
+							</HandleMusicalPerformance>
+							<ItemAudioTrigger ResetWhenReinstalled="false">
+								<Default EventName="Unsheathe" ItemSlot="GATHERABLE_HAND_SLOT" StopTriggerName="do_nothing" SkipOnItemUnequipped="true"/>
+							</ItemAudioTrigger>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse comment="Goto idle on signal" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Instrument_Goto_Idle"/>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeActionFragment ResetWhenReinstalled="false">
+							<Default UseDefaultFragment="false" FragmentName="Idle"/>
+							<Conditional Name="IsAzothFlute" UseDefaultFragment="false" FragmentName="Instrument_AzothFlute_Idle"/>
+							<Conditional Name="IsGuitar" UseDefaultFragment="false" FragmentName="Instrument_Guitar_Idle"/>
+							<Conditional Name="IsMandolin" UseDefaultFragment="false" FragmentName="Instrument_Mandolin_Idle"/>
+							<Conditional Name="IsUprightBass" UseDefaultFragment="false" FragmentName="Instrument_UprightBass_Idle"/>
+							<Conditional Name="IsDrums" UseDefaultFragment="false" FragmentName="Instrument_Drums_Idle"/>
+						</ChangeActionFragment>
+					</ThenActivity>
+				</IfThenElse>
+				<HandleMusicalPerformance ResetWhenReinstalled="false">
+					<Default Command="CancelOnExit"/>
+				</HandleMusicalPerformance>
+				<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Musical Performance Tags">
+					<Default TagSource="PaperdollSlot" SourceSlot="TOOL_SLOT" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTagFromSource>
+				<IfThenElse comment="Create on Unknown" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMusicalPerformanceState StateToCheck="Unknown"/>
+					</IfCondition>
+					<ThenActivity>
+						<HandleMusicalPerformance ResetWhenReinstalled="false">
+							<Default Command="Create"/>
+						</HandleMusicalPerformance>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse comment="Handle PreShow" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMusicalPerformanceState StateToCheck="PreShow"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<IfThenElse comment="If no instrument set, normal idle">
+								<IfCondition>
+									<IfCurrentInstrument TestInstrument="NUM_SLOTS"/>
+								</IfCondition>
+								<ThenActivity>
+									<ChangeActionFragment ResetWhenReinstalled="false">
+										<Default UseDefaultFragment="false" FragmentName="Idle"/>
+									</ChangeActionFragment>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse comment="Set flute equip">
+								<IfCondition>
+									<And>
+										<IfCurrentInstrument TestInstrument="instrument-flute-slot"/>
+										<Not>
+											<Or>
+												<IfFragmentPlaying FragmentName="Instrument_AzothFlute_Idle"/>
+												<IfFragmentPlaying FragmentName="Instrument_AzothFlute_Equip"/>
+											</Or>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<ChangeActionFragment ResetWhenReinstalled="false">
+										<Default UseDefaultFragment="false" FragmentName="Instrument_AzothFlute_Equip"/>
+									</ChangeActionFragment>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse comment="Set guitar equip">
+								<IfCondition>
+									<And>
+										<IfCurrentInstrument TestInstrument="instrument-guitar-slot"/>
+										<Not>
+											<Or>
+												<IfFragmentPlaying FragmentName="Instrument_Guitar_Idle"/>
+												<IfFragmentPlaying FragmentName="Instrument_Guitar_Equip"/>
+											</Or>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<ChangeActionFragment ResetWhenReinstalled="false">
+										<Default UseDefaultFragment="false" FragmentName="Instrument_Guitar_Equip"/>
+									</ChangeActionFragment>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse comment="Set mandolin equip">
+								<IfCondition>
+									<And>
+										<IfCurrentInstrument TestInstrument="instrument-mandolin-slot"/>
+										<Not>
+											<Or>
+												<IfFragmentPlaying FragmentName="Instrument_Mandolin_Idle"/>
+												<IfFragmentPlaying FragmentName="Instrument_Mandolin_Equip"/>
+											</Or>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<ChangeActionFragment ResetWhenReinstalled="false">
+										<Default UseDefaultFragment="false" FragmentName="Instrument_Mandolin_Equip"/>
+									</ChangeActionFragment>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse comment="Set upright bass equip">
+								<IfCondition>
+									<And>
+										<IfCurrentInstrument TestInstrument="instrument-uprightbass-slot"/>
+										<Not>
+											<Or>
+												<IfFragmentPlaying FragmentName="Instrument_UprightBass_Idle"/>
+												<IfFragmentPlaying FragmentName="Instrument_UprightBass_Equip"/>
+											</Or>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<ChangeActionFragment ResetWhenReinstalled="false">
+										<Default UseDefaultFragment="false" FragmentName="Instrument_UprightBass_Equip"/>
+									</ChangeActionFragment>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse comment="Set drums equip">
+								<IfCondition>
+									<And>
+										<IfCurrentInstrument TestInstrument="instrument-drums-slot"/>
+										<Not>
+											<Or>
+												<IfFragmentPlaying FragmentName="Instrument_Drums_Idle"/>
+												<IfFragmentPlaying FragmentName="Instrument_Drums_Equip"/>
+											</Or>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<ChangeActionFragment ResetWhenReinstalled="false">
+										<Default UseDefaultFragment="false" FragmentName="Instrument_Drums_Equip"/>
+									</ChangeActionFragment>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse comment="Handle Results" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMusicalPerformanceState StateToCheck="Results"/>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse comment="Play anim based on result amazing">
+							<IfCondition>
+								<IfMusicalPerformanceResult TestRank="Amazing"/>
+							</IfCondition>
+							<ThenActivity>
+								<ChangeActionFragment ResetWhenReinstalled="false">
+									<Default UseDefaultFragment="false" FragmentName="Idle"/>
+									<Conditional Name="IsAzothFlute" UseDefaultFragment="false" FragmentName="Instrument_AzothFlute_AmazingResult"/>
+									<Conditional Name="IsGuitar" UseDefaultFragment="false" FragmentName="Instrument_Guitar_AmazingResult"/>
+									<Conditional Name="IsMandolin" UseDefaultFragment="false" FragmentName="Instrument_Mandolin_AmazingResult"/>
+									<Conditional Name="IsUprightBass" UseDefaultFragment="false" FragmentName="Instrument_UprightBass_AmazingResult"/>
+									<Conditional Name="IsDrums" UseDefaultFragment="false" FragmentName="Instrument_Drums_AmazingResult"/>
+								</ChangeActionFragment>
+							</ThenActivity>
+							<ElseActivity>
+								<IfThenElse comment="Play anim based on result great">
+									<IfCondition>
+										<IfMusicalPerformanceResult TestRank="Great"/>
+									</IfCondition>
+									<ThenActivity>
+										<ChangeActionFragment ResetWhenReinstalled="false">
+											<Default UseDefaultFragment="false" FragmentName="Idle"/>
+											<Conditional Name="IsAzothFlute" UseDefaultFragment="false" FragmentName="Instrument_AzothFlute_GreatResult"/>
+											<Conditional Name="IsGuitar" UseDefaultFragment="false" FragmentName="Instrument_Guitar_GreatResult"/>
+											<Conditional Name="IsMandolin" UseDefaultFragment="false" FragmentName="Instrument_Mandolin_GreatResult"/>
+											<Conditional Name="IsUprightBass" UseDefaultFragment="false" FragmentName="Instrument_UprightBass_GreatResult"/>
+											<Conditional Name="IsDrums" UseDefaultFragment="false" FragmentName="Instrument_Drums_GreatResult"/>
+										</ChangeActionFragment>
+									</ThenActivity>
+									<ElseActivity>
+										<IfThenElse comment="Play anim based on result ok">
+											<IfCondition>
+												<IfMusicalPerformanceResult TestRank="Okay"/>
+											</IfCondition>
+											<ThenActivity>
+												<ChangeActionFragment ResetWhenReinstalled="false">
+													<Default UseDefaultFragment="false" FragmentName="Idle"/>
+													<Conditional Name="IsAzothFlute" UseDefaultFragment="false" FragmentName="Instrument_AzothFlute_OkayResult"/>
+													<Conditional Name="IsGuitar" UseDefaultFragment="false" FragmentName="Instrument_Guitar_OkayResult"/>
+													<Conditional Name="IsMandolin" UseDefaultFragment="false" FragmentName="Instrument_Mandolin_OkayResult"/>
+													<Conditional Name="IsUprightBass" UseDefaultFragment="false" FragmentName="Instrument_UprightBass_OkayResult"/>
+													<Conditional Name="IsDrums" UseDefaultFragment="false" FragmentName="Instrument_Drums_OkayResult"/>
+												</ChangeActionFragment>
+											</ThenActivity>
+											<ElseActivity>
+												<IfThenElse comment="Play anim based on result bad">
+													<IfCondition>
+														<IfMusicalPerformanceResult TestRank="Bad"/>
+													</IfCondition>
+													<ThenActivity>
+														<ChangeActionFragment ResetWhenReinstalled="false">
+															<Default UseDefaultFragment="false" FragmentName="Idle"/>
+															<Conditional Name="IsAzothFlute" UseDefaultFragment="false" FragmentName="Instrument_AzothFlute_BadResult"/>
+															<Conditional Name="IsGuitar" UseDefaultFragment="false" FragmentName="Instrument_Guitar_BadResult"/>
+															<Conditional Name="IsMandolin" UseDefaultFragment="false" FragmentName="Instrument_Mandolin_BadResult"/>
+															<Conditional Name="IsUprightBass" UseDefaultFragment="false" FragmentName="Instrument_UprightBass_BadResult"/>
+															<Conditional Name="IsDrums" UseDefaultFragment="false" FragmentName="Instrument_Drums_BadResult"/>
+														</ChangeActionFragment>
+													</ThenActivity>
+													<ElseActivity>
+														<ChangeActionFragment ResetWhenReinstalled="false">
+															<Default UseDefaultFragment="false" FragmentName="Idle"/>
+															<Conditional Name="IsAzothFlute" UseDefaultFragment="false" FragmentName="Instrument_AzothFlute_Idle"/>
+															<Conditional Name="IsGuitar" UseDefaultFragment="false" FragmentName="Instrument_Guitar_Idle"/>
+															<Conditional Name="IsMandolin" UseDefaultFragment="false" FragmentName="Instrument_Mandolin_Idle"/>
+															<Conditional Name="IsUprightBass" UseDefaultFragment="false" FragmentName="Instrument_UprightBass_Idle"/>
+															<Conditional Name="IsDrums" UseDefaultFragment="false" FragmentName="Instrument_Drums_Idle"/>
+														</ChangeActionFragment>
+													</ElseActivity>
+												</IfThenElse>
+											</ElseActivity>
+										</IfThenElse>
+									</ElseActivity>
+								</IfThenElse>
+							</ElseActivity>
+						</IfThenElse>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="MusicalPerformance_Drumstick_Toggle" RunOnRemoteClients="true">
+			<ActivationCondition>
+				<Not>
+					<IfMusicalPerformanceState StateToCheck="Unknown"/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfMusicalPerformanceState StateToCheck="Unknown"/>
+			</DeactivationCondition>
+			<Activities>
+				<StopFxScript ResetWhenReinstalled="false" RunOnRemoteClients="true">
+					<Default ScriptToStop="Drumsticks" StopOnExit="true" ExecuteOnRemotePlayer="true"/>
+				</StopFxScript>
+				<IfThenElse comment="Show drumsticks on mannequin marker" ResetWhenReinstalled="true">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="EquipInstrument"/>
+							<IfCurrentInstrument TestInstrument="instrument-drums-slot"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="true">
+							<Default ScriptToRun="Drumsticks" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false" ExecuteOnRemotePlayer="true"/>
+						</RunFxScript>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse comment="Hide drumsticks">
+					<IfCondition>
+						<Not>
+							<IfCurrentInstrument TestInstrument="instrument-drums-slot"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<StopFxScript ResetWhenReinstalled="true" RunOnRemoteClients="true">
+							<Default ScriptToStop="Drumsticks" ExecuteOnRemotePlayer="true"/>
+						</StopFxScript>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="IsEncumbered">
+			<IfEncumbered/>
+		</And>
+		<IfCurrentInstrument Name="IsAzothFlute" TestInstrument="instrument-flute-slot"/>
+		<IfCurrentInstrument Name="IsGuitar" TestInstrument="instrument-guitar-slot"/>
+		<IfCurrentInstrument Name="IsMandolin" TestInstrument="instrument-mandolin-slot"/>
+		<IfCurrentInstrument Name="IsUprightBass" TestInstrument="instrument-uprightbass-slot"/>
+		<IfCurrentInstrument Name="IsDrums" TestInstrument="instrument-drums-slot"/>
+	</Conditions>
+</ActionList>
+

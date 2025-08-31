@@ -1,0 +1,32 @@
+<ActionList>
+	<Actions>
+		<Action Name="LookPose" FragmentName="LookPose">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<True/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="AimPoseStab" FragmentName="AimStab">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="AimPoseStab"/>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="AimPoseLaunch1" FragmentName="AimLaunch1">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="AimPoseLaunch1"/>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

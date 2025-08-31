@@ -1,0 +1,234 @@
+<ActionList>
+	<Actions>
+		<Action Name="IsUnderHoLEffectCheck">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="Legion_HeroOfLegion_Buff"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfHasStatusEffect StatusEffect="Legion_HeroOfLegion_Buff"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag>
+					<Default TagName="IsHeroOfLegionOn" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="HeroOfLegionShockwave">
+			<ActivationCondition>
+				<And>
+					<IfMannequinMarker MarkerName="Shockwave"/>
+					<IfHasStatusEffect StatusEffect="Legion_HeroOfLegion_Buff"/>
+					<Not>
+						<IfMannequinTag TagName="HoLShockwave"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfMannequinTag TagName="HoLShockwave"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Legion_HeroOfLegion_Buff"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag>
+					<Default TagName="HoLShockwave" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag>
+					<Default TagName="HoLShockwave" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.3"/>
+				</SetMannequinTag>
+				<CastSpell>
+					<Default SpellName="Legion_HeroOfLegion_Shockwave"/>
+				</CastSpell>
+			</Activities>
+		</Action>
+		<Action Name="HeroOfLegionShockwave_Crassus">
+			<ActivationCondition>
+				<And>
+					<IfMannequinMarker MarkerName="Shockwave"/>
+					<IfHasStatusEffect StatusEffect="Legion_HeroOfLegion_Crassus_Buff"/>
+					<Not>
+						<IfMannequinTag TagName="HoLShockwave"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfMannequinTag TagName="HoLShockwave"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Legion_HeroOfLegion_Crassus_Buff"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag>
+					<Default TagName="HoLShockwave" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag>
+					<Default TagName="HoLShockwave" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.3"/>
+				</SetMannequinTag>
+				<CastSpell>
+					<Default SpellName="Legion_HeroOfLegion_Shockwave"/>
+				</CastSpell>
+			</Activities>
+		</Action>
+		<Action Name="HeroOfLegion_ForceReset">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Legion_HeroOfLegion_Buff"/>
+					</Not>
+					<IfMannequinMarker MarkerName="HeroOfLegion_Reset"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="HoLShockwave" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Sheathe_OffHand">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="Sheathe_Offhand"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+			</Activities>
+		</Action>
+		<Action Name="UnSheathe_OffHand">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="UnSheathe_Offhand"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+			</Activities>
+		</Action>
+		<Action Name="LookPose" FragmentName="LookPose">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="HeroOfLegion_Broken" FragmentName="BrokenGuard">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="IsHeroOfLegionOn"/>
+					<Or>
+						<IfMannequinTag TagName="Stunned"/>
+						<IfMannequinTag TagName="BlockBroken"/>
+						<IfMannequinTag TagName="Reset"/>
+						<IfMannequinTag TagName="Reaction"/>
+						<IfStaminaValue ComparisonValue="1.0" ComparisonValueIsPercentage="false" ComparisonType="LessThan"/>
+						<Not>
+							<IfMannequinTag TagName="Alerted"/>
+						</Not>
+						<And>
+							<Not>
+								<Or>
+									<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Signifer_HeroOfLegion_Loop"/>
+									<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Signifer_HeroOfLegion_End"/>
+									<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Signifer_HeroOfLegion"/>
+								</Or>
+							</Not>
+						</And>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="IsHeroOfLegionOn" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="HoLCoolDownReset" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="IsCasting" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SheatheWeapon ResetWhenReinstalled="false">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+				<ClearDamaged/>
+				<DisableStaminaRegen ResetWhenReinstalled="true" IgnoreDataChangesAfterInstall="false">
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableStaminaRegen>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="BlockBroken" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetBlockBroken ResetWhenReinstalled="false">
+					<Default OnEnter="Enable" OnExit="Disable"/>
+				</SetBlockBroken>
+				<ResetStamina ResetWhenReinstalled="false" IgnoreDataChanges="false">
+					<Default OnEnter="NoEffect" OnExit="Reset"/>
+				</ResetStamina>
+				<ResetReactionCount ResetWhenReinstalled="false">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetReactionCount>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/BaseAI_EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="BlockRecover"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="BlockBroken" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Signifer_HeroOfLegion_Reset">
+			<ActivationCondition>
+				<IfMannequinTag TagName="HoLCoolDownReset"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="HoLCoolDownReset" OnEnter="UnSet" OnExit="NoEffect" DelayTimer="25.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="Sagittarii" TagName="Sagittarii"/>
+	</Conditions>
+</ActionList>
+

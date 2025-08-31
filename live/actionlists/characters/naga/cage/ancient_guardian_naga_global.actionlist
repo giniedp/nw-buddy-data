@@ -1,0 +1,71 @@
+<ActionList>
+	<Actions>
+		<Action Name="Remove_Buffs" Predictive="true">
+			<ActivationCondition>
+				<Not>
+					<IfHasAttackTarget/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Staff" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Spear" OnEnter="Set" OnExit="Set" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Phase1" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Naga_AncientGuardian_Might"/>
+							<EffectId EffectId="AI_Naga_AncientGuardian_Arcana"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Apply_Ancient_Might" Predictive="true">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Alerted"/>
+					<IfMannequinTag TagName="Phase1"/>
+					<IfMannequinTag TagName="Spear"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Naga_AncientGuardian_Might"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Phase1" OnEnter="UnSet" OnExit="NoAction" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Apply_Ancient_Might_Wait" Predictive="true">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Alerted"/>
+					<Not>
+						<IfMannequinTag TagName="Phase1"/>
+					</Not>
+					<IfMannequinTag TagName="Spear"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Phase1" OnEnter="Set" OnExit="NoAction" DelayTimer="3.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

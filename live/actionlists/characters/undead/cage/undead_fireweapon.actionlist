@@ -1,0 +1,771 @@
+<ActionList>
+	<Actions>
+		<Action Name="Shoot_Pistol_Close" FragmentName="Fire_Pistol">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Shoot_Pistol_Close_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Hunter_Crossbow_Normal" FragmentName="Hunter_Crossbow_Normal">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Hunter_Crossbow_Normal_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Drowned_Miner_Throw" FragmentName="Drowned_Miner_Throw" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Drowned_Miner_Throw_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.9"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="true"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AITargetRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="AllowRotation" TurnRate="400.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="AllowRotation_Fast" TurnRate="1200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+				</AITargetRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="Grenadier_Throw_Bomb" FragmentName="Grenadier_Throw_Bomb" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Grenadier_Throw_Bomb_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.9"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="true"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AITargetRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="AllowRotation" TurnRate="400.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="AllowRotation_Fast" TurnRate="1200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+				</AITargetRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="Grenadier_Throw_Molotov" FragmentName="Grenadier_Throw_Molotov" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Grenadier_Throw_Molotov_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.9"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="true"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AITargetRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="AllowRotation" TurnRate="400.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="AllowRotation_Fast" TurnRate="1200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+				</AITargetRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="Grenadier_Throw_Disease" FragmentName="Grenadier_Throw_Disease" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Grenadier_Throw_Disease_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.9"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="true"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AITargetRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="AllowRotation" TurnRate="400.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="AllowRotation_Fast" TurnRate="1200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+				</AITargetRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="Miner_Torch_Swing_R" FragmentName="Miner_Torch_Swing_R" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Miner_Torch_Swing_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.9"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="true"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AITargetRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="AllowRotation" TurnRate="400.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="AllowRotation_Fast" TurnRate="1200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+				</AITargetRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="Hunter_Crossbow_Special" FragmentName="Hunter_Crossbow_Special">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Hunter_Crossbow_Special_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Hunter_SpitFire" FragmentName="Hunter_SpitFire">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Hunter_SpitFire_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Hunter_WispFire" FragmentName="Hunter_WispFire">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Hunter_WispFire_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.7"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Hunter_WispFire_Far" FragmentName="Hunter_WispFire_Far">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Hunter_WispFire_Far_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.7"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Shoot_Pistol_BreakGuard" FragmentName="Fire_Pistol_Undead_Pistoleer_BreakG">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Shoot_Pistol_BreakGuard_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Navigator_Fire_Right" FragmentName="Navigator_Fire_Right" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Navigator_Fire_Right_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.7"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Navigator_Fire_Left" FragmentName="Navigator_Fire_Left" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Navigator_Fire_Left_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.7"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Navigator_RapidFire" FragmentName="Navigator_Rapidfire" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Navigator_RapidFire_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Navigator_Melee_Dash" FragmentName="Navigator_Melee_Dash" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Navigator_Melee_Dash_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Navigator_Dash_L" FragmentName="Navigator_Dash_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Navigator_Dash_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Navigator_Dash_R" FragmentName="Navigator_Dash_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Navigator_Dash_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Navigator_Dash_B" FragmentName="Navigator_Dash_Back" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Navigator_Dash_B_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Navigator_Blade_Straight_Combo" FragmentName="Navigator_Blade_Straight_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Navigator_Blade_Straight_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Hunter_Torch_Swing_L" FragmentName="Hunter_Torch_Swing_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Hunter_Torch_Swing_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Hunter_Torch_Swing_R" FragmentName="Hunter_Torch_Swing_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Hunter_Torch_Swing_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Navigator_Blade_LR_Combo" FragmentName="Navigator_Blade_LR_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Navigator_Blade_LR_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Officer_AnchorToss" FragmentName="Officer_AnchorToss" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Officer_AnchorToss_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ChainAttack"/>
+						</Not>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="ChainAttack"/>
+						<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.8"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.1"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="CanTurn" MarkerName="CanTurn"/>
+		<IfMannequinMarker Name="AllowRotation" MarkerName="AllowRotation"/>
+		<IfMannequinMarker Name="AllowRotation_Fast" MarkerName="AllowRotation_Fast"/>
+		<IfMannequinTag Name="ChainAttack" TagName="ChainAttack"/>
+		<IfMannequinTag Name="StopChainAttack" TagName="StopChainAttack"/>
+		<IfMannequinMarker Name="StopFacingTarget" MarkerName="StopFacingTarget"/>
+	</Conditions>
+</ActionList>
+

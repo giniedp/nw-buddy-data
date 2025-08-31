@@ -1,0 +1,21 @@
+<ActionList>
+	<Reactions>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_Death" AlignToDirection="true" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front_180"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_Death_B" AlignToDirection="true" AlignOffsetAngle="180" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back_180"/>
+		</ReactionTableData>
+	</Reactions>
+	<Conditions>
+		<Or Name="damaged_front_180">
+			<IfDamagedByAngle Max="90.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back_180">
+			<IfDamagedByAngle Max="180.000000" Min="90.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-90.000000" Min="-180.000000" Tolerance="0.010000"/>
+		</Or>
+	</Conditions>
+</ActionList>
+

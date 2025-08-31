@@ -1,0 +1,41 @@
+<ActionList>
+	<Reactions>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R3_F" AlignToDirection="true" AlignOffsetAngle="0" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R3_B" AlignToDirection="true" AlignOffsetAngle="180" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R3_L" AlignToDirection="true" AlignOffsetAngle="-90" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_left"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R3_R" AlignToDirection="true" AlignOffsetAngle="90" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_right"/>
+		</ReactionTableData>
+	</Reactions>
+	<Conditions>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="45.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-45.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back">
+			<IfDamagedByAngle Max="180.000000" Min="135.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-135.000000" Min="-180.000000" Tolerance="0.010000"/>
+		</Or>
+		<IfDamagedByAngle Max="-45.000000" Min="-135.000000" Name="damaged_left" Tolerance="0.010000"/>
+		<IfDamagedByAngle Max="135.000000" Min="45.000000" Name="damaged_right" Tolerance="0.010000"/>
+		<IfDamaged FailOnNoReactionDamage="true" IgnoreDeflectDamage="false" Name="damage_defended" RequireCriticalHit="false" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="false" RequireDeflectDamage="false" RequireHitVolumeName="" RequireRanged="false"/>
+		<Or Name="damaged_front_180">
+			<IfDamagedByAngle Max="90.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back_180">
+			<IfDamagedByAngle Max="180.000000" Min="90.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-90.000000" Min="-180.000000" Tolerance="0.010000"/>
+		</Or>
+		<IfDamaged FailOnNoReactionDamage="true" IgnoreDeflectDamage="false" Name="ifHeadshot" RequireCriticalHit="false" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="false" RequireDeflectDamage="false" RequireHitVolumeName="Head" RequireRanged="false"/>
+		<IfDamaged FailOnNoReactionDamage="true" IgnoreDeflectDamage="false" Name="IfCritical" RequireCriticalHit="true" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="false" RequireDeflectDamage="false" RequireHitVolumeName="" RequireRanged="false"/>
+		<IfDamaged FailOnNoReactionDamage="true" IgnoreDeflectDamage="false" Name="ifRanged" RequireCriticalHit="false" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="false" RequireDeflectDamage="false" RequireHitVolumeName="" RequireRanged="true"/>
+	</Conditions>
+</ActionList>
+

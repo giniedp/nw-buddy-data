@@ -1,0 +1,109 @@
+<ActionList>
+	<Actions>
+		<Action Name="LookPose" FragmentName="LookPose">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reaction"/>
+					</Not>
+					<IfHasAttackTarget/>
+					<Or>
+						<Not>
+							<Or>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Move"/>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Move_Combat"/>
+							</Or>
+						</Not>
+						<IfVelocity CheckXVelocity="false" XVelocity="0" XComparisonType="GreaterThanOrEqual" CheckYVelocity="true" YVelocity="5.0" YComparisonType="LessThanOrEqual" CheckZVelocity="false" ZVelocity="0" ZComparisonType="GreaterThanOrEqual"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					<IfMannequinTag TagName="Reaction"/>
+					<And>
+						<Or>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Move"/>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Move_Combat"/>
+						</Or>
+						<IfVelocity CheckXVelocity="false" XVelocity="0" XComparisonType="GreaterThanOrEqual" CheckYVelocity="true" YVelocity="6.0" YComparisonType="GreaterThanOrEqual" CheckZVelocity="false" ZVelocity="0" ZComparisonType="GreaterThanOrEqual"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="Ear_Additive" FragmentName="HD_Ear_Flip">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="Ear"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Lock_Out_Head_Scope"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="Lock_Out_Head_Scope" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Mouth_Additive" FragmentName="HD_Lip_Snarl">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="Mouth"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="Tail_Additive" FragmentName="TL_Tail_Flip">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="Tail"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="Wolf_AudioSwitch" FragmentName="">
+			<ActivationCondition>
+				<True/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Injured"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+							<Default SwitchName="Vitals" StateName="Injured" SetOnStop="false"/>
+						</SetAudioSwitchState>
+					</ThenActivity>
+					<ElseActivity>
+						<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+							<Default SwitchName="Vitals" StateName="Healthy" SetOnStop="false"/>
+						</SetAudioSwitchState>
+					</ElseActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="Injured">
+			<IfHealthPercentage Comparison="LessThan" Percentage="30"/>
+			<IfMannequinTag TagName="Frightened"/>
+		</And>
+	</Conditions>
+</ActionList>
+

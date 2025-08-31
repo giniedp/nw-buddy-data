@@ -1,0 +1,49 @@
+<ActionList>
+	<Actions>
+		<Action Name="Stun" FragmentName="r_Stun_Loop">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Stun_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.3"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+					<Default TagName="Block" OnEnter="UnSet" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ResetReactionCount ResetWhenReinstalled="false">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetReactionCount>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<Not>
+								<IsStunned/>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="ForceStunned"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeActionFragment ResetWhenReinstalled="true">
+							<Default UseDefaultFragment="false" FragmentName="r_Stun_End"/>
+						</ChangeActionFragment>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

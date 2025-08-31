@@ -1,0 +1,123 @@
+<ActionList>
+	<Actions>
+		<Action Name="Attack_Explode" FragmentName="Attack_Explode">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_Explode_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.1"/>
+				</HTNPlanDoneActivity>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Deactivate Pulse">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DeactivatePulse"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DeactivatePulse"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<Death>
+					<Default TriggerOption="OnExit" SkipDeathsDoor="true" ClearContributors="false"/>
+				</Death>
+			</Activities>
+		</Action>
+		<Action Name="Self_Kill" FragmentName="Self_Kill">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Self_Kill_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<AITargetRelativeFacing>
+					<Default TurnRate="270.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+				</AITargetRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="Attack_SelfExplode" FragmentName="Attack_SelfExplode">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_SelfExplode_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</HTNPlanDoneActivity>
+				<IfThenElse ResetWhenReinstalled="true" Comment="StopTurnAfterExplosion">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="StopTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="270.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Deactivate Pulse">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DeactivatePulse"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DeactivatePulse"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<Death>
+					<Default TriggerOption="OnExit" SkipDeathsDoor="true" ClearContributors="false"/>
+				</Death>
+			</Activities>
+		</Action>
+		<Action Name="PulseActivation" FragmentName="PulseActivation">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="PulseActivation_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.1"/>
+				</HTNPlanDoneActivity>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Activate Pulse">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="ActivatePulse"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="ActivatePulse"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="AllowRotation" MarkerName="AllowRotation"/>
+		<IfHTNCAGEAction Name="AllowRotationSlow" ActionName="AllowRotationSlow"/>
+		<IfHTNCAGEAction Name="AllowMotion" ActionName="AllowMotion"/>
+		<IfHTNCAGEAction Name="AllowSlowMotion" ActionName="AllowSlowMotion"/>
+		<IfMannequinTag Name="ChainAttack" TagName="ChainAttack"/>
+		<IfMannequinTag Name="StopChainAttack" TagName="StopChainAttack"/>
+		<And Name="OR_Boss">
+			<IfMannequinTag Name="Boss" TagName="Boss"/>
+			<IfMannequinTag Name="OutpostRush" TagName="OutpostRush"/>
+		</And>
+	</Conditions>
+</ActionList>
+

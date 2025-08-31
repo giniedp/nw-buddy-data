@@ -1,0 +1,27 @@
+<ActionList>
+	<Actions>
+		<Action Name="Siphon_DisableRevive" FragmentName="">
+			<ActivationCondition>
+				<Or>
+					<IfHasStatusEffect StatusEffect="LifeStaff_DamageEnemy_Super_Siphon"/>
+					<IfHasStatusEffect StatusEffect="LifeStaff_DamageEnemy_Siphon"/>
+					<IfHasStatusEffect StatusEffect="LifeStaff_DamageEnemy_Range_Siphon"/>
+					<IfHasStatusEffect StatusEffect="LifeStaff_DamageEnemy_Armor_Siphon"/>
+				</Or>
+			</ActivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="CanRevive" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AIMinHealth"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

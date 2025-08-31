@@ -1,0 +1,2196 @@
+<ActionList>
+	<Actions>
+		<Action Name="ToggleMount" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="mount_toggle"/>
+						<And>
+							<Not>
+								<IsMounted/>
+							</Not>
+							<IfInput InputName="mount_summon"/>
+						</And>
+						<And>
+							<IsMounted/>
+							<IfInput InputName="mount_dismount"/>
+						</And>
+					</Or>
+					<And>
+						<IfCanResizeCharacterController ResizeType="Mount"/>
+						<Not>
+							<IfMannequinTag TagName="AttackAction"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="AimDownSights"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="Dodging"/>
+						</Not>
+						<Or>
+							<Not>
+								<IfMannequinMarker MarkerName="PreventMountToggle"/>
+							</Not>
+							<IfMountChangeOpen/>
+						</Or>
+						<Not>
+							<IfActionStatus ActionName="Fall" Status="Installed"/>
+						</Not>
+						<Not>
+							<IfActionStatus ActionName="MusicalPerformance" Status="Installed"/>
+						</Not>
+						<Not>
+							<IfActionStatus ActionName="Rune_BeastMode_Active" Status="Installed"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FromStand"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FromCrouch"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FromProne"/>
+						</Not>
+						<Not>
+							<IsInStore/>
+						</Not>
+						<Not>
+							<IfDead ServerOnly="false"/>
+						</Not>
+						<Not>
+							<IfDeathsDoor ServerOnly="false"/>
+						</Not>
+						<Not>
+							<IfP2PTrading/>
+						</Not>
+					</And>
+					<Not>
+						<And>
+							<IfActionStatus ActionName="SummonMount" Status="Installed"/>
+							<IfActionStatus ActionName="MountSummoning" Status="Installed"/>
+						</And>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<True/>
+			</DeactivationCondition>
+			<Activities>
+				<SummonDismissMount OnEnter="Toggle" OnExit="NoEffect"/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand" OnEnter="Set" OnExit="Set"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand_Desired" OnEnter="Set" OnExit="Set"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="SummonMount" FragmentName="Summon_Upperbody">
+			<ActivationCondition>
+				<And>
+					<IsSummoningMount/>
+					<And>
+						<IfCanResizeCharacterController ResizeType="Mount"/>
+						<Not>
+							<IfMannequinTag TagName="AttackAction"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="AimDownSights"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="Dodging"/>
+						</Not>
+						<Or>
+							<Not>
+								<IfMannequinMarker MarkerName="PreventMountToggle"/>
+							</Not>
+							<IfMountChangeOpen/>
+						</Or>
+						<Not>
+							<IfActionStatus ActionName="Fall" Status="Installed"/>
+						</Not>
+						<Not>
+							<IfActionStatus ActionName="MusicalPerformance" Status="Installed"/>
+						</Not>
+						<Not>
+							<IfActionStatus ActionName="Rune_BeastMode_Active" Status="Installed"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FromStand"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FromCrouch"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FromProne"/>
+						</Not>
+						<Not>
+							<IsInStore/>
+						</Not>
+						<Not>
+							<IfDead ServerOnly="false"/>
+						</Not>
+						<Not>
+							<IfDeathsDoor ServerOnly="false"/>
+						</Not>
+						<Not>
+							<IfP2PTrading/>
+						</Not>
+					</And>
+					<IfMannequinTag TagName="Stand"/>
+					<Not>
+						<IfActionStatus ActionName="SummonMount" Status="Installed"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="MountSummoning" Status="Installed" ActiveTime="0.1f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+					<Not>
+						<IfMountChangeOpen/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<IfMannequinTag TagName="Crouch_Desired"/>
+					<IfMannequinTag TagName="Prone_Desired"/>
+					<IfMannequinTag TagName="AttackAction"/>
+					<IfMannequinTag TagName="Dodging"/>
+					<IfActionStatus ActionName="Emote" Status="Installed"/>
+					<IfActionStatus ActionName="MusicalPerformance" Status="Installed"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Set tag to disable HandToWeaponIK duing summon upperbody">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Spear"/>
+							<IfMannequinTag TagName="GreatAxe"/>
+							<IfMannequinTag TagName="Warhammer"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="Call" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="MountSummoning" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IsSummoningMount/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<IfThenElse Comment="Disable Mount Summon" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="AttackAction"/>
+							<IfMannequinTag TagName="Interaction"/>
+							<IfMannequinTag TagName="Crouch_Desired"/>
+							<IfMannequinTag TagName="Prone_Desired"/>
+							<IfMannequinTag TagName="AimDownSights"/>
+							<Not>
+								<IfCanResizeCharacterController ResizeType="Mount"/>
+							</Not>
+							<IfInput InputName="mount_cancel_summon"/>
+							<IfTakingTooLongToMount/>
+							<IfActionStatus ActionName="Emote" Status="Installed"/>
+							<IfActionStatus ActionName="MusicalPerformance" Status="Installed"/>
+							<IfActionStatus ActionName="Rune_BeastMode_Active" Status="Installed"/>
+							<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+							<And>
+								<IfInput InputName="toggleInventoryWindow"/>
+								<Not>
+									<IfMountChangeOpen/>
+								</Not>
+							</And>
+							<IsInStore/>
+							<IfInput InputName="rune_ability"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SummonDismissMount OnEnter="Dismiss" OnExit="NoEffect"/>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Complete the summon and mount up once the timer ends" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<Or>
+								<IfActionStatus ActionName="Idle" Status="Installed" ActiveTime="0.3" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+								<IfAliasStatus GridAlias="Nav" Status="Installed" ActiveTime="0.3" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+								<IfAliasStatus GridAlias="Sprint" Status="Installed" ActiveTime="0.3" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+							</Or>
+							<Not>
+								<IfAliasStatus GridAlias="Land" Status="Installed"/>
+							</Not>
+							<IfShouldBeMounted/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<CompleteMountSummon/>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="MountActive" FragmentName="" RunOnRemoteClients="true">
+			<ActivationCondition>
+				<And>
+					<IsMounted/>
+					<Not>
+						<IfFastTravelTeleporting/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfPlayerIsLoggedOff/>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<IfFastTravelTeleporting/>
+					<Or>
+						<Not>
+							<IfCurrentGamemodeAllowsMounts/>
+						</Not>
+						<And>
+							<Not>
+								<IfStackConfigVar StackVar="javelin.mounts-enable-in-war"/>
+							</Not>
+							<IfInWar CheckPvpWar="true"/>
+						</And>
+						<And>
+							<Not>
+								<IfStackConfigVar StackVar="javelin.mounts-enable-in-invasion"/>
+							</Not>
+							<IfInWar CheckInvasion="true"/>
+						</And>
+					</Or>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<UpdateRemoteMountedState/>
+				<IfThenElse RunDuringInstall="true">
+					<IfCondition>
+						<Not>
+							<IfMannequinTag TagName="Mount"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="OneTimeScriptDone" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Mount" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Instant Sheathe-All + AutoUnsheathe Logic v2.2">
+					<IfCondition>
+						<Or>
+							<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+							<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Logic">
+								<IfCondition>
+									<And Comment="Weapon slots empty or already sheathed">
+										<Or>
+											<Not>
+												<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+											</Not>
+											<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+										</Or>
+										<Or>
+											<Not>
+												<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+											</Not>
+											<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+										</Or>
+										<Not>
+											<And>
+												<Not>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+												</Not>
+												<Not>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+												</Not>
+											</And>
+										</Not>
+										<Not>
+											<IfMannequinTag TagName="AutoUnsheathe"/>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="KeepWeaponSheathed" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</ThenActivity>
+								<ElseActivity>
+									<Group Comment="Sheathe All Weapons">
+										<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Main Hand Weapon">
+											<IfCondition>
+												<And>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+													<Not>
+														<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+													</Not>
+												</And>
+											</IfCondition>
+											<ThenActivity>
+												<Group>
+													<SheatheWeapon ResetWhenReinstalled="false">
+														<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+													</SheatheWeapon>
+													<SetToggleInput>
+														<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+													</SetToggleInput>
+													<SetToggleInput>
+														<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+													</SetToggleInput>
+													<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+														<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+													</SetMannequinTagFromSource>
+													<ClearMannequinTagGroup ResetWhenReinstalled="false">
+														<Default TagGroupName="Reloading" OnEnter="Clear" OnExit="NoEffect"/>
+													</ClearMannequinTagGroup>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+												</Group>
+											</ThenActivity>
+											<ElseActivity Comment="Clear Weapon Tag">
+												<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+													<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+												</SetMannequinTagFromSource>
+											</ElseActivity>
+										</IfThenElse>
+										<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand-Weapon">
+											<IfCondition>
+												<And>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+													<Not>
+														<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+													</Not>
+												</And>
+											</IfCondition>
+											<ThenActivity>
+												<Group>
+													<SheatheWeapon ResetWhenReinstalled="false">
+														<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+													</SheatheWeapon>
+													<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+														<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+													</SetMannequinTagFromSource>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+												</Group>
+											</ThenActivity>
+										</IfThenElse>
+									</Group>
+								</ElseActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="KeepWeaponSheathed" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SummonDismissMount OnEnter="NoEffect" OnExit="Dismiss"/>
+				<ToggleLimbIK>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</ToggleLimbIK>
+				<IfThenElse Comment="Dismount conditions with messaging">
+					<IfCondition>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</IfCondition>
+					<ThenActivity>
+						<SummonDismissMount OnEnter="Dismiss" OnExit="NoEffect" DismountReason="DeepWater"/>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Dismount In Store Mode">
+					<IfCondition>
+						<Or>
+							<IsInStore/>
+							<IfTransmogOpen/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false" Comment="Unset AutoUnsheathe">
+								<Default TagName="AutoUnsheathe" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SummonDismissMount OnEnter="Dismiss" OnExit="NoEffect"/>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Dismount Hit In Idle">
+					<IfCondition>
+						<And>
+							<IfDamaged/>
+							<IfMannequinTag TagName="Idle"/>
+							<Or>
+								<IfActionStatus ActionName="MountIdleCheck" Status="Installed"/>
+								<IfActionStatus ActionName="MountPet" Status="Installed"/>
+							</Or>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SummonDismissMount OnEnter="Dismiss" OnExit="NoEffect" DismountReason="Combat"/>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="MountInteract" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IsMounted/>
+					<IfIsInCommittedInteraction Comment="Equivalent to IsRequestingInteraction for all committed interactions"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<Not>
+						<IfIsInCommittedInteraction/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse>
+					<IfCondition>
+						<IsRequestingInteraction>
+							<Interactions>
+								<Interaction InteractionId="OpenRead"/>
+							</Interactions>
+						</IsRequestingInteraction>
+					</IfCondition>
+					<ThenActivity>
+						<ExecuteInteraction/>
+					</ThenActivity>
+					<ElseActivity>
+						<SummonDismissMount OnEnter="Dismiss" OnExit="NoEffect" DismountReason="Interact"/>
+					</ElseActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="MountMountUp" FragmentName="MountMountUp">
+			<ActivationCondition>
+				<And>
+					<IsMounted/>
+					<IfMannequinTag TagName="OneTimeScriptDone"/>
+					<Not>
+						<HeightToGround ActivationHeight="0.2"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="MountMountUp" Status="Installed"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.0"/>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Mount" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="OneTimeScriptDone" OnEnter="Unset" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse>
+					<IfCondition>
+						<Not>
+							<IfVelocityDirection CompareToCharacterFacing="true" Angle="0" AngleTolerance="45.0"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Idle" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Sprint" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<Mount>
+					<Default mountFragmentAlias="MountFragmentMountUp" playerFragmentAlias="PlayerFragmentMountUp"/>
+				</Mount>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1" DisableGravity="false" Decel="15.0,15.0,15.0" InheritVelocity="false" InheritVelocityMaxSpeed="5"/>
+					<Conditional Name="Mount_NavTags" MotionMultiplier="1" DisableGravity="false" Decel="10.0,10.0,10.0" InheritVelocity="true" InheritVelocityMaxSpeed="15" ReduceInitialInheritedXYVelocity="6" InheritVelocityUseOutputVelocity="true"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="MountDisMount" FragmentName="MountDisMount">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<IfMannequinTag TagName="Mount"/>
+					<Not>
+						<IfActionStatus ActionName="MountDisMount" Status="Installed"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.0"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse>
+					<IfCondition>
+						<Not>
+							<IfMannequinTag TagName="OneTimeScriptDone"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse>
+							<IfCondition>
+								<And>
+									<Or>
+										<IfMannequinTag TagName="AutoRun"/>
+										<And>
+											<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+											<Not>
+												<IfInput InputName="mount_stop"/>
+											</Not>
+											<Or>
+												<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135" Comment="A combination of WAD is pressed"/>
+												<IfAnalogInput Comment="Analog All except Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135"/>
+											</Or>
+										</And>
+										<And>
+											<Not>
+												<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+											</Not>
+											<Or>
+												<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false" Comment="A combination of WAD is pressed"/>
+												<IfAnalogInput Comment="Analog All" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false"/>
+											</Or>
+											<Not>
+												<IfInput InputName="mount_stop"/>
+											</Not>
+										</And>
+									</Or>
+									<Not>
+										<IfMountChangeOpen/>
+									</Not>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Sprint" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="OneTimeScriptDone" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</Group>
+							</ThenActivity>
+							<ElseActivity>
+								<Group>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Idle" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="OneTimeScriptDone" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+									a
+                                
+								</Group>
+							</ElseActivity>
+						</IfThenElse>
+					</ThenActivity>
+				</IfThenElse>
+				<Mount>
+					<Default mountFragmentAlias="MountFragmentDisMount" playerFragmentAlias="PlayerFragmentDisMount"/>
+				</Mount>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="OneTimeScriptDone" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Mount" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Idle" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Sprint" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1" DisableGravity="false" Decel="15.0,15.0,15.0" InheritVelocity="false" InheritVelocityMaxSpeed="5"/>
+					<Conditional Name="Mount_NavTags" MotionMultiplier="1" DisableGravity="false" Decel="10.0,10.0,10.0" InheritVelocity="true" InheritVelocityMaxSpeed="15" ReduceInitialInheritedXYVelocity="6" InheritVelocityUseOutputVelocity="true" InheritXyVelocityOnly="true"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="MountIdle" FragmentName="MountIdle">
+			<ActivationCondition>
+				<And>
+					<True/>
+					<IsMounted/>
+					<IfActionStatus ActionName="MountActive" Status="Installed"/>
+					<Not>
+						<HeightToGround ActivationHeight="0.2"/>
+					</Not>
+					<Not>
+						<IfUnstuckTeleporting/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="OneTimeScriptDone"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<Mount>
+					<Default mountFragmentAlias="MountFragmentIdle" playerFragmentAlias="PlayerFragmentIdle"/>
+				</Mount>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Mount" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Idle" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<ModifyGravity>
+					<Default scale="10"/>
+				</ModifyGravity>
+				<CharacterRelativeMovement>
+					<Default Decel="50,50,50" Speed="0,10,0" InheritVelocity="false"/>
+				</CharacterRelativeMovement>
+			</Activities>
+		</Action>
+		<Action Name="MountNav" FragmentName="MountNavWalk" StateMismatchIgnoreFragment="true" ReplicateSlaveFragment="true">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfActionStatus ActionName="MountNav" Status="Installed"/>
+					</Not>
+					<IsMounted/>
+					<IfActionStatus ActionName="MountActive" Status="Installed"/>
+					<Or>
+						<And>
+							<Not>
+								<IfInput InputName="mount_stop"/>
+							</Not>
+							<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+							<MoveSpeed Comparison="GreaterThan" Value="0.0" UseOutputVelocity="true"/>
+							<IfVelocityDirection CompareToCharacterFacing="true" Angle="0" AngleTolerance="45.0"/>
+						</And>
+						<And>
+							<Or>
+								<IfMannequinTag TagName="AutoRun"/>
+								<And>
+									<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+									<Not>
+										<IfInput InputName="mount_stop"/>
+									</Not>
+									<Or>
+										<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135" Comment="A combination of WAD is pressed"/>
+										<IfAnalogInput Comment="Analog All except Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135"/>
+									</Or>
+								</And>
+								<And>
+									<Not>
+										<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+									</Not>
+									<Or>
+										<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false" Comment="A combination of WAD is pressed"/>
+										<IfAnalogInput Comment="Analog All" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false"/>
+									</Or>
+									<Not>
+										<IfInput InputName="mount_stop"/>
+									</Not>
+								</And>
+							</Or>
+							<Not>
+								<IfMountChangeOpen/>
+							</Not>
+						</And>
+					</Or>
+					<Not>
+						<IfExternalCondition ConditionName="Mountmoveback"/>
+					</Not>
+					<Not>
+						<HeightToGround ActivationHeight="0.2"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="OneTimeScriptDone"/>
+					</Not>
+					<Not>
+						<IfUnstuckTeleporting/>
+					</Not>
+					<Not>
+						<IfFastTravelTeleporting/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfVelocityDirection CompareToCharacterFacing="true" Angle="0" AngleTolerance="45.0"/>
+						</Not>
+						<Not>
+							<And>
+								<Or>
+									<IfMannequinTag TagName="AutoRun"/>
+									<And>
+										<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+										<Not>
+											<IfInput InputName="mount_stop"/>
+										</Not>
+										<Or>
+											<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135" Comment="A combination of WAD is pressed"/>
+											<IfAnalogInput Comment="Analog All except Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135"/>
+										</Or>
+									</And>
+									<And>
+										<Not>
+											<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+										</Not>
+										<Or>
+											<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false" Comment="A combination of WAD is pressed"/>
+											<IfAnalogInput Comment="Analog All" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false"/>
+										</Or>
+										<Not>
+											<IfInput InputName="mount_stop"/>
+										</Not>
+									</And>
+								</Or>
+								<Not>
+									<IfMountChangeOpen/>
+								</Not>
+							</And>
+						</Not>
+					</And>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<And>
+						<IfExternalCondition ConditionName="Mountmoveback"/>
+						<MoveSpeed Comparison="GreaterThanOrEqual" Value="5.0" UseOutputVelocity="true"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Mount" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<ModifyGravity>
+					<Default scale="5"/>
+				</ModifyGravity>
+				<IfThenElse Comment="New Walk speed check logic">
+					<IfCondition>
+						<Or Comment="New Walk speed check">
+							<MoveSpeed Comparison="LessThanOrEqual" Value="3.4" UseOutputVelocity="true"/>
+							<And>
+								<IfMannequinTag TagName="Walk"/>
+								<MoveSpeed Comparison="LessThanOrEqual" Value="3.8" UseOutputVelocity="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<Mount>
+								<Default mountFragmentAlias="MountFragmentNavWalk" playerFragmentAlias="PlayerFragmentNavWalk"/>
+							</Mount>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Walk" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="New Canter speed check logic">
+					<IfCondition>
+						<And Comment="New Canter speed check">
+							<Or Comment="Input slowdown check">
+								<And>
+									<MoveSpeed Comparison="LessThanOrEqual" Value="9.0" UseOutputVelocity="true"/>
+									<MoveSpeed Comparison="GreaterThan" Value="3.4" UseOutputVelocity="true"/>
+								</And>
+								<And>
+									<Or>
+										<IfMannequinTag TagName="AutoRun"/>
+										<And>
+											<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+											<Not>
+												<IfInput InputName="mount_stop"/>
+											</Not>
+											<Or>
+												<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135" Comment="A combination of WAD is pressed"/>
+												<IfAnalogInput Comment="Analog All except Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135"/>
+											</Or>
+										</And>
+										<And>
+											<Not>
+												<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+											</Not>
+											<Or>
+												<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false" Comment="A combination of WAD is pressed"/>
+												<IfAnalogInput Comment="Analog All" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false"/>
+											</Or>
+											<Not>
+												<IfInput InputName="mount_stop"/>
+											</Not>
+										</And>
+									</Or>
+									<Not>
+										<IfMountChangeOpen/>
+									</Not>
+								</And>
+							</Or>
+							<Or Comment="Low speed check">
+								<And>
+									<IfMannequinTag TagName="Run"/>
+									<MoveSpeed Comparison="GreaterThan" Value="3.4" UseOutputVelocity="true"/>
+								</And>
+								<MoveSpeed Comparison="GreaterThan" Value="3.8" UseOutputVelocity="true"/>
+							</Or>
+							<Or Comment="Mount Type speed check">
+								<MoveSpeed Comparison="LessThanOrEqual" Value="9.0" UseOutputVelocity="true"/>
+								<And Comment="High speed and Landing check">
+									<Or>
+										<IfMannequinTag TagName="Run"/>
+										<IfActionStatus ActionName="MountLandingCheck" Status="Installed"/>
+										<IfActionStatus ActionName="MountFallLandingCheck" Status="Installed"/>
+									</Or>
+									<MoveSpeed Comparison="LessThan" Value="9.495" UseOutputVelocity="true"/>
+								</And>
+							</Or>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<Mount>
+								<Default mountFragmentAlias="MountFragmentNavCanter" playerFragmentAlias="PlayerFragmentNavCanter"/>
+							</Mount>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Run" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="New Gallop speed check logic">
+					<IfCondition>
+						<And Comment="New Gallop speed check">
+							<Or Comment="Mount Type speed check">
+								<MoveSpeed Comparison="GreaterThan" Value="9.495" UseOutputVelocity="true"/>
+								<And Comment="Slowdown Gallop Speed">
+									<MoveSpeed Comparison="GreaterThan" Value="9.0" UseOutputVelocity="true"/>
+									<IfMannequinTag TagName="Sprint"/>
+								</And>
+							</Or>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<Mount>
+								<Default mountFragmentAlias="MountFragmentNavGallop" playerFragmentAlias="PlayerFragmentNavGallop"/>
+							</Mount>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Sprint" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse>
+					<IfCondition>
+						<And>
+							<Or>
+								<IfMannequinTag TagName="AutoRun"/>
+								<And>
+									<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+									<Not>
+										<IfInput InputName="mount_stop"/>
+									</Not>
+									<Or>
+										<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135" Comment="A combination of WAD is pressed"/>
+										<IfAnalogInput Comment="Analog All except Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135"/>
+									</Or>
+								</And>
+								<And>
+									<Not>
+										<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+									</Not>
+									<Or>
+										<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false" Comment="A combination of WAD is pressed"/>
+										<IfAnalogInput Comment="Analog All" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false"/>
+									</Or>
+									<Not>
+										<IfInput InputName="mount_stop"/>
+									</Not>
+								</And>
+							</Or>
+							<Not>
+								<IfMountChangeOpen/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<InputRelativeFacing>
+								<Default UseMountTurnRate="2" ForceTurnAwayFromCameraAngleTolerance="10" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+								<Conditional Name="Mount_NoStrafe" UseMountTurnRate="1" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+							</InputRelativeFacing>
+							<ApplyMoveSpeedMultiplier>
+								<Default IsMountedDashMultiplier="true" ClampMax="2.0"/>
+							</ApplyMoveSpeedMultiplier>
+							<CharacterRelativeMovement>
+								<Default UseMountMovement="3" NewMountMovementReverseSpeedScale="0.5" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" Forced="false" AlignVelocity="false" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+								<Conditional Name="Mount_NoStrafe" UseMountMovement="2" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" Forced="false" AlignVelocity="false" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+								<Conditional Name="Mount_From_Land" UseMountMovement="3" NewMountMovementReverseSpeedScale="0.5" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" Forced="false" AlignVelocity="false" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0" InheritOutputVelocityFirstFrame="true"/>
+							</CharacterRelativeMovement>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<CharacterRelativeMovement>
+							<Default UseMountMovement="1"/>
+						</CharacterRelativeMovement>
+					</ElseActivity>
+				</IfThenElse>
+				<ClearMannequinTagGroup ResetWhenReinstalled="true">
+					<Default TagGroupName="NavigationType" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="MountNavBack" FragmentName="MountNavback">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+						<IfInput InputName="mount_stop"/>
+					</Or>
+					<Not>
+						<IfActionStatus ActionName="MountNavBack" Status="Installed"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="MountStop" Status="Installed"/>
+					</Not>
+					<IsMounted/>
+					<IfExternalCondition ConditionName="Mountmoveback"/>
+					<Or>
+						<And>
+							<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+							<Not>
+								<And>
+									<Or>
+										<IfMannequinTag TagName="AutoRun"/>
+										<And>
+											<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+											<Not>
+												<IfInput InputName="mount_stop"/>
+											</Not>
+											<Or>
+												<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135" Comment="A combination of WAD is pressed"/>
+												<IfAnalogInput Comment="Analog All except Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135"/>
+											</Or>
+										</And>
+										<And>
+											<Not>
+												<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+											</Not>
+											<Or>
+												<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false" Comment="A combination of WAD is pressed"/>
+												<IfAnalogInput Comment="Analog All" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false"/>
+											</Or>
+											<Not>
+												<IfInput InputName="mount_stop"/>
+											</Not>
+										</And>
+									</Or>
+									<Not>
+										<IfMountChangeOpen/>
+									</Not>
+								</And>
+							</Not>
+						</And>
+						<And>
+							<Not>
+								<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+							</Not>
+							<IfInput InputName="mount_stop"/>
+						</And>
+					</Or>
+					<MoveSpeed Comparison="LessThanOrEqual" Value="5.0" UseOutputVelocity="true"/>
+					<Or>
+						<Not>
+							<IfActionStatus ActionName="MountStop" Status="Installed"/>
+						</Not>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</Or>
+					<Not>
+						<HeightToGround ActivationHeight="0.2"/>
+					</Not>
+					<Not>
+						<IfUnstuckTeleporting/>
+					</Not>
+					<Not>
+						<IfFastTravelTeleporting/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfExternalCondition ConditionName="Mountmoveback"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<Mount>
+					<Default mountFragmentAlias="MountFragmentNavBack" playerFragmentAlias="PlayerFragmentNavBack"/>
+				</Mount>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Mount" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<ModifyGravity>
+					<Default scale="5"/>
+				</ModifyGravity>
+				<IfThenElse>
+					<IfCondition>
+						<IfExternalCondition ConditionName="Mountmoveback"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<InputRelativeFacing>
+								<Default UseMountTurnRate="2" ForceTurnAwayFromCameraAngleTolerance="10" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog" IsBackwardsMountMovement="true"/>
+								<Conditional Name="Mount_NoStrafe_Reverse" UseMountTurnRate="2" ForceTurnAwayFromCameraAngleTolerance="0" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog" IsBackwardsMountMovement="true"/>
+							</InputRelativeFacing>
+							<ApplyMoveSpeedMultiplier>
+								<Default IsMountedDashMultiplier="true" ClampMax="2.0"/>
+							</ApplyMoveSpeedMultiplier>
+							<CharacterRelativeMovement>
+								<Default UseMountMovement="3" NewMountMovementReverseSpeedScale="0.5" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" Forced="false" AlignVelocity="false" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0" IsBackwardsMountMovement="true"/>
+							</CharacterRelativeMovement>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<CharacterRelativeMovement>
+							<Default UseMountMovement="1"/>
+						</CharacterRelativeMovement>
+					</ElseActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="MountStop" FragmentName="MountStop">
+			<ActivationCondition>
+				<Or>
+					<Not Comment="Only triggered through TransitionInstant">
+						<True/>
+					</Not>
+					<And>
+						<Not>
+							<IfActionStatus ActionName="MountStop" Status="Installed"/>
+						</Not>
+						<IfExternalCondition ConditionName="Mountmoveback"/>
+						<MoveSpeed Comparison="GreaterThanOrEqual" Value="5.0" UseOutputVelocity="true"/>
+						<IsMounted/>
+						<Not>
+							<And>
+								<Or>
+									<IfMannequinTag TagName="AutoRun"/>
+									<And>
+										<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+										<Not>
+											<IfInput InputName="mount_stop"/>
+										</Not>
+										<Or>
+											<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135" Comment="A combination of WAD is pressed"/>
+											<IfAnalogInput Comment="Analog All except Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135"/>
+										</Or>
+									</And>
+									<And>
+										<Not>
+											<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+										</Not>
+										<Or>
+											<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false" Comment="A combination of WAD is pressed"/>
+											<IfAnalogInput Comment="Analog All" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false"/>
+										</Or>
+										<Not>
+											<IfInput InputName="mount_stop"/>
+										</Not>
+									</And>
+								</Or>
+								<Not>
+									<IfMountChangeOpen/>
+								</Not>
+							</And>
+						</Not>
+						<Not>
+							<HeightToGround ActivationHeight="0.2"/>
+						</Not>
+					</And>
+				</Or>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.0"/>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<Mount>
+					<Default mountFragmentAlias="MountFragmentStop" playerFragmentAlias="PlayerFragmentStop"/>
+				</Mount>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1" DisableGravity="false" Decel="18.0,18.0,18.0" InheritVelocity="true" InheritVelocityMaxSpeed="15"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Mount" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AutoRun" OnEnter="Unset" OnExit="NoEffect"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="MountJump" FragmentName="MountJump">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="mount_jump"/>
+					<IsMounted/>
+					<IfCanNav/>
+					<IfCanDodge/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true"/>
+					</Not>
+					<Not>
+						<IfEncumbered/>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+					</Not>
+					<Not>
+						<HeightToGround ActivationHeight="0.2"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="JumpPrevention"/>
+					</Not>
+					<Not>
+						<IfUnstuckTeleporting/>
+					</Not>
+					<Not>
+						<IfFastTravelTeleporting/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+					<IfMountStamina ComparisonType="GreaterThanOrEqual" ComparisonValue="0"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<True/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<Mount>
+					<Default mountFragmentAlias="MountFragmentJump" playerFragmentAlias="PlayerFragmentJump" autoOffset="False"/>
+				</Mount>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1" DisableGravity="true" Decel="0.0,0.0,0.0" InheritVelocity="true" InheritVelocityMaxSpeed="15" ReduceInitialInheritedXYVelocity="6"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Mount" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable Stamina Regen Logic">
+					<IfCondition>
+						<Not>
+							<IfMannequinMarker MarkerName="CanTransition"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<DisableStaminaRegen ResetWhenReinstalled="false" IgnoreDataChangesAfterInstall="false">
+							<Default OnEnter="Disable" OnExit="Enable"/>
+						</DisableStaminaRegen>
+					</ThenActivity>
+				</IfThenElse>
+				<PayMountStaminaCost>
+					<Default Cost="0" RegenDelay="1" Reason="Jump"/>
+				</PayMountStaminaCost>
+			</Activities>
+		</Action>
+		<Action Name="MountLand" FragmentName="MountLand">
+			<ActivationCondition>
+				<And>
+					<Not Comment="Only triggered through TransitionInstant">
+						<True/>
+					</Not>
+					<IsMounted/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true"/>
+					</Not>
+					<Not>
+						<HeightToGround ActivationHeight="0.6"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<Mount>
+					<Default mountFragmentAlias="MountFragmentLand" playerFragmentAlias="PlayerFragmentLand" autoOffset="False"/>
+				</Mount>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="true" InheritVelocityMaxSpeed="15" ReduceInitialInheritedXYVelocity="6" InheritVelocityUseOutputVelocity="true"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Mount" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="MountFall" FragmentName="MountFall">
+			<ActivationCondition>
+				<And>
+					<HeightToGround ActivationHeight="0.6"/>
+					<IsMounted/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="PreventFall"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<HeightToGround ActivationHeight="0.01"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<Mount>
+					<Default mountFragmentAlias="MountFragmentFall" playerFragmentAlias="PlayerFragmentFall" autoOffset="False"/>
+				</Mount>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1" DisableGravity="false" Decel="2.5,2.5,2.5" InheritVelocity="true" InheritVelocityMaxSpeed="15" InheritVelocityUseOutputVelocity="true" InheritXyVelocityOnly="true"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Mount" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable Stamina Regen Logic">
+					<IfCondition>
+						<Not>
+							<IfMannequinMarker MarkerName="CanTransition"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<DisableStaminaRegen ResetWhenReinstalled="false" IgnoreDataChangesAfterInstall="false">
+							<Default OnEnter="Disable" OnExit="Enable"/>
+						</DisableStaminaRegen>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="MountFallLand" FragmentName="MountFallLand">
+			<ActivationCondition>
+				<And>
+					<Not Comment="Only triggered through TransitionInstant">
+						<True/>
+					</Not>
+					<IsMounted ReturnFalseIfDismounting="false"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true"/>
+					</Not>
+					<Not>
+						<HeightToGround ActivationHeight="0.8"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+					<Not>
+						<IsMounted ReturnFalseIfDismounting="false"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<Mount>
+					<Default mountFragmentAlias="MountFragmentFallLand" playerFragmentAlias="PlayerFragmentFallLand" autoOffset="False"/>
+				</Mount>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="true" InheritVelocityMaxSpeed="15" ReduceInitialInheritedXYVelocity="6" InheritVelocityUseOutputVelocity="true"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Mount" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="MountWalk" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="walk"/>
+						<And>
+							<Not>
+								<IfInput InputName="walk"/>
+							</Not>
+							<IfForcingMountWalk/>
+						</And>
+						<IfHasStatusEffect StatusEffect="ForceRun"/>
+					</Or>
+					<IsMounted/>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Set correct walking speed based on situation">
+					<IfCondition>
+						<And>
+							<Or>
+								<IfForcingMountWalk/>
+								<IfMountSlowWalk/>
+							</Or>
+							<Or>
+								<IfInput InputName="walk"/>
+								<IfHasStatusEffect StatusEffect="ForceRun"/>
+							</Or>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<MountSetWalking>
+							<Default IsWalking="true" SlowWalk="true"/>
+						</MountSetWalking>
+					</ThenActivity>
+					<ElseActivity>
+						<MountSetWalking>
+							<Default IsWalking="true"/>
+						</MountSetWalking>
+					</ElseActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="MountDashToggle" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfMountDashToggle/>
+					<IfInput InputName="mount_dash"/>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle automatic mount dashing">
+					<IfCondition>
+						<IfHasStatusEffect StatusEffect="AutoMountDash"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToRemoveOnEnter>
+									<EffectId EffectId="AutoMountDash"/>
+								</EffectsToRemoveOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+					<ElseActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="AutoMountDash"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ElseActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="MountDash" FragmentName="">
+			<ActivationCondition>
+				<Or>
+					<And>
+						<Or>
+							<IfInput InputName="mount_dash_depressed"/>
+							<IfHasStatusEffect StatusEffect="AutoMountDash"/>
+						</Or>
+						<IfMountStamina ComparisonType="GreaterThanOrEqual" ComparisonValue="15"/>
+						<IfActionStatus ActionName="MountNav" Status="Installed"/>
+						<IfForcingMountWalk IsForced="False" FailMessage="@ui_mount_dash_failed_force_walk"/>
+						<Not>
+							<IfP2PTrading/>
+						</Not>
+					</And>
+					<IsMountDashing/>
+				</Or>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfInput InputName="mount_dash_depressed"/>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffect="AutoMountDash"/>
+						</Not>
+					</And>
+					<IfMountStamina ComparisonType="LessThanOrEqual" ComparisonValue="0"/>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<IfForcingMountWalk/>
+					<Not>
+						<IfActionStatus ActionName="MountNav" Status="Installed"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<MountSetDashing>
+					<Default IsDashing="true"/>
+				</MountSetDashing>
+				<ModifyStatusEffects comment="Ensure dash toggle is turned off when stamina drains or something happens that stops the dash">
+					<Default RemoveNothingOnMigrate="true">
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AutoMountDash"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="MountPet" FragmentName="MountPet">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="rune_ability"/>
+					<IsMounted/>
+					<IfActionStatus ActionName="MountIdleCheck" Status="Installed"/>
+					<IfCanNav/>
+					<IfCanDodge/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true"/>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+					</Not>
+					<Not>
+						<HeightToGround ActivationHeight="0.2"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Not>
+						<IfMannequinTagInItemSlot TagName="Tool" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+					<IfCanResizeCharacterController ResizeType="Mount"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.0"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<Mount>
+					<Default mountFragmentAlias="MountFragmentPet" playerFragmentAlias="PlayerFragmentPet" autoOffset="False"/>
+				</Mount>
+			</Activities>
+		</Action>
+		<Action Name="Mount_Use_QuickSlot_1" FragmentName="MountUse" ReplicateSlaveFragment="true">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Use_Quickslot_1" BackTicks="20"/>
+					<IfItemInSlot SlotToCheckAlias="QUICK_SLOT_1" RequireSlotValid="true" RequireSlotActive="false"/>
+					<CanUseItemInSlot SlotToCheck="quickslot-1" CheckLootLimits="true"/>
+					<IfConsumableCooldownTimer SlotToCheckAlias="QUICK_SLOT_1" ComparisonValueSeconds="0" ComparisonType="Equal"/>
+					<IsMounted/>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<IfMannequinMarker MarkerName="Exit_Use"/>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<IfDead ServerOnly="false"/>
+					<IfDeathsDoor ServerOnly="false"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="InstantSwap_Cooldown"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<IfThenElse RunDuringInstall="true">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Idle"/>
+							<IfMannequinTag TagName="MountItem"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<Mount>
+								<Default mountFragmentAlias="MountFragmentUseIdle" playerFragmentAlias="PlayerFragmentUseIdle"/>
+							</Mount>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetInUsePaperdollItem>
+					<Default SlotToUse="QUICK_SLOT_1"/>
+				</SetInUsePaperdollItem>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true" Comment="Set Main Hand Tags">
+					<Default TagSource="CurrentlyUsedQuickslot" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTagFromSource>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="ItemTag" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Mount_Use_QuickSlot_2" FragmentName="MountUse" ReplicateSlaveFragment="true">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Use_Quickslot_2" BackTicks="20"/>
+					<IfItemInSlot SlotToCheckAlias="QUICK_SLOT_2" RequireSlotValid="true" RequireSlotActive="false"/>
+					<CanUseItemInSlot SlotToCheck="quickslot-2" CheckLootLimits="true"/>
+					<IfConsumableCooldownTimer SlotToCheckAlias="QUICK_SLOT_2" ComparisonValueSeconds="0" ComparisonType="Equal"/>
+					<IsMounted/>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<IfMannequinMarker MarkerName="Exit_Use"/>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<IfDead ServerOnly="false"/>
+					<IfDeathsDoor ServerOnly="false"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="InstantSwap_Cooldown"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<IfThenElse RunDuringInstall="true">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Idle"/>
+							<IfMannequinTag TagName="MountItem"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<Mount>
+								<Default mountFragmentAlias="MountFragmentUseIdle" playerFragmentAlias="PlayerFragmentUseIdle"/>
+							</Mount>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetInUsePaperdollItem>
+					<Default SlotToUse="QUICK_SLOT_2"/>
+				</SetInUsePaperdollItem>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true" Comment="Set Main Hand Tags">
+					<Default TagSource="CurrentlyUsedQuickslot" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTagFromSource>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="ItemTag" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Mount_Use_QuickSlot_3" FragmentName="MountUse" ReplicateSlaveFragment="true">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Use_Quickslot_3" BackTicks="20"/>
+					<IfItemInSlot SlotToCheckAlias="QUICK_SLOT_3" RequireSlotValid="true" RequireSlotActive="false"/>
+					<CanUseItemInSlot SlotToCheck="quickslot-3" CheckLootLimits="true"/>
+					<IfConsumableCooldownTimer SlotToCheckAlias="QUICK_SLOT_3" ComparisonValueSeconds="0" ComparisonType="Equal"/>
+					<IsMounted/>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<IfMannequinMarker MarkerName="Exit_Use"/>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<IfDead ServerOnly="false"/>
+					<IfDeathsDoor ServerOnly="false"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="InstantSwap_Cooldown"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<IfThenElse RunDuringInstall="true">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Idle"/>
+							<IfMannequinTag TagName="MountItem"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<Mount>
+								<Default mountFragmentAlias="MountFragmentUseIdle" playerFragmentAlias="PlayerFragmentUseIdle"/>
+							</Mount>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetInUsePaperdollItem>
+					<Default SlotToUse="QUICK_SLOT_3"/>
+				</SetInUsePaperdollItem>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true" Comment="Set Main Hand Tags">
+					<Default TagSource="CurrentlyUsedQuickslot" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTagFromSource>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="ItemTag" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Mount_Use_QuickSlot_4" FragmentName="MountUse" ReplicateSlaveFragment="true">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Use_Quickslot_4" BackTicks="20"/>
+					<IfItemInSlot SlotToCheckAlias="QUICK_SLOT_4" RequireSlotValid="true" RequireSlotActive="false"/>
+					<CanUseItemInSlot SlotToCheck="quickslot-4" CheckLootLimits="true"/>
+					<IfConsumableCooldownTimer SlotToCheckAlias="QUICK_SLOT_4" ComparisonValueSeconds="0" ComparisonType="Equal"/>
+					<IsMounted/>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<IfMannequinMarker MarkerName="Exit_Use"/>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<IfDead ServerOnly="false"/>
+					<IfDeathsDoor ServerOnly="false"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="InstantSwap_Cooldown"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<IfThenElse RunDuringInstall="true">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Idle"/>
+							<IfMannequinTag TagName="MountItem"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<Mount>
+								<Default mountFragmentAlias="MountFragmentUseIdle" playerFragmentAlias="PlayerFragmentUseIdle"/>
+							</Mount>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetInUsePaperdollItem>
+					<Default SlotToUse="QUICK_SLOT_4"/>
+				</SetInUsePaperdollItem>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true" Comment="Set Main Hand Tags">
+					<Default TagSource="CurrentlyUsedQuickslot" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTagFromSource>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="ItemTag" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="MountUnstuckTeleport" FragmentName="MountIdle">
+			<ActivationCondition>
+				<And>
+					<IsMounted/>
+					<IfUnstuckTeleporting/>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<DisableCameraLock>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableCameraLock>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+			</Activities>
+		</Action>
+		<Action Name="MountFidgets" FragmentName="MountFidget1" ReplicateSlaveFragment="true">
+			<ActivationCondition>
+				<And>
+					<IsMounted ReturnFalseIfDismounting="false"/>
+					<IfActionStatus ActionName="MountIdle" Status="Installed" ActiveTime="7.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					<Not>
+						<IfActionStatus ActionName="MountFidgets" Status="Installed"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="MountPet" Status="Installed"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Inventory_Upperbody" Status="Installed"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true"/>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+					</Not>
+					<Not>
+						<HeightToGround ActivationHeight="0.2"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Not>
+						<IfMannequinTagInItemSlot TagName="Tool" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<IfCanResizeCharacterController ResizeType="Mount"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="ExitMountFidget"/>
+					<IfActionStatus ActionName="Inventory_Upperbody" Status="Installed"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<Mount>
+					<Default mountFragmentAlias="MountFragmentFidget1" playerFragmentAlias="PlayerFragmentFidget1"/>
+				</Mount>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Idle" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="MountIdleCheck" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IsMounted ReturnFalseIfDismounting="true"/>
+					<IfActionStatus ActionName="MountIdle" Status="Installed" ActiveTime="1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<IfActionStatus ActionName="MountIdle" Status="None"/>
+					<IfActionStatus ActionName="MountFidgets" Status="None"/>
+				</And>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="MountLandingCheck" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IsMounted ReturnFalseIfDismounting="true"/>
+					<IfActionStatus ActionName="MountLand" Status="Installed"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<IfActionStatus ActionName="MountLand" Status="None" ActiveTime="0.1f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="MountFallLandingCheck" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IsMounted ReturnFalseIfDismounting="true"/>
+					<IfActionStatus ActionName="MountFallLand" Status="Installed"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<IfActionStatus ActionName="MountFallLand" Status="None" ActiveTime="0.1f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="MountDisMountCheck" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfActionStatus ActionName="MountDisMount" Status="Installed"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfActionStatus ActionName="MountDisMount" Status="None" ActiveTime="0.1f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="MountCollectionCheck" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfMountChangeOpen/>
+						<IfTransmogOpen/>
+					</Or>
+					<Or>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Inventory_UpperBody"/>
+						<IfMannequinMarker MarkerName="Inventory_UpperBody"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<Not>
+						<IfMountChangeOpen/>
+					</Not>
+					<Not>
+						<IfTransmogOpen/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IsMounted Name="Mounted"/>
+		<Or Name="Mount_NavTags">
+			<IfMannequinTag TagName="Walk"/>
+			<IfMannequinTag TagName="Run"/>
+			<IfMannequinTag TagName="Sprint"/>
+		</Or>
+		<And Name="Mount_NoForwardInput">
+			<Not>
+				<IfInput InputName="ForwardNav"/>
+			</Not>
+			<Not>
+				<IfAnalogInput Comment="Analog Forward" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="45.00"/>
+			</Not>
+		</And>
+		<And Name="Mountmoveback">
+			<Or>
+				<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+				<IfInput InputName="mount_stop"/>
+			</Or>
+			<Not>
+				<And>
+					<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+					<Or>
+						<And Comment="Prevent the mount from moon-walking if both forward and backward are pressed (making input angle 0)">
+							<IfInput InputName="ForwardNav"/>
+							<IfInput InputName="moveback"/>
+						</And>
+						<And>
+							<Not>
+								<IfInput InputName="mount_stop"/>
+							</Not>
+							<Or>
+								<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135" Comment="A combination of WAD is pressed"/>
+								<IfAnalogInput Comment="Analog All except Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135"/>
+							</Or>
+						</And>
+					</Or>
+				</And>
+			</Not>
+			<Or>
+				<And Comment="Strafe Nav">
+					<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+					<Or>
+						<IfInput InputName="moveback"/>
+						<IfAnalogInput Comment="Analog Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.00" TargetAngleTolerance="46"/>
+					</Or>
+				</And>
+				<And Comment="Character Relative Nav">
+					<IfExternalCondition ConditionName="Mount_NoStrafe_Reverse"/>
+					<Or>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="180.00" TargetAngleTolerance="135"/>
+						<IfAnalogInput Comment="Analog Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="180.00" TargetAngleTolerance="135"/>
+					</Or>
+				</And>
+			</Or>
+		</And>
+		<And Name="Mount_BackStop">
+			<Or>
+				<And>
+					<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+					<Not>
+						<And>
+							<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+							<Or>
+								<And Comment="Prevent the mount from moon-walking if both forward and backward are pressed (making input angle 0)">
+									<IfInput InputName="ForwardNav"/>
+									<IfInput InputName="moveback"/>
+								</And>
+								<And>
+									<Not>
+										<IfInput InputName="mount_stop"/>
+									</Not>
+									<Or>
+										<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135" Comment="A combination of WAD is pressed"/>
+										<IfAnalogInput Comment="Analog All except Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135"/>
+									</Or>
+								</And>
+							</Or>
+						</And>
+					</Not>
+					<Or>
+						<IfInput InputName="mount_stop"/>
+						<IfInput InputName="moveback"/>
+						<IfAnalogInput Comment="Analog Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.00" TargetAngleTolerance="46"/>
+					</Or>
+				</And>
+				<And>
+					<IfInput InputName="mount_stop"/>
+					<Not>
+						<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+					</Not>
+				</And>
+			</Or>
+			<MoveSpeed Comparison="GreaterThanOrEqual" Value="5.0" UseOutputVelocity="true"/>
+		</And>
+		<And Name="Mount_Close_To_Ground">
+			<Not>
+				<HeightToGround ActivationHeight="0.6"/>
+			</Not>
+		</And>
+		<And Name="MountFall_Close_To_Ground">
+			<Not>
+				<HeightToGround ActivationHeight="0.8"/>
+			</Not>
+		</And>
+		<And Name="Mount_Not_Close_To_Ground">
+			<HeightToGround ActivationHeight="0.6"/>
+		</And>
+		<And Name="Mount_Far_From_Ground">
+			<HeightToGround ActivationHeight="3.0"/>
+		</And>
+		<And Name="Mount_From_Land">
+			<And>
+				<Or>
+					<IfMannequinTag TagName="AutoRun"/>
+					<And>
+						<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+						<Not>
+							<IfInput InputName="mount_stop"/>
+						</Not>
+						<Or>
+							<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135" Comment="A combination of WAD is pressed"/>
+							<IfAnalogInput Comment="Analog All except Back" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="135"/>
+						</Or>
+					</And>
+					<And>
+						<Not>
+							<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+						</Not>
+						<Or>
+							<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false" Comment="A combination of WAD is pressed"/>
+							<IfAnalogInput Comment="Analog All" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false" UseCharacterRelativeAngle="false"/>
+						</Or>
+						<Not>
+							<IfInput InputName="mount_stop"/>
+						</Not>
+					</And>
+				</Or>
+				<Not>
+					<IfMountChangeOpen/>
+				</Not>
+			</And>
+			<Or>
+				<IfActionStatus ActionName="MountLandingCheck" Status="Installed"/>
+				<IfActionStatus ActionName="MountFallLandingCheck" Status="Installed"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Walk"/>
+			</Not>
+		</And>
+		<And Name="From_Dismount">
+			<IfActionStatus ActionName="MountDisMountCheck" Status="Installed"/>
+		</And>
+		<And Name="Mount_NoStrafe">
+			<Not>
+				<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+			</Not>
+		</And>
+		<And Name="Mount_NoStrafe_Reverse">
+			<Not>
+				<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+			</Not>
+			<IfInput InputName="mount_stop"/>
+		</And>
+	</Conditions>
+</ActionList>
+

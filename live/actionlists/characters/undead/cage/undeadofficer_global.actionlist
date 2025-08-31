@@ -1,0 +1,184 @@
+<ActionList>
+	<Actions>
+		<Action Name="WaterShield" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="WaterShieldSpell"/>
+					<IfHasStatusEffect StatusEffect="WaterShield"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<Not>
+						<IfHasStatusEffect StatusEffect="WaterShield"/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="WaterShield5_Hit"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="WaterShield6OFF"/>
+							</TriggerEntity>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="WaterShield4_Hit"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="WaterShield5OFF"/>
+							</TriggerEntity>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="WaterShield3_Hit"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="WaterShield4OFF"/>
+							</TriggerEntity>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="WaterShield2_Hit"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="WaterShield3OFF"/>
+							</TriggerEntity>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="WaterShield1_Hit"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="WaterShield2OFF"/>
+							</TriggerEntity>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="WaterShield_None"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="WaterShield1OFF"/>
+							</TriggerEntity>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToRemoveOnExit>
+										<EffectId EffectId="WaterShield"/>
+									</EffectsToRemoveOnExit>
+								</Default>
+							</ModifyStatusEffects>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="DisableWaterShield" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="WaterShieldSpell"/>
+					<IfHasStatusEffect StatusEffect="WaterShield"/>
+					<IfExternalCondition ConditionName="WaterShield_None"/>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="WaterShieldSpell" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<TriggerEntity ResetWhenReinstalled="true">
+					<Default TriggerName="WaterShieldOFF"/>
+				</TriggerEntity>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="WaterShield"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="NPC_Enraged" StateName="Off" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="DeactivateWaterShieldLeash">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="WaterShieldSpell"/>
+					<IfMannequinTag TagName="Officer"/>
+					<Not>
+						<IfHasAttackTarget/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="WaterShield"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearMannequinTagGroup ResetWhenReinstalled="true">
+					<Default TagGroupName="WaterShield" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMannequinTagGroup>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="WaterShieldSpell" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<TriggerEntity ResetWhenReinstalled="true">
+					<Default TriggerName="WaterShieldOFF"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="WaterShield6_Hit" TagName="WaterShield6"/>
+		<IfMannequinTag Name="WaterShield5_Hit" TagName="WaterShield5"/>
+		<IfMannequinTag Name="WaterShield4_Hit" TagName="WaterShield4"/>
+		<IfMannequinTag Name="WaterShield3_Hit" TagName="WaterShield3"/>
+		<IfMannequinTag Name="WaterShield2_Hit" TagName="WaterShield2"/>
+		<IfMannequinTag Name="WaterShield1_Hit" TagName="WaterShield1"/>
+		<And Name="WaterShield_None">
+			<Not>
+				<Or>
+					<IfMannequinTag TagName="WaterShield6"/>
+					<IfMannequinTag TagName="WaterShield5"/>
+					<IfMannequinTag TagName="WaterShield4"/>
+					<IfMannequinTag TagName="WaterShield3"/>
+					<IfMannequinTag TagName="WaterShield2"/>
+					<IfMannequinTag TagName="WaterShield1"/>
+				</Or>
+			</Not>
+		</And>
+	</Conditions>
+</ActionList>
+

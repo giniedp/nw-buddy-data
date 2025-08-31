@@ -1,0 +1,153 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction" FragmentName="r_R2_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfMannequinMarker MarkerName="AllowReactions"/>
+					</Or>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" RequireCriticalHit="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName="" RequireRanged="false"/>
+					<Not>
+						<IfDamagedByAttackType AttackType="Light"/>
+					</Not>
+					<Not>
+						<IfDamagedByAttackType AttackType="Heavy"/>
+					</Not>
+					<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="2"/>
+					<Not>
+						<IfMannequinTag TagName="Reset"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/CorruptionHeavy/CorruptionHeavyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.1"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="0.5"/>
+					<Conditional Name="PromotedElite" Scale="0.5" PushBackScale="0.15"/>
+					<Conditional Name="R4" Scale="0.0" PushBackScale="0.0"/>
+				</ReactionMotion>
+				<AnimationDrivenMotion>
+					<Conditional Name="R4" MotionMultiplier="1.0" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Conditional Name="R2_StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.4"/>
+					<Conditional Name="R4_StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="1.0"/>
+					<Conditional Name="StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.6"/>
+					<Conditional Name="R2_ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.3"/>
+					<Conditional Name="R4_ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="1.0"/>
+					<Conditional Name="ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.3"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IsStunned/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Additive" FragmentName="r_R0_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" RequireCriticalHit="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName="" RequireRanged="false"/>
+					<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="1"/>
+					<And>
+						<Not>
+							<IfDead ServerOnly="true"/>
+						</Not>
+					</And>
+					<Or>
+						<IfMannequinTag TagName="Reset"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_AdditiveReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+					<Conditional Name="PromotedElite" Scale="1.0" PushBackScale="0.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+			</Activities>
+		</Action>
+		<Action Name="Death" FragmentName="r_Death_F" ServerStarted="true">
+			<ActivationCondition>
+				<IfDead ServerOnly="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/BaseAI_DeathTableHarness.actionlist"/>
+				</SetReactionFragment>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="3"/>
+			<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R2_StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_StunBreakout">
+			<IsStunned/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R2_ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2" QueryData="true"/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_ReactionBreakout">
+			<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2"/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<IfHasStatusEffect Name="PromotedElite" StatusEffect="AI_Elite_Unbreakable_Grit_Buff"/>
+		<And Name="R4">
+			<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+	</Conditions>
+</ActionList>
+

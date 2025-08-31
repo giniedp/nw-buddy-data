@@ -1,0 +1,47 @@
+<ActionList>
+	<Actions>
+		<Action Name="Attack_ThornShot" FragmentName="Attack_ThornShot">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_ThornShot_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Briar_Burst" FragmentName="Combat_Briar_Burst">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Briar_Burst_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Briar_Tangle" FragmentName="Combat_Briar_Tangle">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Briar_Tangle_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="BurrowOff"/>
+				</TriggerEntity>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

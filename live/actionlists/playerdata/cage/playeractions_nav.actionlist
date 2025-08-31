@@ -1,0 +1,1746 @@
+<ActionList>
+	<Actions>
+		<Action Name="Nav_Start" FragmentName="Strafe">
+			<ActivationCondition>
+				<And Comment="AnyNavInput Conditional">
+					<IfExternalCondition ConditionName="AnyNavInput"/>
+					<Not>
+						<IfExternalCondition ConditionName="AllNavInput"/>
+					</Not>
+					<Not>
+						<IfExternalCondition ConditionName="LeftRight_NavCancel"/>
+					</Not>
+					<Not>
+						<IfExternalCondition ConditionName="ForwardBack_NavCancel"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Walk"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Run"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Sprint"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="PreventNav"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="ResumeNav"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Strafe"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="ForceStop"/>
+					</Not>
+					<Not>
+						<IfEncumbered immobilized="true"/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+					<Or Comment="Only if backwards input while Haste Elixir is active">
+						<Not>
+							<IfHasStatusEffect StatusEffect="PotionHaste"/>
+						</Not>
+						<And>
+							<IfHasStatusEffect StatusEffect="PotionHaste"/>
+							<Or Comment="Pressing any Backward direction key">
+								<And Comment="Backward input during strafe sprint">
+									<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+									<Or>
+										<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+										<IfExternalCondition ConditionName="CombatNav"/>
+									</Or>
+									<IfExternalCondition ConditionName="Backward_180_Input"/>
+								</And>
+								<And Comment="Any input during non-strafe sprint movement">
+									<Not>
+										<IfExternalCondition ConditionName="CombatNav"/>
+									</Not>
+									<Not>
+										<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+									</Not>
+									<IfExternalCondition ConditionName="Any_Nav_Input"/>
+								</And>
+							</Or>
+						</And>
+					</Or>
+					<IfCanNav/>
+					<Or>
+						<And>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead"/>
+							</Not>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead_Loop"/>
+							</Not>
+						</And>
+						<IfAbilityActive AbilityName="PlayAction"/>
+						<And>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead_Loop"/>
+							<Not>
+								<IfMannequinTag TagName="Rifle"/>
+							</Not>
+						</And>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ApplyMoveSpeedMultiplier>
+					<Default MultiplierType="MoveSpeedMod"/>
+				</ApplyMoveSpeedMultiplier>
+				<SetWeaponAccuracyBonus ResetWhenReinstalled="true">
+					<Default StanceBonus="12.25"/>
+					<Conditional Name="AimStandMusket" StanceBonus="13"/>
+					<Conditional Name="AimCrouchMusket" StanceBonus="13"/>
+					<Conditional Name="AimProneMusket" StanceBonus="13"/>
+					<Conditional Name="Leviathon" StanceBonus="12.0"/>
+					<Conditional Name="LeviathonIn" StanceBonus="25.0"/>
+					<Conditional Name="AimStand" StanceBonus="25.0"/>
+					<Conditional Name="AimCrouch" StanceBonus="25.0"/>
+					<Conditional Name="AimProne" StanceBonus="25.0"/>
+					<Conditional Name="Crouch" StanceBonus="12.5"/>
+					<Conditional Name="Prone" StanceBonus="12.75"/>
+				</SetWeaponAccuracyBonus>
+				<IfThenElse Comment="Navigation audio switch IF aiming: walk else: if stamina&gt; 0 AND not eating or drinking AND not sprinting then:run" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Or Comment="Aim">
+							<IfMannequinTag TagName="Aim"/>
+							<IfMannequinTag TagName="ChargedAim"/>
+							<IfMannequinTag TagName="ChargedShakeAim"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<SetAudioSwitchState Comment="Walk" ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false">
+							<Default ForceStopFxOnDataChange="false" SwitchName="Navigation" StateName="Nav_Idle" SetOnStop="false"/>
+						</SetAudioSwitchState>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse Comment="If Stamina &gt; 0 and not drinking eating or sprinting then: Run" ResetWhenReinstalled="true">
+							<IfCondition>
+								<And>
+									<IfStaminaValue Comment="GreaterThan 0" ComparisonValue="0.00" ComparisonValueIsPercentage="true" ComparisonType="GreaterThan"/>
+									<Not Comment="Drinking or Eating">
+										<Or>
+											<IfMannequinTag TagName="Drink"/>
+											<IfMannequinTag TagName="Eat"/>
+											<IfMannequinTag TagName="Potion"/>
+										</Or>
+									</Not>
+									<Not Comment="Not Pressing Sprint Key">
+										<IfInput InputName="Sprint"/>
+									</Not>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<SetAudioSwitchState Comment="Run" ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false">
+									<Default ForceStopFxOnDataChange="false" SwitchName="Navigation" StateName="Nav_Run" SetOnStop="false"/>
+								</SetAudioSwitchState>
+							</ThenActivity>
+							<ElseActivity>
+								<IfThenElse ResetWhenReinstalled="true">
+									<IfCondition>
+										<And Comment="Not eating or drinking AND stamina LessThanOrEqual 0">
+											<Not>
+												<Or Comment="Eat or Drink">
+													<IfMannequinTag TagName="Drink"/>
+													<IfMannequinTag TagName="Eat"/>
+													<IfMannequinTag TagName="Potion"/>
+												</Or>
+											</Not>
+											<IfStaminaValue Comment="LessThanOrEqual 0" ComparisonValue="0.00" ComparisonValueIsPercentage="false" ComparisonType="LessThanOrEqual"/>
+										</And>
+									</IfCondition>
+									<ThenActivity>
+										<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false">
+											<Default ForceStopFxOnDataChange="false" SwitchName="Voice" StateName="Vo_Exhausted" SetOnStop="false"/>
+										</SetAudioSwitchState>
+									</ThenActivity>
+									<ElseActivity>
+										<IfThenElse>
+											<IfCondition ResetWhenReinstalled="true">
+												<Or Comment="Eat or Drink">
+													<IfMannequinTag TagName="Drink"/>
+													<IfMannequinTag TagName="Eat"/>
+													<IfMannequinTag TagName="Potion"/>
+												</Or>
+											</IfCondition>
+											<ThenActivity>
+												<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false">
+													<Default ForceStopFxOnDataChange="false" SwitchName="Navigation" StateName="Nav_Idle" SetOnStop="false"/>
+												</SetAudioSwitchState>
+											</ThenActivity>
+										</IfThenElse>
+									</ElseActivity>
+								</IfThenElse>
+							</ElseActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Breathing audio switch. IF aiming, drinking or eating: switch to breathing" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Or Comment="Aim or Eat or Drink">
+							<IfMannequinTag TagName="Aim"/>
+							<IfMannequinTag TagName="ChargedAim"/>
+							<IfMannequinTag TagName="ChargedShakeAim"/>
+							<IfMannequinTag TagName="Eat"/>
+							<IfMannequinTag TagName="Drink"/>
+							<IfMannequinTag TagName="Potion"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false">
+							<Default SwitchName="Voice" StateName="VO_Breathing"/>
+						</SetAudioSwitchState>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="OneTimeScript to initialize acceleration from idle and turning" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Not Comment="">
+							<IfMannequinTag TagName="OneTimeScriptDone"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<IfThenElse Comment="If we already have momentum, set tag appropriately" ResetWhenReinstalled="true">
+								<IfCondition>
+									<MoveSpeed Comment="GreaterThanOrEqual 1.65 Walk Speed" Value="1.65" Comparison="GreaterThanOrEqual"/>
+								</IfCondition>
+								<ThenActivity>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Variant1" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+									</SetMannequinTag>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse Comment="Detect 180s" ResetWhenReinstalled="false">
+								<IfCondition>
+									<IfExternalCondition ConditionName="180_Turn_Detected"/>
+								</IfCondition>
+								<ThenActivity>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="FirstAttack" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+									</SetMannequinTag>
+								</ThenActivity>
+							</IfThenElse>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="OneTimeScriptDone" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Handle Acceleration from Idle Timer" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Not>
+							<IfMannequinTag TagName="Variant1"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Variant1" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.50" DelayBlackboardKey=""/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Variant1" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Camera lock on movement" ResetWhenReinstalled="true">
+					<IfCondition>
+						<And>
+							<Not Comment="Aim Tag">
+								<IfMannequinTag TagName="Aim"/>
+							</Not>
+							<Not Comment="HipAim">
+								<IfMannequinTag TagName="HipAim"/>
+							</Not>
+							<Not Comment="ChargedAim tag">
+								<IfMannequinTag TagName="ChargedAim"/>
+							</Not>
+							<Not Comment="Shoot tag">
+								<IfMannequinTag TagName="Shoot"/>
+							</Not>
+							<Not Comment="Reload tag">
+								<IfMannequinTag TagName="Reload"/>
+							</Not>
+							<Or>
+								<Not Comment="Blocking">
+									<IfMannequinTag TagName="Blocking"/>
+								</Not>
+							</Or>
+							<Not Comment="Locked Strafe Movement">
+								<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+							</Not>
+							<Not>
+								<IfExternalCondition ConditionName="CombatNav"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group Comment="Free Run (NO Camera Lock)">
+							<InputRelativeFacing>
+								<Default Turnrate="0.50" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+								<Conditional Name="NavStart" Turnrate="0.50" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+							</InputRelativeFacing>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+							</SetMannequinTag>
+							<CharacterRelativeMovement>
+								<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.00,4.00,0.00" Accel="0.00,7.00,0.00" Decel="30.00,30.00,30.00" AnalogInputOverride="None"/>
+								<Conditional Name="Wade" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.00,1.65,0.00" Accel="0.00,10.00,0.00" Decel="10.00,10.00,10.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Stand_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.00,1.65,0.00" Accel="0.00,25.00,0.00" Decel="25.00,25.00,25.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,1.40" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Block_Nav_Speed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,2.0,0.0" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,1.40" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Crouch_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.00,0.8250,0.00" Accel="0.00,2.5,0.00" Decel="2.50,2.50,0.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Prone_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.00,0.1875,0.00" Accel="0.00,1.00,0.00" Decel="5.00,5.00,5.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.18" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.00,1.65,0.00" Accel="0.00,10.00,0.00" Decel="10.00,10.00,10.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Prone" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.00,.3750,0.00" Accel="0.00,1.00,0.00" Decel="5.00,5.00,5.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="NavStart" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.00,4.00,0.00" Accel="0.00,12.00,0.00" Decel="35.00,35.00,0.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+							</CharacterRelativeMovement>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<Group Comment="Camera Lock Strafe Movement">
+							<IfThenElse ResetWhenReinstalled="true" Comment="Check for Bow Accuracy">
+								<IfCondition>
+									<IfMannequinTag TagName="Bow"/>
+								</IfCondition>
+								<ThenActivity>
+									<CameraRelativeMotion>
+										<Default ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,0" Accel="35.00,35.00,35.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-12.0"/>
+										<Conditional Name="Wade" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-4.0"/>
+										<Conditional Name="Bow_Hipfire_Movespeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="2.25,2.25,2.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+										<Conditional Name="Combat_Nav_Stand" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+										<Conditional Name="Combat_Nav_Stand_Slow" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+										<Conditional Name="Combat_Nav_Stand_Fast" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+										<Conditional Name="Combat_Nav_Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-3.0"/>
+										<Conditional Name="Crouch_Unarmed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-3.0"/>
+										<Conditional Name="Stand_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-4.0"/>
+										<Conditional Name="Block_Nav_Speed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="false" Speed="2,2,2" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,1.40" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+										<Conditional Name="Crouch_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.8250,0.8250,0.8250" Accel="2.50,2.50,2.50" Decel="2.50,2.50,2.50" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-3.0"/>
+										<Conditional Name="Prone_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.1875,0.1875,0.00" Accel="1.00,1.00,1.00" Decel="5.00,5.00,5.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+										<Conditional Name="Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-4.0"/>
+										<Conditional Name="Prone" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.3750,0.3750,0.00" Accel="1.00,1.00,1.00" Decel="5.00,5.00,5.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+										<Conditional Name="NavStart" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,0" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+									</CameraRelativeMotion>
+								</ThenActivity>
+								<ElseActivity>
+									<IfThenElse ResetWhenReinstalled="true" Comment="Check for Blunderbuss Accuracy">
+										<IfCondition>
+											<Or>
+												<IfMannequinTag TagName="Blunderbuss"/>
+												<Not>
+													<True/>
+												</Not>
+											</Or>
+										</IfCondition>
+										<ThenActivity>
+											<CameraRelativeMotion>
+												<Default ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,0" Accel="35.00,35.00,35.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Wade" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="FireStaff_FlameThrower_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="2.75,2.75,2.75" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Combat_Nav_Stand" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Combat_Nav_Stand_Slow_Blunderbuss" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="0.9" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Combat_Nav_Stand_Slow" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Combat_Nav_Stand_Fast" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Combat_Nav_Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Crouch_Unarmed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-3.0"/>
+												<Conditional Name="Stand_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Block_Nav_Speed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="false" Speed="2,2,2" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,1.40" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+												<Conditional Name="Combat_Nav_MagicGauntlet_ChargedAim" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Crouch_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.8250,0.8250,0.8250" Accel="2.50,2.50,2.50" Decel="2.50,2.50,2.50" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Prone_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.1875,0.1875,0.00" Accel="1.00,1.00,1.00" Decel="5.00,5.00,5.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Prone" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.3750,0.3750,0.00" Accel="1.00,1.00,1.00" Decel="5.00,5.00,5.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="NavStart" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,0" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Blunderbuss_Aiming_Not_Shooting" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="3.25,2.275,3.25" Accel="12.0,12.0,12.0" Decel="35.0,35.0,35.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="LifeStaff_Siphon_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.0,3.0,3.0" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+											</CameraRelativeMotion>
+										</ThenActivity>
+										<ElseActivity>
+											<CameraRelativeMotion>
+												<Default ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,0" Accel="35.00,35.00,35.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Wade" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-6.0"/>
+												<Conditional Name="FireStaff_FlameThrower_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="2.75,2.75,2.75" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+												<Conditional Name="Combat_Nav_Stand" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Combat_Nav_Stand_Slow_Blunderbuss" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="0.9" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Hatchet_Aim_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="2.25,2.25,2.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="StickyBomb_Aim_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Combat_Nav_Stand_Slow" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Combat_Nav_Stand_Fast" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Crouch_Hipfire" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Combat_Nav_Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Crouch_Unarmed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Stand_Walk_Hipfire" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Stand_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Block_Nav_Speed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="false" Speed="2,2,2" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,1.40" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+												<Conditional Name="Combat_Nav_MagicGauntlet_ChargedAim" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Crouch_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.8250,0.8250,0.8250" Accel="2.50,2.50,2.50" Decel="2.50,2.50,2.50" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Prone_Hipfire" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.3750,0.3750,0.00" Accel="1.00,1.00,1.00" Decel="5.00,5.00,5.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Prone_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.1875,0.1875,0.00" Accel="1.00,1.00,1.00" Decel="5.00,5.00,5.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-3.0"/>
+												<Conditional Name="Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Prone" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.3750,0.3750,0.00" Accel="1.00,1.00,1.00" Decel="5.00,5.00,5.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="NavStart" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,0" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+												<Conditional Name="Blunderbuss_Aiming_Not_Shooting" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="3.25,2.275,3.25" Accel="12.0,12.0,12.0" Decel="35.0,35.0,35.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80"/>
+												<Conditional Name="LifeStaff_Siphon_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.0,3.0,3.0" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+											</CameraRelativeMotion>
+										</ElseActivity>
+									</IfThenElse>
+								</ElseActivity>
+							</IfThenElse>
+							<CameraRelativeFacing>
+								<Default TurnRate="0.30" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+								<Conditional Name="Block_Nav" TurnRate="1.00" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+								<Conditional Name="Aiming_Or_Shooting" TurnRate="0.35" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+							</CameraRelativeFacing>
+							<IfThenElse Comment="Set Directional Tags when strafing" ResetWhenReinstalled="true">
+								<IfCondition>
+									<Or>
+										<IfInput InputName="ForwardNav"/>
+										<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="30.00"/>
+									</Or>
+								</IfCondition>
+								<ThenActivity>
+									<SetMannequinTag ResetWhenReinstalled="true">
+										<Default TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+									</SetMannequinTag>
+								</ThenActivity>
+								<ElseActivity>
+									<IfThenElse ResetWhenInstalled="true">
+										<IfCondition>
+											<Or>
+												<IfInput InputName="moveback"/>
+												<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.00" TargetAngleTolerance="70.00"/>
+											</Or>
+										</IfCondition>
+										<ThenActivity>
+											<SetMannequinTag ResetWhenReinstalled="true">
+												<Default TagName="BackNav" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+											</SetMannequinTag>
+										</ThenActivity>
+										<ElseActivity>
+											<IfThenElse ResetWhenReinstalled="true">
+												<IfCondition>
+													<Or>
+														<IfInput InputName="moveleft"/>
+														<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="270.00" TargetAngleTolerance="70.00"/>
+													</Or>
+												</IfCondition>
+												<ThenActivity>
+													<SetMannequinTag ResetWhenReinstalled="true">
+														<Default TagName="LeftNav" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+													</SetMannequinTag>
+												</ThenActivity>
+												<ElseActivity>
+													<SetMannequinTag ResetWhenReinstalled="true">
+														<Default TagName="RightNav" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+													</SetMannequinTag>
+												</ElseActivity>
+											</IfThenElse>
+										</ElseActivity>
+									</IfThenElse>
+								</ElseActivity>
+							</IfThenElse>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName=""/>
+					<Conditional Name="Stand" AudioTriggerName="Movement_Stand"/>
+				</AIAudioTriggerActivity>
+				<IfThenElse Comment="Set Walk and Run Tags" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<MoveSpeed Value="5.00" ComparisonType="GreaterThanOrEqual"/>
+							<IfMannequinTag TagName="ForwardNav"/>
+							<Not>
+								<IfActionStatus ActionName="Build_Placement_Nav_SubState" Status="Installed"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Sprint" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="false">
+							<IfCondition>
+								<MoveSpeed Value="2.00" ComparisonType="GreaterThanOrEqual"/>
+							</IfCondition>
+							<ThenActivity>
+								<SetMannequinTag ResetWhenReinstalled="false">
+									<Default TagName="Run" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+								</SetMannequinTag>
+							</ThenActivity>
+							<ElseActivity>
+								<SetMannequinTag ResetWhenReinstalled="false">
+									<Default TagName="Walk" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+								</SetMannequinTag>
+							</ElseActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<ClearMannequinTagGroup Comment="NavDirection" ResetWhenReinstalled="false">
+					<Default TagGroupName="NavDirection" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<ClearMannequinTagGroup Comment="NavigationType On Exit" ResetWhenReinstalled="false">
+					<Default TagGroupName="NavigationType" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<SetMannequinTag Comment="Unset OneTimeScriptDone" ResetWhenReinstalled="false">
+					<Default TagName="OneTimeScriptDone" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.00" DelayBlackboardKey=""/>
+				</SetMannequinTag>
+				<SetMannequinTag Comment="Unset Variant1 on Exit replace with frag tag" ResetWhenReinstalled="false">
+					<Default TagName="Variant1" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.00" DelayBlackboardKey=""/>
+				</SetMannequinTag>
+				<IfThenElse Comment="Prevent Stop anim during 180 turn" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="FirstAttack"/>
+							<Not>
+								<IfExternalCondition ConditionName="180_Turn_Detected"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag Comment="Unset FirstAttack" ResetWhenReinstalled="false">
+							<Default TagName="FirstAttack" OnEnter="Unset" OnExit="Unset" DelayTimer="0.00" DelayBlackboardKey=""/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag Comment="FirstAttack (Replace with frag tag)" ResetWhenReinstalled="false">
+					<Default TagName="FirstAttack" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.00" DelayBlackboardKey=""/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Nav" FragmentName="Strafe">
+			<ActivationCondition>
+				<And Comment="AnyNavInput Conditional">
+					<IfExternalCondition ConditionName="AnyNavInput"/>
+					<Not Comment="AllNavInput Conditional">
+						<IfExternalCondition ConditionName="AllNavInput"/>
+					</Not>
+					<Not Comment="LeftRight_NavCancel Conditional">
+						<IfExternalCondition ConditionName="LeftRight_NavCancel"/>
+					</Not>
+					<Not Comment="ForwardBack_NavCancel Conditional">
+						<IfExternalCondition ConditionName="ForwardBack_NavCancel"/>
+					</Not>
+					<Not Comment="PreventNav Mannequin Marker">
+						<IfMannequinMarker MarkerName="PreventNav"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Mount"/>
+					</Not>
+					<Not>
+						<IfP2PTrading/>
+					</Not>
+					<Or>
+						<And Comment="Check coming from high speed movement">
+							<Or>
+								<And>
+									<MoveSpeed Value="2.00" ComparisonType="GreaterThanOrEqual"/>
+									<IfMannequinTag TagName="Stand"/>
+								</And>
+								<And>
+									<MoveSpeed Value="1.00" ComparisonType="GreaterThanOrEqual"/>
+									<IfMannequinTag TagName="Crouch"/>
+								</And>
+								<And>
+									<MoveSpeed Value="0.30" ComparisonType="GreaterThanOrEqual"/>
+									<IfMannequinTag TagName="Prone"/>
+								</And>
+							</Or>
+							<Not Comment="Already playing strafe">
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Strafe"/>
+							</Not>
+						</And>
+						<And Comment="Check coming from Nav_Start">
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Strafe"/>
+							<IfActionStatus ActionName="Nav_Start" Status="Installed" ActiveTime="0.667f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+						</And>
+						<IfMannequinMarker MarkerName="ResumeNav"/>
+						<IfMannequinMarker MarkerName="EnableNavBackwards"/>
+					</Or>
+					<Not Comment="ForceStop Marker">
+						<IfMannequinMarker MarkerName="ForceStop"/>
+					</Not>
+					<Not>
+						<IfEncumbered immobilized="true"/>
+					</Not>
+					<IfCanNav/>
+					<Or>
+						<IfHasStatusEffect StatusEffect="ForceRun"/>
+						<And>
+							<Not>
+								<IfHasStatusEffect StatusEffect="PotionHaste"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="Sprint"/>
+							</Not>
+						</And>
+						<And Comment="Only if backwards input while Haste Elixir is active">
+							<Or>
+								<IfHasStatusEffect StatusEffect="PotionHaste"/>
+								<IfMannequinTag TagName="Sprint"/>
+							</Or>
+							<Or Comment="Pressing any Backward direction key">
+								<And Comment="Backward input during strafe sprint">
+									<Or>
+										<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+										<IfExternalCondition ConditionName="CombatNav"/>
+									</Or>
+									<IfExternalCondition ConditionName="Backward_180_Input"/>
+								</And>
+								<And Comment="Any input during non-strafe sprint movement">
+									<Not>
+										<IfExternalCondition ConditionName="CombatNav"/>
+									</Not>
+									<Not>
+										<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+									</Not>
+									<IfExternalCondition ConditionName="Any_Nav_Input"/>
+									<Not>
+										<IfCanSprint/>
+									</Not>
+								</And>
+							</Or>
+						</And>
+					</Or>
+					<Or>
+						<IfMannequinMarker MarkerName="EnableNavBackwards"/>
+						<Not>
+							<IfHasStatusEffect StatusEffect="SkipSprintStartTimer"/>
+						</Not>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not Comment="Only Stop when interrupted by a NavStop">
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ApplyMoveSpeedMultiplier>
+					<Default MultiplierType="MoveSpeedMod"/>
+				</ApplyMoveSpeedMultiplier>
+				<SetWeaponAccuracyBonus ResetWhenReinstalled="true">
+					<Default StanceBonus="12.25"/>
+					<Conditional Name="AimStandMusket" StanceBonus="13"/>
+					<Conditional Name="AimCrouchMusket" StanceBonus="13"/>
+					<Conditional Name="AimProneMusket" StanceBonus="13"/>
+					<Conditional Name="Leviathon" StanceBonus="12.0"/>
+					<Conditional Name="LeviathonIn" StanceBonus="25.0"/>
+					<Conditional Name="AimStand" StanceBonus="25.0"/>
+					<Conditional Name="AimCrouch" StanceBonus="25.0"/>
+					<Conditional Name="AimProne" StanceBonus="25.0"/>
+					<Conditional Name="Crouch" StanceBonus="12.5"/>
+					<Conditional Name="Prone" StanceBonus="12.75"/>
+				</SetWeaponAccuracyBonus>
+				<IfThenElse Comment="Navigation audio switch If Aiming walk else if stamina &gt;0 AND not eating or drinking AND not sprinting then run" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Or Comment="Aim">
+							<IfMannequinTag TagName="Aim"/>
+							<IfMannequinTag TagName="HeavyAim"/>
+							<IfMannequinTag TagName="ChargedAim"/>
+							<IfMannequinTag TagName="ChargedShakeAimAim"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<SetAudioSwitchState Comment="Walk" ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false">
+							<Default ForceStopOnDataChange="false" SwitchName="Navigation" StateName="Nav_Walk" SetOnStop="false"/>
+						</SetAudioSwitchState>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse Comment="If Stamina GreaterThan 0 and not drinking or eating or sprinting then run" ResetWhenReinstalled="true">
+							<IfCondition>
+								<And>
+									<IfStaminaValue ComparisonValue="0.00" ComparisonValueIsPercentage="true" ComparisonType="GreaterThan"/>
+									<Not Comment="Eating or Drinking">
+										<Or>
+											<IfMannequinTag TagName="Drink"/>
+											<IfMannequinTag TagName="Eat"/>
+											<IfMannequinTag TagName="Potion"/>
+										</Or>
+									</Not>
+									<Not Comment="Pressing Sprint Key">
+										<IfInput InputName="Sprint"/>
+									</Not>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<SetAudioSwitchState Comment="Run" ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false">
+									<Default ForceStopOnDataChange="false" SwitchName="Navigation" StateName="Nav_Run" SetOnStop="false"/>
+								</SetAudioSwitchState>
+							</ThenActivity>
+							<ElseActivity>
+								<IfThenElse ResetWhenReinstalled="true" Comment="">
+									<IfCondition>
+										<And Comment="Not eat or drink AND stamina LessThanOrEqual0">
+											<Not Comment="Eating or Drinking">
+												<Or>
+													<IfMannequinTag TagName="Drink"/>
+													<IfMannequinTag TagName="Eat"/>
+													<IfMannequinTag TagName="Potion"/>
+												</Or>
+											</Not>
+											<IfStaminaValue ComparisonValue="0.00" ComparisonValueIsPercentage="false" ComparisonType="LessThanOrEqual"/>
+										</And>
+									</IfCondition>
+									<ThenActivity>
+										<SetAudioSwitchState Comment="Exhausted" ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false">
+											<Default ForceStopOnDataChange="false" SwitchName="Voice" StateName="Vo_Exhausted" SetOnStop="false"/>
+										</SetAudioSwitchState>
+									</ThenActivity>
+									<ElseActivity>
+										<IfThenElse ResetWhenReinstalled="true" Comment="">
+											<IfCondition>
+												<Or>
+													<IfMannequinTag TagName="Drink"/>
+													<IfMannequinTag TagName="Eat"/>
+													<IfMannequinTag TagName="Potion"/>
+												</Or>
+											</IfCondition>
+											<ThenActivity>
+												<SetAudioSwitchState Comment="Idle" ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false">
+													<Default ForceStopOnDataChange="false" SwitchName="Navigation" StateName="Nav_Idle" SetOnStop="false"/>
+												</SetAudioSwitchState>
+											</ThenActivity>
+											<ElseActivity/>
+										</IfThenElse>
+									</ElseActivity>
+								</IfThenElse>
+							</ElseActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Breathing audio switch If aiming, dirnking or eating: switch to breathing" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Or Comment="Aim or Eat or Drink">
+							<IfMannequinTag TagName="Aim"/>
+							<IfMannequinTag TagName="ChargedAim"/>
+							<IfMannequinTag TagName="ChargedShakeAimAim"/>
+							<IfMannequinTag TagName="Drink"/>
+							<IfMannequinTag TagName="Eat"/>
+							<IfMannequinTag TagName="Potion"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<SetAudioSwitchState Comment="Breathing" ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false">
+							<Default ForceStopOnDataChange="false" SwitchName="Voice" StateName="Vo_Breathing" SetOnStop="false"/>
+						</SetAudioSwitchState>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse Comment="Camera lock on movement" ResetWhenReinstalled="true">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinTag TagName="Aim"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="HipAim"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="ChargedAim"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="Shoot"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="Reload"/>
+							</Not>
+							<Or>
+								<Not Comment="Blocking">
+									<IfMannequinTag TagName="Blocking"/>
+								</Not>
+							</Or>
+							<Not>
+								<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+							</Not>
+							<Not>
+								<IfExternalCondition ConditionName="CombatNav"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group Comment="Free Run No Camera Lock">
+							<InputRelativeFacing>
+								<Default TurnRate="0.30" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+								<Conditional Name="Crouch" TurnRate="0.20" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+								<Conditional Name="Prone" TurnRate="0.20" UseExponentialTurnRate="true" RepeatInitialInput="false" UseClosestTarget="false" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+							</InputRelativeFacing>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0" DelayBlackboardKey=""/>
+							</SetMannequinTag>
+							<CharacterRelativeMovement>
+								<Default ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,1.65,0.0" Accel="25.0,25.0,25.0" Decel="25.0,25.0,25.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+								<Conditional Name="Wade" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,1.65,0.0" Accel="10.0,10.0,10.0" Decel="10.0,10.0,10.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.0" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Stand_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,1.65,0.0" Accel="25.0,25.0,25.0" Decel="25.0,25.0,25.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.0" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Block_Nav_Speed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="false" Speed="0.0,2.0,0" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,1.40" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Crouch_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,0.825,0.0" Accel="2.5,2.5,2.5" Decel="2.5,2.5,2.5" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.0" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Prone_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,0.1875,0.0" Accel="1.0,1.0,1.0" Decel="5.0,5.0,5.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,1.65,0.0" Accel="10.0,10.0,10.0" Decel="10.0,10.0,10.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Prone" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,0.375,0.0" Accel="1.0,1.0,1.0" Decel="5.0,5.0,5.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Blunderbuss_Aiming_Not_Shooting" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="3.25,2.275,3.25" Accel="12.0,12.0,12.0" Decel="35.0,35.0,35.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="Aiming_Or_Shooting" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,1.65,0.0" Accel="12.0,12.0,12.0" Decel="35.0,35.0,35.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80"/>
+								<Conditional Name="ServerValidatedCanRun" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="0.0,3.25,0.0" Accel="35.0,35.0,35.0" Decel="35.0,35.0,35.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.0,1.40,0.0" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.8"/>
+							</CharacterRelativeMovement>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<Group Comment="Camera Lock Strafe Movement">
+							<IfThenElse ResetWhenReinstalled="true" Comment="Check for Bow Accuracy">
+								<IfCondition>
+									<IfMannequinTag TagName="Bow"/>
+								</IfCondition>
+								<ThenActivity>
+									<CameraRelativeMotion>
+										<Default ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+										<Conditional Name="Wade" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-4.0"/>
+										<Conditional Name="Bow_Hipfire_Movespeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="2.25,2.25,2.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+										<Conditional Name="Combat_Nav_Stand" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+										<Conditional Name="Combat_Nav_Stand_Slow" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+										<Conditional Name="Combat_Nav_Stand_Fast" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+										<Conditional Name="Combat_Nav_Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-3.0"/>
+										<Conditional Name="Crouch_Unarmed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-3.0"/>
+										<Conditional Name="Stand_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-4.0"/>
+										<Conditional Name="Block_Nav_Speed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="false" Speed="2,2,2" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,1.40" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+										<Conditional Name="Bow_ChargedAim" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-4.0"/>
+										<Conditional Name="Combat_Nav_MagicGauntlet_ChargedAim" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-4.0"/>
+										<Conditional Name="Crouch_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.825,0.825,0.825" Accel="2.50,2.50,2.50" Decel="2.50,2.50,2.50" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-3.0"/>
+										<Conditional Name="Prone_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.1875,0.1875,0" Accel="1.0,1.0,1.0" Decel="5.0,5.0,5.0" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-4.0"/>
+										<Conditional Name="Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-4.0"/>
+										<Conditional Name="Prone" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.375,0.375,0" Accel="1.00,1.00,1.00" Decel="5.00,5.00,5.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+										<Conditional Name="Aiming_Or_Shooting" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+										<Conditional Name="ServerValidatedCanRun" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,0" Accel="35.00,35.00,35.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+									</CameraRelativeMotion>
+								</ThenActivity>
+								<ElseActivity>
+									<IfThenElse ResetWhenReinstalled="true" Comment="Check for Blunderbuss Accuracy">
+										<IfCondition>
+											<Or>
+												<IfMannequinTag TagName="Blunderbuss"/>
+												<Not>
+													<True/>
+												</Not>
+											</Or>
+										</IfCondition>
+										<ThenActivity>
+											<CameraRelativeMotion>
+												<Default ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Wade" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="FireStaff_FlameThrower_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="2.75,2.75,2.75" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Combat_Nav_Stand" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Combat_Nav_Stand_Slow_Blunderbuss" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="0.9" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Combat_Nav_Stand_Slow" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Combat_Nav_Stand_Fast" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Combat_Nav_Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Crouch_Unarmed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-3.0"/>
+												<Conditional Name="Stand_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Block_Nav_Speed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="false" Speed="2,2,2" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,1.40" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+												<Conditional Name="Bow_ChargedAim" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Combat_Nav_MagicGauntlet_ChargedAim" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Crouch_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.825,0.825,0.825" Accel="2.50,2.50,2.50" Decel="2.50,2.50,2.50" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Prone_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.1875,0.1875,0" Accel="1.0,1.0,1.0" Decel="5.0,5.0,5.0" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Prone" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.375,0.375,0" Accel="1.00,1.00,1.00" Decel="5.00,5.00,5.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Blunderbuss_Aiming_Not_Shooting" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="3.25,2.275,3.25" Accel="12.0,12.0,12.0" Decel="35.0,35.0,35.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Aiming_Or_Shooting" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="LifeStaff_Siphon_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.0,3.0,3.0" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="ServerValidatedCanRun" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,0" Accel="35.00,35.00,35.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+											</CameraRelativeMotion>
+										</ThenActivity>
+										<ElseActivity>
+											<CameraRelativeMotion>
+												<Default ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+												<Conditional Name="Wade" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-6.0"/>
+												<Conditional Name="FireStaff_FlameThrower_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="2.75,2.75,2.75" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+												<Conditional Name="Combat_Nav_Stand" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+												<Conditional Name="Combat_Nav_Stand_Slow_Blunderbuss" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="0.9" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="0.0"/>
+												<Conditional Name="Hatchet_Aim_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="2.25,2.25,2.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="StickyBomb_Aim_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Combat_Nav_Stand_Slow" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Combat_Nav_Stand_Fast" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,3.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Crouch_Hipfire" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Combat_Nav_Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Crouch_Unarmed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.25,1.25,1.25" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Stand_Walk_Hipfire" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Stand_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Block_Nav_Speed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="false" Speed="2,2,2" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,1.40" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80"/>
+												<Conditional Name="Bow_ChargedAim" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Combat_Nav_MagicGauntlet_ChargedAim" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="25.00,25.00,25.00" Decel="25.00,25.00,25.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Crouch_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.825,0.825,0.825" Accel="2.50,2.50,2.50" Decel="2.50,2.50,2.50" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Prone_Hipfire" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.375,0.375,0" Accel="1.00,1.00,1.00" Decel="5.00,5.00,5.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-5.0"/>
+												<Conditional Name="Prone_Walk" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.1875,0.1875,0" Accel="1.0,1.0,1.0" Decel="5.0,5.0,5.0" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Crouch" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="10.00,10.00,10.00" Decel="10.00,10.00,10.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.80,0.80,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Prone" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="0.375,0.375,0" Accel="1.00,1.00,1.00" Decel="5.00,5.00,5.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="0.18,0.18,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="Blunderbuss_Aiming_Not_Shooting" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" Forced="true" AlignVelocity="true" Speed="3.25,2.275,3.25" Accel="12.0,12.0,12.0" Decel="35.0,35.0,35.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.2" MaxAnalogInputMag="0.80"/>
+												<Conditional Name="Aiming_Or_Shooting" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,1.65" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.00" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+												<Conditional Name="LifeStaff_Siphon_MoveSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.0,3.0,3.0" Accel="12.00,12.00,12.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-7.0"/>
+												<Conditional Name="ServerValidatedCanRun" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,0" Accel="35.00,35.00,35.00" Decel="35.00,35.00,35.00" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-2.0"/>
+											</CameraRelativeMotion>
+										</ElseActivity>
+									</IfThenElse>
+								</ElseActivity>
+							</IfThenElse>
+							<CameraRelativeFacing>
+								<Default TurnRate="0.30" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+								<Conditional Name="Block_Nav" TurnRate="1.00" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+								<Conditional Name="Aiming_Or_Shooting" TurnRate="0.35" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+								<Conditional Name="Sprint_Speed" TurnRate="1.00" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+							</CameraRelativeFacing>
+							<IfThenElse Comment="Set Directional Tags when strafing" ResetWhenReinstalled="true">
+								<IfCondition>
+									<Or>
+										<IfInput InputName="ForwardNav"/>
+										<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.00" TargetAngleTolerance="30.00"/>
+									</Or>
+								</IfCondition>
+								<ThenActivity>
+									<SetMannequinTag ResetWhenReinstalled="true">
+										<Default TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+									</SetMannequinTag>
+								</ThenActivity>
+								<ElseActivity>
+									<IfThenElse ResetWhenInstalled="true">
+										<IfCondition>
+											<Or>
+												<IfInput InputName="moveback"/>
+												<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.00" TargetAngleTolerance="70.00"/>
+											</Or>
+										</IfCondition>
+										<ThenActivity>
+											<SetMannequinTag ResetWhenReinstalled="true">
+												<Default TagName="BackNav" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+											</SetMannequinTag>
+										</ThenActivity>
+										<ElseActivity>
+											<IfThenElse ResetWhenReinstalled="true">
+												<IfCondition>
+													<Or>
+														<IfInput InputName="moveleft"/>
+														<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="270.00" TargetAngleTolerance="70.00"/>
+													</Or>
+												</IfCondition>
+												<ThenActivity>
+													<SetMannequinTag ResetWhenReinstalled="true">
+														<Default TagName="LeftNav" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+													</SetMannequinTag>
+												</ThenActivity>
+												<ElseActivity>
+													<SetMannequinTag ResetWhenReinstalled="true">
+														<Default TagName="RightNav" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+													</SetMannequinTag>
+												</ElseActivity>
+											</IfThenElse>
+										</ElseActivity>
+									</IfThenElse>
+								</ElseActivity>
+							</IfThenElse>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName=""/>
+					<Conditional Name="Stand" AudioTriggerName="Movement_Stand"/>
+					<Conditional Name="Crouch" AudioTriggerName="Movement_Sneak"/>
+				</AIAudioTriggerActivity>
+				<IfThenElse Comment="Set Walk and Run Tags" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<MoveSpeed Value="5.00" ComparisonType="GreaterThanOrEqual"/>
+							<IfMannequinTag TagName="ForwardNav"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Sprint" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.50" DelayBlackboardKey=""/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="false">
+							<IfCondition>
+								<MoveSpeed Value="2.00" ComparisonType="GreaterThanOrEqual"/>
+							</IfCondition>
+							<ThenActivity>
+								<SetMannequinTag ResetWhenReinstalled="false">
+									<Default TagName="Run" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+								</SetMannequinTag>
+							</ThenActivity>
+							<ElseActivity>
+								<SetMannequinTag ResetWhenReinstalled="false">
+									<Default TagName="Walk" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+								</SetMannequinTag>
+							</ElseActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<ClearMannequinTagGroup Comment="NavDirection" ResetWhenReinstalled="false">
+					<Default TagGroupName="NavDirection" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<ClearMannequinTagGroup Comment="NavigationType On Exit" ResetWhenReinstalled="false">
+					<Default TagGroupName="NavigationType" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<IfThenElse Comment="OneTimeScript to initialize features" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Not>
+							<IfMannequinTag TagName="OneTimeScriptDone"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="OneTimeScriptDone" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<IfThenElse Comment="Initialize for 180 turns" ResetWhenReinstalled="false">
+								<IfCondition>
+									<IfExternalCondition ConditionName="180_Turn_Detected"/>
+								</IfCondition>
+								<ThenActivity>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="FirstAttack" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Prevent Stop anim during 180 turn" ResetWhenReinstalled="true">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="FirstAttack"/>
+							<Not>
+								<IfExternalCondition ConditionName="180_Turn_Detected"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="FirstAttack" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.00" DelayBlackboardKey=""/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag Comment="Unset OneTimeScriptDone" ResetWhenReinstalled="false">
+					<Default TagName="OneTimeScriptDone" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.00" DelayBlackboardKey=""/>
+				</SetMannequinTag>
+				<SetMannequinTag Comment="Unset OneTimeScriptDone" ResetWhenReinstalled="false">
+					<Default TagName="FirstAttack" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.00" DelayBlackboardKey=""/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Nav_Stop" FragmentName="Nav_Stop">
+			<ActivationCondition>
+				<And>
+					<Or Comment="Navigation Check">
+						<IfMannequinTag TagName="Walk"/>
+						<IfMannequinTag TagName="Run"/>
+						<IfMannequinTag TagName="Sprint"/>
+						<IfFragmentPlaying FragmentName="Land_Sprint" UseHostActionFragment="false"/>
+						<IfFragmentPlaying FragmentName="Land_Sprint_Diagonal" UseHostActionFragment="false"/>
+					</Or>
+					<Or Comment="Input Triggers">
+						<IfExternalCondition ConditionName="No_Input_Detected"/>
+						<And Comment="Run 180">
+							<Or Comment="Input 180">
+								<IfAnalogInput Comment="Analog 180" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="180.00" TargetAngleTolerance="44.00"/>
+								<IfAnalogInput Comment="Keyboard 180" AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="180.00" TargetAngleTolerance="44.00"/>
+							</Or>
+							<Not Comment="Already performing 180">
+								<IfMannequinTag TagName="FirstAttack"/>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="TurnInPlaceDisabled"/>
+							</Not>
+						</And>
+						<IfMannequinMarker MarkerName="ForceStop"/>
+						<IfEncumbered immobilized="true"/>
+						<Not>
+							<IfCanNav/>
+						</Not>
+						<IfP2PTrading/>
+						<And>
+							<IfHasStatusEffect StatusEffect="ForceRun"/>
+							<Or>
+								<IfFragmentPlaying FragmentName="Land_Sprint" UseHostActionFragment="false"/>
+								<IfFragmentPlaying FragmentName="Land_Sprint_Diagonal" UseHostActionFragment="false"/>
+							</Or>
+						</And>
+					</Or>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName=""/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="PreventStop"/>
+					</Not>
+					<Not>
+						<And>
+							<IfExternalCondition ConditionName="180_Input"/>
+							<IfHasStatusEffect StatusEffect="SkipSprintStartTimer"/>
+						</And>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName=""/>
+					<And>
+						<Or>
+							<IfMannequinTag TagName="Aim"/>
+							<IfMannequinTag TagName="Blocking"/>
+						</Or>
+						<Not>
+							<IfMannequinMarker MarkerName="PreventNav"/>
+						</Not>
+					</And>
+					<And>
+						<IfMannequinTag TagName="AimDownSights"/>
+						<Not>
+							<IfMannequinMarker MarkerName="PreventNav"/>
+						</Not>
+					</And>
+					<IfMannequinMarker MarkerName="NavStop_Exit"/>
+					<And>
+						<Or>
+							<IfMannequinTag TagName="Rifle"/>
+							<IfMannequinTag TagName="Blunderbuss"/>
+						</Or>
+						<IfMannequinTag TagName="HeavyAim"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag Comment="NavType" ResetWhenReinstalled="false">
+					<Default TagName="Walk" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+					<Conditional Name="Sprint_Speed" TagName="Sprint" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+					<Conditional Name="Crouch_Sprint_Speed" TagName="Sprint" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+					<Conditional Name="Run_Speed" TagName="Run" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<CharacterRelativeMovement Comment="Slow to stop">
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="40.0,40.0,0.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+					<Conditional Name="CombatNav+Melee" ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="12.0,12.0,0.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+					<Conditional Name="CombatNav+Magic" ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="12.0,12.0,0.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="ForwardNav" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+					<Default TagName="BackNav" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+					<Default TagName="LeftNav" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+					<Default TagName="RightNav" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetWeaponAccuracyBonus ResetWhenReinstalled="true">
+					<Default MovementBonus="-2.0"/>
+				</SetWeaponAccuracyBonus>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Reset Nav Tags after settling">
+					<IfCondition>
+						<Not>
+							<Or>
+								<IfMannequinMarker MarkerName="PreventNav"/>
+								<IfMannequinMarker MarkerName="ResumeNav"/>
+							</Or>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ClearMannequinTagGroup ResetWhenReinstalled="false">
+							<Default TagGroupName="NavigationType" OnEnter="Clear" OnExit="Clear"/>
+						</ClearMannequinTagGroup>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="Crouch_DesiredAlreadySet" TagName="Crouch_Desired"/>
+		<IfMannequinTag Name="Prone_DesiredSet" TagName="Prone_Desired"/>
+		<And Name="Crouch_Walk">
+			<IfMannequinTag TagName="Crouch"/>
+			<Or>
+				<IfInput InputName="walk"/>
+				<IfMannequinMarker MarkerName="ForceWalk"/>
+				<IfMannequinTag TagName="Aim"/>
+			</Or>
+		</And>
+		<And Name="Stand_Reload">
+			<IfMannequinTag TagName="Stand"/>
+			<IfMannequinTag TagName="Reload"/>
+		</And>
+		<And Name="Stand_Unarmed">
+			<IfMannequinTag TagName="Stand"/>
+			<IfMannequinTag TagName="Unarmed"/>
+		</And>
+		<And Name="Crouch_Unarmed">
+			<IfMannequinTag TagName="Crouch"/>
+			<IfMannequinTag TagName="Unarmed"/>
+		</And>
+		<And Name="Prone_Walk">
+			<IfMannequinTag TagName="Prone"/>
+			<IfInput InputName="walk"/>
+		</And>
+		<And Name="Prone_Hipfire">
+			<IfMannequinTag TagName="Prone"/>
+			<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Firearm_Shoot_HipFire"/>
+			<IfMannequinTag TagName="Rifle"/>
+		</And>
+		<And Name="Bow_ChargedAim">
+			<IfMannequinTag TagName="Bow"/>
+			<IfMannequinTag TagName="ChargedAim"/>
+		</And>
+		<IfCanRun Name="ServerValidatedCanRun" UseServer="True"/>
+		<And Name="Stand_Walk_Hipfire">
+			<IfMannequinTag TagName="Stand"/>
+			<IfMannequinTag TagName="Rifle"/>
+			<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Firearm_Shoot_HipFire"/>
+		</And>
+		<And Name="Block_Nav_Speed">
+			<IfMannequinTag TagName="Blocking"/>
+		</And>
+		<And Name="Stand_Walk">
+			<IfMannequinTag TagName="Stand"/>
+			<Or>
+				<IfMannequinTag TagName="Aim"/>
+				<IfMannequinTag TagName="ChargedAim"/>
+				<IfMannequinTag TagName="HeavyAim"/>
+				<IfMannequinTag TagName="SmokeAim"/>
+				<IfMannequinTag TagName="Reload"/>
+				<IfInput InputName="walk"/>
+				<IfMannequinTag TagName="HipAim"/>
+				<IfMannequinTag TagName="Shoot"/>
+				<IfMannequinMarker MarkerName="ForceWalk"/>
+				<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+				<IfEncumbered/>
+				<Not>
+					<IfCanRun/>
+				</Not>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Fire_Staff_FlameThrower"/>
+			</Not>
+			<Not>
+				<And>
+					<IfMannequinTag TagName="Blunderbuss"/>
+					<IfMannequinTag TagName="AimDownSights"/>
+					<Not>
+						<IfMannequinTag TagName="Shoot"/>
+					</Not>
+				</And>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="SiphonWalk"/>
+			</Not>
+		</And>
+		<IfInput Name="LeftNav" InputName="moveleft"/>
+		<IfInput Name="RightNav" InputName="moveright"/>
+		<Or Name="AnyNavInput">
+			<IfInput InputName="ForwardNav"/>
+			<IfInput InputName="moveback"/>
+			<IfInput InputName="moveleft"/>
+			<IfInput InputName="moveright"/>
+			<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false"/>
+		</Or>
+		<And Name="AllNavInput">
+			<IfInput InputName="ForwardNav"/>
+			<IfInput InputName="moveback"/>
+			<IfInput InputName="moveleft"/>
+			<IfInput InputName="moveright"/>
+		</And>
+		<And Name="LeftRight_NavCancel">
+			<IfInput InputName="moveright"/>
+			<IfInput InputName="moveleft"/>
+			<Not>
+				<IfInput InputName="ForwardNav"/>
+			</Not>
+			<Not>
+				<IfInput InputName="moveback"/>
+			</Not>
+		</And>
+		<And Name="ForwardBack_NavCancel">
+			<IfInput InputName="moveback"/>
+			<IfInput InputName="ForwardNav"/>
+			<Not>
+				<IfInput InputName="moveleft"/>
+			</Not>
+			<Not>
+				<IfInput InputName="moveright"/>
+			</Not>
+		</And>
+		<And Name="Aiming_Or_Shooting">
+			<Or>
+				<IfMannequinTag TagName="Shoot"/>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Or>
+		</And>
+		<And Name="Blunderbuss_Aiming_Not_Shooting">
+			<And>
+				<IfMannequinTag TagName="Blunderbuss"/>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</And>
+			<Not>
+				<IfMannequinTag TagName="Shoot"/>
+			</Not>
+		</And>
+		<And Name="NavStart">
+			<Not>
+				<IfMannequinTag TagName="Variant1"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Fire_Staff_FlameThrower_Speed_Upgrade"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="SiphonWalk"/>
+			</Not>
+		</And>
+		<And Name="Run_Speed">
+			<IfMannequinTag TagName="Stand"/>
+			<MoveSpeed Comment="GreaterThanOrEqual2.0" Value="2.0" Comparison="GreaterThanOrEqual"/>
+			<IfCanNav/>
+		</And>
+		<And Name="Sprint_Speed">
+			<MoveSpeed Comment="GreaterThanOrEqual4.0" Value="4.5" Comparison="GreaterThanOrEqual"/>
+			<IfCanSprint/>
+		</And>
+		<And Name="Crouch_Sprint_Speed">
+			<IfMannequinTag TagName="Crouch"/>
+			<MoveSpeed Comment="GreaterThanOrEqual2.0" Value="2.0" Comparison="GreaterThanOrEqual"/>
+		</And>
+		<And Name="Prone_Sprint_Speed">
+			<IfMannequinTag TagName="Prone"/>
+			<MoveSpeed Comment="GreaterThanOrEqual1.0" Value="1.0" Comparison="GreaterThanOrEqual"/>
+		</And>
+		<Or Name="180_Turn_Detected">
+			<IfAnalogInput Comment="Analog 180" AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="180.00" TargetAngleTolerance="45.00"/>
+			<IfAnalogInput Comment="Keyboard 180" AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="180.00" TargetAngleTolerance="45.00"/>
+		</Or>
+		<And Name="No_Input_Detected">
+			<Not>
+				<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false"/>
+			</Not>
+			<Not>
+				<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="false"/>
+			</Not>
+		</And>
+		<And Name="Wade">
+			<And>
+				<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+			</And>
+			<IfPlayerSetting PlayerSettingName="Swimming"/>
+		</And>
+		<Or Name="WeaponTransition">
+			<IfMannequinTag TagName="From_1H_Melee"/>
+			<IfMannequinTag TagName="From_2H_Melee"/>
+			<IfMannequinTag TagName="From_1H_Ranged"/>
+			<IfMannequinTag TagName="From_2H_Ranged"/>
+			<IfMannequinTag TagName="From_Bow"/>
+			<IfMannequinTag TagName="From_MagicGauntlet"/>
+			<IfMannequinTag TagName="From_MagicStaff"/>
+			<IfMannequinTag TagName="From_Spear"/>
+			<IfMannequinTag TagName="From_VoidGauntlet"/>
+			<IfMannequinTag TagName="From_Blunderbuss"/>
+			<IfMannequinTag TagName="From_Greatsword"/>
+		</Or>
+		<And Name="CombatNav">
+			<Or>
+				<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+				<And>
+					<IfPlayerSetting PlayerSettingName="TargetLockStrafe"/>
+					<IfCameraLockActive/>
+				</And>
+				<IfMannequinTag TagName="AutoRun"/>
+				<IfAliasStatus GridAlias="Aim" Status="Installed"/>
+				<IfMannequinTag TagName="AimDownSights"/>
+				<IfMannequinMarker MarkerName="ForceStrafeNav"/>
+				<IfMannequinTag TagName="Reload"/>
+				<And>
+					<IfInput InputName="block_active_virtual"/>
+					<Not>
+						<IfMannequinMarker MarkerName="AllowCharacterRelativeNav"/>
+					</Not>
+					<Not>
+						<IfExternalCondition ConditionName="Exhausted"/>
+					</Not>
+				</And>
+				<And>
+					<Or>
+						<IfAliasStatus GridAlias="UpperBodyAttack" Status="Installed"/>
+					</Or>
+					<Not>
+						<Or>
+							<IfMannequinMarker MarkerName="AllowCharacterRelativeNav"/>
+							<IfMannequinMarker MarkerName="CanTransition_UpperBody"/>
+							<IfMannequinMarker MarkerName="CanCancel_UpperBody"/>
+						</Or>
+					</Not>
+				</And>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Unarmed"/>
+				<IfMannequinTag TagName="1H_Melee"/>
+				<IfMannequinTag TagName="2H_Melee"/>
+				<IfMannequinTag TagName="1H_Ranged"/>
+				<IfMannequinTag TagName="2H_Ranged"/>
+				<IfMannequinTag TagName="Bow"/>
+				<IfMannequinTag TagName="MagicGauntlet"/>
+				<IfMannequinTag TagName="MagicStaff"/>
+			</Or>
+		</And>
+		<And Name="CombatNav+Melee">
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="1H_Melee"/>
+				<IfMannequinTag TagName="2H_Melee"/>
+			</Or>
+		</And>
+		<And Name="CombatNav+Magic">
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="MagicGauntlet"/>
+				<IfMannequinTag TagName="MagicStaff"/>
+			</Or>
+		</And>
+		<And Name="Combat_Nav_Stand">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="1H_Melee"/>
+				<IfMannequinTag TagName="2H_Melee"/>
+				<IfMannequinTag TagName="1H_Ranged"/>
+				<IfMannequinTag TagName="2H_Ranged"/>
+				<IfMannequinTag TagName="Bow"/>
+				<IfMannequinTag TagName="MagicGauntlet"/>
+				<IfMannequinTag TagName="MagicStaff"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="ChargedAim"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="ForceWalk"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<IfCanRun/>
+			<ActionConditionEquipLoadCategory Value="Normal"/>
+		</And>
+		<And Name="Combat_Nav_Stand_Slow">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="1H_Melee"/>
+				<IfMannequinTag TagName="2H_Melee"/>
+				<IfMannequinTag TagName="1H_Ranged"/>
+				<IfMannequinTag TagName="2H_Ranged"/>
+				<IfMannequinTag TagName="Bow"/>
+				<IfMannequinTag TagName="MagicGauntlet"/>
+				<IfMannequinTag TagName="MagicStaff"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Blunderbuss"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Magic_IsReadying_Siphon"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Magic_IsReadying_FlameThrower"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="ChargedAim"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="ForceWalk"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="SiphonWalk"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<IfCanRun/>
+			<Or>
+				<ActionConditionEquipLoadCategory Value="Slow"/>
+				<ActionConditionEquipLoadCategory Value="Overburdened"/>
+			</Or>
+		</And>
+		<And Name="Combat_Nav_Stand_Slow_Blunderbuss">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Blunderbuss"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Magic_IsReadying_Siphon"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Magic_IsReadying_FlameThrower"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="ChargedAim"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="ForceWalk"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="SiphonWalk"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<IfCanRun/>
+			<Or>
+				<ActionConditionEquipLoadCategory Value="Slow"/>
+				<ActionConditionEquipLoadCategory Value="Overburdened"/>
+			</Or>
+		</And>
+		<And Name="Combat_Nav_Stand_Fast">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="1H_Melee"/>
+				<IfMannequinTag TagName="2H_Melee"/>
+				<IfMannequinTag TagName="1H_Ranged"/>
+				<IfMannequinTag TagName="2H_Ranged"/>
+				<IfMannequinTag TagName="Bow"/>
+				<IfMannequinTag TagName="MagicGauntlet"/>
+				<IfMannequinTag TagName="MagicStaff"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="ChargedAim"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="ForceWalk"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<IfCanRun/>
+			<ActionConditionEquipLoadCategory Value="Fast"/>
+		</And>
+		<And Name="Combat_Nav_MagicGauntlet_ChargedAim">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<And>
+				<IfMannequinTag TagName="ChargedAim"/>
+				<IfMannequinTag TagName="MagicGauntlet"/>
+				<IfMannequinTag TagName="Fire"/>
+			</And>
+			<Not>
+				<IfMannequinMarker MarkerName="ForceWalk"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<IfCanRun/>
+		</And>
+		<And Name="FireStaff_FlameThrower_MoveSpeed">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<And>
+				<IfMannequinTag TagName="MagicStaff"/>
+				<IfMannequinTag TagName="Fire"/>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Fire_Staff_FlameThrower"/>
+			</And>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<IfCanRun/>
+		</And>
+		<And Name="LifeStaff_Siphon_MoveSpeed">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<And>
+				<IfMannequinTag TagName="MagicStaff"/>
+				<IfMannequinTag TagName="Heal"/>
+				<IfMannequinMarker MarkerName="SiphonWalk"/>
+			</And>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<IfCanRun/>
+		</And>
+		<And Name="Combat_Nav_Crouch">
+			<IfMannequinTag TagName="Crouch"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="1H_Melee"/>
+				<IfMannequinTag TagName="2H_Melee"/>
+				<IfMannequinTag TagName="1H_Ranged"/>
+				<IfMannequinTag TagName="2H_Ranged"/>
+				<IfMannequinTag TagName="Bow"/>
+				<IfMannequinTag TagName="MagicGauntlet"/>
+				<IfMannequinTag TagName="MagicStaff"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="ForceWalk"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<IfCanRun/>
+		</And>
+		<And Name="Crouch_Hipfire">
+			<IfMannequinTag TagName="Crouch"/>
+			<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Firearm_Shoot_HipFire"/>
+			<IfMannequinTag TagName="Rifle"/>
+		</And>
+		<Or Name="Backward_180_Input">
+			<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180" TargetAngleTolerance="70"/>
+			<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180" TargetAngleTolerance="70"/>
+		</Or>
+		<IfMannequinTag Name="Block_Nav" TagName="Blocking"/>
+		<And Name="Bow_Hipfire_MoveSpeed">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<And>
+				<IfMannequinTag TagName="Bow"/>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Bow_Shoot_HipFire"/>
+			</And>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<IfCanRun/>
+		</And>
+		<And Name="Hatchet_Aim_MoveSpeed">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<And>
+				<IfMannequinTag TagName="Axe"/>
+				<Or>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Throw_ReadyWeapon_UpperBody"/>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Throw_Aim_UpperBody"/>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Throw_Reload_UpperBody"/>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Throw_Primary_UpperBody"/>
+				</Or>
+			</And>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<IfCanRun/>
+		</And>
+		<And Name="StickyBomb_Aim_MoveSpeed">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Blocking"/>
+			</Not>
+			<And>
+				<IfMannequinTag TagName="Rifle"/>
+				<Or>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_StickyBomb_Ready"/>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_StickyBomb_Aim"/>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_StickyBomb_Throw"/>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_StickyBomb_Reload"/>
+				</Or>
+			</And>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<IfCanRun/>
+		</And>
+	</Conditions>
+</ActionList>
+

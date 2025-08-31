@@ -1,0 +1,58 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction_Additive" FragmentName="r_R0_F" ServerStarted="true">
+			<ActivationCondition>
+				<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/Brute/CAGE/BruteAdditiveReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="0.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="Boulder_Reaction" FragmentName="EmptyFragment" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Attack_Hurl_Boulder"/>
+					<IfHasStatusEffect StatusEffect="AI_Naga_AngryEarth_StuckInRock"/>
+					<IfMannequinMarker MarkerName="CanBurrow"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="BreakoutWindow" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_EmptyReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+	</Conditions>
+</ActionList>
+

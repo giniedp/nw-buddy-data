@@ -1,0 +1,48 @@
+<ActionList>
+	<Actions>
+		<Action Name="Caster_Channeling" FragmentName="POI_Ritual_Channeling_LOOP" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Caster_Channeling_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="0.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Caster_Channeling_NoBlock" FragmentName="Caster_Channeling_DisableBlock" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Caster_Channeling_NoBlock_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="0.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="APPLYROTATION" MarkerName="ApplyRotation"/>
+		<IfMannequinMarker Name="FaceTarget" MarkerName="FaceTarget"/>
+		<IfMannequinMarker Name="Translation3x" MarkerName="Translation3x"/>
+		<IfMannequinTag Name="ChainAttack" TagName="ChainAttack"/>
+		<IfMannequinTag Name="StopChainAttack" TagName="StopChainAttack"/>
+		<IfHTNCAGEAction Name="DoubleSlash_R_Combo" ActionName="Attack_DoubleSlash_R_Combo_CAGE_Task"/>
+		<IfHTNCAGEAction Name="DoubleSlash_L_Combo" ActionName="Attack_DoubleSlash_L_Combo_CAGE_Task"/>
+		<IfHTNCAGEAction Name="SpinSlash_Combo" ActionName="Attack_SpinSlash_CAGE_Task"/>
+		<IfMannequinMarker Name="StopFacingTarget" MarkerName="StopFacingTarget"/>
+	</Conditions>
+</ActionList>
+

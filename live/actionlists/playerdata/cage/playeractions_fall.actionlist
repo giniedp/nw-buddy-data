@@ -1,0 +1,878 @@
+<ActionList>
+	<Actions>
+		<Action Name="Land_Hard" FragmentName="Land">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<HeightToGround ActivationHeight="0.60"/>
+					</Not>
+					<IfMannequinTag TagName="Hard"/>
+					<Not>
+						<IfExternalCondition ConditionName="Pressing_Forward"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Attack_Falling"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName=""/>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Hard" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="true">
+					<Default TagGroupName="Land" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="true" AlignVelocity="true" UseEquipLoadMultiplier="false" Speed="0.0,0.0,0.0" Accel="0.0,30.0,100.0" Decel="100.0,100.0,100.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Variant1" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="NavigationType" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Land_Normal" FragmentName="Land">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<HeightToGround ActivationHeight="0.60"/>
+					</Not>
+					<IfMannequinTag TagName="Normal"/>
+					<Or>
+						<IfExternalCondition ConditionName="NotMoving"/>
+						<And>
+							<Not>
+								<IfExternalCondition ConditionName="NotMoving"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="ForwardNav"/>
+							</Not>
+							<Not>
+								<IfExternalCondition ConditionName="Pressing_Forward"/>
+							</Not>
+						</And>
+						<IfHasStatusEffect StatusEffect="Sprint_Delay_Timer"/>
+					</Or>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Attack_Falling"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName=""/>
+					<And>
+						<IfMannequinTag TagName="Blocking"/>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Normal" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="true">
+					<Default TagGroupName="Land" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,30.0,100.0" Decel="100.0,100.0,100.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Variant1" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="NavigationType" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Land_Soft" FragmentName="Land">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<HeightToGround ActivationHeight="0.60"/>
+					</Not>
+					<IfMannequinTag TagName="Soft"/>
+					<Not Comment="Land_Roll Check">
+						<And>
+							<IfMannequinTag TagName="ForwardNav"/>
+							<IfExternalCondition ConditionName="Pressing_Forward"/>
+						</And>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Attack_Falling"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName=""/>
+					<And>
+						<IfMannequinTag TagName="Blocking"/>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Soft" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="true">
+					<Default TagGroupName="Land" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,30.0,100.0" Decel="100.0,100.0,100.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Variant1" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="NavigationType" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Land_Roll" FragmentName="Land_Roll">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<HeightToGround ActivationHeight="0.60"/>
+					</Not>
+					<IfMannequinTag TagName="Hard"/>
+					<IfExternalCondition ConditionName="Pressing_Forward"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+					<Conditional Name="Jump_Slowed" MotionMultiplier="0.85" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="false" Comment="DSet crouch to stand transition tags if appropriate">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand_Desired"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="FromCrouch" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearMannequinTagGroup ResetWhenReinstalled="true">
+					<Default TagGroupName="PostureTransition" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Land_Sprint" FragmentName="Land_Sprint">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<Not Comment="Only triggered through TransitionInstant">
+							<True/>
+						</Not>
+						<IfMannequinTag TagName="ForwardNav"/>
+						<And>
+							<Not>
+								<IfMannequinTag TagName="ForwardNav"/>
+							</Not>
+							<IfExternalCondition ConditionName="Pressing_Forward"/>
+						</And>
+					</Or>
+					<Not>
+						<HeightToGround ActivationHeight="0.65"/>
+					</Not>
+					<IfMannequinTag TagName="Normal"/>
+					<Or>
+						<IfExternalCondition ConditionName="Pressing_Direction"/>
+						<IfExternalCondition ConditionName="Pressing_Direction_Analog"/>
+						<Not>
+							<Or>
+								<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+								<IfExternalCondition ConditionName="CombatNav"/>
+							</Or>
+						</Not>
+					</Or>
+					<Or Comment="Velocity Angle Check">
+						<IfVelocityWithinInputAngle AngleTolerance="30.0"/>
+						<IfVelocityWithinInputAngle AngleTolerance="30.0" AnalogInput="LeftAnalog"/>
+						<Not>
+							<Or>
+								<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+								<IfExternalCondition ConditionName="CombatNav"/>
+							</Or>
+						</Not>
+					</Or>
+					<Or>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fall"/>
+					</Or>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Sprint_Delay_Timer"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SuppressVerticalCameraMovement MaintainOnly="true"/>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="SkipSprintStartTimer"/>
+							<EffectId EffectId="JumpDelayTimer"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<IfThenElse>
+					<IfCondition>
+						<Or>
+							<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+							<IfExternalCondition ConditionName="CombatNav"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag Comment="Set Nav Direction" ResetWhenReinstalled="true">
+							<Default TagName="" OnEnter="NoEffect" OnExit="NoEffect"/>
+							<Conditional Name="MovingForward" TagName="ForwardNav" OnEnter="Set" OnExit="Unset"/>
+							<Conditional Name="MovingBackwards" TagName="BackNav" OnEnter="Set" OnExit="Unset"/>
+							<Conditional Name="MovingLeft" TagName="LeftNav" OnEnter="Set" OnExit="Unset"/>
+							<Conditional Name="MovingRight" TagName="RightNav" OnEnter="Set" OnExit="Unset"/>
+							<Conditional Name="MovingForwardAnalog" TagName="ForwardNav" OnEnter="Set" OnExit="Unset"/>
+							<Conditional Name="MovingBackwardsAnalog" TagName="BackNav" OnEnter="Set" OnExit="Unset"/>
+							<Conditional Name="MovingLeftAnalog" TagName="LeftNav" OnEnter="Set" OnExit="Unset"/>
+							<Conditional Name="MovingRightAnalog" TagName="RightNav" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag Comment="Set Nav Direction" ResetWhenReinstalled="true">
+							<Default TagName="ForwardNav" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="0.80" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false" InheritVelocityMaxSpeed="2.0"/>
+					<Conditional Name="Land_Sprint_AnimMotion" MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false" InheritVelocityMaxSpeed="2.0"/>
+					<Conditional Name="Moving_Back" MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false" InheritVelocityMaxSpeed="1.0"/>
+					<Conditional Name="Jump_Slowed" MotionMultiplier="0.85" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCamera" TurnRate="0.35" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+				</CameraRelativeFacing>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If Keyboard not in facing direction">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Direction_Change_Sprint_Land"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="OneTimeScriptDone" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Land_Sprint_Diagonal" FragmentName="Land_Sprint_Diagonal">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<Not Comment="Only triggered through TransitionInstant">
+							<True/>
+						</Not>
+						<IfMannequinTag TagName="ForwardNav"/>
+					</Or>
+					<Or>
+						<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+						<IfPlayerSetting PlayerSettingName="AttackFacing" PlayerSettingNameForGamepad="AttackFacing_Alternate"/>
+						<IfMannequinMarker MarkerName="ForceCameraFacing"/>
+						<IfExternalCondition ConditionName="CombatNav"/>
+					</Or>
+					<Not>
+						<HeightToGround ActivationHeight="0.65"/>
+					</Not>
+					<IfMannequinTag TagName="Normal"/>
+					<Or>
+						<IfExternalCondition ConditionName="Pressing_Direction_Diagonal"/>
+						<IfExternalCondition ConditionName="Pressing_Direction_Diagonal_Analog"/>
+					</Or>
+					<Or>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fall"/>
+					</Or>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Sprint_Delay_Timer"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="SkipSprintStartTimer"/>
+							<EffectId EffectId="JumpDelayTimer"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag Comment="Set Nav Direction" ResetWhenReinstalled="true">
+					<Default TagName="" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="MovingForwardLeft" TagName="ForwardNav" OnEnter="Set" OnExit="Unset"/>
+					<Conditional Name="MovingForwardRight" TagName="RightNav" OnEnter="Set" OnExit="Unset"/>
+					<Conditional Name="MovingBackwardsLeft" TagName="LeftNav" OnEnter="Set" OnExit="Unset"/>
+					<Conditional Name="MovingBackwardsRight" TagName="BackNav" OnEnter="Set" OnExit="Unset"/>
+					<Conditional Name="MovingForwardLeftAnalog" TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect"/>
+					<Conditional Name="MovingForwardRightAnalog" TagName="RightNav" OnEnter="Set" OnExit="NoEffect"/>
+					<Conditional Name="MovingBackwardsLeftAnalog" TagName="LeftNav" OnEnter="Set" OnExit="NoEffect"/>
+					<Conditional Name="MovingBackwardsRightAnalog" TagName="BackNav" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="0.80" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false" InheritVelocityMaxSpeed="2.0"/>
+					<Conditional Name="Land_Sprint_AnimMotion" MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false" InheritVelocityMaxSpeed="2.0"/>
+					<Conditional Name="Moving_Back" MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false" InheritVelocityMaxSpeed="1.0"/>
+					<Conditional Name="Jump_Slowed" MotionMultiplier="0.85" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCamera" TurnRate="0.35" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+				</CameraRelativeFacing>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If Keyboard not in facing direction">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Direction_Change_Sprint_Land_Diagonal"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="OneTimeScriptDone" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Fall_From_Jump" FragmentName="Fall">
+			<ActivationCondition>
+				<Not Comment="Only triggered through TransitionInstant">
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<HeightToGround ActivationHeight="0.01"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SuppressVerticalCameraMovement MaintainOnly="true"/>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Normal" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Hard" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.3"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="ForwardNav" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="0.0,0.0,0.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+					<Conditional Name="Pressing_Forward" ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="2.0,2.0,0.0" Accel="0.0,0.0,0.0" Decel="0.0,0.0,0.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unset ForwardNav if falling too long">
+					<IfCondition>
+						<MoveSpeed Comparison="LessThanOrEqual" Value="2.50"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="ForwardNav" OnEnter="Unset" OnExit="Unset"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Variant1" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="Land" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="NavigationType" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Fall_From_Dodge" FragmentName="Fall">
+			<ActivationCondition>
+				<Not Comment="Only triggered through TransitionInstant">
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<HeightToGround ActivationHeight="0.01"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="ForwardNav" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unset ForwardNav if falling too long">
+					<IfCondition>
+						<MoveSpeed Comparison="LessThanOrEqual" Value="2.50"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="ForwardNav" OnEnter="Unset" OnExit="Unset"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="Land" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Increase deceleration if high movespeed to prevent dodge roll exploit">
+					<IfCondition>
+						<MoveSpeed Comparison="GreaterThan" Value="3"/>
+					</IfCondition>
+					<ThenActivity>
+						<CharacterRelativeMovement>
+							<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="100,100,100" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+						</CharacterRelativeMovement>
+					</ThenActivity>
+					<ElseActivity>
+						<CharacterRelativeMovement>
+							<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="0.5,0.5,0.25" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+						</CharacterRelativeMovement>
+					</ElseActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Fall" FragmentName="Fall">
+			<ActivationCondition>
+				<And>
+					<HeightToGround ActivationHeight="0.60"/>
+					<Not>
+						<IfMannequinMarker MarkerName="PreventFall"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Attack_Falling"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<HeightToGround ActivationHeight="0.01"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Blunderbuss_MortarShotActiveTimer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<DisableCollision ResetWhenReinstalled="false">
+					<Default disableActorToActorCollision="true" disableTerrainCollision="false"/>
+				</DisableCollision>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Soft" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Normal" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.25"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Hard" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.80"/>
+				</SetMannequinTag>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Enable collision closer to the ground">
+					<IfCondition>
+						<And>
+							<Not>
+								<HeightToGround ActivationHeight="0.6"/>
+							</Not>
+							<Not>
+								<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<DisableCollision ResetWhenReinstalled="false">
+							<Default disableActorToActorCollision="false" disableTerrainCollision="false"/>
+						</DisableCollision>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Increase deceleration if high movespeed to prevent dodge roll exploit">
+					<IfCondition>
+						<MoveSpeed Comparison="GreaterThan" Value="7" Comment="Speed value needs to be greater than max sprint speed"/>
+					</IfCondition>
+					<ThenActivity>
+						<CharacterRelativeMovement>
+							<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="80,80,80" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+						</CharacterRelativeMovement>
+					</ThenActivity>
+					<ElseActivity>
+						<CharacterRelativeMovement>
+							<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="0.5,0.5,0.25" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+						</CharacterRelativeMovement>
+					</ElseActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+					<Conditional Name="IfInventoryActive" OnEnter="NoEffect" OnExit="NoEffect"/>
+				</DisableInteractor>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="Land" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="NavigationType" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMannequinTagGroup>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Prone_Desired" OnEnter="Unset" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Crouch_Desired" OnEnter="Unset" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<MoveSpeed Name="Sprint_Leap" Comparison="GreaterThanOrEqual" Value="6.0"/>
+		<IfMannequinMarker Name="Land_Sprint_AnimMotion" MarkerName="Land_Sprint_AnimMotion"/>
+		<And Name="Close_To_Ground_Sprint">
+			<Or>
+				<And>
+					<IfMannequinTag TagName="ForwardNav"/>
+					<Or>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.0" TargetAngleTolerance="20.00"/>
+						<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.0" TargetAngleTolerance="20.0"/>
+					</Or>
+				</And>
+				<And>
+					<IfMannequinTag TagName="LeftNav"/>
+					<Or>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="270.0" TargetAngleTolerance="20.00"/>
+						<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="270.0" TargetAngleTolerance="20.0"/>
+					</Or>
+				</And>
+				<And>
+					<IfMannequinTag TagName="RightNav"/>
+					<Or>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="90.0" TargetAngleTolerance="20.00"/>
+						<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="90.0" TargetAngleTolerance="20.0"/>
+					</Or>
+				</And>
+				<And>
+					<IfMannequinTag TagName="BackNav"/>
+					<Or>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.0" TargetAngleTolerance="20.00"/>
+						<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.0" TargetAngleTolerance="20.0"/>
+					</Or>
+				</And>
+			</Or>
+			<Not>
+				<HeightToGround ActivationHeight="0.65"/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="Sprint_Delay_Timer"/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffectCategory="Slow"/>
+			</Not>
+		</And>
+		<And Name="Close_To_Ground_Sprint_Diagonal">
+			<Or>
+				<And>
+					<IfMannequinTag TagName="ForwardNav"/>
+					<Or>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="315.0" TargetAngleTolerance="20.00"/>
+						<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="315.0" TargetAngleTolerance="20.0"/>
+					</Or>
+				</And>
+				<And>
+					<IfMannequinTag TagName="RightNav"/>
+					<Or>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="45.0" TargetAngleTolerance="20.00"/>
+						<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="45.0" TargetAngleTolerance="20.0"/>
+					</Or>
+				</And>
+				<And>
+					<IfMannequinTag TagName="LeftNav"/>
+					<Or>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="225.0" TargetAngleTolerance="20.00"/>
+						<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="225.0" TargetAngleTolerance="20.0"/>
+					</Or>
+				</And>
+				<And>
+					<IfMannequinTag TagName="BackNav"/>
+					<Or>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="135.0" TargetAngleTolerance="20.00"/>
+						<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="135.0" TargetAngleTolerance="20.0"/>
+					</Or>
+				</And>
+			</Or>
+			<Not>
+				<HeightToGround ActivationHeight="0.65"/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="Sprint_Delay_Timer"/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffectCategory="Slow"/>
+			</Not>
+		</And>
+		<And Name="Direction_Change_Sprint_Land">
+			<Or>
+				<And>
+					<IfMannequinTag TagName="ForwardNav"/>
+					<Not>
+						<Or>
+							<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.0" TargetAngleTolerance="20.00"/>
+							<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.0" TargetAngleTolerance="20.0"/>
+						</Or>
+					</Not>
+				</And>
+				<And>
+					<IfMannequinTag TagName="LeftNav"/>
+					<Not>
+						<Or>
+							<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="270.0" TargetAngleTolerance="20.00"/>
+							<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="270.0" TargetAngleTolerance="20.0"/>
+						</Or>
+					</Not>
+				</And>
+				<And>
+					<IfMannequinTag TagName="RightNav"/>
+					<Not>
+						<Or>
+							<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="90.0" TargetAngleTolerance="20.00"/>
+							<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="90.0" TargetAngleTolerance="20.0"/>
+						</Or>
+					</Not>
+				</And>
+				<And>
+					<IfMannequinTag TagName="BackNav"/>
+					<Not>
+						<Or>
+							<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.0" TargetAngleTolerance="20.00"/>
+							<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.0" TargetAngleTolerance="20.0"/>
+						</Or>
+					</Not>
+				</And>
+			</Or>
+		</And>
+		<And Name="Direction_Change_Sprint_Land_Diagonal">
+			<Or>
+				<And>
+					<IfMannequinTag TagName="ForwardNav"/>
+					<Not>
+						<Or>
+							<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="315.0" TargetAngleTolerance="20.00"/>
+							<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="315.0" TargetAngleTolerance="20.0"/>
+						</Or>
+					</Not>
+				</And>
+				<And>
+					<IfMannequinTag TagName="RightNav"/>
+					<Not>
+						<Or>
+							<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="45.0" TargetAngleTolerance="20.00"/>
+							<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="45.0" TargetAngleTolerance="20.0"/>
+						</Or>
+					</Not>
+				</And>
+				<And>
+					<IfMannequinTag TagName="LeftNav"/>
+					<Not>
+						<Or>
+							<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="225.0" TargetAngleTolerance="20.00"/>
+							<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="225.0" TargetAngleTolerance="20.0"/>
+						</Or>
+					</Not>
+				</And>
+				<And>
+					<IfMannequinTag TagName="BackNav"/>
+					<Not>
+						<Or>
+							<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="135.0" TargetAngleTolerance="20.00"/>
+							<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="135.0" TargetAngleTolerance="20.0"/>
+						</Or>
+					</Not>
+				</And>
+			</Or>
+		</And>
+		<Or Name="Pressing_Forward">
+			<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.10" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="0.0" TargetAngleTolerance="30.0"/>
+			<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="0.0" TargetAngleTolerance="30.0"/>
+		</Or>
+		<Or Name="Pressing_Direction">
+			<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.0" TargetAngleTolerance="20.00"/>
+			<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.0" TargetAngleTolerance="20.00"/>
+			<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="270.0" TargetAngleTolerance="20.00"/>
+			<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="90.0" TargetAngleTolerance="20.00"/>
+		</Or>
+		<Or Name="Pressing_Direction_Analog">
+			<IfAnalogInput AnalogInput="LeftAnalog" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.0" TargetAngleTolerance="20.00"/>
+			<IfAnalogInput AnalogInput="LeftAnalog" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="0.0" TargetAngleTolerance="20.00"/>
+			<IfAnalogInput AnalogInput="LeftAnalog" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="270.0" TargetAngleTolerance="20.00"/>
+			<IfAnalogInput AnalogInput="LeftAnalog" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="90.0" TargetAngleTolerance="20.00"/>
+		</Or>
+		<Or Name="Pressing_Direction_Diagonal">
+			<And>
+				<Not>
+					<IfAnalogInput AnalogInput="Left Analog" DigitalBackInput="" DigitalForwardInput="" DigitalLeftInput="" DigitalRightInput="" MaxInputMagnitude="1.000000" MinInputMagnitude="0.200000" RequireTargetAngleMatch="false" TargetAngle="0.000000" TargetAngleTolerance="1.000000" UseCharacterRelativeAngle="false"/>
+				</Not>
+				<Or>
+					<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="315.0" TargetAngleTolerance="20.00"/>
+					<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="45.0" TargetAngleTolerance="20.00"/>
+					<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="225.0" TargetAngleTolerance="20.00"/>
+					<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="135.0" TargetAngleTolerance="20.00"/>
+				</Or>
+			</And>
+		</Or>
+		<Or Name="Pressing_Direction_Diagonal_Analog">
+			<IfAnalogInput AnalogInput="LeftAnalog" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="315.0" TargetAngleTolerance="20.00"/>
+			<IfAnalogInput AnalogInput="LeftAnalog" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="45.0" TargetAngleTolerance="20.00"/>
+			<IfAnalogInput AnalogInput="LeftAnalog" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="225.0" TargetAngleTolerance="20.00"/>
+			<IfAnalogInput AnalogInput="LeftAnalog" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="135.0" TargetAngleTolerance="20.00"/>
+		</Or>
+		<Or Name="Moving_Back">
+			<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="180.0" TargetAngleTolerance="20.00"/>
+			<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="225.0" TargetAngleTolerance="20.00"/>
+			<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="false" TargetAngle="135.0" TargetAngleTolerance="20.00"/>
+		</Or>
+		<IfMannequinTag Name="Posture_Change_Roll" TagName="Stand_Desired"/>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,22 @@
+<ActionList>
+	<Reactions>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_Death_F" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_Death_B" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back"/>
+		</ReactionTableData>
+	</Reactions>
+	<Conditions>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="90.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back">
+			<IfDamagedByAngle Max="180.000000" Min="90.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-180.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<IfMannequinMarker Marker="Fullbody_Reaction_Active" Name="fullbody_active"/>
+	</Conditions>
+</ActionList>
+

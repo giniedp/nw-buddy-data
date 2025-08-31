@@ -1,0 +1,30 @@
+<ActionList>
+	<Actions>
+		<Action Name="SpectatorMode">
+			<ActivationCondition>
+				<IfSpectatorMode/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfSpectatorMode/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<InputFilterToggle InputFilter="SpectatorMode" OnEnterAction="Enable" OnExitAction="Disable"/>
+				<StopFxScript ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToStop="Desaturation_dead" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</StopFxScript>
+				<StopFxScript ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToStop="Desaturation_deathsdoor" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</StopFxScript>
+				<StopFxScript ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToStop="Desaturation_hurt" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</StopFxScript>
+				<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToRun="Desaturation_off" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

@@ -1,0 +1,14 @@
+<ActionList>
+	<Scripts>
+		<FxScript Name="StatFX_ShatterSwift_BuffHaste_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_FrostFang.Shatterswift" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0.25" RotOffset="0,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_ShatterSwift_BuffHaste_OFF">
+			<FxScriptNodeParallelExecute/>
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+	</Scripts>
+</ActionList>
+

@@ -1,0 +1,28 @@
+<ActionList>
+	<Actions>
+		<Action Name="Idle_Vanish" FragmentName="Idle_Vanish">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Idle_Vanish_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+		<Action Name="Idle_UnVanish" FragmentName="Idle_UnVanish">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Idle_UnVanish_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

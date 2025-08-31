@@ -1,0 +1,588 @@
+<ActionList>
+	<Actions>
+		<Action Name="FireWeapon" FragmentName="Fire_Rifle" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Shoot_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="FireWeapon_Structure" FragmentName="Fire_Rifle_Structure" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Shoot_Structure_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Fire_Rifle_HopeLeft" FragmentName="Fire_Rifle_HopeLeft" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Fire_Rifle_HopeLeft_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Fire_Rifle_After_HopeLeft" FragmentName="Fire_Rifle_After_HopeLeft" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Fire_Rifle_After_HopeLeft_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Fire_Rifle_HopeRight" FragmentName="Fire_Rifle_HopeRight" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Fire_Rifle_HopeRight_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Fire_Rifle_After_HopeRight" FragmentName="Fire_Rifle_After_HopeRight" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Fire_Rifle_After_HopeRight_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Fire_Rifle_PowerShot" FragmentName="Fire_Rifle_PowerShot" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Fire_Rifle_PowerShot_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Invasion_Reload" FragmentName="Invasion_Reload" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Invasion_Reload_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Shoot_Pistol_Close" FragmentName="Fire_Pistol" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Shoot_Pistol_Close_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="DeathsDoorFinisher" FragmentName="Fire_Pistol" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Shoot_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Shoot_Pistol_BreakGuard" FragmentName="Fire_Pistol_Undead_Pistoleer_BreakG" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Shoot_Pistol_BreakGuard_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Shoot_Pistol_Quickfire_Once" FragmentName="Fire_Pistol_Quickfire_Once" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Shoot_Pistol_Quickfire_Once_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Shoot_Pistol_Quickfire_Once_Roll_Left" FragmentName="Fire_Pistol_HopLeft" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Shoot_Pistol_Quickfire_Once_Roll_Left_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Shoot_Pistol_Quickfire_Once_Roll_Right" FragmentName="Fire_Pistol_HopRight" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Shoot_Pistol_Quickfire_Once_Roll_Right_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Dynasty_Musketeer_DoubleGunButt_Blast" FragmentName="Attack_Dynasty_Musketeer_DoubleGunButt_Blast" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Dynasty_Musketeer_DoubleGunButt_Blast_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Dynasty_Musketeer_PowderBurn" FragmentName="Attack_Dynasty_Musketeer_PowderBurn" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Dynasty_Musketeer_PowderBurn_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Dynasty_Musketeer_RushingShot" FragmentName="Attack_Dynasty_Musketeer_RushingShot" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Dynasty_Musketeer_RushingShot_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Dynasty_Musketeer_Spin_Shot_Combo" FragmentName="Attack_Dynasty_Musketeer_Spin_Shot_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Dynasty_Musketeer_Spin_Shot_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

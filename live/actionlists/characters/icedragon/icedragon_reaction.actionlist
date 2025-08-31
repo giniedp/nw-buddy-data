@@ -1,0 +1,146 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction" FragmentName="r_Stun_Start" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName=""/>
+					<IfDamagedByPowerLevel Comparison="GreaterThan" Value="0"/>
+					<IsStunned/>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reset"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/BaseAI_EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.3"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="R2_StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.94"/>
+					<Conditional Name="R4_StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.94"/>
+					<Conditional Name="StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.94"/>
+					<Conditional Name="R2_ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.94"/>
+					<Conditional Name="R4_ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.94"/>
+					<Conditional Name="ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.94"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IsStunned/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.3"/>
+				</HTNPlanDoneActivity>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Additive" FragmentName="r_R0_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName=""/>
+					<Not>
+						<IfDamaged RequireDamageWasBlocked="true" RequireDamageDepletedStamina="true" RequireDeflectDamage="false" FailOnNoReactionDamage="false" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+					</Not>
+					<Or>
+						<IfDamagedByPowerLevel Comparison="Equal" Value="0"/>
+						<And>
+							<IfDamagedByPowerLevel Comparison="GreaterThan" Value="0"/>
+							<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+							<Not>
+								<IsStunned/>
+							</Not>
+						</And>
+					</Or>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DoNotReact"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying FragmentName="r_Stagger"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_AdditiveReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="R2_StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_StunBreakout">
+			<IsStunned/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R2_ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2"/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_ReactionBreakout">
+			<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2"/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="Headshot_ReactionBreakout">
+			<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+			<IfDamaged FailOnNoReactionDamage="true" IgnoreDeflectDamage="false" Name="ifHeadshot" RequireCriticalHit="false" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="false" RequireDeflectDamage="false" RequireHitVolumeName="Head" RequireRanged="false"/>
+		</And>
+	</Conditions>
+</ActionList>
+

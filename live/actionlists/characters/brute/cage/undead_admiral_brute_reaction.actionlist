@@ -1,0 +1,187 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction_P2" FragmentName="r_p2" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Phase2"/>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="false" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+					<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_HitGeneric" OnlyCheckOwnedStatusEffects="false"/>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_Transition" OnlyCheckOwnedStatusEffects="false"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reset"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction_P2" Status="Pending" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction_P2" Status="Installed" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction_Fake_Queued" Status="Pending" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction_Fake_Queued" Status="Installed" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_InMiddleOfJump" OnlyCheckOwnedStatusEffects="false"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/Brute/CAGE/AdmiralBruteReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.3"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="0.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="true">
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_AdmiralBrute_Phase2_HitGeneric"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default ScriptToRun="Player_Hurts" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_P2_Start" FragmentName="r_p2" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<And>
+							<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.8"/>
+							<Not>
+								<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_StartReactionCount" OnlyCheckOwnedStatusEffects="false"/>
+							</Not>
+							<Not>
+								<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_StartReaction" OnlyCheckOwnedStatusEffects="false"/>
+							</Not>
+						</And>
+						<And>
+							<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.5"/>
+							<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_StartReactionCount" ComparisonType="Equal" StackSize="1"/>
+							<Not>
+								<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_StartReaction" OnlyCheckOwnedStatusEffects="false"/>
+							</Not>
+						</And>
+						<And>
+							<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.2"/>
+							<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_StartReactionCount" ComparisonType="Equal" StackSize="2"/>
+							<Not>
+								<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_StartReaction" OnlyCheckOwnedStatusEffects="false"/>
+							</Not>
+						</And>
+					</Or>
+					<Not>
+						<IfMannequinTag TagName="Phase2"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_AdmiralBrute_Phase2_StartReaction"/>
+							<EffectId EffectId="AI_AdmiralBrute_Phase2_StartReactionCount"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.3"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+				<SetIsValidHomingOverrrideTarget>
+					<Default OnEnter="NoEffect" OnExit="Disable"/>
+				</SetIsValidHomingOverrrideTarget>
+			</Activities>
+		</Action>
+		<Action Name="r_DeathsDoor" FragmentName="r_DeathsDoor" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="r_DeathsDoor_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="R2_StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_StunBreakout">
+			<IsStunned/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R2_ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2" QueryData="true"/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_ReactionBreakout">
+			<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2"/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<IfHasStatusEffect Name="PromotedElite" StatusEffect="AI_Elite_Unbreakable_Grit_Buff"/>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,26 @@
+<ActionList>
+	<Actions>
+		<Action Name="Enable_Debug_Combat">
+			<ActivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfMannequinTag TagName="TEMP_Pickaxe_Atk"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="TEMP_Pickaxe_Atk" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<Or Name="Interior">
+			<IfInput InputName="mwheel_down"/>
+			<IfInput InputName="mwheel_up"/>
+		</Or>
+	</Conditions>
+</ActionList>
+

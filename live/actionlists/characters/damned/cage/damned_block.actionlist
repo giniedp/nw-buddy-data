@@ -1,0 +1,163 @@
+<ActionList>
+	<Actions>
+		<Action Name="Block_On" FragmentName="Block_Start">
+			<ActivationCondition/>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					<IfMannequinMarker MarkerName="DisableBlock"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="NoEffect" OnExit="Set" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block_Trans" OnEnter="NoEffect" OnExit="Set" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ActivateBlock>
+					<Default OnEnter="ActivateOffHandWeapon" OnExit="Deactivate"/>
+					<Conditional Name="GreatAxeman" OnEnter="ActivateMainHandWeapon" OnExit="Deactivate"/>
+					<Conditional Name="Enforcer" OnEnter="ActivateMainHandWeapon" OnExit="Deactivate"/>
+					<Conditional Name="Spearman" OnEnter="ActivateMainHandWeapon" OnExit="Deactivate"/>
+				</ActivateBlock>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Cooldown" FragmentName="">
+			<ActivationCondition>
+				<IfMannequinTag TagName="Block_Trans"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block_Trans" OnEnter="Unset" OnExit="NoEffect" DelayTimer="1.5"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Block" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfMannequinMarker MarkerName="Block"/>
+						<And>
+							<IfMannequinTag TagName="Shield_OH"/>
+							<IfMannequinTag TagName="Alerted"/>
+						</And>
+					</Or>
+					<Not>
+						<IfMannequinTag TagName="Reaction"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="InvasionSpear"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="BlockBroken"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="ResetAI" OnlyCheckOwnedStatusEffects="false"/>
+					</Not>
+					<IfMannequinTag TagName="Alerted"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfMannequinTag TagName="Shield_OH"/>
+					</Not>
+					<IfMannequinTag TagName="BlockBroken"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true">
+					<IfCondition>
+						<Not>
+							<IfMannequinMarker MarkerName="DisableBlock"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ActivateBlock>
+								<Default OnEnter="ActivateOffHandWeapon" OnExit="Deactivate"/>
+								<Conditional Name="GreatAxeman" OnEnter="ActivateMainHandWeapon" OnExit="Deactivate"/>
+								<Conditional Name="Enforcer" OnEnter="ActivateMainHandWeapon" OnExit="Deactivate"/>
+							</ActivateBlock>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Block" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="BlockBroken" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="BlockBroken"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="BlockBroken" OnEnter="Unset" OnExit="NoEffect" DelayTimer="8.0"/>
+				</SetMannequinTag>
+				<DisableStaminaRegen ResetWhenReinstalled="true" IgnoreDataChangesAfterInstall="false">
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableStaminaRegen>
+				<ResetStamina ResetWhenReinstalled="false">
+					<Default OnEnter="NoEffect" OnExit="Reset"/>
+				</ResetStamina>
+			</Activities>
+		</Action>
+		<Action Name="Block_Off" FragmentName="Block_End">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Block_Off_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block_Trans" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Force_Block_Off" FragmentName="">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="Turn Off Block"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<Not>
+						<IfMannequinTag TagName="Block"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Block_Trans"/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block_Trans" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="GreatAxeman" TagName="2H_Axeman"/>
+		<IfMannequinTag Name="Enforcer" TagName="Enforcer"/>
+		<IfMannequinTag Name="Spearman" TagName="Spearman"/>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,26 @@
+<ActionList>
+	<Actions>
+		<Action Name="EmpoweredReset" FragmentName="Soldier_Depower">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Empowered"/>
+					<Not>
+						<IfHasAttackTarget/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfMannequinTag TagName="Empowered"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Empowered" OnEnter="Unset" OnExit="Unset" DelayTimer="0.2"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

@@ -1,0 +1,42 @@
+<ActionList>
+	<Actions>
+		<Action Name="FreeCam" FragmentName="Cheat">
+			<ActivationCondition>
+				<And>
+					<IfSpectatorMode/>
+					<Not>
+						<IfDead/>
+					</Not>
+					<IfFreeCamPermitted/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfSpectatorMode/>
+					</Not>
+					<And>
+						<Not>
+							<IfDead/>
+						</Not>
+						<Not>
+							<IfFreeCamPermitted/>
+						</Not>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<DisableMesh/>
+				<HidePlayerNameTag>
+					<Default OnEnter="FullyHidden"/>
+				</HidePlayerNameTag>
+				<DisableGravity/>
+				<DisableCollision/>
+				<IgnoreAITarget/>
+				<DisableInteractor/>
+				<DisableInteractions/>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

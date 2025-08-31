@@ -1,0 +1,19 @@
+<ActionList>
+	<Actions>
+		<Action Name="Skeleton_Self_Kill" FragmentName="">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Skeleton_Self_Kill_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<Death>
+					<Default TriggerOption="OnEnter" SkipDeathsDoor="true" RequestSuicide="false" ClearContributors="false"/>
+				</Death>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

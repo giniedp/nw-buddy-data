@@ -1,0 +1,131 @@
+<ActionList>
+	<Actions>
+		<Action Name="Alert" FragmentName="Alert" Predictive="false">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Alert_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.10"/>
+				</SetMannequinTag>
+				<AITargetRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="0.0"/>
+				</AITargetRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="Move_Combat_Walk" FragmentName="Move">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Move_Combat_Walk_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Move_Combat" FragmentName="Move">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Move_Combat_Walk_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Fidget" FragmentName="Combat_Fidget">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AITargetRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="0.0"/>
+				</AITargetRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="LeashToPoint" FragmentName="Move">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CombatLeashToPoint_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Strafe" FragmentName="Strafe">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Strafe_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Move_Wander" FragmentName="Move">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Move_Wander_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="true" Comment="">
+					<Default AudioTriggerName="Set_Switch_Nav_Walk" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+				</ExecuteAudioTrigger>
+			</Activities>
+		</Action>
+		<Action Name="Dive_Under" FragmentName="Dive_Under">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Dive_Under_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AITargetRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="0.0"/>
+				</AITargetRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="FleeToTarget" FragmentName="Flee">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="FleeToTarget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="0.0,0.0,0.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<AIDistanceToTarget Name="Long_Alert" Comparison="GreaterThanOrEqual" DistanceToTarget="18.0"/>
+	</Conditions>
+</ActionList>
+

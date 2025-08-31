@@ -1,0 +1,17 @@
+<ActionList>
+	<Conditions>
+		<Or Name="Any Movement Input">
+			<IfAnalogInput AnalogInput="None" DigitalBackInput="moveback" DigitalForwardInput="ForwardNav" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MaxInputMagnitude="1.000000" MinInputMagnitude="0.200000" RequireTargetAngleMatch="false" TargetAngle="0.000000" TargetAngleTolerance="1.000000" UseCharacterRelativeAngle="false"/>
+			<IfAnalogInput AnalogInput="Left Analog" DigitalBackInput="" DigitalForwardInput="" DigitalLeftInput="" DigitalRightInput="" MaxInputMagnitude="1.000000" MinInputMagnitude="0.200000" RequireTargetAngleMatch="false" TargetAngle="0.000000" TargetAngleTolerance="1.000000" UseCharacterRelativeAngle="false"/>
+		</Or>
+		<And Name="Not Any Movement Input">
+			<Not>
+				<IfAnalogInput AnalogInput="Left Analog" DigitalBackInput="" DigitalForwardInput="" DigitalLeftInput="" DigitalRightInput="" MaxInputMagnitude="1.000000" MinInputMagnitude="0.200000" RequireTargetAngleMatch="false" TargetAngle="0.000000" TargetAngleTolerance="1.000000" UseCharacterRelativeAngle="false"/>
+			</Not>
+			<Not>
+				<IfAnalogInput AnalogInput="None" DigitalBackInput="moveback" DigitalForwardInput="ForwardNav" DigitalLeftInput="moveleft" DigitalRightInput="moveright" MaxInputMagnitude="1.000000" MinInputMagnitude="0.200000" RequireTargetAngleMatch="false" TargetAngle="0.000000" TargetAngleTolerance="1.000000" UseCharacterRelativeAngle="false"/>
+			</Not>
+		</And>
+	</Conditions>
+</ActionList>
+

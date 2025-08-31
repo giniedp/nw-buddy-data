@@ -1,0 +1,424 @@
+<ActionList>
+	<Actions>
+		<Action Name="Idle" FragmentName="Idle">
+			<ActivationCondition>
+				<And>
+					<True/>
+					<Not>
+						<IfFastTravelTeleporting/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Mount"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<CameraRelativeMotion Decel="40,40,0"/>
+				<SetMannequinTag>
+					<Default TagName="Idle" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse>
+					<IfCondition>
+						<IfMannequinTag TagName="Blocking"/>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default TurnRate="1.00" UseExponentialTurnRate="true"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse>
+							<IfCondition>
+								<And>
+									<IfMannequinTag TagName="TurnInPlace"/>
+									<Not>
+										<IfMannequinTag TagName="TurnInPlaceTimer"/>
+									</Not>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<IfThenElse>
+									<IfCondition>
+										<CameraCharacterAngle AngleThreshold="1"/>
+									</IfCondition>
+									<ThenActivity>
+										<Group>
+											<CameraRelativeFacing>
+												<Default TurnRate="0.2" UseExponentialTurnRate="true"/>
+											</CameraRelativeFacing>
+											<SetMannequinTag>
+												<Default TagName="TurnInPlaceTimer" ResetWhenReinstalled="true" OnEnter="Set" Delay="0.2"/>
+											</SetMannequinTag>
+										</Group>
+									</ThenActivity>
+									<ElseActivity>
+										<SetMannequinTag ResetWhenReinstalled="true">
+											<Default TagName="TurnInPlace" OnEnter="Unset"/>
+										</SetMannequinTag>
+									</ElseActivity>
+								</IfThenElse>
+							</ThenActivity>
+							<ElseActivity>
+								<Group>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="TurnInPlace" OnEnter="Unset"/>
+									</SetMannequinTag>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="TurnInPlaceTimer" OnEnter="Unset"/>
+									</SetMannequinTag>
+								</Group>
+							</ElseActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<SetWeaponAccuracyBonus ResetWhenReinstalled="true">
+					<Default StanceBonus="12.25"/>
+					<Conditional Name="AimStandMusket" StanceBonus="13"/>
+					<Conditional Name="AimCrouchMusket" StanceBonus="13"/>
+					<Conditional Name="AimProneMusket" StanceBonus="13"/>
+					<Conditional Name="Leviathon" StanceBonus="12.0"/>
+					<Conditional Name="LeviathonIn" StanceBonus="25.0"/>
+					<Conditional Name="AimStand" StanceBonus="25.0"/>
+					<Conditional Name="AimCrouch" StanceBonus="25.0"/>
+					<Conditional Name="AimProne" StanceBonus="25.0"/>
+					<Conditional Name="Crouch" StanceBonus="12.5"/>
+					<Conditional Name="Prone" StanceBonus="12.75"/>
+				</SetWeaponAccuracyBonus>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Navigation" StateName="Nav_Idle"/>
+				</SetAudioSwitchState>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Breathing" StateName="Vo_Breathing"/>
+				</SetAudioSwitchState>
+				<IfThenElse>
+					<IfCondition>
+						<IfInput InputName="Any Movement Input"/>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeMotion>
+							<Default Decel="1000,1000,0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true"/>
+						</CameraRelativeMotion>
+					</ThenActivity>
+					<ElseActivity>
+						<CameraRelativeMotion>
+							<Default Decel="20,20,0" MovementAccuracyBonus="0.0"/>
+						</CameraRelativeMotion>
+					</ElseActivity>
+				</IfThenElse>
+				<ClearMotion/>
+			</Activities>
+		</Action>
+		<Action Name="Turn_InPlace" FragmentName="Turn_InPlace">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinTag TagName="Blocking"/>
+					</Not>
+					<Or>
+						<And Comment="Complete a large turn">
+							<IfMannequinTag TagName="TurnInPlace"/>
+							<CameraCharacterAngle AngleThreshold="80"/>
+						</And>
+						<And Comment="Turn while aiming">
+							<CameraCharacterAngle AngleThreshold="30"/>
+							<Or>
+								<And>
+									<Or>
+										<IfMannequinTag TagName="Aim"/>
+										<IfMannequinTag TagName="ChargedAim"/>
+										<IfMannequinTag TagName="HeavyAim"/>
+										<IfMannequinTag TagName="PenetratingAim"/>
+										<IfMannequinTag TagName="SmokeAim"/>
+									</Or>
+									<Or>
+										<IfMannequinTag TagName="AimDownSights"/>
+										<IfMannequinMarker MarkerName="AimDownSightsAbility"/>
+										<IfMannequinTag TagName="MagicGauntlet"/>
+										<IfMannequinTag TagName="MagicStaff"/>
+									</Or>
+								</And>
+								<IfMannequinTag TagName="Shoot"/>
+								<And>
+									<Or>
+										<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+										<IfPlayerSetting PlayerSettingName="AttackFacing" PlayerSettingNameForGamepad="AttackFacing_Alternate"/>
+										<IfMannequinMarker MarkerName="ForceCameraFacing"/>
+										<IfExternalCondition ConditionName="CombatNav"/>
+									</Or>
+									<IfMannequinTag TagName="Blocking"/>
+								</And>
+								<IfMannequinTag TagName="Throw"/>
+								<IfInput InputName="Placing_Building"/>
+							</Or>
+							<Not>
+								<IfMannequinMarker MarkerName="TurnInPlaceDisabled"/>
+							</Not>
+						</And>
+						<And Comment="Turn while CameraLocked">
+							<IfCameraLockActive/>
+							<CameraCharacterAngle AngleThreshold="89"/>
+							<Not>
+								<IfMannequinTag TagName="Blocking"/>
+							</Not>
+						</And>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<IfMannequinMarker MarkerName="ExitTurnEarly"/>
+						<Not>
+							<CameraCharacterAngle AngleThreshold="5"/>
+						</Not>
+					</And>
+					<IfFragmentDone/>
+					<IfMannequinMarker MarkerName="ExitTurn"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.35" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+				<IfThenElse>
+					<IfCondition>
+						<CameraCharacterAngle AngleThreshold="20"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag>
+							<Default TagName="TurnInPlace" OnEnter="Set"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag>
+							<Default TagName="TurnInPlace" OnEnter="Unset"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="VO_Breathing"/>
+				</SetAudioSwitchState>
+				<SetMannequinTag>
+					<Default TagName="Idle" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse>
+					<IfCondition>
+						<IfMannequinMarker MarkerName="SetDisableLookAimIK"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag>
+							<Default TagName="DisableLookAimIK" OnEnter="Set"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag>
+							<Default TagName="DisableLookAimIK" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<SetMannequinTag>
+					<Default TagName="TurnInPlace" OnExit="Unset"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="FastTravel" FragmentName="FastTravel">
+			<ActivationCondition>
+				<And>
+					<IfFastTravelTeleporting/>
+					<Not>
+						<IfMannequinTag TagName="Mount"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfFastTravelTeleporting/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<FastTravelChanneling/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AutoUnsheathe" OnEnter="Unset" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+			</Activities>
+		</Action>
+		<Action Name="Water_Deep_Upperbody" FragmentName="Water_Deep_Upperbody">
+			<ActivationCondition>
+				<And>
+					<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					<Not>
+						<IfDead/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="DeathsDoor"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Sheathe_Upperbody"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Fishing_SubState" Status="Installed"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+					</Not>
+					<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					<Not>
+						<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<IfDead/>
+					<IfMannequinTag TagName="DeathsDoor"/>
+					<IfActionStatus ActionName="Fishing_SubState" Status="Installed"/>
+					<IsMounted/>
+				</Or>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+	</Actions>
+	<Conditions>
+		<CameraCharacterAngle Name="Very Large Camera Angle" AngleThreshold="140"/>
+		<CameraCharacterAngle Name="Large Camera Angle" AngleThreshold="100"/>
+		<CameraCharacterAngle Name="Medium Camera Angle" AngleThreshold="80"/>
+		<IfMannequinTag Name="CombatReady" TagName="CombatReady"/>
+		<IfMannequinTag Name="ActionReady" TagName="ActionReady"/>
+		<IfMannequinTag Name="Idle" TagName="Idle"/>
+		<And Name="Sprint">
+			<IfInput InputName="sprint"/>
+			<Not>
+				<IfMannequinTag TagName="CombatReady"/>
+			</Not>
+		</And>
+		<Or Name="Allow2HCombatIK">
+			<IsPreviewingSkin/>
+			<And>
+				<Not>
+					<IfMannequinMarker MarkerName="Disable2HCombatIK"/>
+				</Not>
+				<Not>
+					<IfIsLoadoutOpen/>
+				</Not>
+			</And>
+		</Or>
+		<And name="AimStand">
+			<IfMannequinTag TagName="Stand"/>
+			<Not>
+				<IfMannequinTag TagName="Rifle"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Aim"/>
+				<IfMannequinTag TagName="ChargedAim"/>
+				<IfMannequinTag TagName="HeavyAim"/>
+				<IfMannequinTag TagName="PenetratingAim"/>
+				<IfMannequinTag TagName="SmokeAim"/>
+			</Or>
+		</And>
+		<And name="AimStandMusket">
+			<IfMannequinTag TagName="Rifle"/>
+			<IfMannequinTag TagName="Stand"/>
+			<Or>
+				<IfMannequinTag TagName="Aim"/>
+				<IfMannequinTag TagName="ChargedAim"/>
+				<IfMannequinTag TagName="HeavyAim"/>
+				<IfMannequinTag TagName="PenetratingAim"/>
+				<IfMannequinTag TagName="SmokeAim"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Reload"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Firearm_ReadyWeapon_UpperBody"/>
+			</Not>
+		</And>
+		<And name="AimCrouch">
+			<IfMannequinTag TagName="Crouch"/>
+			<Not>
+				<IfMannequinTag TagName="Rifle"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Aim"/>
+				<IfMannequinTag TagName="ChargedAim"/>
+				<IfMannequinTag TagName="HeavyAim"/>
+				<IfMannequinTag TagName="PenetratingAim"/>
+				<IfMannequinTag TagName="SmokeAim"/>
+			</Or>
+		</And>
+		<And name="AimCrouchMusket">
+			<IfMannequinTag TagName="Rifle"/>
+			<IfMannequinTag TagName="Crouch"/>
+			<Or>
+				<IfMannequinTag TagName="Aim"/>
+				<IfMannequinTag TagName="ChargedAim"/>
+				<IfMannequinTag TagName="HeavyAim"/>
+				<IfMannequinTag TagName="PenetratingAim"/>
+				<IfMannequinTag TagName="SmokeAim"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Reload"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying UseHostActionFragment="true" FragmentName="Firearm_ReadyWeapon_UpperBody"/>
+			</Not>
+		</And>
+		<And name="AimProne">
+			<IfMannequinTag TagName="Prone"/>
+			<Not>
+				<IfMannequinTag TagName="Rifle"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="Aim"/>
+				<IfMannequinTag TagName="ChargedAim"/>
+				<IfMannequinTag TagName="HeavyAim"/>
+				<IfMannequinTag TagName="PenetratingAim"/>
+				<IfMannequinTag TagName="SmokeAim"/>
+			</Or>
+		</And>
+		<And name="AimProneMusket">
+			<IfMannequinTag TagName="Rifle"/>
+			<IfMannequinTag TagName="Prone"/>
+			<Or>
+				<IfMannequinTag TagName="Aim"/>
+				<IfMannequinTag TagName="ChargedAim"/>
+				<IfMannequinTag TagName="HeavyAim"/>
+				<IfMannequinTag TagName="PenetratingAim"/>
+				<IfMannequinTag TagName="SmokeAim"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Reload"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying UseHostActionFragment="true" FragmentName="Firearm_ReadyWeapon_UpperBody"/>
+			</Not>
+		</And>
+		<And name="Leviathon">
+			<And>
+				<IfMannequinTag TagName="Blunderbuss"/>
+				<Not>
+					<IfMannequinTag TagName="Aim"/>
+				</Not>
+			</And>
+		</And>
+		<And name="LeviathonIn">
+			<And>
+				<IfMannequinTag TagName="Blunderbuss"/>
+				<IfMannequinTag TagName="Aim"/>
+			</And>
+		</And>
+	</Conditions>
+</ActionList>
+

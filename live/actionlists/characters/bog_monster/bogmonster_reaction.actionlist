@@ -1,0 +1,58 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction" FragmentName="r_R2_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName=""/>
+					<IfDamagedByPowerLevel Comparison="GreaterThan" Value="0"/>
+					<Not>
+						<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reset"/>
+					</Not>
+					<IfHasStatusEffect StatusEffect="BogMonster_Wipe" OnlyCheckOwnedStatusEffects="false"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.3"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/Damned/CAGE/DamnedReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default ScriptToRun="Player_Hurts" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+			<ModifyStatusEffects>
+				<Default OnlyRemoveOwnedStatusEffects="false">
+					<EffectsToRemoveOnExit>
+						<EffectId EffectId="AI_Enable_Stagger"/>
+					</EffectsToRemoveOnExit>
+				</Default>
+			</ModifyStatusEffects>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

@@ -1,0 +1,39 @@
+<ActionList>
+	<Actions>
+		<Action Name="Death" FragmentName="r_Death" ServerStarted="true">
+			<ActivationCondition>
+				<IfDead ServerOnly="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Deactivate Idle VFX">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="VFX_Idle_Stop"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="VFX_Idle_Stop"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAssignOrder>
+					<Default Order="Despawn"/>
+				</AIAssignOrder>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<True Name="AlwaysTrue"/>
+	</Conditions>
+</ActionList>
+

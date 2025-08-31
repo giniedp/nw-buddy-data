@@ -1,0 +1,451 @@
+<ActionList>
+	<Actions>
+		<Action Name="Fishing_SubState" FragmentName="Fishing_Ready_Draw">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="fishing_activate"/>
+					<Not>
+						<IfMannequinTag TagName="FishingPole"/>
+					</Not>
+					<Not>
+						<IfFishingIsInState StateToCheck="FishingDisabled"/>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+					<Not>
+						<IfInWar CheckPvpWar="true" CheckInvasion="true"/>
+					</Not>
+					<HasTool GatheringType="Fishing"/>
+					<IfFishingIsInState StateToCheck="FishingUnequipped"/>
+					<Not>
+						<IfMannequinMarker MarkerName="sheathe"/>
+					</Not>
+					<Not>
+						<IsInDungeon/>
+					</Not>
+					<Not>
+						<IfInGameMode GameModeName="Any"/>
+					</Not>
+					<IfCombatStatus InCombat="false" FailMessage="@ui_fishing_combat_message" FailMsgMaxDuration="3" AllowDuplicateFailMsg="false"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="ExitFishing"/>
+					<IfInWar CheckPvpWar="true" CheckInvasion="true"/>
+					<IfItemInSlotBroken SlotToCheckAlias="TOOL_SLOT"/>
+					<IsInDungeon/>
+					<IfInGameMode GameModeName="Any"/>
+					<IfActionStatus ActionName="Unstuck_Teleport" Status="Installed"/>
+					<IfActionStatus ActionName="StoreMode" Status="Installed"/>
+					<IfTeleportPending/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<InputActionMapToggle ActionMap="fishing" OnEnterAction="Enable" OnExitAction="Disable"/>
+				<SetFishingAction ResetWhenReinstalled="false">
+					<Default OnEnter="StartEquippingFishingRod" OnExit="UnequipFishingRod"/>
+				</SetFishingAction>
+				<DisableInteractions>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractions>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Set Fishing Pole tag">
+					<Default TagName="FishingPole" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Unset Tool tag on exit">
+					<Default TagName="Tool" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Set 1H_Melee tag so player uses the correct fullbody anims">
+					<Default TagName="1H_Melee" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfMannequinTag TagName="Prone"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Fishing Ready" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="SetFishingReady"/>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse Comment="Set EquipFishingRod Action If Currently In Unequipped State" ResetWhenReinstalled="false">
+							<IfCondition>
+								<Or>
+									<IfFishingIsInState StateToCheck="StartedEquippingFishing"/>
+									<IfFishingIsInState StateToCheck="FishingUnequipped"/>
+								</Or>
+							</IfCondition>
+							<ThenActivity>
+								<SetFishingAction ResetWhenReinstalled="false">
+									<Default OnEnter="EquipFishingRod" OnExit="None"/>
+								</SetFishingAction>
+							</ThenActivity>
+							<ElseActivity>
+								<IfThenElse Comment="Set ResetFishing Action If Not In Equipped/Bait State To Reset Game Loop When Back In Idle Anim" ResetWhenReinstalled="false">
+									<IfCondition>
+										<And>
+											<Not>
+												<IfFishingIsInState StateToCheck="FishingEquipped"/>
+											</Not>
+											<Not>
+												<IfFishingIsInState StateToCheck="ApplyingBait"/>
+											</Not>
+											<Not>
+												<IfFishingIsInState StateToCheck="FishingEnded"/>
+											</Not>
+										</And>
+									</IfCondition>
+									<ThenActivity>
+										<SetFishingAction ResetWhenReinstalled="false">
+											<Default OnEnter="ResetFishing" OnExit="None"/>
+										</SetFishingAction>
+									</ThenActivity>
+								</IfThenElse>
+							</ElseActivity>
+						</IfThenElse>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Unsheathe Fishing Pole" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfFishingIsInState StateToCheck="FishingEquipped"/>
+							<IfItemInSlot SlotToCheckAlias="TOOL_SLOT" RequireSlotValid="true" RequireSlotActive="false"/>
+							<IfItemSheathed SlotToCheckAlias="TOOL_SLOT"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SheatheWeapon ResetWhenReinstalled="false">
+							<Default SheatheOption="UnSheathe" SlotToSheathe="TOOL_SLOT" OnEnter="Set" OnExit="Unset"/>
+						</SheatheWeapon>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Open bait window on toggleFishingBaitWindow input" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfInput InputName="toggleFishingBaitWindow"/>
+							<And>
+								<IfFishingIsInState StateToCheck="FishingEquipped"/>
+							</And>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fishing_Ready_Draw"/>
+							</Not>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fishing_Exit"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetFishingAction ResetWhenReinstalled="false">
+							<Default OnEnter="OpenBaitBox" OnExit="None"/>
+						</SetFishingAction>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Close bait on toggleFishingBaitWindow input" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfInput InputName="toggleFishingBaitWindow"/>
+							<And>
+								<IfFishingIsInState StateToCheck="ApplyingBait"/>
+							</And>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fishing_Ready_Draw"/>
+							</Not>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fishing_Exit"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetFishingAction ResetWhenReinstalled="false">
+							<Default OnEnter="CloseBaitBox" OnExit="None"/>
+						</SetFishingAction>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Bait Fragment" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfFishingIsInState StateToCheck="ApplyingBait"/>
+							<Not>
+								<IfMannequinMarker MarkerName="IsApplyingBait"/>
+							</Not>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fishing_Exit"/>
+							</Not>
+							<Not>
+								<Or>
+									<IfAliasStatus GridAlias="Jump" Status="Installed"/>
+									<IfAliasStatus GridAlias="Land" Status="Installed"/>
+									<IfAliasStatus GridAlias="Traversal" Status="Installed"/>
+									<IfAliasStatus GridAlias="Fall" Status="Installed"/>
+								</Or>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeActionFragment ResetWhenReinstalled="false">
+							<Default UseDefaultFragment="false" FragmentName="Fishing_ApplyBait"/>
+						</ChangeActionFragment>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Cast Start" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="SetCastStart"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetFishingAction ResetWhenReinstalled="false">
+								<Default OnEnter="CastStart" OnExit="None"/>
+							</SetFishingAction>
+							<CameraRelativeFacing>
+								<Default TurnRate="0.90" UseExponentialTurnRate="true"/>
+							</CameraRelativeFacing>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Cast End" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="SetCastEnd"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetFishingAction ResetWhenReinstalled="false">
+							<Default OnEnter="CastEnd" OnExit="None"/>
+						</SetFishingAction>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Hook Input Way Too Early" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfInput InputName="fishing_primary"/>
+							<IfFishingIsInState StateToCheck="FishingStarted"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetFishingAction ResetWhenReinstalled="false">
+							<Default OnEnter="ResetFishing" OnExit="None"/>
+						</SetFishingAction>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Hook Input After Nibble" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfInput InputName="fishing_primary"/>
+							<Or>
+								<IfFishingIsInState StateToCheck="FishNibbleWindowOpen"/>
+								<IfFishingIsInState StateToCheck="FishBiteWindowOpen"/>
+							</Or>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetFishingAction ResetWhenReinstalled="false">
+							<Default OnEnter="Hook" OnExit="None"/>
+						</SetFishingAction>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Reel Start Fragment On Hook Hit" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfFishingIsInState StateToCheck="HookHit"/>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fishing_Reel_Start"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeActionFragment ResetWhenReinstalled="false">
+							<Default UseDefaultFragment="false" FragmentName="Fishing_Reel_Start"/>
+						</ChangeActionFragment>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Reeling active state" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SetReelActive"/>
+							<Not>
+								<IfExternalCondition ConditionName="OnLineBreak"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetFishingAction ResetWhenReinstalled="false">
+							<Default OnEnter="ReelingActive" OnExit="None"/>
+						</SetFishingAction>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Reeling recover state" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SetReelRecover"/>
+							<Not>
+								<IfExternalCondition ConditionName="OnLineBreak"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetFishingAction ResetWhenReinstalled="false">
+							<Default OnEnter="ReelingRecover" OnExit="None"/>
+						</SetFishingAction>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Switch to Catch Fail fragment" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfExternalCondition ConditionName="OnCatchFail"/>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeActionFragment ResetWhenReinstalled="false">
+							<Default UseDefaultFragment="false" FragmentName="Fishing_Catch_Fail"/>
+						</ChangeActionFragment>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Reset on input" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfInput InputName="fishing_reset"/>
+							<Or>
+								<IfFishingIsInState StateToCheck="FishingStarted"/>
+								<IfExternalCondition ConditionName="OnReelingActive"/>
+								<IfExternalCondition ConditionName="OnReelingRecover"/>
+							</Or>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetFishingAction ResetWhenReinstalled="false">
+							<Default OnEnter="ResetFishing" OnExit="None"/>
+						</SetFishingAction>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Switch to Exit fragment on exit input" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<Or>
+								<IfInput InputName="fishing_deactivate"/>
+								<And>
+									<Or>
+										<IfInput InputName="fishing_reset"/>
+										<IfFishingIsInState StateToCheck="FishingDisabled"/>
+									</Or>
+									<IfFishingIsInState StateToCheck="FishingEquipped"/>
+								</And>
+								<IfFishingIsInState StateToCheck="FishingUnequipped"/>
+								<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+								<And>
+									<IfFishingIsInState StateToCheck="FishingEquipped"/>
+									<IfInput InputName="mount_toggle"/>
+								</And>
+							</Or>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fishing_Ready_Draw"/>
+							</Not>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fishing_Exit"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeActionFragment ResetWhenReinstalled="false">
+							<Default UseDefaultFragment="false" FragmentName="Fishing_Exit"/>
+						</ChangeActionFragment>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Unequip fishing pole on specific frame of exit anim" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="sheathe"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetFishingAction ResetWhenReinstalled="false">
+								<Default OnEnter="CancelFishing" OnExit="None"/>
+							</SetFishingAction>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetFishingAction ResetWhenReinstalled="false">
+					<Default OnEnter="None" OnExit="CancelFishing"/>
+				</SetFishingAction>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="CastStart">
+			<IfFishingIsInState StateToCheck="FishingEquipped"/>
+			<IfInput InputName="fishing_primary"/>
+			<Not>
+				<Or>
+					<IfAliasStatus GridAlias="Traversal" Status="Installed"/>
+					<IfAliasStatus GridAlias="Fall" Status="Installed"/>
+					<IfAliasStatus GridAlias="Jump" Status="Installed"/>
+				</Or>
+			</Not>
+		</And>
+		<Or Name="CastRelease">
+			<And>
+				<IfFishingIsInState StateToCheck="CastStart"/>
+				<Not>
+					<IfInput InputName="fishing_primary_hold"/>
+				</Not>
+			</And>
+			<IfFishingIsInState StateToCheck="CastEnd"/>
+		</Or>
+		<And Name="ReelingInput">
+			<IfFishingIsInState StateToCheck="ReelingRecover"/>
+			<IfInput InputName="fishing_primary_hold"/>
+		</And>
+		<And Name="NoReelingInput">
+			<IfFishingIsInState StateToCheck="ReelingActive"/>
+			<Not>
+				<IfInput InputName="fishing_primary_hold"/>
+			</Not>
+		</And>
+		<And Name="SkipSuccessInput">
+			<IfFishingIsInState StateToCheck="Succeeded_FishCaught"/>
+			<IfInput InputName="fishing_primary"/>
+		</And>
+		<IfInput Name="OnFishingReset" InputName="fishing_reset"/>
+		<IfFishingIsInState Name="OnCastSuccess" StateToCheck="CastHitWater"/>
+		<IfFishingIsInState Name="OnHookSuccess" StateToCheck="HookHit"/>
+		<IfFishingIsInState Name="OnCatchSuccess" StateToCheck="Succeeded_FishCaught"/>
+		<Or Name="OnCastFail">
+			<IfFishingIsInState StateToCheck="Failed_CastHitLand"/>
+			<IfFishingIsInState StateToCheck="FishingEnded"/>
+			<IfFishingIsInState StateToCheck="FishingEquipped"/>
+			<IfFishingIsInState StateToCheck="FishingUnequipped"/>
+		</Or>
+		<Or Name="OnCatchFail">
+			<IfFishingIsInState StateToCheck="Failed_HookMissedTooEarly"/>
+			<IfFishingIsInState StateToCheck="Failed_HookMissedTooLate"/>
+			<IfFishingIsInState StateToCheck="Failed_FishSwamAway"/>
+			<And>
+				<Or>
+					<IfFishingIsInState StateToCheck="FishingEnded"/>
+					<IfFishingIsInState StateToCheck="FishingEquipped"/>
+				</Or>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Fishing_Cast_Idle"/>
+			</And>
+		</Or>
+		<IfFishingIsInState Name="OnReelingActive" StateToCheck="ReelingActive"/>
+		<IfFishingIsInState Name="OnReelingRecover" StateToCheck="ReelingRecover"/>
+		<Or Name="OnLineBreak">
+			<IfFishingIsInState StateToCheck="Failed_LineBreak"/>
+			<IfFishingIsInState StateToCheck="FishingEnded"/>
+		</Or>
+		<IfFishingIsInState Name="OnBaitExit" StateToCheck="FishingEquipped"/>
+		<IfFishingIsInState Name="OnBaitActive" StateToCheck="ApplyingBait"/>
+	</Conditions>
+</ActionList>
+

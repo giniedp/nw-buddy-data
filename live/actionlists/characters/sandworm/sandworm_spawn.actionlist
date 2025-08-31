@@ -1,0 +1,118 @@
+<ActionList>
+	<Actions>
+		<Action Name="Spawn" FragmentName="Spawn">
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<ResetReactionCount ResetWhenReinstalled="false" omment="Reset Reaction Count to cancel SetReactionFragment increment above">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetReactionCount>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Valid_Mainhand" TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Valid_Offhand" TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Main Hand Weapon Mannequin Marker Logic">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="sheathe_weapon"/>
+					</IfCondition>
+					<ThenActivity>
+						<SheatheWeapon ResetWhenReinstalled="false">
+							<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+						</SheatheWeapon>
+					</ThenActivity>
+					<ElseActivity>
+						<SheatheWeapon ResetWhenReinstalled="true">
+							<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="NoEffect" OnExit="NoEffect"/>
+							<Conditional Name="Valid_Mainhand" SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+						</SheatheWeapon>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Off Hand Weapon Mannequin Marker Logic">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="sheathe_offhand_weapon"/>
+					</IfCondition>
+					<ThenActivity>
+						<SheatheWeapon ResetWhenReinstalled="false">
+							<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+						</SheatheWeapon>
+					</ThenActivity>
+					<ElseActivity>
+						<SheatheWeapon ResetWhenReinstalled="true">
+							<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="NoEffect" OnExit="NoEffect"/>
+							<Conditional Name="Valid_Offhand" SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+						</SheatheWeapon>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Aura_On"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Aura_On"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Nameplate_On"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Nameplate_On"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Despawn" FragmentName="Idle">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Despawn_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<Death>
+					<Default TriggerOption="OnEnter" DelayTime="0.0" SkipDeathsDoor="true" ClearContributors="true"/>
+				</Death>
+			</Activities>
+		</Action>
+		<Action Name="Victory" FragmentName="Victory">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Victory_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					<Not>
+						<IfBehaviorTreeTask ActionName="Victory_CAGE_Task"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfItemInSlot Name="Valid_Mainhand" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+		<IfItemInSlot Name="Valid_Offhand" SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,107 @@
+<ActionList>
+	<Actions>
+		<Action Name="Equip">
+			<ActivationCondition>
+				<IfItemSheathed SlotToCheckAlias="MAIN_HAND_OPTION_1"/>
+			</ActivationCondition>
+			<Activities>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+			</Activities>
+		</Action>
+		<Action Name="Block">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Spearman"/>
+					<Or>
+						<IfMannequinMarker MarkerName="Block"/>
+						<And>
+							<IfMannequinTag TagName="Shield_OH"/>
+							<IfMannequinTag TagName="Alerted"/>
+						</And>
+					</Or>
+					<Not>
+						<IfMannequinTag TagName="Reaction"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="BlockBroken"/>
+					</Not>
+					<IfMannequinTag TagName="Alerted"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfMannequinTag TagName="Shield_OH"/>
+					</Not>
+					<IfMannequinTag TagName="BlockBroken"/>
+					<IfMannequinTag TagName="Stunned"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true">
+					<IfCondition>
+						<Not>
+							<IfMannequinMarker MarkerName="DisableBlock"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ActivateBlock>
+								<Default OnEnter="ActivateOffHandWeapon" OnExit="Deactivate"/>
+							</ActivateBlock>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Block" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="BlockBroken" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="BlockBroken"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="BlockBroken" OnEnter="Unset" OnExit="NoEffect" DelayTimer="5.5"/>
+				</SetMannequinTag>
+				<DisableStaminaRegen ResetWhenReinstalled="true" IgnoreDataChangesAfterInstall="false">
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableStaminaRegen>
+				<ResetStamina ResetWhenReinstalled="false">
+					<Default OnEnter="NoEffect" OnExit="Reset"/>
+				</ResetStamina>
+			</Activities>
+		</Action>
+		<Action Name="LookPose" FragmentName="LookPose">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<True/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

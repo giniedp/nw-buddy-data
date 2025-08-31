@@ -1,0 +1,494 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction" FragmentName="r_R2_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName=""/>
+					<And>
+						<Or>
+							<And>
+								<Or>
+									<And>
+										<IfDamagedByAttackType AttackType="Light"/>
+									</And>
+									<And>
+										<IfDamagedByAttackType AttackType="Ability"/>
+										<IfDamagedByPowerLevel Comparison="LessThan" Value="1"/>
+									</And>
+								</Or>
+								<Not>
+									<IfMannequinTag TagName="ReactionLimiter_Active"/>
+								</Not>
+								<Or>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo-" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo_StarterBeach" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo-_StarterBeach" UseCRC="true"/>
+								</Or>
+							</And>
+							<And>
+								<IfDamagedByAttackType AttackType="Heavy"/>
+								<Not>
+									<IfMannequinTag TagName="ReactionLimiter_Active"/>
+								</Not>
+								<Or>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo-" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo+" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo_StarterBeach" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo-_StarterBeach" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo+_StarterBeach" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Named_Solo" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Named_Solo+" UseCRC="true"/>
+								</Or>
+							</And>
+							<And>
+								<Not>
+									<IfDamagedByAttackType AttackType="Light"/>
+								</Not>
+								<Not>
+									<IfDamagedByAttackType AttackType="Heavy"/>
+								</Not>
+								<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="1"/>
+							</And>
+						</Or>
+						<Not>
+							<And>
+								<Or>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="DungeonMiniBoss" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Dungeon+" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Elite+" UseCRC="true"/>
+								</Or>
+								<IfMannequinTag TagName="ReactionLimiter_Active"/>
+							</And>
+						</Not>
+						<Not>
+							<Or>
+								<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Raid10+" UseCRC="true"/>
+								<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Raid20+" UseCRC="true"/>
+							</Or>
+						</Not>
+						<Not>
+							<And>
+								<IfDamagedByPowerLevel Comparison="LessThan" Value="4"/>
+								<Not>
+									<IsStunned/>
+								</Not>
+								<IfMannequinMarker MarkerName="IsKnockedDown"/>
+							</And>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffect="ResetAI" OnlyCheckOwnedStatusEffects="false"/>
+						</Not>
+					</And>
+					<Not>
+						<IfDamaged RequireDamageWasBlocked="true" RequireDamageDepletedStamina="true" RequireDeflectDamage="false" FailOnNoReactionDamage="false" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+					</Not>
+					<Not>
+						<And>
+							<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+							<Not>
+								<IsStunned/>
+							</Not>
+						</And>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reset"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Elite"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/Damned/CAGE/DamnedReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.3"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+					<Conditional Name="PromotedElite" Scale="1.0" PushBackScale="0.15"/>
+				</ReactionMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<BlackboardCondition LeftOperand="%Chained_Reaction_Count%0.0" Operator="GreaterThanOrEqual" RightOperand="3.0"/>
+								<Or>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo-" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo_StarterBeach" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo-_StarterBeach" UseCRC="true"/>
+									<And>
+										<IfDamagedByAttackType AttackType="Heavy"/>
+										<Or>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo+" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Named_Solo" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Named_Solo+" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo+_StarterBeach" UseCRC="true"/>
+										</Or>
+									</And>
+								</Or>
+							</And>
+							<And>
+								<BlackboardCondition LeftOperand="%Chained_Reaction_Count%0.0" Operator="GreaterThanOrEqual" RightOperand="1.0"/>
+								<Or>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="DungeonMiniBoss" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Dungeon+" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Elite+" UseCRC="true"/>
+								</Or>
+								<Not>
+									<IsStunned/>
+								</Not>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ModifyStatusEffects ResetWhenReinstalled="true">
+								<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="AI_Reaction_Limiter_Gate"/>
+									</EffectsToApplyOnEnter>
+									<EffectsToApplyOnExit>
+										<EffectId EffectId="AI_Reaction_Limiter"/>
+									</EffectsToApplyOnExit>
+									<EffectsToRemoveOnExit>
+										<EffectId EffectId="AI_Reaction_Limiter_Gate"/>
+									</EffectsToRemoveOnExit>
+								</Default>
+							</ModifyStatusEffects>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="ReactionLimiter_Active" OnEnter="Set" OnExit="Set" DelayTimer="0.0"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="R2_StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.4"/>
+					<Conditional Name="R4_StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="1.0"/>
+					<Conditional Name="StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.6"/>
+					<Conditional Name="R2_ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.1"/>
+					<Conditional Name="R4_ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="1.0"/>
+					<Conditional Name="ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.4"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Conditional Name="WaterShield6" TagName="WaterShield5" OnEnter="Set" OnExit="NoAction"/>
+					<Conditional Name="WaterShield5" TagName="WaterShield4" OnEnter="Set" OnExit="NoAction"/>
+					<Conditional Name="WaterShield4" TagName="WaterShield3" OnEnter="Set" OnExit="NoAction"/>
+					<Conditional Name="WaterShield3" TagName="WaterShield2" OnEnter="Set" OnExit="NoAction"/>
+					<Conditional Name="WaterShield2" TagName="WaterShield1" OnEnter="Set" OnExit="NoAction"/>
+					<Conditional Name="WaterShield1" TagName="WaterShield1" OnEnter="Unset" OnExit="NoAction"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IsStunned/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default ScriptToRun="Player_Hurts" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Additive" FragmentName="r_R0_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName=""/>
+					<Not>
+						<IfDamaged RequireDamageWasBlocked="true" RequireDamageDepletedStamina="true" RequireDeflectDamage="false" FailOnNoReactionDamage="false" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+					</Not>
+					<Or>
+						<Not>
+							<And>
+								<Or>
+									<And>
+										<Or>
+											<And>
+												<IfDamagedByAttackType AttackType="Light"/>
+											</And>
+											<And>
+												<IfDamagedByAttackType AttackType="Ability"/>
+												<IfDamagedByPowerLevel Comparison="LessThan" Value="1"/>
+											</And>
+										</Or>
+										<Not>
+											<IfMannequinTag TagName="ReactionLimiter_Active"/>
+										</Not>
+										<Or>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo-" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo_StarterBeach" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo-_StarterBeach" UseCRC="true"/>
+										</Or>
+									</And>
+									<And>
+										<IfDamagedByAttackType AttackType="Heavy"/>
+										<Not>
+											<IfMannequinTag TagName="ReactionLimiter_Active"/>
+										</Not>
+										<Or>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo-" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo+" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo_StarterBeach" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo-_StarterBeach" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Solo+_StarterBeach" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Named_Solo" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Named_Solo+" UseCRC="true"/>
+										</Or>
+									</And>
+									<And>
+										<Not>
+											<IfDamagedByAttackType AttackType="Light"/>
+										</Not>
+										<Not>
+											<IfDamagedByAttackType AttackType="Heavy"/>
+										</Not>
+										<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="1"/>
+									</And>
+								</Or>
+								<Not>
+									<And>
+										<Or>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="DungeonMiniBoss" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Dungeon+" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Elite+" UseCRC="true"/>
+										</Or>
+										<IfMannequinTag TagName="ReactionLimiter_Active"/>
+									</And>
+								</Not>
+								<Not>
+									<Or>
+										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Raid10+" UseCRC="true"/>
+										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Raid20+" UseCRC="true"/>
+									</Or>
+								</Not>
+								<Not>
+									<And>
+										<IfDamagedByPowerLevel Comparison="LessThan" Value="4"/>
+										<Not>
+											<IsStunned/>
+										</Not>
+										<IfMannequinMarker MarkerName="IsKnockedDown"/>
+									</And>
+								</Not>
+								<Not>
+									<IfHasStatusEffect StatusEffect="ResetAI" OnlyCheckOwnedStatusEffects="false"/>
+								</Not>
+							</And>
+						</Not>
+						<And>
+							<IfDamagedByPowerLevel Comparison="GreaterThan" Value="0"/>
+							<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+							<Not>
+								<IsStunned/>
+							</Not>
+						</And>
+						<IfMannequinTag TagName="Elite"/>
+						<IfMannequinTag TagName="Reset"/>
+					</Or>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DoNotReact"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="HoppingBack"/>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.2"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_AdditiveReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+					<Conditional Name="PromotedElite" Scale="1.0" PushBackScale="0.0"/>
+					<Conditional Name="ReactionLimiter_Active" Scale="1.0" PushBackScale="0.0"/>
+				</ReactionMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+							<Not>
+								<IfMannequinTag TagName="ReactionLimiter_Active"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ResetReactionCount ResetWhenReinstalled="false">
+							<Default OnEnter="Reset" OnExit="NoEffect"/>
+						</ResetReactionCount>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="false" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+							<IfMannequinTag TagName="ReactionLimiter_Active"/>
+							<Not>
+								<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName="" RequireRanged="true"/>
+							</Not>
+							<Not>
+								<Or>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="DungeonMiniBoss" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Dungeon+" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Elite+" UseCRC="true"/>
+								</Or>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ModifyStatusEffects>
+								<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="AI_Reaction_Limiter"/>
+									</EffectsToApplyOnEnter>
+								</Default>
+							</ModifyStatusEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default ScriptToRun="Wolf_Hurts" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Not>
+							<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Conditional Name="WaterShield6" TagName="WaterShield5" OnEnter="Set" OnExit="NoAction"/>
+							<Conditional Name="WaterShield5" TagName="WaterShield4" OnEnter="Set" OnExit="NoAction"/>
+							<Conditional Name="WaterShield4" TagName="WaterShield3" OnEnter="Set" OnExit="NoAction"/>
+							<Conditional Name="WaterShield3" TagName="WaterShield2" OnEnter="Set" OnExit="NoAction"/>
+							<Conditional Name="WaterShield2" TagName="WaterShield1" OnEnter="Set" OnExit="NoAction"/>
+							<Conditional Name="WaterShield1" TagName="WaterShield1" OnEnter="Unset" OnExit="NoAction"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_GRIT" FragmentName="" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName=""/>
+					<Not>
+						<IfDamaged RequireDamageWasBlocked="true" RequireDamageDepletedStamina="true" RequireDeflectDamage="false" FailOnNoReactionDamage="false" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+					</Not>
+					<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Conditional Name="WaterShield6" TagName="WaterShield5" OnEnter="Set" OnExit="NoAction"/>
+					<Conditional Name="WaterShield5" TagName="WaterShield4" OnEnter="Set" OnExit="NoAction"/>
+					<Conditional Name="WaterShield4" TagName="WaterShield3" OnEnter="Set" OnExit="NoAction"/>
+					<Conditional Name="WaterShield3" TagName="WaterShield2" OnEnter="Set" OnExit="NoAction"/>
+					<Conditional Name="WaterShield2" TagName="WaterShield1" OnEnter="Set" OnExit="NoAction"/>
+					<Conditional Name="WaterShield1" TagName="WaterShield1" OnEnter="Unset" OnExit="NoAction"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Breakout" FragmentName="Reaction_Breakout">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Reaction_Breakout_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<ApplyMoveSpeedMultiplier/>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Block" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="R2_StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_StunBreakout">
+			<IsStunned/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R2_ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2" QueryData="true"/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_ReactionBreakout">
+			<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2"/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<IfMannequinTag Name="Elite" TagName="Elite"/>
+		<IfMannequinTag Name="WaterShield6" TagName="WaterShield6"/>
+		<IfMannequinTag Name="WaterShield5" TagName="WaterShield5"/>
+		<IfMannequinTag Name="WaterShield4" TagName="WaterShield4"/>
+		<IfMannequinTag Name="WaterShield3" TagName="WaterShield3"/>
+		<IfMannequinTag Name="WaterShield2" TagName="WaterShield2"/>
+		<IfMannequinTag Name="WaterShield1" TagName="WaterShield1"/>
+		<IfHasStatusEffect Name="PromotedElite" StatusEffect="AI_Elite_Unbreakable_Grit_Buff"/>
+		<IfMannequinTag Name="ReactionLimiter_Active" TagName="ReactionLimiter_Active"/>
+	</Conditions>
+</ActionList>
+

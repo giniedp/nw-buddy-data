@@ -1,0 +1,297 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction" FragmentName="r_R2_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="Armadillo_ResistanceOnHitTaken"/>
+					<Not>
+						<IfActionStatus ActionName="Reaction" Status="Pending" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction" Status="Installed" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BASEAI/CAGE/ReactionTables/BaseAI_ReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.3"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="R2_StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.4"/>
+					<Conditional Name="R4_StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="1.0"/>
+					<Conditional Name="StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.6"/>
+					<Conditional Name="R2_ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.2"/>
+					<Conditional Name="R4_ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="1.0"/>
+					<Conditional Name="ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.4"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IsStunned/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.3"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Additive" FragmentName="r_R0_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfDamagedByPowerLevel Comparison="Equal" Value="0" FailOnNoReactionDamage="false"/>
+					</Or>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DoNotReact"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_AdditiveReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="Death" FragmentName="r_Death" ServerStarted="true" Predictive="true">
+			<ActivationCondition>
+				<IfDead ServerOnly="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BASEAI/CAGE/ReactionTables/BaseAI_DeathTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.0"/>
+				</SetReactionFragment>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Death" SetOnStop="false"/>
+				</SetAudioSwitchState>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Transition OUT of ball weapon and hide base mesh.">
+					<IfCondition>
+						<True/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetAttachmentVisibility>
+								<Default OnEnter="ShowAttachment" OnExit="NoEffect" AttachmentName="armadillo_mesh" AffectMainPass="true" AffectShadowPass="true"/>
+							</SetAttachmentVisibility>
+							<SetAttachmentVisibility>
+								<Default OnEnter="HideAttachment" OnExit="NoEffect" AttachmentName="right_hand_attach"/>
+							</SetAttachmentVisibility>
+							<SetAttachmentVisibility>
+								<Default OnEnter="HideAttachment" OnExit="NoEffect" AttachmentName="righthandattach"/>
+							</SetAttachmentVisibility>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetActiveWeapon ResetWhenReinstalled="false">
+								<Default WeaponOption="main-hand-option-1" OnEnter="Set" OnExit="NoEffect"/>
+							</SetActiveWeapon>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Staggered" FragmentName="r_Stagger" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="LessThanOrEqual" Comment="Look for Stamina to be 0"/>
+					<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="0" FailOnNoReactionDamage="false" Comment="Require the character to be hit by an attack to enter Stagger"/>
+					<Not Comment="Check that the character isn't already stunned or staggered. Staggered also applies the 'Stunned' tag.">
+						<Or>
+							<IsStunned/>
+							<IfMannequinTag TagName="Stunned"/>
+						</Or>
+					</Not>
+					<IfHasStatusEffect StatusEffect="AI_Enable_Stagger" Comment="Add this into your character's initial status effects to enable the Stagger mechanic on them"/>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableStagger" Comment="Use this to disable Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default Comment="Reduces received Stagger damage for a period after being Staggered">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+					<Conditional Name="TelegraphStaggered" Comment="Applies a status effect to the character that displays 'Staggered' while in this action, and reduces received Stagger damage for a period after being Staggered">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Staggered_Telegraph"/>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Staggered_Telegraph"/>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+				</ModifyStatusEffects>
+				<CastSpell>
+					<Default SpellName="AI_Staggered_Telegraph"/>
+				</CastSpell>
+				<ChangeActionFragment ResetWhenReinstalled="true">
+					<Default UseDefaultFragment="true" FragmentName=""/>
+					<Conditional Name="damaged_front" UseDefaultFragment="false" FragmentName="r_Stagger_F"/>
+					<Conditional Name="damaged_back" UseDefaultFragment="false" FragmentName="r_Stagger_B"/>
+				</ChangeActionFragment>
+				<SetReactionFragment Comment="Just like our Spawn actions, use SetReactionFragment referencing the EmptyReactionTableHarness table to prevent behavior evaluations while in this action">
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Turn OFF Stamina">
+					<IfCondition>
+						<True/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ModifyStatusEffects>
+								<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+									<EffectsToRemoveOnEnter>
+										<EffectId EffectId="AI_SlowRoot_Immunity"/>
+										<EffectId EffectId="AI_Stun_Immunity"/>
+										<EffectId EffectId="AI_Enable_Stagger"/>
+										<EffectId EffectId="Armadillo_AddStamina"/>
+										<EffectId EffectId="Armadillo_AddResistance"/>
+									</EffectsToRemoveOnEnter>
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="Armadillo_RemoveStamina"/>
+									</EffectsToApplyOnEnter>
+								</Default>
+							</ModifyStatusEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Transition OUT of ball weapon and hide base mesh.">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="OutroBallTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetAttachmentVisibility>
+								<Default OnEnter="ShowAttachment" OnExit="NoEffect" AttachmentName="armadillo_mesh" AffectMainPass="true" AffectShadowPass="true"/>
+							</SetAttachmentVisibility>
+							<SetAttachmentVisibility>
+								<Default OnEnter="HideAttachment" OnExit="NoEffect" AttachmentName="right_hand_attach"/>
+							</SetAttachmentVisibility>
+							<SetAttachmentVisibility>
+								<Default OnEnter="HideAttachment" OnExit="NoEffect" AttachmentName="righthandattach"/>
+							</SetAttachmentVisibility>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetActiveWeapon ResetWhenReinstalled="false">
+								<Default WeaponOption="main-hand-option-1" OnEnter="Set" OnExit="NoEffect"/>
+							</SetActiveWeapon>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="R2_StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_StunBreakout">
+			<IsStunned/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R2_ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2" QueryData="true"/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_ReactionBreakout">
+			<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+	</Conditions>
+</ActionList>
+

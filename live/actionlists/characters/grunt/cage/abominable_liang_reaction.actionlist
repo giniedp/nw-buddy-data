@@ -1,0 +1,359 @@
+<ActionList>
+	<Actions>
+		<Action Name="Deflection" FragmentName="Deflection" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="true" FailOnNoReactionDamage="false" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.3"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/Grunt/CAGE/GruntReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.3"/>
+					<Conditional Name="ReactionBreakout" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.6"/>
+				</HTNPlanDoneActivity>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="ReactionTalisman" FragmentName="r_R3_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<And>
+							<IfHasStatusEffect StatusEffect="AI_AbominableLiang_TalismanBarrier" ComparisonType="GreaterThenOrEqual" StackSize="8"/>
+							<IfMannequinTag TagName="Phase4"/>
+						</And>
+						<And>
+							<IfHasStatusEffect StatusEffect="AI_AbominableLiang_TalismanBarrier" ComparisonType="GreaterThenOrEqual" StackSize="6"/>
+							<IfMannequinTag TagName="Phase3"/>
+						</And>
+						<And>
+							<IfHasStatusEffect StatusEffect="AI_AbominableLiang_TalismanBarrier" ComparisonType="GreaterThenOrEqual" StackSize="4"/>
+							<IfMannequinTag TagName="Phase2"/>
+						</And>
+					</Or>
+					<Not>
+						<IfMannequinTag TagName="R_Talisman_done"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<Or>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_R3_F"/>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_R3_B"/>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_R3_R"/>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_R3_L"/>
+						</Or>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="R_Talisman_done" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets\springboardentitites\Characters\Grunt\CAGE\Abominable_LiangReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+					<Conditional Name="PromotedElite" Scale="1.0" PushBackScale="0.15"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.3"/>
+				</HTNPlanDoneActivity>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Angered" Invertcheck="true"/>
+							<IfMannequinTag TagName="Cornered" Invertcheck="true"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="Cornered" OnEnter="Set" OnExit="Set" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IsStunned/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="Reaction" FragmentName="r_R2_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName=""/>
+					<IfDamagedByPowerLevel Comparison="GreaterThan" Value="0"/>
+					<Not>
+						<IfDamagedByPowerLevel Comparison="Equal" Value="6"/>
+					</Not>
+					<Not>
+						<And>
+							<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+							<Not>
+								<IsStunned/>
+							</Not>
+						</And>
+					</Not>
+					<Not>
+						<And>
+							<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="true" FailOnNoReactionDamage="false" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+							<Or>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Attack_Lunge"/>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Attack_Lunge_Combo"/>
+							</Or>
+						</And>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reset"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="R_Talisman_done"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<Or>
+							<And>
+								<IfHasStatusEffect StatusEffect="AI_AbominableLiang_TalismanBarrier" ComparisonType="GreaterThenOrEqual" StackSize="8"/>
+								<IfMannequinTag TagName="Phase4"/>
+							</And>
+							<And>
+								<IfHasStatusEffect StatusEffect="AI_AbominableLiang_TalismanBarrier" ComparisonType="GreaterThenOrEqual" StackSize="6"/>
+								<IfMannequinTag TagName="Phase3"/>
+							</And>
+							<And>
+								<IfHasStatusEffect StatusEffect="AI_AbominableLiang_TalismanBarrier" ComparisonType="GreaterThenOrEqual" StackSize="4"/>
+								<IfMannequinTag TagName="Phase2"/>
+							</And>
+						</Or>
+					</Not>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Attack_WingGust"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Elemental"/>
+							<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="2"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="ActiveAura" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="NoAura" OnEnter="Set" OnExit="" DelayTimer="0.0"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/Grunt/CAGE/GruntReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+					<Conditional Name="PromotedElite" Scale="1.0" PushBackScale="0.15"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="R2_StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.4"/>
+					<Conditional Name="R4_StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="1.0"/>
+					<Conditional Name="StunBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.4"/>
+					<Conditional Name="R2_ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.2"/>
+					<Conditional Name="R4_ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="1.0"/>
+					<Conditional Name="ReactionBreakout" TagName="BreakoutWindow" OnEnter="Set" OnExit="Unset" DelayTimer="0.4"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.3"/>
+				</HTNPlanDoneActivity>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IsStunned/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Additive" FragmentName="r_R0_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName=""/>
+					<Or>
+						<IfDamagedByPowerLevel Comparison="Equal" Value="0"/>
+						<And>
+							<IfDamagedByPowerLevel Comparison="GreaterThan" Value="0"/>
+							<Or>
+								<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+								<Not>
+									<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Attack_WingGust"/>
+								</Not>
+							</Or>
+							<Not>
+								<IsStunned/>
+							</Not>
+						</And>
+						<IfMannequinTag TagName="Reset"/>
+					</Or>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<Or>
+							<And>
+								<IfHasStatusEffect StatusEffect="AI_AbominableLiang_TalismanBarrier" ComparisonType="GreaterThenOrEqual" StackSize="8"/>
+								<IfMannequinTag TagName="Phase4"/>
+							</And>
+							<And>
+								<IfHasStatusEffect StatusEffect="AI_AbominableLiang_TalismanBarrier" ComparisonType="GreaterThenOrEqual" StackSize="6"/>
+								<IfMannequinTag TagName="Phase3"/>
+							</And>
+							<And>
+								<IfHasStatusEffect StatusEffect="AI_AbominableLiang_TalismanBarrier" ComparisonType="GreaterThenOrEqual" StackSize="4"/>
+								<IfMannequinTag TagName="Phase2"/>
+							</And>
+						</Or>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="R_Talisman_done"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_AdditiveReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="1.0" PushBackScale="0.0"/>
+					<Conditional Name="PromotedElite" Scale="1.0" PushBackScale="0.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="Death" FragmentName="r_Death" ServerStarted="true">
+			<ActivationCondition>
+				<IfDead ServerOnly="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<AIAssignOrder>
+					<Default Order="KillMinionOrder"/>
+				</AIAssignOrder>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Death" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="R2_StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_StunBreakout">
+			<IsStunned/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="StunBreakout">
+			<IsStunned/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R2_ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2" QueryData="true"/>
+			<IfDamagedByPowerLevel Comparison="LessThanOrEqual" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<And Name="R4_ReactionBreakout">
+			<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+			<Or>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="4" FailOnNoReactionDamage="false" QueryData="true"/>
+				<IfDamagedByPowerLevel Comparison="Equal" Value="5" FailOnNoReactionDamage="false" QueryData="true"/>
+			</Or>
+		</And>
+		<And Name="ReactionBreakout">
+			<IfCanBreakReaction StunToBreakout="2"/>
+			<IfDamagedByPowerLevel Comparison="GreaterThan" Value="2" FailOnNoReactionDamage="false" QueryData="true"/>
+		</And>
+		<IfHasStatusEffect Name="PromotedElite" StatusEffect="AI_Elite_Unbreakable_Grit_Buff"/>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,178 @@
+<ActionList>
+	<Actions>
+		<Action Name="CannonBallTracking">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Phase2"/>
+					<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_HitCount" ComparisonType="GreatherThanOrEqual" StackSize="3"/>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_Transition" OnlyCheckOwnedStatusEffects="false"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_Transition" OnlyCheckOwnedStatusEffects="false"/>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_AdmiralBrute_Phase2_Transition"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_AdmiralBrute_Phase2_HitCount"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="ReactionFailedTracking">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Phase2"/>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="false" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+					<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_HitGeneric" OnlyCheckOwnedStatusEffects="false"/>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_Transition" OnlyCheckOwnedStatusEffects="false"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_QueueReaction" OnlyCheckOwnedStatusEffects="false"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reset"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_InMiddleOfJump" OnlyCheckOwnedStatusEffects="false"/>
+					<Not>
+						<IfActionStatus ActionName="Reaction_P2" Status="Pending" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction_P2" Status="Installed" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction_Fake_Queued" Status="Pending" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction_Fake_Queued" Status="Installed" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_AdmiralBrute_Phase2_QueueReaction" OnlyCheckOwnedStatusEffects="false"/>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_AdmiralBrute_Phase2_QueueReaction"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="ActivateFriendlyFire">
+			<ActivationCondition>
+				<And>
+					<IfMannequinMarker MarkerName="FriendlyFireON"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="FriendlyFireON"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="DeactivateFriendlyFire">
+			<ActivationCondition>
+				<Not>
+					<IfMannequinMarker MarkerName="FriendlyFireON"/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="FriendlyFireOFF"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="NoTargetSheatheWeapon">
+			<ActivationCondition>
+				<Not>
+					<IfHasAttackTarget/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SheatheWeapon ResetWhenReinstalled="false">
+					<Default SheatheOption="Sheathe" SlotToSheathe="MAIN_HAND_OPTION_1" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+			</Activities>
+		</Action>
+		<Action Name="AimPose" FragmentName="Aim">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="AimPose"/>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="SheatheWeaponControl">
+			<ActivationCondition>
+				<IfHasAttackTarget/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe Main Hand Weapon Mannequin Marker Logic">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="unsheathe_weapon"/>
+					</IfCondition>
+					<ThenActivity>
+						<SheatheWeapon ResetWhenReinstalled="false">
+							<Default SheatheOption="Unsheathe" SlotToSheathe="MAIN_HAND_OPTION_1" OnEnter="Set" OnExit="NoEffect"/>
+						</SheatheWeapon>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Main Hand Weapon Mannequin Marker Logic">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="sheathe_weapon"/>
+					</IfCondition>
+					<ThenActivity>
+						<SheatheWeapon ResetWhenReinstalled="false">
+							<Default SheatheOption="Sheathe" SlotToSheathe="MAIN_HAND_OPTION_1" OnEnter="Set" OnExit="NoEffect"/>
+						</SheatheWeapon>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="XformHitBoxControl">
+			<ActivationCondition>
+				<IfHasAttackTarget/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable the xform hitbox">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableHitbox"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableHitbox"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Enable the xform hitbox">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableHitbox"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableHitbox"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

@@ -1,0 +1,891 @@
+<ActionList>
+	<Actions>
+		<Action Name="Use_QuickSlot_1" FragmentName="Use">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Use_Quickslot_1" BackTicks="20"/>
+					<IfItemInSlot SlotToCheckAlias="QUICK_SLOT_1" RequireSlotValid="true" RequireSlotActive="false"/>
+					<CanUseItemInSlot SlotToCheck="quickslot-1"/>
+					<IfConsumableCooldownTimer SlotToCheckAlias="QUICK_SLOT_1" ComparisonValueSeconds="0" ComparisonType="Equal"/>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<Or>
+						<Not>
+							<IfMannequinTagInItemSlot TagName="WeaponOil" SlotToCheckAlias="QUICK_SLOT_1"/>
+						</Not>
+						<And>
+							<IfMannequinTagInItemSlot TagName="WeaponOil" SlotToCheckAlias="QUICK_SLOT_1"/>
+							<IfExternalCondition ConditionName="CanUseWeaponOil"/>
+						</And>
+					</Or>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="FishingPole"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<IfMannequinMarker MarkerName="Exit_Use"/>
+					<And Comment="Transitioning to Prone">
+						<IfMannequinTag TagName="Prone"/>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Idle_PostureTransition"/>
+					</And>
+					<IfDead ServerOnly="false"/>
+					<IfDeathsDoor ServerOnly="false"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="InstantSwap_Cooldown"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<SetInUsePaperdollItem>
+					<Default SlotToUse="QUICK_SLOT_1"/>
+				</SetInUsePaperdollItem>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true" Comment="Set Main Hand Tags">
+					<Default TagSource="CurrentlyUsedQuickslot" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTagFromSource>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Unset AutoUnsheathe">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Main Hand Soft Sheathe when not using oils">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinTag TagName="Unarmed"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="WeaponOil"/>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="KeepWeaponsUnsheathed"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe if not using oils">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="WeaponOil"/>
+									</Not>
+									<Not>
+										<IfMannequinTag TagName="RespecPotion"/>
+									</Not>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SetAttachmentVisibility>
+										<Default OnEnter="HideAttachment" OnExit="ShowAttachment" AttachmentName="righthandattach"/>
+									</SetAttachmentVisibility>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe if Respecing">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="Unarmed"/>
+									</Not>
+									<IfMannequinTag TagName="RespecPotion"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SheatheWeapon ResetWhenReinstalled="false" Comment="Sheathe Main Hand on Enter">
+										<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+									</SheatheWeapon>
+									<SetToggleInput>
+										<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+									</SetToggleInput>
+									<SetToggleInput>
+										<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+									</SetToggleInput>
+									<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Clear mainhand weapon tags">
+										<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+									</SetMannequinTagFromSource>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Off Hand Soft Sheathe Logic">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinTag TagName="Unarmed_OH"/>
+							</Not>
+							<Not>
+								<Or>
+									<IfMannequinTag TagName="Eat"/>
+									<IfMannequinTag TagName="Drink"/>
+									<IfMannequinTag TagName="Potion"/>
+								</Or>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="KeepWeaponsUnsheathed"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="Off Hand on Enter">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="Unsheathe Off Hand on Exit">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="NoEffect" OnExit="Set"/>
+							</SheatheWeapon>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand if Respecing">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="Unarmed_OH"/>
+									</Not>
+									<IfMannequinTag TagName="RespecPotion"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SheatheWeapon ResetWhenReinstalled="false" Comment="Sheathe Main Hand on Enter">
+										<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+									</SheatheWeapon>
+									<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Clear mainhand weapon tags">
+										<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+									</SetMannequinTagFromSource>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Set posture depending on consumable">
+					<Default TagName="-" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="ForceStand" TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="ItemTag" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Use_QuickSlot_2" FragmentName="Use">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Use_Quickslot_2" BackTicks="20"/>
+					<IfItemInSlot SlotToCheckAlias="QUICK_SLOT_2" RequireSlotValid="true" RequireSlotActive="false"/>
+					<CanUseItemInSlot SlotToCheck="quickslot-2"/>
+					<IfConsumableCooldownTimer SlotToCheckAlias="QUICK_SLOT_2" ComparisonValueSeconds="0" ComparisonType="Equal"/>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<Or>
+						<Not>
+							<IfMannequinTagInItemSlot TagName="WeaponOil" SlotToCheckAlias="QUICK_SLOT_2"/>
+						</Not>
+						<And>
+							<IfMannequinTagInItemSlot TagName="WeaponOil" SlotToCheckAlias="QUICK_SLOT_2"/>
+							<IfExternalCondition ConditionName="CanUseWeaponOil"/>
+						</And>
+					</Or>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="FishingPole"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<IfMannequinMarker MarkerName="Exit_Use"/>
+					<And Comment="Transitioning to Prone">
+						<IfMannequinTag TagName="Prone"/>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Idle_PostureTransition"/>
+					</And>
+					<IfDead ServerOnly="false"/>
+					<IfDeathsDoor ServerOnly="false"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="InstantSwap_Cooldown"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<SetInUsePaperdollItem>
+					<Default SlotToUse="QUICK_SLOT_2"/>
+				</SetInUsePaperdollItem>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true" Comment="Set Main Hand Tags">
+					<Default TagSource="CurrentlyUsedQuickslot" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTagFromSource>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Unset AutoUnsheathe">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Main Hand Soft Sheathe when not using oils">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinTag TagName="Unarmed"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="WeaponOil"/>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="KeepWeaponsUnsheathed"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe if not using oils">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="WeaponOil"/>
+									</Not>
+									<Not>
+										<IfMannequinTag TagName="RespecPotion"/>
+									</Not>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SetAttachmentVisibility>
+										<Default OnEnter="HideAttachment" OnExit="ShowAttachment" AttachmentName="righthandattach"/>
+									</SetAttachmentVisibility>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe if Respecing">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="Unarmed"/>
+									</Not>
+									<IfMannequinTag TagName="RespecPotion"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SheatheWeapon ResetWhenReinstalled="false" Comment="Sheathe Main Hand on Enter">
+										<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+									</SheatheWeapon>
+									<SetToggleInput>
+										<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+									</SetToggleInput>
+									<SetToggleInput>
+										<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+									</SetToggleInput>
+									<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Clear mainhand weapon tags">
+										<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+									</SetMannequinTagFromSource>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Off Hand Soft Sheathe Logic">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinTag TagName="Unarmed_OH"/>
+							</Not>
+							<Not>
+								<Or>
+									<IfMannequinTag TagName="Eat"/>
+									<IfMannequinTag TagName="Drink"/>
+									<IfMannequinTag TagName="Potion"/>
+								</Or>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="KeepWeaponsUnsheathed"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="Off Hand on Enter">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="Unsheathe Off Hand on Exit">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="NoEffect" OnExit="Set"/>
+							</SheatheWeapon>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand if Respecing">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="Unarmed_OH"/>
+									</Not>
+									<IfMannequinTag TagName="RespecPotion"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SheatheWeapon ResetWhenReinstalled="false" Comment="Sheathe Main Hand on Enter">
+										<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+									</SheatheWeapon>
+									<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Clear mainhand weapon tags">
+										<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+									</SetMannequinTagFromSource>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Set posture depending on consumable">
+					<Default TagName="-" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="ForceStand" TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="ItemTag" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Use_QuickSlot_3" FragmentName="Use">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Use_Quickslot_3" BackTicks="20"/>
+					<IfItemInSlot SlotToCheckAlias="QUICK_SLOT_3" RequireSlotValid="true" RequireSlotActive="false"/>
+					<CanUseItemInSlot SlotToCheck="quickslot-3"/>
+					<IfConsumableCooldownTimer SlotToCheckAlias="QUICK_SLOT_3" ComparisonValueSeconds="0" ComparisonType="Equal"/>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<Or>
+						<Not>
+							<IfMannequinTagInItemSlot TagName="WeaponOil" SlotToCheckAlias="QUICK_SLOT_3"/>
+						</Not>
+						<And>
+							<IfMannequinTagInItemSlot TagName="WeaponOil" SlotToCheckAlias="QUICK_SLOT_3"/>
+							<IfExternalCondition ConditionName="CanUseWeaponOil"/>
+						</And>
+					</Or>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="FishingPole"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<IfMannequinMarker MarkerName="Exit_Use"/>
+					<And Comment="Transitioning to Prone">
+						<IfMannequinTag TagName="Prone"/>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Idle_PostureTransition"/>
+					</And>
+					<IfDead ServerOnly="false"/>
+					<IfDeathsDoor ServerOnly="false"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="InstantSwap_Cooldown"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<SetInUsePaperdollItem>
+					<Default SlotToUse="QUICK_SLOT_3"/>
+				</SetInUsePaperdollItem>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true" Comment="Set Main Hand Tags">
+					<Default TagSource="CurrentlyUsedQuickslot" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTagFromSource>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Unset AutoUnsheathe">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Main Hand Soft Sheathe when not using oils">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinTag TagName="Unarmed"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="WeaponOil"/>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="KeepWeaponsUnsheathed"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe if not using oils">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="WeaponOil"/>
+									</Not>
+									<Not>
+										<IfMannequinTag TagName="RespecPotion"/>
+									</Not>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SetAttachmentVisibility>
+										<Default OnEnter="HideAttachment" OnExit="ShowAttachment" AttachmentName="righthandattach"/>
+									</SetAttachmentVisibility>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe if Respecing">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="Unarmed"/>
+									</Not>
+									<IfMannequinTag TagName="RespecPotion"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SheatheWeapon ResetWhenReinstalled="false" Comment="Sheathe Main Hand on Enter">
+										<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+									</SheatheWeapon>
+									<SetToggleInput>
+										<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+									</SetToggleInput>
+									<SetToggleInput>
+										<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+									</SetToggleInput>
+									<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Clear mainhand weapon tags">
+										<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+									</SetMannequinTagFromSource>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Off Hand Soft Sheathe Logic">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinTag TagName="Unarmed_OH"/>
+							</Not>
+							<Not>
+								<Or>
+									<IfMannequinTag TagName="Eat"/>
+									<IfMannequinTag TagName="Drink"/>
+									<IfMannequinTag TagName="Potion"/>
+								</Or>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="KeepWeaponsUnsheathed"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="Off Hand on Enter">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="Unsheathe Off Hand on Exit">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="NoEffect" OnExit="Set"/>
+							</SheatheWeapon>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand if Respecing">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="Unarmed_OH"/>
+									</Not>
+									<IfMannequinTag TagName="RespecPotion"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SheatheWeapon ResetWhenReinstalled="false" Comment="Sheathe Main Hand on Enter">
+										<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+									</SheatheWeapon>
+									<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Clear mainhand weapon tags">
+										<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+									</SetMannequinTagFromSource>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Set posture depending on consumable">
+					<Default TagName="-" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="ForceStand" TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="ItemTag" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Use_QuickSlot_4" FragmentName="Use">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Use_Quickslot_4" BackTicks="20"/>
+					<IfItemInSlot SlotToCheckAlias="QUICK_SLOT_4" RequireSlotValid="true" RequireSlotActive="false"/>
+					<CanUseItemInSlot SlotToCheck="quickslot-4"/>
+					<IfConsumableCooldownTimer SlotToCheckAlias="QUICK_SLOT_4" ComparisonValueSeconds="0" ComparisonType="Equal"/>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<Or>
+						<Not>
+							<IfMannequinTagInItemSlot TagName="WeaponOil" SlotToCheckAlias="QUICK_SLOT_4"/>
+						</Not>
+						<And>
+							<IfMannequinTagInItemSlot TagName="WeaponOil" SlotToCheckAlias="QUICK_SLOT_4"/>
+							<IfExternalCondition ConditionName="CanUseWeaponOil"/>
+						</And>
+					</Or>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="FishingPole"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<IfMannequinMarker MarkerName="Exit_Use"/>
+					<And Comment="Transitioning to Prone">
+						<IfMannequinTag TagName="Prone"/>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Idle_PostureTransition"/>
+					</And>
+					<IfDead ServerOnly="false"/>
+					<IfDeathsDoor ServerOnly="false"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="InstantSwap_Cooldown"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_1" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_2" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_3" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="Use_Quickslot_4" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<SetInUsePaperdollItem>
+					<Default SlotToUse="QUICK_SLOT_4"/>
+				</SetInUsePaperdollItem>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true" Comment="Set Main Hand Tags">
+					<Default TagSource="CurrentlyUsedQuickslot" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTagFromSource>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Unset AutoUnsheathe">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Main Hand Soft Sheathe when not using oils">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinTag TagName="Unarmed"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="WeaponOil"/>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="KeepWeaponsUnsheathed"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe if not using oils">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="WeaponOil"/>
+									</Not>
+									<Not>
+										<IfMannequinTag TagName="RespecPotion"/>
+									</Not>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SetAttachmentVisibility>
+										<Default OnEnter="HideAttachment" OnExit="ShowAttachment" AttachmentName="righthandattach"/>
+									</SetAttachmentVisibility>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe if Respecing">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="Unarmed"/>
+									</Not>
+									<IfMannequinTag TagName="RespecPotion"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SheatheWeapon ResetWhenReinstalled="false" Comment="Sheathe Main Hand on Enter">
+										<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+									</SheatheWeapon>
+									<SetToggleInput>
+										<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+									</SetToggleInput>
+									<SetToggleInput>
+										<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+									</SetToggleInput>
+									<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Clear mainhand weapon tags">
+										<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+									</SetMannequinTagFromSource>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Off Hand Soft Sheathe Logic">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinTag TagName="Unarmed_OH"/>
+							</Not>
+							<Not>
+								<Or>
+									<IfMannequinTag TagName="Eat"/>
+									<IfMannequinTag TagName="Drink"/>
+									<IfMannequinTag TagName="Potion"/>
+								</Or>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="KeepWeaponsUnsheathed"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="Off Hand on Enter">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="Unsheathe Off Hand on Exit">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="NoEffect" OnExit="Set"/>
+							</SheatheWeapon>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand if Respecing">
+							<IfCondition>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="Unarmed_OH"/>
+									</Not>
+									<IfMannequinTag TagName="RespecPotion"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<Group>
+									<SheatheWeapon ResetWhenReinstalled="false" Comment="Sheathe Main Hand on Enter">
+										<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+									</SheatheWeapon>
+									<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Clear mainhand weapon tags">
+										<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+									</SetMannequinTagFromSource>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</Group>
+							</ThenActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Set posture depending on consumable">
+					<Default TagName="-" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="ForceStand" TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="ItemTag" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+			</Activities>
+		</Action>
+		<Action Name="Read_Lore_Item" FragmentName="Use">
+			<ActivationCondition>
+				<IfIsRequestingLoreItem/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfIsRequestingLoreItem/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<ReadLoreItem/>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="ForceStand">
+			<IfMannequinTag TagName="WeaponOil"/>
+		</And>
+		<And Name="CanUseWeaponOil">
+			<Not>
+				<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Installed"/>
+			</Not>
+			<Not>
+				<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Installed"/>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="1H_Melee"/>
+				<IfMannequinTag TagName="2H_Melee"/>
+				<IfMannequinTag TagName="1H_Ranged"/>
+				<IfMannequinTag TagName="2H_Ranged"/>
+				<IfMannequinTag TagName="Bow"/>
+				<IfMannequinTag TagName="MagicGauntlet"/>
+				<IfMannequinTag TagName="MagicStaff"/>
+			</Or>
+		</And>
+	</Conditions>
+</ActionList>
+

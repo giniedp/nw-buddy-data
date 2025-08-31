@@ -1,0 +1,4422 @@
+<ActionList>
+	<Actions>
+		<Action Name="IceMagic_Attack_Primary" FragmentName="Ability_IceMagic_Primary">
+			<ActivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.0"/>
+					<And>
+						<IfMannequinTag TagName="Rapier"/>
+						<IfMannequinMarker MarkerName="AnimEnd"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Activate Startup">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="Ability_Startup"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<IfThenElse Comment="Check for Empowered Frost Passive">
+								<IfCondition>
+									<And>
+										<IfHasStatusEffect StatusEffect="IceMagic_Frost"/>
+										<IfAbilityActive AbilityName="IceConjurorPass3"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<IfThenElse Comment="Ice Conjuror Ultimate Check for Empowered Frost">
+										<IfCondition>
+											<IfAbilityActive AbilityName="IceConjurorUltimate"/>
+										</IfCondition>
+										<ThenActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrostUltimate"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ThenActivity>
+										<ElseActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrost"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ElseActivity>
+									</IfThenElse>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCamera" TurnRate="0.40" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCameraFast" TurnRate="0.90" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+				</CameraRelativeFacing>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Melee_Attack"/>
+				</AIAudioTriggerActivity>
+				<SetMannequinTag Comment="FirstAttack on enter">
+					<Default TagName="FirstAttack" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse Comment="Clear FirstAttack Tag Logic">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="FirstAttack"/>
+							<IfMannequinMarker MarkerName="TranslationDone"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag>
+							<Default TagName="FirstAttack" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<ResetGrit ResetWhenReinstalled="false">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetGrit>
+				<SetHaltMotionOnCollision>
+					<Default MaxAngleToHaltMotion="170.00"/>
+				</SetHaltMotionOnCollision>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_Attack_Heavy" FragmentName="Ability_IceMagic_Heavy">
+			<ActivationCondition>
+				<Not Comment="Only Activate through TransitionInstant">
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Activate Startup">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="Ability_Startup"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<IfThenElse Comment="Check for Empowered Frost Passive">
+								<IfCondition>
+									<And>
+										<IfHasStatusEffect StatusEffect="IceMagic_Frost"/>
+										<IfAbilityActive AbilityName="IceConjurorPass3"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<IfThenElse Comment="Ice Conjuror Ultimate Check for Empowered Frost">
+										<IfCondition>
+											<IfAbilityActive AbilityName="IceConjurorUltimate"/>
+										</IfCondition>
+										<ThenActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrostUltimate"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ThenActivity>
+										<ElseActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrost"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ElseActivity>
+									</IfThenElse>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCamera" TurnRate="0.40" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCameraFast" TurnRate="0.90" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+				</CameraRelativeFacing>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Melee_Attack"/>
+				</AIAudioTriggerActivity>
+				<SetMannequinTag>
+					<Default TagName="OneTimeScriptDone" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse>
+					<IfCondition>
+						<IfInput InputName="attack_blockbreaker_release"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag>
+							<Default TagName="OneTimeScriptDone" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetHaltMotionOnCollision>
+					<Default MaxAngleToHaltMotion="170.00"/>
+				</SetHaltMotionOnCollision>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_Spikes" FragmentName="Ability_IceMagic_Spikes">
+			<ActivationCondition>
+				<Or>
+					<Not>
+						<True/>
+					</Not>
+					<And>
+						<Or Comment="Backtick Check">
+							<IfActiveAbilityMoveName AbilityName="IceMagic_Spikes"/>
+							<And>
+								<IfActiveAbilityMoveName AbilityName="IceMagic_Spikes" BackTicks="20"/>
+								<IfActionStatus ActionName="UseBacktickInputs" Status="Installed"/>
+							</And>
+						</Or>
+						<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_Spikes" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						<Not>
+							<IfCooldownTimer AbilityID="IceMagic_Spikes" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+						<Not>
+							<IfExternalCondition ConditionName="Can_Charge_Special"/>
+						</Not>
+						<Or Comment="Stance Check">
+							<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+							<IfMannequinTag TagName="Ice"/>
+						</Or>
+						<Not>
+							<Or>
+								<And>
+									<Not>
+										<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+									</Not>
+									<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+								</And>
+								<And>
+									<Not>
+										<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+									</Not>
+									<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+								</And>
+								<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+								<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+							</Or>
+						</Not>
+						<Not>
+							<IfExternalCondition ConditionName="Throwable_Equipped"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FishingPole"/>
+						</Not>
+						<Not>
+							<IfInput InputName="Placing_Building"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="AttackAction"/>
+						</Not>
+						<Not>
+							<IfMannequinTagInItemSlot TagName="Tool" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+						<IfCanResizeCharacterController ResizeType="Default"/>
+						<Not>
+							<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+						</Not>
+						<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+						<Not>
+							<HeightToGround ActivationHeight="0.5"/>
+						</Not>
+						<Not>
+							<IfEncumbered/>
+						</Not>
+						<Not>
+							<IsSilenced/>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+						</Not>
+						<Not>
+							<IsMounted/>
+						</Not>
+					</And>
+				</Or>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe active weapon and set tags from sheathed">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Set Main Hand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Unset"/>
+							</SetMannequinTag>
+							<ChangeActionFragment ResetWhenReinstalled="false">
+								<Default UseDefaultFragment="true"/>
+							</ChangeActionFragment>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfMannequinTag TagName="Prone"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearActiveAbilityMoveInput>
+					<Default AbilityName="IceMagic_Spikes" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearActiveAbilityMoveInput>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Activate CoolDown after startup">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="Ability_Startup"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetCooldownTimer>
+								<Default AbilityID="IceMagic_Spikes" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</SetCooldownTimer>
+							<PerformActiveAbility>
+								<Default AbilityName="IceMagic_Spikes"/>
+							</PerformActiveAbility>
+							<PerformActiveAbility>
+								<Default AbilityName="IceConjurorPass5" DisableAnalyticsReporting="true"/>
+							</PerformActiveAbility>
+							<IfThenElse Comment="Check for Empowered Frost Passive">
+								<IfCondition>
+									<And>
+										<IfHasStatusEffect StatusEffect="IceMagic_Frost"/>
+										<IfAbilityActive AbilityName="IceConjurorPass3"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<IfThenElse Comment="Ice Conjuror Ultimate Check for Empowered Frost">
+										<IfCondition>
+											<IfAbilityActive AbilityName="IceConjurorUltimate"/>
+										</IfCondition>
+										<ThenActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrostUltimate"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ThenActivity>
+										<ElseActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrost"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ElseActivity>
+									</IfThenElse>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Apply Defiant Freeze Passive">
+								<IfCondition>
+									<And>
+										<IfAbilityActive AbilityName="IceConjurorPass6"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<ModifyStatusEffects>
+										<Default>
+											<EffectsToApplyOnEnter>
+												<EffectId EffectId="IceMagic_DefiantFreeze"/>
+											</EffectsToApplyOnEnter>
+										</Default>
+									</ModifyStatusEffects>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<TrackTimeInAction>
+					<Default/>
+				</TrackTimeInAction>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="0.00" RotationMultiplier="0.00" Decel="20,20,20" DisableGravity="false" InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+					<Conditional Name="InheritForwardVelocity" MotionMultiplier="0" RotationMultiplier="0.00" Decel="30,30,30" DisableGravity="false" InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+				</AnimationDrivenMotion>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCamera" TurnRate="0.40" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCameraFast" TurnRate="0.90" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+				</CameraRelativeFacing>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Melee_Attack"/>
+				</AIAudioTriggerActivity>
+				<ResetGrit ResetWhenReinstalled="false">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetGrit>
+				<ChannelSpell SpellName="IceMagic_Spell_Spikes"/>
+				<IfThenElse ResetWhenReinstalled="false" Comment="End Path of Destiny Early">
+					<IfCondition>
+						<IfInput InputName="attack_primary_virtual"/>
+					</IfCondition>
+					<ThenActivity>
+						<SendMessageToOwnedSlices>
+							<Default Message="RequestEnd"/>
+						</SendMessageToOwnedSlices>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_IceStorm" FragmentName="Ability_IceMagic_IceStorm_Intro">
+			<ActivationCondition>
+				<And>
+					<Or Comment="Backtick Check">
+						<IfActiveAbilityMoveName AbilityName="IceMagic_IceStorm"/>
+						<And>
+							<IfActiveAbilityMoveName AbilityName="IceMagic_IceStorm" BackTicks="20"/>
+							<IfActionStatus ActionName="UseBacktickInputs" Status="Installed"/>
+						</And>
+					</Or>
+					<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_IceStorm" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					<Not>
+						<IfCooldownTimer AbilityID="IceMagic_IceStorm" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<Or Comment="Stance Check">
+						<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+						<IfMannequinTag TagName="Ice"/>
+					</Or>
+					<Not>
+						<Or>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+							</And>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+							</And>
+							<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+						</Or>
+					</Not>
+					<Not>
+						<IfExternalCondition ConditionName="Throwable_Equipped"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="FishingPole"/>
+					</Not>
+					<Not>
+						<IfInput InputName="Placing_Building"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Not>
+						<IfMannequinTagInItemSlot TagName="Tool" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+					</Not>
+					<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+					<Not>
+						<HeightToGround ActivationHeight="0.5"/>
+					</Not>
+					<Not>
+						<IfEncumbered/>
+					</Not>
+					<Not>
+						<IsSilenced/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="CanTransition"/>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<IfMannequinMarker MarkerName="Exit_IceStorm"/>
+					<IsSilenced/>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe active weapon and set tags from sheathed">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Set Main Hand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Unset"/>
+							</SetMannequinTag>
+							<ChangeActionFragment ResetWhenReinstalled="false">
+								<Default UseDefaultFragment="true"/>
+							</ChangeActionFragment>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfMannequinTag TagName="Prone"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearActiveAbilityMoveInput>
+					<Default AbilityName="IceMagic_IceStorm" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearActiveAbilityMoveInput>
+				<SetToggleInput>
+					<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+				</SetToggleInput>
+				<SetToggleInput>
+					<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+				</SetToggleInput>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle Aim Tag">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="UnsetAimTag"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Aim" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Aim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Manual facing while readying weapon (Disable TurnInPlace">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="TurnInPlaceDisabled"/>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default TurnRate="0.40" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle IceStorm Targeting Indicator No Punishing Storm">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinMarker MarkerName="Exit_IceStormAim"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Storm Summoner Check">
+							<IfCondition>
+								<And>
+									<IfAbilityActive AbilityName="IceStormStormSummoner"/>
+									<IfManaValue ComparisonType="Equal" ComparisonValueIsPercentage="True" ComparisonValue="1"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<CastSpellTargeting SliceName="slices/items/weapons/spell_aoe_heal_targeting.dynamicslice" SpellName="IceMagic_Spell_IceStorm_Mana"/>
+							</ThenActivity>
+							<ElseActivity>
+								<CastSpellTargeting SliceName="slices/items/weapons/spell_aoe_heal_targeting.dynamicslice" SpellName="IceMagic_Spell_IceStorm"/>
+							</ElseActivity>
+						</IfThenElse>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Check IceStorm Raycast with Unending Thaw">
+					<IfCondition>
+						<And>
+							<Or>
+								<IfInput InputName="attack_shoot"/>
+								<IfActiveAbilityMoveName AbilityName="IceMagic_IceStorm"/>
+							</Or>
+							<IfMannequinMarker MarkerName="Magic_IsReady_IceStorm"/>
+							<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_UnendingThaw"/>
+							<Not>
+								<IfInput InputName="aim_draw_active_virtual"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Storm Summoner Check">
+							<IfCondition>
+								<And>
+									<IfAbilityActive AbilityName="IceStormStormSummoner"/>
+									<IfManaValue ComparisonType="Equal" ComparisonValueIsPercentage="True" ComparisonValue="1"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<CastSpellRaycast SpellName="IceMagic_Spell_IceStorm_Mana_UT"/>
+							</ThenActivity>
+							<ElseActivity>
+								<CastSpellRaycast SpellName="IceMagic_Spell_IceStorm_UT"/>
+							</ElseActivity>
+						</IfThenElse>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Check IceStorm Raycast No Unending Thaw">
+					<IfCondition>
+						<And>
+							<Or>
+								<IfInput InputName="attack_shoot"/>
+								<IfActiveAbilityMoveName AbilityName="IceMagic_IceStorm"/>
+							</Or>
+							<IfMannequinMarker MarkerName="Magic_IsReady_IceStorm"/>
+							<Not>
+								<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_UnendingThaw"/>
+							</Not>
+							<Not>
+								<IfInput InputName="aim_draw_active_virtual"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Storm Summoner Check">
+							<IfCondition>
+								<And>
+									<IfAbilityActive AbilityName="IceStormStormSummoner"/>
+									<IfManaValue ComparisonType="Equal" ComparisonValueIsPercentage="True" ComparisonValue="1"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<CastSpellRaycast SpellName="IceMagic_Spell_IceStorm_Mana"/>
+							</ThenActivity>
+							<ElseActivity>
+								<CastSpellRaycast SpellName="IceMagic_Spell_IceStorm"/>
+							</ElseActivity>
+						</IfThenElse>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_IceStorm_AimSubState" FragmentName="Ability_IceMagic_IceStorm_Aim">
+			<ActivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="CanTransition"/>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch"/>
+					<And>
+						<Or>
+							<Not>
+								<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Not>
+							<Not>
+								<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+							</Not>
+						</Or>
+					</And>
+					<IsSilenced/>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle Aim Tag">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="UnsetAimTag"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Aim" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Aim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle IceStorm Targeting Indicator No Punishing Storm">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinMarker MarkerName="Exit_IceStormAim"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Storm Summoner Check">
+							<IfCondition>
+								<And>
+									<IfAbilityActive AbilityName="IceStormStormSummoner"/>
+									<IfManaValue ComparisonType="Equal" ComparisonValueIsPercentage="True" ComparisonValue="1"/>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<CastSpellTargeting SliceName="slices/items/weapons/spell_aoe_heal_targeting.dynamicslice" SpellName="IceMagic_Spell_IceStorm_Mana"/>
+							</ThenActivity>
+							<ElseActivity>
+								<CastSpellTargeting SliceName="slices/items/weapons/spell_aoe_heal_targeting.dynamicslice" SpellName="IceMagic_Spell_IceStorm"/>
+							</ElseActivity>
+						</IfThenElse>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_IceStorm_Casting" FragmentName="Ability_IceMagic_IceStorm_Casting">
+			<ActivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="CanTransition"/>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch"/>
+					<And>
+						<Or>
+							<Not>
+								<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Not>
+							<Not>
+								<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+							</Not>
+						</Or>
+					</And>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle Aim Tag">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="UnsetAimTag"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Aim" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Aim" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle RainOfArrow Targeting Indicator">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfAbilityActive AbilityName="TempIceStormLarge"/>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="Exit_IceStormAim"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<CastSpellTargeting SliceName="slices/items/weapons/spell_aoe_heal_targeting.dynamicslice" SpellName="IceMagic_Spell_IceStorm"/>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle RainOfArrow_Large Targeting Indicator">
+					<IfCondition>
+						<And>
+							<IfAbilityActive AbilityName="TempIceStormLarge"/>
+							<Not>
+								<IfMannequinMarker MarkerName="Exit_IceStormAim"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<CastSpellTargeting SliceName="slices/items/weapons/spell_aoe_heal_targeting.dynamicslice" SpellName="IceMagic_Spell_IceStorm_Large"/>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_IceStorm_Cast" FragmentName="Ability_IceMagic_IceStorm_Cast">
+			<ActivationCondition>
+				<Or>
+					<Not Comment="Only triggered through TransitionInstant">
+						<True/>
+					</Not>
+					<And>
+						<Or>
+							<And>
+								<ActionConditionSpellSpawnLocationState Value="RaycastPassed"/>
+								<IfMannequinMarker MarkerName="Magic_IsReady_IceStorm"/>
+							</And>
+							<And>
+								<ActionConditionSpellSpawnLocationState Value="RaycastNone"/>
+								<IfMannequinMarker MarkerName="Magic_IsReady_IceStorm"/>
+							</And>
+						</Or>
+						<And>
+							<Not>
+								<IfInput InputName="aim_draw_active_virtual"/>
+							</Not>
+							<IfMannequinTag TagName="Ice"/>
+						</And>
+						<Not>
+							<Or>
+								<IsSilenced/>
+								<IfFragmentPlaying UseHostActionFragment="true"/>
+								<IfInput InputName="Placing_Building"/>
+							</Or>
+						</Not>
+					</And>
+				</Or>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Activate CoolDown after startup">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="Ability_Startup"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetCooldownTimer>
+								<Default AbilityID="IceMagic_IceStorm" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</SetCooldownTimer>
+							<PerformActiveAbility>
+								<Default AbilityName="IceMagic_IceStorm"/>
+							</PerformActiveAbility>
+							<PerformActiveAbility>
+								<Default AbilityName="IceConjurorPass5" DisableAnalyticsReporting="true"/>
+							</PerformActiveAbility>
+							<IfThenElse Comment="Check for Empowered Frost Passive">
+								<IfCondition>
+									<And>
+										<IfHasStatusEffect StatusEffect="IceMagic_Frost"/>
+										<IfAbilityActive AbilityName="IceConjurorPass3"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<IfThenElse Comment="Ice Conjuror Ultimate Check for Empowered Frost">
+										<IfCondition>
+											<IfAbilityActive AbilityName="IceConjurorUltimate"/>
+										</IfCondition>
+										<ThenActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrostUltimate"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ThenActivity>
+										<ElseActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrost"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ElseActivity>
+									</IfThenElse>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle Aim Tag">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="UnsetAimTag"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Aim" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Aim" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Cast UnendingThaw IceStorm Spell with Summoner">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpellCastIceStorm"/>
+							<And>
+								<IfAbilityActive AbilityName="IceStormStormSummoner"/>
+								<IfManaValue ComparisonType="Equal" ComparisonValueIsPercentage="True" ComparisonValue="1"/>
+							</And>
+							<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_UnendingThaw"/>
+							<Not>
+								<IfMannequinTag TagName="Shoot"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<CastSpell>
+								<Default SpellName="IceMagic_Spell_IceStorm_Mana_UT"/>
+							</CastSpell>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Shoot" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Cast UnendingThaw IceStorm Spell without Summoner">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpellCastIceStorm"/>
+							<Or>
+								<IfManaValue ComparisonType="LessThan" ComparisonValueIsPercentage="True" ComparisonValue="1"/>
+								<Not>
+									<IfAbilityActive AbilityName="IceStormStormSummoner"/>
+								</Not>
+							</Or>
+							<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_UnendingThaw"/>
+							<Not>
+								<IfMannequinTag TagName="Shoot"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<CastSpell>
+								<Default SpellName="IceMagic_Spell_IceStorm_UT"/>
+							</CastSpell>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Shoot" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Cast IceStorm Spell with Summoner">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpellCastIceStorm"/>
+							<And>
+								<IfAbilityActive AbilityName="IceStormStormSummoner"/>
+								<IfManaValue ComparisonType="Equal" ComparisonValueIsPercentage="True" ComparisonValue="1"/>
+							</And>
+							<Not>
+								<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_UnendingThaw"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="Shoot"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<CastSpell>
+								<Default SpellName="IceMagic_Spell_IceStorm_Mana"/>
+							</CastSpell>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Shoot" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Cast IceStorm Spell without Summoner">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpellCastIceStorm"/>
+							<Or>
+								<IfManaValue ComparisonType="LessThan" ComparisonValueIsPercentage="True" ComparisonValue="1"/>
+								<Not>
+									<IfAbilityActive AbilityName="IceStormStormSummoner"/>
+								</Not>
+							</Or>
+							<Not>
+								<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_UnendingThaw"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="Shoot"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<CastSpell>
+								<Default SpellName="IceMagic_Spell_IceStorm"/>
+							</CastSpell>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Shoot" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply Defiant Freeze Passive">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpellCastIceStorm"/>
+							<IfAbilityActive AbilityName="IceConjurorPass6"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="IceMagic_DefiantFreeze"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Shoot" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_WindChill" FragmentName="Ability_IceMagic_WindChill_Intro">
+			<ActivationCondition>
+				<Or>
+					<Not>
+						<True/>
+					</Not>
+					<And>
+						<Or Comment="Backtick Check">
+							<IfActiveAbilityMoveName AbilityName="IceMagic_WindChill"/>
+							<And>
+								<IfActiveAbilityMoveName AbilityName="IceMagic_WindChill" BackTicks="20"/>
+								<IfActionStatus ActionName="UseBacktickInputs" Status="Installed"/>
+							</And>
+						</Or>
+						<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_WindChill" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						<Not>
+							<IfCooldownTimer AbilityID="IceMagic_WindChill" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+						<Not>
+							<IfExternalCondition ConditionName="Can_Charge_Special"/>
+						</Not>
+						<Or Comment="Stance Check">
+							<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+							<IfMannequinTag TagName="Ice"/>
+						</Or>
+						<Not>
+							<Or>
+								<And>
+									<Not>
+										<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+									</Not>
+									<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+								</And>
+								<And>
+									<Not>
+										<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+									</Not>
+									<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+								</And>
+								<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+								<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+							</Or>
+						</Not>
+						<Not>
+							<IfExternalCondition ConditionName="Throwable_Equipped"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FishingPole"/>
+						</Not>
+						<Not>
+							<IfInput InputName="Placing_Building"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="AttackAction"/>
+						</Not>
+						<Not>
+							<IfMannequinTagInItemSlot TagName="Tool" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+						<IfCanResizeCharacterController ResizeType="Default"/>
+						<Not>
+							<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+						</Not>
+						<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+						<Not>
+							<HeightToGround ActivationHeight="0.5"/>
+						</Not>
+						<Not>
+							<IfEncumbered/>
+						</Not>
+						<Not>
+							<IsSilenced/>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+						</Not>
+						<Not>
+							<IsMounted/>
+						</Not>
+					</And>
+				</Or>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="CanTransition"/>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<IsStunned/>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe active weapon and set tags from sheathed">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Set Main Hand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Unset"/>
+							</SetMannequinTag>
+							<ChangeActionFragment ResetWhenReinstalled="false">
+								<Default UseDefaultFragment="true"/>
+							</ChangeActionFragment>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfMannequinTag TagName="Prone"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearActiveAbilityMoveInput>
+					<Default AbilityName="IceMagic_WindChill" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearActiveAbilityMoveInput>
+				<SetToggleInput>
+					<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+				</SetToggleInput>
+				<SetToggleInput>
+					<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+				</SetToggleInput>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle HeavyAim Tag">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="UnsetAimTag"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="HeavyAim" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="HeavyAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<AnimationDrivenMotion>
+					<Default Decel="9,9,9" InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+					<Conditional Name="Motion_Scale_Sprint" MotionMultiplier="1.00"/>
+					<Conditional Name="Charge_Atk_Motion" MotionMultiplier="1.00"/>
+				</AnimationDrivenMotion>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Melee_Attack"/>
+				</AIAudioTriggerActivity>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_WindChill_AimSubState" FragmentName="Ability_IceMagic_WindChill_Aim">
+			<ActivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="CanTransition"/>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch"/>
+					<And>
+						<Or>
+							<Not>
+								<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Not>
+							<Not>
+								<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+							</Not>
+						</Or>
+					</And>
+					<IsStunned/>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Activate CoolDown after startup">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="Ability_Startup"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetCooldownTimer>
+								<Default AbilityID="IceMagic_WindChill" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</SetCooldownTimer>
+							<PerformActiveAbility>
+								<Default AbilityName="IceMagic_WindChill"/>
+							</PerformActiveAbility>
+							<PerformActiveAbility>
+								<Default AbilityName="IceConjurorPass5" DisableAnalyticsReporting="true"/>
+							</PerformActiveAbility>
+							<IfThenElse Comment="Check for Empowered Frost Passive">
+								<IfCondition>
+									<And>
+										<IfHasStatusEffect StatusEffect="IceMagic_Frost"/>
+										<IfAbilityActive AbilityName="IceConjurorPass3"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<IfThenElse Comment="Ice Conjuror Ultimate Check for Empowered Frost">
+										<IfCondition>
+											<IfAbilityActive AbilityName="IceConjurorUltimate"/>
+										</IfCondition>
+										<ThenActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrostUltimate"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ThenActivity>
+										<ElseActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrost"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ElseActivity>
+									</IfThenElse>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Apply Defiant Freeze Passive">
+								<IfCondition>
+									<And>
+										<IfAbilityActive AbilityName="IceConjurorPass6"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<ModifyStatusEffects>
+										<Default>
+											<EffectsToApplyOnEnter>
+												<EffectId EffectId="IceMagic_DefiantFreeze"/>
+											</EffectsToApplyOnEnter>
+										</Default>
+									</ModifyStatusEffects>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="New Fragment for Long version">
+					<IfCondition>
+						<IfAbilityActive AbilityName="WindChillEnduringChill"/>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeActionFragment ResetWhenReinstalled="true">
+							<Default UseDefaultFragment="false" FragmentName="Ability_IceMagic_WindChill_Aim_Long"/>
+						</ChangeActionFragment>
+					</ThenActivity>
+				</IfThenElse>
+				<AimDirectionMode>
+					<Default MaxDist="16" OnEnter="Disable" OnExit="Enable"/>
+				</AimDirectionMode>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply GlobalPerk_Ability_IceGauntlet_UnbrokenWinds Perk">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="UnbrokenWindsPerk"/>
+							<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_UnbrokenWinds"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="IceMagic_UnbrokenWindsPerk"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle HeavyAim Tag">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="UnsetAimTag"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="HeavyAim" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="HeavyAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ElseActivity>
+				</IfThenElse>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="Aiming" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_WindChill_Outro" FragmentName="Ability_IceMagic_WindChill_Outro">
+			<ActivationCondition>
+				<Not Comment="Only triggered through TransitionInstant">
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<IsStunned/>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="Aiming" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCamera" TurnRate="0.40" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCameraFast" TurnRate="0.90" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+				</CameraRelativeFacing>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="10.0,10.0,10.0" DisableGravity="false" InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_Entombed" FragmentName="Ability_IceMagic_Entombed_Intro">
+			<ActivationCondition>
+				<Or>
+					<Not>
+						<True/>
+					</Not>
+					<And>
+						<Or Comment="Backtick Check">
+							<IfActiveAbilityMoveName AbilityName="IceMagic_Entombed"/>
+							<And>
+								<IfActiveAbilityMoveName AbilityName="IceMagic_Entombed" BackTicks="20"/>
+								<IfActionStatus ActionName="UseBacktickInputs" Status="Installed"/>
+							</And>
+						</Or>
+						<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_Entombed" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						<Not>
+							<IfCooldownTimer AbilityID="IceMagic_Entombed" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+						<Not>
+							<IfExternalCondition ConditionName="Can_Charge_Special"/>
+						</Not>
+						<Or Comment="Stance Check">
+							<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+							<IfMannequinTag TagName="Ice"/>
+						</Or>
+						<Not>
+							<Or>
+								<And>
+									<Not>
+										<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+									</Not>
+									<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+								</And>
+								<And>
+									<Not>
+										<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+									</Not>
+									<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+								</And>
+								<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+								<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+							</Or>
+						</Not>
+						<Not>
+							<IfExternalCondition ConditionName="Throwable_Equipped"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FishingPole"/>
+						</Not>
+						<Not>
+							<IfInput InputName="Placing_Building"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="AttackAction"/>
+						</Not>
+						<Not>
+							<IfMannequinTagInItemSlot TagName="Tool" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+						<IfCanResizeCharacterController ResizeType="Default"/>
+						<Not>
+							<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+						</Not>
+						<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+						<Not>
+							<HeightToGround ActivationHeight="0.5"/>
+						</Not>
+						<Not>
+							<IfEncumbered/>
+						</Not>
+						<Not>
+							<IsSilenced/>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+						</Not>
+						<Not>
+							<IsMounted/>
+						</Not>
+					</And>
+				</Or>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="Entombed_End"/>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe active weapon and set tags from sheathed">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Set Main Hand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Unset"/>
+							</SetMannequinTag>
+							<ChangeActionFragment ResetWhenReinstalled="false">
+								<Default UseDefaultFragment="true"/>
+							</ChangeActionFragment>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfMannequinTag TagName="Prone"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearActiveAbilityMoveInput>
+					<Default AbilityName="IceMagic_Entombed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearActiveAbilityMoveInput>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Activate CoolDown after startup">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="Ability_Startup"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetCooldownTimer>
+								<Default AbilityID="IceMagic_Entombed" CheckAllSlots="true" OnEnter="NoEffect" OnExit="Enable"/>
+							</SetCooldownTimer>
+							<PerformActiveAbility>
+								<Default AbilityName="IceMagic_Entombed"/>
+							</PerformActiveAbility>
+							<PerformActiveAbility>
+								<Default AbilityName="IceConjurorPass5" DisableAnalyticsReporting="true"/>
+							</PerformActiveAbility>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Apply Defiant Freeze Passive">
+								<IfCondition>
+									<And>
+										<IfAbilityActive AbilityName="IceConjurorPass6"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<ModifyStatusEffects>
+										<Default>
+											<EffectsToApplyOnEnter>
+												<EffectId EffectId="IceMagic_DefiantFreeze"/>
+											</EffectsToApplyOnEnter>
+										</Default>
+									</ModifyStatusEffects>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Send Entombed Cancel Message">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Cancel_Entomb"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SendMessageToOwnedSlices>
+								<Default Message="Cancel_Entomb"/>
+							</SendMessageToOwnedSlices>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Send UIEvent when Burst is OOM">
+					<IfCondition>
+						<And>
+							<IfInput InputName="attack_primary"/>
+							<IfManaCost ComparisonType="LessThan" CostID="IceMagic_Entombed_Break" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SendUIEvent>
+								<Default OnEnter="Send" EnterEventName="CAGE.OnDisabledAbilityUsed" OnExit="None" ExitEventName="" OptionalEventParam="IceMagic_Entombed"/>
+							</SendUIEvent>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Send Entombed Burst Message">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Burst_Entomb"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SendMessageToOwnedSlices>
+								<Default Message="Burst_Entomb"/>
+							</SendMessageToOwnedSlices>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Apply EntombedStrengthenedTomb Status Effect">
+								<IfCondition>
+									<And>
+										<IfAbilityActive AbilityName="EntombedStrengthenedTomb"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<ModifyStatusEffects>
+											<Default>
+												<EffectsToApplyOnEnter>
+													<EffectId EffectId="IceMagic_StrengthenedTomb"/>
+												</EffectsToApplyOnEnter>
+											</Default>
+										</ModifyStatusEffects>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse Comment="Check for Empowered Frost Passive">
+								<IfCondition>
+									<And>
+										<IfHasStatusEffect StatusEffect="IceMagic_Frost"/>
+										<IfAbilityActive AbilityName="IceConjurorPass3"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<IfThenElse Comment="Ice Conjuror Ultimate Check for Empowered Frost">
+										<IfCondition>
+											<IfAbilityActive AbilityName="IceConjurorUltimate"/>
+										</IfCondition>
+										<ThenActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrostUltimate"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ThenActivity>
+										<ElseActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrost"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ElseActivity>
+									</IfThenElse>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply Entombed Status Effect">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="Entombed"/>
+							<Not>
+								<IfAbilityActive AbilityName="EntombedCleansingTomb"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="IceMagic_Entombed"/>
+									</EffectsToApplyOnEnter>
+								</Default>
+							</ModifyStatusEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply Entombed_Cleanse Status Effect">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="Entombed"/>
+							<IfAbilityActive AbilityName="EntombedCleansingTomb"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="IceMagic_Entombed_Cleanse"/>
+									</EffectsToApplyOnEnter>
+								</Default>
+							</ModifyStatusEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Remove Status Effect OnExit">
+					<IfCondition>
+						<Not>
+							<IfAbilityActive AbilityName="EntombedCleansingTomb"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="IceMagic_Entombed"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+					<ElseActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="IceMagic_Entombed_Cleanse"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Remove Status Effect on Marker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="Check for EntombedCleansingTomb">
+							<IfCondition>
+								<Not>
+									<IfAbilityActive AbilityName="EntombedCleansingTomb"/>
+								</Not>
+							</IfCondition>
+							<ThenActivity>
+								<ModifyStatusEffects>
+									<Default>
+										<EffectsToRemoveOnEnter>
+											<EffectId EffectId="IceMagic_Entombed"/>
+										</EffectsToRemoveOnEnter>
+									</Default>
+								</ModifyStatusEffects>
+							</ThenActivity>
+							<ElseActivity>
+								<ModifyStatusEffects>
+									<Default>
+										<EffectsToRemoveOnEnter>
+											<EffectId EffectId="IceMagic_Entombed_Cleanse"/>
+										</EffectsToRemoveOnEnter>
+									</Default>
+								</ModifyStatusEffects>
+							</ElseActivity>
+						</IfThenElse>
+					</ThenActivity>
+				</IfThenElse>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="300,300,300" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Melee_Attack"/>
+				</AIAudioTriggerActivity>
+				<ResetGrit ResetWhenReinstalled="false">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetGrit>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_Entombed_DodgeExit">
+			<ActivationCondition>
+				<And>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_IceMagic_Entombed_Loop"/>
+					<IfMannequinTag TagName="Ice"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<Not>
+						<IfMannequinTag TagName="Dodging"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_IceMagic_Entombed_Loop"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_IceMagic_Entombed_Outro"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_IceMagic_Entombed_Break"/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Send Entombed Cancel Message">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Dodging"/>
+							<Or>
+								<IfActionStatus ActionName="Rune_GraspingVines" Status="Installed"/>
+								<IfActionStatus ActionName="Rune_HereticFall" Status="Installed"/>
+								<IfActionStatus ActionName="Rune_CannonBlast" Status="Installed"/>
+								<IfActionStatus ActionName="Rune_BileBomb" Status="Installed"/>
+							</Or>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SendMessageToOwnedSlices>
+								<Default Message="Cancel_Entomb"/>
+							</SendMessageToOwnedSlices>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Check HealingTombPerk">
+								<IfCondition>
+									<And>
+										<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_HealingTomb"/>
+										<IfManaValue ComparisonType="Equal" ComparisonValueIsPercentage="True" ComparisonValue="1"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<ModifyStatusEffects>
+											<Default>
+												<EffectsToApplyOnEnter>
+													<EffectId EffectId="IceMagic_HealingTombPerk"/>
+												</EffectsToApplyOnEnter>
+											</Default>
+										</ModifyStatusEffects>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_IceShower" FragmentName="Ability_IceMagic_Shower">
+			<ActivationCondition>
+				<Or>
+					<Not>
+						<True/>
+					</Not>
+					<And>
+						<Or Comment="Backtick Check">
+							<IfActiveAbilityMoveName AbilityName="IceMagic_IceShower"/>
+							<And>
+								<IfActiveAbilityMoveName AbilityName="IceMagic_IceShower" BackTicks="20"/>
+								<IfActionStatus ActionName="UseBacktickInputs" Status="Installed"/>
+							</And>
+						</Or>
+						<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_IceShower" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						<Not>
+							<IfCooldownTimer AbilityID="IceMagic_IceShower" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+						<Not>
+							<IfExternalCondition ConditionName="Can_Charge_Special"/>
+						</Not>
+						<Or Comment="Stance Check">
+							<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+							<IfMannequinTag TagName="Ice"/>
+						</Or>
+						<Not>
+							<Or>
+								<And>
+									<Not>
+										<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+									</Not>
+									<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+								</And>
+								<And>
+									<Not>
+										<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+									</Not>
+									<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+								</And>
+								<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+								<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+							</Or>
+						</Not>
+						<Not>
+							<IfExternalCondition ConditionName="Throwable_Equipped"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FishingPole"/>
+						</Not>
+						<Not>
+							<IfInput InputName="Placing_Building"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="AttackAction"/>
+						</Not>
+						<Not>
+							<IfMannequinTagInItemSlot TagName="Tool" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+						<IfCanResizeCharacterController ResizeType="Default"/>
+						<Not>
+							<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+						</Not>
+						<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+						<Not>
+							<HeightToGround ActivationHeight="0.5"/>
+						</Not>
+						<Not>
+							<IfEncumbered/>
+						</Not>
+						<Not>
+							<IsSilenced/>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+						</Not>
+						<Not>
+							<IsMounted/>
+						</Not>
+					</And>
+				</Or>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe active weapon and set tags from sheathed">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Set Main Hand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Unset"/>
+							</SetMannequinTag>
+							<ChangeActionFragment ResetWhenReinstalled="false">
+								<Default UseDefaultFragment="true"/>
+							</ChangeActionFragment>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfMannequinTag TagName="Prone"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearActiveAbilityMoveInput>
+					<Default AbilityName="IceMagic_IceShower" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearActiveAbilityMoveInput>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Activate CoolDown after startup">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="Ability_Startup"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetCooldownTimer>
+								<Default AbilityID="IceMagic_IceShower" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</SetCooldownTimer>
+							<PerformActiveAbility>
+								<Default AbilityName="IceMagic_IceShower"/>
+							</PerformActiveAbility>
+							<PerformActiveAbility>
+								<Default AbilityName="IceConjurorPass5" DisableAnalyticsReporting="true"/>
+							</PerformActiveAbility>
+							<IfThenElse Comment="Check for Empowered Frost Passive">
+								<IfCondition>
+									<And>
+										<IfHasStatusEffect StatusEffect="IceMagic_Frost"/>
+										<IfAbilityActive AbilityName="IceConjurorPass3"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<IfThenElse Comment="Ice Conjuror Ultimate Check for Empowered Frost">
+										<IfCondition>
+											<IfAbilityActive AbilityName="IceConjurorUltimate"/>
+										</IfCondition>
+										<ThenActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrostUltimate"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ThenActivity>
+										<ElseActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrost"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ElseActivity>
+									</IfThenElse>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Apply Defiant Freeze Passive">
+								<IfCondition>
+									<And>
+										<IfAbilityActive AbilityName="IceConjurorPass6"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<ModifyStatusEffects>
+										<Default>
+											<EffectsToApplyOnEnter>
+												<EffectId EffectId="IceMagic_DefiantFreeze"/>
+											</EffectsToApplyOnEnter>
+										</Default>
+									</ModifyStatusEffects>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="10,10,10" DisableGravity="false" InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+					<Conditional Name="Attack_Translation" MotionMultiplier="1.00" Decel="1.0000,1.0000,1.0000" DisableGravity="false" InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+					<Conditional Name="InheritForwardVelocity" MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="30,30,30" DisableGravity="false" InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+				</AnimationDrivenMotion>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCamera" TurnRate="0.40" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCameraFast" TurnRate="0.90" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+				</CameraRelativeFacing>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Melee_Attack"/>
+				</AIAudioTriggerActivity>
+				<ResetGrit ResetWhenReinstalled="false">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetGrit>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_IcePylon" FragmentName="Ability_IceMagic_Pylon">
+			<ActivationCondition>
+				<Or>
+					<Not>
+						<True/>
+					</Not>
+					<And>
+						<Or Comment="Backtick Check">
+							<IfActiveAbilityMoveName AbilityName="IceMagic_IcePylon"/>
+							<And>
+								<IfActiveAbilityMoveName AbilityName="IceMagic_IcePylon" BackTicks="20"/>
+								<IfActionStatus ActionName="UseBacktickInputs" Status="Installed"/>
+							</And>
+						</Or>
+						<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_IcePylon" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						<Not>
+							<IfCooldownTimer AbilityID="IceMagic_IcePylon" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+						<Not>
+							<IfActionStatus ActionName="IceMagic_IcePylon_Cooldown" Status="Installed"/>
+						</Not>
+						<Not>
+							<IfActionStatus ActionName="IceMagic_IcePylon_Cooldown2" Status="Installed"/>
+						</Not>
+						<Not>
+							<IfExternalCondition ConditionName="Can_Charge_Special"/>
+						</Not>
+						<Or Comment="Stance Check">
+							<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+							<IfMannequinTag TagName="Ice"/>
+						</Or>
+						<Not>
+							<Or>
+								<And>
+									<Not>
+										<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+									</Not>
+									<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+								</And>
+								<And>
+									<Not>
+										<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+									</Not>
+									<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+								</And>
+								<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+								<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+								<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+							</Or>
+						</Not>
+						<Not>
+							<IfExternalCondition ConditionName="Throwable_Equipped"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FishingPole"/>
+						</Not>
+						<Not>
+							<IfInput InputName="Placing_Building"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="AttackAction"/>
+						</Not>
+						<Not>
+							<IfMannequinTagInItemSlot TagName="Tool" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+						<IfCanResizeCharacterController ResizeType="Default"/>
+						<Not>
+							<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+						</Not>
+						<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+						<Not>
+							<HeightToGround ActivationHeight="0.5"/>
+						</Not>
+						<Not>
+							<IfEncumbered/>
+						</Not>
+						<Not>
+							<IsSilenced/>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+						</Not>
+						<Not>
+							<IsMounted/>
+						</Not>
+					</And>
+				</Or>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinTag TagName="Crouch"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe active weapon and set tags from sheathed">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Set Main Hand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Unset"/>
+							</SetMannequinTag>
+							<ChangeActionFragment ResetWhenReinstalled="false">
+								<Default UseDefaultFragment="true"/>
+							</ChangeActionFragment>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfMannequinTag TagName="Prone"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearActiveAbilityMoveInput>
+					<Default AbilityName="IceMagic_IcePylon" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearActiveAbilityMoveInput>
+				<IfThenElse ResetWhenReinstalled="false" Comment="PerformActiveAbility on succeessful Pylon spawn">
+					<IfCondition>
+						<And>
+							<IfOwnershipMessageReceived Message="Pylon_Spawn"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<PerformActiveAbility>
+							<Default AbilityName="IceMagic_IcePylon"/>
+						</PerformActiveAbility>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Activate CoolDown after startup">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="Ability_Startup"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<PerformActiveAbility>
+								<Default AbilityName="IceConjurorPass5" DisableAnalyticsReporting="true"/>
+							</PerformActiveAbility>
+							<RemoveExcessAbilityInstances>
+								<Default Type="IcePylon"/>
+							</RemoveExcessAbilityInstances>
+							<IfThenElse Comment="Check for Empowered Frost Passive">
+								<IfCondition>
+									<And>
+										<IfHasStatusEffect StatusEffect="IceMagic_Frost"/>
+										<IfAbilityActive AbilityName="IceConjurorPass3"/>
+										<IfMannequinMarker MarkerName="FrostCheck"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<IfThenElse Comment="Ice Conjuror Ultimate Check for Empowered Frost">
+										<IfCondition>
+											<IfAbilityActive AbilityName="IceConjurorUltimate"/>
+										</IfCondition>
+										<ThenActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrostUltimate"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ThenActivity>
+										<ElseActivity>
+											<ModifyStatusEffects>
+												<Default>
+													<EffectsToApplyOnEnter>
+														<EffectId EffectId="IceMagic_EmpoweredFrost"/>
+													</EffectsToApplyOnEnter>
+												</Default>
+											</ModifyStatusEffects>
+										</ElseActivity>
+									</IfThenElse>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Apply Defiant Freeze Passive">
+								<IfCondition>
+									<And>
+										<IfAbilityActive AbilityName="IceConjurorPass6"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<ModifyStatusEffects>
+										<Default>
+											<EffectsToApplyOnEnter>
+												<EffectId EffectId="IceMagic_DefiantFreeze"/>
+											</EffectsToApplyOnEnter>
+										</Default>
+									</ModifyStatusEffects>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Send Pylon Burst Message">
+					<IfCondition>
+						<And>
+							<IfOwnershipMessageReceived Message="Pylon_Spawn"/>
+							<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_PylonBurst"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SendMessageToOwnedSlices>
+							<Default Message="Enable_PylonBurst"/>
+						</SendMessageToOwnedSlices>
+					</ThenActivity>
+				</IfThenElse>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="10,10,10" DisableGravity="false" InheritVelocity="false"/>
+					<Conditional Name="Attack_Translation" MotionMultiplier="1.50" Decel="1.0000,1.0000,1.0000" DisableGravity="false" InheritVelocity="false"/>
+					<Conditional Name="InheritForwardVelocity" MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20,20,20" DisableGravity="false" InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCamera" TurnRate="0.40" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="AlignToCameraFast" TurnRate="0.90" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+				</CameraRelativeFacing>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Melee_Attack"/>
+				</AIAudioTriggerActivity>
+				<ResetGrit ResetWhenReinstalled="false">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetGrit>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_IcePylon_Dodge">
+			<ActivationCondition>
+				<And>
+					<IfAbilityActive AbilityName="IcePylonPylonDodge"/>
+					<IfMannequinTag TagName="Dodging"/>
+					<IfMannequinTag TagName="Ice"/>
+					<Or>
+						<IfActionStatus ActionName="IceMagic_IcePylon_Cooldown" Status="Installed"/>
+						<IfActionStatus ActionName="IceMagic_IcePylon_Cooldown2" Status="Installed"/>
+					</Or>
+					<Not>
+						<IfActionStatus ActionName="IceMagic_IcePylon_Dodge" Status="Installed"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfAbilityActive AbilityName="IcePylonPylonDodge"/>
+					</Not>
+					<IfActionStatus ActionName="IceMagic_IcePylon_Dodge" Status="Installed" ActiveTime="1f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					<Not>
+						<IfMannequinTag TagName="Ice"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SendMessageToOwnedSlices>
+					<Default Message="Pylon_Dodge"/>
+				</SendMessageToOwnedSlices>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_IcePylon_Cooldown">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_IceMagic_Pylon"/>
+						<IfMannequinTag TagName="Reaction"/>
+					</Or>
+					<IfMannequinTag TagName="Ice"/>
+					<IfOwnershipMessageReceived Message="Pylon_Spawn"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_IceMagic_Pylon"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<PayManaCost>
+					<Default CostID="IceMagic_IcePylon"/>
+				</PayManaCost>
+				<SetCooldownTimer>
+					<Default AbilityID="IceMagic_IcePylon" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" IndefiniteCooldown="true"/>
+				</SetCooldownTimer>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_IcePylon_Cooldown2">
+			<ActivationCondition>
+				<And>
+					<IfCooldownTimer AbilityID="IceMagic_IcePylon" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" IsInfinite="true"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfOwnershipMessageReceived Message="Pylon_Death"/>
+					<Not>
+						<IfHasStatusEffect StatusEffect="IceMagic_PylonCooldownSafety"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="IceMagic_PylonCooldownSafety"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SetCooldownTimer>
+					<Default AbilityID="IceMagic_IcePylon" CheckAllSlots="true" OnEnter="NoEffect" OnExit="Enable"/>
+				</SetCooldownTimer>
+				<ModifyStatusEffects>
+					<Default RemoveNothingOnMigrate="true">
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="IceMagic_PylonCooldownSafety"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Kill pylon if IG is unequiped">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfMannequinTagInItemSlot TagName="Ice" SlotToCheckAlias="MAIN_HAND_OPTION_1"/>
+							</Not>
+							<Not>
+								<IfMannequinTagInItemSlot TagName="Ice" SlotToCheckAlias="MAIN_HAND_OPTION_2"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SendMessageToOwnedSlices>
+							<Default Message="IcePylon_Manual_Destroy"/>
+						</SendMessageToOwnedSlices>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_IcePylon_Destroy">
+			<ActivationCondition>
+				<And>
+					<IfActiveAbilityMoveName AbilityName="IceMagic_IcePylon" NumTicksToHoldFor="30"/>
+					<IfHoldConditionEnabledForAbility AbilityName="IceMagic_IcePylon"/>
+					<Not>
+						<Or>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+							</And>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+							</And>
+							<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+						</Or>
+					</Not>
+					<Not>
+						<IfExternalCondition ConditionName="Throwable_Equipped"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="FishingPole"/>
+					</Not>
+					<Not>
+						<IfInput InputName="Placing_Building"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Not>
+						<IfMannequinTagInItemSlot TagName="Tool" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+					</Not>
+					<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+					<Not>
+						<HeightToGround ActivationHeight="0.5"/>
+					</Not>
+					<Not>
+						<IfEncumbered/>
+					</Not>
+					<Not>
+						<IsSilenced/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<True/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SendMessageToOwnedSlices>
+					<Default Message="IcePylon_Manual_Destroy"/>
+				</SendMessageToOwnedSlices>
+			</Activities>
+		</Action>
+		<Action Name="IceMagic_Quick_Frost">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="IceMagic_Frost"/>
+					<IfAbilityActive AbilityName="IceConjurorPass2"/>
+					<IfMannequinTag TagName="Ice"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfHasStatusEffect StatusEffect="IceMagic_Frost"/>
+					</Not>
+					<Not>
+						<IfAbilityActive AbilityName="IceConjurorPass2"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Ice"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse Comment="Ice Conjuror Ultimate Check">
+					<IfCondition>
+						<IfAbilityActive AbilityName="IceConjurorUltimate"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="IceMagic_QuickFrostUltimate"/>
+									</EffectsToApplyOnEnter>
+								</Default>
+							</ModifyStatusEffects>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToRemoveOnExit>
+										<EffectId EffectId="IceMagic_QuickFrostUltimate"/>
+									</EffectsToRemoveOnExit>
+								</Default>
+							</ModifyStatusEffects>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<Group>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="IceMagic_QuickFrost"/>
+									</EffectsToApplyOnEnter>
+								</Default>
+							</ModifyStatusEffects>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToRemoveOnExit>
+										<EffectId EffectId="IceMagic_QuickFrost"/>
+									</EffectsToRemoveOnExit>
+								</Default>
+							</ModifyStatusEffects>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="IceMagic_Heavy_Exit">
+			<Or>
+				<IfInput InputName="Placing_Building"/>
+				<IfInput InputName="aim_draw_press"/>
+				<IfInput InputName="aim_draw_release"/>
+				<IfInput InputName="aim_draw"/>
+				<IfInput InputName="block"/>
+				<IfInput InputName="block_depressed"/>
+				<IfInput InputName="toggleInventoryWindow"/>
+				<IfInput InputName="toggleChatComponent"/>
+				<IfInput InputName="toggleGuildComponent"/>
+				<IfInput InputName="toggleJournalComponent"/>
+				<IfInput InputName="toggleMenuComponent"/>
+				<IfInput InputName="toggleMapComponent"/>
+				<IfInput InputName="toggleSkillsComponent"/>
+				<And>
+					<IfActiveAbilityMoveName AbilityName="IceMagic_WindChill"/>
+					<IfMannequinMarker MarkerName="CanDodgeCancel"/>
+				</And>
+			</Or>
+		</And>
+		<IfMannequinMarker Name="ApplyRotationIce" MarkerName="ApplyRotationIce"/>
+		<And Name="ApplyRotationDuringCameraLockIce">
+			<IfMannequinMarker MarkerName="ApplyRotationDuringCameraLockIce"/>
+		</And>
+		<And Name="CanAttack_Spikes">
+			<IfActiveAbilityMoveName AbilityName="IceMagic_Spikes"/>
+			<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_Spikes" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<Not>
+				<IfCooldownTimer AbilityID="IceMagic_Spikes" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</Not>
+			<Not>
+				<Or>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+					</And>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+					</And>
+					<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+				</Or>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<IfCanResizeCharacterController ResizeType="Default"/>
+			<Not>
+				<HeightToGround ActivationHeight="0.5"/>
+			</Not>
+			<Not>
+				<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<Not>
+				<IsSilenced/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+		</And>
+		<And Name="CanAttack_IceStorm">
+			<IfActiveAbilityMoveName AbilityName="IceMagic_IceStorm"/>
+			<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_IceStorm" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<Not>
+				<IfCooldownTimer AbilityID="IceMagic_IceStorm" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</Not>
+			<Not>
+				<Or>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+					</And>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+					</And>
+					<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+				</Or>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<IfCanResizeCharacterController ResizeType="Default"/>
+			<Not>
+				<HeightToGround ActivationHeight="0.5"/>
+			</Not>
+			<Not>
+				<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<Not>
+				<IsSilenced/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+		</And>
+		<And Name="CanAttack_WindChill">
+			<IfActiveAbilityMoveName AbilityName="IceMagic_WindChill"/>
+			<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_WindChill" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<Not>
+				<IfCooldownTimer AbilityID="IceMagic_WindChill" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</Not>
+			<Not>
+				<Or>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+					</And>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+					</And>
+					<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+				</Or>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<IfCanResizeCharacterController ResizeType="Default"/>
+			<Not>
+				<HeightToGround ActivationHeight="0.5"/>
+			</Not>
+			<Not>
+				<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<Not>
+				<IsSilenced/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+		</And>
+		<And Name="CanAttack_Entombed">
+			<IfActiveAbilityMoveName AbilityName="IceMagic_Entombed"/>
+			<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_Entombed" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<Not>
+				<IfCooldownTimer AbilityID="IceMagic_Entombed" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</Not>
+			<Not>
+				<Or>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+					</And>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+					</And>
+					<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+				</Or>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<IfCanResizeCharacterController ResizeType="Default"/>
+			<Not>
+				<HeightToGround ActivationHeight="0.5"/>
+			</Not>
+			<Not>
+				<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<Not>
+				<IsSilenced/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+		</And>
+		<And Name="CanAttack_IceShower">
+			<IfActiveAbilityMoveName AbilityName="IceMagic_IceShower"/>
+			<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_IceShower" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<Not>
+				<IfCooldownTimer AbilityID="IceMagic_IceShower" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</Not>
+			<Not>
+				<Or>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+					</And>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+					</And>
+					<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+				</Or>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<IfCanResizeCharacterController ResizeType="Default"/>
+			<Not>
+				<HeightToGround ActivationHeight="0.5"/>
+			</Not>
+			<Not>
+				<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<Not>
+				<IsSilenced/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+		</And>
+		<And Name="CanAttack_IcePylon">
+			<IfActiveAbilityMoveName AbilityName="IceMagic_IcePylon"/>
+			<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_IcePylon" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<Not>
+				<IfCooldownTimer AbilityID="IceMagic_IcePylon" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</Not>
+			<Not>
+				<IfActionStatus ActionName="IceMagic_IcePylon_Cooldown" Status="Installed"/>
+			</Not>
+			<Not>
+				<IfActionStatus ActionName="IceMagic_IcePylon_Cooldown2" Status="Installed"/>
+			</Not>
+			<Not>
+				<Or>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+					</And>
+					<And>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+						<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+					</And>
+					<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+					<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+				</Or>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<IfCanResizeCharacterController ResizeType="Default"/>
+			<Not>
+				<HeightToGround ActivationHeight="0.5"/>
+			</Not>
+			<Not>
+				<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+			<Not>
+				<IfEncumbered/>
+			</Not>
+			<Not>
+				<IsSilenced/>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="PreventAttacksAndAbilities"/>
+			</Not>
+		</And>
+		<And Name="Entombed_Outro">
+			<Or>
+				<IfActiveAbilityMoveName AbilityName="IceMagic_Entombed"/>
+				<IfInput InputName="Placing_Building"/>
+				<IfInput InputName="block"/>
+				<IfInput InputName="toggleInventoryWindow"/>
+				<IfInput InputName="toggleChatComponent"/>
+				<IfInput InputName="toggleGuildComponent"/>
+				<IfInput InputName="toggleJournalComponent"/>
+				<IfInput InputName="toggleMenuComponent"/>
+				<IfInput InputName="toggleMapComponent"/>
+				<IfInput InputName="toggleSkillsComponent"/>
+				<IfOwnershipMessageReceived Message="Tomb_Destroyed"/>
+			</Or>
+		</And>
+		<And Name="Entombed_Outro_DuringIntro">
+			<Or>
+				<IfInput InputName="Placing_Building"/>
+				<IfInput InputName="toggleInventoryWindow"/>
+				<IfInput InputName="toggleChatComponent"/>
+				<IfInput InputName="toggleGuildComponent"/>
+				<IfInput InputName="toggleJournalComponent"/>
+				<IfInput InputName="toggleMenuComponent"/>
+				<IfInput InputName="toggleMapComponent"/>
+				<IfInput InputName="toggleSkillsComponent"/>
+			</Or>
+		</And>
+		<And Name="Entombed_Outro_DuringIntro_Destroy">
+			<IfOwnershipMessageReceived Message="Tomb_Destroyed"/>
+		</And>
+		<And Name="Entombed_Break">
+			<IfInput InputName="attack_primary"/>
+			<IfManaCost ComparisonType="GreaterThanOrEqual" CostID="IceMagic_Entombed_Break" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Not>
+				<HeightToGround ActivationHeight="0.5"/>
+			</Not>
+		</And>
+		<And Name="Spikes_EarlyTrigger">
+			<IfInput InputName="attack_primary"/>
+		</And>
+		<Or Name="IceStorm_Cast">
+			<IfInput InputName="attack_primary"/>
+			<IfActiveAbilityMoveName AbilityName="IceMagic_IceStorm"/>
+		</Or>
+		<Or Name="Aim_Exit_IceMagic_IceStorm">
+			<IfInput InputName="Placing_Building"/>
+			<IfInput InputName="aim_draw_active_virtual"/>
+			<IfInput InputName="block_active_virtual"/>
+			<IfInput InputName="toggleInventoryWindow"/>
+			<IfInput InputName="toggleChatComponent"/>
+			<IfInput InputName="toggleGuildComponent"/>
+			<IfInput InputName="toggleJournalComponent"/>
+			<IfInput InputName="toggleMenuComponent"/>
+			<IfInput InputName="toggleMapComponent"/>
+			<IfInput InputName="toggleSkillsComponent"/>
+		</Or>
+		<And Name="IceMagic_Spell_Shower">
+			<Not>
+				<IfAbilityActive AbilityName="IceShowerEnduringShower"/>
+			</Not>
+			<Not>
+				<IfAbilityActive AbilityName="IceTempestUltimate"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spell_Shower_7sec">
+			<IfAbilityActive AbilityName="IceShowerEnduringShower"/>
+			<Not>
+				<IfAbilityActive AbilityName="IceShowerQuickShower"/>
+			</Not>
+			<Not>
+				<IfAbilityActive AbilityName="IceTempestUltimate"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spell_Shower_7sec_Quick">
+			<IfAbilityActive AbilityName="IceShowerQuickShower"/>
+			<Not>
+				<IfAbilityActive AbilityName="IceShowerShowerSlush"/>
+			</Not>
+			<Not>
+				<IfAbilityActive AbilityName="IceTempestUltimate"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spell_Shower_7sec_Rend">
+			<IfAbilityActive AbilityName="IceShowerShowerSlush"/>
+			<Not>
+				<IfAbilityActive AbilityName="IceTempestUltimate"/>
+			</Not>
+			<Not>
+				<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_DeadlyFrost"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spell_Shower_7sec_Rend_DeadlyFrost">
+			<IfAbilityActive AbilityName="IceShowerShowerSlush"/>
+			<Not>
+				<IfAbilityActive AbilityName="IceTempestUltimate"/>
+			</Not>
+			<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_DeadlyFrost"/>
+		</And>
+		<And Name="IceMagic_Spell_Shower_UltimateChill">
+			<IfAbilityActive AbilityName="IceTempestUltimate"/>
+			<Not>
+				<IfAbilityActive AbilityName="IceShowerEnduringShower"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spell_Shower_7sec_UltimateChill">
+			<IfAbilityActive AbilityName="IceShowerEnduringShower"/>
+			<IfAbilityActive AbilityName="IceTempestUltimate"/>
+			<Not>
+				<IfAbilityActive AbilityName="IceShowerQuickShower"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spell_Shower_7sec_Quick_UltimateChill">
+			<IfAbilityActive AbilityName="IceShowerQuickShower"/>
+			<IfAbilityActive AbilityName="IceTempestUltimate"/>
+			<Not>
+				<IfAbilityActive AbilityName="IceShowerShowerSlush"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spell_Shower_7sec_Rend_UltimateChill">
+			<IfAbilityActive AbilityName="IceShowerShowerSlush"/>
+			<IfAbilityActive AbilityName="IceTempestUltimate"/>
+			<Not>
+				<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_DeadlyFrost"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spell_Shower_7sec_Rend_DeadlyFrost_UltimateChill">
+			<IfAbilityActive AbilityName="IceShowerShowerSlush"/>
+			<IfAbilityActive AbilityName="IceTempestUltimate"/>
+			<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_DeadlyFrost"/>
+		</And>
+		<And Name="IceMagic_Spell_Shower_Quick">
+			<IfAbilityActive AbilityName="IceShowerQuickShower"/>
+		</And>
+		<And Name="IceMagic_Spell_Pylon">
+			<Not>
+				<IfAbilityActive AbilityName="IcePylonPylonRegen"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spell_Pylon_Regen">
+			<IfAbilityActive AbilityName="IcePylonPylonRegen"/>
+			<Not>
+				<IfAbilityActive AbilityName="IcePylonPylonRefresh"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spell_Pylon_Refresh">
+			<IfAbilityActive AbilityName="IcePylonPylonRefresh"/>
+			<Not>
+				<IfAbilityActive AbilityName="IceConjurorUltimate"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spell_Pylon_Ultimate">
+			<IfAbilityActive AbilityName="IceConjurorUltimate"/>
+		</And>
+		<Or Name="IceMagic_Windchill_NoShatter">
+			<Not>
+				<IfAbilityActive AbilityName="WindChillShatter"/>
+			</Not>
+			<IfAbilityActive AbilityName="WindChillShatter"/>
+		</Or>
+		<And Name="IceMagic_Windchill_StabbingWinds">
+			<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_StabbingWinds"/>
+			<Not>
+				<IfAbilityActive AbilityName="WindChillShatter"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Windchill_Shatter">
+			<IfAbilityActive AbilityName="WindChillShatter"/>
+			<Not>
+				<IfAbilityActive AbilityName="WindChillShatter"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spikes_NoSpikyReach">
+			<Not>
+				<IfAbilityActive AbilityName="SpikesSpikyReach"/>
+			</Not>
+		</And>
+		<And Name="IceMagic_Spikes_SpikyReach">
+			<IfAbilityActive AbilityName="SpikesSpikyReach"/>
+		</And>
+		<And Name="GlobalPerk_Ability_IceGauntlet_UnbrokenWinds_Active">
+			<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_IceGauntlet_UnbrokenWinds"/>
+		</And>
+	</Conditions>
+</ActionList>
+

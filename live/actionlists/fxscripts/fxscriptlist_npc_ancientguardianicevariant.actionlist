@@ -1,0 +1,15 @@
+<ActionList>
+	<Scripts>
+		<FxScript Name="StatFX_IcyEmpower_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cfx_npc_aggreatswordicevariant.FrostyLeadership_Empower" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="RightForeArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cfx_npc_aggreatswordicevariant.FrostyLeadership_Empower_Arms" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="LeftForeArm" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cfx_npc_aggreatswordicevariant.FrostyLeadership_Empower_Arms" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_IcyEmpower_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+	</Scripts>
+</ActionList>
+

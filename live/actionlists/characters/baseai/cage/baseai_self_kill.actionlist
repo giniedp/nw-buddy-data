@@ -1,0 +1,33 @@
+<ActionList>
+	<Actions>
+		<Action Name="Self_Kill" FragmentName="">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Self_Kill_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<Death>
+					<Default TriggerOption="OnEnter" SkipDeathsDoor="true" ClearContributors="false"/>
+				</Death>
+			</Activities>
+		</Action>
+		<Action Name="Self_Kill_ClearContributors" FragmentName="">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Self_Kill_ClearContributors_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<Death>
+					<Default TriggerOption="OnEnter" SkipDeathsDoor="true" ClearContributors="true"/>
+				</Death>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

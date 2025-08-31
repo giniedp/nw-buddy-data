@@ -1,0 +1,54 @@
+<ActionList>
+	<Actions>
+		<Action Name="Cheat" FragmentName="Cheat">
+			<ActivationCondition>
+				<IfFlyMode/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfFlyMode/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<DisableCollision/>
+				<CameraRelativeMotion>
+					<Default ForwardInput="debug_moveforward" BackwardInput="debug_moveback" LeftInput="debug_moveleft" RightInput="debug_moveright" UpInput="moveup" DownInput="movedown" AllowVerticalMotion="true" Speed="32,32,32" Accel="130,130,130" Decel="130,130,130"/>
+					<Conditional Name="fastcheat" ForwardInput="debug_moveforward" BackwardInput="debug_moveback" LeftInput="debug_moveleft" RightInput="debug_moveright" UpInput="moveup" DownInput="movedown" AllowVerticalMotion="true" Speed="64,64,64" Accel="250,250,250" Decel="250,250,250"/>
+				</CameraRelativeMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.10" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="Unstuck_Teleport" FragmentName="Unstuck_Teleport">
+			<ActivationCondition>
+				<And>
+					<IfUnstuckTeleporting/>
+					<Not>
+						<IfMannequinTag TagName="Mount"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfUnstuckTeleporting/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<DisableCameraLock>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableCameraLock>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfInput Name="fastcheat" InputName="sprint"/>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,55 @@
+<ActionList>
+	<Actions>
+		<Action Name="Spawn" FragmentName="Spawn">
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<ResetReactionCount ResetWhenReinstalled="false" omment="Reset Reaction Count to cancel SetReactionFragment increment above">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetReactionCount>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetActiveWeapon ResetWhenReinstalled="false">
+					<Default WeaponOption="main-hand-option-1" OnEnter="Set" OnExit="NoEffect"/>
+				</SetActiveWeapon>
+				<SetActiveWeapon ResetWhenReinstalled="false">
+					<Default WeaponOption="off-hand-option-1" OnEnter="Set" OnExit="NoEffect"/>
+				</SetActiveWeapon>
+				<SheatheWeapon ResetWhenReinstalled="false">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+				<SheatheWeapon ResetWhenReinstalled="false">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+				<SetMannequinTagFromSource ResetWhenReinstalled="false">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SetMannequinTagFromSource ResetWhenReinstalled="false">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+			</Activities>
+		</Action>
+		<Action Name="Despawn" FragmentName="Idle">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Despawn_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<Death>
+					<Default TriggerOption="OnEnter" DelayTime="0.0" SkipDeathsDoor="true" ClearContributors="true"/>
+				</Death>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

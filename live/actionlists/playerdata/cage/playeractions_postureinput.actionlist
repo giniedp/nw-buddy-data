@@ -1,0 +1,227 @@
+<ActionList>
+	<Actions>
+		<Action Name="ToggleCrouch" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="crouch_toggle_virtual"/>
+						<And>
+							<IfMannequinTag TagName="Prone"/>
+							<IfWaterDepth Comparison="GreaterThan" WaterDepth="VeryShallow"/>
+						</And>
+						<And>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+						</And>
+					</Or>
+					<Not>
+						<IfIsLoadoutOpen/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="PreventPostureChange"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Or Comment="Check if collision above">
+						<And>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfCanResizeCharacterController ResizeType="Default"/>
+						</And>
+						<And>
+							<IfMannequinTag TagName="Prone"/>
+							<IfCanResizeCharacterController ResizeType="Crouch"/>
+						</And>
+						<IfMannequinTag TagName="Stand"/>
+					</Or>
+					<Or Comment="Check if in Posture Change">
+						<IfMannequinMarker MarkerName="CanTransition"/>
+						<Not>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Idle_PostureTransition"/>
+						</Not>
+					</Or>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Gather"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Hatchet_AimThrow_SubState" Status="Installed"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Blocking"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<Or>
+						<Not>
+							<IfHasStatusEffect StatusEffect="Status_Rune_BeastMode" OnlyCheckOwnedStatusEffects="false"/>
+						</Not>
+						<And>
+							<IfHasStatusEffect StatusEffect="Status_Rune_BeastMode" OnlyCheckOwnedStatusEffects="false"/>
+							<IfMannequinTag TagName="Crouch"/>
+						</And>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<True/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Crouch_Desired" OnEnter="Set" OnExit="NoEffect"/>
+					<Conditional Name="Crouch_Desired Already Set" TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Crouch_Desired"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToRemoveOnEnter>
+									<EffectId EffectId="PotionHaste"/>
+								</EffectsToRemoveOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="ToggleProne" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="prone_toggle_virtual"/>
+					<Not>
+						<IfExternalCondition ConditionName="Wade"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="PreventPostureChange"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Not>
+						<IfIsLoadoutOpen/>
+					</Not>
+					<Or Comment="Check if collision above">
+						<And>
+							<IfMannequinTag TagName="Prone"/>
+							<IfCanResizeCharacterController ResizeType="Default"/>
+						</And>
+						<IfMannequinTag TagName="Crouch"/>
+						<IfMannequinTag TagName="Stand"/>
+					</Or>
+					<Or Comment="Check if in Posture Change">
+						<IfMannequinMarker MarkerName="CanTransition"/>
+						<Not>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Idle_PostureTransition"/>
+						</Not>
+					</Or>
+					<Not Comment="Check if in Unsheathe">
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Unsheathe_Upperbody"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Gather"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Hatchet_AimThrow_SubState" Status="Installed"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Blocking"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<Or>
+						<Not>
+							<IfHasStatusEffect StatusEffect="Status_Rune_BeastMode" OnlyCheckOwnedStatusEffects="false"/>
+						</Not>
+						<And>
+							<IfHasStatusEffect StatusEffect="Status_Rune_BeastMode" OnlyCheckOwnedStatusEffects="false"/>
+							<IfMannequinTag TagName="Prone"/>
+						</And>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<True/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Prone_Desired" OnEnter="Set" OnExit="NoEffect"/>
+					<Conditional Name="Prone_Desired_PlayDead" TagName="Prone_Desired" OnEnter="Set" OnExit="Set"/>
+					<Conditional Name="Prone_Desired Set" TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Prone_Desired"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToRemoveOnEnter>
+									<EffectId EffectId="PotionHaste"/>
+								</EffectsToRemoveOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="Stand" TagName="Stand"/>
+		<IfMannequinTag Name="Crouch" TagName="Crouch"/>
+		<IfMannequinTag Name="Prone" TagName="Prone"/>
+		<IfMannequinTag Name="Crouch_Desired Already Set" TagName="Crouch_Desired"/>
+		<And Name="Prone_Desired Set">
+			<IfMannequinTag TagName="Prone_Desired"/>
+			<Not>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead"/>
+			</Not>
+			<Not>
+				<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead_Loop"/>
+			</Not>
+		</And>
+		<Or Name="Prone_Desired_PlayDead">
+			<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead"/>
+			<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead_Loop"/>
+		</Or>
+		<And Name="Crouch+Aim">
+			<IfMannequinTag TagName="Crouch"/>
+			<Or>
+				<IfMannequinTag TagName="Aim"/>
+				<IfMannequinTag TagName="ChargedAim"/>
+				<And>
+					<IfMannequinTag TagName="Reload"/>
+					<IfMannequinTag TagName="2H_Ranged"/>
+				</And>
+			</Or>
+		</And>
+		<And Name="Stand+Aim">
+			<IfMannequinTag TagName="Stand"/>
+			<Or>
+				<IfMannequinTag TagName="Aim"/>
+				<IfMannequinTag TagName="ChargedAim"/>
+				<And>
+					<IfMannequinTag TagName="Reload"/>
+					<IfMannequinTag TagName="2H_Ranged"/>
+				</And>
+			</Or>
+		</And>
+		<And Name="Short">
+			<Or>
+				<And>
+					<IfActionStatus ActionName="Rune_BeastMode_Active" Status="Installed"/>
+					<Or>
+						<IfActionStatus ActionName="Nav" Status="Installed"/>
+						<IfActionStatus ActionName="Nav_Start" Status="Installed"/>
+						<IfActionStatus ActionName="Sprint" Status="Installed"/>
+						<IfActionStatus ActionName="Sprint_Start" Status="Installed"/>
+					</Or>
+				</And>
+			</Or>
+		</And>
+	</Conditions>
+</ActionList>
+

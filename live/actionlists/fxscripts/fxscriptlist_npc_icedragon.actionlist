@@ -1,0 +1,13 @@
+<ActionList>
+	<Scripts>
+		<FxScript Name="StatFX_Empower_Beam_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="spine_C1_4_jnt" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cfx_npc_IceDragon.EmpoweringLinkImpact" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Empower_Beam_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+	</Scripts>
+</ActionList>
+

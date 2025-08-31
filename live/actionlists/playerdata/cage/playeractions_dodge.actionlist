@@ -1,0 +1,976 @@
+<ActionList>
+	<Actions>
+		<Action Name="Dodge" FragmentName="Dodge_Roll">
+			<ActivationCondition>
+				<And>
+					<And>
+						<IfInput InputName="dodge"/>
+						<Not>
+							<And>
+								<IfMannequinTag TagName="Reaction"/>
+								<IfCanBreakReaction StunToBreakout="2"/>
+							</And>
+						</Not>
+						<IfCanDodge/>
+						<IfCanResizeCharacterController ResizeType="Crouch"/>
+						<Not>
+							<ActionConditionEquipLoadCategory Value="Overburdened"/>
+						</Not>
+						<Not>
+							<And>
+								<Or>
+									<IfTraversal MinHeight="0.24" MaxHeight="1.25" TraversalType="stepup"/>
+									<IfTraversal MaxXYRange="2.0" MinHeight="0.5" MaxHeight="1.5" TraversalType="vault"/>
+									<IfTraversal MaxXYRange="1.5" CheckHeight="false" MinHeight="1.25" MaxHeight="5.0" TraversalType="mantle"/>
+								</Or>
+								<IfInput InputName="ForwardNav"/>
+							</And>
+						</Not>
+						<Not>
+							<IfMannequinMarker MarkerName="Sliding"/>
+						</Not>
+						<Not>
+							<IfEncumbered/>
+						</Not>
+						<Not>
+							<Or>
+								<IfExternalCondition ConditionName="Exhausted"/>
+								<IfExternalCondition ConditionName="ArtifactSet1TowerShield"/>
+							</Or>
+						</Not>
+						<Not>
+							<HeightToGround ActivationHeight="0.5"/>
+						</Not>
+						<Not>
+							<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+						</Not>
+						<IfStaminaValue ComparisonValue="0.0" ComparisonType="GreaterThan" RunFxScriptOnFail="OutOfStamina" SendUIEventOnFail="CAGE.OutOfStamina"/>
+						<Not>
+							<IsMounted/>
+						</Not>
+					</And>
+					<Not>
+						<IfMannequinTag TagName="Dodging"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And Comment="Layered Action Cancel">
+						<IfMannequinTag TagName="Blocking"/>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</And>
+					<And>
+						<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</And>
+					<IfMannequinMarker MarkerName="Exit_Fragment"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="InstantSwap_Cooldown"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<BlockEnteringStore/>
+				<ApplyMoveSpeedMultiplier>
+					<Default MultiplierType="SprintSpeedMod" ApplyToAnimationTranslation="true" ClampMax="1.0"/>
+				</ApplyMoveSpeedMultiplier>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Dodging" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse Comment="Set Dodge fragment at start of action or at any point during posture transition" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Or>
+							<And>
+								<Not>
+									<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Dodge_PostureTransition"/>
+								</Not>
+								<IfMannequinMarker MarkerName="ApplyAlignRotation"/>
+							</And>
+							<And>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Dodge_PostureTransition"/>
+								<IfExternalCondition ConditionName="CanDodgeCancel"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeActionFragment ResetWhenReinstalled="true">
+							<Default UseDefaultFragment="false" FragmentName="Dodge_Roll"/>
+							<Conditional Name="FastRoll" UseDefaultFragment="false" FragmentName="Dodge_Roll_Fast"/>
+							<Conditional Name="SlowRoll" UseDefaultFragment="false" FragmentName="Dodge_Roll_Slow"/>
+						</ChangeActionFragment>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Dodge Direction" ResetWhenReinstalled="true">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="ApplyRotation"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ClearMannequinTagGroup ResetWhenReinstalled="true">
+								<Default TagGroupName="NavDirection" OnEnter="Clear" OnExit="NoEffect"/>
+							</ClearMannequinTagGroup>
+							<SetMannequinTag Comment="Set Strafe Mode" ResetWhenReinstalled="true">
+								<Default TagName="DEBUG_Strafe_Dodge" OnEnter="Unset" OnExit="NoEffect"/>
+								<Conditional Name="BlockOn_Aiming_Active" TagName="DEBUG_Strafe_Dodge" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="StrafeCamera_Active" TagName="DEBUG_Strafe_Dodge" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="CombatNav" TagName="DEBUG_Strafe_Dodge" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag Comment="Set Nav Direction" ResetWhenReinstalled="true">
+								<Default TagName="BackNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Dodge_Forward" TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Dodge_Back" TagName="BackNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Dodge_Left" TagName="LeftNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Dodge_Right" TagName="RightNav" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag Comment="Set Posture Desired" ResetWhenReinstalled="true">
+								<Default TagName="Crouch_Desired" OnEnter="NoEffect" OnExit="NoEffect"/>
+								<Conditional Name="Prone_Fwd_Bck_Dodge" TagName="Crouch_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag Comment="Set Posture Desired" ResetWhenReinstalled="true">
+								<Default TagName="Crouch" OnEnter="NoEffect" OnExit="NoEffect"/>
+								<Conditional Name="Prone_Fwd_Bck_Dodge" TagName="Crouch" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<AnimationDrivenMotion>
+					<Default InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+					<Conditional Name="FastRoll_Air_Translation" MotionMultiplier="0.5" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+					<Conditional Name="FastRoll_Translation_SprintDelay" MotionMultiplier="0.92" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+					<Conditional Name="FastRoll_Translation" MotionMultiplier="1.15" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+					<Conditional Name="Roll_Translation_Side_SprintDelay" MotionMultiplier="0.88" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+					<Conditional Name="Roll_Translation_Side" MotionMultiplier="1.1" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+					<Conditional Name="Roll_Translation_SprintDelay" MotionMultiplier="1.024" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+					<Conditional Name="Roll_Translation" MotionMultiplier="1.28" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+					<Conditional Name="SlowRoll_Translation" MotionMultiplier="1.43" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse Comment="Targeting StickyLock Check">
+					<IfCondition>
+						<Not>
+							<IfCameraStickyLockActive/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ForceCameraLock>
+							<Default OnEnter="Disable" OnExit="NoEffect"/>
+						</ForceCameraLock>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Stand tags if able to stand up at end of dodge" ResetWhenReinstalled="true">
+					<IfCondition>
+						<And>
+							<IfCanResizeCharacterController ResizeType="Default"/>
+							<IfMannequinMarker MarkerName="CanTransition"/>
+							<Not>
+								<IfMannequinTag TagName="Prone"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag>
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag>
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<IfThenElse Comment="Set FromCrouch Tag for fast dodge to trigger posture transition" ResetWhenReinstalled="true">
+								<IfCondition>
+									<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Dodge_Roll_Fast"/>
+								</IfCondition>
+								<ThenActivity>
+									<SetMannequinTag>
+										<Default TagName="FromCrouch" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Disable Stamina Regen Logic" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Not>
+							<IfMannequinMarker MarkerName="CanTransition"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<DisableStaminaRegen ResetWhenReinstalled="true" IgnoreDataChangesAfterInstall="false">
+							<Default OnEnter="Disable" OnExit="Enable"/>
+						</DisableStaminaRegen>
+						<SetStaminaRegenDelay>
+							<Default OnEnter="NoEffect" OnExit="Set" RegenDelayTime="1.00"/>
+						</SetStaminaRegenDelay>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Rotation Logic" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Or>
+							<And>
+								<Or>
+									<IfInput InputName="block_press_virtual"/>
+									<IfExternalCondition ConditionName="CombatNav"/>
+								</Or>
+								<Not>
+									<IfMannequinTag TagName="ForwardNav"/>
+								</Not>
+								<Not>
+									<IfMannequinTag TagName="BackNav"/>
+								</Not>
+							</And>
+							<And>
+								<Or>
+									<IfInput InputName="block_press_virtual"/>
+								</Or>
+								<Not>
+									<IfExternalCondition ConditionName="CombatNav"/>
+								</Not>
+								<IfMannequinMarker MarkerName="ApplyRotation_PostDodge"/>
+							</And>
+							<And>
+								<Or>
+									<IfMannequinTag TagName="LeftNav"/>
+									<IfMannequinTag TagName="RightNav"/>
+								</Or>
+								<Or>
+									<IfMannequinMarker MarkerName="ApplyRotation"/>
+									<IfMannequinMarker MarkerName="ApplyRotation_PostDodge"/>
+								</Or>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default TurnRate="0.6" UseExponentialTurnRate="true"/>
+							<Conditional Name="ApplyRotation" TurnRate="0.80" UseExponentialTurnRate="true"/>
+							<Conditional Name="ApplyRotation_PostDodge" TurnRate="0.6" UseExponentialTurnRate="true"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+					<ElseActivity>
+						<InputRelativeFacing>
+							<Default/>
+							<Conditional Name="ApplyRotation_Back_BlockOn_Analog" TurnRate="0.80" UseExponentialTurnRate="true" ForwardInput="Test_AlwaysTrue" LeftInput="moveright" RightInput="moveleft" AnalogInputOverride="LeftAnalog" InvertAnalogInput="true"/>
+							<Conditional Name="ApplyRotation_Back_BlockOn" TurnRate="0.80" UseExponentialTurnRate="true" ForwardInput="Test_AlwaysTrue" LeftInput="moveright" RightInput="moveleft"/>
+							<Conditional Name="ApplyRotation_Back"/>
+							<Conditional Name="ApplyRotation_Forward_BlockOn" TurnRate="0.80" UseExponentialTurnRate="true" RepeatInitialInput="true" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+							<Conditional Name="ApplyRotation" TurnRate="0.80" UseExponentialTurnRate="true" RepeatInitialInput="true" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+							<Conditional Name="ApplyRotation_PostDodge_Back" TurnRate="0.1" UseExponentialTurnRate="true" RepeatInitialInput="false" ForwardInput="Test_AlwaysTrue" BackwardInput="moveback" LeftInput="moveright" RightInput="moveleft" AnalogInputOverride="LeftAnalog" InvertAnalogInput="true"/>
+							<Conditional Name="ApplyRotation_PostDodge" TurnRate="0.1" UseExponentialTurnRate="true" RepeatInitialInput="false" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+						</InputRelativeFacing>
+					</ElseActivity>
+				</IfThenElse>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="NavDirection" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DEBUG_Strafe_Dodge" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="PostureTransition" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Dodge"/>
+				</AIAudioTriggerActivity>
+				<IfThenElse Comment="Ignore homing while marker is active" ResetWhenReinstalled="true">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="IgnoreHoming"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetHomingTargetTargetable>
+							<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+						</SetHomingTargetTargetable>
+					</ThenActivity>
+					<ElseActivity>
+						<SetHomingTargetTargetable>
+							<Default OnEnter="SetTargetable" OnExit="SetTargetable"/>
+						</SetHomingTargetTargetable>
+					</ElseActivity>
+				</IfThenElse>
+				<TrackTimeInAction>
+					<Default OnEnter="Enable" OnExit="Enable"/>
+				</TrackTimeInAction>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IsStunned/>
+					</IfCondition>
+					<ThenActivity>
+						<AnimationDrivenMotion>
+							<Default Decel="50,50,50" InheritVelocity="false"/>
+						</AnimationDrivenMotion>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Apply status effect for Spear ability check">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Spear"/>
+							<IfAbilityActive AbilityName="Ability_Spear_CDROnHitAfterDodge"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Spear_CDROnHitAfterDodge"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Pay stamina cost">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="PayStaminaCost"/>
+					</IfCondition>
+					<ThenActivity>
+						<PayStaminaCost>
+							<Default CostID="Dodge_Roll" DisableRegenWhileActive="true" LogTelemetry="true"/>
+							<Conditional Name="FastRoll+Passive_Hatchet_ThrowingAxe_AbilityDodgeStamina" CostID="Dodge_Roll_Fast" CostMultiplier="0.75" DisableRegenWhileActive="true" LogTelemetry="true"/>
+							<Conditional Name="NormalRoll+Passive_Hatchet_ThrowingAxe_AbilityDodgeStamina" CostID="Dodge_Roll" CostMultiplier="0.75" DisableRegenWhileActive="true" LogTelemetry="true"/>
+							<Conditional Name="SlowRoll+Passive_Hatchet_ThrowingAxe_AbilityDodgeStamina" CostID="Dodge_Roll_Slow" CostMultiplier="0.75" DisableRegenWhileActive="true" LogTelemetry="true"/>
+							<Conditional Name="FastRoll+SpearReducedDodgeStaminaActive" CostID="Dodge_Roll_Fast" CostMultiplier="0.8" DisableRegenWhileActive="true" LogTelemetry="true"/>
+							<Conditional Name="NormalRoll+SpearReducedDodgeStaminaActive" CostID="Dodge_Roll" CostMultiplier="0.8" DisableRegenWhileActive="true" LogTelemetry="true"/>
+							<Conditional Name="SlowRoll+SpearReducedDodgeStaminaActive" CostID="Dodge_Roll_Slow" CostMultiplier="0.8" DisableRegenWhileActive="true" LogTelemetry="true"/>
+							<Conditional Name="FastRoll" CostID="Dodge_Roll_Fast" DisableRegenWhileActive="true" LogTelemetry="true"/>
+							<Conditional Name="SlowRoll" CostID="Dodge_Roll_Slow" DisableRegenWhileActive="true" LogTelemetry="true"/>
+						</PayStaminaCost>
+					</ThenActivity>
+				</IfThenElse>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnExit>
+							<EffectId EffectId="SkipSprintStartTimer"/>
+						</EffectsToApplyOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Dodge_Stunlock" FragmentName="Dodge_Stunlock">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="dodge"/>
+					<IfCanDodge/>
+					<Not>
+						<IfActionStatus ActionName="Dodge_Stunlock" Status="Installed"/>
+					</Not>
+					<IfCanBreakReaction StunToBreakout="2"/>
+					<Not>
+						<ActionConditionEquipLoadCategory Value="Overburdened"/>
+					</Not>
+					<IfCanResizeCharacterController ResizeType="Crouch"/>
+					<Not>
+						<And>
+							<Or>
+								<IfTraversal MinHeight="0.24" MaxHeight="1.25" TraversalType="stepup"/>
+								<IfTraversal MaxXYRange="2.0" MinHeight="0.5" MaxHeight="1.5" TraversalType="vault"/>
+								<IfTraversal MaxXYRange="1.5" CheckHeight="false" MinHeight="1.25" MaxHeight="5.0" TraversalType="mantle"/>
+							</Or>
+							<IfInput InputName="ForwardNav"/>
+						</And>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="Sliding"/>
+					</Not>
+					<Not>
+						<IfEncumbered/>
+					</Not>
+					<Not>
+						<HeightToGround ActivationHeight="0.5"/>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And Comment="Layered Action Cancel">
+						<IfMannequinTag TagName="Blocking"/>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</And>
+					<And>
+						<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</And>
+					<IfMannequinMarker MarkerName="Exit_Fragment"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="InstantSwap_Cooldown"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<BlockEnteringStore/>
+				<DisableCollision>
+					<Default disableActorToActorCollision="true" disableTerrainCollision="false" disablePlayerToPlayerCollision="true"/>
+				</DisableCollision>
+				<RunFxScript ResetWhenReinstalled="false" RunOnRemoteClients="true">
+					<Default ScriptToRun="Breakout_Reaction" StopScriptOnExit="true" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<AnimationDrivenMotion>
+					<Default InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+					<Conditional Name="FastRoll_Air_Translation" MotionMultiplier="0.5" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+					<Conditional Name="FastRoll_Translation" MotionMultiplier="1.05" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse Comment="Set Dodge Direction" ResetWhenReinstalled="true">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="ApplyRotation"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ClearMannequinTagGroup ResetWhenReinstalled="true">
+								<Default TagGroupName="NavDirection" OnEnter="Clear" OnExit="NoEffect"/>
+							</ClearMannequinTagGroup>
+							<SetMannequinTag Comment="Set Strafe Mode" ResetWhenReinstalled="true">
+								<Default TagName="DEBUG_Strafe_Dodge" OnEnter="Unset" OnExit="NoEffect"/>
+								<Conditional Name="BlockOn_Aiming_Active" TagName="DEBUG_Strafe_Dodge" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="StrafeCamera_Active" TagName="DEBUG_Strafe_Dodge" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="CombatNav" TagName="DEBUG_Strafe_Dodge" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag Comment="Set Nav Direction" ResetWhenReinstalled="true">
+								<Default TagName="BackNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Dodge_Forward" TagName="ForwardNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Dodge_Back" TagName="BackNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Dodge_Left" TagName="LeftNav" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Dodge_Right" TagName="RightNav" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag Comment="Set Posture Desired" ResetWhenReinstalled="true">
+								<Default TagName="Crouch_Desired" OnEnter="NoEffect" OnExit="NoEffect"/>
+								<Conditional Name="Prone_Fwd_Bck_Dodge" TagName="Crouch_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag Comment="Set Posture Desired" ResetWhenReinstalled="true">
+								<Default TagName="Crouch" OnEnter="NoEffect" OnExit="NoEffect"/>
+								<Conditional Name="Prone_Fwd_Bck_Dodge" TagName="Crouch" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Dodging" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<ResetReactionCount ResetWhenReinstalled="true">
+					<Default OnEnter="Reset" OnExit="Reset"/>
+				</ResetReactionCount>
+				<IfThenElse Comment="Targeting StickyLock Check">
+					<IfCondition>
+						<Not>
+							<IfCameraStickyLockActive/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ForceCameraLock>
+							<Default OnEnter="Disable" OnExit="NoEffect"/>
+						</ForceCameraLock>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set Stand Tag if QuickStep" ResetWhenReinstalled="true">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="Dodge_Roll_Translation"/>
+							<IfMannequinMarker MarkerName="Dodge_Roll_Slow_Translation"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag>
+							<Default TagName="FromStand" OnEnter="Set" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Set FromCrouch Tag if Rolling from stand" ResetWhenReinstalled="true">
+					<IfCondition>
+						<And>
+							<Or>
+								<IfMannequinMarker MarkerName="Dodge_Roll_Fast_Translation"/>
+							</Or>
+							<IfMannequinTag TagName="Stand"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag>
+							<Default TagName="FromCrouch" OnEnter="Set" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Disable Stamina Regen Logic" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Not>
+							<IfMannequinMarker MarkerName="CanTransition"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<DisableStaminaRegen ResetWhenReinstalled="true" IgnoreDataChangesAfterInstall="false">
+							<Default OnEnter="Disable" OnExit="Enable"/>
+						</DisableStaminaRegen>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Rotation Logic" ResetWhenReinstalled="true">
+					<IfCondition>
+						<Or>
+							<And>
+								<Or>
+									<IfInput InputName="block_press_virtual"/>
+									<IfExternalCondition ConditionName="CombatNav"/>
+								</Or>
+								<Not>
+									<IfMannequinTag TagName="ForwardNav"/>
+								</Not>
+								<Not>
+									<IfMannequinTag TagName="BackNav"/>
+								</Not>
+							</And>
+							<And>
+								<Or>
+									<IfInput InputName="block_press_virtual"/>
+								</Or>
+								<Not>
+									<IfExternalCondition ConditionName="CombatNav"/>
+								</Not>
+								<IfMannequinMarker MarkerName="ApplyRotation_PostDodge"/>
+							</And>
+							<And>
+								<Or>
+									<IfMannequinTag TagName="LeftNav"/>
+									<IfMannequinTag TagName="RightNav"/>
+								</Or>
+								<Or>
+									<IfMannequinMarker MarkerName="ApplyRotation"/>
+									<IfMannequinMarker MarkerName="ApplyRotation_PostDodge"/>
+								</Or>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default TurnRate="0.6" UseExponentialTurnRate="true"/>
+							<Conditional Name="ApplyRotation" TurnRate="0.80" UseExponentialTurnRate="true"/>
+							<Conditional Name="ApplyRotation_PostDodge" TurnRate="0.6" UseExponentialTurnRate="true"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+					<ElseActivity>
+						<InputRelativeFacing>
+							<Default/>
+							<Conditional Name="ApplyRotation_Back_BlockOn_Analog" TurnRate="0.80" UseExponentialTurnRate="true" ForwardInput="Test_AlwaysTrue" LeftInput="moveright" RightInput="moveleft" AnalogInputOverride="LeftAnalog" InvertAnalogInput="true"/>
+							<Conditional Name="ApplyRotation_Back_BlockOn" TurnRate="0.80" UseExponentialTurnRate="true" ForwardInput="Test_AlwaysTrue" LeftInput="moveright" RightInput="moveleft"/>
+							<Conditional Name="ApplyRotation_Back"/>
+							<Conditional Name="ApplyRotation_Forward_BlockOn" TurnRate="0.80" UseExponentialTurnRate="true" RepeatInitialInput="true" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+							<Conditional Name="ApplyRotation" TurnRate="0.80" UseExponentialTurnRate="true" RepeatInitialInput="true" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+							<Conditional Name="ApplyRotation_PostDodge_Back" TurnRate="0.1" UseExponentialTurnRate="true" RepeatInitialInput="false" ForwardInput="Test_AlwaysTrue" BackwardInput="moveback" LeftInput="moveright" RightInput="moveleft" AnalogInputOverride="LeftAnalog" InvertAnalogInput="true"/>
+							<Conditional Name="ApplyRotation_PostDodge" TurnRate="0.1" UseExponentialTurnRate="true" RepeatInitialInput="false" ForwardInput="moveforward" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+						</InputRelativeFacing>
+					</ElseActivity>
+				</IfThenElse>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="NavDirection" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DEBUG_Strafe_Dodge" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false">
+					<Default TagGroupName="PostureTransition" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Dodge"/>
+				</AIAudioTriggerActivity>
+				<IfThenElse Comment="Ignore homing while marker is active" ResetWhenReinstalled="true">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="IgnoreHoming"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetHomingTargetTargetable>
+							<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+						</SetHomingTargetTargetable>
+					</ThenActivity>
+					<ElseActivity>
+						<SetHomingTargetTargetable>
+							<Default OnEnter="SetTargetable" OnExit="SetTargetable"/>
+						</SetHomingTargetTargetable>
+					</ElseActivity>
+				</IfThenElse>
+				<TrackTimeInAction>
+					<Default OnEnter="NoEffect" OnExit="Enable"/>
+				</TrackTimeInAction>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IsStunned/>
+					</IfCondition>
+					<ThenActivity>
+						<AnimationDrivenMotion>
+							<Default Decel="50,50,50" InheritVelocity="false"/>
+						</AnimationDrivenMotion>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Apply status effect for Spear ability check">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Spear"/>
+							<IfAbilityActive AbilityName="Ability_Spear_CDROnHitAfterDodge"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Spear_CDROnHitAfterDodge"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnExit>
+							<EffectId EffectId="SkipSprintStartTimer"/>
+						</EffectsToApplyOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="Dodge_Forward">
+			<Or>
+				<And>
+					<Or>
+						<IfExternalCondition ConditionName="CombatNav"/>
+					</Or>
+					<Or>
+						<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" TargetAngleTolerance="50.0"/>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" TargetAngleTolerance="50.0"/>
+					</Or>
+				</And>
+				<And>
+					<Not>
+						<Or>
+							<IfExternalCondition ConditionName="CombatNav"/>
+						</Or>
+					</Not>
+					<Or Comment="Any Input Direction">
+						<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20"/>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.20"/>
+					</Or>
+				</And>
+			</Or>
+		</And>
+		<And Name="Dodge_Left">
+			<Or>
+				<IfExternalCondition ConditionName="CombatNav"/>
+			</Or>
+			<Or>
+				<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" TargetAngle="270.0" TargetAngleTolerance="45.0"/>
+				<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" TargetAngle="270.0" TargetAngleTolerance="45.0"/>
+			</Or>
+		</And>
+		<And Name="Dodge_Back">
+			<Or>
+				<IfExternalCondition ConditionName="CombatNav"/>
+			</Or>
+			<Or>
+				<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" TargetAngle="180.0" TargetAngleTolerance="50.0"/>
+				<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" TargetAngle="180.0" TargetAngleTolerance="50.0"/>
+				<And Comment="No Input">
+					<Not>
+						<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20"/>
+					</Not>
+					<Not>
+						<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.20"/>
+					</Not>
+				</And>
+			</Or>
+		</And>
+		<And Name="Dodge_Right">
+			<Or>
+				<IfExternalCondition ConditionName="CombatNav"/>
+			</Or>
+			<Or>
+				<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" TargetAngle="90.0" TargetAngleTolerance="45.0"/>
+				<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" TargetAngle="90.0" TargetAngleTolerance="45.0"/>
+			</Or>
+		</And>
+		<IfMannequinTag Name="Prone_Tag" TagName="Prone"/>
+		<And Name="ApplyRotation_PostDodge">
+			<IfMannequinMarker MarkerName="ApplyRotation_PostDodge"/>
+			<Not>
+				<Or>
+					<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="180.0" TargetAngleTolerance="89.0"/>
+					<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="180.0" TargetAngleTolerance="89.0"/>
+				</Or>
+			</Not>
+		</And>
+		<And Name="ApplyRotation_PostDodge_Back">
+			<IfMannequinMarker MarkerName="ApplyRotation_PostDodge"/>
+			<IfMannequinTag TagName="BackNav"/>
+			<Not>
+				<Or>
+					<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="0.0" TargetAngleTolerance="89.0"/>
+					<IfAnalogInput AnalogInput="None" DigitalForwardInput="ForwardNav" DigitalBackInput="moveback" DigitalRightInput="moveright" DigitalLeftInput="moveleft" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" UseCharacterRelativeAngle="true" TargetAngle="0.0" TargetAngleTolerance="89.0"/>
+				</Or>
+			</Not>
+		</And>
+		<And Name="ApplyRotation_Back">
+			<IfMannequinMarker MarkerName="ApplyRotation"/>
+			<IfMannequinTag TagName="BackNav"/>
+		</And>
+		<And Name="ApplyRotation_Back_BlockOn">
+			<IfMannequinMarker MarkerName="ApplyRotation"/>
+			<IfMannequinTag TagName="BackNav"/>
+			<IfMannequinTag TagName="DEBUG_Strafe_Dodge"/>
+		</And>
+		<And Name="ApplyRotation_Back_BlockOn_Analog">
+			<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" RequireTargetAngleMatch="true" TargetAngle="180.0" TargetAngleTolerance="50.0"/>
+			<IfMannequinMarker MarkerName="ApplyRotation"/>
+			<IfMannequinTag TagName="BackNav"/>
+			<IfMannequinTag TagName="DEBUG_Strafe_Dodge"/>
+		</And>
+		<And Name="ApplyRotation_Forward_BlockOn">
+			<IfMannequinMarker MarkerName="ApplyRotation"/>
+			<IfMannequinTag TagName="ForwardNav"/>
+			<IfMannequinTag TagName="DEBUG_Strafe_Dodge"/>
+		</And>
+		<And Name="ApplyMovRotation">
+			<Not>
+				<IfMannequinMarker MarkerName="ApplyRotation"/>
+			</Not>
+			<Not>
+				<IfMannequinMarker MarkerName="CanTransition"/>
+			</Not>
+		</And>
+		<Not Name="Not_Prone">
+			<IfMannequinTag TagName="Prone"/>
+		</Not>
+		<And Name="CameraLock+Sword">
+			<IfMannequinTag TagName="Sword"/>
+			<IfCameraLockActive/>
+			<IfMannequinTag TagName="Debug_Combat"/>
+		</And>
+		<IfMannequinMarker Name="ApplyAlignRotation" MarkerName="ApplyAlignRotation"/>
+		<Not Name="Dodge_Released">
+			<IfInput InputName="Dodge_Depressed"/>
+		</Not>
+		<And Name="CanDodgeCancel">
+			<And>
+				<IfInput InputName="dodge"/>
+				<Not>
+					<And>
+						<IfMannequinTag TagName="Reaction"/>
+						<IfCanBreakReaction StunToBreakout="2"/>
+					</And>
+				</Not>
+				<IfCanDodge/>
+				<IfCanResizeCharacterController ResizeType="Crouch"/>
+				<Not>
+					<ActionConditionEquipLoadCategory Value="Overburdened"/>
+				</Not>
+				<Not>
+					<And>
+						<Or>
+							<IfTraversal MinHeight="0.24" MaxHeight="1.25" TraversalType="stepup"/>
+							<IfTraversal MaxXYRange="2.0" MinHeight="0.5" MaxHeight="1.5" TraversalType="vault"/>
+							<IfTraversal MaxXYRange="1.5" CheckHeight="false" MinHeight="1.25" MaxHeight="5.0" TraversalType="mantle"/>
+						</Or>
+						<IfInput InputName="ForwardNav"/>
+					</And>
+				</Not>
+				<Not>
+					<IfMannequinMarker MarkerName="Sliding"/>
+				</Not>
+				<Not>
+					<IfEncumbered/>
+				</Not>
+				<Not>
+					<Or>
+						<IfExternalCondition ConditionName="Exhausted"/>
+						<IfExternalCondition ConditionName="ArtifactSet1TowerShield"/>
+					</Or>
+				</Not>
+				<Not>
+					<HeightToGround ActivationHeight="0.5"/>
+				</Not>
+				<Not>
+					<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+				</Not>
+				<IfStaminaValue ComparisonValue="0.0" ComparisonType="GreaterThan" RunFxScriptOnFail="OutOfStamina" SendUIEventOnFail="CAGE.OutOfStamina"/>
+				<Not>
+					<IsMounted/>
+				</Not>
+			</And>
+		</And>
+		<And Name="CanDodgeAttackCancel">
+			<IfInput InputName="attack_primary"/>
+			<IfStaminaValue ComparisonValue="0.0" ComparisonType="GreaterThan"/>
+			<IfMannequinMarker MarkerName="CanDodgeAttackcancel"/>
+			<Not>
+				<HeightToGround ActivationHeight="0.5"/>
+			</Not>
+		</And>
+		<And Name="Roll_Translation_Side_SprintDelay">
+			<IfMannequinMarker MarkerName="Dodge_Roll_Translation"/>
+			<Or>
+				<IfMannequinTag TagName="LeftNav"/>
+				<IfMannequinTag TagName="RightNav"/>
+			</Or>
+			<IfHasStatusEffect StatusEffect="Sprint_Delay_Combat_Timer_Normal"/>
+		</And>
+		<And Name="Roll_Translation_SprintDelay">
+			<IfMannequinMarker MarkerName="Dodge_Roll_Translation"/>
+			<IfHasStatusEffect StatusEffect="Sprint_Delay_Combat_Timer_Normal"/>
+		</And>
+		<IfMannequinMarker Name="QuickStep_Translation" MarkerName="QuickStep_Translation"/>
+		<And Name="Roll_Translation_Side">
+			<IfMannequinMarker MarkerName="Dodge_Roll_Translation"/>
+			<Or>
+				<IfMannequinTag TagName="LeftNav"/>
+				<IfMannequinTag TagName="RightNav"/>
+			</Or>
+			<Not>
+				<IfHasStatusEffect StatusEffect="Sprint_Delay_Combat_Timer_Normal"/>
+			</Not>
+		</And>
+		<IfMannequinMarker Name="Roll_Translation" MarkerName="Dodge_Roll_Translation"/>
+		<And Name="Prone_Fwd_Bck_Dodge">
+			<IfMannequinTag TagName="Prone"/>
+			<IfCanResizeCharacterController ResizeType="Crouch"/>
+			<Or>
+				<IfMannequinTag TagName="ForwardNav"/>
+				<IfMannequinTag TagName="BackNav"/>
+			</Or>
+		</And>
+		<Or Name="BlockOn_Aiming_Active">
+			<IfCameraLockActive/>
+			<IfMannequinTag TagName="Blocking"/>
+			<IfInput InputName="aim_draw_active_virtual"/>
+		</Or>
+		<Or Name="StrafeCamera_Active">
+			<IfPlayerSetting PlayerSettingName="LockedStrafeMovement" PlayerSettingNameForGamepad="LockedStrafeMovement_Alternate"/>
+		</Or>
+		<Not Name="Near_Ground">
+			<HeightToGround ActivationHeight="0.60"/>
+		</Not>
+		<HeightToGround Name="Not_Near_Ground" ActivationHeight="0.60"/>
+		<And Name="PostureChange">
+			<IfMannequinTag TagName="Stand"/>
+			<IfMannequinTag TagName="FromCrouch"/>
+		</And>
+		<And Name="PostureChange_QuickStep">
+			<IfMannequinTag TagName="Crouch"/>
+			<IfMannequinTag TagName="FromStand"/>
+		</And>
+		<ActionConditionEquipLoadCategory Name="FastRoll" Value="Fast"/>
+		<ActionConditionEquipLoadCategory Name="SlowRoll" Value="Slow"/>
+		<And Name="FastRoll_Translation_SprintDelay">
+			<IfMannequinMarker MarkerName="Dodge_Roll_Fast_Translation"/>
+			<IfHasStatusEffect StatusEffect="Sprint_Delay_Combat_Timer_Light"/>
+		</And>
+		<IfMannequinMarker Name="FastRoll_Translation" MarkerName="Dodge_Roll_Fast_Translation"/>
+		<And Name="FastRoll_Air_Translation">
+			<IfMannequinMarker MarkerName="Dodge_Roll_Fast_Translation"/>
+			<HeightToGround ActivationHeight="0.60"/>
+		</And>
+		<IfMannequinMarker Name="SlowRoll_Translation" MarkerName="Dodge_Roll_Slow_Translation"/>
+		<And Name="FastRoll+Passive_Hatchet_ThrowingAxe_AbilityDodgeStamina">
+			<ActionConditionEquipLoadCategory Value="Fast"/>
+			<IfAbilityActive AbilityName="Passive_Hatchet_ThrowingAxe_AbilityDodgeStamina"/>
+			<IfHasStatusEffect StatusEffect="Hatchet_Pass_DodgeStaminaCost"/>
+		</And>
+		<And Name="NormalRoll+Passive_Hatchet_ThrowingAxe_AbilityDodgeStamina">
+			<ActionConditionEquipLoadCategory Value="Normal"/>
+			<IfAbilityActive AbilityName="Passive_Hatchet_ThrowingAxe_AbilityDodgeStamina"/>
+			<IfHasStatusEffect StatusEffect="Hatchet_Pass_DodgeStaminaCost"/>
+		</And>
+		<And Name="SlowRoll+Passive_Hatchet_ThrowingAxe_AbilityDodgeStamina">
+			<ActionConditionEquipLoadCategory Value="Slow"/>
+			<IfAbilityActive AbilityName="Passive_Hatchet_ThrowingAxe_AbilityDodgeStamina"/>
+			<IfHasStatusEffect StatusEffect="Hatchet_Pass_DodgeStaminaCost"/>
+		</And>
+		<And Name="FastRoll+SpearReducedDodgeStaminaActive">
+			<ActionConditionEquipLoadCategory Value="Fast"/>
+			<IfHasStatusEffect StatusEffect="Spear_ReducedDodgeStamCost"/>
+		</And>
+		<And Name="NormalRoll+SpearReducedDodgeStaminaActive">
+			<ActionConditionEquipLoadCategory Value="Normal"/>
+			<IfHasStatusEffect StatusEffect="Spear_ReducedDodgeStamCost"/>
+		</And>
+		<And Name="SlowRoll+SpearReducedDodgeStaminaActive">
+			<ActionConditionEquipLoadCategory Value="Slow"/>
+			<IfHasStatusEffect StatusEffect="Spear_ReducedDodgeStamCost"/>
+		</And>
+		<And Name="ArtifactSet1TowerShield">
+			<IfAbilityActive External="true" AbilityName="GlobalPerk_Artifact_Set1_TowerShield"/>
+		</And>
+	</Conditions>
+</ActionList>
+

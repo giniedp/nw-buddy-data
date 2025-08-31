@@ -1,0 +1,15 @@
+<ActionList>
+	<Reactions>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_DeathsDoor" Resistance="n/a">
+			<IfExternalCondition ConditionName="DeathsDoor"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_Death_Headshot" Resistance="n/a">
+			<IfExternalCondition ConditionName="Headshot"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_Death" Resistance="n/a"/>
+	</Reactions>
+	<Conditions>
+		<IfDamaged FailifDamageSettoNoReaction="true" IgnoreDeflectDamage="false" Name="Headshot" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="false" RequireDeflectDamage="false" RequireHitVolumeName="Head"/>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,106 @@
+<ActionList>
+	<Actions>
+		<Action Name="Equip">
+			<ActivationCondition>
+				<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</ActivationCondition>
+			<Activities>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="MAIN_HAND_OPTION_2" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="MAIN_HAND_OPTION_2" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+			</Activities>
+		</Action>
+		<Action Name="LookPose" FragmentName="LookPose">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="AimPose" FragmentName="Aim">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="AimPose"/>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="SetAggressionLevel" FragmentName="SetAggressionLevel">
+			<ActivationCondition>
+				<And>
+					<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.3"/>
+					<Not>
+						<IfMannequinTag TagName="Frenzy"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Frightened"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="BecomeFrenzied" TagName="Frenzy" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="BecomeFrightened" TagName="Frightened" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="DeactivateEnraged">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Empowered"/>
+					<IfMannequinTag TagName="Berserker"/>
+					<Not>
+						<IfHasAttackTarget/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Empowered" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<TriggerEntity>
+					<Default TriggerName="BerserkOff"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="Sheathe">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="Sheathe"/>
+			</ActivationCondition>
+			<Activities>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+			</Activities>
+		</Action>
+		<Action Name="UnSheathe">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="UnSheathe"/>
+			</ActivationCondition>
+			<Activities>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="MAIN_HAND_OPTION_2" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="BecomeFrightened" MarkerName="BecomeFrightened"/>
+		<IfMannequinMarker Name="BecomeFrenzied" MarkerName="BecomeFrenzied"/>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,115 @@
+<ActionList>
+	<Actions>
+		<Action Name="ActivateGrit" Comment="Activate GRIT as long as the character is not Staggered, and Stagger is not force disabled by MannequinMarker">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_Stagger" Comment="Check that we're not already playing the Stagger reaction"/>
+					</Not>
+					<IfHasStatusEffect StatusEffect="AI_Enable_Stagger" Comment="Add this into your character's initial status effects to enable the Stagger mechanic on them"/>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableStagger" Comment="Use this to disable Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_Stagger" Comment="Deactivate GRIT when the character is Staggered, so they do not continue to take stamina damage while in the state"/>
+					<IfMannequinMarker MarkerName="DisableStagger" Comment="Use this to disable Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ActivateGrit Comment="This allows the character to always take Stamina damage">
+					<Default OnEnter="Activate" OnExit="Deactivate" DamageTableRow=""/>
+				</ActivateGrit>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Staggered" FragmentName="r_Stagger" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="LessThanOrEqual" Comment="Look for Stamina to be 0"/>
+					<Or>
+						<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="0" FailOnNoReactionDamage="false" Comment="Require the character to be hit by an attack to enter Stagger"/>
+						<IfHasStatusEffect StatusEffect="AI_Force_Stagger" Comment="Do not require the character to be hit by an attack to enter Stagger"/>
+					</Or>
+					<Not Comment="Check that the character isn't already stunned or staggered. Staggered also applies the 'Stunned' tag.">
+						<Or>
+							<IsStunned/>
+							<IfMannequinTag TagName="Stunned"/>
+						</Or>
+					</Not>
+					<IfHasStatusEffect StatusEffect="AI_Enable_Stagger" Comment="Add this into your character's initial status effects to enable the Stagger mechanic on them"/>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableStagger" Comment="Use this to disable Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default Comment="Reduces received Stagger damage for a period after being Staggered">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+					<Conditional Name="TelegraphStaggered" Comment="Applies a status effect to the character that displays 'Staggered' while in this action, and reduces received Stagger damage for a period after being Staggered">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Staggered_Telegraph"/>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Staggered_Telegraph"/>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+				</ModifyStatusEffects>
+				<CastSpell>
+					<Default SpellName="AI_Staggered_Telegraph"/>
+				</CastSpell>
+				<ResetStamina ResetWhenReinstalled="false" IgnoreDataChanges="false">
+					<Default OnEnter="NoEffect" OnExit="Reset" Comment="Reset stamina at the end of the action"/>
+				</ResetStamina>
+				<SetReactionFragment Comment="Just like our Spawn actions, use SetReactionFragment referencing the EmptyReactionTableHarness table to prevent behavior evaluations while in this action">
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<BlackboardCondition LeftOperand="%Spawn_Limiter%false" Operator="Equal" RightOperand="false"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Spawn_EssenceFragments"/>
+						</TriggerEntity>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="TelegraphStaggered" MarkerName="EnableStaggerInNameplate" Comment="Use this MarkerName in a CAGE-Named proc clip to display 'Staggered' text in your character's nameplate while they are Staggered"/>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="90.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back">
+			<IfDamagedByAngle Max="180.000000" Min="90.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-90.000000" Min="-180.000000" Tolerance="0.010000"/>
+		</Or>
+	</Conditions>
+</ActionList>
+

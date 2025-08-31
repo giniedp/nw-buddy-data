@@ -1,0 +1,85 @@
+<ActionList>
+	<Actions>
+		<Action Name="Idle_No_Task" FragmentName="Idle">
+			<ActivationCondition>
+				<True/>
+			</ActivationCondition>
+			<Activities>
+				<ChangeActionFragment ResetWhenReinstalled="true">
+					<Default UseDefaultFragment="true" FragmentName=""/>
+					<Conditional Name="Combat_Idle" UseDefaultFragment="false" FragmentName="Combat_Idle"/>
+				</ChangeActionFragment>
+			</Activities>
+		</Action>
+		<Action Name="Idle" FragmentName="Idle">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="ForceAlerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_MegaFlora_Unbloomed"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_MegaFlora_Unbloomed"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Nameplate_Off"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Nameplate_Off"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Idle" FragmentName="Combat_Idle">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Combat_Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Nameplate_On"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Nameplate_On"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Wait" FragmentName="Wait">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Wait_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<Or Name="Combat_Idle">
+			<IfHasAttackTarget/>
+			<IfMannequinTag TagName="Alerted"/>
+		</Or>
+	</Conditions>
+</ActionList>
+

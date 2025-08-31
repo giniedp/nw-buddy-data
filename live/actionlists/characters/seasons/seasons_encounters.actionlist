@@ -1,0 +1,70 @@
+<ActionList>
+	<Actions>
+		<Action Name="Phase_Transition" FragmentName="Phase_Transition" Predictive="true">
+			<ActivationCondition>
+				<And>
+					<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.5"/>
+					<Not>
+						<IfMannequinTag TagName="Phase_2"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="Phase_Transition"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_EmptyReactionTableHarness.actionlist" IsFullBody="true"/>
+				</SetReactionFragment>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Phase_2" OnEnter="NoEffect" OnExit="Set" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="ChainAttack" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="APPLYROTATION" MarkerName="ApplyRotation"/>
+		<IfMannequinMarker Name="FaceTarget" MarkerName="FaceTarget"/>
+		<IfMannequinMarker Name="Translation3x" MarkerName="Translation3x"/>
+		<IfMannequinTag Name="ChainAttack" TagName="ChainAttack"/>
+		<IfMannequinTag Name="StopChainAttack" TagName="StopChainAttack"/>
+		<IfHTNCAGEAction Name="DoubleSlash_R_Combo" ActionName="Attack_DoubleSlash_R_Combo_CAGE_Task"/>
+		<IfHTNCAGEAction Name="DoubleSlash_L_Combo" ActionName="Attack_DoubleSlash_L_Combo_CAGE_Task"/>
+		<IfHTNCAGEAction Name="SpinSlash_Combo" ActionName="Attack_SpinSlash_CAGE_Task"/>
+		<IfMannequinMarker Name="StopFacingTarget" MarkerName="StopFacingTarget"/>
+	</Conditions>
+</ActionList>
+

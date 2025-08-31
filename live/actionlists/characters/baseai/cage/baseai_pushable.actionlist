@@ -1,0 +1,42 @@
+<ActionList>
+	<Actions>
+		<Action Name="Pushable">
+			<ActivationCondition>
+				<And>
+					<IfDamaged FailOnNoReactionDamage="false"/>
+					<Not>
+						<IfDamaged FailOnNoReactionDamage="true"/>
+					</Not>
+					<Not>
+						<IfDead/>
+					</Not>
+					<Not>
+						<IfDeathsDoor/>
+					</Not>
+					<Not>
+						<IfGritValue RequireGritActive="true" ComparisonValue="0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfActionStatus ActionName="Pushable" Status="Installed" ActiveTime="0.4f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					<IfDead/>
+					<IfDeathsDoor/>
+					<IfMannequinTag TagName="BlockBrokenyup"/>
+					<Not>
+						<IfActionStatus ActionName="Pushable" Status="Installed"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ReactionMotion>
+					<Default Scale="1.0" UsePushNoDecay="true"/>
+				</ReactionMotion>
+				<ClearDamaged Comment="This needs to be after SetReactionFragment"/>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

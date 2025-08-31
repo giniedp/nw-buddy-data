@@ -1,0 +1,499 @@
+<ActionList>
+	<Actions>
+		<Action Name="CommanderLoth_CallReinforcements" FragmentName="Loth_CallReinforcements" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_CallReinforcements"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_IceJavelin" FragmentName="Loth_Attack_IceJavelin" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_IceJavelin"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_IceWave" FragmentName="Loth_Attack_IceWave" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_IceWave"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_CallForEmpower" FragmentName="Loth_CallEmpower" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_CallForEmpower"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_ChargeStab" FragmentName="Loth_Attack_ChargedStab" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_ChargeStab"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpikeMark"/>
+							<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Empower" OnlyCheckOwnedStatusEffects="false"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<CastSpell>
+							<Default SpellName="AI_Ice_Commander_Shockwave" AILeadTarget="true"/>
+						</CastSpell>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_ChargeStab_Outro" FragmentName="Loth_Attack_ChargedStab_Outro" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_ChargeStab_Outro"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpikeMark"/>
+							<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Empower" OnlyCheckOwnedStatusEffects="false"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<CastSpell>
+							<Default SpellName="AI_Ice_Commander_Shockwave" AILeadTarget="true"/>
+						</CastSpell>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_ChargeStab_Trail" FragmentName="Loth_Attack_ChargedStab_Trail" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_ChargeStab_Trail"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpikeMark"/>
+							<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Empower" OnlyCheckOwnedStatusEffects="false"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<CastSpell>
+							<Default SpellName="AI_Ice_Commander_Shockwave" AILeadTarget="true"/>
+						</CastSpell>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_UpperCutSlam" FragmentName="Loth_Attack_UppercutSlam" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_UpperCutSlam"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.15"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_UpperCutSlam_Phase2" FragmentName="Loth_Attack_UppercutSlam_Phase2" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_UpperCutSlamPhase2"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_UpperCutSlam_Phase3" FragmentName="Loth_Attack_UppercutSlam_Phase3" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_UpperCutSlamPhase3"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_PlatformJump" FragmentName="Loth_PlatformJump" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_PlatformJump"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_SwipeL" FragmentName="Loth_Attack_SwipeL" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_SwipeL"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpikeMark"/>
+							<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Empower" OnlyCheckOwnedStatusEffects="false"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<CastSpell>
+							<Default SpellName="AI_Ice_Commander_Ice_Spikes" AILeadTarget="true"/>
+						</CastSpell>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_SwipeR" FragmentName="Loth_Attack_SwipeR" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_SwipeR"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpikeMark"/>
+							<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Empower" OnlyCheckOwnedStatusEffects="false"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<CastSpell>
+							<Default SpellName="AI_Ice_Commander_Ice_Spikes" AILeadTarget="true"/>
+						</CastSpell>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_StepAttack" FragmentName="Loth_Attack_StepAttack" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_StepAttack_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpikeMark"/>
+							<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Empower" OnlyCheckOwnedStatusEffects="false"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<CastSpell>
+							<Default SpellName="AI_Ice_Commander_Ice_Spikes" AILeadTarget="true"/>
+						</CastSpell>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_Combo" FragmentName="Loth_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="SpikeMark"/>
+							<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Empower" OnlyCheckOwnedStatusEffects="false"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<CastSpell>
+							<Default SpellName="AI_Ice_Commander_Ice_Spikes" AILeadTarget="true"/>
+						</CastSpell>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_PhaseTransition_Loop" FragmentName="Loth_PhaseTransition_Loop" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_PhaseTransition_Loop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<CameraRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+					<Conditional Name="ApplyRotationDuringAttack" TurnRate="0.25" UseExponentialTurnRate="true"/>
+				</CameraRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_Phase_Break" FragmentName="Loth_Phase_Break" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_Phase_Break_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ModifyStatusEffects>
+					<Conditional Name="InPhase1" Comment="RemoveMinHealth from each phase">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Ice_Torso_Boss_Phase_Transition_Protect"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Ice_Torso_Boss_Phase_Transition_Protect"/>
+							<EffectId EffectId="AI_Ice_Torso_Boss_Phase_1_MinHealth"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+					<Conditional Name="InPhase2">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Ice_Torso_Boss_Phase_Transition_Protect"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Ice_Torso_Boss_Phase_Transition_Protect"/>
+							<EffectId EffectId="AI_Ice_Torso_Boss_Phase_2_MinHealth"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+					<Conditional Name="InPhase3">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Ice_Torso_Boss_Phase_Transition_Protect"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Ice_Torso_Boss_Phase_Transition_Protect"/>
+							<EffectId EffectId="AI_Ice_Torso_Boss_Phase_3_MinHealth"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="CommanderLoth_Death_Intro" FragmentName="Loth_Death_Intro" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="CommanderLoth_Death_Intro_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true" Comment="SpecialEye_Deactivate">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Trans_Dead"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Death_Delay"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.3"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="ApplyRotationDuringAttack">
+			<IfMannequinMarker MarkerName="ApplyRotate"/>
+		</And>
+		<AIDistanceToTarget Name="Check_Distance_Close" Comparison="LessThan" DistanceToTarget="4.0"/>
+		<And Name="InPhase1">
+			<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Phase_1_MinHealth" OnlyCheckOwnedStatusEffects="false"/>
+			<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Phase_2_MinHealth" OnlyCheckOwnedStatusEffects="false"/>
+			<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Phase_3_MinHealth" OnlyCheckOwnedStatusEffects="false"/>
+		</And>
+		<And Name="InPhase2">
+			<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Phase_2_MinHealth" OnlyCheckOwnedStatusEffects="false"/>
+			<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Phase_3_MinHealth" OnlyCheckOwnedStatusEffects="false"/>
+		</And>
+		<And Name="InPhase3">
+			<IfHasStatusEffect StatusEffect="AI_Ice_Torso_Boss_Phase_3_MinHealth" OnlyCheckOwnedStatusEffects="false"/>
+		</And>
+	</Conditions>
+</ActionList>
+

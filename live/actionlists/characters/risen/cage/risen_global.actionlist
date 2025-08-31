@@ -1,0 +1,70 @@
+<ActionList>
+	<Actions>
+		<Action Name="LookPose" FragmentName="LookPose">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="Spawn" FragmentName="Spawn">
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<ResetReactionCount ResetWhenReinstalled="false" omment="Reset Reaction Count to cancel SetReactionFragment increment above">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetReactionCount>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<IfMannequinMarker MarkerName="Run_v2"/>
+							<IfMannequinMarker MarkerName="Run_v3"/>
+							<IfMannequinMarker MarkerName="Run_v4"/>
+							<IfMannequinMarker MarkerName="Run_v5"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+							<Conditional Name="Run_v2" TagName="Run_v2" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+							<Conditional Name="Run_v3" TagName="Run_v3" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+							<Conditional Name="Run_v4" TagName="Run_v4" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+							<Conditional Name="Run_v5" TagName="Run_v5" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="Run_v2" MarkerName="Run_v2"/>
+		<IfMannequinMarker Name="Run_v3" MarkerName="Run_v3"/>
+		<IfMannequinMarker Name="Run_v4" MarkerName="Run_v4"/>
+		<IfMannequinMarker Name="Run_v5" MarkerName="Run_v5"/>
+	</Conditions>
+</ActionList>
+

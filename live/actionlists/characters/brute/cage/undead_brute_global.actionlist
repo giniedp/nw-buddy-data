@@ -1,0 +1,106 @@
+<ActionList>
+	<Actions>
+		<Action Name="ActivateFriendlyFire">
+			<ActivationCondition>
+				<And>
+					<IfMannequinMarker MarkerName="FriendlyFireON"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="FriendlyFireON"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="DeactivateFriendlyFire">
+			<ActivationCondition>
+				<Not>
+					<IfMannequinMarker MarkerName="FriendlyFireON"/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="FriendlyFireOFF"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="NoTargetSheatheWeapon">
+			<ActivationCondition>
+				<Not>
+					<IfHasAttackTarget/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SheatheWeapon ResetWhenReinstalled="false">
+					<Default SheatheOption="Sheathe" SlotToSheathe="MAIN_HAND_OPTION_1" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+			</Activities>
+		</Action>
+		<Action Name="AimPose" FragmentName="Aim">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="AimPose"/>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="SheatheWeaponControl">
+			<ActivationCondition>
+				<IfHasAttackTarget/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe Main Hand Weapon Mannequin Marker Logic">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="unsheathe_weapon"/>
+					</IfCondition>
+					<ThenActivity>
+						<SheatheWeapon ResetWhenReinstalled="false">
+							<Default SheatheOption="Unsheathe" SlotToSheathe="MAIN_HAND_OPTION_1" OnEnter="Set" OnExit="NoEffect"/>
+						</SheatheWeapon>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Main Hand Weapon Mannequin Marker Logic">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="sheathe_weapon"/>
+					</IfCondition>
+					<ThenActivity>
+						<SheatheWeapon ResetWhenReinstalled="false">
+							<Default SheatheOption="Sheathe" SlotToSheathe="MAIN_HAND_OPTION_1" OnEnter="Set" OnExit="NoEffect"/>
+						</SheatheWeapon>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="XformHitBoxControl">
+			<ActivationCondition>
+				<IfHasAttackTarget/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable the xform hitbox">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableHitbox"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableHitbox"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Enable the xform hitbox">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableHitbox"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableHitbox"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

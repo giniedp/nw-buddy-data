@@ -1,0 +1,46 @@
+<ActionList>
+	<Actions>
+		<Action Name="SummonReset" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="HasSummonedMinion"/>
+					<Not>
+						<IfHasAttackTarget/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfMannequinTag TagName="HasSummonedMinion"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<AIAssignOrder>
+					<Default Order="Despawn"/>
+				</AIAssignOrder>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="HasSummonedMinion" OnEnter="Unset" OnExit="Unset" DelayTimer="0.2"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Minion_Despawn" FragmentName="r_Death">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Minion_Despawn_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.3"/>
+				</BehaviorTreeTask>
+				<TriggerEntity>
+					<Default TriggerName="TriggerDeath"/>
+				</TriggerEntity>
+				<Death>
+					<Default DelayTime="0.0"/>
+				</Death>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

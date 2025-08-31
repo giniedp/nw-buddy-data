@@ -1,0 +1,1887 @@
+<ActionList>
+	<Actions>
+		<Action Name="Set_Reticle">
+			<ActivationCondition>
+				<Or>
+					<And Comment="Bow">
+						<IfMannequinTag TagName="Bow"/>
+						<Not>
+							<IfMannequinTag TagName="HeavyAim"/>
+						</Not>
+						<Not>
+							<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+					</And>
+					<And Comment="Rifle">
+						<Or>
+							<IfMannequinTag TagName="Rifle"/>
+							<IfMannequinTag TagName="Blunderbuss"/>
+						</Or>
+						<Not>
+							<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+					</And>
+					<And Comment="2H_Ranged">
+						<IfMannequinTag TagName="2H_Ranged"/>
+						<IfMannequinTag TagName="AimDownSights"/>
+						<Not>
+							<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+					</And>
+					<And Comment="1H_Ranged">
+						<IfMannequinTag TagName="1H_Ranged"/>
+						<IfMannequinTag TagName="AimDownSights"/>
+						<Not>
+							<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+					</And>
+					<And Comment="Throwable">
+						<IfMannequinTag TagName="Throwable"/>
+						<IfMannequinTag TagName="AimDownSights"/>
+						<Not>
+							<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+					</And>
+					<IfMannequinTag TagName="TurretCamera"/>
+				</Or>
+			</ActivationCondition>
+			<Activities>
+				<SetReticle>
+					<Default OnEnter="Set" OnExit="Clear" PerformTargetRaycast="true"/>
+					<Conditional Name="Blunderbuss_MortarShot" OnEnter="Set" OnExit="Clear" OverrideReticleName="BlunderbussMortar" UseLoadedAmmoData="true" PerformTargetRaycast="true"/>
+					<Conditional Name="Blunderbuss_Reticle" OnEnter="Set" OnExit="Clear" UseLoadedAmmoData="true" PerformTargetRaycast="true"/>
+				</SetReticle>
+			</Activities>
+		</Action>
+		<Action Name="Drown">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfWaterDepth Comparison="Equal" WaterDepth="Deep"/>
+						<And>
+							<IfWaterDepth Comparison="Equal" WaterDepth="Shallow"/>
+							<IfMannequinTag TagName="Crouch"/>
+						</And>
+					</Or>
+					<Not>
+						<Or>
+							<IfDead Name="Dead" ServerOnly="false"/>
+							<IfDeathsDoor Name="DeathsDoor" ServerOnly="false"/>
+						</Or>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="Equal" WaterDepth="Deep"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<Or>
+							<And>
+								<IfWaterDepth Comparison="Equal" WaterDepth="Shallow"/>
+								<IfMannequinTag TagName="Crouch"/>
+							</And>
+							<IfWaterDepth Comparison="Equal" WaterDepth="Deep"/>
+						</Or>
+					</Not>
+					<IfDead Name="Dead" ServerOnly="false"/>
+					<IfDeathsDoor Name="DeathsDoor" ServerOnly="false"/>
+					<IfActionStatus ActionName="Swim" Status="Installed"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Breath"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Breath"/>
+							<EffectId EffectId="Drowning"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse>
+					<IfCondition>
+						<IfWaterDepth Comparison="Equal" WaterDepth="Deep"/>
+					</IfCondition>
+					<ThenActivity>
+						<DisableInteractor>
+							<Default OnEnter="Disable" OnExit="Enable"/>
+						</DisableInteractor>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="OneOffInteraction">
+			<ActivationCondition>
+				<And>
+					<CanInteract/>
+					<IsRequestingInteraction>
+						<Interactions>
+							<Interaction InteractionId="CyclePermissions"/>
+							<Interaction InteractionId="RemoveRespawn"/>
+							<Interaction InteractionId="ToggleDoor"/>
+							<Interaction InteractionId="SetSpawnPoint"/>
+							<Interaction InteractionId="Dismantle"/>
+							<Interaction InteractionId="TakeAll"/>
+							<Interaction InteractionId="ToggleOnOff"/>
+							<Interaction InteractionId="AddTerritoryClaimTime"/>
+							<Interaction InteractionId="UpgradeBuildable"/>
+							<Interaction InteractionId="CancelUpgradeBuildable"/>
+							<Interaction InteractionId="IncreaseStructureSecurityLevel"/>
+							<Interaction InteractionId="DecreaseStructureSecurityLevel"/>
+							<Interaction InteractionId="TakeOverBuildable"/>
+							<Interaction InteractionId="PurchaseClaim"/>
+							<Interaction InteractionId="SetStructureSecurityLevel"/>
+							<Interaction InteractionId="StructureDeposit"/>
+							<Interaction InteractionId="StructureWithdraw"/>
+							<Interaction InteractionId="AddToJournal"/>
+							<Interaction InteractionId="SetStructureName"/>
+							<Interaction InteractionId="InteractWithItemCost"/>
+							<Interaction InteractionId="HousingQuickEnter"/>
+							<Interaction InteractionId="HousingExit"/>
+							<Interaction InteractionId="ObjectiveInteraction"/>
+							<Interaction InteractionId="TeleportToOtherSideOfDoor"/>
+							<Interaction InteractionId="UseArenaItem"/>
+							<Interaction InteractionId="EnterDungeon"/>
+							<Interaction InteractionId="BindToCamp"/>
+							<Interaction InteractionId="ExitDungeon"/>
+							<Interaction InteractionId="OpenMap"/>
+							<Interaction InteractionId="PlayCinematicVideo"/>
+							<Interaction InteractionId="InteractTeleporter"/>
+							<Interaction InteractionId="TipPerformers"/>
+							<Interaction InteractionId="EquipGearSet"/>
+						</Interactions>
+					</IsRequestingInteraction>
+					<Not>
+						<IsRequestingInteraction>
+							<Interactions>
+								<Interaction InteractionId="GatherResource"/>
+								<Interaction InteractionId="GatherWaterResource"/>
+							</Interactions>
+						</IsRequestingInteraction>
+					</Not>
+					<Not>
+						<IfInput InputName="Apply_Resources_To_Structure" Comment="IfShouldBuild Virtual Input"/>
+					</Not>
+					<Not>
+						<IfInput InputName="Start_Crafting" Comment="IfShouldCraft Virtual Input"/>
+					</Not>
+					<Not>
+						<IfFastTravelTeleporting/>
+					</Not>
+					<Not>
+						<And>
+							<IsRequestingInteraction>
+								<Interactions>
+									<Interaction InteractionId="TakeAll"/>
+								</Interactions>
+							</IsRequestingInteraction>
+							<IfMannequinTag TagName="Mount"/>
+						</And>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<Or>
+						<IsRequestingInteraction>
+							<Interactions>
+								<Interaction InteractionId="CyclePermissions"/>
+								<Interaction InteractionId="RemoveRespawn"/>
+								<Interaction InteractionId="ToggleDoor"/>
+								<Interaction InteractionId="SetSpawnPoint"/>
+								<Interaction InteractionId="Dismantle"/>
+								<Interaction InteractionId="TakeAll"/>
+								<Interaction InteractionId="ToggleOnOff"/>
+								<Interaction InteractionId="AddTerritoryClaimTime"/>
+								<Interaction InteractionId="UpgradeBuildable"/>
+								<Interaction InteractionId="CancelUpgradeBuildable"/>
+								<Interaction InteractionId="IncreaseStructureSecurityLevel"/>
+								<Interaction InteractionId="DecreaseStructureSecurityLevel"/>
+								<Interaction InteractionId="TakeOverBuildable"/>
+								<Interaction InteractionId="PurchaseClaim"/>
+								<Interaction InteractionId="SetStructureSecurityLevel"/>
+								<Interaction InteractionId="StructureDeposit"/>
+								<Interaction InteractionId="StructureWithdraw"/>
+								<Interaction InteractionId="AddToJournal"/>
+								<Interaction InteractionId="SetStructureName"/>
+								<Interaction InteractionId="InteractWithItemCost"/>
+								<Interaction InteractionId="HousingQuickEnter"/>
+								<Interaction InteractionId="HousingExit"/>
+								<Interaction InteractionId="ObjectiveInteraction"/>
+								<Interaction InteractionId="TeleportToOtherSideOfDoor"/>
+								<Interaction InteractionId="UseArenaItem"/>
+								<Interaction InteractionId="EnterDungeon"/>
+								<Interaction InteractionId="BindToCamp"/>
+								<Interaction InteractionId="ExitDungeon"/>
+								<Interaction InteractionId="OpenMap"/>
+								<Interaction InteractionId="PlayCinematicVideo"/>
+								<Interaction InteractionId="InteractTeleporter"/>
+								<Interaction InteractionId="TipPerformers"/>
+								<Interaction InteractionId="EquipGearSet"/>
+							</Interactions>
+						</IsRequestingInteraction>
+					</Or>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ExecuteInteraction/>
+			</Activities>
+		</Action>
+		<Action Name="Audio_SwitchManager">
+			<ActivationCondition>
+				<True/>
+			</ActivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Posture audio switch">
+					<IfCondition>
+						<Or Comment="Crouch without transitions or FromCrouch while transitioning to something else">
+							<And>
+								<IfMannequinTag TagName="Crouch"/>
+								<Not>
+									<IfMannequinTag TagName="FromStand"/>
+								</Not>
+								<Not>
+									<IfMannequinTag TagName="FromProne"/>
+								</Not>
+							</And>
+							<IfMannequinTag TagName="FromCrouch"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group Comment="Crouch">
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Dummy Object">
+								<Default AudioTriggerName="Set_Switch_Posture_Crch" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="false" AttachToEntity="false"/>
+							</ExecuteAudioTrigger>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Default proxy">
+								<Default AudioTriggerName="Set_Switch_Posture_Crch" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Forearm_left">
+								<Default AudioTriggerName="Set_Switch_Posture_Crch" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Forearm_left" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Forearm_right">
+								<Default AudioTriggerName="Set_Switch_Posture_Crch" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Forearm_right" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Calf_left">
+								<Default AudioTriggerName="Set_Switch_Posture_Crch" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Calf_left" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Calf_right">
+								<Default AudioTriggerName="Set_Switch_Posture_Crch" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Calf_right" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Weapon joints">
+								<Default AudioTriggerName="" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachToEntity="true"/>
+								<Conditional Name="Rifle_Unsheathed" AudioTriggerName="Set_Switch_Posture_Crch" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="right_index_1" AttachToEntity="true"/>
+								<Conditional Name="Rifle_Sheathed" AudioTriggerName="Set_Switch_Posture_Crch" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="rifle_attach" AttachToEntity="true"/>
+								<Conditional Name="Bow_Equipped" AudioTriggerName="Set_Switch_Posture_Crch" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="quiver_attach" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="true">
+							<IfCondition>
+								<Or Comment="Prone without transitions or FromProne while transitioning to something else">
+									<And>
+										<IfMannequinTag TagName="Prone"/>
+										<Not>
+											<IfMannequinTag TagName="FromStand"/>
+										</Not>
+										<Not>
+											<IfMannequinTag TagName="FromCrouch"/>
+										</Not>
+									</And>
+									<IfMannequinTag TagName="FromProne"/>
+								</Or>
+							</IfCondition>
+							<ThenActivity>
+								<Group Comment="Prone">
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Dummy Object">
+										<Default AudioTriggerName="Set_Switch_Posture_Prone" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="false" AttachToEntity="false"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Default proxy">
+										<Default AudioTriggerName="Set_Switch_Posture_Prone" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Forearm_left">
+										<Default AudioTriggerName="Set_Switch_Posture_Prone" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Forearm_left" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Forearm_right">
+										<Default AudioTriggerName="Set_Switch_Posture_Prone" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Forearm_right" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Calf_left">
+										<Default AudioTriggerName="Set_Switch_Posture_Prone" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Calf_left" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Calf_right">
+										<Default AudioTriggerName="Set_Switch_Posture_Prone" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Calf_right" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Weapon joints">
+										<Default AudioTriggerName="" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachToEntity="true"/>
+										<Conditional Name="Rifle_Unsheathed" AudioTriggerName="Set_Switch_Posture_Prone" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="right_index_1" AttachToEntity="true"/>
+										<Conditional Name="Rifle_Sheathed" AudioTriggerName="Set_Switch_Posture_Prone" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="rifle_attach" AttachToEntity="true"/>
+										<Conditional Name="Bow_Equipped" AudioTriggerName="Set_Switch_Posture_Prone" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="quiver_attach" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+								</Group>
+							</ThenActivity>
+							<ElseActivity>
+								<Group Comment="Stand">
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Dummy Object">
+										<Default AudioTriggerName="Set_Switch_Posture_Stnd" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="false" AttachToEntity="false"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Default proxy">
+										<Default AudioTriggerName="Set_Switch_Posture_Stnd" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Forearm_left">
+										<Default AudioTriggerName="Set_Switch_Posture_Stnd" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Forearm_left" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Forearm_right">
+										<Default AudioTriggerName="Set_Switch_Posture_Stnd" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Forearm_right" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Calf_left">
+										<Default AudioTriggerName="Set_Switch_Posture_Stnd" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Calf_left" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Calf_right">
+										<Default AudioTriggerName="Set_Switch_Posture_Stnd" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="Calf_right" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+									<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false" Comment="Weapon joints">
+										<Default AudioTriggerName="" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachToEntity="true"/>
+										<Conditional Name="Rifle_Unsheathed" AudioTriggerName="Set_Switch_Posture_Stnd" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="right_index_1" AttachToEntity="true"/>
+										<Conditional Name="Rifle_Sheathed" AudioTriggerName="Set_Switch_Posture_Stnd" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="rifle_attach" AttachToEntity="true"/>
+										<Conditional Name="Bow_Equipped" AudioTriggerName="Set_Switch_Posture_Stnd" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJoint="quiver_attach" AttachToEntity="true"/>
+									</ExecuteAudioTrigger>
+								</Group>
+							</ElseActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Exhausted">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<And>
+							<Not>
+								<IfActionStatus ActionName="Exhausted" Status="Installed"/>
+							</Not>
+							<IfStaminaValue ComparisonValue="0.00" ComparisonValueIsPercentage="true" ComparisonType="LessThanOrEqual"/>
+						</And>
+						<IfHasStatusEffect StatusEffect="ExhaustedState"/>
+						<IfMannequinTag TagName="Exhausted"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfStaminaValue ComparisonValue="1.00" ComparisonValueIsPercentage="true" ComparisonType="Equal"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Exhausted" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SendUIEvent>
+					<Default OnEnter="Send" EnterEventName="Hud.LocalPlayer.Vitals.StaminaLocked" OnExit="Send" ExitEventName="Hud.LocalPlayer.Vitals.StaminaLocked"/>
+				</SendUIEvent>
+				<SendUIEvent>
+					<Default OnEnter="Send" EnterEventName="Cage.StaminaIsWinded" OnExit="Send" ExitEventName="Cage.StaminaIsWinded"/>
+				</SendUIEvent>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Set the Proper Exhausted State (Block Break)">
+					<IfCondition>
+						<And>
+							<IfActionStatus ActionName="Dodge" Status="Installed"/>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_B0_Break"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="ExhaustedState_DodgeDeplete"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnEnter>
+									<EffectId EffectId="Status_Perk_Chest_OnBlockedHitTaken_StaminaRegen"/>
+								</EffectsToRemoveOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="true" Comment="Set the Proper Exhausted State (Dodge Deplete)">
+							<IfCondition>
+								<And>
+									<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_B0_Break"/>
+									<Not>
+										<IfHasStatusEffect StatusEffect="ExhaustedState_DodgeDeplete"/>
+									</Not>
+								</And>
+							</IfCondition>
+							<ThenActivity>
+								<ModifyStatusEffects>
+									<Default>
+										<EffectsToApplyOnEnter>
+											<EffectId EffectId="ExhaustedState_BlockBreak"/>
+										</EffectsToApplyOnEnter>
+										<EffectsToRemoveOnEnter>
+											<EffectId EffectId="Status_Perk_Chest_OnBlockedHitTaken_StaminaRegen"/>
+										</EffectsToRemoveOnEnter>
+									</Default>
+								</ModifyStatusEffects>
+							</ThenActivity>
+							<ElseActivity Comment="Set the Proper Exhausted State (Default Exhaust)">
+								<IfThenElse ResetWhenReinstalled="true" Comment="">
+									<IfCondition>
+										<And>
+											<Not>
+												<IfActionStatus ActionName="Dodge" Status="Installed"/>
+											</Not>
+											<Not>
+												<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_B0_Break"/>
+											</Not>
+											<Not>
+												<IfHasStatusEffect StatusEffect="ExhaustedState_DodgeDeplete"/>
+											</Not>
+											<Not>
+												<IfHasStatusEffect StatusEffect="ExhaustedState_BlockBreak"/>
+											</Not>
+										</And>
+									</IfCondition>
+									<ThenActivity>
+										<ModifyStatusEffects>
+											<Default>
+												<EffectsToApplyOnEnter>
+													<EffectId EffectId="ExhaustedState"/>
+												</EffectsToApplyOnEnter>
+												<EffectsToRemoveOnEnter>
+													<EffectId EffectId="Status_Perk_Chest_OnBlockedHitTaken_StaminaRegen"/>
+												</EffectsToRemoveOnEnter>
+											</Default>
+										</ModifyStatusEffects>
+									</ThenActivity>
+								</IfThenElse>
+							</ElseActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="ExhaustedState_BlockBreak"/>
+							<EffectId EffectId="ExhaustedState_DodgeDeplete"/>
+							<EffectId EffectId="ExhaustedState"/>
+						</EffectsToRemoveOnExit>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Status_Perk_Chest_OnBlockedHitTaken_StaminaRegen"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Hide_Name_Tag">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfMannequinTag TagName="Crouch"/>
+						<IfMannequinTag TagName="Prone"/>
+						<IfHasStatusEffect StatusEffect="Bow_Smoke"/>
+						<IfHasStatusEffect StatusEffect="Bow_Smoke_Long"/>
+						<IfHasStatusEffect StatusEffect="IceMagic_Entombed"/>
+					</Or>
+					<Not>
+						<IfInput InputName="Start_Gathering"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="Crouch"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="Prone"/>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffect="Bow_Smoke"/>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffect="Bow_Smoke_Long"/>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffect="IceMagic_Entombed"/>
+						</Not>
+					</And>
+					<IfInput InputName="Start_Gathering"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<TrackTimeInAction>
+					<Default OnEnter="Enable" OnExit="Enable"/>
+				</TrackTimeInAction>
+				<HidePlayerNameTag RunOnRemoteClients="true">
+					<Default OnEnter="PartiallyHidden"/>
+					<Conditional Name="PlayDead" OnEnter="FullyHidden"/>
+					<Conditional Name="Prone" OnEnter="MostlyHidden"/>
+					<Conditional Name="Smoke" OnEnter="FullyHidden"/>
+					<Conditional Name="IceTomb" OnEnter="FullyHidden"/>
+				</HidePlayerNameTag>
+			</Activities>
+		</Action>
+		<Action Name="Health_Desaturation">
+			<ActivationCondition>
+				<True/>
+			</ActivationCondition>
+			<Activities>
+				<RunFxScript ResetWhenReinstalled="false" RunOnRemoteClients="false">
+					<Default ScriptToRun="Desaturation_off" StopScriptOnExit="true" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+					<Conditional Name="Dead" ScriptToRun="Desaturation_dead" StopScriptOnExit="true" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+					<Conditional Name="DeathsDoor" ScriptToRun="Desaturation_deathsdoor" StopScriptOnExit="true" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+					<Conditional Name="Health_Low" ScriptToRun="Desaturation_hurt" StopScriptOnExit="true" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+			</Activities>
+		</Action>
+		<Action Name="AutoRun">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="autorun"/>
+						<IfActionStateFlag Flag="AutoRun"/>
+					</Or>
+					<Or>
+						<Not>
+							<IfMannequinMarker MarkerName="DisableAutorun"/>
+						</Not>
+						<IfAbilityActive AbilityName="PlayAction"/>
+					</Or>
+					<Not>
+						<Or>
+							<IfMannequinTag TagName="Aim"/>
+							<IfMannequinTag TagName="HipAim"/>
+							<IfMannequinTag TagName="AimDownSights"/>
+							<And>
+								<Not>
+									<IfMannequinTag TagName="ContinueAutoRun"/>
+								</Not>
+								<Not>
+									<IfHasStatusEffect StatusEffectCategory="AzothStaff"/>
+								</Not>
+								<IfMannequinTag TagName="AttackAction"/>
+							</And>
+							<IfFastTravelTeleporting/>
+							<And>
+								<Not>
+									<IfStackConfigVar StackVar="javelin.enable-inventory-while-running"/>
+								</Not>
+								<IfIsLoadoutOpen/>
+							</And>
+							<IfIsGathering/>
+							<IfIsInteractingWithStorage/>
+							<IfInput InputName="Start_Crafting"/>
+							<IfInput InputName="Start_Emote"/>
+							<IfInCutscene/>
+							<IsInStore/>
+							<IsRequestingInteraction>
+								<Interactions>
+									<Interaction InteractionId="OpenTradingPost"/>
+									<Interaction InteractionId="OpenCrafting"/>
+									<Interaction InteractionId="OpenPrefabRefinery"/>
+									<Interaction InteractionId="OpenGenerator"/>
+									<Interaction InteractionId="OpenTerritoryMarker"/>
+									<Interaction InteractionId="OpenStorage"/>
+									<Interaction InteractionId="OpenInteractScreen"/>
+									<Interaction InteractionId="OpenStartClaimScreen"/>
+									<Interaction InteractionId="OpenAttachment"/>
+									<Interaction InteractionId="OpenPaint"/>
+									<Interaction InteractionId="OpenLootStorage"/>
+									<Interaction InteractionId="OpenRead"/>
+									<Interaction InteractionId="OpenConversation"/>
+									<Interaction InteractionId="OpenObjectiveProvider"/>
+									<Interaction InteractionId="OpenArmory"/>
+									<Interaction InteractionId="UseTurret"/>
+									<Interaction InteractionId="OpenTerritoryInterface"/>
+									<Interaction InteractionId="OpenTerritoryProgression"/>
+									<Interaction InteractionId="HousingPurchase"/>
+									<Interaction InteractionId="HousingEnter"/>
+									<Interaction InteractionId="OpenRaidSetup"/>
+									<Interaction InteractionId="OpenTurretSelection"/>
+									<Interaction InteractionId="OpenInnScreen"/>
+									<Interaction InteractionId="OpenArenaMenu"/>
+									<Interaction InteractionId="InteractWithHousingItem"/>
+									<Interaction InteractionId="BindToCamp"/>
+									<Interaction InteractionId="OpenSummoningSelection"/>
+									<Interaction InteractionId="OpenCampSkins"/>
+									<Interaction InteractionId="OpenEventShop"/>
+									<Interaction InteractionId="OpenHorseShop"/>
+									<Interaction InteractionId="OpenWolfShop"/>
+									<Interaction InteractionId="OpenLionShop"/>
+								</Interactions>
+							</IsRequestingInteraction>
+						</Or>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfInput InputName="autorun"/>
+					<IfInput InputName="moveback"/>
+					<IfInput InputName="moveforward_onpress" Comment="moveforward_onpress"/>
+					<IfAnalogInput AnalogInput="LeftAnalog" MinInputMagnitude="0.20" MaxInputMagnitude="1.00" UseCharacterRelativeAngle="false" TargetAngle="180" TargetAngleTolerance="85" RequireTargetAngleMatch="true" Comment="Joystick Backward"/>
+					<IfInput InputName="Placing_Building"/>
+					<IfInput InputName="Start_Crafting"/>
+					<IfInput InputName="Start_Emote"/>
+					<IfTeleportPending TestForDungeonTransitionsOnly="true"/>
+					<IfP2PTrading/>
+					<IsInStore/>
+					<IfMannequinTag TagName="Aim"/>
+					<IfMannequinTag TagName="HipAim"/>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="ContinueAutoRun"/>
+						</Not>
+						<Not>
+							<IfHasStatusEffect StatusEffectCategory="AzothStaff"/>
+						</Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</And>
+					<IfFastTravelTeleporting/>
+					<And>
+						<Not>
+							<IfStackConfigVar StackVar="javelin.enable-inventory-while-running"/>
+						</Not>
+						<IfIsLoadoutOpen/>
+					</And>
+					<IfIsGathering/>
+					<IfIsInteractingWithStorage/>
+					<IfInCutscene/>
+					<IsRequestingInteraction>
+						<Interactions>
+							<Interaction InteractionId="OpenTradingPost"/>
+							<Interaction InteractionId="OpenCrafting"/>
+							<Interaction InteractionId="OpenPrefabRefinery"/>
+							<Interaction InteractionId="OpenGenerator"/>
+							<Interaction InteractionId="OpenTerritoryMarker"/>
+							<Interaction InteractionId="OpenStorage"/>
+							<Interaction InteractionId="OpenInteractScreen"/>
+							<Interaction InteractionId="OpenStartClaimScreen"/>
+							<Interaction InteractionId="OpenAttachment"/>
+							<Interaction InteractionId="OpenPaint"/>
+							<Interaction InteractionId="OpenLootStorage"/>
+							<Interaction InteractionId="OpenRead"/>
+							<Interaction InteractionId="OpenConversation"/>
+							<Interaction InteractionId="OpenObjectiveProvider"/>
+							<Interaction InteractionId="OpenArmory"/>
+							<Interaction InteractionId="UseTurret"/>
+							<Interaction InteractionId="OpenTerritoryInterface"/>
+							<Interaction InteractionId="OpenTerritoryProgression"/>
+							<Interaction InteractionId="HousingPurchase"/>
+							<Interaction InteractionId="HousingEnter"/>
+							<Interaction InteractionId="OpenRaidSetup"/>
+							<Interaction InteractionId="OpenTurretSelection"/>
+							<Interaction InteractionId="OpenInnScreen"/>
+							<Interaction InteractionId="OpenArenaMenu"/>
+							<Interaction InteractionId="InteractWithHousingItem"/>
+							<Interaction InteractionId="BindToCamp"/>
+							<Interaction InteractionId="OpenSummoningSelection"/>
+							<Interaction InteractionId="OpenEventShop"/>
+							<Interaction InteractionId="OpenHorseShop"/>
+							<Interaction InteractionId="OpenWolfShop"/>
+							<Interaction InteractionId="OpenLionShop"/>
+						</Interactions>
+					</IsRequestingInteraction>
+					<IfActionStatus ActionName="MountStop" Status="Installed"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AutoRun" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetActionStateFlag ResetWhenReinstalled="false">
+					<Default Flag="AutoRun"/>
+				</SetActionStateFlag>
+				<ForceCameraLock>
+					<Default OnEnter="Disable" OnExit="NoEffect"/>
+				</ForceCameraLock>
+			</Activities>
+		</Action>
+		<Action Name="Weapon_Foley">
+			<ActivationCondition>
+				<Or>
+					<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+					<IfItemInSlot SlotToCheckAlias="NEXT_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+					<IfItemInSlot SlotToCheckAlias="PREV_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+				</Or>
+			</ActivationCondition>
+			<Activities>
+				<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false" Comment="Rifle Weapon Foley">
+					<Default/>
+					<Conditional Name="Rifle_Unsheathed" AudioTriggerName="Play_2HRifle_FLY_Unsheathed" ForceStopFxOnDataChange="true" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="fly_hand_left" AttachmentJoint="Hand_Left" AttachToEntity="true"/>
+					<Conditional Name="Rifle_Sheathed" AudioTriggerName="Play_2HRifle_FLY_Sheathed" ForceStopFxOnDataChange="true" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="fly_back" AttachmentJoint="Neck" AttachToEntity="true"/>
+				</ExecuteAudioTrigger>
+				<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false" Comment="Blunderbuss Weapon Foley">
+					<Default/>
+					<Conditional Name="Blunderbuss_Unsheathed" AudioTriggerName="Play_Blunderbuss_FLY_Unsheathed" ForceStopFxOnDataChange="true" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="fly_hand_left" AttachmentJoint="Hand_Left" AttachToEntity="true"/>
+					<Conditional Name="Blunderbuss_Sheathed" AudioTriggerName="Play_Blunderbuss_FLY_Sheathed" ForceStopFxOnDataChange="true" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="fly_back" AttachmentJoint="Neck" AttachToEntity="true"/>
+				</ExecuteAudioTrigger>
+				<ItemAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false" Comment="Shield Foley">
+					<Default/>
+					<Conditional Name="Shield_Unsheathed" EventName="UnsheatheFLY" ItemSlot="ACTIVE_OFF_HAND_WEAPON" ForceStopFxOnDataChange="true" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="fly_hand_left" AttachmentJoint="Hand_Left" AttachToEntity="true"/>
+					<Conditional Name="Shield_Sheathed" EventName="SheatheFLY" ItemSlot="ACTIVE_OFF_HAND_WEAPON" ForceStopFxOnDataChange="true" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="fly_back" AttachmentJoint="Neck" AttachToEntity="true"/>
+				</ItemAudioTrigger>
+				<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false" Comment="Sword Weapon Foley">
+					<Default/>
+					<Conditional Name="Sword_Sheathed" AudioTriggerName="Play_1HSword_FLY_Sheathed" ForceStopFxOnDataChange="true" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="fly_hip_left" AttachmentJoint="bind_lower_body_sim_x03_y02" AttachToEntity="true"/>
+				</ExecuteAudioTrigger>
+				<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false" Comment="Weapon Accessories (quiver)">
+					<Default/>
+					<Conditional Name="Bow_Equipped" AudioTriggerName="Play_BowQuiver_FLY" ForceStopFxOnDataChange="true" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="fly_back" AttachmentJoint="Neck" AttachToEntity="true"/>
+				</ExecuteAudioTrigger>
+			</Activities>
+		</Action>
+		<Action Name="Sprint_TravelMode">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Sprint"/>
+					<IfMannequinTag TagName="Stand"/>
+					<Not Comment="PreventNav Marker (stop or 180s)">
+						<IfMannequinMarker MarkerName="PreventNav"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="FromProne"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="FromCrouch"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<TrackTimeInAction>
+					<Default OnEnter="Enable" OnExit="ClearHitTracking"/>
+				</TrackTimeInAction>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Sprint_TravelMode" OnEnter="Set" OnExit="Unset" DelayTimer="1.50"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Variant1" OnEnter="Set" OnExit="Unset" DelayTimer="0.50"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="VFX_Weapon_Trail" FragmentName="VFX_Weapon_Trail">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="Turn_On_Weapon_Trail"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfMannequinMarker MarkerName="Turn_On_Weapon_Trail"/>
+				</Not>
+			</DeactivationCondition>
+		</Action>
+		<Action Name="VFX_Ranged_Melee" FragmentName="VFX_Ranged_Melee">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="Turn_On_VFX_Ranged_Melee"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfMannequinMarker MarkerName="Turn_On_VFX_Ranged_Melee"/>
+				</Not>
+			</DeactivationCondition>
+		</Action>
+		<Action Name="collisionsize">
+			<ActivationCondition>
+				<True/>
+			</ActivationCondition>
+			<Activities>
+				<ResizeCharacterController ResetWhenReinstalled="true">
+					<Default ResizeType="Default"/>
+					<Conditional Name="Mounted" ResizeType="Mount"/>
+					<Conditional Name="DeathsDoor" ResizeType="Crawl"/>
+					<Conditional Name="Slide" ResizeType="Crawl"/>
+					<Conditional Name="Crouch" ResizeType="Crouch"/>
+					<Conditional Name="Prone" ResizeType="Crawl"/>
+					<Conditional Name="Short" ResizeType="Crouch"/>
+					<Conditional Name="Stand" ResizeType="Default"/>
+				</ResizeCharacterController>
+				<ToggleTerrainAlignment ResetWhenReinstalled="true">
+					<Default ModeOnEnter="Disabled" ModeOnExit="None"/>
+					<Conditional Name="ProneNoJump" ModeOnEnter="BothAxes" ModeOnExit="None"/>
+				</ToggleTerrainAlignment>
+			</Activities>
+		</Action>
+		<Action Name="Show_Prerequisite_Warning">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<And Comment="Melee weapon check">
+							<And>
+								<IfEncumbered immobilized="true"/>
+								<Or>
+									<IfMannequinTagInItemSlot TagName="1H_Melee" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<IfMannequinTagInItemSlot TagName="2H_Melee" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								</Or>
+							</And>
+							<Or>
+								<And>
+									<IfInput InputName="attack_special"/>
+									<Not>
+										<IfMannequinTag TagName="Spear"/>
+									</Not>
+									<Not>
+										<IfMannequinTag TagName="Axe"/>
+									</Not>
+								</And>
+								<IfInput InputName="attack_blockbreaker_virtual"/>
+								<IfInput InputName="attack_primary_virtual"/>
+							</Or>
+						</And>
+						<And Comment="Ranged weapon check">
+							<IfEncumbered immobilized="true"/>
+							<Or>
+								<IfMannequinTagInItemSlot TagName="1H_Ranged" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								<IfMannequinTagInItemSlot TagName="2H_Ranged" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Or>
+							<Or>
+								<IfInput InputName="attack_shoot"/>
+								<IfInput InputName="aim_draw_press"/>
+							</Or>
+						</And>
+						<And Comment="Unarmed check">
+							<IfEncumbered immobilized="true"/>
+							<IfMannequinTag TagName="Unarmed"/>
+							<Or>
+								<IfInput InputName="attack_blockbreaker_virtual"/>
+								<IfInput InputName="attack_primary_virtual"/>
+							</Or>
+						</And>
+						<And Comment="Magic check">
+							<IfEncumbered immobilized="true"/>
+							<Or>
+								<IfMannequinTagInItemSlot TagName="MagicGauntlet" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								<IfMannequinTagInItemSlot TagName="MagicStaff" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Or>
+							<Or>
+								<IfInput InputName="attack_shoot"/>
+								<IfInput InputName="aim_draw_press"/>
+							</Or>
+						</And>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<ShowUINotification>
+					<Default type="Minor" text="@inv_encumbranceAttackNotification"/>
+				</ShowUINotification>
+			</Activities>
+		</Action>
+		<Action Name="ApplyMagicPrequisitePenalty">
+			<ActivationCondition>
+				<IfMannequinTagInItemSlot TagName="MagicGauntlet" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</ActivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Increase mana cost if using gauntlet without meeting prerequisites">
+					<IfCondition>
+						<Not>
+							<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeStatMultiplier>
+							<Default StatType="ManaCost" ChangeAmount="0.5"/>
+						</ChangeStatMultiplier>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="MusketReloadTimer">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinTag TagName="Rifle"/>
+					</Not>
+					<IfMannequinTag TagName="ReloadRequired"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinTag TagName="Rifle"/>
+					<Not>
+						<IfMannequinTag TagName="ReloadRequired"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="ReloadRequired" OnEnter="Unset" OnExit="NoEffect" DelayTimer="2"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Character_Collision_Toggle" RunOnRemoteClients="true">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						<IfMannequinTagInItemSlot TagName="Tool" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Or>
+					<Not>
+						<IfGameModeFlag Flag="EnablePlayerToPlayerCollision"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableCharacterCollision"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<DisableCollision>
+					<Default disableActorToActorCollision="false" disableTerrainCollision="false" disablePlayerToPlayerCollision="true"/>
+				</DisableCollision>
+			</Activities>
+		</Action>
+		<Action Name="TargetedHealingUnlock">
+			<ActivationCondition>
+				<Not>
+					<IfMannequinTag TagName="Heal"/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfMannequinTag TagName="Heal"/>
+			</DeactivationCondition>
+			<Activities>
+				<DisableCameraLock>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableCameraLock>
+			</Activities>
+		</Action>
+		<Action Name="TargetedHealingUnlockAutoRun">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="Heal"/>
+					<IfInput InputName="camera_lock_toggle"/>
+					<Or>
+						<IfMannequinTag TagName="AutoRun"/>
+						<And>
+							<Not>
+								<IfCameraStickyLockActive/>
+							</Not>
+							<IfMannequinTag TagName="Sprint"/>
+						</And>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfInput InputName="camera_lock_toggle"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ForceCameraLock>
+					<Default OnEnter="Disable" OnExit="NoEffect"/>
+				</ForceCameraLock>
+			</Activities>
+		</Action>
+		<Action Name="InCutscene">
+			<ActivationCondition>
+				<IfInCutscene/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfInCutscene/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AutoSheathe" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AutoUnsheathe" OnEnter="Unset" OnExit="Set"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="StoreMode">
+			<ActivationCondition>
+				<And>
+					<IsInStore/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IsInStore/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<CameraRelativeFacing>
+					<Default TurnRate="50000.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="true" UseClosestTarget="false" FaceTheCamera="true"/>
+				</CameraRelativeFacing>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+			</Activities>
+		</Action>
+		<Action Name="TeamWipe_Death_Reaction">
+			<ActivationCondition>
+				<And>
+					<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="66" FailOnNoReactionDamage="false"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfDeathsDoor/>
+			</DeactivationCondition>
+			<Activities>
+				<Death>
+					<Default TriggerOption="OnUpdate" DelayTime="0.0" SkipDeathsDoor="false" ClearContributors="True"/>
+				</Death>
+			</Activities>
+		</Action>
+		<Action Name="GreatAxe_Perk_InsatableGravityWell">
+			<ActivationCondition>
+				<And>
+					<IfAbilityActive External="true" AbilityName="GlobalPerk_Ability_GreatAxe_GravityWell"/>
+					<IfHasStatusEffect StatusEffect="Status_Perk_GreatAxe_GravityWell_LeechHeal"/>
+					<IfMannequinTag TagName="GreatAxe"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfMannequinTag TagName="GreatAxe"/>
+					</Not>
+					<Not>
+						<IfAbilityActive AbilityName="GlobalPerk_Ability_GreatAxe_GravityWell"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Status_Perk_GreatAxe_GravityWell_LeechHeal"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<TrackTimeInAction>
+					<Default/>
+				</TrackTimeInAction>
+				<CastSpell>
+					<Default SpellName="InsatiableGravityWell" TakeDurability="false"/>
+				</CastSpell>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Status_Perk_GreatAxe_GravityWell_LeechHeal"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="NavSpeed_Toggle">
+			<ActivationCondition>
+				<IfInput InputName="toggleMoveSpeed"/>
+			</ActivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Toggle Default Nav Speed between run/sprint">
+					<IfCondition>
+						<IfHasStatusEffect StatusEffect="ForceRun"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToRemoveOnEnter>
+									<EffectId EffectId="ForceRun"/>
+								</EffectsToRemoveOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+					<ElseActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="ForceRun"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ElseActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Process_Predicted_Effects">
+			<ActivationCondition>
+				<IfHasStatusEffect CheckForPredictedStatusEffects="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfHasStatusEffect CheckForPredictedStatusEffects="true"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ProcessPredictedEffects/>
+			</Activities>
+		</Action>
+		<Action Name="Traversal_Road_Sprint_Speed_Boost">
+			<ActivationCondition>
+				<And>
+					<IfOnRoad ComparisonType="GreaterThanOrEqual" ComparisonValue="0.1"/>
+					<Or>
+						<Or>
+							<IfActionStatus ActionName="Sprint_TravelMode" Status="Installed" ActiveTime="3" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+							<And>
+								<IfActionStatus ActionName="Emote" Status="Installed" ActiveTime="2" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+								<MoveSpeed Comparison="GreaterThan" Value="0.0"/>
+							</And>
+						</Or>
+						<And>
+							<IfHasStatusEffect StatusEffect="Traversal_RoadSprintBoost_SafetyTimer"/>
+							<Or>
+								<IfActionStatus ActionName="Sprint_TravelMode" Status="Installed" ActiveTime="1" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+								<And>
+									<IfActionStatus ActionName="Emote" Status="Installed"/>
+									<MoveSpeed Comparison="GreaterThan" Value="0.0"/>
+								</And>
+							</Or>
+						</And>
+					</Or>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Traversal_RoadSprintBoost_CombatTimer"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="WorldBoundExit"/>
+					</Not>
+					<Not>
+						<IfInGameMode GameModeName="Duel"/>
+					</Not>
+					<Not>
+						<IfInGameMode GameModeName="OutpostRush"/>
+					</Not>
+					<Not>
+						<IfInWar CheckPvpWar="true" CheckInvasion="true"/>
+					</Not>
+					<IfStackConfigVar StackVar="javelin.enable-running-on-roads"/>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfOnRoad ComparisonType="GreaterThanOrEqual" ComparisonValue="0.1"/>
+					</Not>
+					<And>
+						<IfActionStatus ActionName="Sprint_TravelMode" Status="Uninstalled" ActiveTime="3" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+						<IfActionStatus ActionName="Emote" Status="Uninstalled"/>
+					</And>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Traversal_RoadSprintBoost_Timer"/>
+					</Not>
+					<IfHasStatusEffect StatusEffect="WorldBoundExit"/>
+					<IfInGameMode GameModeName="Duel"/>
+					<IfInGameMode GameModeName="OutpostRush"/>
+					<IfInWar CheckPvpWar="true" CheckInvasion="true"/>
+					<Not>
+						<IfStackConfigVar StackVar="javelin.enable-running-on-roads"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Traversal_RoadSprintBoost_Haste"/>
+							<EffectId EffectId="Traversal_RoadSprintBoost_Timer"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter/>
+						<EffectsToApplyOnExit/>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Traversal_Road_Sprint_Speed_SafetyNet">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Traversal_RoadSprintBoost_CombatTimer"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="WorldBoundExit"/>
+					</Not>
+					<IfOnRoad ComparisonType="GreaterThanOrEqual" ComparisonValue="0.1"/>
+					<IfHasStatusEffect StatusEffect="Traversal_RoadSprintBoost_Haste"/>
+					<Or>
+						<IfActionStatus ActionName="Vault" Status="Installed" ActiveTime="0.1" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+						<IfActionStatus ActionName="Mantle" Status="Installed" ActiveTime="0.1" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+						<IfActionStatus ActionName="StepUp" Status="Installed" ActiveTime="0.1" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+						<IfActionStatus ActionName="StepUp_Automatic" Status="Installed" ActiveTime="0.1" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+						<IfActionStatus ActionName="Jump" Status="Installed" ActiveTime="0.1" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Or>
+					<IfStackConfigVar StackVar="javelin.enable-running-on-roads"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Traversal_RoadSprintBoost_Haste"/>
+					</Not>
+					<IfActionStatus ActionName="Traversal_Road_Sprint_Speed_Boost" Status="Installed"/>
+					<IfHasStatusEffect StatusEffect="WorldBoundExit"/>
+					<Not>
+						<IfStackConfigVar StackVar="javelin.enable-running-on-roads"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Traversal_RoadSprintBoost_SafetyTimer"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Traversal_Road_Sprint_Speed_Boost_CombatRemoval">
+			<ActivationCondition>
+				<And>
+					<IfActionStatus ActionName="Traversal_Road_Sprint_Speed_Boost" Status="Installed"/>
+					<Or>
+						<IfDamaged FailOnNoReactionDamage="false"/>
+						<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="0" FailOnNoReactionDamage="false"/>
+						<Or>
+							<IfHasStatusEffect StatusEffectCategory="Debuff" OnlyCheckOwnedStatusEffects="false"/>
+							<IfHasStatusEffect StatusEffectCategory="NonDispellableDebuff" OnlyCheckOwnedStatusEffects="false"/>
+							<IfHasStatusEffect StatusEffectCategory="Affliction" OnlyCheckOwnedStatusEffects="false"/>
+							<IfHasStatusEffect StatusEffectCategory="DoT" OnlyCheckOwnedStatusEffects="false"/>
+							<IfHasStatusEffect StatusEffectCategory="CC" OnlyCheckOwnedStatusEffects="false"/>
+							<IfHasStatusEffect StatusEffectCategory="Debilitate" OnlyCheckOwnedStatusEffects="false"/>
+							<IfHasStatusEffect StatusEffectCategory="Slow" OnlyCheckOwnedStatusEffects="false"/>
+							<IfHasStatusEffect StatusEffectCategory="Burn" OnlyCheckOwnedStatusEffects="false"/>
+							<IfHasStatusEffect StatusEffectCategory="Bleed" OnlyCheckOwnedStatusEffects="false"/>
+							<IfHasStatusEffect StatusEffectCategory="Poison" OnlyCheckOwnedStatusEffects="false"/>
+							<IfHasStatusEffect StatusEffectCategory="Shock" OnlyCheckOwnedStatusEffects="false"/>
+							<IfHasStatusEffect StatusEffectCategory="Frost" OnlyCheckOwnedStatusEffects="false"/>
+						</Or>
+						<IfMannequinTag TagName="AttackAction"/>
+						<IfMannequinTag TagName="Blocking"/>
+						<IfMannequinTag TagName="Dodging"/>
+						<IsMounted/>
+					</Or>
+					<IfStackConfigVar StackVar="javelin.enable-running-on-roads"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfActionStatus ActionName="Traversal_Road_Sprint_Speed_Boost" Status="Uninstalled"/>
+					<Not>
+						<IfStackConfigVar StackVar="javelin.enable-running-on-roads"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Traversal_RoadSprintBoost_Haste"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Traversal_RoadSprintBoost_CombatTimer"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="InCombatEnterSettlement">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="Sanctuary"/>
+					<IfCombatStatus InCombat="true"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<IfCombatStatus InCombat="false"/>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<CombatStatus>
+					<Default OnEnter="Disable" OnExit="NoEffect"/>
+				</CombatStatus>
+			</Activities>
+		</Action>
+		<Action Name="InCombatDuels">
+			<ActivationCondition>
+				<And>
+					<IfInGameMode GameModeName="Duel"/>
+					<Not>
+						<IfGameModeFlag Flag="IsInBossFight"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<Not>
+						<IfInGameMode GameModeName="Duel"/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<CombatStatus>
+					<Default IgnoreTimers="true" OnEnter="Enable" OnExit="Disable"/>
+				</CombatStatus>
+			</Activities>
+		</Action>
+		<Action Name="InBossFight">
+			<ActivationCondition>
+				<And>
+					<IfGameModeFlag Flag="IsInBossFight"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<Not>
+						<IfGameModeFlag Flag="IsInBossFight"/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<CombatStatus>
+					<Default IgnoreTimers="true" OnEnter="Enable" OnExit="Disable"/>
+				</CombatStatus>
+			</Activities>
+		</Action>
+		<Action Name="ClearAttackInputsOnSwapInput">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="Use_MainHandSlot_1" IgnoreSlowdown="true"/>
+						<IfInput InputName="Use_MainHandSlot_2" IgnoreSlowdown="true"/>
+						<IfInput InputName="quickslot-weaponSwap" IgnoreSlowdown="true"/>
+					</Or>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="Clear" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="Clear" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="Clear" OnExit="Clear"/>
+				</ClearInput>
+			</Activities>
+		</Action>
+		<Action Name="OutOfCombat_PassiveRegen">
+			<ActivationCondition>
+				<And>
+					<IfHealthPercentage Comparison="LessThan" Percentage="1"/>
+					<IfCombatStatus InCombat="false"/>
+					<Not>
+						<IfInGameMode GameModeName="Duel"/>
+					</Not>
+					<Not>
+						<IfInGameMode GameModeName="OutpostRush"/>
+					</Not>
+					<Not>
+						<IfInWar CheckPvpWar="true" CheckInvasion="true"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffectCategory="Affliction"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="WorldBoundExit"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Sprint_Delay_Combat_Timer_Light"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Sprint_Delay_Combat_Timer_Medium"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Sprint_Delay_Combat_Timer_Heavy"/>
+					</Not>
+					<Not>
+						<IfInGameMode GameModeName="Arena3v3"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="TSE_No_OutOfCombat_PassiveRegen"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="godModeAll"/>
+					</Not>
+					<Not>
+						<IfFTUE/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfHealthPercentage Comparison="Equal" Percentage="1"/>
+					<IfCombatStatus InCombat="true"/>
+					<IfInGameMode GameModeName="Duel"/>
+					<IfInGameMode GameModeName="OutpostRush"/>
+					<IfInWar CheckPvpWar="true" CheckInvasion="true"/>
+					<IfHasStatusEffect StatusEffectCategory="Affliction"/>
+					<IfHasStatusEffect StatusEffect="WorldBoundExit"/>
+					<IfInGameMode GameModeName="Arena3v3"/>
+					<IfHasStatusEffect StatusEffect="TSE_No_OutOfCombat_PassiveRegen"/>
+					<IfHasStatusEffect StatusEffect="godModeAll"/>
+					<IfFTUE/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Status_OutOfCombat_PassiveRegen"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Status_OutOfCombat_PassiveRegen"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Perk_MortalEmpowerment_Removal">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInGameMode GameModeName="Any"/>
+						<IfInWar CheckPvpWar="true" CheckInvasion="true"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<Not>
+						<IfInGameMode GameModeName="Any"/>
+					</Not>
+					<Not>
+						<IfInWar CheckPvpWar="true" CheckInvasion="true"/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="Status_PvP_Perk_OnKill_EmpowerTilDeath"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Status_PvP_Perk_OnKill_EmpowerTilDeath"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="OPR_StatusEffect_Removal">
+			<ActivationCondition>
+				<And>
+					<IfInGameMode GameModeName="OutpostRush"/>
+					<Or>
+						<IfHasStatusEffect StatusEffect="MusicBuff_GatheringYield_T4_Amazing"/>
+						<IfHasStatusEffect StatusEffect="MusicBuff_GatheringYield_T3_Great"/>
+						<IfHasStatusEffect StatusEffect="MusicBuff_GatheringYield_T2_Okay"/>
+						<IfHasStatusEffect StatusEffect="MusicBuff_GatheringYield_T1_Bad"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<Not>
+						<IfInGameMode GameModeName="OutpostRush"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="MusicBuff_GatheringYield_T4_Amazing"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="MusicBuff_GatheringYield_T3_Great"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="MusicBuff_GatheringYield_T2_Okay"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="MusicBuff_GatheringYield_T1_Bad"/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="MusicBuff_GatheringYield_T4_Amazing"/>
+							<EffectId EffectId="MusicBuff_GatheringYield_T3_Great"/>
+							<EffectId EffectId="MusicBuff_GatheringYield_T2_Okay"/>
+							<EffectId EffectId="MusicBuff_GatheringYield_T1_Bad"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="UseBacktickInputs">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<And>
+							<IfInput InputName="Use_MainHandSlot_1" IgnoreSlowdown="true"/>
+							<Not>
+								<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="false" RequireSlotActive="true"/>
+							</Not>
+						</And>
+						<And>
+							<IfInput InputName="Use_MainHandSlot_2" IgnoreSlowdown="true"/>
+							<Not>
+								<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="false" RequireSlotActive="true"/>
+							</Not>
+						</And>
+						<IfInput InputName="quickslot-weaponSwap" IgnoreSlowdown="true"/>
+						<IfMannequinMarker MarkerName="UseInputBackticks"/>
+					</Or>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfActionStatus ActionName="UseBacktickInputs" Status="Installed" ActiveTime="0.8f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Exiting"/>
+					<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Exiting"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="EquipLoad_Bonuses_Heavy">
+			<ActivationCondition>
+				<And>
+					<ActionConditionEquipLoadCategory Value="Slow"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<ActionConditionEquipLoadCategory Value="Slow"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="EquipLoad_CCDurReduction_Heavy"/>
+							<EffectId EffectId="EquipLoad_CritDmgReduction_Heavy"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="EquipLoad_CCDurReduction_Heavy"/>
+							<EffectId EffectId="EquipLoad_CritDmgReduction_Heavy"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="EquipLoad_Bonuses_Medium">
+			<ActivationCondition>
+				<And>
+					<ActionConditionEquipLoadCategory Value="Normal"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<ActionConditionEquipLoadCategory Value="Normal"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="EquipLoad_CritDmgReduction_Medium"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="EquipLoad_CritDmgReduction_Medium"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="EquipLoad_Bonuses_Light">
+			<ActivationCondition>
+				<And>
+					<ActionConditionEquipLoadCategory Value="Fast"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<ActionConditionEquipLoadCategory Value="Fast"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="EquipLoad_CCDurReduction_Light"/>
+							<EffectId EffectId="EquipLoad_CritDmgReduction_Light"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="EquipLoad_CCDurReduction_Light"/>
+							<EffectId EffectId="EquipLoad_CritDmgReduction_Light"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Block_Stamina_Spam_Reduction">
+			<ActivationCondition>
+				<And>
+					<IfActionStatus ActionName="Block_UpperBody" Status="Installed"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfActionStatus ActionName="Block_UpperBody" Status="Installed"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Block_Spam_Reduction_Tracker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Block_Spam_Reduction_Tracker"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="PowerLoadResets">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfCooldownTimer AbilityID="Ability_Musket_PowerShot" IsInfinite="true"/>
+						<IfCooldownTimer AbilityID="Ability_Musket_PowderBurn" IsInfinite="true"/>
+					</Or>
+					<IfTeleportPending/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfMannequinTag TagName="Rifle"/>
+					</Not>
+					<Not>
+						<IfTeleportPending/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ClearMannequinTagGroup ResetWhenReinstalled="true">
+					<Default TagGroupName="GenericTags" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMannequinTagGroup>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Reset PowerShot CoolDown on teleport">
+					<IfCondition>
+						<Or>
+							<IfCooldownTimer AbilityID="Ability_Musket_PowerShot" IsInfinite="true"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetCooldownTimer>
+								<Default AbilityID="Ability_Musket_PowerShot" OnEnter="0.1" OnExit="0.1"/>
+							</SetCooldownTimer>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Reset PowderBurn CoolDown on teleport">
+					<IfCondition>
+						<Or>
+							<IfCooldownTimer AbilityID="Ability_Musket_PowderBurn" IsInfinite="true"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetCooldownTimer>
+								<Default AbilityID="Ability_Musket_PowderBurn" OnEnter="0.1" OnExit="0.1"/>
+							</SetCooldownTimer>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="ProneNoJump">
+			<IfMannequinTag TagName="Prone"/>
+			<Not>
+				<IfMannequinTag TagName="Dodging"/>
+			</Not>
+		</And>
+		<IfMannequinTag Name="Slide" TagName="Sliding"/>
+		<Or Name="Smoke">
+			<IfHasStatusEffect StatusEffect="Bow_Smoke"/>
+			<IfHasStatusEffect StatusEffect="Bow_Smoke_Long"/>
+		</Or>
+		<And Name="IceTomb">
+			<IfHasStatusEffect StatusEffect="IceMagic_Entombed"/>
+		</And>
+		<IfHealthPercentage Name="Health_Low" Comparison="LessThan" Percentage="0.25"/>
+		<IfMannequinTag Name="Rifle_Unsheathed" TagName="Rifle"/>
+		<Or Name="Rifle_Sheathed">
+			<And>
+				<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</And>
+			<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="NEXT_MAIN_HAND_WEAPON"/>
+			<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="PREV_MAIN_HAND_WEAPON"/>
+		</Or>
+		<IfMannequinTag Name="Blunderbuss_Unsheathed" TagName="Blunderbuss"/>
+		<Or Name="Blunderbuss_Sheathed">
+			<And>
+				<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</And>
+			<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="NEXT_MAIN_HAND_WEAPON"/>
+			<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="PREV_MAIN_HAND_WEAPON"/>
+		</Or>
+		<IfMannequinTag Name="Bow_Unsheathed" TagName="Bow"/>
+		<Or Name="Bow_Sheathed">
+			<And>
+				<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</And>
+			<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="NEXT_MAIN_HAND_WEAPON"/>
+			<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="PREV_MAIN_HAND_WEAPON"/>
+		</Or>
+		<Or Name="Bow_Equipped">
+			<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="NEXT_MAIN_HAND_WEAPON"/>
+			<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="PREV_MAIN_HAND_WEAPON"/>
+		</Or>
+		<IfMannequinTag Name="Sword_Unsheathed" TagName="Sword"/>
+		<Or Name="Sword_Sheathed">
+			<And>
+				<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				<IfMannequinTagInItemSlot TagName="Sword" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</And>
+			<IfMannequinTagInItemSlot TagName="Sword" SlotToCheckAlias="NEXT_MAIN_HAND_WEAPON"/>
+			<IfMannequinTagInItemSlot TagName="Sword" SlotToCheckAlias="PREV_MAIN_HAND_WEAPON"/>
+		</Or>
+		<IfMannequinTag Name="Shield_Unsheathed" TagName="Shield_OH"/>
+		<Or Name="Shield_Sheathed">
+			<And>
+				<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+				<IfMannequinTagInItemSlot TagName="Shield_OH" SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+			</And>
+			<IfMannequinTagInItemSlot TagName="Shield_OH" SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+		</Or>
+		<Or Name="PlayDead">
+			<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead"/>
+			<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead_Loop"/>
+		</Or>
+		<IfInput Name="AttackSuccess" InputName="attack_success" IgnoreSlowdown="true"/>
+		<And Name="LifeStaff_Unsheathed">
+			<IfMannequinTag TagName="Heal"/>
+			<IfMannequinTag TagName="MagicStaff"/>
+		</And>
+		<Or Name="LifeStaff_Sheathed">
+			<And>
+				<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				<IfMannequinTagInItemSlot TagName="Heal" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</And>
+			<IfMannequinTagInItemSlot TagName="Heal" SlotToCheckAlias="NEXT_MAIN_HAND_WEAPON"/>
+			<IfMannequinTagInItemSlot TagName="Heal" SlotToCheckAlias="PREV_MAIN_HAND_WEAPON"/>
+		</Or>
+		<And Name="GRIT_On_Basic_Attacks">
+			<IfAbilityActive External="true" AbilityName="Con_Bonus_300_1"/>
+		</And>
+		<Or Name="IsMelee">
+			<IfMannequinTagInItemSlot TagName="1H_Melee" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<IfMannequinTagInItemSlot TagName="2H_Melee" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<And>
+				<IfMannequinTagInItemSlot TagName="VoidGauntlet" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				<IfMannequinTag TagName="TEMP_WeaponMaster"/>
+			</And>
+		</Or>
+		<Or Name="IsRanged">
+			<IfMannequinTagInItemSlot TagName="1H_Ranged" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<IfMannequinTagInItemSlot TagName="2H_Ranged" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<IfMannequinTagInItemSlot TagName="MagicStaff" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			<And>
+				<IfMannequinTagInItemSlot TagName="MagicGauntlet" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				<Not>
+					<IfMannequinTagInItemSlot TagName="VoidGauntlet" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Not>
+			</And>
+			<And>
+				<IfMannequinTagInItemSlot TagName="VoidGauntlet" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				<Not>
+					<IfMannequinTag TagName="TEMP_WeaponMaster"/>
+				</Not>
+			</And>
+		</Or>
+		<IfMannequinTag Name="Exhausted" TagName="Exhausted"/>
+		<And Name="HasTauntGem">
+			<Or>
+				<IfAbilityActive External="true" AbilityName="Global_Gem_ThreatAdd1"/>
+				<IfAbilityActive External="true" AbilityName="Global_Gem_ThreatAdd2"/>
+				<IfAbilityActive External="true" AbilityName="Global_Gem_ThreatAdd3"/>
+				<IfAbilityActive External="true" AbilityName="Global_Gem_ThreatAdd4"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_ThreatAdd_Heal"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_ThreatAdd_Stamina"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_ThreatAdd_Mana"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_Just_ThreatAdd"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_ThreatAdd_Melee"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_ThreatAdd_Ranged"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_ThreatAdd_Fire"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_ThreatAdd_Ice"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_ThreatAdd_Lightning"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_ThreatAdd_Nature"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_ThreatAdd_Void"/>
+				<IfAbilityActive External="true" AbilityName="Runeglass_ThreatAdd_Arcane"/>
+				<IfAbilityActive External="true" AbilityName="GlobalPerk_Artifact_Set1_Amulet1"/>
+			</Or>
+			<Not>
+				<IfInWar CheckPvpWar="true"/>
+			</Not>
+		</And>
+		<And Name="Blunderbuss_Reticle">
+			<IfMannequinTag TagName="Blunderbuss"/>
+		</And>
+		<And Name="Blunderbuss_MortarShot">
+			<IfMannequinTag TagName="Blunderbuss"/>
+			<IfHasStatusEffect StatusEffect="Blunderbuss_MortarShotActiveTimer"/>
+		</And>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,86 @@
+<ActionList>
+	<Actions>
+		<Action Name="Offline" FragmentName="Offline">
+			<ActivationCondition>
+				<IfInput InputName="Player_LoggedOff"/>
+			</ActivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="cancel loadout">
+					<IfCondition>
+						<IfIsLoadoutOpen/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<CancelLookingThroughLoadout/>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="NoEffect" OnExit="Set"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="NoEffect" OnExit="Set"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<DisableCollision>
+					<Default disableActorToActorCollision="true" disableTerrainCollision="false"/>
+				</DisableCollision>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Active Weapon">
+					<IfCondition>
+						<Not>
+							<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetToggleInput>
+								<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetToggleInput>
+								<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand">
+					<IfCondition>
+						<Not>
+							<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Offhand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AutoRun" OnEnter="Unset" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

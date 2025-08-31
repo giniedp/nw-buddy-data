@@ -1,0 +1,852 @@
+<ActionList>
+	<Actions>
+		<Action Name="Death" FragmentName="r_Death" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDead/>
+					<Not>
+						<IfMannequinMarker MarkerName="Sliding"/>
+					</Not>
+					<Not Comment="Water check">
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<DisableCollision>
+					<Default disableActorToActorCollision="true" disableTerrainCollision="false" disablePlayerToPlayerCollision="true"/>
+				</DisableCollision>
+				<Respawn>
+					<Default DelayTime="0.00"/>
+				</Respawn>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<DisableCameraLock>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableCameraLock>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinTag TagName="DeathsDoor"/>
+					</IfCondition>
+					<ThenActivity/>
+					<ElseActivity>
+						<ReactionMotion>
+							<Default Scale="1.0"/>
+						</ReactionMotion>
+					</ElseActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Respawn" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Send Entombed Cancel Message">
+					<IfCondition>
+						<IfMannequinTag TagName="Ice"/>
+					</IfCondition>
+					<ThenActivity>
+						<SendMessageToOwnedSlices>
+							<Default Message="Cancel_Entomb"/>
+						</SendMessageToOwnedSlices>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DeathsDoor" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Main Hand Weapon except with Sacrifice">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="SmokeAim"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="ACTIVE_MAIN_HAND_WEAPON">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetToggleInput>
+								<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetToggleInput>
+								<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<Group>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed" OnEnter="NoEffect" OnExit="Set"/>
+							</SetMannequinTag>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="ACTIVE_MAIN_HAND_WEAPON">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetToggleInput>
+								<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetToggleInput>
+								<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Off Hand Weapon">
+					<IfCondition>
+						<Not>
+							<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="ACTIVE_OFF_HAND_WEAPON">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToRun="Player_Death" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<ClearMannequinTagGroup ResetWhenReinstalled="false" Comment="Clear weapon tags in case they're still active">
+					<Default TagGroupName="WeaponType" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Tool" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag Comment="Set fragment when transferring from Sacrifice" ResetWhenReinstalled="false">
+					<Default TagName="SmokeAim" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Death_Slide" FragmentName="r_Death_Slide" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfMannequinMarker MarkerName="Sliding"/>
+					<Or>
+						<IfDead/>
+						<IfDeathsDoor/>
+					</Or>
+					<IfPlayerSetting PlayerSettingName="Sliding"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfExternalCondition ConditionName="End_Slide_Death_Slope_Angle"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<DisableCameraLock>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableCameraLock>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Send Entombed Cancel Message">
+					<IfCondition>
+						<IfMannequinTag TagName="Ice"/>
+					</IfCondition>
+					<ThenActivity>
+						<SendMessageToOwnedSlices>
+							<Default Message="Cancel_Entomb"/>
+						</SendMessageToOwnedSlices>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DeathsDoor" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Main Hand Weapon">
+					<IfCondition>
+						<Not>
+							<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="ACTIVE_MAIN_HAND_WEAPON">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetToggleInput>
+								<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetToggleInput>
+								<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Off Hand Weapon">
+					<IfCondition>
+						<Not>
+							<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="ACTIVE_OFF_HAND_WEAPON">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToRun="Player_Death" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<SlopeRelativeMotion>
+					<Default UseInitialSlopeDirection="true" MinSlopeAngle="20.00" MaxSlopeAngle="70.00" MinSpeed="4.50" MaxSpeed="9.81" Accel="17.50" Decel="300.00" MaxSlopeYawOffsetAngle="30.00" TurnRateDegreesPerSec="0"/>
+				</SlopeRelativeMotion>
+			</Activities>
+		</Action>
+		<Action Name="Death_Slide_End" FragmentName="r_Slide_Death_End">
+			<ActivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="Respawn" FragmentName="Respawn">
+			<ActivationCondition>
+				<IfMannequinTag TagName="Respawn"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Respawn" OnEnter="Unset" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup>
+					<Default TagGroupName="Aiming" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMannequinTagGroup>
+				<ClearMannequinTagGroup>
+					<Default TagGroupName="Reloading" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMannequinTagGroup>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToRun="Player_Respawn" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToRun="Desaturation_off" StopScriptOnExit="true" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+			</Activities>
+		</Action>
+		<Action Name="DeathsDoor" FragmentName="r_DeathsDoor" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDeathsDoor/>
+					<Not>
+						<IfMannequinMarker MarkerName="Sliding"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Sacrifice"/>
+					</Not>
+					<Not Comment="Water check">
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Switch to appropriate anims based on mode">
+					<IfCondition>
+						<IfInGameMode GameModeName="Duel"/>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeActionFragment ResetWhenReinstalled="false">
+							<Default UseDefaultFragment="false" FragmentName="r_DeathsDoor_Duel"/>
+						</ChangeActionFragment>
+					</ThenActivity>
+					<ElseActivity>
+						<ChangeActionFragment ResetWhenReinstalled="false">
+							<Default UseDefaultFragment="false" FragmentName="r_DeathsDoor"/>
+						</ChangeActionFragment>
+					</ElseActivity>
+				</IfThenElse>
+				<DisableCollision>
+					<Default disableActorToActorCollision="true" disableTerrainCollision="false" disablePlayerToPlayerCollision="true"/>
+				</DisableCollision>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Send Entombed Cancel Message">
+					<IfCondition>
+						<IfMannequinTag TagName="Ice"/>
+					</IfCondition>
+					<ThenActivity>
+						<SendMessageToOwnedSlices>
+							<Default Message="Cancel_Entomb"/>
+						</SendMessageToOwnedSlices>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DeathsDoor" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetIncapacitatedState>
+					<Default OnEnter="Enable" OnExit="Disable"/>
+				</SetIncapacitatedState>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Give Up Ghost Logic">
+					<IfCondition>
+						<IfInput InputName="give_up"/>
+					</IfCondition>
+					<ThenActivity>
+						<GiveUpGhost>
+							<Default/>
+						</GiveUpGhost>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Main Hand Weapon">
+					<IfCondition>
+						<And>
+							<Not>
+								<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="Rifle"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="ACTIVE_MAIN_HAND_WEAPON">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetToggleInput>
+								<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetToggleInput>
+								<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Off Hand Weapon">
+					<IfCondition>
+						<Not>
+							<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SheatheWeapon ResetWhenReinstalled="false" Comment="ACTIVE_OFF_HAND_WEAPON">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<RunFxScript Comment="Death's Door audio" ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToRun="Player_DeathDoor" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<DisableCameraLock>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableCameraLock>
+				<ActivateCamera>
+					<Default CameraName="NormalCamera" SmoothTime="0"/>
+				</ActivateCamera>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Revive if Resuscitate">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="Resuscitate"/>
+							<IfExternalCondition ConditionName="ResuscitateActive"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<CastSpell>
+							<Default SpellName="LifeStaff_Revive" AIProjectilePredictionSpeed="" AIHitScanPredictionSpeed="" AIMissMinDistance="" AIMissMaxDistance="" AILeadTargetMaxAngleDeg="" AILeadTarget=""/>
+						</CastSpell>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Death in deep water">
+					<IfCondition>
+						<And>
+							<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Death>
+							<Default TriggerOption="OnUpdate" DelayTime="0.0" SkipDeathsDoor="true" ClearContributors="false"/>
+						</Death>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="DeathsDoorRecover" FragmentName="r_DeathsDoorRecover" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="DeathsDoor"/>
+					<Not>
+						<IfDead/>
+					</Not>
+					<Not>
+						<IfDeathsDoor/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Respawn"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="Sliding"/>
+					</Not>
+					<Not>
+						<IfInGameMode GameModeName="Duel"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_DeathsDoor_Duel"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities>
+				<AnimationDrivenMotion>
+					<Default/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If you can stand, then stand">
+					<IfCondition>
+						<IfCanResizeCharacterController ResizeType="Default"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If you can't stand, then crouch">
+					<IfCondition>
+						<IfCanResizeCharacterController ResizeType="Crouch"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Crouch_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Crouch" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If you can't stand or crouch, then prone">
+					<IfCondition>
+						<IfCanResizeCharacterController ResizeType="Prone"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Prone_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Prone" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DeathsDoor" OnEnter="Unset" OnExit="Unset" DelayTimer="0.10"/>
+				</SetMannequinTag>
+				<SetMannequinTag Comment="Remove tag when transferring from Sacrifice" ResetWhenReinstalled="false">
+					<Default TagName="SmokeAim" OnEnter="Unset" OnExit="Unset"/>
+				</SetMannequinTag>
+				<RunFxScript Comment="Deaths door recover audio" ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToRun="Player_DeathRecover" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter/>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="PreventResuscitateTimer"/>
+							<EffectId EffectId="LifeResuscitateTimer"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="DeathsDoorRecover_Duel" FragmentName="r_DeathsDoorRecover_Duel" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="DeathsDoor"/>
+					<Not>
+						<IfDead/>
+					</Not>
+					<Not>
+						<IfDeathsDoor/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Respawn"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="Sliding"/>
+					</Not>
+					<Or>
+						<IfInGameMode GameModeName="Duel"/>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_DeathsDoor_Duel"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities>
+				<AnimationDrivenMotion>
+					<Default/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If you can stand, then stand">
+					<IfCondition>
+						<IfCanResizeCharacterController ResizeType="Default"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If you can't stand, then crouch">
+					<IfCondition>
+						<IfCanResizeCharacterController ResizeType="Crouch"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Crouch_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Crouch" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If you can't stand or crouch, then prone">
+					<IfCondition>
+						<IfCanResizeCharacterController ResizeType="Prone"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Prone_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Prone" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DeathsDoor" OnEnter="Unset" OnExit="Unset" DelayTimer="0.10"/>
+				</SetMannequinTag>
+				<SetMannequinTag Comment="Remove tag when transferring from Sacrifice" ResetWhenReinstalled="false">
+					<Default TagName="SmokeAim" OnEnter="Unset" OnExit="Unset"/>
+				</SetMannequinTag>
+				<RunFxScript Comment="Deaths door recover audio" ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToRun="Player_DeathRecover" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+			</Activities>
+		</Action>
+		<Action Name="DeathsDoorRecover_Resuscitate" FragmentName="r_DeathsDoorRecover_Resuscitate" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="PreventResuscitateTimer"/>
+					<Not>
+						<IfHasStatusEffect StatusEffect="LifeResuscitateTimer"/>
+					</Not>
+					<IfAbilityActive AbilityName="LifeResuscitate"/>
+					<IfInput InputName="notificationAccept"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="LifeResuscitateTimer"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit/>
+					</Default>
+				</ModifyStatusEffects>
+				<AnimationDrivenMotion>
+					<Default/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If you can stand, then stand">
+					<IfCondition>
+						<IfCanResizeCharacterController ResizeType="Default"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="DeathsDoor" OnEnter="UnSet" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If you can't stand, then crouch">
+					<IfCondition>
+						<IfCanResizeCharacterController ResizeType="Crouch"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Crouch_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Crouch" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If you can't stand or crouch, then prone">
+					<IfCondition>
+						<IfCanResizeCharacterController ResizeType="Prone"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Prone_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Prone" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DeathsDoor" OnEnter="Unset" OnExit="Unset" DelayTimer="0.10"/>
+				</SetMannequinTag>
+				<RunFxScript Comment="Deaths door recover audio" ResetWhenReinstalled="true" RunOnRemoteClients="false">
+					<Default ScriptToRun="Player_DeathRecover" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter/>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="PreventResuscitateTimer"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Sacrifice" FragmentName="Sacrifice" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfDeathsDoor/>
+						<IfMannequinTag TagName="DeathsDoor"/>
+					</Or>
+					<Or>
+						<IfInput InputName="attack_primary_virtual"/>
+						<IfInput InputName="ability1"/>
+						<IfInput InputName="ability2"/>
+						<IfInput InputName="ability3"/>
+					</Or>
+					<Not>
+						<IfMannequinMarker MarkerName="Sliding"/>
+					</Not>
+					<Not>
+						<IfInArena/>
+					</Not>
+					<IfAbilityActive AbilityName="MusketSacrifice"/>
+					<IfMannequinTag TagName="Rifle"/>
+					<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<PerformActiveAbility>
+					<Default AbilityName="MusketSacrifice"/>
+				</PerformActiveAbility>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="SmokeAim" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfDead Name="Dead" ServerOnly="false"/>
+		<IfDeathsDoor Name="DeathsDoor" ServerOnly="true"/>
+		<And Name="End_Slide_Death_Slope_Angle">
+			<IfSlope MinSlopePitch="0.00" MaxSlopePitch="20.00"/>
+			<IfPlayerSetting PlayerSettingName="Sliding"/>
+			<IfMannequinMarker MarkerName="CanTransition_Death"/>
+		</And>
+		<And Name="ResuscitateActive">
+			<IfAbilityActive AbilityName="LifeResuscitate"/>
+			<Not>
+				<IfHasStatusEffect StatusEffect="LifeResuscitateTimer"/>
+			</Not>
+		</And>
+		<And Name="ResuscitateNotActive">
+			<Or>
+				<And>
+					<IfAbilityActive AbilityName="LifeResuscitate"/>
+					<IfHasStatusEffect StatusEffect="LifeResuscitateTimer"/>
+				</And>
+				<And>
+					<Not>
+						<IfAbilityActive AbilityName="LifeResuscitate"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="LifeResuscitateTimer"/>
+					</Not>
+				</And>
+			</Or>
+		</And>
+		<And Name="ResuscitateGetup">
+			<IfMannequinMarker MarkerName="Resuscitate"/>
+			<IfMannequinTag TagName="DeathsDoor"/>
+			<Not>
+				<IfHasStatusEffect StatusEffect="LifeResuscitateTimer"/>
+			</Not>
+			<IfAbilityActive AbilityName="LifeResuscitate"/>
+			<IfInput InputName="notificationAccept"/>
+		</And>
+	</Conditions>
+</ActionList>
+

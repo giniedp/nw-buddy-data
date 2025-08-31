@@ -1,0 +1,1088 @@
+<ActionList>
+	<Actions>
+		<Action Name="Inventory" FragmentName="Inventory">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="toggleInventoryWindow"/>
+						<IfInput InputName="Player_LoadoutOpen"/>
+						<IfInput InputName="Player_InteractingStorage"/>
+					</Or>
+					<Not>
+						<IfStackConfigVar StackVar="javelin.enable-inventory-while-running"/>
+					</Not>
+					<Not>
+						<IfInput InputName="Start_Crafting"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="AllowSoftInventory"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reaction"/>
+					</Not>
+					<Not>
+						<IsRequestingInteraction>
+							<Interactions>
+								<Interaction InteractionId="GatherResource"/>
+								<Interaction InteractionId="GatherWaterResource"/>
+							</Interactions>
+						</IsRequestingInteraction>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<Not>
+						<IfExternalCondition ConditionName="Throwable_Equipped"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<IfMannequinMarker MarkerName="Inventory_Exit_Done"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse Comment="Perform different activities based on whether inventory is active or exiting" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Inventory"/>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Inventory_Storage"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity Comment="Active Inventory">
+						<Group>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Interacting Storage">
+								<IfCondition>
+									<IfInput InputName="Player_InteractingStorage"/>
+								</IfCondition>
+								<ThenActivity>
+									<ExecuteInteraction/>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Instant Sheathe-All + AutoUnsheathe Logic v2.2">
+								<IfCondition>
+									<Or>
+										<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+										<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+									</Or>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Logic">
+											<IfCondition>
+												<And Comment="Weapon slots empty or already sheathed">
+													<Or>
+														<Not>
+															<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+														</Not>
+														<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+													</Or>
+													<Or>
+														<Not>
+															<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+														</Not>
+														<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+													</Or>
+													<Not>
+														<And>
+															<Not>
+																<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+															</Not>
+															<Not>
+																<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+															</Not>
+														</And>
+													</Not>
+													<Not>
+														<IfMannequinTag TagName="AutoUnsheathe"/>
+													</Not>
+												</And>
+											</IfCondition>
+											<ThenActivity>
+												<SetMannequinTag ResetWhenReinstalled="false">
+													<Default TagName="KeepWeaponSheathed" OnEnter="Set" OnExit="NoEffect"/>
+												</SetMannequinTag>
+											</ThenActivity>
+											<ElseActivity>
+												<Group Comment="Sheathe All Weapons">
+													<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Main Hand Weapon">
+														<IfCondition>
+															<And>
+																<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+																<Not>
+																	<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+																</Not>
+															</And>
+														</IfCondition>
+														<ThenActivity>
+															<Group>
+																<SheatheWeapon ResetWhenReinstalled="false">
+																	<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+																</SheatheWeapon>
+																<SetToggleInput>
+																	<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+																</SetToggleInput>
+																<SetToggleInput>
+																	<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+																</SetToggleInput>
+																<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+																	<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+																</SetMannequinTagFromSource>
+																<ClearMannequinTagGroup ResetWhenReinstalled="false">
+																	<Default TagGroupName="Reloading" OnEnter="Clear" OnExit="NoEffect"/>
+																</ClearMannequinTagGroup>
+																<SetMannequinTag ResetWhenReinstalled="false">
+																	<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+																</SetMannequinTag>
+																<SetMannequinTag ResetWhenReinstalled="false">
+																	<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+																</SetMannequinTag>
+															</Group>
+														</ThenActivity>
+														<ElseActivity Comment="Clear Weapon Tag">
+															<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+																<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+															</SetMannequinTagFromSource>
+														</ElseActivity>
+													</IfThenElse>
+													<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand-Weapon">
+														<IfCondition>
+															<And>
+																<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+																<Not>
+																	<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+																</Not>
+															</And>
+														</IfCondition>
+														<ThenActivity>
+															<Group>
+																<SheatheWeapon ResetWhenReinstalled="false">
+																	<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+																</SheatheWeapon>
+																<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+																	<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+																</SetMannequinTagFromSource>
+																<SetMannequinTag ResetWhenReinstalled="false">
+																	<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+																</SetMannequinTag>
+															</Group>
+														</ThenActivity>
+													</IfThenElse>
+												</Group>
+											</ElseActivity>
+										</IfThenElse>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="KeepWeaponSheathed" OnEnter="NoEffect" OnExit="Unset"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="-" OnEnter="NoEffect" OnExit="NoEffect"/>
+								<Conditional Name="Set_FromStand" TagName="FromStand" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Set_FromCrouch" TagName="FromCrouch" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Set_FromProne" TagName="FromProne" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+								<IfCondition>
+									<Or>
+										<IfMannequinTag TagName="Crouch"/>
+										<IfMannequinTag TagName="Prone"/>
+									</Or>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+										</SetMannequinTag>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Handle Crafting while in inventory">
+								<IfCondition>
+									<IfInput InputName="Start_Crafting"/>
+								</IfCondition>
+								<ThenActivity>
+									<Craft/>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Disable interactions if not interacting with storage">
+								<IfCondition>
+									<Or>
+										<Not>
+											<IfInput InputName="Player_InteractingStorage"/>
+										</Not>
+										<IfInput InputName="Player_LoadoutOpen" Comment="Check if already in loadout"/>
+									</Or>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<CameraRelativeFacing>
+											<Default TurnRate="50000.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="true" UseClosestTarget="false"/>
+										</CameraRelativeFacing>
+									</Group>
+								</ThenActivity>
+								<ElseActivity>
+									<Group>
+										<ChangeActionFragment ResetWhenReinstalled="false">
+											<Default UseDefaultFragment="false" FragmentName="Inventory_Storage"/>
+										</ChangeActionFragment>
+									</Group>
+								</ElseActivity>
+							</IfThenElse>
+							<LookThroughLoadout/>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Set Mainhand 1 Active">
+								<IfCondition>
+									<IfInput InputName="Use_MainHandSlot_1"/>
+								</IfCondition>
+								<ThenActivity>
+									<SetActiveWeapon ResetWhenReinstalled="true">
+										<Default WeaponOption="main-hand-option-1" OnEnter="Set" OnExit="NoEffect"/>
+									</SetActiveWeapon>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Set Mainhand 2 Active">
+								<IfCondition>
+									<IfInput InputName="Use_MainHandSlot_2"/>
+								</IfCondition>
+								<ThenActivity>
+									<SetActiveWeapon ResetWhenReinstalled="true">
+										<Default WeaponOption="main-hand-option-2" OnEnter="Set" OnExit="NoEffect"/>
+									</SetActiveWeapon>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Set Mainhand 3 Active">
+								<IfCondition>
+									<IfInput InputName="Use_MainHandSlot_3"/>
+								</IfCondition>
+								<ThenActivity>
+									<SetActiveWeapon ResetWhenReinstalled="true">
+										<Default WeaponOption="main-hand-option-3" OnEnter="Set" OnExit="NoEffect"/>
+									</SetActiveWeapon>
+								</ThenActivity>
+							</IfThenElse>
+							<ClearMannequinTagGroup ResetWhenReinstalled="false">
+								<Default TagGroupName="PostureTransition" OnEnter="NoEffect" OnExit="Clear"/>
+							</ClearMannequinTagGroup>
+						</Group>
+					</ThenActivity>
+					<ElseActivity Comment="Exit inventory">
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="-" OnEnter="NoEffect" OnExit="NoEffect"/>
+								<Conditional Name="Transition_To_Stand" TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Transition_To_Prone" TagName="Prone" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<DisableInteractions>
+								<Default OnEnter="Disable" OnExit="Enable"/>
+							</DisableInteractions>
+							<DisableInteractor>
+								<Default OnEnter="Disable" OnExit="Enable"/>
+							</DisableInteractor>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Auto Unsheathe secondary weapon if Sheathed Main 1 is Unequipped">
+					<IfCondition>
+						<Or>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="TRUE" RequireSlotActive="FALSE"/>
+								</Not>
+								<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="TRUE" RequireSlotActive="FALSE"/>
+							</And>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="TRUE" RequireSlotActive="FALSE"/>
+								</Not>
+								<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="TRUE" RequireSlotActive="FALSE"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Set"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Inventory_UpperBody" FragmentName="Inventory_UpperBody_Turn">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfActionStatus ActionName="Inventory_UI" Status="Installed"/>
+						<IfMountChangeOpen/>
+					</Or>
+					<IfStackConfigVar StackVar="javelin.enable-inventory-while-running"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Inventory_UpperBody"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Inventory_UpperBody_Turn"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="Inventory_UpperBody"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="Inventory_UpperBody_Turn"/>
+					</Not>
+					<Not>
+						<Or>
+							<IfMannequinTag TagName="Reaction"/>
+							<IfIsGathering/>
+							<IfIsPlacingBuilding/>
+							<IfInput InputName="Start_Crafting"/>
+						</Or>
+					</Not>
+					<Not>
+						<IsRequestingInteraction>
+							<Interactions>
+								<Interaction InteractionId="GatherResource"/>
+								<Interaction InteractionId="GatherWaterResource"/>
+								<Interaction InteractionId="OpenTradingPost"/>
+								<Interaction InteractionId="OpenPrefabRefinery"/>
+								<Interaction InteractionId="OpenTerritoryMarker"/>
+								<Interaction InteractionId="OpenInteractScreen"/>
+								<Interaction InteractionId="OpenStartClaimScreen"/>
+								<Interaction InteractionId="OpenAttachment"/>
+								<Interaction InteractionId="OpenPaint"/>
+								<Interaction InteractionId="OpenRead"/>
+								<Interaction InteractionId="OpenConversation"/>
+								<Interaction InteractionId="OpenObjectiveProvider"/>
+								<Interaction InteractionId="OpenArmory"/>
+								<Interaction InteractionId="UseTurret"/>
+								<Interaction InteractionId="OpenTerritoryInterface"/>
+								<Interaction InteractionId="OpenTerritoryProgression"/>
+								<Interaction InteractionId="HousingPurchase"/>
+								<Interaction InteractionId="HousingEnter"/>
+								<Interaction InteractionId="OpenRaidSetup"/>
+								<Interaction InteractionId="OpenTurretSelection"/>
+								<Interaction InteractionId="OpenInnScreen"/>
+								<Interaction InteractionId="OpenArenaMenu"/>
+								<Interaction InteractionId="InteractWithHousingItem"/>
+								<Interaction InteractionId="OpenDungeonMenu"/>
+								<Interaction InteractionId="OpenSummoningSelection"/>
+								<Interaction InteractionId="OpenCrafting"/>
+							</Interactions>
+						</IsRequestingInteraction>
+					</Not>
+					<Not>
+						<And>
+							<IsRequestingInteraction>
+								<Interactions>
+									<Interaction InteractionId="OpenStorage"/>
+								</Interactions>
+							</IsRequestingInteraction>
+							<IfMannequinTag TagName="Mount"/>
+						</And>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+					<Not>
+						<IfExternalCondition ConditionName="Throwable_Equipped"/>
+					</Not>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<IfFragmentDone UseHostActionFragment="true"/>
+						<Not>
+							<IfMountChangeOpen/>
+						</Not>
+					</And>
+					<IfMannequinMarker MarkerName="Inventory_Exit_Done"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse Comment="Check of mounted">
+					<IfCondition>
+						<And>
+							<IsMounted/>
+							<Not>
+								<IfMannequinMarker MarkerName="Inventory_UpperBody"/>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="Inventory_UpperBody_Turn"/>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="Inventory_UpperBody_Exit"/>
+							</Not>
+							<Not>
+								<IfActionStatus ActionName="MountCollectionCheck" Status="Installed"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<Mount>
+								<Default mountFragmentAlias="MountFragmentInventoryTurn" playerFragmentAlias="PlayerFragmentInventoryTurn"/>
+							</Mount>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Check if in Collection after MountUP">
+					<IfCondition>
+						<And>
+							<IsMounted/>
+							<Not>
+								<IfMannequinMarker MarkerName="Inventory_UpperBody"/>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="Inventory_UpperBody_Turn"/>
+							</Not>
+							<Not>
+								<IfMannequinMarker MarkerName="Inventory_UpperBody_Exit"/>
+							</Not>
+							<IfActionStatus ActionName="MountCollectionCheck" Status="Installed"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<Mount>
+								<Default mountFragmentAlias="MountFragmentInventoryIdle" playerFragmentAlias="PlayerFragmentInventoryIdle"/>
+							</Mount>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Check if in inventory on Dismount">
+					<IfCondition>
+						<And>
+							<Not>
+								<IsMounted/>
+							</Not>
+							<Or>
+								<IfMountChangeOpen/>
+								<IfTransmogOpen/>
+							</Or>
+							<IfActionStatus ActionName="MountCollectionCheck" Status="Installed"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ChangeActionFragment ResetWhenReinstalled="true">
+								<Default UseDefaultFragment="false" FragmentName="Inventory_UpperBody"/>
+							</ChangeActionFragment>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Perform different activities based on whether inventory is active or exiting" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Inventory_UpperBody_Turn"/>
+							<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Inventory_UpperBody"/>
+							<IfMannequinMarker MarkerName="Inventory_UpperBody"/>
+							<IfMannequinMarker MarkerName="Inventory_UpperBody_Turn"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity Comment="Active Inventory">
+						<Group>
+							<IfThenElse ResetWhenReinstalled="true" Comment="Disable time warping when not previewing skins">
+								<IfCondition>
+									<And>
+										<IfVelocity VelocitySource="OutputVelocity" CheckYVelocity="true" CheckZVelocity="false" YVelocity="0" YComparisonType="Equal"/>
+										<Not>
+											<IsPreviewingSkin/>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<DisableTimewarp>
+											<Default/>
+										</DisableTimewarp>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse>
+								<IfCondition>
+									<And>
+										<IsPreviewingSkin/>
+										<Not>
+											<ActionConditionIfTransmogOpen/>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<SetMannequinTag ResetWhenReinstalled="true">
+											<Default TagName="KeepWeaponSheathed" OnEnter="Unset" OnExit="NoEffect"/>
+										</SetMannequinTag>
+										<SetMannequinTag ResetWhenReinstalled="true">
+											<Default TagName="AutoUnsheathe" OnEnter="Unset" OnExit="NoEffect"/>
+										</SetMannequinTag>
+										<ModifyStatusEffects>
+											<Default/>
+											<Conditional Name="NotInteractingWithNonLootStorage">
+												<EffectsToApplyOnEnter>
+													<EffectId EffectId="Inventory_NoMovement"/>
+												</EffectsToApplyOnEnter>
+												<EffectsToRemoveOnExit>
+													<EffectId EffectId="Inventory_NoMovement"/>
+												</EffectsToRemoveOnExit>
+											</Conditional>
+										</ModifyStatusEffects>
+									</Group>
+								</ThenActivity>
+								<ElseActivity>
+									<Group>
+										<IfThenElse ResetWhenReinstalled="false" Comment="Instant Sheathe-All + AutoUnsheathe Logic v2.2">
+											<IfCondition>
+												<Or>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+												</Or>
+											</IfCondition>
+											<ThenActivity>
+												<Group>
+													<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Logic">
+														<IfCondition>
+															<And Comment="Weapon slots empty or already sheathed">
+																<Or>
+																	<Not>
+																		<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+																	</Not>
+																	<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+																</Or>
+																<Or>
+																	<Not>
+																		<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+																	</Not>
+																	<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+																</Or>
+																<Not>
+																	<And>
+																		<Not>
+																			<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+																		</Not>
+																		<Not>
+																			<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+																		</Not>
+																	</And>
+																</Not>
+																<Not>
+																	<IfMannequinTag TagName="AutoUnsheathe"/>
+																</Not>
+															</And>
+														</IfCondition>
+														<ThenActivity>
+															<SetMannequinTag ResetWhenReinstalled="false">
+																<Default TagName="KeepWeaponSheathed" OnEnter="Set" OnExit="NoEffect"/>
+															</SetMannequinTag>
+														</ThenActivity>
+														<ElseActivity>
+															<Group Comment="Sheathe All Weapons">
+																<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Main Hand Weapon">
+																	<IfCondition>
+																		<And>
+																			<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+																			<Not>
+																				<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+																			</Not>
+																		</And>
+																	</IfCondition>
+																	<ThenActivity>
+																		<Group>
+																			<SheatheWeapon ResetWhenReinstalled="false">
+																				<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+																			</SheatheWeapon>
+																			<SetToggleInput>
+																				<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+																			</SetToggleInput>
+																			<SetToggleInput>
+																				<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+																			</SetToggleInput>
+																			<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+																				<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+																			</SetMannequinTagFromSource>
+																			<ClearMannequinTagGroup ResetWhenReinstalled="false">
+																				<Default TagGroupName="Reloading" OnEnter="Clear" OnExit="NoEffect"/>
+																			</ClearMannequinTagGroup>
+																			<SetMannequinTag ResetWhenReinstalled="false">
+																				<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+																			</SetMannequinTag>
+																			<SetMannequinTag ResetWhenReinstalled="false">
+																				<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+																			</SetMannequinTag>
+																		</Group>
+																	</ThenActivity>
+																	<ElseActivity Comment="Clear Weapon Tag">
+																		<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+																			<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+																		</SetMannequinTagFromSource>
+																	</ElseActivity>
+																</IfThenElse>
+																<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand-Weapon">
+																	<IfCondition>
+																		<And>
+																			<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+																			<Not>
+																				<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+																			</Not>
+																		</And>
+																	</IfCondition>
+																	<ThenActivity>
+																		<Group>
+																			<SheatheWeapon ResetWhenReinstalled="false">
+																				<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+																			</SheatheWeapon>
+																			<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+																				<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+																			</SetMannequinTagFromSource>
+																			<SetMannequinTag ResetWhenReinstalled="false">
+																				<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+																			</SetMannequinTag>
+																		</Group>
+																	</ThenActivity>
+																</IfThenElse>
+															</Group>
+														</ElseActivity>
+													</IfThenElse>
+												</Group>
+											</ThenActivity>
+										</IfThenElse>
+										<SetMannequinTag ResetWhenReinstalled="false">
+											<Default TagName="KeepWeaponSheathed" OnEnter="NoEffect" OnExit="Unset"/>
+										</SetMannequinTag>
+									</Group>
+								</ElseActivity>
+							</IfThenElse>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<IfThenElse ResetWhenReinstalled="true" Comment="Interacting Storage">
+								<IfCondition>
+									<IfInput InputName="Player_InteractingStorage"/>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<ModifyStatusEffects>
+											<Default/>
+											<Conditional Name="InteractingWithNonLootStorage">
+												<EffectsToApplyOnEnter>
+													<EffectId EffectId="Inventory_NoMovement"/>
+												</EffectsToApplyOnEnter>
+											</Conditional>
+										</ModifyStatusEffects>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="Inventory_CancelCooldown"/>
+									</EffectsToApplyOnEnter>
+									<EffectsToRemoveOnExit>
+										<EffectId EffectId="Inventory_NoMovement"/>
+									</EffectsToRemoveOnExit>
+								</Default>
+							</ModifyStatusEffects>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Set Mainhand 1 Active">
+								<IfCondition>
+									<IfInput InputName="Use_MainHandSlot_1"/>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<SetActiveWeapon ResetWhenReinstalled="true">
+											<Default WeaponOption="main-hand-option-1" OnEnter="Set" OnExit="NoEffect"/>
+										</SetActiveWeapon>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Set Mainhand 2 Active">
+								<IfCondition>
+									<IfInput InputName="Use_MainHandSlot_2"/>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<SetActiveWeapon ResetWhenReinstalled="true">
+											<Default WeaponOption="main-hand-option-2" OnEnter="Set" OnExit="NoEffect"/>
+										</SetActiveWeapon>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Snap to camera facing in idle">
+								<IfCondition>
+									<And>
+										<IfMannequinTag TagName="Idle"/>
+										<Not>
+											<IsPreviewingSkin/>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<CameraRelativeFacing>
+											<Default/>
+											<Conditional Name="Inventory_SnapToFacing_Mount" TurnRate="1800.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="true" UseClosestTarget="false"/>
+											<Conditional Name="Inventory_SnapToFacing" TurnRate="1200.0" UseExponentialTurnRate="false" UseCameraDirOnEnterState="true" UseClosestTarget="false"/>
+										</CameraRelativeFacing>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+					<ElseActivity Comment="Exit inventory">
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="-" OnEnter="NoEffect" OnExit="NoEffect"/>
+								<Conditional Name="Transition_To_Stand" TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+								<Conditional Name="Transition_To_Prone" TagName="Prone" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<DisableInteractions>
+								<Default OnEnter="Disable" OnExit="Enable"/>
+							</DisableInteractions>
+							<DisableInteractor>
+								<Default OnEnter="Disable" OnExit="Enable"/>
+							</DisableInteractor>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToRemoveOnExit>
+										<EffectId EffectId="Inventory_NoMovement"/>
+									</EffectsToRemoveOnExit>
+								</Default>
+							</ModifyStatusEffects>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<AnimationDrivenMotion>
+					<Default/>
+					<Conditional Name="Idle" MotionMultiplier="1.0" RotationMultiplier="1.0" Decel="0,0,0" DisableGravity="false" InheritVelocity="false" UseLayer="4"/>
+					<Conditional Name="Inventory_DisableAnimMotion" MotionMultiplier="0.0" RotationMultiplier="0.0" Decel="0,0,0" DisableGravity="false" InheritVelocity="false" UseLayer="4"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Auto Unsheathe secondary weapon if Sheathed Main 1 is Unequipped">
+					<IfCondition>
+						<Or>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="TRUE" RequireSlotActive="FALSE"/>
+								</Not>
+								<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="TRUE" RequireSlotActive="FALSE"/>
+							</And>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="TRUE" RequireSlotActive="FALSE"/>
+								</Not>
+								<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="TRUE" RequireSlotActive="FALSE"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Set"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Inventory_UI" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="toggleInventoryWindow"/>
+						<IfInput InputName="Player_LoadoutOpen"/>
+						<IfInput InputName="Player_InteractingStorage"/>
+					</Or>
+					<IfStackConfigVar StackVar="javelin.enable-inventory-while-running"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Inventory_UpperBody"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Inventory_UpperBody_Turn"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="Inventory_UpperBody"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="Inventory_UpperBody_Turn"/>
+					</Not>
+					<Not>
+						<Or>
+							<IfMannequinTag TagName="Reaction"/>
+							<IfIsGathering/>
+							<IfIsPlacingBuilding/>
+							<IfInput InputName="Start_Crafting"/>
+						</Or>
+					</Not>
+					<Not>
+						<IsRequestingInteraction>
+							<Interactions>
+								<Interaction InteractionId="GatherResource"/>
+								<Interaction InteractionId="GatherWaterResource"/>
+								<Interaction InteractionId="OpenTradingPost"/>
+								<Interaction InteractionId="OpenPrefabRefinery"/>
+								<Interaction InteractionId="OpenTerritoryMarker"/>
+								<Interaction InteractionId="OpenInteractScreen"/>
+								<Interaction InteractionId="OpenStartClaimScreen"/>
+								<Interaction InteractionId="OpenAttachment"/>
+								<Interaction InteractionId="OpenPaint"/>
+								<Interaction InteractionId="OpenRead"/>
+								<Interaction InteractionId="OpenConversation"/>
+								<Interaction InteractionId="OpenObjectiveProvider"/>
+								<Interaction InteractionId="OpenArmory"/>
+								<Interaction InteractionId="UseTurret"/>
+								<Interaction InteractionId="OpenTerritoryInterface"/>
+								<Interaction InteractionId="OpenTerritoryProgression"/>
+								<Interaction InteractionId="HousingPurchase"/>
+								<Interaction InteractionId="HousingEnter"/>
+								<Interaction InteractionId="OpenRaidSetup"/>
+								<Interaction InteractionId="OpenTurretSelection"/>
+								<Interaction InteractionId="OpenInnScreen"/>
+								<Interaction InteractionId="OpenArenaMenu"/>
+								<Interaction InteractionId="InteractWithHousingItem"/>
+								<Interaction InteractionId="OpenDungeonMenu"/>
+								<Interaction InteractionId="OpenSummoningSelection"/>
+								<Interaction InteractionId="OpenCrafting"/>
+							</Interactions>
+						</IsRequestingInteraction>
+					</Not>
+					<Not>
+						<And>
+							<IsRequestingInteraction>
+								<Interactions>
+									<Interaction InteractionId="OpenStorage"/>
+								</Interactions>
+							</IsRequestingInteraction>
+							<IfMannequinTag TagName="Mount"/>
+						</And>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Not>
+					<Not>
+						<IfExternalCondition ConditionName="Throwable_Equipped"/>
+					</Not>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Inventory_UpperBody_Turn"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Inventory_UpperBody_Exit"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="Inventory_UpperBody_Exit"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="Inventory_UpperBody_Turn"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Dodging"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And Name="Exit_Inventory">
+					<Not>
+						<IfHasStatusEffect StatusEffect="Inventory_CancelCooldown"/>
+					</Not>
+					<Or>
+						<IfInput InputName="toggleInventoryWindow"/>
+						<And Comment="Inventory Open Check">
+							<Not>
+								<IfInput InputName="Player_LoadoutOpen"/>
+							</Not>
+							<Not>
+								<IfMountChangeOpen/>
+							</Not>
+						</And>
+						<And>
+							<IfHasStatusEffect StatusEffect="Inventory_NoMovement"/>
+							<Or>
+								<IfAliasStatus GridAlias="Traversal" Status="Installed"/>
+								<IfAliasStatus GridAlias="Fall" Status="Installed"/>
+								<IfAliasStatus GridAlias="Jump" Status="Installed"/>
+							</Or>
+						</And>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+					</Or>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Interacting Storage">
+					<IfCondition>
+						<IfInput InputName="Player_InteractingStorage"/>
+					</IfCondition>
+					<ThenActivity>
+						<ExecuteInteraction/>
+					</ThenActivity>
+				</IfThenElse>
+				<LookThroughLoadout/>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="Exit_Inventory">
+			<Not>
+				<IfHasStatusEffect StatusEffect="Inventory_CancelCooldown"/>
+			</Not>
+			<Or>
+				<And Comment="Inventory Open Check">
+					<IfInput InputName="toggleInventoryWindow"/>
+					<Not>
+						<IfMountChangeOpen/>
+					</Not>
+				</And>
+				<And Comment="Storage Open Check">
+					<Not>
+						<IfInput InputName="Player_LoadoutOpen"/>
+					</Not>
+					<Not>
+						<IfMountChangeOpen/>
+					</Not>
+				</And>
+				<And>
+					<IfHasStatusEffect StatusEffect="Inventory_NoMovement"/>
+					<Or>
+						<IfAliasStatus GridAlias="Traversal" Status="Installed"/>
+						<IfAliasStatus GridAlias="Fall" Status="Installed"/>
+						<IfAliasStatus GridAlias="Jump" Status="Installed"/>
+					</Or>
+				</And>
+				<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+			</Or>
+		</And>
+		<And Name="Exit_Inventory_Mount">
+			<Not>
+				<IfHasStatusEffect StatusEffect="Inventory_CancelCooldown"/>
+			</Not>
+			<Not>
+				<IfMountChangeOpen/>
+			</Not>
+			<Or>
+				<And Comment="Inventory Open Check">
+					<IfInput InputName="toggleInventoryWindow"/>
+					<Not>
+						<IfMountChangeOpen/>
+					</Not>
+				</And>
+				<And Comment="Storage Open Check">
+					<Not>
+						<IfInput InputName="Player_LoadoutOpen"/>
+					</Not>
+					<Not>
+						<IfMountChangeOpen/>
+					</Not>
+				</And>
+				<And>
+					<IfHasStatusEffect StatusEffect="Inventory_NoMovement"/>
+					<Or>
+						<IfAliasStatus GridAlias="Traversal" Status="Installed"/>
+						<IfAliasStatus GridAlias="Fall" Status="Installed"/>
+						<IfAliasStatus GridAlias="Jump" Status="Installed"/>
+					</Or>
+				</And>
+				<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Deep"/>
+			</Or>
+		</And>
+		<IfMannequinTag Name="Set_FromStand" TagName="Stand"/>
+		<IfMannequinTag Name="Set_FromCrouch" TagName="Crouch"/>
+		<IfMannequinTag Name="Set_FromProne" TagName="Prone"/>
+		<And Name="Transition_To_Stand">
+			<IfMannequinTag TagName="Stand_Desired"/>
+			<IfCanResizeCharacterController ResizeType="Default"/>
+		</And>
+		<And Name="Transition_To_Prone">
+			<IfMannequinTag TagName="Prone_Desired"/>
+		</And>
+		<And Name="IfInventoryActive">
+			<IfStackConfigVar StackVar="javelin.enable-inventory-while-running"/>
+			<Or>
+				<IfInput InputName="Player_LoadoutOpen"/>
+				<IfActionStatus ActionName="Inventory_UpperBody" Status="Pending"/>
+			</Or>
+		</And>
+		<And Name="InteractingWithNonLootStorage">
+			<IfIsInteractingWithStorage Options="ExcludeLootStorage"/>
+		</And>
+		<And Name="NotInteractingWithNonLootStorage">
+			<Not>
+				<IfIsInteractingWithStorage Options="ExcludeLootStorage"/>
+			</Not>
+		</And>
+		<And Name="Inventory_SnapToFacing">
+			<IfMannequinMarker MarkerName="Inventory_SnapToFacing"/>
+			<Not>
+				<IfMannequinTag TagName="Mount"/>
+			</Not>
+			<Or>
+				<And>
+					<Not>
+						<IsPreviewingSkin/>
+					</Not>
+					<Not>
+						<IfMountChangeOpen/>
+					</Not>
+				</And>
+				<Not>
+					<IfActionStatus ActionName="MountCollectionCheck" Status="Installed"/>
+				</Not>
+			</Or>
+		</And>
+		<And Name="Inventory_SnapToFacing_Mount">
+			<IfMannequinMarker MarkerName="Inventory_SnapToFacing"/>
+			<IfMannequinTag TagName="Mount"/>
+			<Or>
+				<And>
+					<Not>
+						<IsPreviewingSkin/>
+					</Not>
+					<Not>
+						<IfMountChangeOpen/>
+					</Not>
+				</And>
+				<Not>
+					<IfActionStatus ActionName="MountCollectionCheck" Status="Installed"/>
+				</Not>
+			</Or>
+		</And>
+		<And Name="Inventory_Turn">
+			<IfVelocity VelocitySource="OutputVelocity" CheckYVelocity="true" CheckZVelocity="false" YVelocity="0" YComparisonType="Equal"/>
+			<Not>
+				<IfMannequinTag TagName="Mount"/>
+			</Not>
+		</And>
+		<And Name="Inventory_Turn_Mount">
+			<Or>
+				<MoveSpeed Comparison="LessThanOrEqual" Value="0.5"/>
+			</Or>
+			<IfMannequinTag TagName="Mount"/>
+		</And>
+		<And Name="Inventory_DisableAnimMotion">
+			<Not>
+				<Or>
+					<IfAliasStatus GridAlias="Traversal" Status="Installed"/>
+					<IfAliasStatus GridAlias="Fall" Status="Installed"/>
+					<IfAliasStatus GridAlias="Jump" Status="Installed"/>
+				</Or>
+			</Not>
+		</And>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,55 @@
+<ActionList>
+	<Actions>
+		<Action Name="Idle_No_Task" FragmentName="Idle">
+			<ActivationCondition>
+				<True/>
+			</ActivationCondition>
+			<Activities>
+				<ChangeActionFragment ResetWhenReinstalled="true">
+					<Default UseDefaultFragment="true" FragmentName=""/>
+					<Conditional Name="Combat_Idle" UseDefaultFragment="false" FragmentName="Combat_Idle"/>
+				</ChangeActionFragment>
+			</Activities>
+		</Action>
+		<Action Name="Idle" FragmentName="Idle">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="OutOfCombatRegen" OnEnter="Set" OnExit="Unset" DelayTimer="0.2"/>
+				</SetMannequinTag>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Idle" FragmentName="Combat_Idle">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Combat_Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+		<Action Name="Wait" FragmentName="Wait">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Wait_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<Or Name="Combat_Idle">
+			<IfHasAttackTarget/>
+			<IfMannequinTag TagName="Alerted"/>
+		</Or>
+	</Conditions>
+</ActionList>
+

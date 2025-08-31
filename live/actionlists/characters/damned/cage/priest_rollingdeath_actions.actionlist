@@ -1,0 +1,36 @@
+<ActionList>
+	<Actions>
+		<Action Name="Idle" FragmentName="">
+			<ActivationCondition>
+				<True/>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="Nav" FragmentName="">
+			<ActivationCondition>
+				<True/>
+			</ActivationCondition>
+			<Activities>
+				<DisableCollision>
+					<Default disableActorToActorCollision="true" disableTerrainCollision="false"/>
+				</DisableCollision>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="true" AlignVelocity="false" Speed="0.00,12.00,0.00" Accel="0.00,12.00,0.00" Decel="30.00,30.00,30.00" AnalogInputOverride="None"/>
+				</CharacterRelativeMovement>
+			</Activities>
+		</Action>
+		<Action Name="Death" FragmentName="" ServerStarted="true">
+			<ActivationCondition>
+				<IfDead ServerOnly="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

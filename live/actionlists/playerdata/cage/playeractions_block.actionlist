@@ -1,0 +1,632 @@
+<ActionList>
+	<Actions>
+		<Action Name="Block_Continue_UpperBody" FragmentName="Block_UpperBody">
+			<ActivationCondition>
+				<And>
+					<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+					<Not>
+						<IfMannequinTag TagName="Instrument"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<IfMannequinTag TagName="Blocking"/>
+					<Not>
+						<IfMannequinMarker MarkerName="BlockActive"/>
+					</Not>
+					<Or>
+						<IfMannequinTag TagName="1H_Melee"/>
+						<IfMannequinTag TagName="MagicStaff"/>
+						<IfMannequinTag TagName="2H_Melee"/>
+						<IfMannequinTag TagName="Ice"/>
+					</Or>
+					<IfInput InputName="block_active_virtual"/>
+					<Not>
+						<IfInput InputName="Placing_Building"/>
+					</Not>
+					<Not>
+						<And>
+							<IfDead ServerOnly="false"/>
+							<IfDeathsDoor ServerOnly="false"/>
+						</And>
+					</Not>
+					<Not Comment="No Block with HinderedSpirit">
+						<IfHasStatusEffect StatusEffect="WarHammer_HinderedSpirit"/>
+					</Not>
+					<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan" RunFxScriptOnFail="OutOfStamina" RunFxScriptOnFailCooldownTime="1.0"/>
+					<Not>
+						<IfExternalCondition ConditionName="Exhausted"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<And>
+						<IfMannequinMarker MarkerName="BlockExit"/>
+						<Not>
+							<IfInput InputName="block_active_virtual"/>
+						</Not>
+					</And>
+					<IfMannequinMarker MarkerName="BlockDisabled"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetStaminaRegenDelay>
+					<Default OnEnter="NoEffect" OnExit="Set" RegenDelayTime="1.00"/>
+				</SetStaminaRegenDelay>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Reduce shield block stability if using weapon without meeting prerequisites">
+					<IfCondition>
+						<IfExternalCondition ConditionName="DoesNotMeetRequirements"/>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeStatMultiplier>
+							<Default StatType="BlockStability" ChangeAmount="-0.5"/>
+						</ChangeStatMultiplier>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Set Active Block">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="BlockActive"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<IfThenElse>
+								<IfCondition>
+									<IfMannequinTag TagName="Shield_OH"/>
+								</IfCondition>
+								<ThenActivity>
+									<ActivateBlock>
+										<Default OnEnter="ActivateOffHandWeapon" OnExit="Deactivate"/>
+									</ActivateBlock>
+								</ThenActivity>
+								<ElseActivity>
+									<ActivateBlock>
+										<Default OnEnter="ActivateMainHandWeapon" OnExit="Deactivate"/>
+									</ActivateBlock>
+								</ElseActivity>
+							</IfThenElse>
+							<ModifyStaminaRegen ResetWhenReinstalled="true">
+								<Default OnEnter="UseBlockRegenRate" OnExit="RestoreDefaultRegenRate"/>
+							</ModifyStaminaRegen>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Blocking" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+							<DisableInteractor>
+								<Default OnEnter="Disable" OnExit="Enable"/>
+							</DisableInteractor>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag>
+					<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Blocking" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<TrackTimeInAction>
+					<Default OnEnter="Enable" OnExit="ClearHitTracking"/>
+				</TrackTimeInAction>
+			</Activities>
+		</Action>
+		<Action Name="Block_UpperBody" FragmentName="Block_UpperBody_Raise">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinTag TagName="Instrument"/>
+					</Not>
+					<Or>
+						<Not>
+							<IfMannequinTag TagName="Aim"/>
+						</Not>
+						<IfMannequinTag TagName="Throwable"/>
+					</Or>
+					<Not>
+						<IfMannequinMarker MarkerName="BlockDisabled"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="HeavyAim"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<Or>
+						<IfMannequinTag TagName="1H_Melee"/>
+						<IfMannequinTag TagName="2H_Melee"/>
+						<IfMannequinTag TagName="MagicStaff"/>
+						<IfMannequinTag TagName="Ice"/>
+						<And>
+							<IfMannequinTag TagName="VoidGauntlet"/>
+							<IfMannequinTag TagName="TEMP_WeaponMaster"/>
+						</And>
+						<And>
+							<IfMannequinTag TagName="Unarmed"/>
+							<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+							<Not>
+								<Or>
+									<IfMannequinTagInItemSlot TagName="VoidGauntlet" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<IfMannequinTagInItemSlot TagName="2H_Ranged" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								</Or>
+							</Not>
+						</And>
+					</Or>
+					<Not>
+						<IfMannequinTag TagName="Blocking"/>
+					</Not>
+					<IfInput InputName="block_active_virtual"/>
+					<Not>
+						<And>
+							<IfDead ServerOnly="false"/>
+							<IfDeathsDoor ServerOnly="false"/>
+						</And>
+					</Not>
+					<IfHealthPercentage Comparison="GreaterThan" Percentage="0.00"/>
+					<Not>
+						<IfInput InputName="Placing_Building"/>
+					</Not>
+					<Not Comment="No Block with HinderedSpirit">
+						<IfHasStatusEffect StatusEffect="WarHammer_HinderedSpirit"/>
+					</Not>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<Not>
+						<And>
+							<IfMannequinTag TagName="Axe"/>
+							<IfAbilityActive AbilityName="Passive_Hatchet_ThrowingAxe_AimedThrow"/>
+						</And>
+					</Not>
+					<Not>
+						<IfExternalCondition ConditionName="Exhausted"/>
+					</Not>
+					<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan" RunFxScriptOnFail="OutOfStamina" RunFxScriptOnFailCooldownTime="1.0"/>
+					<Not>
+						<IfHasStatusEffect StatusEffectCategory="AzothStaff"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Rune_BeastMode_Active" Status="Installed"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinTag TagName="AutoUnsheathe"/>
+					<And>
+						<IfMannequinMarker MarkerName="BlockExit"/>
+						<Not>
+							<IfExternalCondition ConditionName="RaiseBlock"/>
+						</Not>
+					</And>
+					<IfMannequinMarker MarkerName="BlockDisabled"/>
+					<And>
+						<Not>
+							<IfHasStatusEffect StatusEffect="Block_ForceBlock_Timer"/>
+						</Not>
+						<Not>
+							<IfInput InputName="block_active_virtual"/>
+						</Not>
+						<Not>
+							<IfMannequinMarker MarkerName="BlockLower"/>
+						</Not>
+					</And>
+					<IfActionStatus ActionName="Sprint" Status="Installed"/>
+					<IfActionStatus ActionName="Sprint_Start" Status="Installed"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse>
+					<IfCondition>
+						<Not>
+							<Or>
+								<IfPlayerSetting PlayerSettingName="AttackFacing" PlayerSettingNameForGamepad="AttackFacing_Alternate"/>
+								<IfMannequinMarker MarkerName="ForceCameraFacing"/>
+								<IfCameraLockActive/>
+								<IfMannequinTagInItemSlot TagName="MagicStaff" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								<And>
+									<IfMannequinTagInItemSlot TagName="MagicGauntlet" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<Not>
+										<IfMannequinTag TagName="TEMP_WeaponMaster"/>
+									</Not>
+								</And>
+							</Or>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ResetCamera>
+							<Default ResetPitch="false" SmoothTime="0.06"/>
+						</ResetCamera>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearMotion/>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetStaminaRegenDelay>
+					<Default OnEnter="NoEffect" OnExit="Set" RegenDelayTime="1.00"/>
+				</SetStaminaRegenDelay>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe active weapon and offhand then set tags from sheathed">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe current off hand weapon from Mannequin Marker">
+								<IfCondition>
+									<And>
+										<IfExternalCondition ConditionName="Has_Valid_Current_Offhand"/>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<SheatheWeapon ResetWhenReinstalled="false">
+										<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+									</SheatheWeapon>
+								</ThenActivity>
+							</IfThenElse>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Set Main Hand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Set Off Hand Tags if valid">
+								<Default OnEnter="NoEffect" OnExit="NoEffect"/>
+								<Conditional Name="Has_Valid_Current_Offhand" TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Unset"/>
+							</SetMannequinTag>
+							<ChangeActionFragment ResetWhenReinstalled="false">
+								<Default UseDefaultFragment="true"/>
+							</ChangeActionFragment>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Reduce shield block stability if using weapon without meeting prerequisites">
+					<IfCondition>
+						<IfExternalCondition ConditionName="DoesNotMeetRequirements"/>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeStatMultiplier>
+							<Default StatType="BlockStability" ChangeAmount="-0.5"/>
+						</ChangeStatMultiplier>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Set Active Block">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="BlockActive"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<IfThenElse>
+								<IfCondition>
+									<IfMannequinTag TagName="Shield_OH"/>
+								</IfCondition>
+								<ThenActivity>
+									<ActivateBlock>
+										<Default OnEnter="ActivateOffHandWeapon" OnExit="Deactivate"/>
+									</ActivateBlock>
+								</ThenActivity>
+								<ElseActivity>
+									<ActivateBlock>
+										<Default OnEnter="ActivateMainHandWeapon" OnExit="Deactivate"/>
+									</ActivateBlock>
+								</ElseActivity>
+							</IfThenElse>
+							<DisableStaminaRegen ResetWhenReinstalled="true" IgnoreDataChangesAfterInstall="false">
+								<Default OnEnter="Disable" OnExit="Enable"/>
+							</DisableStaminaRegen>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Blocking" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Ready From Crouch Logic">
+					<IfCondition>
+						<IfMannequinTag TagName="Crouch"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="FromCrouch" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false" Comment="Unset FromCrouch">
+					<Default TagName="FromCrouch" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Blocking" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<ItemAudioTrigger ResetWhenReinstalled="false" RunOnRemoteClients="true" IgnoreDataChangesAfterInstall="false" Comment="Shield Defense">
+					<Default/>
+					<Conditional Name="Offhand_1H_Shield" EventName="Defense" ItemSlot="ACTIVE_OFF_HAND_WEAPON" StopTriggerName="do_nothing" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+					<Conditional Name="MainHand_Default" EventName="Defense" ItemSlot="ACTIVE_MAIN_HAND_WEAPON" StopTriggerName="do_nothing" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+				</ItemAudioTrigger>
+				<TrackTimeInAction>
+					<Default OnEnter="Enable" OnExit="ClearHitTracking"/>
+				</TrackTimeInAction>
+				<ModifyStatusEffects Comment="Check for Vanguard perks and apply a status effect to increase block movement speed">
+					<Default/>
+					<Conditional Name="BlockSpeedPerk1Check">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="BlockSpeedPerk1"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="BlockSpeedPerk1"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+					<Conditional Name="BlockSpeedPerk2Check">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="BlockSpeedPerk2"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="BlockSpeedPerk2"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+					<Conditional Name="BlockSpeedPerk3Check">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="BlockSpeedPerk3"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="BlockSpeedPerk3"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+					<Conditional Name="Perk_Weapon_BlockingMoveSpeedCheck">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Status_Perk_Weapon_BlockSpeed_Haste"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Status_Perk_Weapon_BlockSpeed_Haste"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Conditional Name="Condition_Passive_Sword_Swordmaster_HasteWhileBlock">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Status_Passive_Sword_Swordmaster_HasteWhileBlock"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Status_Passive_Sword_Swordmaster_HasteWhileBlock"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Conditional Name="Condition_Ultimate_Sword_Defender" OnlyRemoveOwnedStatusEffects="true" OnlyRemoveOneStack="true">
+						&gt;
+                        
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Status_Ultimate_Sword_Defender_Check"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Status_Ultimate_Sword_Defender_Check"/>
+							<EffectId EffectId="Status_Ultimate_Sword_Defender"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Block_ForceBlock_Timer"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Block_ForceBlock_Timer"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<ModifyStatusEffects>
+					<Conditional Name="Condition_Flail_DefensiveStrike_Upgrade1" OnlyRemoveOwnedStatusEffects="true" OnlyRemoveOneStack="true">
+						&gt;
+                            
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Status_Flail_DefensiveStrike_BlockTracker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Status_Flail_DefensiveStrike_BlockTracker"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+				</ModifyStatusEffects>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Remove Sword Defensive Formation if not on sword tag">
+					<IfCondition>
+						<Or>
+							<Not>
+								<IfMannequinTag Tagname="Sword"/>
+							</Not>
+							<Not>
+								<IfMannequinTag Tagname="Blocking"/>
+							</Not>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default OnlyRemoveOwnedStatusEffects="TRUE" OnlyRemoveOneStack="TRUE">
+								<EffectsToRemoveOnEnter>
+									<EffectId EffectId="Status_Ultimate_Sword_Defender_Check"/>
+								</EffectsToRemoveOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Status_Ultimate_Sword_Defender_Check"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="true">
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="Block_Spam_Reduction"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="Soft" TagName="Soft"/>
+		<IfMannequinTag Name="Normal" TagName="Normal"/>
+		<IfMannequinTag Name="Hard" TagName="Hard"/>
+		<IfMannequinMarker Name="ApplyVelocity" MarkerName="ApplyVelocity"/>
+		<IfMannequinMarker Name="AllowTurn" MarkerName="AllowTurn"/>
+		<And Name="LowerBlock">
+			<Or>
+				<IfInput InputName="attack_primary_virtual"/>
+				<IfInput InputName="attack_alternate_virtual"/>
+				<Not>
+					<IfInput InputName="block_active_virtual"/>
+				</Not>
+				<IfInput InputName="Placing_Building"/>
+			</Or>
+			<Not>
+				<IfHasStatusEffect StatusEffect="Block_ForceBlock_Timer"/>
+			</Not>
+		</And>
+		<And Name="RaiseBlock">
+			<IfMannequinMarker MarkerName="CanTransition_UpperBody"/>
+			<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="GreaterThan"/>
+			<Or>
+				<IfInput InputName="block_active_virtual"/>
+				<IfHasStatusEffect StatusEffect="Block_ForceBlock_Timer"/>
+			</Or>
+			<Not>
+				<IfInput InputName="Placing_Building"/>
+			</Not>
+		</And>
+		<IfFragmentPlaying Name="Navigating" UseHostActionFragment="false" FragmentName="Strafe"/>
+		<Not Name="MainHand_Default">
+			<IfMannequinTag TagName="Unarmed"/>
+		</Not>
+		<Or Name="DoesNotMeetRequirements">
+			<And>
+				<IfMannequinTag TagName="Shield_OH"/>
+				<Not>
+					<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_OFF_HAND_WEAPON"/>
+				</Not>
+			</And>
+			<And>
+				<Not>
+					<IfMannequinTag TagName="Shield_OH"/>
+				</Not>
+				<Not>
+					<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Not>
+			</And>
+		</Or>
+		<IfHasStatusEffect Name="BlockSpeedPerk1Check" StatusEffect="BlockSpeedPerk1Condition"/>
+		<IfHasStatusEffect Name="BlockSpeedPerk2Check" StatusEffect="BlockSpeedPerk2Condition"/>
+		<IfHasStatusEffect Name="BlockSpeedPerk3Check" StatusEffect="BlockSpeedPerk3Condition"/>
+		<IfHasStatusEffect Name="Perk_Weapon_BlockingMoveSpeedCheck" StatusEffect="Status_Perk_Weapon_BlockSpeed_Condition"/>
+		<And Name="Condition_Passive_Sword_Swordmaster_HasteWhileBlock">
+			<IfAbilityActive AbilityName="Passive_Sword_Swordmaster_HasteWhileBlock"/>
+		</And>
+		<And Name="Condition_Ultimate_Sword_Defender">
+			<IfAbilityActive AbilityName="Ultimate_Sword_Defender"/>
+			<Not>
+				<IfHasStatusEffect StatusEffect="Status_Ultimate_Sword_Defender_Timer"/>
+			</Not>
+		</And>
+		<And Name="Condition_Flail_DefensiveStrike_Upgrade1">
+			<IfAbilityActive AbilityName="Upgrade_Flail_DefensiveStrike_Upgrade1"/>
+		</And>
+	</Conditions>
+</ActionList>
+

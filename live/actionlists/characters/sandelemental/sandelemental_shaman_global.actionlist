@@ -1,0 +1,23 @@
+<ActionList>
+	<Actions>
+		<Action Name="CrystalPose" FragmentName="CrystalPose">
+			<ActivationCondition>
+				<And>
+					<IfMannequinMarker MarkerName="EnableCrystalPose"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<Not>
+						<IfMannequinMarker MarkerName="EnableCrystalPose"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Reaction"/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities/>
+		</Action>
+	</Actions>
+</ActionList>
+

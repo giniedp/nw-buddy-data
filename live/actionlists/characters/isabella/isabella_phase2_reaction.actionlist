@@ -1,0 +1,185 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction" FragmentName="r_R2_F" ServerStarted="true">
+			<ActivationCondition>
+				<Or>
+					<And>
+						<IfHasStatusEffect StatusEffect="AI_Isabella_Phase2_StaggerTrigger" OnlyCheckOwnedStatusEffects="false"/>
+						<Not>
+							<IfMannequinMarker MarkerName="Ignore_Stagger"/>
+						</Not>
+					</And>
+					<And>
+						<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="true" RequireHitVolumeName="" RequireRanged="false"/>
+						<Or>
+							<And>
+								<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.7"/>
+								<IfMannequinTag TagName="Phase1"/>
+							</And>
+							<And>
+								<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.4"/>
+								<IfMannequinTag TagName="Phase2"/>
+							</And>
+							<And>
+								<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.0"/>
+								<IfMannequinTag TagName="Phase3"/>
+							</And>
+						</Or>
+						<Not>
+							<IfMannequinTag TagName="Reaction"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="Reset"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="Phase4"/>
+						</Not>
+					</And>
+				</Or>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.3"/>
+				</SetReactionFragment>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyDead" TagName="Phase4" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyPhase2" TagName="Phase3" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyPhase1" TagName="Phase2" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Activate Stage 2 based Idle VFX">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="Activate_Stage_IdleVFX"/>
+							<IfMannequinTag TagName="Phase2"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Stage2_VFX_Idle_Start"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Activate Stage 3 based Idle VFX">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="Activate_Stage_IdleVFX"/>
+							<IfMannequinTag TagName="Phase3"/>
+							<Not>
+								<IfHasStatusEffect StatusEffect="AI_Isabella_Phase2_StaggerTrigger" OnlyCheckOwnedStatusEffects="false"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Stage3_VFX_Idle_Start"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<ModifyStatusEffects ResetWhenReinstalled="true">
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Isabella_Phase2_StaggerTrigger"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Isabella_Phase2_StaggerTrigger"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DespawnPylons">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Phase4"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<AIAssignOrder>
+							<Default Order="Despawn"/>
+						</AIAssignOrder>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Additive" FragmentName="r_R0_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="true" IgnoreDeflectDamage="false" RequireHitVolumeName=""/>
+					<Not>
+						<Or>
+							<And>
+								<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.8"/>
+								<IfMannequinTag TagName="Phase1"/>
+							</And>
+							<And>
+								<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.6"/>
+								<IfMannequinTag TagName="Phase2"/>
+							</And>
+						</Or>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/ReactionTables/BaseAI_AdditiveReactionTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="Death" FragmentName="r_Death" ServerStarted="true" Predictive="true">
+			<ActivationCondition>
+				<IfDead ServerOnly="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BASEAI/CAGE/ReactionTables/BaseAI_DeathTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.0"/>
+				</SetReactionFragment>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Death" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfCanBreakReaction Name="ReactionBreakout" StunToBreakout="2"/>
+		<IfMannequinTag Name="CurrentlyPhase1" TagName="Phase1"/>
+		<IfMannequinTag Name="CurrentlyPhase2" TagName="Phase2"/>
+		<IfHealthPercentage Name="CurrentlyDead" Comparison="LessThanOrEqual" Percentage="0.0"/>
+	</Conditions>
+</ActionList>
+

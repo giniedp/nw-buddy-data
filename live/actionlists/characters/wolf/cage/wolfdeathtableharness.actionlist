@@ -1,0 +1,50 @@
+<ActionList>
+	<Reactions>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="3" Reaction="r_Death_R4_F" AlignToDirection="true" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_front"/>
+				<IfExternalCondition ConditionName="Non_R4Death_Character"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="3" Reaction="r_Death_R4_B" AlignToDirection="true" AlignOffsetAngle="180" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_back"/>
+				<IfExternalCondition ConditionName="Non_R4Death_Character"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="4" Reaction="r_Death_R4_F" AlignToDirection="true" AlignOffsetAngle="0" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_front"/>
+				<IfExternalCondition ConditionName="Non_R4Death_Character"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="4" Reaction="r_Death_R4_B" AlignToDirection="true" AlignOffsetAngle="180" Resistance="n/a">
+			<And>
+				<IfExternalCondition ConditionName="damaged_back"/>
+				<IfExternalCondition ConditionName="Non_R4Death_Character"/>
+			</And>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_Death" AlignToDirection="false" Resistance="n/a"/>
+	</Reactions>
+	<Conditions>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="90.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back">
+			<IfDamagedByAngle Max="180.000000" Min="90.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-180.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<Not Name="Non_R4Death_Character">
+			<Or>
+				<IfHasStatusEffect StatusEffect="AI_Stun_Immunity" OnlyCheckOwnedStatusEffects="false"/>
+				<IfHasStatusEffect StatusEffect="AI_SlowRoot_Immunity" OnlyCheckOwnedStatusEffects="false"/>
+				<IfMannequinTag TagName="Daichi"/>
+				<IfMannequinTag TagName="Imhotep"/>
+				<IfMannequinTag TagName="Motherwell"/>
+			</Or>
+		</Not>
+		<True Name="AlwaysTrue"/>
+	</Conditions>
+</ActionList>
+

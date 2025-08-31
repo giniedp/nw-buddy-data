@@ -1,0 +1,2658 @@
+<ActionList>
+	<Actions>
+		<Action Name="Firearm_ReadyWeapon" FragmentName="Firearm_ReadyWeapon_UpperBody">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfInput InputName="aim_draw_active_virtual"/>
+						<And>
+							<IfMannequinTag TagName="Blunderbuss"/>
+							<IfHasStatusEffect StatusEffect="Blunderbuss_MortarShotActiveTimer"/>
+							<IfActionStatus ActionName="Aimpose" Status="Installed"/>
+						</And>
+					</Or>
+					<Not>
+						<Or>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+							</And>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+							</And>
+							<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+						</Or>
+					</Not>
+					<Not>
+						<IsStunned/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Aim"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="HeavyAim"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="SmokeAim"/>
+					</Not>
+					<Or>
+						<IfMannequinTag TagName="1H_Ranged"/>
+						<IfMannequinTag TagName="2H_Ranged"/>
+						<And>
+							<IfMannequinTag TagName="Unarmed"/>
+							<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+							<Not>
+								<Or>
+									<IfMannequinTagInItemSlot TagName="1H_Melee" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<IfMannequinTagInItemSlot TagName="2H_Melee" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<IfMannequinTagInItemSlot TagName="MagicGauntlet" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<IfMannequinTagInItemSlot TagName="MagicStaff" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								</Or>
+							</Not>
+						</And>
+					</Or>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Not>
+						<IfInput InputName="Placing_Building"/>
+					</Not>
+					<Not>
+						<And>
+							<IfMannequinTag TagName="ReloadRequired"/>
+							<IfMannequinTag TagName="Rifle"/>
+						</And>
+					</Not>
+					<Not>
+						<And>
+							<IfMannequinTag TagName="Blunderbuss"/>
+							<IfAmmoLoaded ComparisonAmmoCount="0" ComparisonType="Equal"/>
+						</And>
+					</Not>
+					<Or>
+						<Or>
+							<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+							<And>
+								<Not>
+									<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+								</Not>
+								<Or>
+									<And>
+										<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+										<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="arrow-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+									</And>
+									<And>
+										<Or>
+											<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+											<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+										</Or>
+										<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="cartridge-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+									</And>
+								</Or>
+							</And>
+						</Or>
+						<IfMannequinTag TagName="Blunderbuss"/>
+					</Or>
+					<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+					<Not>
+						<IfCameraFreeLookActive/>
+					</Not>
+					<Not>
+						<IfExternalCondition ConditionName="Prevent_Attack"/>
+					</Not>
+					<Not Comment="Water check">
+						<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IsStunned/>
+					<IfMannequinMarker MarkerName="Exit_FirearmAimShoot"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<Not>
+						<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="true"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe active weapon and set tags from sheathed">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Set Main Hand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Unset"/>
+							</SetMannequinTag>
+							<ChangeActionFragment ResetWhenReinstalled="false">
+								<Default UseDefaultFragment="true"/>
+							</ChangeActionFragment>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Aim" OnEnter="Set" OnExit="Unset" DelayTimer="0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AimDownSights" OnEnter="Set" OnExit="Unset" DelayTimer="0"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Set ReloadRequired">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="ShotFired"/>
+							<IfMannequinTag TagName="Rifle"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="ReloadRequired" OnEnter="Set"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Camera Relative Facing Logic">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="TurnInPlaceDisabled"/>
+							<Not>
+								<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Sprint"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default TurnRate="0.40" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Force Stand">
+					<IfCondition>
+						<Or>
+							<IfMannequinMarker MarkerName="ForceStand"/>
+							<IfMannequinTag TagName="Blunderbuss"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShot">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShot"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagA" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShotBurn">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShotBurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagC" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Firearm_AimShoot_SubState" FragmentName="Firearm_Aim_UpperBody">
+			<ActivationCondition>
+				<Not Comment="Only triggered through TransitionInstant">
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IsStunned/>
+					<And>
+						<IfMannequinMarker MarkerName="Exit_FirearmAimShoot"/>
+						<Not>
+							<IfMannequinTag TagName="Idle"/>
+						</Not>
+					</And>
+					<Or>
+						<And>
+							<IfMannequinMarker MarkerName="Exit_FirearmAimShoot"/>
+							<IfMannequinTag TagName="Idle"/>
+							<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+						</And>
+						<And>
+							<IfMannequinTag TagName="Blunderbuss"/>
+							<IfMannequinMarker MarkerName="Exit_FirearmAimShoot"/>
+							<IfMannequinTag TagName="Idle"/>
+							<Not>
+								<IfHasStatusEffect StatusEffect="Blunderbuss_MortarShotActiveTimer"/>
+							</Not>
+						</And>
+					</Or>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<Not>
+						<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="true"/>
+					</Not>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					<And>
+						<Not>
+							<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+						</Not>
+						<Or>
+							<And>
+								<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								<Not>
+									<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="arrow-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+								</Not>
+							</And>
+							<And>
+								<Or>
+									<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								</Or>
+								<Not>
+									<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="cartridge-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+								</Not>
+							</And>
+						</Or>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<TrackTimeInAction>
+					<Default/>
+				</TrackTimeInAction>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Reset the Shoot input when firing while ADS">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="ShotFired"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ClearInput Comment="Reset the Shoot input when firing while ADS">
+								<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+							</ClearInput>
+							<ClearInput Comment="Reset the Shoot input when firing while ADS">
+								<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+							</ClearInput>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Aim for 3 seconds FX">
+					<IfCondition>
+						<IfAbilityActive AbilityName="Passive_Musket_Sharpshooter_DMGIfAim2Sec"/>
+					</IfCondition>
+					<ThenActivity>
+						<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="false">
+							<Default ScriptToRun="Musket_AimCharge" StopScriptOnExit="true" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+						</RunFxScript>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Enable Aim except when lowering weapon">
+					<IfCondition>
+						<Not>
+							<IfMannequinMarker MarkerName="CanTransition_UpperBody"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Aim" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Set ReloadRequired">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Rifle"/>
+							<IfMannequinMarker MarkerName="ShotFired"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="ReloadRequired" OnEnter="Set" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Blunderbuss"/>
+							<Or>
+								<IfMannequinTag TagName="Crouch"/>
+								<IfMannequinTag TagName="Prone"/>
+							</Or>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Enable AimDownSights except when lowering weapon">
+					<IfCondition>
+						<Not>
+							<Or>
+								<IfMannequinMarker MarkerName="CanTransition_UpperBody"/>
+								<IfMannequinMarker MarkerName="CanBuffer_UpperBody"/>
+							</Or>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AimDownSights" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AimDownSights" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Aim" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Activate Stopping Power CoolDown if fired">
+					<IfCondition>
+						<IfFragmentPlaying FragmentName="Firearm_Shoot_Primary_Upperbody_StoppingPower" UseHostActionFragment="false"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetCooldownTimer>
+							<Default AbilityID="Ability_Musket_StoppingPower" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</SetCooldownTimer>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Muzzle Flash change for Power Shot">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="DisableChargedShot"/>
+							<IfMannequinTag TagName="GenericTagA"/>
+							<Not>
+								<IfAbilityActive AbilityName="CleanPowder"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<WeaponEffects>
+								<Default ItemSlotAlias="ACTIVE_MAIN_HAND_WEAPON" EffectGroupName="shot_charged" OnEnter="Enable" OnExit="Disable"/>
+							</WeaponEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Muzzle Flash change for Powder Burn">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="DisableChargedShotBurn"/>
+							<IfMannequinTag TagName="GenericTagC"/>
+							<Not>
+								<IfAbilityActive AbilityName="CleanPowder"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<WeaponEffects>
+								<Default ItemSlotAlias="ACTIVE_MAIN_HAND_WEAPON" EffectGroupName="shot_charged" OnEnter="Enable" OnExit="Disable"/>
+							</WeaponEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Muzzle Flash change for Stopping Power">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="DisableChargedShotKnockback"/>
+							<Not>
+								<IfAbilityActive AbilityName="CleanPowder"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<WeaponEffects>
+								<Default ItemSlotAlias="ACTIVE_MAIN_HAND_WEAPON" EffectGroupName="shot_charged" OnEnter="Enable" OnExit="Disable"/>
+							</WeaponEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Muzzle Flash change for Clean Powder">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="DisableChargedShot"/>
+							<IfMannequinTag TagName="GenericTagA"/>
+							<IfAbilityActive AbilityName="CleanPowder"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<WeaponEffects>
+								<Default ItemSlotAlias="ACTIVE_MAIN_HAND_WEAPON" EffectGroupName="shot_charged_clean" OnEnter="Enable" OnExit="Disable"/>
+							</WeaponEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShot">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShot"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagA" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShotKnockback">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShotKnockback"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagB" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShotBurn">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShotBurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagC" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Audio change for Clean Powder">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="GenericTagA"/>
+							<IfAbilityActive AbilityName="CleanPowder"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+								<Default SwitchName="Ammunition" StateName="Silenced" SetOnStop="false"/>
+							</SetAudioSwitchState>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false">
+								<Default AudioTriggerName="Set_Ammunition_Silenced" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<Group>
+							<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+								<Default SwitchName="Ammunition" StateName="Default" SetOnStop="false"/>
+							</SetAudioSwitchState>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false">
+								<Default AudioTriggerName="Set_Ammunition_Default" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Reset Blunderbuss Overload on fire">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Blunderbuss"/>
+							<Or>
+								<IfMannequinMarker MarkerName="ShotFired"/>
+								<IfMannequinMarker MarkerName="MortarChargeFired"/>
+							</Or>
+							<Or>
+								<IfHasStatusEffect StatusEffect="Blunderbuss_OverloadTimerHelper"/>
+								<IfHasStatusEffect StatusEffect="Blunderbuss_OverloadTimer"/>
+							</Or>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToRemoveOnEnter>
+										<EffectId EffectId="Blunderbuss_OverloadTimerHelper"/>
+										<EffectId EffectId="Blunderbuss_OverloadTimer"/>
+									</EffectsToRemoveOnEnter>
+								</Default>
+							</ModifyStatusEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply relevant status effects on Mortar Charge fire">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Blunderbuss"/>
+							<IfMannequinMarker MarkerName="MortarChargeFired"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<PerformActiveAbility>
+								<Default AbilityName="Ability_Blunderbuss_MortarShot"/>
+							</PerformActiveAbility>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="Blunderbuss_MortarShotFired"/>
+									</EffectsToApplyOnEnter>
+								</Default>
+								<Conditional Name="Blunderbuss_Freedom">
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="Blunderbuss_Freedom"/>
+										<EffectId EffectId="Blunderbuss_MortarShotFired"/>
+									</EffectsToApplyOnEnter>
+								</Conditional>
+							</ModifyStatusEffects>
+							<ModifyStatusEffects>
+								<Default/>
+								<Conditional Name="Blunderbuss_OnARoll">
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="Blunderbuss_AbilityRamp"/>
+									</EffectsToApplyOnEnter>
+								</Conditional>
+							</ModifyStatusEffects>
+							<IfThenElse ResetWhenReinstalled="false" Comment="This Mortar Shot will consume the Chaos Ult Charge">
+								<IfCondition>
+									<IfHasStatusEffect StatusEffect="Blunderbuss_ChargeCooldown"/>
+								</IfCondition>
+								<ThenActivity>
+									<ModifyStatusEffects>
+										<Default>
+											<EffectsToRemoveOnEnter>
+												<EffectId EffectId="Blunderbuss_ChargeCooldown"/>
+											</EffectsToRemoveOnEnter>
+											<EffectsToApplyOnEnter>
+												<EffectId EffectId="Blunderbuss_ChargeCooldownOnCooldown"/>
+												<EffectId EffectId="Blunderbuss_ChargedMortarShot"/>
+											</EffectsToApplyOnEnter>
+										</Default>
+									</ModifyStatusEffects>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Firearm_Shoot_FullBody" FragmentName="Firearm_Shoot_Primary">
+			<ActivationCondition>
+				<Not Comment="Only triggered through TransitionInstant">
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Aim" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AimDownSights" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Shoot" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Set ReloadRequired">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="ShotFired"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="ReloadRequired" OnEnter="Set" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="AlignToCamera">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="AlignToCamera"/>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default TurnRate="0.50" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Muzzle Flash change for Power Shot">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="DisableChargedShot"/>
+							<IfMannequinTag TagName="GenericTagA"/>
+							<Not>
+								<IfAbilityActive AbilityName="CleanPowder"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<WeaponEffects>
+								<Default ItemSlotAlias="ACTIVE_MAIN_HAND_WEAPON" EffectGroupName="shot_charged" OnEnter="Enable" OnExit="Disable"/>
+							</WeaponEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Muzzle Flash change for Clean Powder">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="DisableChargedShot"/>
+							<IfMannequinTag TagName="GenericTagA"/>
+							<IfAbilityActive AbilityName="CleanPowder"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<WeaponEffects>
+								<Default ItemSlotAlias="ACTIVE_MAIN_HAND_WEAPON" EffectGroupName="shot_charged_clean" OnEnter="Enable" OnExit="Disable"/>
+							</WeaponEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShot">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShot"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagA" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShotKnockback">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShotKnockback"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagB" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShotBurn">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShotBurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagC" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Audio change for Clean Powder">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="GenericTagA"/>
+							<IfAbilityActive AbilityName="CleanPowder"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+								<Default SwitchName="Ammunition" StateName="Silenced" SetOnStop="false"/>
+							</SetAudioSwitchState>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false">
+								<Default AudioTriggerName="Set_Ammunition_Silenced" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<Group>
+							<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+								<Default SwitchName="Ammunition" StateName="Default" SetOnStop="false"/>
+							</SetAudioSwitchState>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false">
+								<Default AudioTriggerName="Set_Ammunition_Default" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Gun_Shot"/>
+				</AIAudioTriggerActivity>
+			</Activities>
+		</Action>
+		<Action Name="Firearm_Shoot_DryFire_FullBody" FragmentName="Firearm_Shoot_DryFire">
+			<ActivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true"/>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Shoot" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Enable HipAim">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableAiming"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="HipAim" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="CanTransition"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Firearm_Gunbutt" FragmentName="Firearm_Gunbutt" Predictive="true">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<And>
+							<IfInput InputName="attack_primary"/>
+							<Not>
+								<IfInput InputName="aim_draw_active_virtual"/>
+							</Not>
+						</And>
+						<And>
+							<IfInput InputName="aim_draw_active_virtual"/>
+							<Not>
+								<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Not>
+						</And>
+					</Or>
+					<Not>
+						<Or>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+							</And>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+							</And>
+							<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+						</Or>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Aim"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AimDownSights"/>
+					</Not>
+					<Not>
+						<IfInput InputName="Placing_Building"/>
+					</Not>
+					<Or>
+						<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Or>
+					<And>
+						<Not>
+							<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+						</Not>
+						<Or>
+							<And>
+								<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								<Not>
+									<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="arrow-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+								</Not>
+							</And>
+							<And>
+								<Or>
+									<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								</Or>
+								<Not>
+									<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="cartridge-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+								</Not>
+							</And>
+						</Or>
+					</And>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Not>
+						<IfExternalCondition ConditionName="Prevent_Attack"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<And>
+						<Or>
+							<Not>
+								<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Not>
+							<Not>
+								<And>
+									<Not>
+										<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+									</Not>
+									<Or>
+										<And>
+											<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+											<Not>
+												<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="arrow-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+											</Not>
+										</And>
+										<And>
+											<Or>
+												<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+												<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+											</Or>
+											<Not>
+												<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="cartridge-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+											</Not>
+										</And>
+									</Or>
+								</And>
+							</Not>
+						</Or>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe active weapon and set tags from prone">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Set Main Hand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Unset"/>
+							</SetMannequinTag>
+							<ChangeActionFragment ResetWhenReinstalled="false">
+								<Default UseDefaultFragment="true"/>
+							</ChangeActionFragment>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfMannequinTag TagName="Prone"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Character Facing Logic">
+					<IfCondition>
+						<Or>
+							<IfCameraLockActive/>
+							<IfPlayerSetting PlayerSettingName="AttackFacing" PlayerSettingNameForGamepad="AttackFacing_Alternate"/>
+							<IfMannequinMarker MarkerName="ForceCameraFacing"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default/>
+							<Conditional Name="ApplyRotationDuringCameraLock" TurnRate="0.40" UseExponentialTurnRate="true"/>
+							<Conditional Name="ApplyRotationDuringCameraLockFast" TurnRate="50000.00"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+					<ElseActivity>
+						<InputRelativeFacing>
+							<Default ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright"/>
+							<Conditional Name="ApplyRotation" TurnRate="960.00" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+							<Conditional Name="ApplyRotationFast" TurnRate="50000.00" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" AnalogInputOverride="LeftAnalog"/>
+						</InputRelativeFacing>
+					</ElseActivity>
+				</IfThenElse>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="true" InheritVelocityMaxSpeed="6"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<Or>
+							<IfMannequinTag TagName="Crouch"/>
+							<IfMannequinTag TagName="Prone"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse>
+					<IfCondition>
+						<Not>
+							<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="true"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag>
+							<Default TagName="Rifle" OnEnter="NoEffect" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Firearm_Reload_SubState" FragmentName="Firearm_Reload_Start_UpperBody">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<And>
+							<IfInput InputName="reload"/>
+							<Not>
+								<IfMannequinTag TagName="AttackAction"/>
+							</Not>
+						</And>
+						<IfMannequinMarker MarkerName="ForceReload"/>
+						<And>
+							<Or>
+								<And>
+									<Not>
+										<IfMannequinTag TagName="Aim"/>
+									</Not>
+									<Not>
+										<IfMannequinTag TagName="HeavyAim"/>
+									</Not>
+									<Not>
+										<IfMannequinTag TagName="HipAim"/>
+									</Not>
+								</And>
+								<And>
+									<IfMannequinTag TagName="Blunderbuss"/>
+									<Or>
+										<IfMannequinMarker MarkerName="ForceReload"/>
+										<And>
+											<Not>
+												<IfMannequinTag TagName="AttackAction"/>
+											</Not>
+											<Not>
+												<IfFragmentPlaying FragmentName="Firearm_Shoot_Primary_UpperBody" UseHostActionFragment="false"/>
+											</Not>
+										</And>
+									</Or>
+								</And>
+							</Or>
+							<Not>
+								<IfFragmentPlaying FragmentName="Ability_Musket_Trap_Toss" UseHostActionFragment="false"/>
+							</Not>
+							<Not>
+								<IfFragmentPlaying FragmentName="Ability_Musket_StickyBomb_Ready" UseHostActionFragment="false"/>
+							</Not>
+							<Not>
+								<IfFragmentPlaying FragmentName="Ability_Musket_StickyBomb_Aim" UseHostActionFragment="false"/>
+							</Not>
+							<Not>
+								<IfFragmentPlaying FragmentName="Ability_Blunderbuss_SplittingGrenade" UseHostActionFragment="false"/>
+							</Not>
+						</And>
+					</Or>
+					<Not>
+						<Or>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+							</And>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+							</And>
+							<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+						</Or>
+					</Not>
+					<Or>
+						<IfMannequinTag TagName="1H_Ranged"/>
+						<IfMannequinTag TagName="2H_Ranged"/>
+					</Or>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<Not>
+						<IsStunned/>
+					</Not>
+					<Or>
+						<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+						<And>
+							<Not>
+								<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+							</Not>
+							<Or>
+								<And>
+									<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="arrow-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+								</And>
+								<And>
+									<Or>
+										<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+										<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									</Or>
+									<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="cartridge-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+								</And>
+							</Or>
+						</And>
+					</Or>
+					<Or>
+						<And>
+							<IfMannequinTag TagName="ReloadRequired"/>
+							<IfMannequinTag TagName="Rifle"/>
+						</And>
+						<And>
+							<IfMannequinTag TagName="Blunderbuss"/>
+							<IfAmmoLoaded ComparisonAmmoCount="0" ComparisonType="Equal"/>
+							<Not>
+								<IsPreviewingSkin/>
+							</Not>
+						</And>
+					</Or>
+					<Not>
+						<IfHasStatusEffect StatusEffect="Musket_Pass_HeadshotReloadTrigger"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IsStunned/>
+					<IfMannequinTag TagName="Prone"/>
+					<IfMannequinMarker MarkerName="ReloadFinished"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<Not>
+						<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+					</Not>
+					<IfTeleportPending/>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="2H_Ranged"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="Blunderbuss"/>
+						</Not>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="Sprint_Delay_Timer"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Blunderbuss run and gun">
+					<IfCondition>
+						<And>
+							<IfAbilityActive AbilityName="Blunderbuss_RunAndGun"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Blunderbuss_Run_And_Gun"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Blunderbuss ramp">
+					<IfCondition>
+						<And>
+							<IfAbilityActive AbilityName="Blunderbuss_Ramp"/>
+							<IfMannequinMarker MarkerName="WeaponReloaded"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Blunderbuss_Ramp"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Start light attack timer - OL">
+					<IfCondition>
+						<And>
+							<IfAbilityActive AbilityName="Blunderbuss_OverLoad"/>
+							<IfMannequinMarker MarkerName="WeaponReloaded"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Blunderbuss_OverloadTimer"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToApplyOnExit>
+									<EffectId EffectId="Blunderbuss_OverloadTimerHelper"/>
+								</EffectsToApplyOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Reload Start Fragment Completed">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="Reload_Start_Complete"/>
+							<IfMannequinTag TagName="Rifle"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Musket_ReloadStartComplete"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToApplyOnExit/>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Clear ReloadRequired - musket">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="WeaponReloaded"/>
+							<IfMannequinTag TagName="Rifle"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ClearMannequinTagGroup ResetWhenReinstalled="false">
+							<Default TagGroupName="WeaponStatus" OnEnter="Clear" OnExit="NoEffect"/>
+						</ClearMannequinTagGroup>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Clear ReloadRequired - Blunderbuss">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Blunderbuss"/>
+							<IfMannequinMarker MarkerName="WeaponReloaded"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetLoadedAmmo>
+								<Default FullReload="true" OnEnter="Set" OnExit="NoEffect"/>
+							</SetLoadedAmmo>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Enable Aim if RMB is presed or held">
+					<IfCondition>
+						<And>
+							<IfInput InputName="aim_draw_active_virtual"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Aim" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AimDownSights" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableLookAimIK" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Set Reload tag until breakout">
+					<IfCondition>
+						<Not>
+							<IfMannequinMarker MarkerName="CanTransition_UpperBody"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Reload" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reload" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<Reload>
+					<Default ReloadTime="1.0"/>
+					<Conditional Name="1H_Ranged" ReloadTime="0.66"/>
+				</Reload>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShot">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShot"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagA" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShotBurn">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShotBurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagC" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Firearm_Shoot_HipFire_FullBody" FragmentName="Firearm_Shoot_HipFire">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<And>
+							<Or Comment="Backtick Check">
+								<IfInput InputName="attack_primary"/>
+								<And>
+									<IfInput InputName="attack_primary" BackTicks="20"/>
+									<IfActionStatus ActionName="UseBacktickInputs" Status="Installed"/>
+								</And>
+							</Or>
+							<Not>
+								<IfInput InputName="aim_draw_active_virtual"/>
+							</Not>
+						</And>
+						<And>
+							<IfInput InputName="aim_draw_active_virtual"/>
+							<Not>
+								<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Not>
+						</And>
+					</Or>
+					<Not>
+						<Or>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_1" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_1" BackTicks="20"/>
+							</And>
+							<And>
+								<Not>
+									<IfItemInSlot SlotToCheckAlias="MAIN_HAND_OPTION_2" RequireSlotValid="true" RequireSlotActive="true"/>
+								</Not>
+								<IfInput InputName="Use_MainHandSlot_2" BackTicks="20"/>
+							</And>
+							<IfInput InputName="quickslot-weaponSwap" BackTicks="20"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Unsheathe_MainHand_2_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_1_UB" Status="Pending"/>
+							<IfActionStatus ActionName="Switch_MainHand_2_UB" Status="Pending"/>
+						</Or>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Aim"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AimDownSights"/>
+					</Not>
+					<Not>
+						<IfInput InputName="Placing_Building"/>
+					</Not>
+					<Not>
+						<IfExternalCondition ConditionName="Prevent_Attack"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="AttackAction"/>
+					</Not>
+					<Or>
+						<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+						<And>
+							<Not>
+								<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+							</Not>
+							<Or>
+								<And>
+									<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="arrow-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+								</And>
+								<And>
+									<Or>
+										<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+										<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									</Or>
+									<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="cartridge-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+								</And>
+							</Or>
+						</And>
+					</Or>
+					<Or>
+						<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Or>
+					<Or>
+						<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						<And>
+							<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							<IfAmmoLoaded ComparisonAmmoCount="1" ComparisonType="GreaterThanOrEqual"/>
+						</And>
+					</Or>
+					<Not>
+						<And>
+							<IfMannequinTag TagName="ReloadRequired"/>
+							<IfMannequinTag TagName="Rifle"/>
+						</And>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="ShotFired"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying FragmentName="Firearm_Shoot_HipFire" UseHostActionFragment="false"/>
+					</Not>
+					<Not Comment="Water check">
+						<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+					</Not>
+					<Not Comment="Water check">
+						<And>
+							<IfWaterDepth Comparison="Equal" WaterDepth="Shallow"/>
+							<IfMannequinTag TagName="Crouch"/>
+						</And>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability1" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability1" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability2" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability2" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="ability3" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="ability3" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="NoEffect"/>
+					<Conditional Name="Unsheathe_Input_Pressed" InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply sprint delay only on ranged attacks">
+					<IfCondition>
+						<Not>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Sprint_Delay_Timer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Apply melee stamina regen attribute threshold bonus">
+					<IfCondition>
+						<And>
+							<IfExternalCondition ConditionName="Allow_Stamina_Regen_Bonus"/>
+							<IfExternalCondition ConditionName="IsMelee"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Attack_Regen_Bonus"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe active weapon and set tags from sheathed">
+					<IfCondition>
+						<IfExternalCondition ConditionName="Trigger_From_Sheathed"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Set Main Hand Tags">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AutoUnsheathe" OnEnter="NoEffect" OnExit="Unset"/>
+							</SetMannequinTag>
+							<ChangeActionFragment ResetWhenReinstalled="false">
+								<Default UseDefaultFragment="true"/>
+							</ChangeActionFragment>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Dryfire rifle">
+					<IfCondition>
+						<IfMannequinTag TagName="Rifle"/>
+					</IfCondition>
+					<ThenActivity>
+						<ChangeActionFragment ResetWhenReinstalled="true">
+							<Default/>
+							<Conditional Name="ReloadRequired" UseDefaultFragment="false" FragmentName="Firearm_Shoot_DryFire"/>
+						</ChangeActionFragment>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Set ReloadRequired">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Rifle"/>
+							<IfMannequinMarker MarkerName="ShotFired"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="ReloadRequired" OnEnter="Set" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="If Overloaded dont apply ammo used">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Blunderbuss"/>
+							<IfMannequinMarker MarkerName="ShotFired"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToRemoveOnEnter>
+									<EffectId EffectId="Blunderbuss_OverloadTimerHelper"/>
+								</EffectsToRemoveOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Enable HipAim">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableAiming"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="HipAim" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="AttackAction" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Disable AttackAction on CanTransition">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="CanTransition"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="AttackAction" OnEnter="Unset" OnExit="NoEffect"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="AlignToCamera">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="AlignToCamera"/>
+					</IfCondition>
+					<ThenActivity>
+						<CameraRelativeFacing>
+							<Default TurnRate="1" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+						</CameraRelativeFacing>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Set Idle Tag for reloading">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="SetIdle"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Idle" OnEnter="Set" OnExit="Unset"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse Comment="Stand if crouching or prone" ResetWhenReinstalled="false">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Blunderbuss"/>
+							<Or>
+								<IfMannequinTag TagName="Crouch"/>
+								<IfMannequinTag TagName="Prone"/>
+							</Or>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Remove 9">
+					<IfCondition>
+						<And>
+							<IfHasStatusEffect StatusEffect="Blunderbuss_Nine"/>
+							<Not>
+								<IfHasStatusEffect StatusEffect="Blunderbuss_MortarShotActiveTimer"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default OnlyRemoveOneStack="True">
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="Blunderbuss_Nine"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Muzzle Flash change for Power Shot">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="DisableChargedShot"/>
+							<IfMannequinTag TagName="GenericTagA"/>
+							<Not>
+								<IfAbilityActive AbilityName="CleanPowder"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<WeaponEffects>
+								<Default ItemSlotAlias="ACTIVE_MAIN_HAND_WEAPON" EffectGroupName="shot_charged" OnEnter="Enable" OnExit="Disable"/>
+							</WeaponEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Muzzle Flash change for Clean Powder">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="DisableChargedShot"/>
+							<IfMannequinTag TagName="GenericTagA"/>
+							<IfAbilityActive AbilityName="CleanPowder"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<WeaponEffects>
+								<Default ItemSlotAlias="ACTIVE_MAIN_HAND_WEAPON" EffectGroupName="shot_charged_clean" OnEnter="Enable" OnExit="Disable"/>
+							</WeaponEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShot">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShot"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagA" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShotKnockback">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShotKnockback"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagB" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableChargedShotBurn">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableChargedShotBurn"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="GenericTagC" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Audio change for Clean Powder">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="GenericTagA"/>
+							<IfAbilityActive AbilityName="CleanPowder"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+								<Default SwitchName="Ammunition" StateName="Silenced" SetOnStop="false"/>
+							</SetAudioSwitchState>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false">
+								<Default AudioTriggerName="Set_Ammunition_Silenced" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<Group>
+							<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+								<Default SwitchName="Ammunition" StateName="Default" SetOnStop="false"/>
+							</SetAudioSwitchState>
+							<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="false">
+								<Default AudioTriggerName="Set_Ammunition_Default" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+							</ExecuteAudioTrigger>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<AIAudioTriggerActivity>
+					<Default AudioTriggerName="Gun_Shot"/>
+				</AIAudioTriggerActivity>
+			</Activities>
+		</Action>
+		<Action Name="Firearm_Reload_FullBody" FragmentName="Firearm_Reload_Start">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IfMannequinTag TagName="1H_Ranged"/>
+						<IfMannequinTag TagName="2H_Ranged"/>
+					</Or>
+					<IfMannequinTag TagName="Prone"/>
+					<Or>
+						<IfInput InputName="reload"/>
+						<IfInput InputName="aim_draw_active_virtual"/>
+						<IfMannequinMarker MarkerName="ForceReload"/>
+						<IfInput InputName="attack_shoot"/>
+					</Or>
+					<Or>
+						<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+						<And>
+							<Not>
+								<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+							</Not>
+							<Or>
+								<And>
+									<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="arrow-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+								</And>
+								<And>
+									<Or>
+										<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+										<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+									</Or>
+									<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="cartridge-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+								</And>
+							</Or>
+						</And>
+					</Or>
+					<IfMannequinTag TagName="ReloadRequired"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="ReloadFinished"/>
+					<Not>
+						<IfItemInSlotEquippable SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+					<Not>
+						<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse Comment="On Attack start set Stand_Desired if Standing" ResetWhenReinstalled="false">
+					<IfCondition>
+						<IfMannequinTag TagName="Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Stand_Desired" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<BlockEnteringStore/>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Clear ReloadRequired Tag">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="WeaponReloaded"/>
+					</IfCondition>
+					<ThenActivity>
+						<ClearMannequinTagGroup ResetWhenReinstalled="true">
+							<Default TagGroupName="WeaponStatus" OnEnter="Clear" OnExit="NoEffect"/>
+						</ClearMannequinTagGroup>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Enable Aim if RMB is presed or held">
+					<IfCondition>
+						<IfInput InputName="aim_draw_active_virtual"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Aim" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="AimDownSights" OnEnter="Set" OnExit="Unset"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableLookAimIK" OnEnter="Set" OnExit="Unset"/>
+				</SetMannequinTag>
+				<Reload>
+					<Default ReloadTime="1.90"/>
+					<Conditional Name="1H_Ranged" ReloadTime="1.50"/>
+				</Reload>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="GunButt" TagName="2H_Ranged"/>
+		<And Name="Aiming">
+			<IfInput InputName="aim_draw_active_virtual"/>
+		</And>
+		<And Name="Aim_Exit">
+			<Or>
+				<IfInput InputName="aim_draw_release_virtual"/>
+				<Not>
+					<IfInput InputName="aim_draw_active_virtual"/>
+				</Not>
+				<IfInput InputName="Placing_Building"/>
+				<IfCameraFreeLookActive/>
+			</Or>
+			<Not>
+				<And>
+					<IfMannequinTag TagName="Prone"/>
+					<Or>
+						<IfMannequinTag TagName="FromStand"/>
+						<IfMannequinTag TagName="FromCrouch"/>
+					</Or>
+				</And>
+			</Not>
+			<Not>
+				<And>
+					<IfMannequinTag TagName="FromProne"/>
+					<Or>
+						<IfMannequinTag TagName="Stand"/>
+						<IfMannequinTag TagName="Crouch"/>
+					</Or>
+				</And>
+			</Not>
+			<Not>
+				<IfHasStatusEffect StatusEffect="Blunderbuss_MortarShotActiveTimer"/>
+			</Not>
+		</And>
+		<And Name="Blunderbuss_MortarShot_Active">
+			<IfHasStatusEffect StatusEffect="Blunderbuss_MortarShotActiveTimer"/>
+		</And>
+		<And Name="Aim_Shoot">
+			<Or Comment="Backtick Check">
+				<IfInput InputName="attack_shoot"/>
+				<And>
+					<IfInput InputName="attack_shoot" BackTicks="20"/>
+					<IfActionStatus ActionName="UseBacktickInputs" Status="Installed"/>
+				</And>
+			</Or>
+			<Not>
+				<And>
+					<IfMannequinTag TagName="Prone"/>
+					<Or>
+						<IfMannequinTag TagName="FromStand"/>
+						<IfMannequinTag TagName="FromCrouch"/>
+					</Or>
+					<Not>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</Not>
+				</And>
+			</Not>
+			<Not>
+				<And>
+					<IfMannequinTag TagName="FromProne"/>
+					<Or>
+						<IfMannequinTag TagName="Stand"/>
+						<IfMannequinTag TagName="Crouch"/>
+					</Or>
+					<Not>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</Not>
+				</And>
+			</Not>
+			<Or>
+				<And>
+					<IfMannequinTag TagName="Rifle"/>
+					<Not>
+						<IfMannequinTag TagName="ReloadRequired"/>
+					</Not>
+				</And>
+				<And>
+					<IfMannequinTag TagName="Blunderbuss"/>
+					<IfAmmoLoaded ComparisonAmmoCount="0" ComparisonType="GreaterThan"/>
+				</And>
+			</Or>
+		</And>
+		<And Name="Aim_DryFire">
+			<Or Comment="Backtick Check">
+				<IfInput InputName="attack_shoot"/>
+				<And>
+					<IfInput InputName="attack_shoot" BackTicks="20"/>
+					<IfActionStatus ActionName="UseBacktickInputs" Status="Installed"/>
+				</And>
+			</Or>
+			<Not>
+				<And>
+					<IfMannequinTag TagName="Prone"/>
+					<Or>
+						<IfMannequinTag TagName="FromStand"/>
+						<IfMannequinTag TagName="FromCrouch"/>
+					</Or>
+					<Not>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</Not>
+				</And>
+			</Not>
+			<Not>
+				<And>
+					<IfMannequinTag TagName="FromProne"/>
+					<Or>
+						<IfMannequinTag TagName="Stand"/>
+						<IfMannequinTag TagName="Crouch"/>
+					</Or>
+					<Not>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</Not>
+				</And>
+			</Not>
+			<Or>
+				<IfMannequinTag TagName="ReloadRequired"/>
+				<And>
+					<Not>
+						<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+					</Not>
+					<Or>
+						<And>
+							<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							<Not>
+								<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="arrow-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+							</Not>
+						</And>
+						<And>
+							<Or>
+								<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Or>
+							<Not>
+								<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="cartridge-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+							</Not>
+						</And>
+					</Or>
+				</And>
+			</Or>
+		</And>
+		<And Name="Aim_Shoot_HipFire_Prone">
+			<Or Comment="Backtick Check">
+				<IfInput InputName="attack_shoot"/>
+				<And>
+					<IfInput InputName="attack_shoot" BackTicks="20"/>
+					<IfActionStatus ActionName="UseBacktickInputs" Status="Installed"/>
+				</And>
+			</Or>
+			<IfPlayerSetting PlayerSettingName="EnableHipFire"/>
+			<Not>
+				<And>
+					<IfMannequinTag TagName="Prone"/>
+					<Or>
+						<IfMannequinTag TagName="FromStand"/>
+						<IfMannequinTag TagName="FromCrouch"/>
+					</Or>
+					<Not>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</Not>
+				</And>
+			</Not>
+			<Not>
+				<And>
+					<IfMannequinTag TagName="FromProne"/>
+					<Or>
+						<IfMannequinTag TagName="Stand"/>
+						<IfMannequinTag TagName="Crouch"/>
+					</Or>
+					<Not>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+					</Not>
+				</And>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="ReloadRequired"/>
+			</Not>
+			<Or>
+				<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+				<And>
+					<Not>
+						<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+					</Not>
+					<Or>
+						<And>
+							<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="arrow-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+						</And>
+						<And>
+							<Or>
+								<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+								<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							</Or>
+							<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="cartridge-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+						</And>
+					</Or>
+				</And>
+			</Or>
+		</And>
+		<Or Name="Aim_Prone_PostureTransition">
+			<IfMannequinTag TagName="FromStand"/>
+			<IfMannequinTag TagName="FromCrouch"/>
+			<IfMannequinTag TagName="FromProne"/>
+		</Or>
+		<And Name="AmmoRemaining">
+			<Not>
+				<IfMannequinTag TagName="ReloadRequired"/>
+			</Not>
+		</And>
+		<And Name="Not_Traversing">
+			<Not>
+				<Or>
+					<IfTraversal CheckRange="true" MaxXYRange="0.75" CheckHeight="false" MinHeight="0.25" MaxHeight="1.50" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="false" TraversalType="stepup"/>
+					<IfTraversal CheckRange="true" MaxXYRange="0.75" CheckHeight="false" MinHeight="0.25" MaxHeight="1.50" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="false" TraversalType="vault"/>
+					<IfTraversal CheckRange="true" MaxXYRange="0.75" CheckHeight="false" MinHeight="0.25" MaxHeight="1.50" CheckLength="false" MinLength="0.75" MaxLength="1.50" UseCachedTraversalIfValid="false" TraversalType="mantle"/>
+				</Or>
+			</Not>
+		</And>
+		<And Name="CanAttack_Heavy_NoAim">
+			<IfInput InputName="attack_primary_virtual"/>
+			<Not>
+				<IfInput InputName="aim_draw_active_virtual"/>
+			</Not>
+			<Or>
+				<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+				<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Tool"/>
+			</Not>
+			<Not>
+				<HeightToGround ActivationHeight="0.5"/>
+			</Not>
+		</And>
+		<And Name="Rifle_Gunbutt">
+			<Or>
+				<And>
+					<IfInput InputName="attack_primary"/>
+					<Not>
+						<IfInput InputName="aim_draw_active_virtual"/>
+					</Not>
+				</And>
+				<And>
+					<IfInput InputName="aim_draw_active_virtual"/>
+					<Not>
+						<IfHasWeaponPrerequisites WeaponSlot="ACTIVE_MAIN_HAND_WEAPON"/>
+					</Not>
+				</And>
+			</Or>
+			<Or>
+				<IfMannequinTag TagName="1H_Ranged"/>
+				<IfMannequinTag TagName="2H_Ranged"/>
+			</Or>
+			<Not>
+				<IfMannequinTag TagName="Aim"/>
+			</Not>
+			<Not>
+				<IfMannequinTag TagName="AimDownSights"/>
+			</Not>
+			<Not>
+				<IfInput InputName="Placing_Building"/>
+			</Not>
+			<IfMannequinTag TagName="Rifle"/>
+			<And>
+				<Not>
+					<IfStackConfigVar StackVar="javelin.enable-ammoless-weapons"/>
+				</Not>
+				<Or>
+					<And>
+						<IfMannequinTagInItemSlot TagName="Bow" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						<Not>
+							<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="arrow-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+						</Not>
+					</And>
+					<And>
+						<Or>
+							<IfMannequinTagInItemSlot TagName="Rifle" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+							<IfMannequinTagInItemSlot TagName="Blunderbuss" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+						</Or>
+						<Not>
+							<IfAmmoTypeInSlot CheckActiveWeaponSlot="false" SlotToCheck="cartridge-ammo" CheckIfAmmoAtMax="false" RequiredAmmoCount="1" CheckAmmoType="true" CheckActiveWeaponAmmoType="true"/>
+						</Not>
+					</And>
+				</Or>
+			</And>
+		</And>
+		<And Name="Reload_Start_Complete">
+			<IfHasStatusEffect StatusEffect="Musket_ReloadStartComplete"/>
+			<IfMannequinTag TagName="ReloadRequired"/>
+		</And>
+	</Conditions>
+</ActionList>
+

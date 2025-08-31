@@ -1,0 +1,67 @@
+<ActionList>
+	<Reactions>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_Flying_F" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front_flying"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_Flying_B" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back_flying"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_Flying_L" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_left_flying"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_Flying_R" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_right_flying"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_B0_F" Resistance="n/a">
+			<IfExternalCondition ConditionName="blocked"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_F" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_front"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_B" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_back"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_L" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_left"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" PowerLevel="*" Reaction="r_R0_R" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_right"/>
+		</ReactionTableData>
+	</Reactions>
+	<Conditions>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="45.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-45.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back">
+			<IfDamagedByAngle Max="180.000000" Min="135.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-135.000000" Min="-180.000000" Tolerance="0.010000"/>
+		</Or>
+		<IfDamagedByAngle Max="-45.000000" Min="-135.000000" Name="damaged_left" Tolerance="0.010000"/>
+		<IfDamagedByAngle Max="135.000000" Min="45.000000" Name="damaged_right" Tolerance="0.010000"/>
+		<IfDamaged FailOnNoReactionDamage="true" IgnoreDeflectDamage="false" Name="blocked" RequireCriticalHit="false" RequireDamageDepletedStamina="false" RequireDamageWasBlocked="true" RequireDeflectDamage="false" RequireHitVolumeName="" RequireRanged="false"/>
+		<And Name="damaged_front_flying">
+			<Or>
+				<IfDamagedByAngle Max="45.000000" Min="0.000000" Tolerance="0.010000"/>
+				<IfDamagedByAngle Max="0.000000" Min="-45.000000" Tolerance="0.010000"/>
+			</Or>
+			<IfMannequinMarker MarkerName="TakeFlight"/>
+		</And>
+		<And Name="damaged_back_flying">
+			<Or>
+				<IfDamagedByAngle Max="180.000000" Min="135.000000" Tolerance="0.010000"/>
+				<IfDamagedByAngle Max="-135.000000" Min="-180.000000" Tolerance="0.010000"/>
+			</Or>
+			<IfMannequinMarker MarkerName="TakeFlight"/>
+		</And>
+		<And Name="damaged_left_flying">
+			<IfDamagedByAngle Max="-45.000000" Min="-135.000000" Tolerance="0.010000"/>
+			<IfMannequinMarker MarkerName="TakeFlight"/>
+		</And>
+		<And Name="damaged_right_flying">
+			<IfDamagedByAngle Max="135.000000" Min="45.000000" Tolerance="0.010000"/>
+			<IfMannequinMarker MarkerName="TakeFlight"/>
+		</And>
+	</Conditions>
+</ActionList>
+

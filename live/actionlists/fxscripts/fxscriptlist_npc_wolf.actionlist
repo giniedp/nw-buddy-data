@@ -1,0 +1,43 @@
+<ActionList>
+	<Scripts>
+		<FxScript Name="Start_Breathing">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Wolf01_Breathing" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" LipSyncMethod="None" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Wolf_R_Death">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="hit_mat_flesh" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" LipSyncMethod="None" SoundObstructionType="Ignore"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Wolf01_Death" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" LipSyncMethod="None" SoundObstructionType="Ignore"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Stop_Wolf01_Voice" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" LipSyncMethod="None" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Wolf_Hurts">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="hit_mat_flesh" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" LipSyncMethod="None" SoundObstructionType="Ignore"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_Wolf01_Hurts" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" LipSyncMethod="None" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Wolf_R1_F">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="Wolf_R1_B">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="Wolf_R1_L">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="Wolf_R1_R">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="StatFX_Root_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="Xform" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_StatusEffects.Root.Loop_01" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0.5,0" RotOffset="0,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_Root_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+	</Scripts>
+</ActionList>
+

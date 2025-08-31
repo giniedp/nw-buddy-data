@@ -1,0 +1,31 @@
+<ActionList>
+	<Reactions>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" Reaction="r_Stagger_L" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_left"/>
+		</ReactionTableData>
+		<ReactionTableData AttackerCategory="n/a" AttackerReaction="n/a" Condition="n/a" Reaction="r_Stagger_R" Resistance="n/a">
+			<IfExternalCondition ConditionName="damaged_right"/>
+		</ReactionTableData>
+	</Reactions>
+	<Conditions>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="45.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-45.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back">
+			<IfDamagedByAngle Max="180.000000" Min="135.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-135.000000" Min="-180.000000" Tolerance="0.010000"/>
+		</Or>
+		<IfDamagedByAngle Name="damaged_left" Max="1.000000" Min="-180.000000" Tolerance="0.010000"/>
+		<IfDamagedByAngle Name="damaged_right" Max="180.000000" Min="0.000000" Tolerance="0.010000"/>
+		<Or Name="damaged_front_180">
+			<IfDamagedByAngle Max="90.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back_180">
+			<IfDamagedByAngle Max="180.000000" Min="90.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-90.000000" Min="-180.000000" Tolerance="0.010000"/>
+		</Or>
+	</Conditions>
+</ActionList>
+

@@ -1,0 +1,499 @@
+<ActionList>
+	<Actions>
+		<Action Name="Build" FragmentName="Crafting_ApplyResources" Priority="5">
+			<ActivationCondition>
+				<And>
+					<CanInteract/>
+					<IsRequestingInteraction>
+						<Interactions>
+							<Interaction InteractionId="RepairBuildable"/>
+							<Interaction InteractionId="ApplyAllResources"/>
+							<Interaction InteractionId="ApplyResources"/>
+						</Interactions>
+					</IsRequestingInteraction>
+					<Not>
+						<IsMounted ReturnFalseIfDismounting="false"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IsRequestingInteraction>
+						<Interactions>
+							<Interaction InteractionId="RepairBuildable"/>
+							<Interaction InteractionId="ApplyAllResources"/>
+							<Interaction InteractionId="ApplyResources"/>
+						</Interactions>
+					</IsRequestingInteraction>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetInteractionFragment/>
+				<ExecuteInteraction/>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Instant Sheathe-All + AutoUnsheathe Logic v2.2">
+					<IfCondition>
+						<Or>
+							<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+							<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Logic">
+								<IfCondition>
+									<And Comment="Weapon slots empty or already sheathed">
+										<Or>
+											<Not>
+												<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+											</Not>
+											<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+										</Or>
+										<Or>
+											<Not>
+												<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+											</Not>
+											<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+										</Or>
+										<Not>
+											<And>
+												<Not>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+												</Not>
+												<Not>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+												</Not>
+											</And>
+										</Not>
+										<Not>
+											<IfMannequinTag TagName="AutoUnsheathe"/>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="KeepWeaponSheathed" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</ThenActivity>
+								<ElseActivity>
+									<Group Comment="Sheathe All Weapons">
+										<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Main Hand Weapon">
+											<IfCondition>
+												<And>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+													<Not>
+														<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+													</Not>
+												</And>
+											</IfCondition>
+											<ThenActivity>
+												<Group>
+													<SheatheWeapon ResetWhenReinstalled="false">
+														<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+													</SheatheWeapon>
+													<SetToggleInput>
+														<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+													</SetToggleInput>
+													<SetToggleInput>
+														<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+													</SetToggleInput>
+													<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+														<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+													</SetMannequinTagFromSource>
+													<ClearMannequinTagGroup ResetWhenReinstalled="false">
+														<Default TagGroupName="Reloading" OnEnter="Clear" OnExit="NoEffect"/>
+													</ClearMannequinTagGroup>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+												</Group>
+											</ThenActivity>
+											<ElseActivity Comment="Clear Weapon Tag">
+												<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+													<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+												</SetMannequinTagFromSource>
+											</ElseActivity>
+										</IfThenElse>
+										<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand-Weapon">
+											<IfCondition>
+												<And>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+													<Not>
+														<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+													</Not>
+												</And>
+											</IfCondition>
+											<ThenActivity>
+												<Group>
+													<SheatheWeapon ResetWhenReinstalled="false">
+														<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+													</SheatheWeapon>
+													<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+														<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+													</SetMannequinTagFromSource>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+												</Group>
+											</ThenActivity>
+										</IfThenElse>
+									</Group>
+								</ElseActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="KeepWeaponSheathed" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="DisableAim" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<Build/>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Crouch" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+			</Activities>
+		</Action>
+		<Action Name="Build_Placement_Commit" FragmentName="Place_Buildable">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Placing_Building"/>
+					<IfInput InputName="attack_primary"/>
+					<IfInput InputName="Placing_Valid_Location"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<And>
+						<IfMannequinMarker MarkerName="CanTransition"/>
+						<Not>
+							<IfMannequinTag TagName="Stand_Desired"/>
+						</Not>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<PlaceStructure>
+					<Default/>
+				</PlaceStructure>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Crouch" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Set_Stand"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<DisableInteractions>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractions>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+			</Activities>
+		</Action>
+		<Action Name="Build_Placement_Cancel">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Placing_Building"/>
+					<Or>
+						<IfInput InputName="build_placement_cancel"/>
+						<IfIsLoadoutOpen/>
+						<IfIsInteractingWithStorage/>
+						<IfInput InputName="aim_draw_press"/>
+						<IfInput InputName="aim_draw_release"/>
+						<IfInput InputName="aim_draw"/>
+						<IfInput InputName="toggleInventoryWindow"/>
+						<IfInput InputName="toggleChatComponent"/>
+						<IfInput InputName="toggleGuildComponent"/>
+						<IfInput InputName="toggleJournalComponent"/>
+						<IfInput InputName="toggleMenuComponent"/>
+						<IfInput InputName="toggleMapComponent"/>
+						<IfInput InputName="toggleSkillsComponent"/>
+						<IsMounted/>
+						<IfActionStatus ActionName="SummonMount" Status="Installed"/>
+						<IfActionStatus ActionName="MountSummoning" Status="Installed"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<True/>
+			</DeactivationCondition>
+			<Activities>
+				<CancelPlacingStructure>
+					<Default/>
+				</CancelPlacingStructure>
+			</Activities>
+		</Action>
+		<Action Name="Build_Placement_RotateRight">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Placing_Building"/>
+					<IfInput InputName="switch_buildable_dn"/>
+					<IfInput InputName="shift_mod"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<True/>
+			</DeactivationCondition>
+			<Activities>
+				<RotateStructure>
+					<Default/>
+				</RotateStructure>
+			</Activities>
+		</Action>
+		<Action Name="Build_Placement_RotateLeft">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Placing_Building"/>
+					<IfInput InputName="switch_buildable_up"/>
+					<IfInput InputName="shift_mod"/>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<RotateStructure>
+					<Default IsClockwise="true"/>
+				</RotateStructure>
+			</Activities>
+		</Action>
+		<Action Name="Build_Placement_Nav_SubState" FragmentName="Place_Buildable_Start_UpperBody">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Placing_Building"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName=""/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Prone"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="FromProne"/>
+					</Not>
+					<Not>
+						<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="VeryShallow"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="SummonMount" Status="Installed"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="MountSummoning" Status="Installed"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfMannequinMarker MarkerName="Exit_Place_Buildable"/>
+					<IfInput InputName="toggleInventoryWindow"/>
+					<And>
+						<IfMannequinTag TagName="Prone"/>
+						<Not>
+							<IfMannequinTag TagName="FromStand"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FromCrouch"/>
+						</Not>
+					</And>
+					<IfMannequinTag TagName="FromProne"/>
+					<IfMannequinTag TagName="Soft"/>
+					<IfMannequinTag TagName="Normal"/>
+					<IfMannequinTag TagName="Hard"/>
+					<IfWaterDepth Comparison="GreaterThanOrEqual" WaterDepth="Shallow"/>
+					<IsMounted ReturnFalseIfDismounting="false"/>
+					<IfActionStatus ActionName="SummonMount" Status="Installed"/>
+					<IfActionStatus ActionName="MountSummoning" Status="Installed"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Main Hand Weapon Mannequin Marker Logic">
+					<IfCondition>
+						<Not>
+							<IfMannequinTag TagName="Unarmed"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SheatheWeapon ResetWhenReinstalled="false">
+								<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+							</SheatheWeapon>
+							<SetToggleInput>
+								<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetToggleInput>
+								<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+							</SetToggleInput>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Clear remaining mainhand weapon tags on exit">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Clear remaining offhand weapon tags on exit">
+								<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+							</SetMannequinTagFromSource>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+							<SetMannequinTag ResetWhenReinstalled="false" Comment="Set AutoUnsheathe">
+								<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<DisableInteractions>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractions>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="PotionHaste"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_primary" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_shoot" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_hold" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="aim_shoot_depressed" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="attack_alternate_depressed_virtual" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+				<ClearInput>
+					<Default InputName="rune_ability" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearInput>
+			</Activities>
+		</Action>
+		<Action Name="Build_Placement_Nav_Prone" FragmentName="Place_Buildable_Loop_UpperBody">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="Placing_Building"/>
+					<Or>
+						<IfMannequinTag TagName="Prone"/>
+						<IfMannequinTag TagName="FromProne"/>
+					</Or>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfInput InputName="Placing_Building"/>
+					</Not>
+					<And>
+						<Not>
+							<IfMannequinTag TagName="Prone"/>
+						</Not>
+						<Not>
+							<IfMannequinTag TagName="FromProne"/>
+						</Not>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<DisableInteractions>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractions>
+				<DisableInteractor>
+					<Default OnEnter="Disable" OnExit="Enable"/>
+				</DisableInteractor>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfInput Name="Continue_ApplyingResources" InputName="Apply_Resources_To_Structure"/>
+		<Not Name="Exit_Placing">
+			<IfInput InputName="Placing_Building"/>
+		</Not>
+		<IfInput Name="Continue_Placing" InputName="Placing_Building"/>
+	</Conditions>
+</ActionList>
+

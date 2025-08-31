@@ -1,0 +1,368 @@
+<ActionList>
+	<Conditions>
+		<True Name="Test_AlwaysTrue"/>
+		<Or Name="sheathe_weapon">
+			<ActivateVirtualInput InputName="sheathe_weapon"/>
+			<And>
+				<IfInput InputName="sheathe_hold"/>
+				<IfItemInSlot RequireSlotActive="false" RequireSlotValid="true" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				<Not>
+					<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				</Not>
+			</And>
+		</Or>
+		<IfAttackSuccess Name="attack_success" CheckAgainstStructure="False" CheckAgainstCharacter="True"/>
+		<IfCollided Name="character_collided" CheckAgainstStructure="false" CheckAgainstCharacter="true"/>
+		<Or Name="unsheathe_weapon">
+			<ActivateVirtualInput InputName="unsheathe_weapon"/>
+			<And>
+				<IfInput InputName="sheathe"/>
+				<IfItemInSlot RequireSlotActive="false" RequireSlotValid="true" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</And>
+		</Or>
+		<Or Name="swap_weapon">
+			<ActivateVirtualInput InputName="swap_weapon"/>
+			<And>
+				<IfInput InputName="sheathe"/>
+				<IfItemInSlot RequireSlotActive="false" RequireSlotValid="true" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+				<IfItemInSlot RequireSlotActive="false" RequireSlotValid="true" SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</And>
+		</Or>
+		<Or Name="ForwardNav">
+			<IfInput InputName="moveforward"/>
+			<IfMannequinTag TagName="AutoRun"/>
+		</Or>
+		<And Name="block_virtual">
+			<Or>
+				<IfInput InputName="block"/>
+				<IfInput InputName="block_alt"/>
+			</Or>
+			<Or>
+				<And>
+					<IfMannequinTag TagName="1H_Melee"/>
+				</And>
+				<And>
+					<IfMannequinTag TagName="2H_Melee"/>
+				</And>
+				<IfMannequinTag TagName="Unarmed"/>
+			</Or>
+		</And>
+		<And Name="block_active_virtual">
+			<Not comment="Allow Toggling Block Action">
+				<Or>
+					<And Comment="Not when exiting Bow Ability">
+						<IfMannequinTag TagName="Bow"/>
+						<Or>
+							<IfMannequinTag TagName="HeavyAim" Comment="Rain of Arrows"/>
+							<IfMannequinTag TagName="PenetratingAim"/>
+							<IfMannequinTag TagName="SmokeAim" Comment="PoisonShot"/>
+						</Or>
+					</And>
+					<And Comment="Not when exiting Shooters Stance">
+						<IfMannequinTag TagName="Rifle"/>
+						<Or>
+							<IfMannequinTag TagName="HeavyAim" Comment="Shooter Stance"/>
+						</Or>
+					</And>
+					<Or Comment="Not when canceling an active Ability">
+						<IfMannequinMarker MarkerName="Entombed" Comment="IceMagic_Entombed"/>
+						<IfHasStatusEffect StatusEffect="Blunderbuss_MortarShotActiveTimer"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryCannonBall"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryBoulder"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryOrb"/>
+						<IfHasStatusEffect StatusEffectCategory="AzothStaff"/>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_IceMagic_WindChill_Aim"/>
+					</Or>
+				</Or>
+			</Not>
+			<IfToggleHoldInput PressInputName="block" HoldInputName="block_depressed" ToggleOptionDataPath="Hud.LocalPlayer.Options.Accessibility.ToggleBlockAimDownSights"/>
+		</And>
+		<And Name="block_press_virtual">
+			<Not comment="Allow Toggling Block Action">
+				<Or>
+					<And Comment="Not when exiting Bow Ability">
+						<IfMannequinTag TagName="Bow"/>
+						<Or>
+							<IfMannequinTag TagName="HeavyAim" Comment="Rain of Arrows"/>
+							<IfMannequinTag TagName="PenetratingAim"/>
+							<IfMannequinTag TagName="SmokeAim" Comment="PoisonShot"/>
+						</Or>
+					</And>
+					<And Comment="Not when exiting Shooters Stance">
+						<IfMannequinTag TagName="Rifle"/>
+						<Or>
+							<IfMannequinTag TagName="HeavyAim" Comment="Shooter Stance"/>
+						</Or>
+					</And>
+					<Or Comment="Not when canceling an active Ability">
+						<IfMannequinMarker MarkerName="Entombed" Comment="IceMagic_Entombed"/>
+						<IfHasStatusEffect StatusEffect="Blunderbuss_MortarShotActiveTimer"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryCannonBall"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryBoulder"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryOrb"/>
+						<IfHasStatusEffect StatusEffectCategory="AzothStaff"/>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_IceMagic_WindChill_Aim"/>
+					</Or>
+				</Or>
+			</Not>
+			<IfToggleHoldInput PressInputName="block" HoldInputName="block_depressed" onPress="1" ToggleOptionDataPath="Hud.LocalPlayer.Options.Accessibility.ToggleBlockAimDownSights"/>
+		</And>
+		<And Name="aim_draw_active_virtual">
+			<Not comment="Allow Toggling Block Action">
+				<Or>
+					<And Comment="Not when exiting Bow Ability">
+						<IfMannequinTag TagName="Bow"/>
+						<Or>
+							<IfMannequinTag TagName="HeavyAim" Comment="Rain of Arrows"/>
+							<IfMannequinTag TagName="PenetratingAim"/>
+							<IfMannequinTag TagName="SmokeAim" Comment="PoisonShot"/>
+						</Or>
+					</And>
+					<And Comment="Not when exiting Shooters Stance">
+						<IfMannequinTag TagName="Rifle"/>
+						<Or>
+							<IfMannequinTag TagName="HeavyAim" Comment="Shooter Stance"/>
+						</Or>
+					</And>
+					<Or Comment="Not when canceling an active Ability">
+						<IfMannequinMarker MarkerName="Entombed" Comment="IceMagic_Entombed"/>
+						<IfHasStatusEffect StatusEffect="Blunderbuss_MortarShotActiveTimer"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryCannonBall"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryBoulder"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryOrb"/>
+						<IfHasStatusEffect StatusEffectCategory="AzothStaff"/>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_IceMagic_WindChill_Aim"/>
+					</Or>
+				</Or>
+			</Not>
+			<IfToggleHoldInput PressInputName="aim_draw_press" HoldInputName="aim_draw" ToggleOptionDataPath="Hud.LocalPlayer.Options.Accessibility.ToggleBlockAimDownSights"/>
+		</And>
+		<And Name="aim_draw_press_virtual">
+			<Not comment="Allow Toggling Block Action">
+				<Or>
+					<And Comment="Not when exiting Bow Ability">
+						<IfMannequinTag TagName="Bow"/>
+						<Or>
+							<IfMannequinTag TagName="HeavyAim" Comment="Rain of Arrows"/>
+							<IfMannequinTag TagName="PenetratingAim"/>
+							<IfMannequinTag TagName="SmokeAim" Comment="PoisonShot"/>
+						</Or>
+					</And>
+					<And Comment="Not when exiting Shooters Stance">
+						<IfMannequinTag TagName="Rifle"/>
+						<Or>
+							<IfMannequinTag TagName="HeavyAim" Comment="Shooter Stance"/>
+						</Or>
+					</And>
+					<Or Comment="Not when canceling an active Ability">
+						<IfMannequinMarker MarkerName="Entombed" Comment="IceMagic_Entombed"/>
+						<IfHasStatusEffect StatusEffect="Blunderbuss_MortarShotActiveTimer"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryCannonBall"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryBoulder"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryOrb"/>
+						<IfHasStatusEffect StatusEffectCategory="AzothStaff"/>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_IceMagic_WindChill_Aim"/>
+					</Or>
+				</Or>
+			</Not>
+			<IfToggleHoldInput PressInputName="aim_draw_press" HoldInputName="aim_draw" onPress="1" ToggleOptionDataPath="Hud.LocalPlayer.Options.Accessibility.ToggleBlockAimDownSights"/>
+		</And>
+		<And Name="aim_draw_release_virtual">
+			<Not comment="Allow Toggling Block Action">
+				<Or>
+					<And Comment="Not when exiting Bow Ability">
+						<IfMannequinTag TagName="Bow"/>
+						<Or>
+							<IfMannequinTag TagName="HeavyAim" Comment="Rain of Arrows"/>
+							<IfMannequinTag TagName="PenetratingAim"/>
+							<IfMannequinTag TagName="SmokeAim" Comment="PoisonShot"/>
+						</Or>
+					</And>
+					<And Comment="Not when exiting Shooters Stance">
+						<IfMannequinTag TagName="Rifle"/>
+						<Or>
+							<IfMannequinTag TagName="HeavyAim" Comment="Shooter Stance"/>
+						</Or>
+					</And>
+					<Or Comment="Not when canceling an active Ability">
+						<IfMannequinMarker MarkerName="Entombed" Comment="IceMagic_Entombed"/>
+						<IfHasStatusEffect StatusEffect="Blunderbuss_MortarShotActiveTimer"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryCannonBall"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryBoulder"/>
+						<IfHasStatusEffect StatusEffectCategory="CarryOrb"/>
+						<IfHasStatusEffect StatusEffectCategory="AzothStaff"/>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_IceMagic_WindChill_Aim"/>
+					</Or>
+				</Or>
+			</Not>
+			<IfToggleHoldInput PressInputName="aim_draw_press" HoldInputName="aim_draw" onRelease="1" ToggleOptionDataPath="Hud.LocalPlayer.Options.Accessibility.ToggleBlockAimDownSights"/>
+		</And>
+		<Or Name="crouch_toggle_virtual">
+			<IfInput InputName="crouch_toggle"/>
+			<IfInput InputName="crouch_toggle_pad"/>
+		</Or>
+		<Or Name="prone_toggle_virtual">
+			<IfInput InputName="prone_toggle"/>
+			<IfInput InputName="prone_toggle_pad"/>
+		</Or>
+		<Or Name="attack_primary_virtual">
+			<And>
+				<IfInput InputName="attack_primary"/>
+				<Or>
+					<And>
+						<IfMannequinTag TagName="1H_Melee"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="2H_Melee"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="Unarmed"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="MagicStaff"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="MagicGauntlet"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="Bow"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="2H_Ranged"/>
+					</And>
+				</Or>
+				<Not>
+					<IfMannequinTag TagName="Aim"/>
+				</Not>
+			</And>
+			<And>
+				<IfInput InputName="attack_primary_pad"/>
+				<Or>
+					<IfMannequinTag TagName="1H_Melee"/>
+					<IfMannequinTag TagName="2H_Melee"/>
+					<IfMannequinTag TagName="Unarmed"/>
+				</Or>
+				<Not>
+					<IfMannequinTag TagName="Aim"/>
+				</Not>
+			</And>
+		</Or>
+		<Or Name="attack_shoot_virtual">
+			<And>
+				<Or>
+					<IfInput InputName="attack_shoot"/>
+				</Or>
+				<Or>
+					<IfMannequinTag TagName="2H_Ranged"/>
+					<IfMannequinTag TagName="1H_Ranged"/>
+					<And>
+						<IfMannequinTag TagName="1H_Melee"/>
+						<IfMannequinTag TagName="Axe"/>
+						<IfMannequinTag TagName="Aim"/>
+					</And>
+					<And>
+						<IfMannequinTag TagName="2H_Melee"/>
+						<IfMannequinTag TagName="Spear"/>
+						<IfMannequinTag TagName="Aim"/>
+					</And>
+				</Or>
+			</And>
+			<And>
+				<IfInput InputName="attack_primary"/>
+				<Or>
+					<IfMannequinTag TagName="Bow"/>
+				</Or>
+				<Not>
+					<IfMannequinTag TagName="Aim"/>
+				</Not>
+			</And>
+			<And>
+				<IfInput InputName="aim_shoot_depressed_pad"/>
+				<Or>
+					<IfMannequinTag TagName="Bow"/>
+				</Or>
+			</And>
+		</Or>
+		<Or Name="attack_alternate_virtual">
+			<And>
+				<Or>
+					<IfMannequinTagInItemSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" TagName="2H_Melee"/>
+					<IfMannequinTag TagName="Unarmed"/>
+				</Or>
+				<Or>
+					<And>
+						<IfInput InputName="attack_alternate_pad"/>
+					</And>
+					<And>
+						<IfInput InputName="attack_primary"/>
+						<IfInput InputName="shift_mod"/>
+					</And>
+				</Or>
+			</And>
+		</Or>
+		<Or Name="attack_alternate_depressed_virtual">
+			<And>
+				<Or>
+					<IfMannequinTagInItemSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" TagName="1H_Melee"/>
+					<IfMannequinTagInItemSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" TagName="2H_Melee"/>
+					<IfMannequinTag TagName="Unarmed"/>
+				</Or>
+				<Or>
+					<And>
+						<IfInput InputName="attack_primary_hold"/>
+					</And>
+					<IfInput InputName="attack_alternate"/>
+					<IfInput InputName="attack_alternate_pad"/>
+					<IfInput InputName="attack_alternate_hold"/>
+				</Or>
+			</And>
+		</Or>
+		<Or Name="attack_blockbreaker_virtual">
+			<And>
+				<IfInput InputName="attack_blockbreaker"/>
+			</And>
+		</Or>
+		<Or Name="attack_special_depressed_virtual">
+			<IfInput InputName="attack_special"/>
+			<IfInput InputName="attack_special_pad"/>
+			<IfInput InputName="attack_special_hold"/>
+		</Or>
+		<Or Name="Attack_Special_Virtual">
+			<IfInput InputName="attack_special"/>
+			<IfInput InputName="attack_special_pad"/>
+		</Or>
+		<And Name="Ability1_Virtual">
+			<IfInput InputName="ability1"/>
+			<Not>
+				<IfInput InputName="ability2"/>
+			</Not>
+			<Not>
+				<IfInput InputName="ability3"/>
+			</Not>
+		</And>
+		<And Name="Ability2_Virtual">
+			<IfInput InputName="ability2"/>
+			<Not>
+				<IfInput InputName="ability1"/>
+			</Not>
+			<Not>
+				<IfInput InputName="ability3"/>
+			</Not>
+		</And>
+		<And Name="Ability3_Virtual">
+			<IfInput InputName="ability3"/>
+			<Not>
+				<IfInput InputName="ability1"/>
+			</Not>
+			<Not>
+				<IfInput InputName="ability2"/>
+			</Not>
+		</And>
+		<IfActionMapEnabled ActionMapName="player" RequiredEnabled="false" Name="PlayerActionMapDisabled"/>
+		<IfInput InputName="attack_special" Name="Q_Ability_Virtual"/>
+		<IfInput InputName="ability2" Name="R_Ability_Virtual"/>
+		<IfAbilityNumHits Name="headshot_num_3" AbilityName="Passive_Musket_Sharpshooter_3HeadshotReload" NumHits="1" ComparisonType="GreaterThan"/>
+	</Conditions>
+</ActionList>
+

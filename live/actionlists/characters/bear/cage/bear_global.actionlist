@@ -1,0 +1,24 @@
+<ActionList>
+	<Actions>
+		<Action Name="LookPose" FragmentName="LookPose">
+			<ActivationCondition>
+				<And>
+					<IfHasAttackTarget/>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					</Not>
+					<IfHasAttackTarget/>
+					<Not>
+						<And>
+							<IfMannequinMarker MarkerName="DisableLookPoses_NotFront90"/>
+							<AIAngleToTarget Comparison="GreaterThan" Angle="90.0" AbsoluteValue="true"/>
+						</And>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

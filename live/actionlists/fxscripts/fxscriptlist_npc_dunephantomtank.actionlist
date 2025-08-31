@@ -1,0 +1,28 @@
+<ActionList>
+	<Scripts>
+		<FxScript Name="StatFX_EnrageLimited_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_dunephantomdreadnaut_ah.Enrage_Min_Body" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0.12,0.15" RotOffset="270,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_dunephantomdreadnaut_ah.Enrage_Med_Body" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0.15" RotOffset="270,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="Eye_left_BND" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_dunephantomdreadnaut_ah.Enrage_Med_Eye" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0.01" RotOffset="0,45,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="Eye_right_BND" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_dunephantomdreadnaut_ah.Enrage_Med_Eye" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0.01" RotOffset="0,-45,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_EnrageUnlimited_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="Forearm_left" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_dunephantomdreadnaut_ah.Enrage_Max_Arm" KeepEmitterActive="false" KillOnExit="true" PosOffset="0.35,0,0" RotOffset="0,-90,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="Forearm_right" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_dunephantomdreadnaut_ah.Enrage_Max_Arm" KeepEmitterActive="false" KillOnExit="true" PosOffset="-0.35,0,0" RotOffset="0,90,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_dunephantomdreadnaut_ah.Enrage_Max_Body" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0.15" RotOffset="270,0,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="Eye_left_BND" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_dunephantomdreadnaut_ah.Enrage_Max_Eye" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0.01" RotOffset="0,45,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="Eye_right_BND" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_dunephantomdreadnaut_ah.Enrage_Max_Eye" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0.01" RotOffset="0,-45,0" Scale="1.000000" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="StatFX_EnrageLimited_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="StatFX_EnrageUnlimited_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+	</Scripts>
+</ActionList>
+

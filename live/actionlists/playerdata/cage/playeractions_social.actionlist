@@ -1,0 +1,343 @@
+<ActionList>
+	<Actions>
+		<Action Name="Emote" FragmentName="Emote_Wave">
+			<ActivationCondition>
+				<And>
+					<Or>
+						<IsEmotePreviewEnabled/>
+						<IsEmoteEnabled/>
+					</Or>
+					<IfCanResizeCharacterController ResizeType="Default"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead_Loop"/>
+					</Not>
+					<Not>
+						<IsMounted/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true"/>
+					<And>
+						<IfMannequinMarker MarkerName="Exit_Emote"/>
+						<Or>
+							<Not>
+								<IfMannequinTag TagName="Unarmed"/>
+							</Not>
+							<Not>
+								<IfMannequinTag TagName="Unarmed_OH"/>
+							</Not>
+						</Or>
+					</And>
+					<IfInput InputName="crouch_toggle_virtual"/>
+					<IfInput InputName="prone_toggle_virtual"/>
+					<IsEmotePreviewStopped/>
+					<And>
+						<Not>
+							<IsEmoteEnabled/>
+						</Not>
+						<Not>
+							<IsEmotePreviewEnabled/>
+						</Not>
+					</And>
+					<IfTeleportPending/>
+					<IfFastTravelTeleporting/>
+					<IfUnstuckTeleporting/>
+					<IfActionStatus ActionName="ToggleMount" Status="Installed"/>
+					<And>
+						<IfMannequinMarker MarkerName="CancelInWater"/>
+						<IfWaterDepth Comparison="GreaterThan" WaterDepth="Shallow"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<PlayerEmoteController/>
+				<ClearMotion>
+					<Default OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMotion>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Instant Sheathe-All + AutoUnsheathe Logic v2.2">
+					<IfCondition>
+						<Or>
+							<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+							<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Logic">
+								<IfCondition>
+									<And Comment="Weapon slots empty or already sheathed">
+										<Or>
+											<Not>
+												<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+											</Not>
+											<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+										</Or>
+										<Or>
+											<Not>
+												<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+											</Not>
+											<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+										</Or>
+										<Not>
+											<And>
+												<Not>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+												</Not>
+												<Not>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+												</Not>
+											</And>
+										</Not>
+										<Not>
+											<IfMannequinTag TagName="AutoUnsheathe"/>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<SetMannequinTag ResetWhenReinstalled="false">
+										<Default TagName="KeepWeaponSheathed" OnEnter="Set" OnExit="NoEffect"/>
+									</SetMannequinTag>
+								</ThenActivity>
+								<ElseActivity>
+									<Group Comment="Sheathe All Weapons">
+										<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Current Main Hand Weapon">
+											<IfCondition>
+												<And>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+													<Not>
+														<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+													</Not>
+												</And>
+											</IfCondition>
+											<ThenActivity>
+												<Group>
+													<SheatheWeapon ResetWhenReinstalled="false">
+														<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+													</SheatheWeapon>
+													<SetToggleInput>
+														<Default InputName="block" OnEnter="ToggleOff" OnExit="NoEffect"/>
+													</SetToggleInput>
+													<SetToggleInput>
+														<Default InputName="aim_draw_press" OnEnter="ToggleOff" OnExit="NoEffect"/>
+													</SetToggleInput>
+													<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+														<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+													</SetMannequinTagFromSource>
+													<ClearMannequinTagGroup ResetWhenReinstalled="false">
+														<Default TagGroupName="Reloading" OnEnter="Clear" OnExit="NoEffect"/>
+													</ClearMannequinTagGroup>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="Unarmed" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="AutoUnsheathe" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+												</Group>
+											</ThenActivity>
+											<ElseActivity Comment="Clear Weapon Tag">
+												<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+													<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+												</SetMannequinTagFromSource>
+											</ElseActivity>
+										</IfThenElse>
+										<IfThenElse ResetWhenReinstalled="false" Comment="Sheathe Offhand-Weapon">
+											<IfCondition>
+												<And>
+													<IfItemInSlot SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON" RequireSlotValid="true" RequireSlotActive="false"/>
+													<Not>
+														<IfItemSheathed SlotToCheckAlias="ACTIVE_OFF_HAND_WEAPON"/>
+													</Not>
+												</And>
+											</IfCondition>
+											<ThenActivity>
+												<Group>
+													<SheatheWeapon ResetWhenReinstalled="false">
+														<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+													</SheatheWeapon>
+													<SetMannequinTagFromSource ResetWhenReinstalled="false" Comment="Unset Current Main Hand Weapon Tags">
+														<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Unset" OnExit="NoEffect"/>
+													</SetMannequinTagFromSource>
+													<SetMannequinTag ResetWhenReinstalled="false">
+														<Default TagName="Unarmed_OH" OnEnter="Set" OnExit="NoEffect"/>
+													</SetMannequinTag>
+												</Group>
+											</ThenActivity>
+										</IfThenElse>
+									</Group>
+								</ElseActivity>
+							</IfThenElse>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="KeepWeaponSheathed" OnEnter="NoEffect" OnExit="Unset"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="false" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Set_Crouch"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Crouch" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+					<ElseActivity>
+						<IfThenElse ResetWhenReinstalled="false" Comment="">
+							<IfCondition>
+								<IfMannequinMarker MarkerName="Set_Prone"/>
+							</IfCondition>
+							<ThenActivity>
+								<SetMannequinTag ResetWhenReinstalled="false">
+									<Default TagName="Prone" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+								</SetMannequinTag>
+							</ThenActivity>
+							<ElseActivity>
+								<SetMannequinTag ResetWhenReinstalled="false">
+									<Default TagName="Stand" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+								</SetMannequinTag>
+							</ElseActivity>
+						</IfThenElse>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Allow movement for specifically flagged fragments">
+					<IfCondition>
+						<And>
+							<IfMannequinMarker MarkerName="AllowMovement"/>
+							<Not>
+								<IfEncumbered immobilized="true"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ApplyMoveSpeedMultiplier>
+								<Default MultiplierType="MoveSpeedMod"/>
+							</ApplyMoveSpeedMultiplier>
+							<CameraRelativeFacing>
+								<Default TurnRate="0.30" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+							</CameraRelativeFacing>
+							<CameraRelativeMotion>
+								<Default ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="2.0,2.0,0.00" Accel="7.50,7.50,7.50" Decel="7.50,7.50,7.50" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-20.0"/>
+								<Conditional Name="EmoteForceWalkSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="1.65,1.65,0.00" Accel="7.50,7.50,7.50" Decel="7.50,7.50,7.50" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-20.0"/>
+								<Conditional Name="EmoteForceRunSpeed" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="3.25,3.25,0.00" Accel="7.50,7.50,7.50" Decel="7.50,7.50,7.50" InheritVelocity="false" BackwardsMultiplier="1.0" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-20.0"/>
+								<Conditional Name="WitchBroomNav" ForwardInput="ForwardNav" BackwardInput="moveback" LeftInput="moveleft" RightInput="moveright" UpInput="" DownInput="" ForcedMotion="false" UseInitialCameraRotation="false" AllowVerticalMotion="false" Speed="5.5,5.5,0.00" Accel="15.0,15.0,15.0" Decel="7.50,7.50,7.50" InheritVelocity="false" BackwardsMultiplier="0.55" AnalogInputOverride="LeftAnalog" UseAnalogInputToModulateSpeed="true" MinSpeed="1.40,1.40,0.00" MinAnalogInputMag="0.20" MaxAnalogInputMag="0.80" MovementAccuracyBonus="-20.0"/>
+							</CameraRelativeMotion>
+						</Group>
+					</ThenActivity>
+					<ElseActivity>
+						<Group>
+							<IfThenElse ResetWhenReinstalled="false" Comment="Use anim translation">
+								<IfCondition>
+									<And>
+										<IfMannequinMarker MarkerName="UseTranslation"/>
+										<Not>
+											<IfEncumbered immobilized="true"/>
+										</Not>
+										<Not>
+											<IsEmotePreviewEnabled/>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<Group>
+										<ApplyMoveSpeedMultiplier>
+											<Default MultiplierType="MoveSpeedMod" ApplyToAnimationTranslation="true" ClampMax="1.0"/>
+										</ApplyMoveSpeedMultiplier>
+										<AnimationDrivenMotion>
+											<Default MotionMultiplier="1.0" RotationMultiplier="1.00" Decel="0,0,0" DisableGravity="false" InheritVelocity="false"/>
+											<Conditional Name="EmoteForceWalkSpeed" MotionMultiplier="0.3" RotationMultiplier="0.00" Decel="0,0,0" DisableGravity="false" InheritVelocity="false"/>
+											<Conditional Name="EmoteForceRunSpeed" MotionMultiplier="0.72" RotationMultiplier="0.00" Decel="0,0,0" DisableGravity="false" InheritVelocity="false"/>
+											<Conditional Name="AllowCameraAlignDuringMotion" MotionMultiplier="1.0" RotationMultiplier="0.00" Decel="0,0,0" DisableGravity="false" InheritVelocity="false"/>
+										</AnimationDrivenMotion>
+									</Group>
+								</ThenActivity>
+							</IfThenElse>
+							<IfThenElse ResetWhenReinstalled="false" Comment="AlignToCamera">
+								<IfCondition>
+									<And>
+										<IfMannequinMarker MarkerName="AlignToCamera"/>
+										<Not>
+											<IsEmotePreviewEnabled/>
+										</Not>
+									</And>
+								</IfCondition>
+								<ThenActivity>
+									<CameraRelativeFacing>
+										<Default TurnRate="0.10" UseExponentialTurnRate="true" UseCameraDirOnEnterState="false" UseClosestTarget="false"/>
+									</CameraRelativeFacing>
+								</ThenActivity>
+							</IfThenElse>
+						</Group>
+					</ElseActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Disable limb IK">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableLimbIK"/>
+					</IfCondition>
+					<ThenActivity>
+						<ToggleLimbIK>
+							<Default OnEnter="Disable" OnExit="Enable"/>
+						</ToggleLimbIK>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Emote_Menu">
+			<ActivationCondition>
+				<And>
+					<IfInput InputName="toggleEmoteWindow"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Ability_Musket_PlayDead_Loop"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfInput InputName="toggleEmoteWindow"/>
+					</Not>
+					<IfInput InputName="Start_Emote"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<InputActionMapToggle ActionMap="player" OnEnterAction="Disable" OnExitAction="Enable"/>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="IsEncumbered">
+			<IfEncumbered/>
+		</And>
+		<And Name="AllowCameraAlignDuringMotion">
+			<IfMannequinMarker MarkerName="AlignToCamera"/>
+		</And>
+		<And Name="WitchBroomNav">
+			<IfFragmentPlaying UseHostActionFragment="false" FragmentName="Emote_WitchBroom"/>
+		</And>
+		<Or Name="EmoteForceWalkSpeed">
+			<IfEncumbered/>
+			<Not>
+				<IfCanRun/>
+			</Not>
+		</Or>
+		<Or Name="EmoteForceRunSpeed">
+			<Not>
+				<IfCanSprint/>
+			</Not>
+		</Or>
+		<And Name="AllowEmoteProjectiles">
+			<Not>
+				<IsEmotePreviewEnabled/>
+			</Not>
+		</And>
+	</Conditions>
+</ActionList>
+
