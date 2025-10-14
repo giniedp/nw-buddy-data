@@ -1,0 +1,105 @@
+<ActionList>
+	<Actions>
+		<Action Name="Attack_BigBite" FragmentName="Attack_BigBite" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_BigBite_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_FeedingFrenzy" FragmentName="Attack_FeedingFrenzy" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_FeedingFrenzy_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_DiseasedFeedingFrenzy" FragmentName="Attack_DiseasedFeedingFrenzy" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_DiseasedFeedingFrenzy_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_PlagueBurst" FragmentName="Attack_PlagueBurst" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_PlagueBurst_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<Death>
+					<Default TriggerOption="OnExit" SkipDeathsDoor="true" ClearContributors="false"/>
+				</Death>
+			</Activities>
+		</Action>
+		<Action Name="Attack_TailWhipRight" FragmentName="Attack_TailWhipRight" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_TailWhipRight_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_SlashLeft" FragmentName="Attack_SlashLeft" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_SlashLeft_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

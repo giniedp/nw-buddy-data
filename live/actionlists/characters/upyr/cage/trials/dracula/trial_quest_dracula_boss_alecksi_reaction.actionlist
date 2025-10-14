@@ -1,0 +1,233 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction_Shadow_Cecilia_Defeated" FragmentName="Attack_Teleport_End" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_Trial_Quest_Dracula_Shadow_Cecilia_Defeated_Reaction" OnlyCheckOwnedStatusEffects="false"/>
+					<Not>
+						<IfActionStatus ActionName="Reaction_Shadow_Cecilia_Defeated" Status="Pending" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction_Shadow_Cecilia_Defeated" Status="Installed" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.3"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="0.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<TriggerEntity>
+					<Default TriggerName="EnableMarker" DelayTimer="1.0"/>
+				</TriggerEntity>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="true">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Trial_Quest_Dracula_Shadow_Cecilia_Defeated_Reaction"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Trial_Quest_Dracula_Consume_Unlock"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearBlackboardFact>
+					<Default>
+						<FactsToRemoveOnEnter>
+							<FactName FactName="Inactive"/>
+							<FactName FactName="Inactive_SubPhase"/>
+						</FactsToRemoveOnEnter>
+					</Default>
+				</ClearBlackboardFact>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Consume_End" FragmentName="Attack_Consume_End" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_Trial_Quest_Dracula_Consume_End_Reaction" OnlyCheckOwnedStatusEffects="false"/>
+					<Not>
+						<IfActionStatus ActionName="Reaction_Consume_End" Status="Pending" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="Reaction_Consume_End" Status="Installed" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.3"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="0.0"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+					<Default TagName="Dracula_Empowered" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="true">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Trial_Quest_Dracula_Consume_End_Reaction"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Trial_Quest_Dracula_Empower_Phase_Unlock"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="false" Comment="DynamicScale">
+					<IfCondition>
+						<IfMannequinMarker Name="DynamicScale" MarkerName="DynamicScale"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="AI_Trial_Quest_Dracula_Dynamic_Scale"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="ApplyBuff">
+					<IfCondition>
+						<IfMannequinMarker Name="ApplyBuff" MarkerName="ApplyBuff"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="AI_Trial_Quest_Dracula_Empower_Buff"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Activate_Empower">
+					<IfCondition>
+						<IfMannequinMarker Name="Activate_Empower" MarkerName="Activate_Empower"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Activate_Empower"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="false" Comment="EnableMarker">
+					<IfCondition>
+						<IfMannequinMarker Name="EnableMarker" MarkerName="EnableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<ClearBlackboardFact>
+					<Default>
+						<FactsToRemoveOnEnter>
+							<FactName FactName="Consume_Unlocked"/>
+						</FactsToRemoveOnEnter>
+					</Default>
+				</ClearBlackboardFact>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Staggered" FragmentName="r_Stagger" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="LessThanOrEqual" Comment="Look for Stamina to be 0"/>
+					<Or>
+						<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="0" FailOnNoReactionDamage="false" Comment="Require the character to be hit by an attack to enter Stagger"/>
+						<IfHasStatusEffect StatusEffect="AI_Force_Stagger" Comment="Do not require the character to be hit by an attack to enter Stagger"/>
+					</Or>
+					<Not Comment="Check that the character isn't already stunned or staggered. Staggered also applies the 'Stunned' tag.">
+						<Or>
+							<IsStunned/>
+							<IfMannequinTag TagName="Stunned"/>
+						</Or>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableStagger" Comment="Use this to disable Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableStaggerReaction" Comment="Disable the Stagger reaction while keeping GRIT active and allowing Stamina damage to be taken to a minimum of 0; can Stagger on the next valid hit by an attack after the MannequinMarker is deactivated"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="ResetAI" Comment="Do not Interrupt the AI during retreating action"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default Comment="Reduces received Stagger damage for a period after being Staggered">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Trial_Quest_Seraphim_Blind_Seraph_Inner_Fire"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+					<Conditional Name="TelegraphStaggered" Comment="Applies a status effect to the character that displays 'Staggered' while in this action, and reduces received Stagger damage for a period after being Staggered">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Staggered_Telegraph"/>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Staggered_Telegraph"/>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+				</ModifyStatusEffects>
+				<CastSpell>
+					<Default SpellName="AI_Staggered_Telegraph"/>
+				</CastSpell>
+				<ResetStamina ResetWhenReinstalled="false" IgnoreDataChanges="false">
+					<Default OnEnter="NoEffect" OnExit="Reset" Comment="Reset stamina at the end of the action"/>
+				</ResetStamina>
+				<ChangeActionFragment ResetWhenReinstalled="true">
+					<Default UseDefaultFragment="true" FragmentName=""/>
+					<Conditional Name="damaged_front" UseDefaultFragment="false" FragmentName="r_Stagger_F"/>
+					<Conditional Name="damaged_back" UseDefaultFragment="false" FragmentName="r_Stagger_B"/>
+				</ChangeActionFragment>
+				<SetReactionFragment Comment="Just like our Spawn actions, use SetReactionFragment referencing the EmptyReactionTableHarness table to prevent behavior evaluations while in this action">
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="TelegraphStaggered" MarkerName="EnableStaggerInNameplate" Comment="Use this MarkerName in a CAGE-Named proc clip to display 'Staggered' text in your character's nameplate while they are Staggered"/>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="90.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back">
+			<IfDamagedByAngle Max="180.000000" Min="90.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-90.000000" Min="-180.000000" Tolerance="0.010000"/>
+		</Or>
+	</Conditions>
+</ActionList>
+

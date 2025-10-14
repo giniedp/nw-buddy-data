@@ -1,0 +1,977 @@
+<ActionList>
+	<Actions>
+		<Action Name="Upyr_Call_Meatbag" FragmentName="Upyr_Call_Meatbag">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Upyr_Call_Meatbag_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Spell_Consume_Meatbag" FragmentName="Spell_Consume_Meatbag">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Spell_Consume_Meatbag_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Upyr_Consuming_Meatbag"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Consumed_Purple_Meatbag">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_Upyr_ConsumedPurpleMeatbag_Tick" OnlyCheckOwnedStatusEffects="false"/>
+			</ActivationCondition>
+			<Activities>
+				<CastSpell>
+					<Default SpellName="" AIProjectilePredictionSpeed="" AIHitScanPredictionSpeed="" AIMissMinDistance="" AIMissMaxDistance="" AILeadTargetMaxAngleDeg="" AILeadTarget=""/>
+				</CastSpell>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Upyr_ConsumedPurpleMeatbag_Tick"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Spell_Call_Meatbag" FragmentName="Spell_Call_Meatbag">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Spell_Call_Meatbag_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Upyr_Summoning_Meatbag"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Spell_Call_Meatbag_LOOP" FragmentName="Spell_Call_Meatbag_LOOP">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Spell_Call_Meatbag_LOOP_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Attack_Swipe_L" FragmentName="Baroness_Attack_Swipe_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Attack_Swipe_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Attack_Swipe_R" FragmentName="Baroness_Attack_Swipe_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Attack_Swipe_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Attack_Swipe_Combo" FragmentName="Baroness_Attack_Swipe_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Attack_Swipe_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="1.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Attack_Flurry" FragmentName="Baroness_Attack_Flurry" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Attack_Flurry_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Attack_Scream" FragmentName="Baroness_Attack_Scream" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Attack_Scream_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Spell_Unleash_Memory_Soldier" FragmentName="Baroness_Spell_Unleash_Memory_Soldier">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Spell_Unleash_Memory_Soldier_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Spell_Unleash_Memory_Archer" FragmentName="Baroness_Spell_Unleash_Memory_Archer">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Spell_Unleash_Memory_Archer_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Spell_Unleash_Memory_Archer_Right" FragmentName="Baroness_Spell_Unleash_Memory_Archer_Right">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Spell_Unleash_Memory_Archer_Right_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Spell_Unleash_Memory_Mage" FragmentName="Baroness_Spell_Unleash_Memory_Mage">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Spell_Unleash_Memory_Mage_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Attack_Projectile" FragmentName="Baroness_Attack_Projectile" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Attack_Projectile_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.6"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Attack_Projectile_Barrage" FragmentName="Baroness_Attack_Projectile_Barrage" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Attack_Projectile_Barrage_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Spell_Confusion" FragmentName="Baroness_Spell_Confusion" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Spell_Confusion_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Baroness_Spell_Wall_Of_Suffering" FragmentName="Baroness_Spell_Wall_Of_Suffering" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Baroness_Spell_Wall_Of_Suffering_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Upyr_Baroness_Wall_Of_Suffering"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Attack_2H_Swipe_L" FragmentName="Consort_Attack_2H_Swipe_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Attack_2H_Swipe_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Attack_2H_Swipe_R" FragmentName="Consort_Attack_2H_Swipe_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Attack_2H_Swipe_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Attack_2H_Swipe_Combo" FragmentName="Consort_Attack_2H_Swipe_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Attack_2H_Swipe_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Attack_Stab_01" FragmentName="Consort_Attack_Stab_01" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Attack_Stab_01_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Attack_Stab_02" FragmentName="Consort_Attack_Stab_02" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Attack_Stab_02_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Attack_Shoot_Projectile" FragmentName="Consort_Attack_Shoot_Projectile" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Attack_Shoot_Projectile_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Attack_Close_AOE" FragmentName="Consort_Attack_Close_AOE" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Attack_Close_AOE_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_Beam_Start" FragmentName="Consort_Spell_Beam_Start" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_Beam_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_Beam_Start_F" FragmentName="Consort_Spell_Beam_Start_F" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_Beam_Start_F_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_BackDodgeBeam_Start" FragmentName="Consort_Spell_BackDodgeBeam_Start" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_BackDodgeBeam_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="0.50" RotationMultiplier="1.20" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_Beam_Cast" FragmentName="Consort_Spell_Beam_Cast" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_Beam_Cast_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_Beam_Close_Cast" FragmentName="Consort_Spell_Beam_Close_Cast" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_Beam_Close_Cast_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_Beam_Outro" FragmentName="Consort_Spell_Beam_Outro">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_Beam_Outro_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_Beam_Outro_F" FragmentName="Consort_Spell_Beam_Outro_F">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_Beam_Outro_F_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_Projectile_Start" FragmentName="Consort_Spell_Projectile_Start" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_Projectile_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_Projectile_Cast" FragmentName="Consort_Spell_Projectile_Cast" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_Projectile_Cast_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_Projectile_Outro" FragmentName="Consort_Spell_Projectile_Outro">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_Projectile_Outro_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_Chains_Of_Suffering" FragmentName="Consort_Spell_Chains_Of_Suffering" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_Chains_Of_Suffering_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Consort_Spell_Chains_Of_Suffering_Close" FragmentName="Consort_Spell_Chains_Of_Suffering_Close" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Consort_Spell_Chains_Of_Suffering_Close_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Attack_Swipe_L" FragmentName="Mindthief_Attack_Swipe_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Attack_Swipe_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Attack_Swipe_R" FragmentName="Mindthief_Attack_Swipe_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Attack_Swipe_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Attack_Swipe_LR_Combo" FragmentName="Mindthief_Attack_Swipe_LR_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Attack_Swipe_LR_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Attack_Swipe_LRS_Combo" FragmentName="Mindthief_Attack_Swipe_LRS_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Attack_Swipe_LRS_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Attack_Empowered_Stab" FragmentName="Mindthief_Attack_Empowered_Stab" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Attack_Empowered_Stab_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Attack_Projectile_Wave" FragmentName="Mindthief_Attack_Projectile_Wave" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Attack_Projectile_Wave_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Attack_Projectile_Wave_Idle" FragmentName="Mindthief_Attack_Projectile_Wave_Idle" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Attack_Projectile_Wave_Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Attack_After_Image" FragmentName="Mindthief_Attack_After_Image" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Attack_After_Image_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Attack_After_Image_CloseRange" FragmentName="Mindthief_Attack_After_Image_CloseRange" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Attack_After_Image_CloseRange_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Attack_Teleport_Stab" FragmentName="Mindthief_Attack_Teleport_Stab" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Attack_Teleport_Stab_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<SetAttachmentVisibility>
+					<Default OnEnter="HideAttachment" OnExit="ShowAttachment" AttachmentName="right_hand_attach" AffectMainPass="true" AffectShadowPass="true"/>
+				</SetAttachmentVisibility>
+				<SetAttachmentVisibility>
+					<Default OnEnter="HideAttachment" OnExit="ShowAttachment" AttachmentName="left_hand_attach" AffectMainPass="true" AffectShadowPass="true"/>
+				</SetAttachmentVisibility>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Teleport_Start" FragmentName="Mindthief_Teleport_Start">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Teleport_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.05"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.05"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Teleport_Loop" FragmentName="Mindthief_Teleport_Loop">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Teleport_Loop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<ApplyMoveSpeedMultiplier>
+					<Default MultiplierType="MoveSpeedMod"/>
+				</ApplyMoveSpeedMultiplier>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<SetAttachmentVisibility>
+					<Default OnEnter="HideAttachment" OnExit="HideAttachment" AttachmentName="righthandattach" AffectMainPass="true" AffectShadowPass="true"/>
+				</SetAttachmentVisibility>
+				<SetAttachmentVisibility>
+					<Default OnEnter="HideAttachment" OnExit="HideAttachment" AttachmentName="lefthandattach" AffectMainPass="true" AffectShadowPass="true"/>
+				</SetAttachmentVisibility>
+				<SetAttachmentVisibility>
+					<Default OnEnter="HideAttachment" OnExit="HideAttachment" AttachmentName="mindthief_body" AffectMainPass="true" AffectShadowPass="true"/>
+				</SetAttachmentVisibility>
+			</Activities>
+		</Action>
+		<Action Name="Mindthief_Teleport_End" FragmentName="Mindthief_Teleport_End" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Mindthief_Teleport_End_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Meatbag_Attack_Lunge_L" FragmentName="Meatbag_Attack_Lunge_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Meatbag_Attack_Lunge_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Meatbag_Attack_Lunge_R" FragmentName="Meatbag_Attack_Lunge_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Meatbag_Attack_Lunge_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Meatbag_Attack_Rampage" FragmentName="Meatbag_Attack_Rampage" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Meatbag_Attack_Rampage_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Meatbag_Attack_Shriek" FragmentName="Meatbag_Attack_Shriek" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Meatbag_Attack_Shriek_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Meatbag_Attack_Swipe_L" FragmentName="Meatbag_Attack_Swipe_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Meatbag_Attack_Swipe_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Meatbag_Attack_Swipe_R" FragmentName="Meatbag_Attack_Swipe_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Meatbag_Attack_Swipe_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Meatbag_Consumed_Hold" FragmentName="Meatbag_Consumed_Hold">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Meatbag_Consumed_Hold_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Meatbag_Consumed_Death" FragmentName="r_Meatbag_Consumed_Death">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Meatbag_Consumed_Death_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="ChainAttack" TagName="ChainAttack"/>
+		<IfMannequinTag Name="StopChainAttack" TagName="StopChainAttack"/>
+		<And Name="Shade_HeartstopperFollowup">
+			<IfHasStatusEffect StatusEffect="AI_Upyr_Shade_QueueHeartstopperFollowup" OnlyCheckOwnedStatusEffects="false"/>
+		</And>
+	</Conditions>
+</ActionList>
+

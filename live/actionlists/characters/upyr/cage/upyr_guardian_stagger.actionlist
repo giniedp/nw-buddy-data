@@ -1,0 +1,143 @@
+<ActionList>
+	<Actions>
+		<Action Name="ActivateGrit" Comment="Activate GRIT as long as the character is not Staggered, and Stagger is not force disabled by MannequinMarker">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="ThrallShield_Active"/>
+					<IfHasStatusEffect StatusEffect="AI_Upyr_Guardian_ThrallShield_Active"/>
+					<Not>
+						<IfExternalCondition ConditionName="ThrallShield_Depleted"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_Stagger" Comment="Check that we're not already playing the Stagger reaction"/>
+					</Not>
+					<IfHasStatusEffect StatusEffect="AI_Enable_Stagger" Comment="Add this into your character's initial status effects to enable the Stagger mechanic on them"/>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableStagger" Comment="Fully disables Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_Stagger" Comment="Deactivate GRIT when the character is Staggered, so they do not continue to take stamina damage while in the state"/>
+					<IfMannequinMarker MarkerName="DisableStagger" Comment="Use this to disable Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+					<IfExternalCondition ConditionName="ThrallShield_Depleted"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ActivateGrit Comment="This allows the character to always take Stamina damage">
+					<Default OnEnter="Activate" OnExit="Deactivate" DamageTableRow=""/>
+				</ActivateGrit>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Staggered" FragmentName="r_Stagger" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="ThrallShield_Active"/>
+					<IfHasStatusEffect StatusEffect="AI_Upyr_Guardian_ThrallShield_Active"/>
+					<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="LessThanOrEqual" Comment="Look for Stamina to be 0"/>
+					<Or>
+						<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="0" FailOnNoReactionDamage="false" Comment="Require the character to be hit by an attack to enter Stagger"/>
+						<IfHasStatusEffect StatusEffect="AI_Force_Stagger" Comment="Do not require the character to be hit by an attack to enter Stagger"/>
+					</Or>
+					<Not Comment="Check that the character isn't already stunned or staggered. Staggered also applies the 'Stunned' tag.">
+						<Or>
+							<IsStunned/>
+							<IfMannequinTag TagName="Stunned"/>
+						</Or>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_Stagger" Comment="Check that we're not already playing the Stagger reaction"/>
+					</Not>
+					<IfHasStatusEffect StatusEffect="AI_Enable_Stagger" Comment="Add this into your character's initial status effects to enable the Stagger mechanic on them"/>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableStagger" Comment="Fully disables Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableStaggerReaction" Comment="Disable the Stagger reaction while keeping GRIT active and allowing Stamina damage to be taken to a minimum of 0; can Stagger on the next valid hit by an attack after the MannequinMarker is deactivated"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="ResetAI" Comment="Do not Interrupt the ai during retreating action"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="ThrallShield_Active" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ClearMannequinTagGroup ResetWhenReinstalled="true">
+					<Default TagGroupName="ThrallShield" OnEnter="NoEffect" OnExit="Clear"/>
+				</ClearMannequinTagGroup>
+				<TriggerEntity ResetWhenReinstalled="true">
+					<Default TriggerName="ThrallShield_Deactivate"/>
+				</TriggerEntity>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Active"/>
+							<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Elite_Fortify"/>
+							<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Fortify"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Cooldown"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="NPC_Enraged" StateName="Off" SetOnStop="false"/>
+				</SetAudioSwitchState>
+				<ChangeActionFragment ResetWhenReinstalled="true">
+					<Default UseDefaultFragment="true" FragmentName=""/>
+					<Conditional Name="damaged_front" UseDefaultFragment="false" FragmentName="r_Stagger_F"/>
+					<Conditional Name="damaged_back" UseDefaultFragment="false" FragmentName="r_Stagger_B"/>
+				</ChangeActionFragment>
+				<SetReactionFragment Comment="Just like our Spawn actions, use SetReactionFragment referencing the EmptyReactionTableHarness table to prevent behavior evaluations while in this action">
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="TelegraphStaggered" MarkerName="EnableStaggerInNameplate" Comment="Use this MarkerName in a CAGE-Named proc clip to display 'Staggered' text in your character's nameplate while they are Staggered"/>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="90.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back">
+			<IfDamagedByAngle Max="180.000000" Min="90.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-90.000000" Min="-180.000000" Tolerance="0.010000"/>
+		</Or>
+		<IfMannequinTag Name="ThrallShield_Active" TagName="ThrallShield_Active"/>
+		<IfMannequinTag Name="ThrallShield6" TagName="ThrallShield6"/>
+		<IfMannequinTag Name="ThrallShield5" TagName="ThrallShield5"/>
+		<IfMannequinTag Name="ThrallShield4" TagName="ThrallShield4"/>
+		<IfMannequinTag Name="ThrallShield3" TagName="ThrallShield3"/>
+		<IfMannequinTag Name="ThrallShield2" TagName="ThrallShield2"/>
+		<IfMannequinTag Name="ThrallShield1" TagName="ThrallShield1"/>
+		<And Name="ThrallShield_Depleted">
+			<Not>
+				<Or>
+					<IfMannequinTag TagName="ThrallShield6"/>
+					<IfMannequinTag TagName="ThrallShield5"/>
+					<IfMannequinTag TagName="ThrallShield4"/>
+					<IfMannequinTag TagName="ThrallShield3"/>
+					<IfMannequinTag TagName="ThrallShield2"/>
+					<IfMannequinTag TagName="ThrallShield1"/>
+				</Or>
+			</Not>
+		</And>
+	</Conditions>
+</ActionList>
+

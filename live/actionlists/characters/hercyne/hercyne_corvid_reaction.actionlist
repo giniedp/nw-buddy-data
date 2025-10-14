@@ -261,14 +261,23 @@
 											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="DungeonMiniBoss" UseCRC="true"/>
 											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Dungeon+" UseCRC="true"/>
 											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Elite+" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="EliteMiniBoss" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="CatacombsMiniBoss" UseCRC="true"/>
 										</Or>
 										<IfMannequinTag TagName="ReactionLimiter_Active"/>
+										<Not>
+											<IsStunned/>
+										</Not>
 									</And>
 								</Not>
 								<Not>
 									<Or>
 										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Raid10+" UseCRC="true"/>
 										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Raid20+" UseCRC="true"/>
+										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Boss" UseCRC="true"/>
+										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Boss+" UseCRC="true"/>
+										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Boss-" UseCRC="true"/>
+										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="EliteBoss" UseCRC="true"/>
 									</Or>
 								</Not>
 								<Not>
@@ -341,6 +350,8 @@
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="DungeonMiniBoss" UseCRC="true"/>
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Dungeon+" UseCRC="true"/>
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Elite+" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="EliteMiniBoss" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="CatacombsMiniBoss" UseCRC="true"/>
 								</Or>
 							</Not>
 						</And>

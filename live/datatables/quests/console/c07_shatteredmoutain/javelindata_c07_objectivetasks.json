@@ -4091,8 +4091,24 @@
 		"Duration": 0,
 		"TargetDescriptionTaskId": "0714_0105_d_01_goto_POI",
 		"ShowDiegeticTaskPin": false,
-		"SubTask1": "0714_0105_d_01_goto_POI",
-		"SubTask2": "0714_0105_d_02_getitem"
+		"SubTask1": "0714_0105_d_01_SwapIn_Failsafe",
+		"SubTask2": "0714_0105_d_01_goto_POI",
+		"SubTask3": "0714_0105_d_02_getitem"
+	},
+	{
+		"TaskID": "0714_0105_d_01_SwapIn_Failsafe",
+		"Type": "TaskUnlockAchievement",
+		"StayActive": 0,
+		"TargetQty": 1,
+		"ItemName": "SwapActive_0714_LeysonReese_03",
+		"ItemDropProbability": 0,
+		"ChestDropProbability": 0,
+		"EnforceLocationRequirement": false,
+		"PauseAndClearLootOnTaskComplete": false,
+		"GuranteedDropAttempts": 0,
+		"Duration": 0,
+		"IsHidden": "1",
+		"ShowDiegeticTaskPin": false
 	},
 	{
 		"TaskID": "0714_0105_d_01_goto_POI",

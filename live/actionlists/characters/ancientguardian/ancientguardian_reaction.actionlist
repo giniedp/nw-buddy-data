@@ -61,14 +61,23 @@
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="DungeonMiniBoss" UseCRC="true"/>
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Dungeon+" UseCRC="true"/>
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Elite+" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="EliteMiniBoss" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="CatacombsMiniBoss" UseCRC="true"/>
 								</Or>
 								<IfMannequinTag TagName="ReactionLimiter_Active"/>
+								<Not>
+									<IsStunned/>
+								</Not>
 							</And>
 						</Not>
 						<Not>
 							<Or>
 								<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Raid10+" UseCRC="true"/>
 								<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Raid20+" UseCRC="true"/>
+								<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Boss" UseCRC="true"/>
+								<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Boss+" UseCRC="true"/>
+								<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Boss-" UseCRC="true"/>
+								<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="EliteBoss" UseCRC="true"/>
 							</Or>
 						</Not>
 						<Not>
@@ -138,6 +147,8 @@
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="DungeonMiniBoss" UseCRC="true"/>
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Dungeon+" UseCRC="true"/>
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Elite+" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="EliteMiniBoss" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="CatacombsMiniBoss" UseCRC="true"/>
 								</Or>
 								<Not>
 									<IsStunned/>
@@ -148,16 +159,13 @@
 					<ThenActivity>
 						<Group>
 							<ModifyStatusEffects ResetWhenReinstalled="true">
-								<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+								<Default OnlyRemoveOwnedStatusEffects="true" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
 									<EffectsToApplyOnEnter>
 										<EffectId EffectId="AI_Reaction_Limiter_Gate"/>
 									</EffectsToApplyOnEnter>
 									<EffectsToApplyOnExit>
 										<EffectId EffectId="AI_Reaction_Limiter"/>
 									</EffectsToApplyOnExit>
-									<EffectsToRemoveOnExit>
-										<EffectId EffectId="AI_Reaction_Limiter_Gate"/>
-									</EffectsToRemoveOnExit>
 								</Default>
 							</ModifyStatusEffects>
 							<SetMannequinTag ResetWhenReinstalled="true">
@@ -166,6 +174,13 @@
 						</Group>
 					</ThenActivity>
 				</IfThenElse>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Reaction_Limiter_Gate"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
 				<ClearDamaged/>
 				<SetMannequinTag ResetWhenReinstalled="true">
 					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
@@ -281,14 +296,23 @@
 											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="DungeonMiniBoss" UseCRC="true"/>
 											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Dungeon+" UseCRC="true"/>
 											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Elite+" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="EliteMiniBoss" UseCRC="true"/>
+											<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="CatacombsMiniBoss" UseCRC="true"/>
 										</Or>
 										<IfMannequinTag TagName="ReactionLimiter_Active"/>
+										<Not>
+											<IsStunned/>
+										</Not>
 									</And>
 								</Not>
 								<Not>
 									<Or>
 										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Raid10+" UseCRC="true"/>
 										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Raid20+" UseCRC="true"/>
+										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Boss" UseCRC="true"/>
+										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Boss+" UseCRC="true"/>
+										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Boss-" UseCRC="true"/>
+										<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="EliteBoss" UseCRC="true"/>
 									</Or>
 								</Not>
 								<Not>
@@ -359,6 +383,8 @@
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="DungeonMiniBoss" UseCRC="true"/>
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Dungeon+" UseCRC="true"/>
 									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="Elite+" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="EliteMiniBoss" UseCRC="true"/>
+									<BlackboardCondition LeftOperand="%Creature_Type%0" Operator="Equal" RightOperand="CatacombsMiniBoss" UseCRC="true"/>
 								</Or>
 							</Not>
 						</And>

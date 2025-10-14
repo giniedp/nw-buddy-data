@@ -5,11 +5,11 @@
 				<IfBehaviorTreeTask ActionName="Combat_Turn_CAGE_Task"/>
 			</ActivationCondition>
 			<DeactivationCondition>
-				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.15"/>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
 			</DeactivationCondition>
 			<Activities>
 				<BehaviorTreeTask>
-					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
 				</BehaviorTreeTask>
 				<SetDesiredFacingBlendParam>
 					<Default FacingMode="AngleToTarget"/>

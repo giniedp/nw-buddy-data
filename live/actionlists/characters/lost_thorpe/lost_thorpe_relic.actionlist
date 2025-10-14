@@ -1,0 +1,37 @@
+<ActionList>
+	<Actions>
+		<Action Name="Idle" FragmentName="Idle">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<ClearStimuli>
+					<Default TriggerOption="OnExit" DelayTime="0.0"/>
+				</ClearStimuli>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Idle" FragmentName="Combat_Idle">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<ClearStimuli>
+					<Default TriggerOption="OnExit" DelayTime="0.0"/>
+				</ClearStimuli>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<Or Name="Combat_Idle">
+			<IfHasAttackTarget/>
+			<IfMannequinTag TagName="Alerted"/>
+		</Or>
+	</Conditions>
+</ActionList>
+

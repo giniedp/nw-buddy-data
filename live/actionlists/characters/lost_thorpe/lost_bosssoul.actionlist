@@ -1,0 +1,316 @@
+<ActionList>
+	<Actions>
+		<Action Name="Idle" FragmentName="Idle">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Idle" FragmentName="Combat_Idle">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="BossSoul_Activation" FragmentName="BossSoul_Activation" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="BossSoul_Activation_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="BossSoul_Explosion" FragmentName="BossSoul_Explosion" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<BlackboardCondition LeftOperand="%SE_AI_IoN_Lost_Thorpe_SoulCharge%0" Operator="GreaterThanOrEqual" RightOperand="5"/>
+					<Not>
+						<IfMannequinTag TagName="Reaction"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="1.0"/>
+				</SetReactionFragment>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_IoN_Lost_Thorpe_SoulUnholySmite"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_IoN_Lost_Thorpe_SoulUnholySmite"/>
+							<EffectId EffectId="AI_IoN_Lost_Thorpe_SoulCharge"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableNameplate"/>
+						</TriggerEntity>
+						<TriggerEntity>
+							<Default TriggerName="SoulCharge0"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="RemoveCharges"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+								<EffectsToRemoveOnEnter>
+									<EffectId EffectId="AI_IoN_Lost_Thorpe_SoulCharge"/>
+								</EffectsToRemoveOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<TriggerEntity>
+					<Default TriggerName="BossSoulDetonationCharged"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="SoulCharge5"/>
+				</TriggerEntity>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="BossSoul_Explosion_UnholySmite" FragmentName="BossSoul_Explosion_UnholySmite" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_IoN_Lost_Thorpe_SoulUnholySmite" ComparisonType="Equal" StackSize="1"/>
+					<Not>
+						<IfMannequinTag TagName="Reaction"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="false" FragmentName="BossSoul_Explosion_UnholySmite" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="1.0"/>
+				</SetReactionFragment>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_IoN_Lost_Thorpe_SoulUnholySmite"/>
+							<EffectId EffectId="AI_IoN_Lost_Thorpe_SoulCharge"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<TriggerEntity>
+					<Default TriggerName="BossSoulDetonationUnholySmite"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="SoulCharge0"/>
+				</TriggerEntity>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="BossSoul_SoulDominion" FragmentName="BossSoul_SoulDominion" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="BossSoul_SoulDominion_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="SoulDominionPreparation"/>
+				</TriggerEntity>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="BossSoul_ShadowClones" FragmentName="BossSoul_ShadowClones" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="BossSoul_ShadowClones_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_IoN_Lost_Thorpe_SoulCharge"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="DeathsDoor" FragmentName="BossSoul_DeathsDoor" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDeathsDoor ServerOnly="true"/>
+					<Not>
+						<IfMannequinTag TagName="DeathsDoorReset"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.0"/>
+				</SetReactionFragment>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="DeathsDoorReset" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_IoN_BossSoul_Invulnerability"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_IoN_Lost_Thorpe_SoulCharge"/>
+							<EffectId EffectId="AI_IoN_Lost_Thorpe_SpawnShadow"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_IoN_Lost_Thorpe_SoulCharge"/>
+							<EffectId EffectId="AI_IoN_Lost_Thorpe_SoulUnholySmite"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<TriggerEntity>
+					<Default TriggerName="FinishSpawnShadow"/>
+				</TriggerEntity>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Revive"/>
+					</IfCondition>
+					<ThenActivity>
+						<ReviveFromDeathsDoor>
+							<Default TriggerOption="OnEnter" DelayTime="0.0" HealthMultiplier="1.0"/>
+						</ReviveFromDeathsDoor>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

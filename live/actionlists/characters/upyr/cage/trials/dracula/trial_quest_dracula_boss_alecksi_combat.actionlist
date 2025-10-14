@@ -1,0 +1,874 @@
+<ActionList>
+	<Actions>
+		<Action Name="Attack_Banish" FragmentName="Attack_Banish" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Banish_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="EnableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Consume_Start" FragmentName="Attack_Consume_Start" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Consume_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Consume_Loop" FragmentName="Attack_Consume_Loop" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Consume_Loop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Consume_End" FragmentName="Attack_Consume_End" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Consume_End_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DynamicScale">
+					<IfCondition>
+						<IfMannequinMarker Name="DynamicScale" MarkerName="DynamicScale"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="AI_Trial_Quest_Dracula_Dynamic_Scale"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="ApplyBuff">
+					<IfCondition>
+						<IfMannequinMarker Name="ApplyBuff" MarkerName="ApplyBuff"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="AI_Trial_Quest_Dracula_Empower_Buff"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Activate_Empower">
+					<IfCondition>
+						<IfMannequinMarker Name="Activate_Empower" MarkerName="Activate_Empower"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Activate_Empower"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment=" ">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Starfall" FragmentName="Attack_Starfall" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Starfall_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Ensnare" FragmentName="r_Ensnare" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Ensnare_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Trial_Quest_Dracula_Ensnare_Stagger_Unlock"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="true" Comment="ApplyDebuff">
+					<IfCondition>
+						<IfMannequinMarker Name="ApplyDebuff" MarkerName="ApplyDebuff"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="AI_Trial_Quest_Dracula_Ensnare_Debuff"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Deactivate EyeGlow VFX">
+					<IfCondition>
+						<IfMannequinMarker Name="Deactivate_Empower" MarkerName="Deactivate_Empower"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Deactivate_Empower"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Activate EyeGlow VFX">
+					<IfCondition>
+						<IfMannequinMarker Name="Activate_Empower" MarkerName="Activate_Empower"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Activate_Empower"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="EnableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Drama_Tear_Start" FragmentName="Drama_Tear_Start" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Drama_Tear_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Activate EyeGlow VFX">
+					<IfCondition>
+						<IfMannequinMarker Name="RevealTear" MarkerName="RevealTear"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="RevealTear"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="EnableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Drama_Tear_End" FragmentName="Drama_Tear_End" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Drama_Tear_End_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Activate EyeGlow VFX">
+					<IfCondition>
+						<IfMannequinMarker Name="DestroyTear" MarkerName="DestroyTear"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DestroyTear"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Lunge" FragmentName="Attack_Lunge" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Lunge_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.15" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Lunge_Empowered" FragmentName="Attack_Lunge_Empowered" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Lunge_Empowered_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.25" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Lunge_Jab_Combo" FragmentName="Attack_Lunge_Jab_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Lunge_Jab_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Fang_Rush" FragmentName="Attack_Fang_Rush" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Fang_Rush_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.25" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Tell_FangRush_On">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Tell_FangRush_On"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Tell_FangRush_On"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Tell_FangRush_Off">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Tell_FangRush_Off"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Tell_FangRush_Off"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Fang_Rush_Combo" FragmentName="Attack_Fang_Rush_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Fang_Rush_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Tell_FangRush_On">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Tell_FangRush_On"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Tell_FangRush_On"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Tell_FangRush_Off">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Tell_FangRush_Off"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Tell_FangRush_Off"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Rapid_Jab" FragmentName="Attack_Rapid_Jab" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Rapid_Jab_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Triple_Slash" FragmentName="Attack_Triple_Slash" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Triple_Slash_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Retreating_Slash_Bolt" FragmentName="Attack_Retreating_Slash_Bolt" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Retreating_Slash_Bolt_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.2" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Retreat_Lunge_Combo" FragmentName="Attack_Retreat_Lunge_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Retreat_Lunge_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.0" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Shoulder_Slash" FragmentName="Attack_Shoulder_Slash" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Shoulder_Slash_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.9"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Slash_Stab" FragmentName="Attack_Slash_Stab" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Slash_Stab_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Summon" FragmentName="Attack_Summon" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Summon_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Turn_R_180" FragmentName="Attack_Turn_R_180" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Turn_R_180_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Turn_L_90" FragmentName="Attack_Turn_L_90" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Turn_L_90_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Turn_R_90" FragmentName="Attack_Turn_R_90" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Turn_R_90_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Arcane_Blast" FragmentName="Attack_Arcane_Blast" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Arcane_Blast_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Arcane_Bolt_Single" FragmentName="Attack_Arcane_Bolt_Single" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Arcane_Bolt_Single_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Teleport_Start" FragmentName="Attack_Teleport_Start">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Teleport_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="EnableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Teleport_Move" FragmentName="Attack_Teleport_Move">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Teleport_Move_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="EnableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Teleport_Loop" FragmentName="Attack_Teleport_Loop">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Teleport_Loop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="EnableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Teleport_End" FragmentName="Attack_Teleport_End">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Teleport_End_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AITargetRelativeFacing>
+					<Default TurnRate="2000.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="StopFacingTarget" TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+				</AITargetRelativeFacing>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="EnableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Dash_F" FragmentName="Dash_F" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Dash_F_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Dash_B" FragmentName="Dash_B" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Dash_B_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Dash_L" FragmentName="Dash_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Dash_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Dash_R" FragmentName="Dash_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Dash_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Fidget" FragmentName="Fidget">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Fidget" FragmentName="Combat_Fidget">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="EnableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="EnableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="EnableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="DisableMarker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DisableMarker"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="DisableMarker"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="ChainAttack" TagName="ChainAttack"/>
+		<IfMannequinTag Name="StopChainAttack" TagName="StopChainAttack"/>
+		<IfMannequinMarker Name="StopFacingTarget" MarkerName="StopFacingTarget"/>
+	</Conditions>
+</ActionList>
+

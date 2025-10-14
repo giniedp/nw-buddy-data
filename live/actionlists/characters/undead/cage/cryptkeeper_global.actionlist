@@ -1,0 +1,69 @@
+<ActionList>
+	<Actions>
+		<Action Name="Equip">
+			<ActivationCondition>
+				<IfItemSheathed SlotToCheckAlias="ACTIVE_MAIN_HAND_WEAPON"/>
+			</ActivationCondition>
+			<Activities>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SetMannequinTagFromSource ResetWhenReinstalled="true">
+					<Default TagSource="PaperdollSlot" SourceSlot="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SetMannequinTagFromSource>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+				<SheatheWeapon ResetWhenReinstalled="true">
+					<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_OFF_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+				</SheatheWeapon>
+			</Activities>
+		</Action>
+		<Action Name="Block">
+			<ActivationCondition>
+				<IfMannequinTag TagName="Siphon"/>
+			</ActivationCondition>
+			<Activities>
+				<ActivateBlock>
+					<Default OnEnter="ActivateMainHandWeapon" OnExit="Deactivate"/>
+				</ActivateBlock>
+			</Activities>
+		</Action>
+		<Action Name="LookPose" FragmentName="LookPose">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+		<Action Name="Siphon">
+			<ActivationCondition>
+				<IfMannequinTag TagName="Siphon"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfMannequinTag TagName="Siphon"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_Gravedigger_SiphonSpell"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ActivateGrit>
+					<Default OnEnter="Activate" OnExit="Deactivate" DamageTableRow="Undead_GraveDigger_Siphon"/>
+				</ActivateGrit>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="BecomeFrightened" MarkerName="BecomeFrightened"/>
+		<IfMannequinMarker Name="BecomeFrenzied" MarkerName="BecomeFrenzied"/>
+	</Conditions>
+</ActionList>
+

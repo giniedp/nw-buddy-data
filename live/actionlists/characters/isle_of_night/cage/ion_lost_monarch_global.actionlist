@@ -1,0 +1,21 @@
+<ActionList>
+	<Actions>
+		<Action Name="Spawn" FragmentName="Spawn">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Spawn_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+		</Action>
+		<Action Name="Alert" FragmentName="Alert">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Alert_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+		</Action>
+	</Actions>
+</ActionList>
+

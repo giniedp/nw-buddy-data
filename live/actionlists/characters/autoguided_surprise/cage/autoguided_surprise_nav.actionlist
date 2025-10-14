@@ -1,0 +1,127 @@
+<ActionList>
+	<Actions>
+		<Action Name="Fidget" FragmentName="Fidget">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+					<Not>
+						<IfHTNCAGEAction ActionName="Fidget_CAGE_Task"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.3"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+		<Action Name="Idle_NoTarget" FragmentName="OR_Boss_IDLE">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Idle_NoTarget_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+		<Action Name="Alert" FragmentName="Alert">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Alert_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.3"/>
+				</HTNPlanDoneActivity>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AITargetRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="AllowRotation" TurnRate="360.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+				</AITargetRelativeFacing>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="0.0,0.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Teleport" FragmentName="Teleport">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Teleport_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Invisible" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+			</Activities>
+		</Action>
+		<Action Name="Teleport_Start" FragmentName="Teleport_Start">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Teleport_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</HTNPlanDoneActivity>
+				<AITargetRelativeFacing>
+					<Default TurnRate="270.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+				</AITargetRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="Teleport_End" FragmentName="Teleport_End">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Teleport_End_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</HTNPlanDoneActivity>
+			</Activities>
+		</Action>
+		<Action Name="Alert_Turn" FragmentName="Alert_Turn">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Alert_Turn_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.3"/>
+				</HTNPlanDoneActivity>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetDesiredFacingBlendParam>
+					<Default FacingMode="AngleToTarget"/>
+				</SetDesiredFacingBlendParam>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="AllowRotation" MarkerName="AllowRotation"/>
+	</Conditions>
+</ActionList>
+

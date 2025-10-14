@@ -1,0 +1,94 @@
+<ActionList>
+	<Actions>
+		<Action Name="Death" FragmentName="r_Death_F" ServerStarted="true">
+			<ActivationCondition>
+				<IfDead ServerOnly="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/Upyr/CAGE/Upyr_Thrall_Meatbag_DeathTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<AIAssignOrder>
+					<Default Order="Despawn"/>
+				</AIAssignOrder>
+			</Activities>
+		</Action>
+		<Action Name="Consume_Death" FragmentName="r_Meatbag_Consumed_Death" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_Upyr_Consuming_Meatbag" OnlyCheckOwnedStatusEffects="false"/>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="r_Meatbag_Consumed_Death"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/ReactionTables/BaseAI_ReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+				</ReactionMotion>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="DeathVolume"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="ConsumeVFX"/>
+						</TriggerEntity>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Upyr_Meatbag_HasBeenConsumed"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToApplyOnExit/>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Upyr_Consuming_Meatbag"/>
+							<EffectId EffectId="AI_Upyr_ConsumedGreenMeatbag"/>
+							<EffectId EffectId="AI_Upyr_ConsumedRedMeatbag"/>
+							<EffectId EffectId="AI_Upyr_ConsumedPurpleMeatbag"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit/>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<True Name="AlwaysTrue"/>
+	</Conditions>
+</ActionList>
+

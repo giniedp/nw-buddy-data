@@ -1,0 +1,136 @@
+<ActionList>
+	<Actions>
+		<Action Name="EncounterEvent_InterruptP2Sacrifice" FragmentName="EncounterEvent_InterruptP2Sacrifice">
+			<ActivationCondition>
+				<And>
+					<BlackboardCondition LeftOperand="%BB_PGDead_Bow%0" Operator="Equal" RightOperand="1"/>
+					<BlackboardCondition LeftOperand="%BB_PGDead_Halberd%0" Operator="Equal" RightOperand="1"/>
+					<BlackboardCondition LeftOperand="%BB_PGDead_Sword%0" Operator="Equal" RightOperand="1"/>
+					<BlackboardCondition LeftOperand="%BB_PGDead_Shield%0" Operator="Equal" RightOperand="1"/>
+					<BlackboardCondition LeftOperand="%SacrificeOngoing%0" Operator="Equal" RightOperand="1"/>
+					<BlackboardCondition LeftOperand="%CurrentPhase%0" Operator="Equal" RightOperand="2"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="EncounterEvent_InterruptP3Sacrifice"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="EncounterEvent_InterruptP2Sacrifice"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.0"/>
+				</SetReactionFragment>
+			</Activities>
+		</Action>
+		<Action Name="Fidget" FragmentName="Fidget">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="EncounterEvent_Sacrifice" FragmentName="EncounterEvent_Sacrifice">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="EncounterEvent_Sacrifice_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					<And>
+						<BlackboardCondition LeftOperand="%BB_PGDead_Bow%0" Operator="Equal" RightOperand="1"/>
+						<BlackboardCondition LeftOperand="%BB_PGDead_Halberd%0" Operator="Equal" RightOperand="1"/>
+						<BlackboardCondition LeftOperand="%BB_PGDead_Sword%0" Operator="Equal" RightOperand="1"/>
+						<BlackboardCondition LeftOperand="%BB_PGDead_Shield%0" Operator="Equal" RightOperand="1"/>
+					</And>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="EncounterEvent_AssignChampion" FragmentName="EncounterEvent_AssignChampion">
+			<ActivationCondition>
+				<And>
+					<IfBehaviorTreeTask ActionName="EncounterEvent_AssignChampion_CAGE_Task"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="EncounterEvent_InterruptPSacrifice"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_IoN_EncManagement_ChampionAssignAuthorizer"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="EncounterEvent_InterruptP3Sacrifice" FragmentName="EncounterEvent_InterruptP3Sacrifice">
+			<ActivationCondition>
+				<And>
+					<BlackboardCondition LeftOperand="%BB_PGDead_Bow%0" Operator="Equal" RightOperand="1"/>
+					<BlackboardCondition LeftOperand="%BB_PGDead_Halberd%0" Operator="Equal" RightOperand="1"/>
+					<BlackboardCondition LeftOperand="%BB_PGDead_Sword%0" Operator="Equal" RightOperand="1"/>
+					<BlackboardCondition LeftOperand="%BB_PGDead_Shield%0" Operator="Equal" RightOperand="1"/>
+					<BlackboardCondition LeftOperand="%SacrificeOngoing%0" Operator="Equal" RightOperand="1"/>
+					<BlackboardCondition LeftOperand="%CurrentPhase%0" Operator="Equal" RightOperand="3"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="EncounterEvent_InterruptP3Sacrifice"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="EncounterEvent_InterruptP2Sacrifice"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.0"/>
+				</SetReactionFragment>
+			</Activities>
+		</Action>
+		<Action Name="Fidget" FragmentName="Fidget">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

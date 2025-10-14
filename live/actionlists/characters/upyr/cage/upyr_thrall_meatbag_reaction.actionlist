@@ -1,0 +1,43 @@
+<ActionList>
+	<Actions>
+		<Action Name="Meatbag_Consume_Intro" FragmentName="Meatbag_Consume_Intro" ServerStarted="True">
+			<ActivationCondition>
+				<And>
+					<BlackboardCondition LeftOperand="%Communicator_ID%0" Operator="NotEqual" RightOperand="0"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="Meatbag_Consume_Intro"/>
+					</Not>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_Upyr_Meatbag_ConsumeSequence" OnlyCheckOwnedStatusEffects="false"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.25"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ReactionMotion>
+					<Default Scale="1.0"/>
+				</ReactionMotion>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Upyr_Meatbag_ConsumeSequence"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<True Name="AlwaysTrue"/>
+	</Conditions>
+</ActionList>
+

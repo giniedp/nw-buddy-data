@@ -1,0 +1,169 @@
+<ActionList>
+	<Actions>
+		<Action Name="Combat_Fidget" FragmentName="Combat_Fidget">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="PumpklinDisguise" FragmentName="PumpklinDisguise">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="PumpklinDisguise_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Scurry" FragmentName="Attack_Scurry">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Scurry_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Pumpklin_Lunge_Start" FragmentName="Attack_Pumpklin_Lunge_Start" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Pumpklin_Lunge_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Pumpklin_Lunge_End" FragmentName="Attack_Pumpklin_Lunge_End" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Pumpklin_Lunge_End_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Pumpklin_Lunge_Loop" FragmentName="Attack_Pumpklin_Lunge_Loop" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Pumpklin_Lunge_Loop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Pumpklin_Lunge_Full" FragmentName="Attack_Pumpklin_Lunge_Full" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Pumpklin_Lunge_Full_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Taunt" FragmentName="Combat_Taunt">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Taunt_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<SetDesiredFacingBlendParam>
+					<Default FacingMode="AngleToTarget"/>
+				</SetDesiredFacingBlendParam>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Crawler_Slash_R" FragmentName="Attack_Crawler_Slash_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Crawler_Slash_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Crawler_Slash_L" FragmentName="Attack_Crawler_Slash_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Crawler_Slash_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Pumpklin_DeathsDoor" FragmentName="Pumpklin_DeathsDoor" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Pumpklin_DeathsDoor_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

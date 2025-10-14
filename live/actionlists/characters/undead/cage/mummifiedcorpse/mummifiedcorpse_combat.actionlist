@@ -1,0 +1,237 @@
+<ActionList>
+	<Actions>
+		<Action Name="Combat_Fidget" FragmentName="Combat_Fidget">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Combat_Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</HTNPlanDoneActivity>
+				<AITargetRelativeFacing>
+					<Default TurnRate="0.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="CanTurn" TurnRate="1080.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+				</AITargetRelativeFacing>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Kick" FragmentName="Attack_Kick" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_Kick_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_1H_Stab" FragmentName="Attack_1H_Stab" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_1H_Stab_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_MummifiedCorpse_SharedCremation" FragmentName="Attack_MummifiedCorpse_SharedCremation" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_MummifiedCorpse_SharedCremation_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="1.0"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="GrantAuraSE"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ModifyStatusEffects>
+								<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="AI_MummifiedCorpse_SharedCremationSelf"/>
+										<EffectId EffectId="AI_Enable_Stagger"/>
+									</EffectsToApplyOnEnter>
+								</Default>
+							</ModifyStatusEffects>
+							<ResetStamina ResetWhenReinstalled="false" IgnoreDataChanges="false">
+								<Default OnEnter="Reset" OnExit="NoEffect"/>
+							</ResetStamina>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="TriggerAuraVFX"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Trigger_AuraVFX"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_MummifiedCorpse_ExhumeLinens_Spellcast" FragmentName="Attack_MummifiedCorpse_ExhumeLinens_Spellcast" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_MummifiedCorpse_ExhumeLinens_Spellcast_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_MummifiedCorpse_ExhumeWatcher"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_MummifiedCorpse_ExhumeWatcher"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="true" Comment="empty">
+					<IfCondition>
+						<And>
+							<IfHasStatusEffect StatusEffect="AI_MummifiedCorpse_ExhumeHit" OnlyCheckOwnedStatusEffects="false"/>
+							<Not>
+								<IfHasStatusEffect StatusEffectCategory="Root" OnlyCheckOwnedStatusEffects="false"/>
+							</Not>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="AI_MummifiedCorpse_ExhumeHit_RootBuffer"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_MummifiedCorpse_ExhumeLinens_Spellcast_Close" FragmentName="Attack_MummifiedCorpse_ExhumeLinens_Spellcast_Close" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_MummifiedCorpse_ExhumeLinens_Spellcast_Close_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_MummifiedCorpse_ExhumeLinens_Jump_Full" FragmentName="Attack_MummifiedCorpse_ExhumeLinens_Full_End" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_MummifiedCorpse_ExhumeLinens_Jump_Full_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Fidgeting" FragmentName="Attack_MummifiedCorpse_Scurry" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_MummifiedCorpse_Scurry_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Attack_1H_Stab_Triple" FragmentName="Attack_1H_Stab_Triple" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Attack_1H_Stab_Triple_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinMarker Name="ApplyRotation" MarkerName="ApplyRotation"/>
+		<IfMannequinMarker Name="ApplyRotation_Fast" MarkerName="ApplyRotation_Fast"/>
+		<IfMannequinMarker Name="AllowRotation" MarkerName="AllowRotation"/>
+		<IfMannequinMarker Name="AllowRotation_Fast" MarkerName="AllowRotation_Fast"/>
+		<IfMannequinMarker Name="StopFacingTarget" MarkerName="StopFacingTarget"/>
+		<IfMannequinMarker Name="CanTurn" MarkerName="CanTurn"/>
+		<IfMannequinMarker Name="AuraTurnedOn" MarkerName="AuraTurnedOn"/>
+		<IfHasStatusEffect Name="ExhumeLinens_Hit" StatusEffect="AI_MummifiedCorpse_ExhumeHit_RootBuffer" OnlyCheckOwnedStatusEffects="false"/>
+	</Conditions>
+</ActionList>
+

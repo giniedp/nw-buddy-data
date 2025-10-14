@@ -93,10 +93,15 @@
 		"IconPath": "lyshineui/images/pugfinder/pugfinder_raid.webp",
 		"IsPvp": false,
 		"MinGroupSize": 6,
-		"MaxGroupSize": 20,
+		"MaxGroupSize": 10,
 		"RequireAzothStaff": false,
 		"RequireLocalGroup": true,
-		"RequireRaidGroup": true
+		"RequireRaidGroup": true,
+		"IconPathSmall": "lyshineui/images/pugfinder/raidiconsmall.webp",
+		"PanelIconPath": "lyshineui/images/pugfinder/raidicon.webp",
+		"PanelName": "@ui_pugfinder_activity_raids_name",
+		"PanelSubText": "@ui_pugfinder_activity_raids_name",
+		"PanelDescription": "@ui_pugfinder_activity_raids_desc"
 	},
 	{
 		"GameModeId": "SoulTrial",
@@ -140,5 +145,35 @@
 		"RequireAzothStaff": false,
 		"RequireLocalGroup": false,
 		"RequireRaidGroup": false
+	},
+	{
+		"GameModeId": "BattleRoyale",
+		"Name": "@br_gamemode_name",
+		"Description": "@br_gamemode_description",
+		"IconPath": "lyshineui/images/pugfinder/pugfinder_ctf.webp",
+		"IsPvp": true,
+		"MinGroupSize": 0,
+		"MaxGroupSize": 0,
+		"RequireAzothStaff": false,
+		"RequireLocalGroup": false,
+		"RequireRaidGroup": false,
+		"IconPathSmall": "lyshineui/images/pugfinder/pugfinder_ctf.webp",
+		"PanelIconPath": "lyshineui/images/pugfinder/pugfinder_ctf.webp"
+	},
+	{
+		"GameModeId": "Catacombs",
+		"Name": "@ui_pugfinder_activity_catacombs_name",
+		"Description": "@ui_pugfinder_activity_catacombs_desc",
+		"IconPath": "lyshineui/images/pugfinder/pugfinder_catacombs.webp",
+		"IsPvp": false,
+		"MinGroupSize": 0,
+		"MaxGroupSize": 0,
+		"RequireAzothStaff": false,
+		"RequireLocalGroup": false,
+		"RequireRaidGroup": false,
+		"IconPathSmall": "lyshineui/images/pugfinder/pugfinder_catacombs.webp",
+		"PanelIconPath": "lyshineui/images/pugfinder/pugfinder_catacombs.webp",
+		"PanelName": "@dungeon_catacombs_title",
+		"PanelDescription": "@dungeon_catacombs_description"
 	}
 ]

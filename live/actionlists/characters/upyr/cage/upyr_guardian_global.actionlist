@@ -1,0 +1,202 @@
+<ActionList>
+	<Actions>
+		<Action Name="ThrallShield" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="ThrallShield_Active"/>
+					<IfHasStatusEffect StatusEffect="AI_Upyr_Guardian_ThrallShield_Active"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_Upyr_Guardian_ThrallShield_Active"/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="ThrallShield5_Hit"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="ThrallShield6_OFF"/>
+							</TriggerEntity>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="ThrallShield4_Hit"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="ThrallShield5_OFF"/>
+							</TriggerEntity>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="ThrallShield3_Hit"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="ThrallShield4_OFF"/>
+							</TriggerEntity>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="ThrallShield2_Hit"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="ThrallShield3_OFF"/>
+							</TriggerEntity>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="ThrallShield1_Hit"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="ThrallShield2_OFF"/>
+							</TriggerEntity>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfExternalCondition ConditionName="ThrallShield_Depleted"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity ResetWhenReinstalled="true">
+								<Default TriggerName="ThrallShield1_OFF"/>
+							</TriggerEntity>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToRemoveOnExit>
+										<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Active"/>
+										<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Elite_Fortify"/>
+										<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Fortify"/>
+									</EffectsToRemoveOnExit>
+									<EffectsToApplyOnExit>
+										<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Cooldown"/>
+									</EffectsToApplyOnExit>
+								</Default>
+							</ModifyStatusEffects>
+						</Group>
+					</ThenActivity>
+					<ElseActivity/>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="DisableThrallShield" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="ThrallShield_Active"/>
+					<IfHasStatusEffect StatusEffect="AI_Upyr_Guardian_ThrallShield_Active"/>
+					<IfExternalCondition ConditionName="ThrallShield_Depleted"/>
+					<Not>
+						<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="LessThanOrEqual" Comment="Look for Stamina to be 0"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="ThrallShield_Active" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<TriggerEntity ResetWhenReinstalled="true">
+					<Default TriggerName="ThrallShield_Deactivate"/>
+				</TriggerEntity>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnExit>
+							<EffectId EffectId="AI_Gravedigger_RemoveStamina"/>
+						</EffectsToApplyOnExit>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Active"/>
+							<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Elite_Fortify"/>
+							<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Fortify"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="NPC_Enraged" StateName="Off" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+		<Action Name="DisableThrallShieldLeash">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="ThrallShield_Active"/>
+					<IfMannequinTag TagName="Guardian"/>
+					<Not>
+						<IfHasAttackTarget/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnExit>
+							<EffectId EffectId="AI_Gravedigger_RemoveStamina"/>
+						</EffectsToApplyOnExit>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Active"/>
+							<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Elite_Fortify"/>
+							<EffectId EffectId="AI_Upyr_Guardian_ThrallShield_Fortify"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<ClearMannequinTagGroup ResetWhenReinstalled="true">
+					<Default TagGroupName="ThrallShield" OnEnter="Clear" OnExit="NoEffect"/>
+				</ClearMannequinTagGroup>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="ThrallShield_Active" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<TriggerEntity ResetWhenReinstalled="true">
+					<Default TriggerName="ThrallShield_Deactivate"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="ThrallShield6_Hit" TagName="ThrallShield6"/>
+		<IfMannequinTag Name="ThrallShield5_Hit" TagName="ThrallShield5"/>
+		<IfMannequinTag Name="ThrallShield4_Hit" TagName="ThrallShield4"/>
+		<IfMannequinTag Name="ThrallShield3_Hit" TagName="ThrallShield3"/>
+		<IfMannequinTag Name="ThrallShield2_Hit" TagName="ThrallShield2"/>
+		<IfMannequinTag Name="ThrallShield1_Hit" TagName="ThrallShield1"/>
+		<And Name="ThrallShield_Depleted">
+			<Not>
+				<Or>
+					<IfMannequinTag TagName="ThrallShield6"/>
+					<IfMannequinTag TagName="ThrallShield5"/>
+					<IfMannequinTag TagName="ThrallShield4"/>
+					<IfMannequinTag TagName="ThrallShield3"/>
+					<IfMannequinTag TagName="ThrallShield2"/>
+					<IfMannequinTag TagName="ThrallShield1"/>
+				</Or>
+			</Not>
+		</And>
+	</Conditions>
+</ActionList>
+

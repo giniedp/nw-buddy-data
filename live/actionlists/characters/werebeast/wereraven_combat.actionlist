@@ -1,0 +1,674 @@
+<ActionList>
+	<Actions>
+		<Action Name="Combat_Fidget" FragmentName="Combat_Fidget">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Hover"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<ChangeActionFragment ResetWhenReinstalled="true">
+								<Default UseDefaultFragment="true" FragmentName="Combat_Hover_Idle_Stop"/>
+							</ChangeActionFragment>
+							<SetMannequinTag ResetWhenReinstalled="false">
+								<Default TagName="Hover" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+							</SetMannequinTag>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Lightning_Buff_Intro" FragmentName="Combat_Lightning_Buff_Intro">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Lightning_Buff_Intro_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Lightning_Buff_Start"/>
+					</IfCondition>
+					<ThenActivity>
+						<Group>
+							<TriggerEntity>
+								<Default TriggerName="Lightning_On"/>
+							</TriggerEntity>
+							<SetMannequinTag ResetWhenReinstalled="true">
+								<Default TagName="Caster_On" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+							</SetMannequinTag>
+							<ModifyStatusEffects>
+								<Default>
+									<EffectsToApplyOnEnter>
+										<EffectId EffectId="AI_Wereraven_Lightning_Buff"/>
+									</EffectsToApplyOnEnter>
+								</Default>
+							</ModifyStatusEffects>
+						</Group>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Lightning_Buff_Outro" FragmentName="">
+			<ActivationCondition>
+				<Not>
+					<IfHasStatusEffect StatusEffect="AI_Wereraven_Lightning_Buff"/>
+				</Not>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="Lightning_Off"/>
+				</TriggerEntity>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Caster_On" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Lightning_Cast" FragmentName="Attack_Lightning_Cast" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Lightning_Cast_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Wave_Pushback" FragmentName="Attack_Wave_Pushback" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Wave_Pushback_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Swipe_Left" FragmentName="Attack_Swipe_Left" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Swipe_Left_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Swipe_Right" FragmentName="Attack_Swipe_Right" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Swipe_Right_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Swipe_Combo" FragmentName="Attack_Swipe_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Swipe_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Feather_Shot_L" FragmentName="Attack_Feather_Shot_L" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Feather_Shot_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="true" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Feather_Shot_R" FragmentName="Attack_Feather_Shot_R" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Feather_Shot_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="true" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Feather_Shot_Combo" FragmentName="Attack_Feather_Shot_Combo" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Feather_Shot_Combo_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Mist_Winds" FragmentName="Attack_Mist_Winds" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Mist_Winds_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Feather_Rain" FragmentName="Attack_Feather_Rain" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Feather_Rain_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Not>
+							<IfMannequinTag TagName="Alpha"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="false">
+							<Default TagName="Hover" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="true" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Dive_Bomb" FragmentName="Attack_Dive_Bomb" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Dive_Bomb_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="true" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Hover" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinTag TagName="Alpha"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default OnlyRemoveOwnedStatusEffects="false">
+								<EffectsToApplyOnExit>
+									<EffectId EffectId="AI_Wereraven_Alpha_RemoveStamina"/>
+								</EffectsToApplyOnExit>
+								<EffectsToRemoveOnExit>
+									<EffectId EffectId="AI_Enable_Stagger"/>
+									<EffectId EffectId="AI_Stun_Immunity"/>
+								</EffectsToRemoveOnExit>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<And>
+							<IfMannequinTag TagName="Caster"/>
+							<IfMannequinMarker MarkerName="Caster_Stun"/>
+						</And>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default OnlyRemoveOwnedStatusEffects="false">
+								<EffectsToRemoveOnEnter>
+									<EffectId EffectId="AI_Wereraven_Lightning_Buff"/>
+								</EffectsToRemoveOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Dive_Bomb_Vertical" FragmentName="Attack_Dive_Bomb_Vertical" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Dive_Bomb_Vertical_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Or>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<Not>
+									<IfMannequinMarker MarkerName="AimPose"/>
+								</Not>
+							</And>
+							<And>
+								<IfMannequinMarker MarkerName="CanTurn"/>
+								<IfMannequinMarker MarkerName="AimPose"/>
+								<AIAngleToTarget Comparison="GreaterThanOrEqual" Angle="45.0" AbsoluteValue="true"/>
+							</And>
+						</Or>
+					</IfCondition>
+					<ThenActivity>
+						<AITargetRelativeFacing>
+							<Default TurnRate="200.0" UseExponentialTurnRate="true" TurnThreshold="1.5"/>
+						</AITargetRelativeFacing>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Hover" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false">
+						<EffectsToApplyOnExit>
+							<EffectId EffectId="AI_Wereraven_Alpha_RemoveStamina"/>
+						</EffectsToApplyOnExit>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+							<EffectId EffectId="AI_Stun_Immunity"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Hover_Idle" FragmentName="Combat_Hover_Idle">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Hover_Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Hover_Idle_Start" FragmentName="Combat_Hover_Idle_Start">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Hover_Idle_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Hover" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+							<EffectId EffectId="AI_Stun_Immunity"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<ResetStamina ResetWhenReinstalled="false" IgnoreDataChanges="false">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetStamina>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Hover_Idle_Stop" FragmentName="Combat_Hover_Idle_Stop">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Hover_Idle_Stop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Hover" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Wereraven_Alpha_RemoveStamina"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+							<EffectId EffectId="AI_Stun_Immunity"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Hover_Swoop_Down" FragmentName="Combat_Hover_Swoop_Down">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Hover_Swoop_Down_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Hover_Swoop_Loop" FragmentName="Combat_Hover_Swoop_Loop">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Hover_Swoop_Loop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<ApplyMoveSpeedMultiplier>
+					<Default MultiplierType="MoveSpeedMod"/>
+				</ApplyMoveSpeedMultiplier>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Hover_Swoop_Up" FragmentName="Combat_Hover_Swoop_Up">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Hover_Swoop_Up_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Hover_Start_To_Swoop" FragmentName="Combat_Hover_Start_To_Swoop">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Hover_Start_To_Swoop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Hover" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ResetStamina ResetWhenReinstalled="false" IgnoreDataChanges="false">
+					<Default OnEnter="Reset" OnExit="NoEffect"/>
+				</ResetStamina>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+							<EffectId EffectId="AI_Stun_Immunity"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Hover_Swoop_Stop" FragmentName="Combat_Hover_Swoop_Stop">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Hover_Swoop_Stop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Hover" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Wereraven_Alpha_RemoveStamina"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+							<EffectId EffectId="AI_Stun_Immunity"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Dash_Left" FragmentName="Dash_L">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Dash_Left_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.50" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Dash_Right" FragmentName="Dash_R">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Dash_Right_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</HTNPlanDoneActivity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.50" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

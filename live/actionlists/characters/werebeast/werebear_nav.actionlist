@@ -1,0 +1,207 @@
+<ActionList>
+	<Actions>
+		<Action Name="Fidget" FragmentName="Fidget">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					<Not>
+						<IfBehaviorTreeTask ActionName="Fidget_CAGE_Task"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Alert" FragmentName="Alert">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Alert_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<ChangeActionFragment ResetWhenReinstalled="true">
+					<Default UseDefaultFragment="true" FragmentName=""/>
+					<Conditional Name="Long_Alert" UseDefaultFragment="false" FragmentName="Alert_Long"/>
+				</ChangeActionFragment>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.10"/>
+				</SetMannequinTag>
+				<AITargetRelativeFacing>
+					<Default TurnRate="800.0" UseExponentialTurnRate="false" TurnThreshold="1.5"/>
+					<Conditional Name="Elite+AllowRotation" TurnRate="0.22" UseExponentialTurnRate="true" TurnThreshold="0.0"/>
+				</AITargetRelativeFacing>
+				<IfThenElse ResetWhenReinstalled="false" Comment="Unsheathe current main hand weapon from Mannequin Marker">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Unsheathe_Weapon"/>
+					</IfCondition>
+					<ThenActivity>
+						<SheatheWeapon ResetWhenReinstalled="false">
+							<Default SheatheOption="UnSheathe" SlotToSheathe="MAIN_HAND_OPTION_1" OnEnter="Set" OnExit="NoEffect"/>
+						</SheatheWeapon>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Alert_Turn" FragmentName="Alert_Turn">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Alert_Turn_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.3"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetDesiredFacingBlendParam>
+					<Default FacingMode="AngleToTarget"/>
+				</SetDesiredFacingBlendParam>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Move_Combat_Walk" FragmentName="Move_Combat_Walk">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Move_Combat_Walk_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<ApplyMoveSpeedMultiplier>
+					<Default MultiplierType="MoveSpeedMod"/>
+				</ApplyMoveSpeedMultiplier>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Move_Combat" FragmentName="Move_Combat">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Move_Combat_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<ApplyMoveSpeedMultiplier>
+					<Default MultiplierType="MoveSpeedMod"/>
+				</ApplyMoveSpeedMultiplier>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Charge_Loop" FragmentName="Attack_Charge_Loop">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Charge_Loop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<ApplyMoveSpeedMultiplier>
+					<Default MultiplierType="MoveSpeedMod"/>
+				</ApplyMoveSpeedMultiplier>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Move_Combat_Stop" FragmentName="Move_Combat_Stop">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Move_Combat_Stop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<ApplyMoveSpeedMultiplier>
+					<Default MultiplierType="MoveSpeedMod"/>
+				</ApplyMoveSpeedMultiplier>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Move" FragmentName="Move">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Move_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<ApplyMoveSpeedMultiplier>
+					<Default MultiplierType="MoveSpeedMod"/>
+				</ApplyMoveSpeedMultiplier>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<ExecuteAudioTrigger ResetWhenReinstalled="true" RunOnRemoteClients="true" IgnoreDataChanges="true" Comment="">
+					<Default AudioTriggerName="Set_Switch_Nav_Walk" ForceStopFxOnDataChange="false" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" AttachmentJointRtpcName="" AttachmentJoint="" AttachToEntity="true"/>
+				</ExecuteAudioTrigger>
+			</Activities>
+		</Action>
+		<Action Name="FleeToTarget" FragmentName="Flee">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="FleeToTarget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<CharacterRelativeMovement>
+					<Default ForwardInput="" BackwardInput="" LeftInput="" RightInput="" UpInput="" DownInput="" Forced="false" AlignVelocity="true" Speed="0.0,0.0,0.0" Accel="0.0,0.0,0.0" Decel="0.0,0.0,0.0" AnalogInputOverride="None" UseAnalogInputToModulateSpeed="false" MinSpeed="0.0,0.0,0.0" MinAnalogInputMag="0.1" MaxAnalogInputMag="1.0"/>
+				</CharacterRelativeMovement>
+			</Activities>
+		</Action>
+		<Action Name="Petrified_Start" FragmentName="Petrified_Start" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Petrified_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Petrified_Loop" FragmentName="Petrified_Loop" Predictive="true">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Petrified_Loop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="Elite+AllowRotation">
+			<IfMannequinTag TagName="Elite"/>
+			<IfMannequinMarker MarkerName="AllowRotation"/>
+		</And>
+		<AIDistanceToTarget Name="Long_Alert" Comparison="GreaterThanOrEqual" DistanceToTarget="18.0"/>
+		<IfMannequinMarker Name="FaceTarget" MarkerName="FaceTarget"/>
+		<IfMannequinMarker Name="StopFacingTarget" MarkerName="StopFacingTarget"/>
+	</Conditions>
+</ActionList>
+

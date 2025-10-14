@@ -1,0 +1,189 @@
+<ActionList>
+	<Actions>
+		<Action Name="Attack_VineLeg_End" FragmentName="Attack_VineLeg_End">
+			<ActivationCondition>
+				<And>
+					<IfBehaviorTreeTask ActionName="Attack_VineLeg_End_CAGE_Task"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_Gourdspewer_HasMinion" OnlyCheckOwnedStatusEffects="false"/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Gourdspewer_HasMinion"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="HasSummonedMinion" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Remove_MinionSE" FragmentName="Attack_VineLeg_End">
+			<ActivationCondition>
+				<And>
+					<IfBehaviorTreeTask ActionName="Remove_MinionSE_CAGE_Task"/>
+					<IfHasStatusEffect StatusEffect="AI_Gourdspewer_HasMinion" OnlyCheckOwnedStatusEffects="false"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<And>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_Gourdspewer_HasMinion" OnlyCheckOwnedStatusEffects="false"/>
+					</Not>
+				</And>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Gourdspewer_HasMinion"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="HasSummonedMinion" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Fidget" FragmentName="Combat_Fidget">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Idle_Stuck" FragmentName="Combat_Idle_Stuck">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Idle_Stuck_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Swipe_Left" FragmentName="Attack_Swipe_Left" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Swipe_Left_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.5"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Swipe_Right" FragmentName="Attack_Swipe_Right" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Swipe_Right_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.5"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_GourdSpew" FragmentName="Attack_GourdSpew" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_GourdSpew_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.5"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_SeedShot" FragmentName="Attack_SeedShot" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_SeedShot_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.5"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_VineLeg" FragmentName="Attack_VineLeg" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_VineLeg_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="HasSummonedMinion" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition LogicalOperator="And">
+						<IfMannequinMarker MarkerName="Activate_VineLeg_Minion"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default>
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="AI_Gourdspewer_HasMinion"/>
+								</EffectsToApplyOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

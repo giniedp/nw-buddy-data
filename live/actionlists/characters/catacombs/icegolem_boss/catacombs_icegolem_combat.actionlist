@@ -1,0 +1,337 @@
+<ActionList>
+	<Actions>
+		<Action Name="Combat_Fidget" FragmentName="Combat_Fidget">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Fidget_SignalAttack" FragmentName="Combat_Fidget_SignalAttack">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Fidget_SignalAttack_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="IceGolem_Attack_SpikeFist" FragmentName="IceGolem_Attack_SpikeFist" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="IceGolem_Attack_SpikeFist_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="IceGolem_Attack_LanceFist" FragmentName="IceGolem_Attack_LanceFist" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="IceGolem_Attack_LanceFist_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="IceGolem_Attack_BlizzardCall" FragmentName="IceGolem_Attack_BlizzardCall" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="IceGolem_Attack_BlizzardCall_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="IceGolem_Attack_BlizzardZone" FragmentName="IceGolem_Attack_BlizzardZone" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="IceGolem_Attack_BlizzardZone_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="IceGolem_Attack_BlizzardBlast" FragmentName="IceGolem_Attack_BlizzardBlast" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="IceGolem_Attack_BlizzardBlast_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="IceGolem_Attack_DeathFromAbove" FragmentName="IceGolem_Attack_DeathFromAbove" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="IceGolem_Attack_DeathFromAbove_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Leap_Back" FragmentName="Leap_Back" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Leap_Back_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Step_Back" FragmentName="Step_Back" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Step_Back_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Swipe_Left" FragmentName="Attack_Swipe_Left" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Swipe_Left_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="2.0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Swipe_Right" FragmentName="Attack_Swipe_Right" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Swipe_Right_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="2.0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Combo_2" FragmentName="Attack_Combo_2" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Combo_2_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.4"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.6"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Idle_Overhead_Slam" FragmentName="Attack_Idle_Overhead_Slam" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Idle_Overhead_Slam_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="IceGolem_Attack_QuakeSlam" FragmentName="IceGolem_Attack_QuakeSlam" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="IceGolem_Attack_QuakeSlam_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.8"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="IceGolem_Attack_Stalactite" FragmentName="IceGolem_Attack_Stalactite" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="IceGolem_Attack_Stalactite_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="IceGolem_Attack_FrostBreath" FragmentName="IceGolem_Attack_FrostBreath" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="IceGolem_Attack_FrostBreath_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.3"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="2.0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="StopChainAttack" TagName="ChainAttack" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Tail_Swipe" FragmentName="Attack_Tail_Swipe" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Tail_Swipe_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="ChainAttack" TagName="ChainAttack"/>
+		<IfMannequinTag Name="StopChainAttack" TagName="StopChainAttack"/>
+	</Conditions>
+</ActionList>
+

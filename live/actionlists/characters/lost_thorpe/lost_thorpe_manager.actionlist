@@ -1,0 +1,38 @@
+<ActionList>
+	<Actions>
+		<Action Name="Player_RelicRecall_BumpWarning" Predictive="true" FragmentName="MinionManager_RelicRecall_Bump_Warning">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Player_RelicRecall_BumpWarning_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="SpearMoveToBoss"/>
+					</IfCondition>
+					<ThenActivity>
+						<AIAssignOrder>
+							<Default Order="SpearMoveToBoss"/>
+						</AIAssignOrder>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Teleport" FragmentName="Combat_Idle">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Teleport_CAGE_Task"/>
+			</ActivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

@@ -1,0 +1,33 @@
+<ActionList>
+	<Actions>
+		<Action Name="Invigoration_Unlock" Predictive="true">
+			<ActivationCondition>
+				<And>
+					<IfStaminaValue ComparisonValue="0.99" ComparisonValueIsPercentage="true" ComparisonType="GreaterThanOrEqual" Comment="Check if Stamina has reached 100%"/>
+					<IfHasStatusEffect StatusEffect="AI_Trial_Quest_Seraphim_Breathless_Seraph_Exhausted"/>
+					<Not>
+						<Or>
+							<IfHasStatusEffect StatusEffect="AI_Trial_Quest_Seraphim_Breathless_Seraph_Invigoration"/>
+							<IfHasStatusEffect StatusEffect="AI_Trial_Quest_Seraphim_Breathless_Seraph_Invigoration_Unlock"/>
+							<IfHasStatusEffect StatusEffect="AI_Trial_Quest_Seraphim_Breathless_Seraph_Invigoration_Perm"/>
+						</Or>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Trial_Quest_Seraphim_Breathless_Seraph_Exhausted"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Trial_Quest_Seraphim_Breathless_Seraph_Invigoration_Unlock"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

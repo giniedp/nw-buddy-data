@@ -1,0 +1,1090 @@
+<ActionList>
+	<Actions>
+		<Action Name="RemoveProxyOnDeath">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_PalatineSwordsman_Death" ComparisonType="Equal" StackSize="1"/>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="GreaterThan" StackSize="0"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineSwordsman_Death" ComparisonType="Equal" StackSize="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_PalatineGuards_NearbyCheck"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="RemovePreProxyOnDeath">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_PalatineSwordsman_Death" ComparisonType="Equal" StackSize="1"/>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuards_PreProxy" ComparisonType="GreaterThan" StackSize="0"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineSwordsman_Death" ComparisonType="Equal" StackSize="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_PalatineGuards_PreProxy"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="PreProxyON">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuards_PreProxy" ComparisonType="GreatherThanOrEqual" StackSize="2"/>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="LessThanOrEqual" StackSize="1"/>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="PreProxyON"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="PreProxyOFF">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuards_PreProxy" ComparisonType="Equal" StackSize="1"/>
+			</ActivationCondition>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="PreProxyOFF"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="ProxyON">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="GreatherThanOrEqual" StackSize="2"/>
+			</ActivationCondition>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="ProxyON"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="OvercoatON"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="PreProxyOFF"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="ProxyOFF">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="1"/>
+			</ActivationCondition>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="ProxyOFF"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="OvercoatOFF"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="Nearby1">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="1"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="1"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_PalatineGuards_SmallSquad"/>
+							<EffectId EffectId="AI_PalatineGuards_Fortify1"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Nearby2">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="2"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="2"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_PalatineGuards_SmallSquad"/>
+							<EffectId EffectId="AI_PalatineGuards_Fortify1"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_PalatineGuards_Fortify2"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_PalatineGuards_Fortify1"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Nearby3">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="3"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="3"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_PalatineGuards_SmallSquad"/>
+							<EffectId EffectId="AI_PalatineGuards_Fortify2"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_PalatineGuards_Fortify1"/>
+							<EffectId EffectId="AI_PalatineGuards_Fortify3"/>
+							<EffectId EffectId="AI_PalatineGuards_FullSquad"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_PalatineGuards_Fortify2"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Nearby4">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="4"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="4"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_PalatineGuards_FullSquad"/>
+							<EffectId EffectId="AI_PalatineGuards_Fortify3"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_PalatineGuards_Fortify2"/>
+							<EffectId EffectId="AI_PalatineGuards_SmallSquad"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_PalatineGuards_FullSquad"/>
+							<EffectId EffectId="AI_PalatineGuards_Fortify3"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Move_To_Archer_Rally" FragmentName="Move_To_Archer_Rally">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Move_To_Archer_Rally_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="TurnOffStasisIfAlive">
+			<ActivationCondition>
+				<And>
+					<IfFragmentDone UseHostActionFragment="false" FragmentName="Stasis_End" ExitOffsetSeconds="0.0"/>
+					<IfMannequinTag TagName="Stasis"/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentPlaying UseHostActionFragment="true" FragmentName="Stasis_End"/>
+					<IfFragmentPlaying UseHostActionFragment="true" FragmentName="Stasis_Start"/>
+					<Not>
+						<IfMannequinTag TagName="Stasis"/>
+					</Not>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stasis" OnEnter="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Move_To_Middle" FragmentName="Move_To_Middle">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Move_To_Middle_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuard_Sacrifice_AbyssCloak"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_PalatineGuards_Signature_Fortify"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Fidget" FragmentName="Combat_Fidget" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="ChainAttack" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Slash" FragmentName="Attack_Slash">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Slash_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Overhead_Slash" FragmentName="Attack_Overhead_Slash">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Overhead_Slash_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Whirling_Slash" FragmentName="Attack_Whirling_Slash">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Whirling_Slash_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Blade_Rush" FragmentName="Attack_Blade_Rush">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Blade_Rush_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="1.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Tempest_Blade" FragmentName="Attack_Tempest_Blade">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Tempest_Blade_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_OnHit_Checker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_OnHit_Checker"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Tempest_Blade_Two" FragmentName="Attack_Tempest_Blade_Two">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Tempest_Blade_Two_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_OnHit_Checker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_OnHit_Checker"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Energy_Blade" FragmentName="Attack_Energy_Blade">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Energy_Blade_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Energy_Blade_Finisher" FragmentName="Attack_Energy_Blade_Finisher">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Energy_Blade_Finisher_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_PalatineSwordsman_Relentless"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Footwork_Step_R" FragmentName="Attack_Footwork_Step_R">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Footwork_Step_R_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Footwork_Step_L" FragmentName="Attack_Footwork_Step_L">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Footwork_Step_L_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Footwork_Lunge" FragmentName="Attack_Footwork_Lunge">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Footwork_Lunge_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Lost_Breaker_Start" FragmentName="Attack_Lost_Breaker_Start">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Lost_Breaker_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuard_Sacrifice_AbyssCloak"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<Group>
+					<ModifyStatusEffects>
+						<Default OnlyRemoveOwnedStatusEffects="false">
+							<EffectsToApplyOnEnter>
+								<EffectId EffectId="AI_Enable_Stagger"/>
+								<EffectId EffectId="AI_Stun_Immunity"/>
+							</EffectsToApplyOnEnter>
+						</Default>
+					</ModifyStatusEffects>
+					<ResetStamina ResetWhenReinstalled="false" IgnoreDataChanges="false">
+						<Default OnEnter="Reset" OnExit="NoEffect"/>
+					</ResetStamina>
+				</Group>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Lost_Breaker_Delivery" FragmentName="Attack_Lost_Breaker_Delivery">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Lost_Breaker_Delivery_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.2"/>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuard_Sacrifice_AbyssCloak"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+					<Conditional Name="ChainAttack" InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<TriggerEntity>
+					<Default TriggerName="End__LostBreaker"/>
+				</TriggerEntity>
+				<ModifyStatusEffects>
+					<Default Comment="Reduces received Stagger damage for a period after being Staggered">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToApplyOnExit>
+							<EffectId EffectId="AI_Palatine_RemoveStamina"/>
+						</EffectsToApplyOnExit>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+							<EffectId EffectId="AI_PalatineGuards_Signature_Fortify"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="ActivateGrit">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_Stagger" Comment="Check that we're not already playing the Stagger reaction"/>
+					</Not>
+					<IfHasStatusEffect StatusEffect="AI_Enable_Stagger" Comment="Add this into your character's initial status effects to enable the Stagger mechanic on them"/>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableStagger" Comment="Use this to disable Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_Enable_Stagger" Comment="Add this into your character's initial status effects to enable the Stagger mechanic on them"/>
+					</Not>
+					<IfFragmentPlaying UseHostActionFragment="false" FragmentName="r_Stagger" Comment="Deactivate GRIT when the character is Staggered, so they do not continue to take stamina damage while in the state"/>
+					<IfMannequinMarker MarkerName="DisableStagger" Comment="Use this to disable Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<ActivateGrit Comment="This allows the character to always take Stamina damage">
+					<Default OnEnter="Activate" OnExit="Deactivate" DamageTableRow=""/>
+				</ActivateGrit>
+			</Activities>
+		</Action>
+		<Action Name="Reaction_Staggered" FragmentName="r_Stagger" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfStaminaValue ComparisonValue="0.0" ComparisonValueIsPercentage="false" ComparisonType="LessThanOrEqual" Comment="Look for Stamina to be 0"/>
+					<Or>
+						<IfDamagedByPowerLevel Comparison="GreaterThanOrEqual" Value="0" FailOnNoReactionDamage="false" Comment="Require the character to be hit by an attack to enter Stagger"/>
+						<IfHasStatusEffect StatusEffect="AI_Force_Stagger" Comment="Do not require the character to be hit by an attack to enter Stagger"/>
+					</Or>
+					<Not Comment="Check that the character isn't already stunned or staggered. Staggered also applies the 'Stunned' tag.">
+						<Or>
+							<IsStunned/>
+							<IfMannequinTag TagName="Stunned"/>
+						</Or>
+					</Not>
+					<IfHasStatusEffect StatusEffect="AI_Enable_Stagger" Comment="Add this into your character's initial status effects to enable the Stagger mechanic on them"/>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableStagger" Comment="Use this to disable Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stunned" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<ModifyStatusEffects>
+					<Default Comment="Reduces received Stagger damage for a period after being Staggered">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+							<EffectId EffectId="AI_Stun_Immunity"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+					<Conditional Name="TelegraphStaggered" Comment="Applies a status effect to the character that displays 'Staggered' while in this action, and reduces received Stagger damage for a period after being Staggered">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_Staggered_Telegraph"/>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Staggered_Telegraph"/>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+						</EffectsToRemoveOnExit>
+					</Conditional>
+				</ModifyStatusEffects>
+				<CastSpell>
+					<Default SpellName="AI_Staggered_Telegraph"/>
+				</CastSpell>
+				<ChangeActionFragment ResetWhenReinstalled="true">
+					<Default UseDefaultFragment="true" FragmentName=""/>
+					<Conditional Name="damaged_front" UseDefaultFragment="false" FragmentName="r_Stagger_F"/>
+					<Conditional Name="damaged_back" UseDefaultFragment="false" FragmentName="r_Stagger_B"/>
+				</ChangeActionFragment>
+				<SetReactionFragment Comment="Just like our Spawn actions, use SetReactionFragment referencing the EmptyReactionTableHarness table to prevent behavior evaluations while in this action">
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+			</Activities>
+		</Action>
+		<Action Name="r_Sacrifice_Prep" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_IoN_EncManagement_SacrificeOrder"/>
+					<Not>
+						<IfDeathsDoor ServerOnly="true"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuard_Sacrifice_AbyssCloak"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+				</BehaviorTreeTask>
+				<TriggerEntity>
+					<Default TriggerName="Trigger_SacrificeChanneling"/>
+				</TriggerEntity>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_PalatineGuard_Sacrifice_AbyssCloak"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToApplyOnExit>
+							<EffectId EffectId="AI_PalatineGuard_Sacrifice_AbyssCloak_BurstHealing"/>
+						</EffectsToApplyOnExit>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_IoN_EncManagement_SacrificeOrder"/>
+						</EffectsToRemoveOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<TriggerEntity>
+					<Default TriggerName="Trigger_SacrificeChanneling"/>
+				</TriggerEntity>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Sacrificing" OnEnter="Set" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="r_Sacrifice_End" FragmentName="r_Sacrifice_End">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuard_Sacrifice_SacrificeFinale"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="r_Sacrifice_End" FragmentTime="-1.0f" FragmentTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.0"/>
+				</SetReactionFragment>
+				<TriggerEntity>
+					<Default TriggerName="HideNameplate"/>
+				</TriggerEntity>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_PalatineGuard_Sacrifice_SacrificeFinale"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToApplyOnExit>
+							<EffectId EffectId="AI_PalatineGuards_SelfDestruct"/>
+						</EffectsToApplyOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="r_DeathsDoor" FragmentName="r_DeathsDoor">
+			<ActivationCondition>
+				<And>
+					<IfDeathsDoor ServerOnly="true"/>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="r_DeathsDoor"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_EmptyReactionTableHarness.actionlist" IsFullBody="true"/>
+				</SetReactionFragment>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.4"/>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0 "/>
+				</BehaviorTreeTask>
+				<TriggerEntity>
+					<Default TriggerName="Trigger_SacrificeChannelingStop"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="ProximityOff"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="ProxyOFF"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="PreProxyOFF"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="SignatureGatingOn"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="Trigger_SacrificeChannelingStop"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="DeathsDoorSignal_Activate"/>
+				</TriggerEntity>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="HideNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="HideNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfHasStatusEffect StatusEffect="AI_IoN_EncManagement_DahutDeathSignal"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="Trigger_TrueDeath"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_PalatineShield_Unflinching_Immunity"/>
+							<EffectId EffectId="AI_Palatine_RemoveStamina"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Staggered_Tracker"/>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+							<EffectId EffectId="AI_Stun_Immunity"/>
+							<EffectId EffectId="AI_PalatineShield_Unflinching_Immunity"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="DeathsDoor" OnEnter="Set" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Sacrificing" OnEnter="Unset" DelayTimer="1.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stasis" OnEnter="Unset" DelayTimer="1.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Stasis_Start" FragmentName="Stasis_Start">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Stasis_Start_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfHasStatusEffect Name="CheckChampion" StatusEffect="AI_Palatine_Champion"/>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="AI_PalatineGuard_StasisState_Champion"/>
+									<EffectId EffectId="AI_Palatine_RemoveStamina"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnEnter>
+									<EffectId EffectId="AI_Enable_Stagger"/>
+									<EffectId EffectId="AI_Staggered_Tracker"/>
+									<EffectId EffectId="AI_PalatineGuards_Signature_Fortify"/>
+								</EffectsToRemoveOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<Not>
+							<IfHasStatusEffect Name="CheckChampion" StatusEffect="AI_Palatine_Champion"/>
+						</Not>
+					</IfCondition>
+					<ThenActivity>
+						<ModifyStatusEffects>
+							<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+								<EffectsToApplyOnEnter>
+									<EffectId EffectId="AI_PalatineGuard_StasisState"/>
+									<EffectId EffectId="AI_Palatine_RemoveStamina"/>
+								</EffectsToApplyOnEnter>
+								<EffectsToRemoveOnEnter>
+									<EffectId EffectId="AI_Enable_Stagger"/>
+									<EffectId EffectId="AI_Staggered_Tracker"/>
+									<EffectId EffectId="AI_PalatineGuards_Signature_Fortify"/>
+								</EffectsToRemoveOnEnter>
+							</Default>
+						</ModifyStatusEffects>
+					</ThenActivity>
+				</IfThenElse>
+				<TriggerEntity>
+					<Default TriggerName="DeathsDoorSignal_Deactivate"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="Trigger_SacrificeChannelingStop"/>
+				</TriggerEntity>
+				<ReviveFromDeathsDoor>
+					<Default TriggerOption="OnEnter" DelayTime="0" HealthMultiplier="1"/>
+				</ReviveFromDeathsDoor>
+			</Activities>
+		</Action>
+		<Action Name="Stasis_End" FragmentName="Stasis_End">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Stasis_End_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Stasis" OnEnter="Set" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="DeathsDoor" OnEnter="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<TriggerEntity>
+					<Default TriggerName="ProximityOn"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="SignatureGatingOff"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="DeathsDoorSignal_Deactivate"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="Trigger_SacrificeChannelingStop"/>
+				</TriggerEntity>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="UnhideNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="UnhideNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Kneeling_Start" FragmentName="Kneeling_Start">
+			<ActivationCondition>
+				<And>
+					<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.5"/>
+					<IfHealthPercentage Comparison="GreaterThan" Percentage="0"/>
+					<Not>
+						<BlackboardCondition LeftOperand="%Phase2%" Operator="GreaterThanOrEqual" RightOperand="true"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="r_DeathsDoor"/>
+					</Not>
+					<Not>
+						<IfFragmentPlaying UseHostActionFragment="true" FragmentName="Kneeling_Start"/>
+					</Not>
+					<Not>
+						<IfDead ServerOnly="true"/>
+					</Not>
+					<Not>
+						<IfMannequinTag TagName="Shadow"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/springboardentitites/Characters/BaseAI/CAGE/BaseAI_EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.0"/>
+				</SetReactionFragment>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<TriggerEntity>
+					<Default TriggerName="ProximityOff"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="OnKneelDeactivate"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="ProxyOFF"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="PreProxyOFF"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="SignatureGatingOn"/>
+				</TriggerEntity>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_PalatineShield_Unflinching_Immunity"/>
+							<EffectId EffectId="AI_IoN_EncManagement_PGKneelSignal"/>
+							<EffectId EffectId="AI_Palatine_RemoveStamina"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_PalatineGuards_Signature_Fortify"/>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_IoN_EncManagement_PGPhase1Broadcaster"/>
+							<EffectId EffectId="AI_PalatineShield_Unflinching_Immunity"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="HideNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="HideNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Kneeling"/>
+					</IfCondition>
+					<ThenActivity>
+						<SetMannequinTag ResetWhenReinstalled="true">
+							<Default TagName="Kneeling" OnEnter="Set" OnExit="Set" DelayTimer="0.0"/>
+						</SetMannequinTag>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+		<Action Name="Kneeling_End" FragmentName="Kneeling_End">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Kneeling_End_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<TriggerEntity>
+					<Default TriggerName="ProximityOn"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="SignatureGatingOff"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="OnKneelEndActivate"/>
+				</TriggerEntity>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="UnhideNameplate"/>
+					</IfCondition>
+					<ThenActivity>
+						<TriggerEntity>
+							<Default TriggerName="UnhideNameplate"/>
+						</TriggerEntity>
+					</ThenActivity>
+				</IfThenElse>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Kneeling" OnEnter="Unset" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Death" FragmentName="r_Death" ServerStarted="true">
+			<ActivationCondition>
+				<IfDead ServerOnly="true"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<True/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/ReactionTables/BaseAI_DeathTableHarness.actionlist"/>
+				</SetReactionFragment>
+				<SetCameraLockTargetTargetable>
+					<Default OnEnter="SetNotTargetable" OnExit="SetTargetable"/>
+				</SetCameraLockTargetTargetable>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,0.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+				<AIAssignOrder>
+					<Default Order="Despawn"/>
+				</AIAssignOrder>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Sheathe Weapon on command">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Sheathe"/>
+					</IfCondition>
+					<ThenActivity>
+						<SheatheWeapon ResetWhenReinstalled="true">
+							<Default SheatheOption="Sheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+						</SheatheWeapon>
+					</ThenActivity>
+				</IfThenElse>
+				<IfThenElse ResetWhenReinstalled="true" Comment="Unsheathe Weapon on command">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="Unsheathe"/>
+					</IfCondition>
+					<ThenActivity>
+						<SheatheWeapon ResetWhenReinstalled="true">
+							<Default SheatheOption="UnSheathe" SlotToSheathe="ACTIVE_MAIN_HAND_WEAPON" OnEnter="Set" OnExit="NoEffect"/>
+						</SheatheWeapon>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<IfMannequinTag Name="ChainAttack" TagName="ChainAttack"/>
+		<IfMannequinTag Name="StopChainAttack" TagName="StopChainAttack"/>
+		<IfHasStatusEffect Name="ChargeHit" StatusEffect="AI_OnHit_Tag" OnlyCheckOwnedStatusEffects="false"/>
+		<IfMannequinMarker Name="TelegraphStaggered" MarkerName="EnableStaggerInNameplate" Comment="Use this MarkerName in a CAGE-Named proc clip to display 'Staggered' text in your character's nameplate while they are Staggered"/>
+		<Or Name="damaged_front">
+			<IfDamagedByAngle Max="90.000000" Min="0.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="0.000000" Min="-90.000000" Tolerance="0.010000"/>
+		</Or>
+		<Or Name="damaged_back">
+			<IfDamagedByAngle Max="180.000000" Min="90.000000" Tolerance="0.010000"/>
+			<IfDamagedByAngle Max="-90.000000" Min="-180.000000" Tolerance="0.010000"/>
+		</Or>
+	</Conditions>
+</ActionList>
+

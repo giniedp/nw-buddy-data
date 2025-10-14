@@ -1,0 +1,299 @@
+<ActionList>
+	<Actions>
+		<Action Name="Nearby">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="2"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Not>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="2"/>
+				</Not>
+			</DeactivationCondition>
+			<Activities>
+				<ModifyStatusEffects>
+					<Default OnlyRemoveOwnedStatusEffects="false" OnlyRemoveOneStack="false" RemoveNothingOnMigrate="false">
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_IoN_Empower_Gawain"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="AI_IoN_Empower_Gawain"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+			</Activities>
+		</Action>
+		<Action Name="PreProxyON">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuards_PreProxy" ComparisonType="GreatherThanOrEqual" StackSize="2"/>
+					<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="LessThanOrEqual" StackSize="1"/>
+				</And>
+			</ActivationCondition>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="PreProxyON"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="PreProxyOFF">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuards_PreProxy" ComparisonType="Equal" StackSize="1"/>
+			</ActivationCondition>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="PreProxyOFF"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="ProxyON">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="GreatherThanOrEqual" StackSize="2"/>
+			</ActivationCondition>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="ProxyON"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="OvercoatON"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="PreProxyOFF"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="ProxyOFF">
+			<ActivationCondition>
+				<IfHasStatusEffect StatusEffect="AI_PalatineGuards_NearbyCheck" ComparisonType="Equal" StackSize="1"/>
+			</ActivationCondition>
+			<Activities>
+				<TriggerEntity>
+					<Default TriggerName="ProxyOFF"/>
+				</TriggerEntity>
+				<TriggerEntity>
+					<Default TriggerName="OvercoatOFF"/>
+				</TriggerEntity>
+			</Activities>
+		</Action>
+		<Action Name="Attack_SpinLRushUppercut" FragmentName="Attack_SpinLRushUppercut" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_SpinLRushUppercut_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Loth_Attack_SwipeR" FragmentName="Loth_Attack_SwipeR" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Loth_Attack_SwipeR_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Loth_Attack_SwipeL" FragmentName="Loth_Attack_SwipeL" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Loth_Attack_SwipeL_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_TripleSwipe" FragmentName="Attack_TripleSwipe" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_TripleSwipe_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Combat_Fidget" FragmentName="Combat_Fidget" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Combat_Fidget_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Loth_Attack_UppercutSlam" FragmentName="Loth_Attack_UppercutSlam" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Loth_Attack_UppercutSlam_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Upperslash_Charge_Intro" FragmentName="Attack_Upperslash_Charge_Intro" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Upperslash_Charge_Intro_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.15"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.2"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Upperslash_Charge_Loop" FragmentName="Attack_Upperslash_Charge_Loop" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Upperslash_Charge_Loop_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+			</Activities>
+		</Action>
+		<Action Name="Attack_Upperslash_Charge_End" FragmentName="Attack_Upperslash_Charge_End" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_Upperslash_Charge_End_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_ClearingSweep" FragmentName="Attack_ClearingSweep" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_ClearingSweep_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="Attack_SwingSlamSpin" FragmentName="Attack_SwingSlamSpin" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="Attack_SwingSlamSpin_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="IoN_HeavyJump" FragmentName="IoN_HeavyJump" Predictive="true">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="HeavyJump_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0.35"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.5"/>
+				</BehaviorTreeTask>
+				<AnimationDrivenMotion>
+					<Default MotionMultiplier="1.00" RotationMultiplier="0.00" Decel="20.0,20.0,20.0" DisableGravity="false" InheritVelocity="false"/>
+				</AnimationDrivenMotion>
+			</Activities>
+		</Action>
+		<Action Name="r_DeathsDoor" FragmentName="r_DeathsDoor">
+			<ActivationCondition>
+				<IfBehaviorTreeTask ActionName="r_DeathsDoor_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" FragmentName="" ExitOffsetSeconds="0"/>
+			</DeactivationCondition>
+			<Activities>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0"/>
+				</BehaviorTreeTask>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="AI_IoN_Elite_DeathDoor_Heal"/>
+							<EffectId EffectId="AI_IoN_Elite_DeathDoor_Check"/>
+						</EffectsToApplyOnEnter>
+					</Default>
+				</ModifyStatusEffects>
+				<IfThenElse ResetWhenReinstalled="true" Comment="">
+					<IfCondition>
+						<IfMannequinMarker MarkerName="GainBackHealth"/>
+					</IfCondition>
+					<ThenActivity>
+						<ReviveFromDeathsDoor>
+							<Default TriggerOption="OnExit" DelayTime="0" HealthMultiplier="1"/>
+						</ReviveFromDeathsDoor>
+					</ThenActivity>
+				</IfThenElse>
+			</Activities>
+		</Action>
+	</Actions>
+</ActionList>
+

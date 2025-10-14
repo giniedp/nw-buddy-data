@@ -8,7 +8,7 @@
 					</Not>
 					<IfHasStatusEffect StatusEffect="AI_Enable_Stagger" Comment="Add this into your character's initial status effects to enable the Stagger mechanic on them"/>
 					<Not>
-						<IfMannequinMarker MarkerName="DisableStagger" Comment="Use this to disable Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+						<IfMannequinMarker MarkerName="DisableStagger" Comment="Fully disables Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
 					</Not>
 					<Not>
 						<IfDead ServerOnly="true"/>
@@ -43,7 +43,10 @@
 					</Not>
 					<IfHasStatusEffect StatusEffect="AI_Enable_Stagger" Comment="Add this into your character's initial status effects to enable the Stagger mechanic on them"/>
 					<Not>
-						<IfMannequinMarker MarkerName="DisableStagger" Comment="Use this to disable Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+						<IfMannequinMarker MarkerName="DisableStagger" Comment="Fully disables Stagger during specific fragments, such as key boss abilities that you don't want interrupted"/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableStaggerReaction" Comment="Disable the Stagger reaction while keeping GRIT active and allowing Stamina damage to be taken to a minimum of 0; can Stagger on the next valid hit by an attack after the MannequinMarker is deactivated"/>
 					</Not>
 					<Not>
 						<IfHasStatusEffect StatusEffect="ResetAI" Comment="Do not Interrupt the ai during retreating action"/>

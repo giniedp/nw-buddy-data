@@ -748,6 +748,12 @@
 				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="right_hand_attach" AttachmentJointRtpcName="" AudioTriggerName="Play_Gauntlet_Void_VoidBlade_Idle" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" SoundObstructionType="Ignore"/>
 			</FxScriptNodeParallelExecute>
 		</FxScript>
+		<FxScript Name="Void_Blade_Blocking">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="right_hand_attach" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_VoidGaunt_Annihilation.Blade_Idle" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="90,90,135" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="right_hand_attach" AttachmentJointRtpcName="" AudioTriggerName="Play_Gauntlet_Void_VoidBlade_Idle" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="true" SoundObstructionType="Ignore"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
 		<FxScript Name="EssenseRupture_ON">
 			<FxScriptNodeParallelExecute>
 				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Spine" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="wFX_VoidGaunt_Decay.Rupture_Target_Hld" KeepEmitterActive="false" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
@@ -1285,6 +1291,61 @@
 			<FxScriptNodeParallelExecute>
 				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="false" AttachJointName="Xform" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_DamnedPriest.Curse_Explosion_Blast" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
 			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="FragilSoul_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="spine" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_Lost_Raid_OverlordThorpe.ArenaMecanics.FragilSoul" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="FragilSoul_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="SpearBearer_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="Xform" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_Lost_Raid_OverlordThorpe.ArenaMecanics.Relic_Aura_Player" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="SpearBearer_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="Impaling_Mistlock_Root_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="Xform" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_Lost_Raid_OverlordThorpe.Thorpe.ImpalingMistlock_Root" KeepEmitterActive="False" KillOnExit="false" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Impaling_Mistlock_Root_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="DOO_Target_Preparation">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="Xform" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_Lost_Raid_OverlordThorpe.Thorpe.DOO_Target_Preparation" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Player_AbyssMark">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="Xform" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_LostDahut.Player_AbyssMark" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,1.7415" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Player_AbyssMark_PalatineCleanse">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="Xform" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_LostDahut.Player_AbyssMark_Cleanse" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,1.7415" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Player_AbyssMark_Activated_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="Xform" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_LostDahut.Player_AbyssMark_Empower" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,1.7415" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Player_AbyssMark_Activated_OFF">
+			<FxScriptNodeParallelExecute/>
+		</FxScript>
+		<FxScript Name="Player_Sacrifice_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="Xform" AttachAttachmentName="" AttachJointAlias="" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_LostDahut.Player_Sacrifice_StatusFX" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="true" UseRotOffset="true"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="Player_Sacrifice_OFF">
+			<FxScriptNodeParallelExecute/>
 		</FxScript>
 		<FxScript Name="Petrification">
 			<FxScriptNodeParallelExecute>

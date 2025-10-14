@@ -246,6 +246,16 @@
 				<FxScriptNodeExecuteAudioTrigger AttachToEntity="true" AttachmentJoint="" AttachmentJointRtpcName="" AudioTriggerName="Play_StatusFX_TargetMarker" ExecuteOnLocalPlayer="true" ExecuteOnRemotePlayer="false" SoundObstructionType="Ignore"/>
 			</FxScriptNodeParallelExecute>
 		</FxScript>
+		<FxScript Name="AI_TheMoreTheMerrier_ON">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Head" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_LostJester.Mob_TheMore_Target" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
+		<FxScript Name="AI_TheMoreTheMerrier_OFF">
+			<FxScriptNodeParallelExecute>
+				<FxScriptNodeSpawnParticleEffect AttachEmitterFollows="true" AttachIgnoreRotation="true" AttachJointName="" AttachAttachmentName="" AttachJointAlias="Head" AttachToEntity="true" AttachToJoint="true" CharacterSlot="0" EffectName="cFX_npc_LostJester.Mob_TheMore_Target" KeepEmitterActive="true" KillOnExit="true" PosOffset="0,0,0" RotOffset="0,0,0" Scale="1.0" UnlimitedViewDist="false" UsePosOffset="false" UseRotOffset="false"/>
+			</FxScriptNodeParallelExecute>
+		</FxScript>
 	</Scripts>
 </ActionList>
 

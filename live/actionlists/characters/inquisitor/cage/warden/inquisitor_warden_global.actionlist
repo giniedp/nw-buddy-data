@@ -1,0 +1,56 @@
+<ActionList>
+	<Actions>
+		<Action Name="WeaponEffectFire_CheckSE" FragmentName="">
+			<ActivationCondition>
+				<And>
+					<IfHasStatusEffect StatusEffect="AI_Inquisitor_RampantFlame"/>
+					<Not>
+						<IfMannequinTag TagName="RampantFlame"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfHasStatusEffect StatusEffect="AI_Inquisitor_RampantFlame"/>
+					</Not>
+					<IfDead/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="RampantFlame" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="WeaponEffectFire_ActivateFX" FragmentName="" RunOnRemoteClients="True">
+			<ActivationCondition>
+				<And>
+					<IfMannequinTag TagName="RampantFlame"/>
+					<Not>
+						<IfDead/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<Or>
+					<Not>
+						<IfMannequinTag TagName="RampantFlame"/>
+					</Not>
+					<IfDead/>
+				</Or>
+			</DeactivationCondition>
+			<Activities>
+				<WeaponEffects>
+					<Default ItemSlotAlias="ACTIVE_MAIN_HAND_WEAPON" EffectGroupName="idle" OnEnter="Enable" OnExit="Disable"/>
+				</WeaponEffects>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="Warden_RampantFlameActive">
+			<IfHasStatusEffect StatusEffect="AI_Inquisitor_RampantFlame"/>
+		</And>
+	</Conditions>
+</ActionList>
+

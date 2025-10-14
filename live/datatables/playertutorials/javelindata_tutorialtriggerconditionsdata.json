@@ -1659,6 +1659,11 @@
 		"UIEvent": "CaptureTheFlagEntered"
 	},
 	{
+		"ConditionId": "BattleRoyaleEnteredCondition",
+		"PlayerLevel": 0,
+		"UIEvent": "BattleRoyaleEntered"
+	},
+	{
 		"ConditionId": "GenericMasteryUIOpenCondition",
 		"PlayerLevel": 0,
 		"UIEvent": "MasteryTreeOpenedEvent"
@@ -1755,5 +1760,67 @@
 		"Operation": "HasUnlocked",
 		"PlayerLevel": 0,
 		"Achievement": "SeasonalServerS7"
+	},
+	{
+		"ConditionId": "17DW_MirrorRespawn_EventCondition",
+		"Operation": "Equals",
+		"PlayerLevel": 0,
+		"StatusEffects": "17DW_MirrorRespawn"
+	},
+	{
+		"ConditionId": "ReceiveItemIdsCatacombSoulCondition",
+		"Operation": "ReceiveItemAnyId",
+		"PlayerLevel": 0,
+		"Item": "Catacombs_Currency_Souls"
+	},
+	{
+		"ConditionId": "CatacombFirstErosionCondition",
+		"PlayerLevel": 0,
+		"GameEvent": "Catacombs_Erosion_Tracking"
+	},
+	{
+		"ConditionId": "CatacombErosionPotionCondition",
+		"PlayerLevel": 0,
+		"GameEvent": "Catacombs_ErosionPotion_Tracking"
+	},
+	{
+		"ConditionId": "CatacombDifficultyIncreaseCondition",
+		"PlayerLevel": 0,
+		"GameEvent": "CatacombsKillEvent_Boss_01"
+	},
+	{
+		"ConditionId": "CatacombPowerupCondition",
+		"PlayerLevel": 0,
+		"GameEvent": "Catacombs_Powerup_Tracking"
+	},
+	{
+		"ConditionId": "CatacombLevelupCondition",
+		"PlayerLevel": 0,
+		"GameEvent": "Catacombs_Levelup_Tracking"
+	},
+	{
+		"ConditionId": "CatacombHazardRoomCondition",
+		"PlayerLevel": 0,
+		"GameEvent": "Catacombs_HazardRoomInitiation_Tracking"
+	},
+	{
+		"ConditionId": "CatacombRespawnCondition",
+		"PlayerLevel": 0,
+		"GameEvent": "CatacombsKillEvent_Fodder"
+	},
+	{
+		"ConditionId": "CatacombFailCondition",
+		"PlayerLevel": 0,
+		"GameEvent": "CatacombsKillEvent_Fodder"
+	},
+	{
+		"ConditionId": "CatacombBossTileCondition",
+		"PlayerLevel": 0,
+		"GameEvent": "CatacombsKillEvent_Boss_01"
+	},
+	{
+		"ConditionId": "CatacombExtractionCondition",
+		"PlayerLevel": 0,
+		"GameEvent": "Catacombs_ExtractionInitiation_Tracking"
 	}
 ]

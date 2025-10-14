@@ -1,0 +1,94 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reaction" FragmentName="r_R2_F" ServerStarted="true">
+			<ActivationCondition>
+				<And>
+					<IfDamaged RequireDamageWasBlocked="false" RequireDamageDepletedStamina="false" RequireDeflectDamage="false" FailOnNoReactionDamage="false" IgnoreDeflectDamage="true" RequireHitVolumeName="" RequireRanged="false"/>
+					<Or>
+						<And>
+							<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.8"/>
+							<IfMannequinTag TagName="Nature"/>
+						</And>
+						<And>
+							<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.6"/>
+							<IfMannequinTag TagName="Fire"/>
+						</And>
+						<And>
+							<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.4"/>
+							<IfMannequinTag TagName="Frost"/>
+						</And>
+						<And>
+							<IfHealthPercentage Comparison="LessThanOrEqual" Percentage="0.2"/>
+							<IfMannequinTag TagName="Lightning"/>
+						</And>
+					</Or>
+					<Not>
+						<IfMannequinTag TagName="Reset"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="ReactionP1" Status="Pending" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+					<Not>
+						<IfActionStatus ActionName="ReactionP1" Status="Installed" ActiveTime="-1.0f" ActiveTimeComparisonType="GreaterThanOrEqual"/>
+					</Not>
+				</And>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfFragmentDone UseHostActionFragment="true" ExitOffsetSeconds="0.1"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetReactionFragment>
+					<Default ReactionTablePath="SharedAssets/SpringboardEntitites/Characters/BaseAI/CAGE/EmptyReactionTableHarness.actionlist" IsFullBody="true" UnsetReactionOffset="0.2"/>
+				</SetReactionFragment>
+				<ReactionMotion>
+					<Default Scale="0.5"/>
+				</ReactionMotion>
+				<ClearDamaged/>
+				<SetMannequinTag ResetWhenReinstalled="false">
+					<Default TagName="Reaction" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="X" OnEnter="NoEffect" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyLightning" TagName="Void" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyFrost" TagName="Lightning" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyFire" TagName="Frost" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyNature" TagName="Fire" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Conditional Name="CurrentlyNature" TagName="Void" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyLightning" TagName="Frost" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyFrost" TagName="Fire" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+					<Conditional Name="CurrentlyFire" TagName="Nature" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<BehaviorTreeTask>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="true" CompletionFragmentOffset="0.0"/>
+				</BehaviorTreeTask>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<RunFxScript ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default ScriptToRun="Player_Hurts" StopScriptOnExit="false" StopScriptOnDataChange="true" RunScriptOnSlotItem="false"/>
+				</RunFxScript>
+				<SetAudioSwitchState ResetWhenReinstalled="true" RunOnRemoteClients="true">
+					<Default SwitchName="Voice" StateName="Vo_Hurt" SetOnStop="false"/>
+				</SetAudioSwitchState>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="CurrentlyVoidP1">
+			<IfMannequinTag TagName="Void"/>
+			<IfMannequinTag TagName="Phase1"/>
+		</And>
+		<IfMannequinTag Name="CurrentlyVoid" TagName="Void"/>
+		<IfMannequinTag Name="CurrentlyFire" TagName="Fire"/>
+		<IfMannequinTag Name="CurrentlyFrost" TagName="Frost"/>
+		<IfMannequinTag Name="CurrentlyLightning" TagName="Lightning"/>
+		<IfMannequinTag Name="CurrentlyNature" TagName="Nature"/>
+		<IfMannequinTag Name="CurrentlyPhase1" TagName="Phase1"/>
+		<IfMannequinTag Name="CurrentlyPhase2" TagName="Phase2"/>
+		<IfMannequinTag Name="CurrentlyPhase3" TagName="Phase3"/>
+		<IfHealthPercentage Name="CurrentlyDead" Comparison="LessThanOrEqual" Percentage="0.0"/>
+	</Conditions>
+</ActionList>
+

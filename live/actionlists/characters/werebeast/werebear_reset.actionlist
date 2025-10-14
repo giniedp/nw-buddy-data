@@ -1,0 +1,73 @@
+<ActionList>
+	<Actions>
+		<Action Name="Reset_Move" FragmentName="Reset_Move">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Reset_Move_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="ResetAI"/>
+							<EffectId EffectId="AI_HercyneBoar_RemoveStamina"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+							<EffectId EffectId="AI_HercyneBoar_AlphaThorns"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="ResetAI"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<DisableCollision>
+					<Default disableActorToActorCollision="true" disableTerrainCollision="false"/>
+				</DisableCollision>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Reset" OnEnter="Set" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="NoEffect" OnExit="Unset" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="Reset_Idle" FragmentName="Combat_Idle">
+			<ActivationCondition>
+				<IfHTNCAGEAction ActionName="Reset_Idle_CAGE_Task"/>
+			</ActivationCondition>
+			<DeactivationCondition/>
+			<Activities>
+				<AIAssignOrder>
+					<Default Order="Despawn"/>
+				</AIAssignOrder>
+				<HTNPlanDoneActivity>
+					<Default InvalidatePlanOnExit="false" InvalidatePlanOnReinstall="false" CompletionFragmentOffset="0.0"/>
+				</HTNPlanDoneActivity>
+				<ModifyStatusEffects>
+					<Default>
+						<EffectsToApplyOnEnter>
+							<EffectId EffectId="ResetAI"/>
+							<EffectId EffectId="AI_HercyneBoar_RemoveStamina"/>
+						</EffectsToApplyOnEnter>
+						<EffectsToRemoveOnEnter>
+							<EffectId EffectId="AI_Enable_Stagger"/>
+							<EffectId EffectId="AI_HercyneBoar_AlphaThorns"/>
+						</EffectsToRemoveOnEnter>
+						<EffectsToRemoveOnExit>
+							<EffectId EffectId="ResetAI"/>
+						</EffectsToRemoveOnExit>
+					</Default>
+				</ModifyStatusEffects>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="Alerted" OnEnter="Unset" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+	</Actions>
+	<Conditions/>
+</ActionList>
+

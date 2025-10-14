@@ -1,0 +1,193 @@
+[
+	{
+		"PerkID": "PerkID_Infix_Weapon_OnCrit_LightningBolt",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnActive",
+		"ItemClass": ["EquippableMainHand", "EquippableTwoHand"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Weapon_OnCrit_LightningBolt_Name",
+		"Description": "@PerkID_Infix_Weapon_OnCrit_LightningBolt_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": [
+			"Ability_Infix_Weapon_OnCrit_LightningBolt_Tracking",
+			"Ability_Infix_Weapon_OnCrit_LightningBolt_Damage"
+		],
+		"Sorting": "Infix"
+	},
+	{
+		"PerkID": "PerkID_Infix_Weapon_Melee_OnTargetGrit_Stun",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnActive",
+		"ItemClass": ["Melee"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Weapon_Melee_OnTargetGrit_Stun_Name",
+		"Description": "@PerkID_Infix_Weapon_Melee_OnTargetGrit_Stun_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": [
+			"Ability_Infix_Weapon_Melee_OnTargetGrit_Stun_Grit",
+			"Ability_Infix_Weapon_Melee_OnTargetGrit_Stun_Uninterruptible",
+			"Ability_Infix_Weapon_Melee_OnTargetGrit_Stun_Apply"
+		],
+		"Sorting": "Infix"
+	},
+	{
+		"PerkID": "PerkID_Infix_Ring_GritOnBasic",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnActive",
+		"ItemClass": ["EquippableRing"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Ring_GritOnBasic_Name",
+		"Description": "@PerkID_Infix_Ring_GritOnBasic_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": ["Ability_Infix_Ring_GritOnBasic", "Ability_Infix_Ring_GritOnBasic_TradeOff"]
+	},
+	{
+		"PerkID": "PerkID_Infix_Weapon_Ranged_DamageOnDistance",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnActive",
+		"ItemClass": ["Ranged", "Hatchet"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Weapon_Ranged_DamageOnDistance_Name",
+		"Description": "@PerkID_Infix_Weapon_Ranged_DamageOnDistance_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": [
+			"Ability_Infix_Weapon_Ranged_DamageOnDistance",
+			"Ability_Infix_Weapon_Ranged_DamageOnDistance_DmgTaken"
+		]
+	},
+	{
+		"PerkID": "PerkID_Infix_Weapon_Melee_AlternateAttacks",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnUnsheathed",
+		"ItemClass": ["Melee", "VoidGauntlet"],
+		"ExcludeItemClass": ["Shield"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"ScalingPerGearScore": "0,725:0.00365",
+		"DisplayName": "@PerkID_Infix_Weapon_Melee_AlternateAttacks_Name",
+		"Description": "@PerkID_Infix_Weapon_Melee_AlternateAttacks_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": [
+			"Ability_Perk_Weapon_Melee_AlternateAttacks_Basic_Proc",
+			"Ability_Perk_Weapon_Melee_AlternateAttacks_Basic_Dmg",
+			"Ability_Perk_Weapon_Melee_AlternateAttacks_Ability_Proc",
+			"Ability_Perk_Weapon_Melee_AlternateAttacks_Ability_Dmg"
+		],
+		"Sorting": "Weapon"
+	},
+	{
+		"PerkID": "PerkID_Infix_Weapon_Magic_ChainLightning",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnEquip",
+		"ItemClass": ["Magic"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Weapon_Magic_ChainLightning",
+		"Description": "@PerkID_Infix_Weapon_Magic_ChainLightning_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": ["Ability_Infix_Weapon_Magic_ChainLightning"]
+	},
+	{
+		"PerkID": "PerkID_Infix_Weapon_Flail_EmpoweringHeal",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnEquip",
+		"ItemClass": ["Flail", "VoidGauntlet"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Weapon_Flail_EmpoweringHeal",
+		"Description": "@PerkID_Infix_Weapon_Flail_EmpoweringHeal_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": [
+			"Ability_Infix_Weapon_Flail_EmpoweringHeal",
+			"Ability_Infix_Weapon_Flail_EmpoweringHeal_TrackingStacks"
+		]
+	},
+	{
+		"PerkID": "PerkID_Infix_Weapon_LowHealthCrit",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnEquip",
+		"ItemClass": ["EquippableMainHand", "EquippableTwoHand"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Weapon_LowHealthCrit_Name",
+		"Description": "@PerkID_Infix_Weapon_LowHealthCrit_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": ["Ability_Infix_Weapon_LowHealthCrit"]
+	},
+	{
+		"PerkID": "PerkID_Infix_Weapon_Melee_ArmorPenetrationBehind",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnActive",
+		"ItemClass": ["Melee"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Weapon_Melee_ArmorPenetrationBehind_Name",
+		"Description": "@PerkID_Infix_Weapon_Melee_ArmorPenetrationBehind_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": ["Ability_Infix_Weapon_Melee_ArmorPenetrationBehind"]
+	},
+	{
+		"PerkID": "PerkID_Infix_Weapon_Blunderbuss_HeavyMortar",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnUnsheathed",
+		"ItemClass": ["Blunderbuss"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Weapon_Blunderbuss_HeavyMortar_Name",
+		"Description": "@PerkID_Infix_Weapon_Blunderbuss_HeavyMortar_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": ["Ability_Infix_Weapon_Blunderbuss_HeavyMortar"]
+	},
+	{
+		"PerkID": "PerkID_Infix_Weapon_Greataxe_ArtifactSet2_Weaker",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnUnsheathed",
+		"ItemClass": ["2HAxe"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Weapon_Greataxe_ArtifactSet2_Weaker_Name",
+		"Description": "@PerkID_Infix_Weapon_Greataxe_ArtifactSet2_Weaker_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": ["Ability_Infix_Weapon_Greataxe_ArtifactSet2_Weaker"]
+	},
+	{
+		"PerkID": "PerkID_Infix_Gloves_Bow_ArtifactSet2_PoisonAffinity",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnEquip",
+		"ItemClass": ["EquippableHands"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Artifact_Set2_Bow_Name",
+		"Description": "@PerkID_Infix_Gloves_Bow_ArtifactSet2_PoisonAffinity_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": ["GlobalPerk_Artifact_Set2_Bow"]
+	},
+	{
+		"PerkID": "PerkID_Infix_Weapon_Lifestaff_Revive",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnUnsheathed",
+		"ItemClass": ["LifeStaff"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Weapon_Lifestaff_Revive_Name",
+		"Description": "@PerkID_Infix_Weapon_Lifestaff_Revive_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": ["Ability_Infix_Weapon_Lifestaff_Revive"]
+	},
+	{
+		"PerkID": "PerkID_Infix_Shield_BlockCleanse",
+		"PerkType": "Inherent",
+		"ConditionEvent": "OnActive",
+		"ItemClass": ["Shield"],
+		"Channel": 1,
+		"ExclusiveLabels": ["Infix"],
+		"DisplayName": "@PerkID_Infix_Shield_BlockCleanse_Name",
+		"Description": "@PerkID_Infix_Shield_BlockCleanse_Description",
+		"IconPath": "lyshineui/images/icons/perks/infixperk.webp",
+		"EquipAbility": ["Ability_Infix_Shield_BlockCleanse"]
+	}
+]

@@ -57,6 +57,9 @@
 						<IfMannequinTag TagName="BlockBroken"/>
 					</Not>
 					<Not>
+						<IfMannequinTag TagName="Stunned"/>
+					</Not>
+					<Not>
 						<IfHasStatusEffect StatusEffect="ResetAI" OnlyCheckOwnedStatusEffects="false"/>
 					</Not>
 					<IfMannequinTag TagName="Alerted"/>
@@ -68,6 +71,7 @@
 						<IfMannequinTag TagName="Shield_OH"/>
 					</Not>
 					<IfMannequinTag TagName="BlockBroken"/>
+					<IfMannequinTag TagName="Stunned"/>
 				</Or>
 			</DeactivationCondition>
 			<Activities>

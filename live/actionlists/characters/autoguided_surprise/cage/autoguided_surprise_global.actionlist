@@ -1,0 +1,38 @@
+<ActionList>
+	<Actions>
+		<Action Name="ReactionCooldown" FragmentName="" Priority="0" Predictive="false" ServerStarted="false">
+			<ActivationCondition>
+				<IfMannequinMarker MarkerName="FullBodyReactionActive"/>
+			</ActivationCondition>
+			<DeactivationCondition>
+				<IfMannequinTag TagName="ReactionCooldown"/>
+			</DeactivationCondition>
+			<Activities>
+				<SetMannequinTag ResetWhenReinstalled="true">
+					<Default TagName="ReactionCooldown" OnEnter="Set" OnExit="NoEffect" DelayTimer="0.0"/>
+				</SetMannequinTag>
+			</Activities>
+		</Action>
+		<Action Name="LookPose" FragmentName="LookPose">
+			<ActivationCondition>
+				<And>
+					<Not>
+						<True/>
+					</Not>
+					<Not>
+						<IfMannequinMarker MarkerName="DisableLookPoses"/>
+					</Not>
+					<IfHasAttackTarget/>
+				</And>
+			</ActivationCondition>
+			<Activities/>
+		</Action>
+	</Actions>
+	<Conditions>
+		<And Name="OR_Boss">
+			<IfMannequinTag Name="Boss" TagName="Boss"/>
+			<IfMannequinTag Name="OutpostRush" TagName="OutpostRush"/>
+		</And>
+	</Conditions>
+</ActionList>
+
